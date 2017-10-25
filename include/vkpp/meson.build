@@ -2,6 +2,7 @@ outputs = [
 	'functions.hpp',
 	'fwd.hpp',
 	'structs.hpp',
+	'enums.hpp',
 	'vulkan.hpp']
 
 # install subdir
