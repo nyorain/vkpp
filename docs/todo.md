@@ -1,0 +1,8 @@
+- don't output all extensions. Only required (via settings) ones
+- some way to detect installed vulkan version and automatically generate for it?
+	- should be doable with meson (python vulkan module; get version; download spec; parse it)
+	- Would probably require some spec version testing for codegen (fix issues with ALL spec version...)
+- queueFamilyExternalKhr (i.e. constants of extensions) -> ...KHR
+- rework/update error handling
+	- don't use vpp_call by default?
+	- give caller chance to handle error (without exception!)

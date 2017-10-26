@@ -17,13 +17,20 @@ codegen_src = [
 codegen_inc = include_directories('src')
 
 defs = []
-if codegen == '1.0.20'
+if codegen == '1.0.0'
+	defs += '-DVKPP_OLD_LENGTH_PARAM=1'
+	defs += '-DVKPP_DEBUG_REPORT_STYPE_FIX=1'
+	defs += '-DVKPP_NO_VALUES_STRUCTURE_TYPE=1'
+	spec = files('specs/vk-1-0-0.xml')
+elif codegen == '1.0.20'
 	defs += '-DVKPP_OLD_LENGTH_PARAM=1'
 	defs += '-DVKPP_NO_VALUES_STRUCTURE_TYPE=1'
 	spec = files('specs/vk-1-0-20.xml')
 elif codegen == '1.0.40'
 	defs += '-DVKPP_NO_VALUES_STRUCTURE_TYPE=1'
 	spec = files('specs/vk-1-0-40.xml')
+elif codegen == '1.0.60'
+	spec = files('specs/vk-1-0-60.xml')
 elif codegen == 'latest'
 	spec = files('specs/vk-1-0-latest.xml')
 else

@@ -584,7 +584,15 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 					else if(dir == "-") value = -1000000000 - offset;
 					else std::cerr << "### invalid enum ext dir: '" << dir << "', " << enumName << "\n";
 
-					auto v = std::make_pair(req.attribute("name").as_string(), value);
+					std::string name = req.attribute("name").as_string();
+
+#ifdef VKPP_DEBUG_REPORT_STYPE_FIX
+			if(name == "VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT") {
+				name = "VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT";
+			}
+#endif
+
+					auto v = std::make_pair(name, value);
 					extEnum->values.push_back(v);
 				}
 			}

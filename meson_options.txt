@@ -1,2 +1,7 @@
-option('version', type: 'combo', choices: ['none', '1.0.20', '1.0.40', 'latest'], value: 'latest')
+option('version', type: 'combo', choices: [
+	'1.0.0',
+	'1.0.20', 
+	'1.0.40', 
+	'1.0.60', 
+	'latest'], value: 'latest')
 option('tests', type: 'boolean', value: 'false')

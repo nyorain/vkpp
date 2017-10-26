@@ -42,7 +42,6 @@ inline const char* name(Result result)
 		case Result::errorOutOfDateKHR: return "errorOutOfDateKHR";
 		case Result::errorIncompatibleDisplayKHR: return "errorIncompatibleDisplayKHR";
 		case Result::errorValidationFailedEXT: return "errorValidationFailedEXT";
-		case Result::errorInvalidShaderNV: return "errorInvalidShaderNV";
 		default: return "<unknown>";
 	}
 }

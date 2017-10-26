@@ -5,7 +5,7 @@ Generates a C++ api from the vulkan spec.
 __Comparison__ to [vulkan-hpp](https://github.com/KhronosGroup/Vulkan-Hpp):
 
 - Created with simplicity and compile-time in mind, more lightweight
-	- does NOT have a monolithic almost 30K LOC header
+	- does NOT produce a monolithic almost 30K LOC header
 	- splits usage into multiple headers, which allows you to
 	  e.g. only use the forward-declarations (less than 1K LOC) in
 	  your public headers

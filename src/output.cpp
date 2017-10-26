@@ -216,11 +216,10 @@ void CCOutputGenerator::generate()
 	outputAllHeader("namespace vk {\n\n");
 
 	// fwd dummy enum
-	fwd_ << "enum class DummyEnum : int32_t {};\n";
+	fwd_ << "using nytl::Span; // span.hpp\n";
+	fwd_ << "using nytl::Flags; // flags.hpp\n\n";
 
-	// XXX: use this?
-	// fwd_ << "using nytl::Span; // span.hpp\n";
-	// fwd_ << "using nytl::Flags; // flags.hpp\n\n";
+	fwd_ << "enum class DummyEnum : int32_t {};\n\n";
 
 	// all printed requirements
 	Requirements fulfilled;
@@ -377,7 +376,7 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 		fwd_ << "enum class " << name << " : int32_t;\n";
 
 		// output enum values
-		enums_ << "enum class " << name << " : int32_t{\n";
+		enums_ << "enum class " << name << " : int32_t {\n";
 		auto sepr = "";
 		for(auto& value : enumeration.values) {
 			bool bit;
@@ -414,7 +413,7 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 		if(!bitmask.bits) enumName = "DummyEnum";
 		else enumName = typeName(*bitmask.bits);
 
-		fwd_ << "using " << name << " = nytl::Flags<" << enumName << ">;\n";
+		fwd_ << "using " << name << " = Flags<" << enumName << ">;\n";
 	}
 
 	if(count > 0) {
@@ -563,8 +562,10 @@ std::string CCOutputGenerator::enumName(const Enum& e, const std::string& name, 
 		while(fename.size() > s && fname.size() > s && fename[s] == fname[s]) ++s;
 
 		removePrefix = s;
-		removeSuffix = ext.size();
 
+		if(tolower(ret).find(tolower(ext)) != std::string::npos) {
+			removeSuffix = ext.size();
+		}
 
 		// actuallly remove prefix and suffix, lower first char
 		ret = ret.substr(removePrefix);
@@ -1083,7 +1084,7 @@ std::string CCOutputGenerator::paramDecl(const ParsedParam& param, bool rangeify
 				type = &localqt;
 			}
 
-			ret += "nytl::Span<" + typeName(*type) + "> " + param.param->name;
+			ret += "Span<" + typeName(*type) + "> " + param.param->name;
 			return ret;
 		}
 	}

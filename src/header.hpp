@@ -1,10 +1,22 @@
 auto constexpr fwdHeader = 1 + R"SRC(
+#include <vkpp/handle.hpp> // VK_DEFINE_HANDLE
 #include <vkpp/flags.hpp>
-#include <vkpp/handle.hpp>
+#include <cstddef>
 
 #include <vulkan/vk_platform.h>
 
 // Generated for vulkan version: %v
+
+// Utility forward declarations
+namespace nytl {
+
+#ifndef NYTL_INCLUDE_FWD_SPAN
+#define NYTL_INCLUDE_FWD_SPAN
+	template<typename T, std::size_t N = 0>
+	class Span;
+#endif // header guard
+	
+} // namespace nytl
 
 )SRC";
 
@@ -22,6 +34,7 @@ auto constexpr mainHeader = 1 + R"SRC(
 auto constexpr structsHeader = 1 + R"SRC(
 #include <vkpp/fwd.hpp>
 #include <vkpp/enums.hpp>
+#include <vkpp/flags.hpp>
 
 #include <array>
 #include <vulkan/vulkan.h>
@@ -32,6 +45,7 @@ auto constexpr structsHeader = 1 + R"SRC(
 
 auto constexpr enumsHeader = 1 + R"SRC(
 #include <vkpp/fwd.hpp>
+#include <vkpp/flags.hpp>
 
 // Generated for vulkan version: %v
 
@@ -43,6 +57,7 @@ auto constexpr functionsHeader = 1 + R"SRC(
 #include <vkpp/structs.hpp>
 #include <vkpp/error.hpp>
 #include <vkpp/span.hpp>
+#include <vkpp/flags.hpp>
 
 #include <vector>
 #include <vulkan/vulkan.h>
