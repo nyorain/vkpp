@@ -103,7 +103,7 @@ public:
 
 	// outputs the given entities to the matching headers files
 	void printStruct(const Struct& type);
-	void printCmd(const Command& command);
+	void printCmd(const Command& command, std::string alias = "");
 	void printVecCmd(const Command& command, const Param& count, const Param& data);
 	void printVecCmd(const ParsedCommand& command, const std::string& name);
 

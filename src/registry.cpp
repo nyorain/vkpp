@@ -442,6 +442,20 @@ void RegistryLoader::loadCommands(const pugi::xml_node& node)
 	for(auto cmd : node.children("command")) {
 		Command command{};
 
+		auto alias = cmd.attribute("alias");
+		if(alias) {
+			auto name = cmd.attribute("name").as_string();
+			auto cmd = registry_.findCommand(alias.as_string());
+			if(!cmd) {
+				std::cout << "### couldnt find cmd alias "
+					<< alias.as_string() << "\n";
+				continue;
+			}
+
+			cmd->aliases.push_back(name);
+			continue;
+		}
+
 		auto p = parseParam(cmd.child("proto"));
 		command.signature.returnType = p.type;
 		command.name = p.name;

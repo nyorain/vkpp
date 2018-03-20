@@ -184,6 +184,7 @@ class Command : public Entry {
 public:
 	FuncSignature signature;
 	std::string name;
+	std::vector<std::string> aliases;
 
 public:
 	Command() = default;

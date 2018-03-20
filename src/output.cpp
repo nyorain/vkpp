@@ -541,6 +541,11 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 		++count;
 		ensureGuard(functions_, funcGuard, guard);
 		printCmd(*cmdit);
+
+		for(auto alias : cmdit->aliases) {
+			printCmd(*cmdit, alias);
+		}
+
 		// functions_ << "\n"; // insert blank line between seperate function (groups)
 	}
 
@@ -928,9 +933,10 @@ ParsedCommand CCOutputGenerator::parseCommand(const Command& cmd) const
 }
 
 
-void CCOutputGenerator::printCmd(const Command& cmd)
+void CCOutputGenerator::printCmd(const Command& cmd, std::string alias)
 {
-	auto name = removeVkPrefix(cmd.name, nullptr);
+	if(alias == "") alias = cmd.name;
+	auto name = removeVkPrefix(alias, nullptr);
 	name[0] = std::tolower(name[0], std::locale());
 
 	// parseCommand will analyse intput/output/optional/return attributes
