@@ -21,18 +21,23 @@ if codegen == '1.0.0'
 	defs += '-DVKPP_OLD_LENGTH_PARAM=1'
 	defs += '-DVKPP_DEBUG_REPORT_STYPE_FIX=1'
 	defs += '-DVKPP_NO_VALUES_STRUCTURE_TYPE=1'
+	defs += '-DVKPP_FEATURE_NAMES="VK_VERSION_1_0"'
 	spec = files('specs/vk-1-0-0.xml')
 elif codegen == '1.0.20'
 	defs += '-DVKPP_OLD_LENGTH_PARAM=1'
 	defs += '-DVKPP_NO_VALUES_STRUCTURE_TYPE=1'
+	defs += '-DVKPP_FEATURE_NAMES="VK_VERSION_1_0"'
 	spec = files('specs/vk-1-0-20.xml')
 elif codegen == '1.0.40'
 	defs += '-DVKPP_NO_VALUES_STRUCTURE_TYPE=1'
+	defs += '-DVKPP_FEATURE_NAMES="VK_VERSION_1_0"'
 	spec = files('specs/vk-1-0-40.xml')
 elif codegen == '1.0.60'
+	defs += '-DVKPP_FEATURE_NAMES="VK_VERSION_1_0"'
 	spec = files('specs/vk-1-0-60.xml')
-elif codegen == 'latest'
-	spec = files('specs/vk-1-0-latest.xml')
+elif codegen == '1.1.70'
+	defs += '-DVKPP_FEATURE_NAMES="VK_VERSION_1_1,VK_VERSION_1_0"'
+	spec = files('specs/vk-1-1-70.xml')
 else
 	error('Invalid/unsupported vulkan spec version')
 endif
@@ -50,7 +55,8 @@ vkpp_dep = declare_dependency(
 	sources: vk_headers)
 
 if test
+	vulkan_dep = dependency('vulkan')
 	test('basic', executable('basic',
 		'docs/tests/test.cpp',
-		dependencies: vkpp_dep))
+		dependencies: [vkpp_dep, vulkan_dep]))
 endif

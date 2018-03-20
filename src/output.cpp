@@ -8,8 +8,10 @@
 
 #include <iostream>
 #include <algorithm>
+#include <sstream>
 #include <cstring>
 #include <regex>
+#include <unordered_set>
 
 // utility
 // the outputted copyright for the parsed header
@@ -225,16 +227,21 @@ void CCOutputGenerator::generate()
 	Requirements fulfilled;
 
 	// output the default vulkan feature
-	auto& feature = *registry().findFeatureByApi("vulkan");
-	auto& reqs = feature.reqs;
+	std::istringstream features(VKPP_FEATURE_NAMES);
+	std::string fname;
+	while(std::getline(features, fname, ',')) {
+		auto& feature = *registry().findFeatureByName(fname);
+		auto& reqs = feature.reqs;
 
-	printReqs(reqs, fulfilled);
-	fulfilled.add(reqs);
+		printReqs(reqs, fulfilled);
+		fulfilled.add(reqs);
 
-	// output extensions
-	for(auto& ext : feature.extensions) {
-		printReqs(ext->reqs, fulfilled, ext->protect);
-		fulfilled.add(ext->reqs);
+		// output extensions
+		for(auto& ext : feature.extensions) {
+			auto guard = ext->platform ? ext->platform->name : "";
+			printReqs(ext->reqs, fulfilled, guard);
+			fulfilled.add(ext->reqs);
+		}
 	}
 
 	// undef function macros
@@ -285,6 +292,7 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 	// - enums
 	// - bitmasks
 	// - structs
+	// - aliases
 
 	// constants
 	auto count = 0u;
@@ -347,6 +355,8 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 	for(auto* typeit : types) {
 		if(typeit->category != Type::Category::basetype) continue;
 		auto& basetype = static_cast<BaseType&>(*typeit);
+		if(basetype.alias) continue;
+
 		if(basetype.name == "VkFlags") continue;
 
 		++count;
@@ -354,7 +364,9 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 
 		// fwd
 		auto name = typeName(basetype);
-		fwd_ << "using " << name << " = " << basetype.original->name << ";\n";
+		auto orig = basetype.original->name;
+
+		fwd_ << "using " << name << " = " << orig << ";\n";
 	}
 
 	if(count > 0) {
@@ -377,10 +389,16 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 
 		// output enum values
 		enums_ << "enum class " << name << " : int32_t {\n";
+		std::unordered_set<std::string> already {};
 		auto sepr = "";
 		for(auto& value : enumeration.values) {
 			bool bit;
 			auto n = enumName(enumeration, value.first, &bit);
+			if(!already.insert(n).second) {
+				// doubled
+				continue;
+			}
+
 			enums_ << sepr << "\t" << n << " = ";
 			if(bit) enums_ << "(1 << " << value.second << ")";
 			else enums_ << value.second;
@@ -437,6 +455,25 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 		log("\tOutputted ", count, " structs");
 		fwd_ << "\n";
 		structs_ << "\n";
+	}
+
+	// aliases
+	count = 0u;
+	for(auto* typeit : types) {
+		if(typeit->category != Type::Category::basetype) continue;
+		auto& basetype = static_cast<BaseType&>(*typeit);
+		if(!basetype.alias) continue;
+
+		if(basetype.name == "VkFlags") continue;
+
+		++count;
+		ensureGuard(fwd_, fwdGuard, guard);
+
+		// fwd
+		auto name = typeName(basetype);
+		auto orig = typeName(*basetype.original);
+
+		fwd_ << "using " << name << " = " << orig << ";\n";
 	}
 
 	// funcptrs

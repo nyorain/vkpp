@@ -72,6 +72,7 @@ public:
 class BaseType : public Type {
 public:
 	Type* original;
+	bool alias {false};
 
 public:
 	BaseType(const std::string& name, const pugi::xml_node& node)
@@ -214,12 +215,19 @@ public:
 	void add(Requirements& reqs);
 };
 
+/// Vulkan platform. Usually associated with a header guard.
+class Platform : public Entry {
+public:
+	std::string name;
+	std::string protect;
+};
+
 /// Extensions entry holding its requirements as well as name and id.
 /// If protect is set, the extensions will not be parsed.
 class Extension : public Entry {
 public:
 	Requirements reqs;
-	std::string protect;
+	Platform* platform;
 	std::string name;
 	std::string supported;
 	int number;
@@ -257,6 +265,8 @@ public:
 	Container<Feature> features;
 	Container<Extension> extensions;
 
+	Container<Platform> platforms;
+
 	Container<QualifiedType> qualifieds;
 
 	Container<std::string> vendors;
@@ -279,6 +289,8 @@ public:
 	Command* findCommand(const std::string& name);
 	Constant* findConstant(const std::string& name);
 
+	Platform* findPlatform(const std::string& name);
+
 	Feature* findFeatureByApi(const std::string& name);
 	Feature* findFeatureByName(const std::string& name);
 	Extension* findExtension(const std::string& name);
@@ -295,6 +307,7 @@ public:
 	void loadTypes(const pugi::xml_node& node);
 	void loadEnums(const pugi::xml_node& node);
 	void loadCommands(const pugi::xml_node& node);
+	void loadPlatforms(const pugi::xml_node& node);
 
 	void loadFeature(const pugi::xml_node& node);
 	void loadExtension(const pugi::xml_node& node);

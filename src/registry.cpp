@@ -58,6 +58,10 @@ Registry& RegistryLoader::parse()
 	// add khx
 	registry_.vendors.push_back("KHX");
 
+	// platforms
+	log("\tplatforms");
+	loadPlatforms(regNode.child("platforms"));
+
 	// tags
 	for(auto tag : regNode.child("tags").children("tag"))
 		registry_.tags.push_back(tag.attribute("name").as_string());
@@ -101,6 +105,17 @@ Registry& RegistryLoader::parse()
 	return registry_;
 }
 
+void RegistryLoader::loadPlatforms(const pugi::xml_node& node) {
+	for(auto it : node.children("platform")) {
+		Platform platform;
+		platform.node = node;
+		platform.name = it.attribute("name").as_string();
+		platform.protect = it.attribute("protect").as_string();
+		registry_.platforms.push_back(platform);
+		log("\t\tplatform: ", platform.name);
+	}
+}
+
 void RegistryLoader::loadTypes(const pugi::xml_node& node)
 {
 	// all plain && external types
@@ -124,6 +139,15 @@ void RegistryLoader::loadTypes(const pugi::xml_node& node)
 		std::string category = typeit.attribute("category").as_string();
 		if(category == "enum") {
 			auto name = typeit.attribute("name").as_string();
+			auto alias = typeit.attribute("alias");
+			if(alias) {
+				BaseType t(name, typeit);
+				t.original = registry_.findType(alias.as_string());
+				t.alias = true;
+				registry_.baseTypes.push_back(t);
+				continue;
+			}
+
 			registry_.enums.emplace_back(name, typeit);
 
 			log("\t\tenum: ", name);
@@ -144,6 +168,14 @@ void RegistryLoader::loadTypes(const pugi::xml_node& node)
 		if(category == "bitmask") {
 			auto en = typeit.attribute("requires");
 			auto name = typeit.child_value("name");
+			auto alias = typeit.attribute("alias");
+			if(alias) {
+				BaseType t(name, typeit);
+				t.original = registry_.findType(alias.as_string());
+				t.alias = true;
+				registry_.baseTypes.push_back(t);
+				continue;
+			}
 
 			Enum* e = nullptr;
 			if(en) e = registry_.findEnum(en.as_string());
@@ -160,6 +192,15 @@ void RegistryLoader::loadTypes(const pugi::xml_node& node)
 		std::string category = typeit.attribute("category").as_string();
 		if(category == "handle") {
 			auto name = typeit.child_value("name");
+			auto alias = typeit.attribute("alias");
+			if(alias) {
+				BaseType t(name, typeit);
+				t.alias = true;
+				t.original = registry_.findType(alias.as_string());
+				registry_.baseTypes.push_back(t);
+				continue;
+			}
+
 			Handle handle(name, typeit);
 			handle.type = typeit.child_value("type");
 			registry_.handles.push_back(handle);
@@ -173,6 +214,15 @@ void RegistryLoader::loadTypes(const pugi::xml_node& node)
 		std::string category = typeit.attribute("category").as_string();
 		if(category == "struct" || category == "union") {
 			auto name = typeit.attribute("name").as_string();
+			auto alias = typeit.attribute("alias");
+			if(alias) {
+				BaseType t(name, typeit);
+				t.alias = true;
+				t.original = registry_.findType(alias.as_string());
+				registry_.baseTypes.push_back(t);
+				continue;
+			}
+
 			Struct s(name, typeit);
 
 			if(category == "union") s.isUnion = true;
@@ -189,6 +239,15 @@ void RegistryLoader::loadTypes(const pugi::xml_node& node)
 		std::string category = typeit.attribute("category").as_string();
 		if(category == "funcpointer") {
 			auto name = typeit.child_value("name");
+			auto alias = typeit.attribute("alias");
+			if(alias) {
+				BaseType t(name, typeit);
+				t.alias = true;
+				t.original = registry_.findType(alias.as_string());
+				registry_.baseTypes.push_back(t);
+				continue;
+			}
+
 			FuncPtr ptr(name, typeit);
 
 			// - parse return type -
@@ -300,6 +359,11 @@ void RegistryLoader::loadTypes(const pugi::xml_node& node)
 	for(auto typeit : node.children("type")) {
 		std::string category = typeit.attribute("category").as_string();
 		if(category == "struct" || category == "union") {
+			auto alias = typeit.attribute("alias");
+			if(alias) {
+				continue;
+			}
+
 			auto name = typeit.attribute("name").as_string();
 			auto s = registry_.findStruct(name);
 			if(!s) {
@@ -345,10 +409,29 @@ void RegistryLoader::loadEnums(const pugi::xml_node& node)
 	} else if(name == "API Constants") {
 		for(auto enumit : node.children("enum")) {
 			auto cname = enumit.attribute("name").as_string();
-			auto value = enumit.attribute("value").as_string();
 			Constant constant(enumit);
 			constant.name = cname;
-			constant.value = value;
+
+			auto aliasAttrib = enumit.attribute("alias");
+			if(aliasAttrib) {
+				bool found = false;
+				for(auto val : registry_.constants) {
+					if(val.name == aliasAttrib.as_string()) {
+						found = true;
+						constant.value = val.value;
+						break;
+					}
+				}
+
+				if(!found) {
+					std::cout << "### couldnt find constant alias "
+						<< aliasAttrib.as_string() << "\n";
+				}
+			} else {
+				auto value = enumit.attribute("value").as_string();
+				constant.value = value;
+			}
+
 			registry_.constants.push_back(constant);
 		}
 	}
@@ -474,7 +557,13 @@ void RegistryLoader::loadExtension(const pugi::xml_node& node)
 	extension.supported = node.attribute("supported").as_string();
 	extension.number = node.attribute("number").as_int();
 	extension.name = node.attribute("name").as_string();
-	extension.protect = node.attribute("protect").as_string();
+
+	std::string platform = node.attribute("platform").as_string();
+	extension.platform = registry_.findPlatform(platform);
+
+	if(!extension.platform && !platform.empty()) {
+		std::cout << "### couldnt find platform '" << platform << "'\n";
+	}
 
 	if(extension.supported.find("vulkan") != std::string::npos) {
 		extension.reqs = parseRequirements(node, true);
@@ -525,9 +614,29 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 			auto extAttrib = req.attribute("extends");
 
 			if(!extAttrib) {
+				// check if just an alias
+				auto aliasAttrib = req.attribute("alias");
 				auto valueAttrib = req.attribute("value");
 				auto value = std::string(valueAttrib.value());
-				if(valueAttrib && (value[0] == '\"' || value.find("VK") == std::string::npos)) {
+
+				if(aliasAttrib) {
+					bool found = false;
+					for(auto val : ret.extraConstants) {
+						if(val.name == aliasAttrib.as_string()) {
+							found = true;
+							Constant c(req);
+							c.name = req.attribute("name").as_string();
+							c.value = val.value;
+							ret.extraConstants.push_back(c);
+							break;
+						}
+					}
+
+					if(!found) {
+						std::cout << "### couldnt find constant alias "
+							<< aliasAttrib.as_string() << "\n";
+					}
+				} else if(valueAttrib && (value[0] == '\"' || value.find("VK") == std::string::npos)) {
 					Constant constant(req);
 					constant.name = req.attribute("name").as_string();
 					constant.value = valueAttrib.as_string();
@@ -551,16 +660,41 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 					if(!found) ret.constants.push_back(constant);
 				}
 			} else if(extAttrib) {
+				// check if just an alias
+				auto aliasAttrib = req.attribute("alias");
+				auto valueAttrib = req.attribute("value");
+
 				// check if bitflag or enumeration
 				auto bitposAttrib = req.attribute("bitpos");
-				if(bitposAttrib) {
-					auto extEnum = registry_.findEnum(extAttrib.as_string());
-					if(!extEnum) {
-						std::cout << "### couldnt find enum " << extAttrib.as_string() << "\n";
-						continue;
+
+				auto extEnum = registry_.findEnum(extAttrib.as_string());
+				if(!extEnum) {
+					std::cout << "### couldnt find enum " << extAttrib.as_string() << "\n";
+					continue;
+				}
+
+				if(aliasAttrib) {
+					bool found = false;
+					for(auto val : extEnum->values) {
+						if(val.first == aliasAttrib.as_string()) {
+							found = true;
+							auto v = std::make_pair(req.attribute("name").as_string(),
+								val.second);
+							extEnum->values.push_back(v);
+							break;
+						}
 					}
 
+					if(!found) {
+						std::cout << "### couldnt find enum alias "
+							<< aliasAttrib.as_string() << "\n";
+					}
+				} else if(bitposAttrib) {
 					auto pos = bitposAttrib.as_llong();
+					auto v = std::make_pair(req.attribute("name").as_string(), pos);
+					extEnum->values.push_back(v);
+				} else if(valueAttrib) {
+					auto pos = valueAttrib.as_llong();
 					auto v = std::make_pair(req.attribute("name").as_string(), pos);
 					extEnum->values.push_back(v);
 				} else {
@@ -570,12 +704,6 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 
 					auto offset = req.attribute("offset").as_llong();
 					offset += number * 1000; //extension number queried in the beginning
-
-					auto extEnum = registry_.findEnum(extAttrib.as_string());
-					if(!extEnum) {
-						std::cout << "### couldnt find enum " << extAttrib.as_string() << "\n";
-						continue;
-					}
 
 					std::int64_t value = 0;
 
@@ -587,9 +715,9 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 					std::string name = req.attribute("name").as_string();
 
 #ifdef VKPP_DEBUG_REPORT_STYPE_FIX
-			if(name == "VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT") {
-				name = "VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT";
-			}
+					if(name == "VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT") {
+						name = "VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT";
+					}
 #endif
 
 					auto v = std::make_pair(name, value);
@@ -684,6 +812,12 @@ Constant* Registry::findConstant(const std::string& name)
 Command* Registry::findCommand(const std::string& name)
 {
 	for(auto& c : commands) if(c.name == name) return &c;
+	return nullptr;
+}
+
+Platform* Registry::findPlatform(const std::string& name)
+{
+	for(auto& c : platforms) if(c.name == name) return &c;
 	return nullptr;
 }
 
