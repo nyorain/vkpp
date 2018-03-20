@@ -1,8 +1,10 @@
 - don't output all extensions. Only required (via settings) ones
-- some way to detect installed vulkan version and automatically generate for it?
-	- should be doable with meson (python vulkan module; get version; download spec; parse it)
-	- Would probably require some spec version testing for codegen (fix issues with ALL spec version...)
-- queueFamilyExternalKhr (i.e. constants of extensions) -> ...KHR
+- currently sometimes an enum has multiple times the same extension
+  entry. Come up with something better than the unordered_map
+  in the output generator.
 - rework/update error handling
 	- don't use vpp_call by default?
 	- give caller chance to handle error (without exception!)
+- better feature/extension dependency/requirement handling
+- automatically detect installed version (submit meson patch if needed on
+  some platforms) and generate for the last matching version as default.

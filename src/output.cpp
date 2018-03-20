@@ -698,6 +698,14 @@ std::string CCOutputGenerator::constantName(const Constant& c) const
 {
 	auto ret = removeVkPrefix(c.name, nullptr);
 	camelCaseip(ret);
+
+	// capitalize suffix
+	std::string ext;
+	removeExtSuffix(ret, &ext);
+	if(!ret.empty())
+		for(auto i = 0u; i < ext.size(); ++i)
+			ret[ret.size() - i] = std::toupper(ret[ret.size() - i], std::locale());
+
 	return ret;
 }
 
