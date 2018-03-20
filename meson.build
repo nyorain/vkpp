@@ -60,3 +60,15 @@ if test
 		'docs/tests/test.cpp',
 		dependencies: [vkpp_dep, vulkan_dep]))
 endif
+
+# pkgconfig
+# test the packageconfig with an external project
+pkg = import('pkgconfig')
+pkg_dirs = ['.']
+pkg.generate(
+	name: 'vkpp',
+	requires: ['vulkan'],
+	filebase: 'vkpp',
+	subdirs: pkg_dirs,
+	version: meson.project_version(),
+	description: 'C++ vulkan api generator')
