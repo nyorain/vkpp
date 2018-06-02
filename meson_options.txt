@@ -3,5 +3,5 @@ option('version', type: 'combo', choices: [
 	'1.0.20', 
 	'1.0.40', 
 	'1.0.60', 
-	'latest'], value: 'latest')
+	'latest'], value: '1.0.20')
 option('tests', type: 'boolean', value: 'false')
