@@ -47,4 +47,4 @@ pkg.generate(
 	filebase: 'vkpp',
 	subdirs: pkg_dirs,
 	version: meson.project_version(),
-	description: 'C++ vulkan api generator')
+	description: 'Modern C++ vulkan api')

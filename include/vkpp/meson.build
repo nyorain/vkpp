@@ -3,7 +3,16 @@ outputs = [
 	'fwd.hpp',
 	'structs.hpp',
 	'enums.hpp',
-	'vulkan.hpp']
+	'dispatch.hpp',
+]
+
+iheaders = [
+	'call.hpp',
+	'vulkan.hpp',
+	'flags.hpp',
+	'span.hpp',
+	'handle.hpp',
+]
 
 if gen
 	# custom target
@@ -14,8 +23,9 @@ if gen
 		install_dir: 'include/vkpp',
 		command: [vk_codegen, '@INPUT@', '@OUTDIR@'])
 else
-	vk_headers = []
+	vk_headers = [] # no custom target
+	iheaders += outputs # install given ones
 endif
 
-# install subdir
-install_subdir('.', install_dir: 'include/vkpp')
+# install headers
+install_headers(iheaders, subdir: 'vkpp')
