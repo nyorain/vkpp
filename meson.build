@@ -1,52 +1,28 @@
 project('vkpp', ['c', 'cpp'],
 	license: 'BSL',
-	version: '0.1.0',
+	version: '1.1.85',
 	meson_version: '>=0.42',
 	default_options: ['cpp_std=c++1z'])
 
-codegen = get_option('version')
 test = get_option('tests')
+gen = get_option('regen')
 
+
+if gen
 # codegen executable
-codegen_src = [
-	'src/main.cpp',
-	'src/output.cpp',
-	'src/registry.cpp',
-	'src/pugixml/pugixml.cpp']
+  codegen_src = [
+	  'src/main.cpp',
+	  'src/output.cpp',
+	  'src/registry.cpp',
+	  'src/pugixml/pugixml.cpp']
 
-codegen_inc = include_directories('src')
-
-defs = []
-if codegen == '1.0.0'
-	defs += '-DVKPP_OLD_LENGTH_PARAM=1'
-	defs += '-DVKPP_DEBUG_REPORT_STYPE_FIX=1'
-	defs += '-DVKPP_NO_VALUES_STRUCTURE_TYPE=1'
-	defs += '-DVKPP_FEATURE_NAMES="VK_VERSION_1_0"'
-	spec = files('specs/vk-1-0-0.xml')
-elif codegen == '1.0.20'
-	defs += '-DVKPP_OLD_LENGTH_PARAM=1'
-	defs += '-DVKPP_NO_VALUES_STRUCTURE_TYPE=1'
-	defs += '-DVKPP_FEATURE_NAMES="VK_VERSION_1_0"'
-	spec = files('specs/vk-1-0-20.xml')
-elif codegen == '1.0.40'
-	defs += '-DVKPP_NO_VALUES_STRUCTURE_TYPE=1'
-	defs += '-DVKPP_FEATURE_NAMES="VK_VERSION_1_0"'
-	spec = files('specs/vk-1-0-40.xml')
-elif codegen == '1.0.60'
-	defs += '-DVKPP_FEATURE_NAMES="VK_VERSION_1_0"'
-	spec = files('specs/vk-1-0-60.xml')
-elif codegen == '1.1.70'
-	defs += '-DVKPP_FEATURE_NAMES="VK_VERSION_1_1,VK_VERSION_1_0"'
-	spec = files('specs/vk-1-1-70.xml')
-else
-	error('Invalid/unsupported vulkan spec version')
+  codegen_inc = include_directories('src')
+  vk_codegen = executable('vk-codegen',
+	  codegen_src,
+	  include_directories: codegen_inc)
 endif
 
-vk_codegen = executable('vk-codegen',
-	codegen_src,
-	cpp_args: defs,
-	include_directories: codegen_inc)
-
+spec = files('vk.xml')
 subdir('include/vkpp')
 
 vkpp_dep = declare_dependency(

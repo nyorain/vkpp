@@ -1,3 +1,5 @@
+- git hooks to always include latest output
+	- `cp build/vkpp/include/* include/vkpp/`
 - don't output all extensions. Only required (via settings) ones
 - currently sometimes an enum has multiple times the same extension
   entry. Come up with something better than the unordered_map

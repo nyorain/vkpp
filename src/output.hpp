@@ -127,18 +127,19 @@ public:
 		bool plainArray = false) const;
 
 	// outputs to all headers
-	// the second function does not output to main, i.e. the central header
 	void outputAll(const std::string& output);
-	void outputAllHeader(const std::string& output);
 
 	// ensures the the given guard is set in guardVar, otherwise prints it to of and sets it
 	void ensureGuard(std::ofstream& of, bool& guardVar, const std::string& guard);
 	void endGuard(std::ofstream& of, bool guardVar, const std::string& guard);
 
 protected:
-	std::ofstream main_;
 	std::ofstream functions_;
 	std::ofstream enums_;
 	std::ofstream structs_;
 	std::ofstream fwd_;
+	std::ofstream dispatch_;
+
+	std::string dispatchDecl_;
+	std::string dispatchLoad_;
 };

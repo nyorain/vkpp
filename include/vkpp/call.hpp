@@ -1,10 +1,14 @@
-// Copyright (c) 2017 nyorain
+// Copyright (c) 2018 nyorain
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt
 
 #pragma once
 
 #include <vkpp/enums.hpp>
+
+#ifdef VKPP_DYNAMIC_DISPATCH
+	#include <vkpp/dispatch.hpp>
+#endif
 
 #include <string>
 #include <stdexcept>
@@ -15,8 +19,7 @@ namespace vk {
 /// Returns "<unknown>" if the error is not recognized.
 /// Might handle for extension result codes that are newer than
 /// the last vkpp version.
-inline const char* name(Result result)
-{
+inline const char* name(Result result) {
 	switch(result) {
 		case Result::success: return "success";
 		case Result::notReady: return "notReady";
@@ -50,7 +53,7 @@ inline const char* name(Result result)
 /// This exception will carry the return vulkan result code.
 class VulkanError : public std::runtime_error {
 public:
-	VulkanError(Result err, const std::string& msg = "") : 
+	VulkanError(Result err, const std::string& msg = "") :
 		std::runtime_error(msg), error(err) {}
 
 	const Result error {};
@@ -59,15 +62,13 @@ public:
 namespace error {
 
 /// Returns whether the error code inidicates success.
-inline bool success(vk::Result result)
-{
+inline bool success(vk::Result result) {
 	return static_cast<std::int64_t>(result) >= 0;
 }
 
 /// Will check if the given result indicated failure and if so throw a VulkanError
 /// containing information about the error code.
-inline vk::Result checkResultThrow(vk::Result result, const char* function)
-{
+inline vk::Result checkResultThrow(vk::Result result, const char* function) {
 	if(success(result)) {
 		return result;
 	}
@@ -80,6 +81,19 @@ inline vk::Result checkResultThrow(vk::Result result, const char* function)
 }
 
 } // namespace error
+
+#ifdef VKPP_DYNAMIC_DISPATCH
+	/// If VKPP_DYNAMIC_DISPATCH is defined, functions will never be called
+	/// directly. After creating an instance (and optionally after having
+	/// created a device if only one is used) you have to call
+	/// `vk::dispatch.init(instance, dev (or null handle))`. Note that
+	/// dynamic dispatch does not work with multiple instances.
+	DynamicDispatch dispatch;
+	#define VKPP_DISPATCH(x) dispatch.x
+#else
+	#define VKPP_DISPATCH(x) x
+#endif
+
 } // namespace vk
 
 #ifndef VKPP_CALL_THROW
@@ -95,8 +109,9 @@ inline vk::Result checkResultThrow(vk::Result result, const char* function)
 // for non debug builds) no check will be performed at all.
 #ifndef VKPP_CALL
 	#if VKPP_CALL_THROW
-		#define VKPP_CALL(x) ::vk::error::checkResultThrow(static_cast<vk::Result>(x), __func__)
+		#define VKPP_CALL(x) ::vk::error::checkResultThrow(\
+			static_cast<vk::Result>(VKPP_DISPATCH(x)), __func__)
 	#else
-		#define VKPP_CALL(x) static_cast<vk::Result>(x)
+		#define VKPP_CALL(x) static_cast<vk::Result>(VKPP_DISPATCH(x))
 	#endif
 #endif

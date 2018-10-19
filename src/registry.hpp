@@ -129,10 +129,7 @@ public:
 	bool constant = false; // is the type contant? (this pointer/array level)
 	std::string arraySize {}; // the size of the array (can be a constant)
 
-	// TODO: remove them (only reference may be valid)
 	bool reference = false;
-	// unsigned int pointerlvl = 0;
-	// std::vector<std::string> arraylvl;
 };
 
 /// A function parameter or struct member.

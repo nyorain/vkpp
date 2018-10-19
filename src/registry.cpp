@@ -14,8 +14,7 @@ constexpr auto logEnabled = false;
 
 /// log output function
 template<typename... Args>
-void log(Args... args)
-{
+void log(Args... args) {
 	using Expand = const int[];
 	if(logEnabled) {
 		(void) Expand{(std::cerr << args, 0)...};
@@ -23,21 +22,20 @@ void log(Args... args)
 	}
 }
 
-RegistryLoader::RegistryLoader(const std::string& xmlPath)
-{
+RegistryLoader::RegistryLoader(const std::string& xmlPath) {
 	// we first check whether the file exists
 	std::ifstream test(xmlPath);
-	if(!test.is_open())
+	if(!test.is_open()) {
 		throw std::runtime_error("Cannot open vulkan spec '" + xmlPath +
 			"'. Check the version provided is valid or manually add the file.");
+	}
 
 	// parse it
 	auto result = doc_.load_file(xmlPath.c_str());
 	std::cout << "Load result: " << result.description() << "\n";
 }
 
-Registry& RegistryLoader::parse()
-{
+Registry& RegistryLoader::parse() {
 	// registry
 	auto regNode = doc_.child("registry");
 
@@ -52,8 +50,9 @@ Registry& RegistryLoader::parse()
 	}
 
 	// vendors
-	for(auto vendor : regNode.child("vendorids").children("vendorid"))
+	for(auto vendor : regNode.child("vendorids").children("vendorid")) {
 		registry_.vendors.push_back(vendor.attribute("name").as_string());
+	}
 
 	// add khx
 	registry_.vendors.push_back("KHX");
@@ -63,8 +62,9 @@ Registry& RegistryLoader::parse()
 	loadPlatforms(regNode.child("platforms"));
 
 	// tags
-	for(auto tag : regNode.child("tags").children("tag"))
+	for(auto tag : regNode.child("tags").children("tag")) {
 		registry_.tags.push_back(tag.attribute("name").as_string());
+	}
 
 	// types
 	log("\ttypes");
@@ -73,19 +73,28 @@ Registry& RegistryLoader::parse()
 
 	// version
 	for(auto define : regNode.child("types")) {
-		if(std::strcmp(define.attribute("category").as_string(), "define")) continue;
+		if(std::strcmp(define.attribute("category").as_string(), "define")) {
+			continue;
+		}
+
 		auto name = define.child("name");
-		if(!name || std::strcmp(name.text().as_string(), "VK_HEADER_VERSION")) continue;
+		if(!name || std::strcmp(name.text().as_string(), "VK_HEADER_VERSION")) {
+			continue;
+		}
+
 		registry_.version = name.next_sibling().text().as_string();
 		if(registry_.version[0] == ' ') {
 			registry_.version.erase(0, 1);
 		}
+
+		break;
 	}
 
 	// enums
 	log("\tenums");
-	for(auto enumit : regNode.children("enums"))
+	for(auto enumit : regNode.children("enums")) {
 		loadEnums(enumit);
+	}
 
 	// commands
 	log("\tcommands");
@@ -94,13 +103,15 @@ Registry& RegistryLoader::parse()
 
 	// features
 	log("\tfeatures");
-	for(auto feature : regNode.children("feature"))
+	for(auto feature : regNode.children("feature")) {
 		loadFeature(feature);
+	}
 
 	// extensions
 	log("\textensions");
-	for(auto extension : regNode.child("extensions").children("extension"))
+	for(auto extension : regNode.child("extensions").children("extension")) {
 		loadExtension(extension);
+	}
 
 	return registry_;
 }
@@ -116,8 +127,7 @@ void RegistryLoader::loadPlatforms(const pugi::xml_node& node) {
 	}
 }
 
-void RegistryLoader::loadTypes(const pugi::xml_node& node)
-{
+void RegistryLoader::loadTypes(const pugi::xml_node& node) {
 	// all plain && external types
 	for(auto typeit : node.children("type")) {
 		std::string category = typeit.attribute("category").as_string();
@@ -553,8 +563,7 @@ Param RegistryLoader::parseParam(const pugi::xml_node& node)
 	return ret;
 }
 
-void RegistryLoader::loadFeature(const pugi::xml_node& node)
-{
+void RegistryLoader::loadFeature(const pugi::xml_node& node) {
 	Feature feature;
 	feature.reqs = parseRequirements(node);
 	feature.name = node.attribute("name").as_string();
@@ -565,8 +574,7 @@ void RegistryLoader::loadFeature(const pugi::xml_node& node)
 	log("\t\tfeature", feature.name, ": ", feature.api);
 }
 
-void RegistryLoader::loadExtension(const pugi::xml_node& node)
-{
+void RegistryLoader::loadExtension(const pugi::xml_node& node) {
 	Extension extension;
 	extension.supported = node.attribute("supported").as_string();
 	extension.number = node.attribute("number").as_int();
@@ -584,15 +592,17 @@ void RegistryLoader::loadExtension(const pugi::xml_node& node)
 		registry_.extensions.push_back(extension);
 
 		auto feature = registry_.findFeatureByApi(extension.supported);
-		if(feature) feature->extensions.push_back(&registry_.extensions.back());
-		else std::cout << "### couldnt find feature " << extension.supported << "\n";
+		if(feature) {
+			feature->extensions.push_back(&registry_.extensions.back());
+		} else {
+			std::cout << "### couldnt find feature " << extension.supported << "\n";
+		}
 	}
 
 	log("\t\textension ", extension.name);
 }
 
-Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool extension)
-{
+Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool extension) {
 	Requirements ret;
 
 	int number = 0;
@@ -714,7 +724,9 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 				} else {
 					std::string dir = "+";
 					auto dirAttrib = req.attribute("dir");
-					if(dirAttrib) dir = dirAttrib.as_string();
+					if(dirAttrib) {
+						dir = dirAttrib.as_string();
+					}
 
 					auto offset = req.attribute("offset").as_llong();
 					offset += number * 1000; //extension number queried in the beginning
@@ -722,17 +734,15 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 					std::int64_t value = 0;
 
 					// Base given by khronos
-					if(dir == "+") value = 1000000000 + offset;
-					else if(dir == "-") value = -1000000000 - offset;
-					else std::cerr << "### invalid enum ext dir: '" << dir << "', " << enumName << "\n";
+					if(dir == "+") {
+						value = 1000000000 + offset;
+					} else if(dir == "-") {
+						value = -1000000000 - offset;
+					} else {
+						std::cerr << "### invalid enum ext dir: '" << dir << "', " << enumName << "\n";
+					}
 
 					std::string name = req.attribute("name").as_string();
-
-#ifdef VKPP_DEBUG_REPORT_STYPE_FIX
-					if(name == "VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT") {
-						name = "VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT";
-					}
-#endif
 
 					auto v = std::make_pair(name, value);
 					extEnum->values.push_back(v);
@@ -744,30 +754,42 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 	return ret;
 }
 
-void RegistryLoader::parseTypeReqs(Type& type, Requirements& reqs)
-{
+void RegistryLoader::parseTypeReqs(Type& type, Requirements& reqs) {
 	// check it is not already parsed
-	for(auto& t : reqs.types)
-		if(t->name == type.name) return;
-
-	if(type.category == Type::Category::structure) {
-		auto& s = static_cast<Struct&>(type);
-		for(auto& member : s.members)
-			parseTypeReqs(member.type, reqs);
-	} else if(type.category == Type::Category::funcptr) {
-		auto& ptr = static_cast<FuncPtr&>(type);
-		for(auto& param : ptr.signature.params)
-			parseTypeReqs(param.type, reqs);
-	} else if(type.category == Type::Category::bitmask) {
-		auto& mask = static_cast<Bitmask&>(type);
-		if(mask.bits) parseTypeReqs(*mask.bits, reqs);
+	for(auto& t : reqs.types) {
+		if(t->name == type.name) {
+			return;
+		}
 	}
 
+	// insert it here and remove it later (to keep ordering correctly)
+	// if we would only insert it later recursive structures (like
+	// VkBaseOutStructure would lead to infinite recursion)
+	auto i = reqs.types.size();
+	reqs.types.push_back(&type);
+	if(type.category == Type::Category::structure) {
+		auto& s = static_cast<Struct&>(type);
+		for(auto& member : s.members) {
+			parseTypeReqs(member.type, reqs);
+		}
+	} else if(type.category == Type::Category::funcptr) {
+		auto& ptr = static_cast<FuncPtr&>(type);
+		for(auto& param : ptr.signature.params) {
+			parseTypeReqs(param.type, reqs);
+		}
+	} else if(type.category == Type::Category::bitmask) {
+		auto& mask = static_cast<Bitmask&>(type);
+		if(mask.bits) {
+			parseTypeReqs(*mask.bits, reqs);
+		}
+	}
+
+	// move type at the end of types for dependencies when outputting
+	reqs.types.erase(reqs.types.begin() + i);
 	reqs.types.push_back(&type);
 }
 
-void RegistryLoader::parseTypeReqs(QualifiedType& type, Requirements& reqs)
-{
+void RegistryLoader::parseTypeReqs(QualifiedType& type, Requirements& reqs) {
 	if(type.type) parseTypeReqs(*type.type, reqs);
 	if(type.pointer) parseTypeReqs(*type.pointer, reqs);
 	if(type.array) {
@@ -789,8 +811,7 @@ void RegistryLoader::parseTypeReqs(QualifiedType& type, Requirements& reqs)
 	}
 }
 
-void RegistryLoader::parseCommandReqs(Command& cmd, Requirements& reqs, bool extension)
-{
+void RegistryLoader::parseCommandReqs(Command& cmd, Requirements& reqs, bool extension) {
 	for(auto& param : cmd.signature.params) {
 		parseTypeReqs(param.type, reqs);
 	}

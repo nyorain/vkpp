@@ -15,18 +15,11 @@
 
 // utility
 // the outputted copyright for the parsed header
-constexpr const auto copyright = 1 + R"SRC(
-// Copyright (c) 2017 nyorain
-// Distributed under the Boost Software License, Version 1.0.
-// See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt
-)SRC";
-
 constexpr auto logEnabled = false;
 
 /// log output function
 template<typename... Args>
-void log(Args... args)
-{
+void log(Args... args) {
 	using Expand = const int[];
 	if(logEnabled) {
 		(void) Expand{(std::cerr << args, 0)...};
@@ -35,86 +28,92 @@ void log(Args... args)
 }
 
 /// string to lower in place
-void tolowerip(std::string& str)
-{
+void tolowerip(std::string& str) {
 	static const auto& f = std::use_facet<std::ctype<char>>(std::locale());
 	f.tolower(&str.front(), &str.back() + 1);
 }
 
 /// string to lower in copy
-std::string tolower(const std::string& str)
-{
+std::string tolower(const std::string& str) {
 	auto ret = str;
 	tolowerip(ret);
 	return ret;
 }
 
 /// string to upper in place
-void toupperip(std::string& str)
-{
+void toupperip(std::string& str) {
 	static const auto& f = std::use_facet<std::ctype<char>>(std::locale());
 	f.toupper(&str.front(), &str.back() + 1);
 }
 
 /// string to upper in copy
-std::string toupper(const std::string& str)
-{
+std::string toupper(const std::string& str) {
 	auto ret = str;
 	toupperip(ret);
 	return ret;
 }
 
 // generator
-std::string OutputGenerator::removeVkPrefix(const std::string& string, bool* found) const
-{
+std::string OutputGenerator::removeVkPrefix(const std::string& string, bool* found) const {
 	auto ret = string;
-	if(found) *found = removeVkPrefix(ret);
-	else removeVkPrefix(ret);
+	if(found) {
+		*found = removeVkPrefix(ret);
+	} else {
+		removeVkPrefix(ret);
+	}
+
 	return ret;
 }
 
-bool OutputGenerator::removeVkPrefix(std::string& string) const
-{
-	if(string.size() < 2) return false;
+bool OutputGenerator::removeVkPrefix(std::string& string) const {
+	if(string.size() < 2) {
+		return false;
+	}
 
 	auto sub = string.substr(0, 2);
 	tolowerip(sub);
 
 	if(sub == "vk") {
-		if(string[2] == '_') string = string.substr(3);
-		else string = string.substr(2);
+		if(string[2] == '_') {
+			string = string.substr(3);
+		} else {
+			string = string.substr(2);
+		}
 		return true;
 	}
 
 	return false;
 }
 
-std::string OutputGenerator::strip(const std::string& string) const
-{
+std::string OutputGenerator::strip(const std::string& string) const {
 	auto ret = string;
 	stripip(ret);
 	return ret;
 }
 
-void OutputGenerator::stripip(std::string& string) const
-{
+void OutputGenerator::stripip(std::string& string) const {
 	camelCase(string);
 	removeVkPrefix(string);
 	removeExtSuffix(string);
 }
 
-std::string OutputGenerator::removeExtSuffix(const std::string& string, std::string* extension) const
-{
+std::string OutputGenerator::removeExtSuffix(const std::string& string,
+		std::string* extension) const {
 	auto ret = string;
-	if(extension) *extension = removeExtSuffix(ret);
-	else removeExtSuffix(ret);
+	if(extension) {
+		*extension = removeExtSuffix(ret);
+	} else {
+		removeExtSuffix(ret);
+	}
 	return ret;
 }
 
-std::string OutputGenerator::removeExtSuffix(std::string& string) const
-{
+std::string OutputGenerator::removeExtSuffix(std::string& string) const {
 	for(auto& ext : registry().vendors) {
-		if(string.size() < ext.size()) continue;
+		if(string.size() < ext.size()) {
+			continue;
+		}
+
 		ext = tolower(ext);
 		if(tolower(string.substr(string.size() - ext.size())) == ext) {
 			string = string.substr(0, string.size() - ext.size());
@@ -123,7 +122,10 @@ std::string OutputGenerator::removeExtSuffix(std::string& string) const
 	}
 
 	for(auto& ext : registry().tags) {
-		if(string.size() < ext.size()) continue;
+		if(string.size() < ext.size()) {
+			continue;
+		}
+
 		ext = tolower(ext);
 		if(tolower(string.substr(string.size() - ext.size())) == ext) {
 			string = string.substr(0, string.size() - ext.size());
@@ -132,7 +134,10 @@ std::string OutputGenerator::removeExtSuffix(std::string& string) const
 	}
 
 	std::string ext = "ext";
-	if(string.size() < ext.size()) return "";
+	if(string.size() < ext.size()) {
+		return "";
+	}
+
 	if(tolower(string.substr(string.size() - ext.size())) == ext){
 		string = string.substr(0, string.size() - ext.size());
 		return ext;
@@ -141,34 +146,40 @@ std::string OutputGenerator::removeExtSuffix(std::string& string) const
 	return "";
 }
 
-std::string OutputGenerator::camelCase(const std::string& string, bool firstupper) const
-{
+std::string OutputGenerator::camelCase(const std::string& string, bool firstupper) const {
 	auto ret = string;
 	camelCaseip(ret, firstupper);
 	return ret;
 }
 
-void OutputGenerator::camelCaseip(std::string& string, bool firstupper) const
-{
-	if(string.empty()) return;
+void OutputGenerator::camelCaseip(std::string& string, bool firstupper) const {
+	if(string.empty()) {
+		return;
+	}
 
 	std::size_t pos = 0u;
 	tolowerip(string);
 	while((pos = string.find('_')) != std::string::npos) {
 		string.erase(pos, 1);
-		if(pos < string.size()) string[pos] = std::toupper(string[pos], std::locale());
+		if(pos < string.size()) {
+			string[pos] = std::toupper(string[pos], std::locale());
+		}
 	}
 
-	if(firstupper) string[0] = std::toupper(string[0], std::locale());
-	else string[0] = std::tolower(string[0], std::locale());
+	if(firstupper) {
+		string[0] = std::toupper(string[0], std::locale());
+	} else {
+		string[0] = std::tolower(string[0], std::locale());
+	}
 }
 
-void OutputGenerator::macroCaseip(std::string& string) const
-{
+void OutputGenerator::macroCaseip(std::string& string) const {
 	std::size_t pos = 0u;
 	while(pos < string.size()) {
 		for(auto& c : string.substr(pos)) {
-			if(std::isupper(c, std::locale())) break;
+			if(std::isupper(c, std::locale())) {
+				break;
+			}
 			pos++;
 		}
 
@@ -179,43 +190,34 @@ void OutputGenerator::macroCaseip(std::string& string) const
 	toupperip(string);
 }
 
-std::string OutputGenerator::macroCase(const std::string& string) const
-{
+std::string OutputGenerator::macroCase(const std::string& string) const {
 	auto ret = string;
 	macroCaseip(ret);
 	return ret;
 }
 
 CCOutputGenerator::CCOutputGenerator(Registry& reg, const CCOutputGeneratorSettings& settings)
-	: OutputGenerator(reg)
-{
-	auto& fold = settings.outputFolder;
+		: OutputGenerator(reg) {
 
-	main_.open(fold + "/vulkan.hpp", std::ios_base::out | std::ios_base::binary);
+	auto& fold = settings.outputFolder;
 	functions_.open(fold + "/functions.hpp", std::ios_base::out | std::ios_base::binary);
 	enums_.open(fold + "/enums.hpp", std::ios_base::out | std::ios_base::binary);
 	fwd_.open(fold + "/fwd.hpp", std::ios_base::out | std::ios_base::binary);
 	structs_.open(fold + "/structs.hpp", std::ios_base::out | std::ios_base::binary);
+	dispatch_.open(fold + "/dispatch.hpp", std::ios_base::out | std::ios_base::binary);
 }
 
-void CCOutputGenerator::generate()
-{
-	// copyrights
-	outputAll(copyright);
-	outputAll("\n// Automaitcally generated vulkan header, see nyorain/vkpp\n");
-	outputAll("// Do not edit manually, rather edit the codegen files.\n");
-	outputAll("\n#pragma once\n\n");
-
-	auto version = "1.0." + registry().version;
+void CCOutputGenerator::generate() {
+	outputAll(header);
+	auto version = std::string(registry().version);
 
 	// headers from header.hpp
-	fwd_ << std::regex_replace(fwdHeader, std::regex("%v"), version);
-	main_ << std::regex_replace(mainHeader, std::regex("%v"), version);
-	functions_ << std::regex_replace(functionsHeader, std::regex("%v"), version);
-	structs_ << std::regex_replace(structsHeader, std::regex("%v"), version);
-	enums_ << std::regex_replace(enumsHeader, std::regex("%v"), version);
+	fwd_ << std::regex_replace(fwdHeader, std::regex("%vp"), version);
+	functions_ << std::regex_replace(functionsHeader, std::regex("%vp"), version);
+	structs_ << std::regex_replace(structsHeader, std::regex("%vp"), version);
+	enums_ << std::regex_replace(enumsHeader, std::regex("%vp"), version);
 
-	outputAllHeader("namespace vk {\n\n");
+	outputAll("namespace vk {\n\n");
 
 	// fwd dummy enum
 	fwd_ << "using nytl::Span; // span.hpp\n";
@@ -227,10 +229,18 @@ void CCOutputGenerator::generate()
 	Requirements fulfilled;
 
 	// output the default vulkan feature
-	std::istringstream features(VKPP_FEATURE_NAMES);
-	std::string fname;
-	while(std::getline(features, fname, ',')) {
-		auto& feature = *registry().findFeatureByName(fname);
+	auto features = {
+		"VK_VERSION_1_1",
+		"VK_VERSION_1_0",
+	};
+	for(std::string fname : features) {
+		auto pf = registry().findFeatureByName(fname);
+		if (!pf) {
+			log("Invalid feature ", fname);
+			continue;
+		}
+
+		auto& feature = *pf;
 		auto& reqs = feature.reqs;
 
 		printReqs(reqs, fulfilled);
@@ -252,25 +262,27 @@ void CCOutputGenerator::generate()
 		<< "#undef VEC_FUNC_RET_VOID\n";
 
 	// end the header files
-	outputAllHeader("\n} // namespace vk\n\n");
+	outputAll("\n} // namespace vk\n\n");
 
 	outputAll("// The specification (vk.xml) itself is published under the following license:\n");
 	outputAll(registry().copyright);
 
 	fwd_ << "\n\n";
+
+	// dispatch
+	std::string dispatch = dispatchHeader;
+
+	dispatch = std::regex_replace(dispatch, std::regex("%vp"), version);
+	dispatch = std::regex_replace(dispatch, std::regex("%decl"), dispatchDecl_);
+	dispatch = std::regex_replace(dispatch, std::regex("%load"), dispatchLoad_);
+
+	dispatch_ << header;
+	dispatch_ << dispatch;
+	dispatch_ << "// The specification (vk.xml) itself is published under the following license:\n";
+	dispatch_ << registry().copyright;
 }
 
-void CCOutputGenerator::outputAll(const std::string& string)
-{
-	main_ << string;
-	fwd_ << string;
-	structs_ << string;
-	enums_ << string;
-	functions_ << string;
-}
-
-void CCOutputGenerator::outputAllHeader(const std::string& string)
-{
+void CCOutputGenerator::outputAll(const std::string& string) {
 	fwd_ << string;
 	structs_ << string;
 	enums_ << string;
@@ -278,8 +290,8 @@ void CCOutputGenerator::outputAllHeader(const std::string& string)
 }
 
 void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfilled,
-	const std::string& guard)
-{
+		const std::string& guard) {
+
 	auto fwdGuard = false;
 	auto enumGuard = false;
 	auto funcGuard = false;
@@ -479,7 +491,14 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 	// funcptrs
 	count = 0u;
 	for(auto* typeit : types) {
-		if(typeit->category != Type::Category::funcptr) continue;
+		// NOTE: we currently don't define function pointers
+		// used from vulkan.h
+		break;
+
+		if(typeit->category != Type::Category::funcptr) {
+			continue;
+		}
+
 		auto& funcptr = static_cast<FuncPtr&>(*typeit);
 		++count;
 
@@ -506,6 +525,10 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 	// extension specific, used to load the commands
 	count = 0;
 	for(auto* typeit : reqs.funcPtr) {
+		// NOTE: we currently don't define function pointers
+		// used from vulkan.h
+		break;
+
 		auto it = std::find(fulfilled.funcPtr.begin(), fulfilled.funcPtr.end(), typeit);
 		if(it != fulfilled.funcPtr.end()) continue;
 
@@ -536,7 +559,9 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 	count = 0u;
 	for(auto* cmdit : reqs.commands) {
 		auto it = std::find(fulfilled.commands.begin(), fulfilled.commands.end(), cmdit);
-		if(it != fulfilled.commands.end()) continue;
+		if(it != fulfilled.commands.end()) {
+			continue;
+		}
 
 		++count;
 		ensureGuard(functions_, funcGuard, guard);
@@ -546,7 +571,8 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 			printCmd(*cmdit, alias);
 		}
 
-		// functions_ << "\n"; // insert blank line between seperate function (groups)
+		// insert blank line between seperate function (groups)
+		// functions_ << "\n";
 	}
 
 	if(count > 0) {
@@ -654,8 +680,7 @@ std::string CCOutputGenerator::enumName(const Enum& e, const std::string& name, 
 	return ret;
 }
 
-std::string CCOutputGenerator::typeName(const Type& type) const
-{
+std::string CCOutputGenerator::typeName(const Type& type) const {
 	auto ret = removeVkPrefix(type.name, nullptr);
 	if(type.category == Type::Category::enumeration) {
 		auto& e = static_cast<const Enum&>(type);
@@ -663,27 +688,40 @@ std::string CCOutputGenerator::typeName(const Type& type) const
 		if(e.bitmask && (pos = ret.find("FlagBits")) != std::string::npos)
 			ret.erase(pos, 4); // erase "Flag" from the name
 	} else if(type.category == Type::Category::funcptr) {
+		return type.name;
+		// We don't have custom function pointers but use the ones
+		// from vulkan.h (everything else is undefined behavior.)
+		/*
 		ret.erase(0, 6); // erase PFN_vk from beginning
 		ret.insert(0, "Pfn");
+		*/
 	}
 
 	return ret;
 }
 
-std::string CCOutputGenerator::typeName(const QualifiedType& type, bool change) const
-{
+std::string CCOutputGenerator::typeName(const QualifiedType& type, bool change) const {
 	std::string ret;
 	if(type.type) {
 		ret = type.type->name;
-		if(change && type.type->category != Type::Category::external) ret = typeName(*type.type);
-		else ret = type.type->name;
+		if(change && type.type->category != Type::Category::external) {
+			ret = typeName(*type.type);
+		} else {
+			ret = type.type->name;
+		}
 
-		if(type.constant) ret = "const " + ret;
-		if(type.reference) ret += "&";
+		if(type.constant) {
+			ret = "const " + ret;
+		}
+		if(type.reference) {
+			ret += "&";
+		}
 	} else if(type.pointer) {
 		ret = typeName(*type.pointer, change);
 		ret += "*";
-		if(type.constant) ret += " const";
+		if(type.constant) {
+			ret += " const";
+		}
 	} else if(type.array) {
 		ret = typeName(*type.array, change);
 	} else {
@@ -774,13 +812,11 @@ void CCOutputGenerator::printStruct(const Struct& type)
 		// member declaration
 		std::string init = "";
 		if(member.name == "sType") {
-#ifdef VKPP_NO_VALUES_STRUCTURE_TYPE
-			init = "StructureType::" + nameFirstLower;
-#else
-			auto name = member.node.attribute("values").as_string();
-			auto sTypeEnum = *registry().findEnum("VkStructureType");
-			init = "StructureType::" + enumName(sTypeEnum, name);
-#endif
+			auto name = member.node.attribute("values");
+			if (name) {
+				auto sTypeEnum = *registry().findEnum("VkStructureType");
+				init = "StructureType::" + enumName(sTypeEnum, name.as_string());
+			}
 		}
 
 		structs_ << "\t" << paramName(member);
@@ -941,11 +977,29 @@ ParsedCommand CCOutputGenerator::parseCommand(const Command& cmd) const
 }
 
 
-void CCOutputGenerator::printCmd(const Command& cmd, std::string alias)
-{
-	if(alias == "") alias = cmd.name;
+void CCOutputGenerator::printCmd(const Command& cmd, std::string alias) {
+	if(alias == "") {
+		alias = cmd.name;
+	}
 	auto name = removeVkPrefix(alias, nullptr);
 	name[0] = std::tolower(name[0], std::locale());
+
+	// add to dispatcher
+	{
+		dispatchDecl_ += "\t";
+		dispatchDecl_ += "PFN_";
+		dispatchDecl_ += alias;
+		dispatchDecl_ += " ";
+		dispatchDecl_ += alias;
+		dispatchDecl_ += " {};\n";
+
+		// TODO: allow per-device dispatcher, see dispatch header template
+		// auto* firstParam = cmd.signature.params[0].type.type;
+		// auto& fpn = firstParam->name;
+		dispatchLoad_ += "\t\tVKPP_ILOAD(ini, ";
+		dispatchLoad_ += alias;
+		dispatchLoad_ += ");\n";
+	}
 
 	// parseCommand will analyse intput/output/optional/return attributes
 	// of the commands parameters
@@ -966,8 +1020,9 @@ void CCOutputGenerator::printCmd(const Command& cmd, std::string alias)
 	// iterate over parameters and output their declarations
 	// append thei call usage to args
 	for(auto& pparam : parsed.parsedParams) {
-		if(pparam.countPar)
+		if(pparam.countPar) {
 			printVecVersion = true;
+		}
 
 		auto decl = paramDecl(pparam, false, declSepr, parsed.returnParam);
 		if(!decl.empty()) {
@@ -980,35 +1035,39 @@ void CCOutputGenerator::printCmd(const Command& cmd, std::string alias)
 	}
 
 	std::string before = "";
-	std::string after = ";";
+	std::string after = "";
 	auto& retType = cmd.signature.returnType;
 
 	if(retType.type->name == "VkResult") {
 		before = "VKPP_CALL(";
 		after = ");";
+	} else {
+		before = "VKPP_DISPATCH(";
+		after = ");";
 	}
 
 	if(parsed.returnParam && !parsed.returnParam->countPar) {
-		 auto derefType = parsed.returnParam->param->type.pointer;
+		auto derefType = parsed.returnParam->param->type.pointer;
 		before = typeName(*derefType) + " ret = {}; " + before;
 		after = after + " return ret;";
 	} else if(retType.type->name != "void" || retType.pointer) {
-		before = "return static_cast<" + typeName(cmd.signature.returnType) + ">(";
-		after = ");";
+		before = "return static_cast<" + typeName(cmd.signature.returnType) + ">(" + before;
+		after = ")" + after;
 	} else {
-		before = "return ";
+		before = "return " + before;
 	}
 
 	functions_ << "){ ";
 	functions_ << before << cmd.name << "(" << args;
-	functions_ << ")" << after << "}\n";
+	functions_ << ")" << after << " }\n";
 
 	// if possible/needed, output the std::vector version of the function
-	if(printVecVersion) printVecCmd(parsed, name);
+	if(printVecVersion) {
+		printVecCmd(parsed, name);
+	}
 }
 
-void CCOutputGenerator::printVecCmd(const ParsedCommand& pcmd, const std::string& name)
-{
+void CCOutputGenerator::printVecCmd(const ParsedCommand& pcmd, const std::string& name) {
 	auto& cmd = *pcmd.command;
 
 	std::pair<const ParsedParam*, const ParsedParam*> vecRetStackVar {};
@@ -1050,33 +1109,39 @@ void CCOutputGenerator::printVecCmd(const ParsedCommand& pcmd, const std::string
 		std::string code;
 		auto& countPar = *pcmd.returnParam->countPar;
 		if(vecRet->second->memberAsCount || !vecRet->second->out) {
-			if(cmd.signature.returnType.type->name != "VkResult")
+			if(cmd.signature.returnType.type->name != "VkResult") {
 				code = vecFuncTemplateRetGivenVoid;
-			else
+			} else {
 				code = vecFuncTemplateRetGiven;
+			}
 
 			// TODO: check for pointer
 			std::string count;
-			if(vecRet->first->countMember)
+			if(vecRet->first->countMember) {
 				count = vecRet->second->param->name + "." + vecRet->first->countMember->name;
-			else if(countPar.dataPars[0] != pcmd.returnParam)
+			} else if(countPar.dataPars[0] != pcmd.returnParam) {
 				count = countPar.dataPars[0]->param->name + ".size()";
-			else
+			} else {
 				count = countPar.param->name;
+			}
 
 			code = std::regex_replace(code, std::regex("%c"), count);
 		} else {
-			if(cmd.signature.returnType.type->name != "VkResult") code = vecFuncTemplateVoid;
-			else code = vecFuncTemplate;
+			if(cmd.signature.returnType.type->name != "VkResult") {
+				code = vecFuncTemplateVoid;
+			} else {
+				code = vecFuncTemplate;
+			}
 		}
 
 		auto typeCpy = *vecRet->first->param->type.pointer;
 		typeCpy.constant = false;
 
-		if(typeCpy.type->name != "void")
+		if(typeCpy.type->name != "void") {
 			code = std::regex_replace(code, std::regex("%t"), typeName(typeCpy));
-		else
+		} else {
 			code = std::regex_replace(code, std::regex("%t"), "uint8_t");
+		}
 
 		code = std::regex_replace(code, std::regex("%a"), args);
 		code = std::regex_replace(code, std::regex("%f"), cmd.name);
@@ -1100,26 +1165,36 @@ void CCOutputGenerator::printVecCmd(const ParsedCommand& pcmd, const std::string
 			returnString = "return VKPP_CALL(";
 			returnStringEnd = ")";
 		} else if(retType.type->name != "void" || retType.pointer) {
-			returnString = "return static_cast<" + typeName(cmd.signature.returnType) + ">(";
+			returnString = "return static_cast<" + typeName(cmd.signature.returnType) + ">";
+			returnString += "(VKPP_DISPATCH(";
+			returnStringEnd = "))";
+		} else { // void return type
+			returnString = "VKPP_DISPATCH(";
 			returnStringEnd = ")";
 		}
 
 		functions_ << returnString << cmd.name << "(" << args;
-		functions_ << ")" << returnStringEnd << " ;}\n";
+		functions_ << ")" << returnStringEnd << "; }\n";
 	}
 }
 
 std::string CCOutputGenerator::paramDecl(const ParsedParam& param, bool rangeify, const char* sepr,
 	const ParsedParam* retParam) const
 {
-	if(retParam && &param == retParam && !retParam->countPar) return ""; //returnParam data part
+	if(retParam && &param == retParam && !retParam->countPar) {
+		return ""; //returnParam data part
+	}
 
 	std::string ret = sepr;
 	if(rangeify) {
-		if(retParam && &param == retParam) return "";
+		if(retParam && &param == retParam) {
+			return "";
+		}
 
 		if(!param.dataPars.empty() && !param.memberAsCount) {
-			if(param.out || !retParam || (retParam && retParam != param.dataPars[0])) return "";
+			if(param.out || !retParam || (retParam && retParam != param.dataPars[0])) {
+				return "";
+			}
 		}
 
 		if(param.countPar && !param.countMember) {
