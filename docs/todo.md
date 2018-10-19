@@ -1,3 +1,4 @@
+- clean up (rename) config macros (CHECK_THROW instead of CALL_THROW)
 - git hooks to always include latest output
 	- `cp build/vkpp/include/* include/vkpp/`
 - don't output all extensions. Only required (via settings) ones
