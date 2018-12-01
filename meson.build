@@ -19,6 +19,7 @@ if gen
   codegen_inc = include_directories('src')
   vk_codegen = executable('vk-codegen',
 	  codegen_src,
+	  native: true, # allow generation on cross compilation
 	  include_directories: codegen_inc)
 endif
 
