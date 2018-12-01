@@ -12,6 +12,7 @@
 
 #include <string>
 #include <stdexcept>
+#include <vulkan/vulkan.h>
 
 namespace vk {
 
@@ -82,6 +83,23 @@ inline vk::Result checkResultThrow(vk::Result result, const char* function) {
 
 } // namespace error
 
+namespace call {
+
+/// Allows to call plain vulkan functions with vkpp objects/handles by
+/// simply casting them. Useful e.g. for functions retrieved manually
+/// via vulkans GetProcAddress (NOTE: casting the function pointer
+/// is undefined behaviour).
+template<typename FR, typename... FA, typename... Args>
+auto call(FR (*f)(FA...), Args&&... args) {
+	if constexpr (std::is_same_v<FR, VkResult>) {
+		return static_cast<vk::Result>(f(((FA) args)...));
+	} else {
+		return f(((FA) args)...);
+	}
+}
+
+} // namespace call
+
 #ifdef VKPP_DYNAMIC_DISPATCH
 	/// If VKPP_DYNAMIC_DISPATCH is defined, functions will never be called
 	/// directly. After creating an instance (and optionally after having
@@ -107,11 +125,15 @@ inline vk::Result checkResultThrow(vk::Result result, const char* function) {
 // Macro that can be wrapped around plain valkan api calls to throw if they return
 // a failure result. When VKPP_CALL_THROW is not defined (which is by default the case
 // for non debug builds) no check will be performed at all.
-#ifndef VKPP_CALL
+#ifndef VKPP_CHECK
 	#if VKPP_CALL_THROW
-		#define VKPP_CALL(x) ::vk::error::checkResultThrow(\
-			static_cast<vk::Result>(VKPP_DISPATCH(x)), __func__)
+		#define VKPP_CHECK(x) ::vk::error::checkResultThrow(\
+			static_cast<vk::Result>(x), __func__)
 	#else
-		#define VKPP_CALL(x) static_cast<vk::Result>(VKPP_DISPATCH(x))
+		#define VKPP_CHECK(x) static_cast<vk::Result>(x)
 	#endif
+#endif
+
+#ifndef VKPP_CALL
+	#define VKPP_CALL(x) VKPP_CHECK(VKPP_DISPATCH(x))
 #endif
