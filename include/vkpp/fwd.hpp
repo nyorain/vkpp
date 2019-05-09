@@ -12,7 +12,7 @@
 
 #include <vulkan/vk_platform.h>
 
-// Generated for vulkan version: 1.1.85
+// Generated for vulkan version: 1.1.107
 
 // Utility forward declarations
 namespace nytl {
@@ -187,7 +187,7 @@ struct PipelineTessellationDomainOriginStateCreateInfo;
 struct RenderPassMultiviewCreateInfo;
 struct PhysicalDeviceMultiviewFeatures;
 struct PhysicalDeviceMultiviewProperties;
-struct PhysicalDeviceVariablePointerFeatures;
+struct PhysicalDeviceVariablePointersFeatures;
 struct PhysicalDeviceProtectedMemoryFeatures;
 struct PhysicalDeviceProtectedMemoryProperties;
 struct DeviceQueueInfo2;
@@ -221,9 +221,11 @@ struct PhysicalDeviceMaintenance3Properties;
 struct DescriptorSetLayoutSupport;
 struct DescriptorSetLayoutBinding;
 struct DescriptorSetLayoutCreateInfo;
-struct PhysicalDeviceShaderDrawParameterFeatures;
+struct PhysicalDeviceShaderDrawParametersFeatures;
 
 using MemoryRequirements2KHR = MemoryRequirements2;
+using PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures;
+using PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures;
 constexpr auto lodClampNone = 1000.0f;
 constexpr auto remainingMipLevels = (~0U);
 constexpr auto remainingArrayLayers = (~0U);
@@ -258,6 +260,7 @@ enum class QueryPipelineStatisticBits : int32_t;
 enum class QueryResultBits : int32_t;
 enum class SharingMode : int32_t;
 enum class ImageLayout : int32_t;
+enum class ImageViewCreateBits : int32_t;
 enum class ImageViewType : int32_t;
 enum class PipelineCreateBits : int32_t;
 enum class VertexInputRate : int32_t;
@@ -272,6 +275,7 @@ enum class BlendFactor : int32_t;
 enum class BlendOp : int32_t;
 enum class ColorComponentBits : int32_t;
 enum class DynamicState : int32_t;
+enum class SamplerCreateBits : int32_t;
 enum class SamplerMipmapMode : int32_t;
 enum class SamplerAddressMode : int32_t;
 enum class BorderColor : int32_t;
@@ -306,7 +310,7 @@ using QueryPoolCreateFlags = Flags<DummyEnum>;
 using QueryPipelineStatisticFlags = Flags<QueryPipelineStatisticBits>;
 using QueryResultFlags = Flags<QueryResultBits>;
 using BufferViewCreateFlags = Flags<DummyEnum>;
-using ImageViewCreateFlags = Flags<DummyEnum>;
+using ImageViewCreateFlags = Flags<ImageViewCreateBits>;
 using ShaderModuleCreateFlags = Flags<DummyEnum>;
 using PipelineCacheCreateFlags = Flags<DummyEnum>;
 using PipelineCreateFlags = Flags<PipelineCreateBits>;
@@ -323,7 +327,7 @@ using PipelineColorBlendStateCreateFlags = Flags<DummyEnum>;
 using ColorComponentFlags = Flags<ColorComponentBits>;
 using PipelineDynamicStateCreateFlags = Flags<DummyEnum>;
 using PipelineLayoutCreateFlags = Flags<DummyEnum>;
-using SamplerCreateFlags = Flags<DummyEnum>;
+using SamplerCreateFlags = Flags<SamplerCreateBits>;
 using DescriptorPoolCreateFlags = Flags<DescriptorPoolCreateBits>;
 using DescriptorPoolResetFlags = Flags<DummyEnum>;
 using FramebufferCreateFlags = Flags<DummyEnum>;
@@ -501,14 +505,6 @@ struct WaylandSurfaceCreateInfoKHR;
 
 #endif //wayland
 
-#ifdef mir
-
-using MirSurfaceCreateFlagsKHR = Flags<DummyEnum>;
-
-struct MirSurfaceCreateInfoKHR;
-
-#endif //mir
-
 #ifdef android
 
 using AndroidSurfaceCreateFlagsKHR = Flags<DummyEnum>;
@@ -546,12 +542,26 @@ struct DedicatedAllocationImageCreateInfoNV;
 struct DedicatedAllocationBufferCreateInfoNV;
 struct DedicatedAllocationMemoryAllocateInfoNV;
 
+using PipelineRasterizationStateStreamCreateFlagsEXT = Flags<DummyEnum>;
+
+struct PhysicalDeviceTransformFeedbackFeaturesEXT;
+struct PhysicalDeviceTransformFeedbackPropertiesEXT;
+struct PipelineRasterizationStateStreamCreateInfoEXT;
+
 struct TextureLODGatherFormatPropertiesAMD;
 
 enum class ShaderInfoTypeAMD : int32_t;
 
 struct ShaderResourceUsageAMD;
 struct ShaderStatisticsInfoAMD;
+
+#ifdef ggp
+
+using StreamDescriptorSurfaceCreateFlagsGGP = Flags<DummyEnum>;
+
+struct StreamDescriptorSurfaceCreateInfoGGP;
+
+#endif //ggp
 
 struct PhysicalDeviceCornerSampledImageFeaturesNV;
 
@@ -591,6 +601,8 @@ using QueueFamilyProperties2KHR = QueueFamilyProperties2;
 using PhysicalDeviceMemoryProperties2KHR = PhysicalDeviceMemoryProperties2;
 using SparseImageFormatProperties2KHR = SparseImageFormatProperties2;
 using PhysicalDeviceSparseImageFormatInfo2KHR = PhysicalDeviceSparseImageFormatInfo2;
+struct PhysicalDeviceSurfaceInfo2KHR;
+
 using PeerMemoryFeatureFlagBitsKHR = PeerMemoryFeatureBits;
 using MemoryAllocateFlagBitsKHR = MemoryAllocateBits;
 using MemoryAllocateFlagsInfoKHR = MemoryAllocateFlagsInfo;
@@ -681,6 +693,8 @@ struct ConditionalRenderingBeginInfoEXT;
 struct PhysicalDeviceConditionalRenderingFeaturesEXT;
 struct CommandBufferInheritanceConditionalRenderingInfoEXT;
 
+struct PhysicalDeviceFloat16Int8FeaturesKHR;
+
 using PhysicalDevice16BitStorageFeaturesKHR = PhysicalDevice16BitStorageFeatures;
 struct RectLayerKHR;
 struct PresentRegionKHR;
@@ -689,32 +703,6 @@ struct PresentRegionsKHR;
 using DescriptorUpdateTemplateTypeKHR = DescriptorUpdateTemplateType;
 using DescriptorUpdateTemplateEntryKHR = DescriptorUpdateTemplateEntry;
 using DescriptorUpdateTemplateCreateInfoKHR = DescriptorUpdateTemplateCreateInfo;
-VK_DEFINE_NON_DISPATCHABLE_HANDLE(ObjectTableNVX)
-VK_DEFINE_NON_DISPATCHABLE_HANDLE(IndirectCommandsLayoutNVX)
-
-enum class IndirectCommandsLayoutUsageBitsNVX : int32_t;
-enum class ObjectEntryUsageBitsNVX : int32_t;
-enum class IndirectCommandsTokenTypeNVX : int32_t;
-enum class ObjectEntryTypeNVX : int32_t;
-
-using IndirectCommandsLayoutUsageFlagsNVX = Flags<IndirectCommandsLayoutUsageBitsNVX>;
-using ObjectEntryUsageFlagsNVX = Flags<ObjectEntryUsageBitsNVX>;
-
-struct DeviceGeneratedCommandsFeaturesNVX;
-struct DeviceGeneratedCommandsLimitsNVX;
-struct IndirectCommandsTokenNVX;
-struct IndirectCommandsLayoutTokenNVX;
-struct IndirectCommandsLayoutCreateInfoNVX;
-struct CmdProcessCommandsInfoNVX;
-struct CmdReserveSpaceForCommandsInfoNVX;
-struct ObjectTableCreateInfoNVX;
-struct ObjectTableEntryNVX;
-struct ObjectTablePipelineEntryNVX;
-struct ObjectTableDescriptorSetEntryNVX;
-struct ObjectTableVertexBufferEntryNVX;
-struct ObjectTableIndexBufferEntryNVX;
-struct ObjectTablePushConstantEntryNVX;
-
 struct ViewportWScalingNV;
 struct PipelineViewportWScalingStateCreateInfoNV;
 
@@ -738,8 +726,6 @@ struct PastPresentationTimingGOOGLE;
 struct PresentTimeGOOGLE;
 struct PresentTimesInfoGOOGLE;
 
-struct PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX;
-
 enum class ViewportCoordinateSwizzleNV : int32_t;
 
 using PipelineViewportSwizzleStateCreateFlagsNV = Flags<DummyEnum>;
@@ -760,6 +746,11 @@ using PipelineRasterizationConservativeStateCreateFlagsEXT = Flags<DummyEnum>;
 
 struct PhysicalDeviceConservativeRasterizationPropertiesEXT;
 struct PipelineRasterizationConservativeStateCreateInfoEXT;
+
+using PipelineRasterizationDepthClipStateCreateFlagsEXT = Flags<DummyEnum>;
+
+struct PhysicalDeviceDepthClipEnableFeaturesEXT;
+struct PipelineRasterizationDepthClipStateCreateInfoEXT;
 
 struct XYColorEXT;
 struct HdrMetadataEXT;
@@ -798,11 +789,11 @@ using InputAttachmentAspectReferenceKHR = InputAttachmentAspectReference;
 using ImageViewUsageCreateInfoKHR = ImageViewUsageCreateInfo;
 using TessellationDomainOriginKHR = TessellationDomainOrigin;
 using PipelineTessellationDomainOriginStateCreateInfoKHR = PipelineTessellationDomainOriginStateCreateInfo;
-struct PhysicalDeviceSurfaceInfo2KHR;
 struct SurfaceCapabilities2KHR;
 struct SurfaceFormat2KHR;
 
-using PhysicalDeviceVariablePointerFeaturesKHR = PhysicalDeviceVariablePointerFeatures;
+using PhysicalDeviceVariablePointerFeaturesKHR = PhysicalDeviceVariablePointersFeatures;
+using PhysicalDeviceVariablePointersFeaturesKHR = PhysicalDeviceVariablePointersFeatures;
 struct DisplayProperties2KHR;
 struct DisplayPlaneProperties2KHR;
 struct DisplayModeProperties2KHR;
@@ -908,6 +899,13 @@ using SamplerYcbcrRangeKHR = SamplerYcbcrRange;
 using ChromaLocationKHR = ChromaLocation;
 using BindBufferMemoryInfoKHR = BindBufferMemoryInfo;
 using BindImageMemoryInfoKHR = BindImageMemoryInfo;
+struct DrmFormatModifierPropertiesEXT;
+struct DrmFormatModifierPropertiesListEXT;
+struct PhysicalDeviceImageDrmFormatModifierInfoEXT;
+struct ImageDrmFormatModifierListCreateInfoEXT;
+struct ImageDrmFormatModifierExplicitCreateInfoEXT;
+struct ImageDrmFormatModifierPropertiesEXT;
+
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(ValidationCacheEXT)
 
 enum class ValidationCacheHeaderVersionEXT : int32_t;
@@ -938,35 +936,44 @@ struct CoarseSampleLocationNV;
 struct CoarseSampleOrderCustomNV;
 struct PipelineViewportCoarseSampleOrderStateCreateInfoNV;
 
-VK_DEFINE_NON_DISPATCHABLE_HANDLE(AccelerationStructureNVX)
+constexpr auto shaderUnusedNV = (~0U);
 
-enum class GeometryTypeNVX : int32_t;
-enum class GeometryBitsNVX : int32_t;
-enum class GeometryInstanceBitsNVX : int32_t;
-enum class AccelerationStructureTypeNVX : int32_t;
-enum class BuildAccelerationStructureBitsNVX : int32_t;
-enum class CopyAccelerationStructureModeNVX : int32_t;
+VK_DEFINE_NON_DISPATCHABLE_HANDLE(AccelerationStructureNV)
 
-using GeometryFlagsNVX = Flags<GeometryBitsNVX>;
-using GeometryInstanceFlagsNVX = Flags<GeometryInstanceBitsNVX>;
-using BuildAccelerationStructureFlagsNVX = Flags<BuildAccelerationStructureBitsNVX>;
+enum class RayTracingShaderGroupTypeNV : int32_t;
+enum class GeometryTypeNV : int32_t;
+enum class GeometryBitsNV : int32_t;
+enum class GeometryInstanceBitsNV : int32_t;
+enum class AccelerationStructureTypeNV : int32_t;
+enum class BuildAccelerationStructureBitsNV : int32_t;
+enum class CopyAccelerationStructureModeNV : int32_t;
+enum class AccelerationStructureMemoryRequirementsTypeNV : int32_t;
 
-struct RaytracingPipelineCreateInfoNVX;
-struct GeometryTrianglesNVX;
-struct GeometryAABBNVX;
-struct GeometryDataNVX;
-struct GeometryNVX;
-struct AccelerationStructureCreateInfoNVX;
-struct BindAccelerationStructureMemoryInfoNVX;
-struct DescriptorAccelerationStructureInfoNVX;
-struct AccelerationStructureMemoryRequirementsInfoNVX;
-struct PhysicalDeviceRaytracingPropertiesNVX;
+using GeometryFlagsNV = Flags<GeometryBitsNV>;
+using GeometryInstanceFlagsNV = Flags<GeometryInstanceBitsNV>;
+using BuildAccelerationStructureFlagsNV = Flags<BuildAccelerationStructureBitsNV>;
+
+struct RayTracingShaderGroupCreateInfoNV;
+struct RayTracingPipelineCreateInfoNV;
+struct GeometryTrianglesNV;
+struct GeometryAABBNV;
+struct GeometryDataNV;
+struct GeometryNV;
+struct AccelerationStructureInfoNV;
+struct AccelerationStructureCreateInfoNV;
+struct BindAccelerationStructureMemoryInfoNV;
+struct WriteDescriptorSetAccelerationStructureNV;
+struct AccelerationStructureMemoryRequirementsInfoNV;
+struct PhysicalDeviceRayTracingPropertiesNV;
 
 struct PhysicalDeviceRepresentativeFragmentTestFeaturesNV;
 struct PipelineRepresentativeFragmentTestStateCreateInfoNV;
 
 using PhysicalDeviceMaintenance3PropertiesKHR = PhysicalDeviceMaintenance3Properties;
 using DescriptorSetLayoutSupportKHR = DescriptorSetLayoutSupport;
+struct PhysicalDeviceImageViewImageFormatInfoEXT;
+struct FilterCubicImageViewImageFormatPropertiesEXT;
+
 enum class QueueGlobalPriorityEXT : int32_t;
 
 struct DeviceQueueGlobalPriorityCreateInfoEXT;
@@ -977,12 +984,52 @@ struct ImportMemoryHostPointerInfoEXT;
 struct MemoryHostPointerPropertiesEXT;
 struct PhysicalDeviceExternalMemoryHostPropertiesEXT;
 
+struct PhysicalDeviceShaderAtomicInt64FeaturesKHR;
+
+enum class TimeDomainEXT : int32_t;
+
+struct CalibratedTimestampInfoEXT;
+
 struct PhysicalDeviceShaderCorePropertiesAMD;
+
+enum class MemoryOverallocationBehaviorAMD : int32_t;
+
+struct DeviceMemoryOverallocationCreateInfoAMD;
 
 struct PhysicalDeviceVertexAttributeDivisorPropertiesEXT;
 struct VertexInputBindingDivisorDescriptionEXT;
 struct PipelineVertexInputDivisorStateCreateInfoEXT;
 struct PhysicalDeviceVertexAttributeDivisorFeaturesEXT;
+
+#ifdef ggp
+
+struct PresentFrameTokenGGP;
+
+#endif //ggp
+
+enum class PipelineCreationFeedbackBitsEXT : int32_t;
+
+using PipelineCreationFeedbackFlagsEXT = Flags<PipelineCreationFeedbackBitsEXT>;
+
+struct PipelineCreationFeedbackEXT;
+struct PipelineCreationFeedbackCreateInfoEXT;
+
+constexpr auto maxDriverNameSizeKHR = 256;
+constexpr auto maxDriverInfoSizeKHR = 256;
+
+enum class DriverIdKHR : int32_t;
+
+struct ConformanceVersionKHR;
+struct PhysicalDeviceDriverPropertiesKHR;
+
+struct PhysicalDeviceFloatControlsPropertiesKHR;
+
+enum class ResolveModeBitsKHR : int32_t;
+
+using ResolveModeFlagsKHR = Flags<ResolveModeBitsKHR>;
+
+struct SubpassDescriptionDepthStencilResolveKHR;
+struct PhysicalDeviceDepthStencilResolvePropertiesKHR;
 
 struct PhysicalDeviceComputeShaderDerivativesFeaturesNV;
 
@@ -1002,32 +1049,107 @@ struct CheckpointDataNV;
 
 struct PhysicalDeviceVulkanMemoryModelFeaturesKHR;
 
+struct PhysicalDevicePCIBusInfoPropertiesEXT;
+
+struct DisplayNativeHdrSurfaceCapabilitiesAMD;
+struct SwapchainDisplayNativeHdrCreateInfoAMD;
+
+#ifdef fuchsia
+
+using ImagePipeSurfaceCreateFlagsFUCHSIA = Flags<DummyEnum>;
+
+struct ImagePipeSurfaceCreateInfoFUCHSIA;
+
+#endif //fuchsia
+
+#ifdef metal
+
+using MetalSurfaceCreateFlagsEXT = Flags<DummyEnum>;
+
+struct MetalSurfaceCreateInfoEXT;
+
+#endif //metal
+
+struct PhysicalDeviceFragmentDensityMapFeaturesEXT;
+struct PhysicalDeviceFragmentDensityMapPropertiesEXT;
+struct RenderPassFragmentDensityMapCreateInfoEXT;
+
+struct PhysicalDeviceScalarBlockLayoutFeaturesEXT;
+
+struct PhysicalDeviceMemoryBudgetPropertiesEXT;
+
+struct PhysicalDeviceMemoryPriorityFeaturesEXT;
+struct MemoryPriorityAllocateInfoEXT;
+
+struct SurfaceProtectedCapabilitiesKHR;
+
+struct PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV;
+
+using DeviceAddress = uint64_t;
+
+struct PhysicalDeviceBufferDeviceAddressFeaturesEXT;
+struct BufferDeviceAddressInfoEXT;
+struct BufferDeviceAddressCreateInfoEXT;
+
+using PhysicalDeviceBufferAddressFeaturesEXT = PhysicalDeviceBufferDeviceAddressFeaturesEXT;
+struct ImageStencilUsageCreateInfoEXT;
+
+enum class ValidationFeatureEnableEXT : int32_t;
+enum class ValidationFeatureDisableEXT : int32_t;
+
+struct ValidationFeaturesEXT;
+
+enum class ComponentTypeNV : int32_t;
+enum class ScopeNV : int32_t;
+
+struct CooperativeMatrixPropertiesNV;
+struct PhysicalDeviceCooperativeMatrixFeaturesNV;
+struct PhysicalDeviceCooperativeMatrixPropertiesNV;
+
+struct PhysicalDeviceYcbcrImageArraysFeaturesEXT;
+
+#ifdef win32
+
+enum class FullScreenExclusiveEXT : int32_t;
+
+struct SurfaceFullScreenExclusiveInfoEXT;
+struct SurfaceCapabilitiesFullScreenExclusiveEXT;
+struct SurfaceFullScreenExclusiveWin32InfoEXT;
+
+#endif //win32
+
+using HeadlessSurfaceCreateFlagsEXT = Flags<DummyEnum>;
+
+struct HeadlessSurfaceCreateInfoEXT;
+
+struct PhysicalDeviceHostQueryResetFeaturesEXT;
+
 
 } // namespace vk
 
 // The specification (vk.xml) itself is published under the following license:
 
-// Copyright (c) 2015-2018 The Khronos Group Inc.
-//
+// Copyright (c) 2015-2019 The Khronos Group Inc.
+// 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-//
+// 
 //     http://www.apache.org/licenses/LICENSE-2.0
-//
+// 
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
+// 
 // ---- Exceptions to the Apache 2.0 License: ----
-//
+// 
 // As an exception, if you use this Software to generate code and portions of
 // this Software are embedded into the generated code as a result, you may
 // redistribute such product without providing attribution as would otherwise
 // be required by Sections 4(a), 4(b) and 4(d) of the License.
-//
+// 
 // In addition, if you combine or link code generated by this Software with
 // software that is licensed under the GPLv2 or the LGPL v2.0 or 2.1
 // ("`Combined Software`") and if a court of competent jurisdiction determines
@@ -1036,5 +1158,5 @@ struct PhysicalDeviceVulkanMemoryModelFeaturesKHR;
 // applicable GPL or LGPL license, you may retroactively and prospectively
 // choose to deem waived or otherwise exclude such Section(s) of the License,
 // but only in their entirety and only with respect to the Combined Software.
-
+    
 

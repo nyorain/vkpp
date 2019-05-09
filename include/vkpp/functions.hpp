@@ -16,8 +16,8 @@
 #include <vector>
 #include <vulkan/vulkan.h>
 
-// Generated for vulkan version: 1.1.85
-#if !defined(VK_VERSION_1_1) || 85 > VK_HEADER_VERSION
+// Generated for vulkan version: 1.1.107
+#if !defined(VK_VERSION_1_1) || 107 > VK_HEADER_VERSION
 	#error "vulkan.h version too old, does not match generated version"
 #endif
 
@@ -307,7 +307,7 @@ inline void cmdExecuteCommands(CommandBuffer commandBuffer, Span<const CommandBu
 
 // The specification (vk.xml) itself is published under the following license:
 
-// Copyright (c) 2015-2018 The Khronos Group Inc.
+// Copyright (c) 2015-2019 The Khronos Group Inc.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
