@@ -107,7 +107,7 @@ auto call(FR (*f)(FA...), Args&&... args) {
 	/// `vk::dispatch.init(instance, dev (or null handle))`. Note that
 	/// dynamic dispatch does not work with multiple instances.
 	DynamicDispatch dispatch;
-	#define VKPP_DISPATCH(x) dispatch.x
+	#define VKPP_DISPATCH(x) ::vk::dispatch.x
 #else
 	#define VKPP_DISPATCH(x) x
 #endif

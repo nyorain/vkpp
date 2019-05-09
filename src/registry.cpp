@@ -54,9 +54,6 @@ Registry& RegistryLoader::parse() {
 		registry_.vendors.push_back(vendor.attribute("name").as_string());
 	}
 
-	// add khx
-	registry_.vendors.push_back("KHX");
-
 	// platforms
 	log("\tplatforms");
 	loadPlatforms(regNode.child("platforms"));
@@ -575,6 +572,14 @@ void RegistryLoader::loadFeature(const pugi::xml_node& node) {
 }
 
 void RegistryLoader::loadExtension(const pugi::xml_node& node) {
+	std::string author = node.attribute("author").as_string();
+
+	// NOTE: completely ignore all experimental extensions
+	// for backwards compatibility
+	if(author == "NVX" || author == "KHX" || author == "AMDX") {
+		return;
+	}
+
 	Extension extension;
 	extension.supported = node.attribute("supported").as_string();
 	extension.number = node.attribute("number").as_int();

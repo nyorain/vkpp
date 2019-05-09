@@ -1,4 +1,4 @@
-auto constexpr header = 1 + R"SRC(
+auto constexpr header = &R"SRC(
 // Copyright (c) 2017 nyorain
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt
@@ -7,9 +7,9 @@ auto constexpr header = 1 + R"SRC(
 // Do not edit manually, rather edit the codegen files.
 
 #pragma once
-)SRC";
+)SRC"[1];
 
-auto constexpr fwdHeader = 1 + R"SRC(
+auto constexpr fwdHeader = &R"SRC(
 #include <vkpp/handle.hpp> // VK_DEFINE_HANDLE
 #include <vkpp/flags.hpp>
 #include <cstddef>
@@ -23,16 +23,18 @@ namespace nytl {
 
 #ifndef NYTL_INCLUDE_FWD_SPAN
 #define NYTL_INCLUDE_FWD_SPAN
-	template<typename T, std::size_t N = 0>
-	class Span;
-#endif // header guard
+	constexpr const std::ptrdiff_t dynamic_extent = -1;
+	template<typename T, std::ptrdiff_t N = dynamic_extent> class span;
+	template<typename T, std::ptrdiff_t N = dynamic_extent>
+	using Span = span<T, N>;
+#endif // fwd guard
 
 } // namespace nytl
 
-)SRC";
+)SRC"[1];
 
 
-auto constexpr structsHeader = 1 + R"SRC(
+auto constexpr structsHeader = &R"SRC(
 #include <vkpp/fwd.hpp>
 #include <vkpp/enums.hpp>
 #include <vkpp/flags.hpp>
@@ -45,17 +47,17 @@ auto constexpr structsHeader = 1 + R"SRC(
 	#error "vulkan.h version too old, does not match generated version"
 #endif
 
-)SRC";
+)SRC"[1];
 
-auto constexpr enumsHeader = 1 + R"SRC(
+auto constexpr enumsHeader = &R"SRC(
 #include <vkpp/fwd.hpp>
 #include <vkpp/flags.hpp>
 
 // Generated for vulkan version: 1.1.%vp
 
-)SRC";
+)SRC"[1];
 
-auto constexpr functionsHeader = 1 + R"SRC(
+auto constexpr functionsHeader = &R"SRC(
 #include <vkpp/fwd.hpp>
 #include <vkpp/enums.hpp>
 #include <vkpp/structs.hpp>
@@ -99,14 +101,14 @@ auto constexpr functionsHeader = 1 + R"SRC(
 	VKPP_DISPATCH(F(__VA_ARGS__)); \
 	return ret;
 
-)SRC";
+)SRC"[1];
 
 // TODO: allow to per-device DynamicDispatch objects
 // #define VKPP_DLOAD(dev, fn) this->fn = getDeviceProcAddr(dev, fn);
 // #undef VKPP_DLOAD
 // TODO: we could also load the instance proc using dlsym like functionality
 
-auto constexpr dispatchHeader = 1 + R"SRC(
+auto constexpr dispatchHeader = &R"SRC(
 
 #include <vkpp/fwd.hpp>
 #include <vkpp/enums.hpp>
@@ -147,7 +149,7 @@ public:
 
 } // namespace vk
 
-)SRC";
+)SRC"[1];
 
 
 // auto constexpr vecFuncTemplate = 1 + R"SRC(
@@ -159,8 +161,8 @@ public:
 // 	return ret;
 // )SRC";
 
-auto constexpr vecFuncTemplate = 1 + R"SRC(
-VEC_FUNC(%t, %ct, %f, %a); )SRC";
+auto constexpr vecFuncTemplate = &R"SRC(
+VEC_FUNC(%t, %ct, %f, %a); )SRC"[1];
 
 // auto constexpr vecFuncTemplateVoid = 1 + R"SRC(
 // 	std::vector<%t> ret;
@@ -171,8 +173,8 @@ VEC_FUNC(%t, %ct, %f, %a); )SRC";
 // 	return ret;
 // )SRC";
 
-auto constexpr vecFuncTemplateVoid = 1 + R"SRC(
-VEC_FUNC_VOID(%t, %ct, %f, %a); )SRC";
+auto constexpr vecFuncTemplateVoid = &R"SRC(
+VEC_FUNC_VOID(%t, %ct, %f, %a); )SRC"[1];
 
 // auto constexpr vecFuncTemplateRetGiven = 1 + R"SRC(
 // 	std::vector<%t> ret;
@@ -181,8 +183,8 @@ VEC_FUNC_VOID(%t, %ct, %f, %a); )SRC";
 // 	return ret;
 // )SRC";
 
-auto constexpr vecFuncTemplateRetGiven = 1 + R"SRC(
-VEC_FUNC_RET(%t, %c, %f, %a); )SRC";
+auto constexpr vecFuncTemplateRetGiven = &R"SRC(
+VEC_FUNC_RET(%t, %c, %f, %a); )SRC"[1];
 
 // auto constexpr vecFuncTemplateRetGivenVoid = 1 + R"SRC(
 // 	std::vector<%t> ret;
@@ -191,8 +193,8 @@ VEC_FUNC_RET(%t, %c, %f, %a); )SRC";
 // 	return ret;
 // )SRC";
 
-auto constexpr vecFuncTemplateRetGivenVoid = 1 + R"SRC(
-VEC_FUNC_RET_VOID(%t, %c, %f, %a); )SRC";
+auto constexpr vecFuncTemplateRetGivenVoid = &R"SRC(
+VEC_FUNC_RET_VOID(%t, %c, %f, %a); )SRC"[1];
 
 constexpr const char* keywords[]= {"alignas", "alignof", "and", "and_eq", "asm", "auto", "bitand",
 	"bitor", "bool", "break", "case", "catch", "char", "char16_t", "char32_t", "class", "compl",

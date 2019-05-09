@@ -152,6 +152,7 @@ std::string OutputGenerator::camelCase(const std::string& string, bool firstuppe
 	return ret;
 }
 
+// automatically detect EXT suffixes here and don't camel case them?
 void OutputGenerator::camelCaseip(std::string& string, bool firstupper) const {
 	if(string.empty()) {
 		return;
@@ -769,6 +770,13 @@ std::string CCOutputGenerator::paramName(const Param& param, const std::string& 
 		if(pos != std::string::npos) {
 			removeVkPrefix(sizeName);
 			camelCaseip(sizeName);
+
+			// capitalize extension prefixes
+			std::string ext;
+			removeExtSuffix(sizeName, &ext);
+			for(auto i = 0u; i < ext.size(); ++i)
+				sizeName[sizeName.size() - i] =
+					std::toupper(sizeName[sizeName.size() - i], std::locale());
 		}
 
 		ranges.push(sizeName);

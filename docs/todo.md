@@ -1,5 +1,5 @@
 - clean up (rename) config macros (CHECK_THROW instead of CALL_THROW)
-- git hooks to always include latest output
+- git hooks to always include latest output?
 	- `cp build/vkpp/include/* include/vkpp/`
 - don't output all extensions. Only required (via settings) ones
 - currently sometimes an enum has multiple times the same extension
@@ -9,5 +9,5 @@
 	- don't use vpp_call by default?
 	- give caller chance to handle error (without exception!)
 - better feature/extension dependency/requirement handling
-- automatically detect installed version (submit meson patch if needed on
-  some platforms) and generate for the last matching version as default.
+- we could make the struct constructors constexpr. Not sure if any use for
+  it though
