@@ -211,6 +211,214 @@ public:
 	PFN_vkCmdNextSubpass vkCmdNextSubpass {};
 	PFN_vkCmdEndRenderPass vkCmdEndRenderPass {};
 	PFN_vkCmdExecuteCommands vkCmdExecuteCommands {};
+	PFN_vkDestroySurfaceKHR vkDestroySurfaceKHR {};
+	PFN_vkGetPhysicalDeviceSurfaceSupportKHR vkGetPhysicalDeviceSurfaceSupportKHR {};
+	PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR vkGetPhysicalDeviceSurfaceCapabilitiesKHR {};
+	PFN_vkGetPhysicalDeviceSurfaceFormatsKHR vkGetPhysicalDeviceSurfaceFormatsKHR {};
+	PFN_vkGetPhysicalDeviceSurfacePresentModesKHR vkGetPhysicalDeviceSurfacePresentModesKHR {};
+	PFN_vkCreateSwapchainKHR vkCreateSwapchainKHR {};
+	PFN_vkDestroySwapchainKHR vkDestroySwapchainKHR {};
+	PFN_vkGetSwapchainImagesKHR vkGetSwapchainImagesKHR {};
+	PFN_vkAcquireNextImageKHR vkAcquireNextImageKHR {};
+	PFN_vkQueuePresentKHR vkQueuePresentKHR {};
+	PFN_vkGetDeviceGroupPresentCapabilitiesKHR vkGetDeviceGroupPresentCapabilitiesKHR {};
+	PFN_vkGetDeviceGroupSurfacePresentModesKHR vkGetDeviceGroupSurfacePresentModesKHR {};
+	PFN_vkGetPhysicalDevicePresentRectanglesKHR vkGetPhysicalDevicePresentRectanglesKHR {};
+	PFN_vkAcquireNextImage2KHR vkAcquireNextImage2KHR {};
+	PFN_vkGetPhysicalDeviceDisplayPropertiesKHR vkGetPhysicalDeviceDisplayPropertiesKHR {};
+	PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR vkGetPhysicalDeviceDisplayPlanePropertiesKHR {};
+	PFN_vkGetDisplayPlaneSupportedDisplaysKHR vkGetDisplayPlaneSupportedDisplaysKHR {};
+	PFN_vkGetDisplayModePropertiesKHR vkGetDisplayModePropertiesKHR {};
+	PFN_vkCreateDisplayModeKHR vkCreateDisplayModeKHR {};
+	PFN_vkGetDisplayPlaneCapabilitiesKHR vkGetDisplayPlaneCapabilitiesKHR {};
+	PFN_vkCreateDisplayPlaneSurfaceKHR vkCreateDisplayPlaneSurfaceKHR {};
+	PFN_vkCreateSharedSwapchainsKHR vkCreateSharedSwapchainsKHR {};
+#ifdef VK_USE_PLATFORM_XLIB_KHR
+
+	PFN_vkCreateXlibSurfaceKHR vkCreateXlibSurfaceKHR {};
+	PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR vkGetPhysicalDeviceXlibPresentationSupportKHR {};
+#endif //VK_USE_PLATFORM_XLIB_KHR
+
+#ifdef VK_USE_PLATFORM_XCB_KHR
+
+	PFN_vkCreateXcbSurfaceKHR vkCreateXcbSurfaceKHR {};
+	PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR vkGetPhysicalDeviceXcbPresentationSupportKHR {};
+#endif //VK_USE_PLATFORM_XCB_KHR
+
+#ifdef VK_USE_PLATFORM_WAYLAND_KHR
+
+	PFN_vkCreateWaylandSurfaceKHR vkCreateWaylandSurfaceKHR {};
+	PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR vkGetPhysicalDeviceWaylandPresentationSupportKHR {};
+#endif //VK_USE_PLATFORM_WAYLAND_KHR
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+
+	PFN_vkCreateWin32SurfaceKHR vkCreateWin32SurfaceKHR {};
+	PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR vkGetPhysicalDeviceWin32PresentationSupportKHR {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+	PFN_vkCreateDebugReportCallbackEXT vkCreateDebugReportCallbackEXT {};
+	PFN_vkDestroyDebugReportCallbackEXT vkDestroyDebugReportCallbackEXT {};
+	PFN_vkDebugReportMessageEXT vkDebugReportMessageEXT {};
+	PFN_vkDebugMarkerSetObjectTagEXT vkDebugMarkerSetObjectTagEXT {};
+	PFN_vkDebugMarkerSetObjectNameEXT vkDebugMarkerSetObjectNameEXT {};
+	PFN_vkCmdDebugMarkerBeginEXT vkCmdDebugMarkerBeginEXT {};
+	PFN_vkCmdDebugMarkerEndEXT vkCmdDebugMarkerEndEXT {};
+	PFN_vkCmdDebugMarkerInsertEXT vkCmdDebugMarkerInsertEXT {};
+	PFN_vkCmdBindTransformFeedbackBuffersEXT vkCmdBindTransformFeedbackBuffersEXT {};
+	PFN_vkCmdBeginTransformFeedbackEXT vkCmdBeginTransformFeedbackEXT {};
+	PFN_vkCmdEndTransformFeedbackEXT vkCmdEndTransformFeedbackEXT {};
+	PFN_vkCmdBeginQueryIndexedEXT vkCmdBeginQueryIndexedEXT {};
+	PFN_vkCmdEndQueryIndexedEXT vkCmdEndQueryIndexedEXT {};
+	PFN_vkCmdDrawIndirectByteCountEXT vkCmdDrawIndirectByteCountEXT {};
+	PFN_vkCmdDrawIndirectCountKHR vkCmdDrawIndirectCountKHR {};
+	PFN_vkCmdDrawIndirectCountAMD vkCmdDrawIndirectCountAMD {};
+	PFN_vkCmdDrawIndexedIndirectCountKHR vkCmdDrawIndexedIndirectCountKHR {};
+	PFN_vkCmdDrawIndexedIndirectCountAMD vkCmdDrawIndexedIndirectCountAMD {};
+	PFN_vkGetShaderInfoAMD vkGetShaderInfoAMD {};
+#ifdef VK_USE_PLATFORM_GGP
+
+	PFN_vkCreateStreamDescriptorSurfaceGGP vkCreateStreamDescriptorSurfaceGGP {};
+#endif //VK_USE_PLATFORM_GGP
+
+	PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV vkGetPhysicalDeviceExternalImageFormatPropertiesNV {};
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+
+	PFN_vkGetMemoryWin32HandleNV vkGetMemoryWin32HandleNV {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+	PFN_vkGetDeviceGroupSurfacePresentModes2EXT vkGetDeviceGroupSurfacePresentModes2EXT {};
+#ifdef VK_USE_PLATFORM_VI_NN
+
+	PFN_vkCreateViSurfaceNN vkCreateViSurfaceNN {};
+#endif //VK_USE_PLATFORM_VI_NN
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+
+	PFN_vkGetMemoryWin32HandleKHR vkGetMemoryWin32HandleKHR {};
+	PFN_vkGetMemoryWin32HandlePropertiesKHR vkGetMemoryWin32HandlePropertiesKHR {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+	PFN_vkGetMemoryFdKHR vkGetMemoryFdKHR {};
+	PFN_vkGetMemoryFdPropertiesKHR vkGetMemoryFdPropertiesKHR {};
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+
+	PFN_vkImportSemaphoreWin32HandleKHR vkImportSemaphoreWin32HandleKHR {};
+	PFN_vkGetSemaphoreWin32HandleKHR vkGetSemaphoreWin32HandleKHR {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+	PFN_vkImportSemaphoreFdKHR vkImportSemaphoreFdKHR {};
+	PFN_vkGetSemaphoreFdKHR vkGetSemaphoreFdKHR {};
+	PFN_vkCmdPushDescriptorSetKHR vkCmdPushDescriptorSetKHR {};
+	PFN_vkCmdPushDescriptorSetWithTemplateKHR vkCmdPushDescriptorSetWithTemplateKHR {};
+	PFN_vkCmdBeginConditionalRenderingEXT vkCmdBeginConditionalRenderingEXT {};
+	PFN_vkCmdEndConditionalRenderingEXT vkCmdEndConditionalRenderingEXT {};
+	PFN_vkCmdSetViewportWScalingNV vkCmdSetViewportWScalingNV {};
+	PFN_vkReleaseDisplayEXT vkReleaseDisplayEXT {};
+#ifdef VK_USE_PLATFORM_XLIB_XRANDR_EXT
+
+	PFN_vkAcquireXlibDisplayEXT vkAcquireXlibDisplayEXT {};
+	PFN_vkGetRandROutputDisplayEXT vkGetRandROutputDisplayEXT {};
+#endif //VK_USE_PLATFORM_XLIB_XRANDR_EXT
+
+	PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT vkGetPhysicalDeviceSurfaceCapabilities2EXT {};
+	PFN_vkDisplayPowerControlEXT vkDisplayPowerControlEXT {};
+	PFN_vkRegisterDeviceEventEXT vkRegisterDeviceEventEXT {};
+	PFN_vkRegisterDisplayEventEXT vkRegisterDisplayEventEXT {};
+	PFN_vkGetSwapchainCounterEXT vkGetSwapchainCounterEXT {};
+	PFN_vkGetRefreshCycleDurationGOOGLE vkGetRefreshCycleDurationGOOGLE {};
+	PFN_vkGetPastPresentationTimingGOOGLE vkGetPastPresentationTimingGOOGLE {};
+	PFN_vkCmdSetDiscardRectangleEXT vkCmdSetDiscardRectangleEXT {};
+	PFN_vkSetHdrMetadataEXT vkSetHdrMetadataEXT {};
+	PFN_vkCreateRenderPass2KHR vkCreateRenderPass2KHR {};
+	PFN_vkCmdBeginRenderPass2KHR vkCmdBeginRenderPass2KHR {};
+	PFN_vkCmdNextSubpass2KHR vkCmdNextSubpass2KHR {};
+	PFN_vkCmdEndRenderPass2KHR vkCmdEndRenderPass2KHR {};
+	PFN_vkGetSwapchainStatusKHR vkGetSwapchainStatusKHR {};
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+
+	PFN_vkImportFenceWin32HandleKHR vkImportFenceWin32HandleKHR {};
+	PFN_vkGetFenceWin32HandleKHR vkGetFenceWin32HandleKHR {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+	PFN_vkImportFenceFdKHR vkImportFenceFdKHR {};
+	PFN_vkGetFenceFdKHR vkGetFenceFdKHR {};
+	PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR vkGetPhysicalDeviceSurfaceCapabilities2KHR {};
+	PFN_vkGetPhysicalDeviceSurfaceFormats2KHR vkGetPhysicalDeviceSurfaceFormats2KHR {};
+	PFN_vkGetPhysicalDeviceDisplayProperties2KHR vkGetPhysicalDeviceDisplayProperties2KHR {};
+	PFN_vkGetPhysicalDeviceDisplayPlaneProperties2KHR vkGetPhysicalDeviceDisplayPlaneProperties2KHR {};
+	PFN_vkGetDisplayModeProperties2KHR vkGetDisplayModeProperties2KHR {};
+	PFN_vkGetDisplayPlaneCapabilities2KHR vkGetDisplayPlaneCapabilities2KHR {};
+#ifdef VK_USE_PLATFORM_IOS_MVK
+
+	PFN_vkCreateIOSSurfaceMVK vkCreateIOSSurfaceMVK {};
+#endif //VK_USE_PLATFORM_IOS_MVK
+
+#ifdef VK_USE_PLATFORM_MACOS_MVK
+
+	PFN_vkCreateMacOSSurfaceMVK vkCreateMacOSSurfaceMVK {};
+#endif //VK_USE_PLATFORM_MACOS_MVK
+
+	PFN_vkSetDebugUtilsObjectNameEXT vkSetDebugUtilsObjectNameEXT {};
+	PFN_vkSetDebugUtilsObjectTagEXT vkSetDebugUtilsObjectTagEXT {};
+	PFN_vkQueueBeginDebugUtilsLabelEXT vkQueueBeginDebugUtilsLabelEXT {};
+	PFN_vkQueueEndDebugUtilsLabelEXT vkQueueEndDebugUtilsLabelEXT {};
+	PFN_vkQueueInsertDebugUtilsLabelEXT vkQueueInsertDebugUtilsLabelEXT {};
+	PFN_vkCmdBeginDebugUtilsLabelEXT vkCmdBeginDebugUtilsLabelEXT {};
+	PFN_vkCmdEndDebugUtilsLabelEXT vkCmdEndDebugUtilsLabelEXT {};
+	PFN_vkCmdInsertDebugUtilsLabelEXT vkCmdInsertDebugUtilsLabelEXT {};
+	PFN_vkCreateDebugUtilsMessengerEXT vkCreateDebugUtilsMessengerEXT {};
+	PFN_vkDestroyDebugUtilsMessengerEXT vkDestroyDebugUtilsMessengerEXT {};
+	PFN_vkSubmitDebugUtilsMessageEXT vkSubmitDebugUtilsMessageEXT {};
+	PFN_vkCmdSetSampleLocationsEXT vkCmdSetSampleLocationsEXT {};
+	PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT vkGetPhysicalDeviceMultisamplePropertiesEXT {};
+	PFN_vkGetImageDrmFormatModifierPropertiesEXT vkGetImageDrmFormatModifierPropertiesEXT {};
+	PFN_vkCreateValidationCacheEXT vkCreateValidationCacheEXT {};
+	PFN_vkDestroyValidationCacheEXT vkDestroyValidationCacheEXT {};
+	PFN_vkMergeValidationCachesEXT vkMergeValidationCachesEXT {};
+	PFN_vkGetValidationCacheDataEXT vkGetValidationCacheDataEXT {};
+	PFN_vkCmdBindShadingRateImageNV vkCmdBindShadingRateImageNV {};
+	PFN_vkCmdSetViewportShadingRatePaletteNV vkCmdSetViewportShadingRatePaletteNV {};
+	PFN_vkCmdSetCoarseSampleOrderNV vkCmdSetCoarseSampleOrderNV {};
+	PFN_vkCreateAccelerationStructureNV vkCreateAccelerationStructureNV {};
+	PFN_vkDestroyAccelerationStructureNV vkDestroyAccelerationStructureNV {};
+	PFN_vkGetAccelerationStructureMemoryRequirementsNV vkGetAccelerationStructureMemoryRequirementsNV {};
+	PFN_vkBindAccelerationStructureMemoryNV vkBindAccelerationStructureMemoryNV {};
+	PFN_vkCmdBuildAccelerationStructureNV vkCmdBuildAccelerationStructureNV {};
+	PFN_vkCmdCopyAccelerationStructureNV vkCmdCopyAccelerationStructureNV {};
+	PFN_vkCmdTraceRaysNV vkCmdTraceRaysNV {};
+	PFN_vkCreateRayTracingPipelinesNV vkCreateRayTracingPipelinesNV {};
+	PFN_vkGetRayTracingShaderGroupHandlesNV vkGetRayTracingShaderGroupHandlesNV {};
+	PFN_vkGetAccelerationStructureHandleNV vkGetAccelerationStructureHandleNV {};
+	PFN_vkCmdWriteAccelerationStructuresPropertiesNV vkCmdWriteAccelerationStructuresPropertiesNV {};
+	PFN_vkCompileDeferredNV vkCompileDeferredNV {};
+	PFN_vkGetMemoryHostPointerPropertiesEXT vkGetMemoryHostPointerPropertiesEXT {};
+	PFN_vkCmdWriteBufferMarkerAMD vkCmdWriteBufferMarkerAMD {};
+	PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT vkGetPhysicalDeviceCalibrateableTimeDomainsEXT {};
+	PFN_vkGetCalibratedTimestampsEXT vkGetCalibratedTimestampsEXT {};
+	PFN_vkCmdDrawMeshTasksNV vkCmdDrawMeshTasksNV {};
+	PFN_vkCmdDrawMeshTasksIndirectNV vkCmdDrawMeshTasksIndirectNV {};
+	PFN_vkCmdDrawMeshTasksIndirectCountNV vkCmdDrawMeshTasksIndirectCountNV {};
+	PFN_vkCmdSetExclusiveScissorNV vkCmdSetExclusiveScissorNV {};
+	PFN_vkCmdSetCheckpointNV vkCmdSetCheckpointNV {};
+	PFN_vkGetQueueCheckpointDataNV vkGetQueueCheckpointDataNV {};
+	PFN_vkSetLocalDimmingAMD vkSetLocalDimmingAMD {};
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+	PFN_vkCreateImagePipeSurfaceFUCHSIA vkCreateImagePipeSurfaceFUCHSIA {};
+#endif //VK_USE_PLATFORM_FUCHSIA
+
+	PFN_vkGetBufferDeviceAddressEXT vkGetBufferDeviceAddressEXT {};
+	PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV vkGetPhysicalDeviceCooperativeMatrixPropertiesNV {};
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+
+	PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT vkGetPhysicalDeviceSurfacePresentModes2EXT {};
+	PFN_vkAcquireFullScreenExclusiveModeEXT vkAcquireFullScreenExclusiveModeEXT {};
+	PFN_vkReleaseFullScreenExclusiveModeEXT vkReleaseFullScreenExclusiveModeEXT {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+	PFN_vkCreateHeadlessSurfaceEXT vkCreateHeadlessSurfaceEXT {};
+	PFN_vkResetQueryPoolEXT vkResetQueryPoolEXT {};
 
 
 public:
@@ -420,6 +628,214 @@ public:
 		VKPP_ILOAD(ini, vkCmdNextSubpass);
 		VKPP_ILOAD(ini, vkCmdEndRenderPass);
 		VKPP_ILOAD(ini, vkCmdExecuteCommands);
+		VKPP_ILOAD(ini, vkDestroySurfaceKHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfaceSupportKHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfaceCapabilitiesKHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfaceFormatsKHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfacePresentModesKHR);
+		VKPP_ILOAD(ini, vkCreateSwapchainKHR);
+		VKPP_ILOAD(ini, vkDestroySwapchainKHR);
+		VKPP_ILOAD(ini, vkGetSwapchainImagesKHR);
+		VKPP_ILOAD(ini, vkAcquireNextImageKHR);
+		VKPP_ILOAD(ini, vkQueuePresentKHR);
+		VKPP_ILOAD(ini, vkGetDeviceGroupPresentCapabilitiesKHR);
+		VKPP_ILOAD(ini, vkGetDeviceGroupSurfacePresentModesKHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDevicePresentRectanglesKHR);
+		VKPP_ILOAD(ini, vkAcquireNextImage2KHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceDisplayPropertiesKHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceDisplayPlanePropertiesKHR);
+		VKPP_ILOAD(ini, vkGetDisplayPlaneSupportedDisplaysKHR);
+		VKPP_ILOAD(ini, vkGetDisplayModePropertiesKHR);
+		VKPP_ILOAD(ini, vkCreateDisplayModeKHR);
+		VKPP_ILOAD(ini, vkGetDisplayPlaneCapabilitiesKHR);
+		VKPP_ILOAD(ini, vkCreateDisplayPlaneSurfaceKHR);
+		VKPP_ILOAD(ini, vkCreateSharedSwapchainsKHR);
+#ifdef VK_USE_PLATFORM_XLIB_KHR
+
+		VKPP_ILOAD(ini, vkCreateXlibSurfaceKHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceXlibPresentationSupportKHR);
+#endif //VK_USE_PLATFORM_XLIB_KHR
+
+#ifdef VK_USE_PLATFORM_XCB_KHR
+
+		VKPP_ILOAD(ini, vkCreateXcbSurfaceKHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceXcbPresentationSupportKHR);
+#endif //VK_USE_PLATFORM_XCB_KHR
+
+#ifdef VK_USE_PLATFORM_WAYLAND_KHR
+
+		VKPP_ILOAD(ini, vkCreateWaylandSurfaceKHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceWaylandPresentationSupportKHR);
+#endif //VK_USE_PLATFORM_WAYLAND_KHR
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+
+		VKPP_ILOAD(ini, vkCreateWin32SurfaceKHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceWin32PresentationSupportKHR);
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+		VKPP_ILOAD(ini, vkCreateDebugReportCallbackEXT);
+		VKPP_ILOAD(ini, vkDestroyDebugReportCallbackEXT);
+		VKPP_ILOAD(ini, vkDebugReportMessageEXT);
+		VKPP_ILOAD(ini, vkDebugMarkerSetObjectTagEXT);
+		VKPP_ILOAD(ini, vkDebugMarkerSetObjectNameEXT);
+		VKPP_ILOAD(ini, vkCmdDebugMarkerBeginEXT);
+		VKPP_ILOAD(ini, vkCmdDebugMarkerEndEXT);
+		VKPP_ILOAD(ini, vkCmdDebugMarkerInsertEXT);
+		VKPP_ILOAD(ini, vkCmdBindTransformFeedbackBuffersEXT);
+		VKPP_ILOAD(ini, vkCmdBeginTransformFeedbackEXT);
+		VKPP_ILOAD(ini, vkCmdEndTransformFeedbackEXT);
+		VKPP_ILOAD(ini, vkCmdBeginQueryIndexedEXT);
+		VKPP_ILOAD(ini, vkCmdEndQueryIndexedEXT);
+		VKPP_ILOAD(ini, vkCmdDrawIndirectByteCountEXT);
+		VKPP_ILOAD(ini, vkCmdDrawIndirectCountKHR);
+		VKPP_ILOAD(ini, vkCmdDrawIndirectCountAMD);
+		VKPP_ILOAD(ini, vkCmdDrawIndexedIndirectCountKHR);
+		VKPP_ILOAD(ini, vkCmdDrawIndexedIndirectCountAMD);
+		VKPP_ILOAD(ini, vkGetShaderInfoAMD);
+#ifdef VK_USE_PLATFORM_GGP
+
+		VKPP_ILOAD(ini, vkCreateStreamDescriptorSurfaceGGP);
+#endif //VK_USE_PLATFORM_GGP
+
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceExternalImageFormatPropertiesNV);
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+
+		VKPP_ILOAD(ini, vkGetMemoryWin32HandleNV);
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+		VKPP_ILOAD(ini, vkGetDeviceGroupSurfacePresentModes2EXT);
+#ifdef VK_USE_PLATFORM_VI_NN
+
+		VKPP_ILOAD(ini, vkCreateViSurfaceNN);
+#endif //VK_USE_PLATFORM_VI_NN
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+
+		VKPP_ILOAD(ini, vkGetMemoryWin32HandleKHR);
+		VKPP_ILOAD(ini, vkGetMemoryWin32HandlePropertiesKHR);
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+		VKPP_ILOAD(ini, vkGetMemoryFdKHR);
+		VKPP_ILOAD(ini, vkGetMemoryFdPropertiesKHR);
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+
+		VKPP_ILOAD(ini, vkImportSemaphoreWin32HandleKHR);
+		VKPP_ILOAD(ini, vkGetSemaphoreWin32HandleKHR);
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+		VKPP_ILOAD(ini, vkImportSemaphoreFdKHR);
+		VKPP_ILOAD(ini, vkGetSemaphoreFdKHR);
+		VKPP_ILOAD(ini, vkCmdPushDescriptorSetKHR);
+		VKPP_ILOAD(ini, vkCmdPushDescriptorSetWithTemplateKHR);
+		VKPP_ILOAD(ini, vkCmdBeginConditionalRenderingEXT);
+		VKPP_ILOAD(ini, vkCmdEndConditionalRenderingEXT);
+		VKPP_ILOAD(ini, vkCmdSetViewportWScalingNV);
+		VKPP_ILOAD(ini, vkReleaseDisplayEXT);
+#ifdef VK_USE_PLATFORM_XLIB_XRANDR_EXT
+
+		VKPP_ILOAD(ini, vkAcquireXlibDisplayEXT);
+		VKPP_ILOAD(ini, vkGetRandROutputDisplayEXT);
+#endif //VK_USE_PLATFORM_XLIB_XRANDR_EXT
+
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfaceCapabilities2EXT);
+		VKPP_ILOAD(ini, vkDisplayPowerControlEXT);
+		VKPP_ILOAD(ini, vkRegisterDeviceEventEXT);
+		VKPP_ILOAD(ini, vkRegisterDisplayEventEXT);
+		VKPP_ILOAD(ini, vkGetSwapchainCounterEXT);
+		VKPP_ILOAD(ini, vkGetRefreshCycleDurationGOOGLE);
+		VKPP_ILOAD(ini, vkGetPastPresentationTimingGOOGLE);
+		VKPP_ILOAD(ini, vkCmdSetDiscardRectangleEXT);
+		VKPP_ILOAD(ini, vkSetHdrMetadataEXT);
+		VKPP_ILOAD(ini, vkCreateRenderPass2KHR);
+		VKPP_ILOAD(ini, vkCmdBeginRenderPass2KHR);
+		VKPP_ILOAD(ini, vkCmdNextSubpass2KHR);
+		VKPP_ILOAD(ini, vkCmdEndRenderPass2KHR);
+		VKPP_ILOAD(ini, vkGetSwapchainStatusKHR);
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+
+		VKPP_ILOAD(ini, vkImportFenceWin32HandleKHR);
+		VKPP_ILOAD(ini, vkGetFenceWin32HandleKHR);
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+		VKPP_ILOAD(ini, vkImportFenceFdKHR);
+		VKPP_ILOAD(ini, vkGetFenceFdKHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfaceCapabilities2KHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfaceFormats2KHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceDisplayProperties2KHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceDisplayPlaneProperties2KHR);
+		VKPP_ILOAD(ini, vkGetDisplayModeProperties2KHR);
+		VKPP_ILOAD(ini, vkGetDisplayPlaneCapabilities2KHR);
+#ifdef VK_USE_PLATFORM_IOS_MVK
+
+		VKPP_ILOAD(ini, vkCreateIOSSurfaceMVK);
+#endif //VK_USE_PLATFORM_IOS_MVK
+
+#ifdef VK_USE_PLATFORM_MACOS_MVK
+
+		VKPP_ILOAD(ini, vkCreateMacOSSurfaceMVK);
+#endif //VK_USE_PLATFORM_MACOS_MVK
+
+		VKPP_ILOAD(ini, vkSetDebugUtilsObjectNameEXT);
+		VKPP_ILOAD(ini, vkSetDebugUtilsObjectTagEXT);
+		VKPP_ILOAD(ini, vkQueueBeginDebugUtilsLabelEXT);
+		VKPP_ILOAD(ini, vkQueueEndDebugUtilsLabelEXT);
+		VKPP_ILOAD(ini, vkQueueInsertDebugUtilsLabelEXT);
+		VKPP_ILOAD(ini, vkCmdBeginDebugUtilsLabelEXT);
+		VKPP_ILOAD(ini, vkCmdEndDebugUtilsLabelEXT);
+		VKPP_ILOAD(ini, vkCmdInsertDebugUtilsLabelEXT);
+		VKPP_ILOAD(ini, vkCreateDebugUtilsMessengerEXT);
+		VKPP_ILOAD(ini, vkDestroyDebugUtilsMessengerEXT);
+		VKPP_ILOAD(ini, vkSubmitDebugUtilsMessageEXT);
+		VKPP_ILOAD(ini, vkCmdSetSampleLocationsEXT);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceMultisamplePropertiesEXT);
+		VKPP_ILOAD(ini, vkGetImageDrmFormatModifierPropertiesEXT);
+		VKPP_ILOAD(ini, vkCreateValidationCacheEXT);
+		VKPP_ILOAD(ini, vkDestroyValidationCacheEXT);
+		VKPP_ILOAD(ini, vkMergeValidationCachesEXT);
+		VKPP_ILOAD(ini, vkGetValidationCacheDataEXT);
+		VKPP_ILOAD(ini, vkCmdBindShadingRateImageNV);
+		VKPP_ILOAD(ini, vkCmdSetViewportShadingRatePaletteNV);
+		VKPP_ILOAD(ini, vkCmdSetCoarseSampleOrderNV);
+		VKPP_ILOAD(ini, vkCreateAccelerationStructureNV);
+		VKPP_ILOAD(ini, vkDestroyAccelerationStructureNV);
+		VKPP_ILOAD(ini, vkGetAccelerationStructureMemoryRequirementsNV);
+		VKPP_ILOAD(ini, vkBindAccelerationStructureMemoryNV);
+		VKPP_ILOAD(ini, vkCmdBuildAccelerationStructureNV);
+		VKPP_ILOAD(ini, vkCmdCopyAccelerationStructureNV);
+		VKPP_ILOAD(ini, vkCmdTraceRaysNV);
+		VKPP_ILOAD(ini, vkCreateRayTracingPipelinesNV);
+		VKPP_ILOAD(ini, vkGetRayTracingShaderGroupHandlesNV);
+		VKPP_ILOAD(ini, vkGetAccelerationStructureHandleNV);
+		VKPP_ILOAD(ini, vkCmdWriteAccelerationStructuresPropertiesNV);
+		VKPP_ILOAD(ini, vkCompileDeferredNV);
+		VKPP_ILOAD(ini, vkGetMemoryHostPointerPropertiesEXT);
+		VKPP_ILOAD(ini, vkCmdWriteBufferMarkerAMD);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceCalibrateableTimeDomainsEXT);
+		VKPP_ILOAD(ini, vkGetCalibratedTimestampsEXT);
+		VKPP_ILOAD(ini, vkCmdDrawMeshTasksNV);
+		VKPP_ILOAD(ini, vkCmdDrawMeshTasksIndirectNV);
+		VKPP_ILOAD(ini, vkCmdDrawMeshTasksIndirectCountNV);
+		VKPP_ILOAD(ini, vkCmdSetExclusiveScissorNV);
+		VKPP_ILOAD(ini, vkCmdSetCheckpointNV);
+		VKPP_ILOAD(ini, vkGetQueueCheckpointDataNV);
+		VKPP_ILOAD(ini, vkSetLocalDimmingAMD);
+#ifdef VK_USE_PLATFORM_FUCHSIA
+
+		VKPP_ILOAD(ini, vkCreateImagePipeSurfaceFUCHSIA);
+#endif //VK_USE_PLATFORM_FUCHSIA
+
+		VKPP_ILOAD(ini, vkGetBufferDeviceAddressEXT);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceCooperativeMatrixPropertiesNV);
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfacePresentModes2EXT);
+		VKPP_ILOAD(ini, vkAcquireFullScreenExclusiveModeEXT);
+		VKPP_ILOAD(ini, vkReleaseFullScreenExclusiveModeEXT);
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+		VKPP_ILOAD(ini, vkCreateHeadlessSurfaceEXT);
+		VKPP_ILOAD(ini, vkResetQueryPoolEXT);
 
 	}
 

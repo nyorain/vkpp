@@ -481,45 +481,37 @@ struct DisplaySurfaceCreateInfoKHR;
 
 struct DisplayPresentInfoKHR;
 
-#ifdef xlib
+#ifdef VK_USE_PLATFORM_XLIB_KHR
 
 using XlibSurfaceCreateFlagsKHR = Flags<DummyEnum>;
 
 struct XlibSurfaceCreateInfoKHR;
 
-#endif //xlib
+#endif //VK_USE_PLATFORM_XLIB_KHR
 
-#ifdef xcb
+#ifdef VK_USE_PLATFORM_XCB_KHR
 
 using XcbSurfaceCreateFlagsKHR = Flags<DummyEnum>;
 
 struct XcbSurfaceCreateInfoKHR;
 
-#endif //xcb
+#endif //VK_USE_PLATFORM_XCB_KHR
 
-#ifdef wayland
+#ifdef VK_USE_PLATFORM_WAYLAND_KHR
 
 using WaylandSurfaceCreateFlagsKHR = Flags<DummyEnum>;
 
 struct WaylandSurfaceCreateInfoKHR;
 
-#endif //wayland
+#endif //VK_USE_PLATFORM_WAYLAND_KHR
 
-#ifdef android
-
-using AndroidSurfaceCreateFlagsKHR = Flags<DummyEnum>;
-
-struct AndroidSurfaceCreateInfoKHR;
-
-#endif //android
-
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 using Win32SurfaceCreateFlagsKHR = Flags<DummyEnum>;
 
 struct Win32SurfaceCreateInfoKHR;
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(DebugReportCallbackEXT)
 
@@ -555,13 +547,13 @@ enum class ShaderInfoTypeAMD : int32_t;
 struct ShaderResourceUsageAMD;
 struct ShaderStatisticsInfoAMD;
 
-#ifdef ggp
+#ifdef VK_USE_PLATFORM_GGP
 
 using StreamDescriptorSurfaceCreateFlagsGGP = Flags<DummyEnum>;
 
 struct StreamDescriptorSurfaceCreateInfoGGP;
 
-#endif //ggp
+#endif //VK_USE_PLATFORM_GGP
 
 struct PhysicalDeviceCornerSampledImageFeaturesNV;
 
@@ -579,18 +571,18 @@ struct ExternalImageFormatPropertiesNV;
 struct ExternalMemoryImageCreateInfoNV;
 struct ExportMemoryAllocateInfoNV;
 
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 struct ImportMemoryWin32HandleInfoNV;
 struct ExportMemoryWin32HandleInfoNV;
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 struct Win32KeyedMutexAcquireReleaseInfoNV;
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
 using PhysicalDeviceFeatures2KHR = PhysicalDeviceFeatures2;
 using PhysicalDeviceProperties2KHR = PhysicalDeviceProperties2;
@@ -603,8 +595,10 @@ using SparseImageFormatProperties2KHR = SparseImageFormatProperties2;
 using PhysicalDeviceSparseImageFormatInfo2KHR = PhysicalDeviceSparseImageFormatInfo2;
 struct PhysicalDeviceSurfaceInfo2KHR;
 
-using PeerMemoryFeatureFlagBitsKHR = PeerMemoryFeatureBits;
-using MemoryAllocateFlagBitsKHR = MemoryAllocateBits;
+using PeerMemoryFeatureFlagsKHR = PeerMemoryFeatureFlags;
+using PeerMemoryFeatureBitsKHR = PeerMemoryFeatureBits;
+using MemoryAllocateFlagsKHR = MemoryAllocateFlags;
+using MemoryAllocateBitsKHR = MemoryAllocateBits;
 using MemoryAllocateFlagsInfoKHR = MemoryAllocateFlagsInfo;
 using DeviceGroupRenderPassBeginInfoKHR = DeviceGroupRenderPassBeginInfo;
 using DeviceGroupCommandBufferBeginInfoKHR = DeviceGroupCommandBufferBeginInfo;
@@ -616,25 +610,28 @@ enum class ValidationCheckEXT : int32_t;
 
 struct ValidationFlagsEXT;
 
-#ifdef vi
+#ifdef VK_USE_PLATFORM_VI_NN
 
 using ViSurfaceCreateFlagsNN = Flags<DummyEnum>;
 
 struct ViSurfaceCreateInfoNN;
 
-#endif //vi
+#endif //VK_USE_PLATFORM_VI_NN
 
 struct ImageViewASTCDecodeModeEXT;
 struct PhysicalDeviceASTCDecodeFeaturesEXT;
 
+using CommandPoolTrimFlagsKHR = CommandPoolTrimFlags;
 constexpr auto maxDeviceGroupSizeKHR = 32;
 
 using PhysicalDeviceGroupPropertiesKHR = PhysicalDeviceGroupProperties;
 using DeviceGroupDeviceCreateInfoKHR = DeviceGroupDeviceCreateInfo;
 constexpr auto luidSizeKHR = 8;
 
-using ExternalMemoryHandleTypeFlagBitsKHR = ExternalMemoryHandleTypeBits;
-using ExternalMemoryFeatureFlagBitsKHR = ExternalMemoryFeatureBits;
+using ExternalMemoryHandleTypeFlagsKHR = ExternalMemoryHandleTypeFlags;
+using ExternalMemoryHandleTypeBitsKHR = ExternalMemoryHandleTypeBits;
+using ExternalMemoryFeatureFlagsKHR = ExternalMemoryFeatureFlags;
+using ExternalMemoryFeatureBitsKHR = ExternalMemoryFeatureBits;
 using ExternalMemoryPropertiesKHR = ExternalMemoryProperties;
 using PhysicalDeviceExternalImageFormatInfoKHR = PhysicalDeviceExternalImageFormatInfo;
 using ExternalImageFormatPropertiesKHR = ExternalImageFormatProperties;
@@ -646,39 +643,42 @@ constexpr auto queueFamilyExternalKHR = (~0U-1);
 using ExternalMemoryImageCreateInfoKHR = ExternalMemoryImageCreateInfo;
 using ExternalMemoryBufferCreateInfoKHR = ExternalMemoryBufferCreateInfo;
 using ExportMemoryAllocateInfoKHR = ExportMemoryAllocateInfo;
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 struct ImportMemoryWin32HandleInfoKHR;
 struct ExportMemoryWin32HandleInfoKHR;
 struct MemoryWin32HandlePropertiesKHR;
 struct MemoryGetWin32HandleInfoKHR;
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
 struct ImportMemoryFdInfoKHR;
 struct MemoryFdPropertiesKHR;
 struct MemoryGetFdInfoKHR;
 
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 struct Win32KeyedMutexAcquireReleaseInfoKHR;
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
-using ExternalSemaphoreHandleTypeFlagBitsKHR = ExternalSemaphoreHandleTypeBits;
-using ExternalSemaphoreFeatureFlagBitsKHR = ExternalSemaphoreFeatureBits;
+using ExternalSemaphoreHandleTypeFlagsKHR = ExternalSemaphoreHandleTypeFlags;
+using ExternalSemaphoreHandleTypeBitsKHR = ExternalSemaphoreHandleTypeBits;
+using ExternalSemaphoreFeatureFlagsKHR = ExternalSemaphoreFeatureFlags;
+using ExternalSemaphoreFeatureBitsKHR = ExternalSemaphoreFeatureBits;
 using PhysicalDeviceExternalSemaphoreInfoKHR = PhysicalDeviceExternalSemaphoreInfo;
 using ExternalSemaphorePropertiesKHR = ExternalSemaphoreProperties;
-using SemaphoreImportFlagBitsKHR = SemaphoreImportBits;
+using SemaphoreImportFlagsKHR = SemaphoreImportFlags;
+using SemaphoreImportBitsKHR = SemaphoreImportBits;
 using ExportSemaphoreCreateInfoKHR = ExportSemaphoreCreateInfo;
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 struct ImportSemaphoreWin32HandleInfoKHR;
 struct ExportSemaphoreWin32HandleInfoKHR;
 struct D3D12FenceSubmitInfoKHR;
 struct SemaphoreGetWin32HandleInfoKHR;
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
 struct ImportSemaphoreFdInfoKHR;
 struct SemaphoreGetFdInfoKHR;
@@ -700,6 +700,8 @@ struct RectLayerKHR;
 struct PresentRegionKHR;
 struct PresentRegionsKHR;
 
+using DescriptorUpdateTemplateKHR = DescriptorUpdateTemplate;
+using DescriptorUpdateTemplateCreateFlagsKHR = DescriptorUpdateTemplateCreateFlags;
 using DescriptorUpdateTemplateTypeKHR = DescriptorUpdateTemplateType;
 using DescriptorUpdateTemplateEntryKHR = DescriptorUpdateTemplateEntry;
 using DescriptorUpdateTemplateCreateInfoKHR = DescriptorUpdateTemplateCreateInfo;
@@ -765,19 +767,22 @@ struct SubpassEndInfoKHR;
 
 struct SharedPresentSurfaceCapabilitiesKHR;
 
-using ExternalFenceHandleTypeFlagBitsKHR = ExternalFenceHandleTypeBits;
-using ExternalFenceFeatureFlagBitsKHR = ExternalFenceFeatureBits;
+using ExternalFenceHandleTypeFlagsKHR = ExternalFenceHandleTypeFlags;
+using ExternalFenceHandleTypeBitsKHR = ExternalFenceHandleTypeBits;
+using ExternalFenceFeatureFlagsKHR = ExternalFenceFeatureFlags;
+using ExternalFenceFeatureBitsKHR = ExternalFenceFeatureBits;
 using PhysicalDeviceExternalFenceInfoKHR = PhysicalDeviceExternalFenceInfo;
 using ExternalFencePropertiesKHR = ExternalFenceProperties;
-using FenceImportFlagBitsKHR = FenceImportBits;
+using FenceImportFlagsKHR = FenceImportFlags;
+using FenceImportBitsKHR = FenceImportBits;
 using ExportFenceCreateInfoKHR = ExportFenceCreateInfo;
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 struct ImportFenceWin32HandleInfoKHR;
 struct ExportFenceWin32HandleInfoKHR;
 struct FenceGetWin32HandleInfoKHR;
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
 struct ImportFenceFdInfoKHR;
 struct FenceGetFdInfoKHR;
@@ -800,21 +805,21 @@ struct DisplayModeProperties2KHR;
 struct DisplayPlaneInfo2KHR;
 struct DisplayPlaneCapabilities2KHR;
 
-#ifdef ios
+#ifdef VK_USE_PLATFORM_IOS_MVK
 
 using IOSSurfaceCreateFlagsMVK = Flags<DummyEnum>;
 
 struct IOSSurfaceCreateInfoMVK;
 
-#endif //ios
+#endif //VK_USE_PLATFORM_IOS_MVK
 
-#ifdef macos
+#ifdef VK_USE_PLATFORM_MACOS_MVK
 
 using MacOSSurfaceCreateFlagsMVK = Flags<DummyEnum>;
 
 struct MacOSSurfaceCreateInfoMVK;
 
-#endif //macos
+#endif //VK_USE_PLATFORM_MACOS_MVK
 
 constexpr auto queueFamilyForeignEXT = (~0U-2);
 
@@ -835,17 +840,6 @@ struct DebugUtilsObjectTagInfoEXT;
 struct DebugUtilsLabelEXT;
 struct DebugUtilsMessengerCallbackDataEXT;
 struct DebugUtilsMessengerCreateInfoEXT;
-
-#ifdef android
-
-struct AndroidHardwareBufferUsageANDROID;
-struct AndroidHardwareBufferPropertiesANDROID;
-struct AndroidHardwareBufferFormatPropertiesANDROID;
-struct ImportAndroidHardwareBufferInfoANDROID;
-struct MemoryGetAndroidHardwareBufferInfoANDROID;
-struct ExternalFormatANDROID;
-
-#endif //android
 
 enum class SamplerReductionModeEXT : int32_t;
 
@@ -894,6 +888,7 @@ using BindImagePlaneMemoryInfoKHR = BindImagePlaneMemoryInfo;
 using ImagePlaneMemoryRequirementsInfoKHR = ImagePlaneMemoryRequirementsInfo;
 using PhysicalDeviceSamplerYcbcrConversionFeaturesKHR = PhysicalDeviceSamplerYcbcrConversionFeatures;
 using SamplerYcbcrConversionImageFormatPropertiesKHR = SamplerYcbcrConversionImageFormatProperties;
+using SamplerYcbcrConversionKHR = SamplerYcbcrConversion;
 using SamplerYcbcrModelConversionKHR = SamplerYcbcrModelConversion;
 using SamplerYcbcrRangeKHR = SamplerYcbcrRange;
 using ChromaLocationKHR = ChromaLocation;
@@ -1001,11 +996,11 @@ struct VertexInputBindingDivisorDescriptionEXT;
 struct PipelineVertexInputDivisorStateCreateInfoEXT;
 struct PhysicalDeviceVertexAttributeDivisorFeaturesEXT;
 
-#ifdef ggp
+#ifdef VK_USE_PLATFORM_GGP
 
 struct PresentFrameTokenGGP;
 
-#endif //ggp
+#endif //VK_USE_PLATFORM_GGP
 
 enum class PipelineCreationFeedbackBitsEXT : int32_t;
 
@@ -1054,21 +1049,13 @@ struct PhysicalDevicePCIBusInfoPropertiesEXT;
 struct DisplayNativeHdrSurfaceCapabilitiesAMD;
 struct SwapchainDisplayNativeHdrCreateInfoAMD;
 
-#ifdef fuchsia
+#ifdef VK_USE_PLATFORM_FUCHSIA
 
 using ImagePipeSurfaceCreateFlagsFUCHSIA = Flags<DummyEnum>;
 
 struct ImagePipeSurfaceCreateInfoFUCHSIA;
 
-#endif //fuchsia
-
-#ifdef metal
-
-using MetalSurfaceCreateFlagsEXT = Flags<DummyEnum>;
-
-struct MetalSurfaceCreateInfoEXT;
-
-#endif //metal
+#endif //VK_USE_PLATFORM_FUCHSIA
 
 struct PhysicalDeviceFragmentDensityMapFeaturesEXT;
 struct PhysicalDeviceFragmentDensityMapPropertiesEXT;
@@ -1108,7 +1095,7 @@ struct PhysicalDeviceCooperativeMatrixPropertiesNV;
 
 struct PhysicalDeviceYcbcrImageArraysFeaturesEXT;
 
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 enum class FullScreenExclusiveEXT : int32_t;
 
@@ -1116,7 +1103,7 @@ struct SurfaceFullScreenExclusiveInfoEXT;
 struct SurfaceCapabilitiesFullScreenExclusiveEXT;
 struct SurfaceFullScreenExclusiveWin32InfoEXT;
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
 using HeadlessSurfaceCreateFlagsEXT = Flags<DummyEnum>;
 

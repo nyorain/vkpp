@@ -3128,7 +3128,7 @@ struct DisplayPresentInfoKHR {
 };
 
 
-#ifdef xlib
+#ifdef VK_USE_PLATFORM_XLIB_KHR
 
 struct XlibSurfaceCreateInfoKHR {
 	StructureType sType {StructureType::xlibSurfaceCreateInfoKHR};
@@ -3147,9 +3147,9 @@ struct XlibSurfaceCreateInfoKHR {
 };
 
 
-#endif //xlib
+#endif //VK_USE_PLATFORM_XLIB_KHR
 
-#ifdef xcb
+#ifdef VK_USE_PLATFORM_XCB_KHR
 
 struct XcbSurfaceCreateInfoKHR {
 	StructureType sType {StructureType::xcbSurfaceCreateInfoKHR};
@@ -3168,9 +3168,9 @@ struct XcbSurfaceCreateInfoKHR {
 };
 
 
-#endif //xcb
+#endif //VK_USE_PLATFORM_XCB_KHR
 
-#ifdef wayland
+#ifdef VK_USE_PLATFORM_WAYLAND_KHR
 
 struct WaylandSurfaceCreateInfoKHR {
 	StructureType sType {StructureType::waylandSurfaceCreateInfoKHR};
@@ -3189,29 +3189,9 @@ struct WaylandSurfaceCreateInfoKHR {
 };
 
 
-#endif //wayland
+#endif //VK_USE_PLATFORM_WAYLAND_KHR
 
-#ifdef android
-
-struct AndroidSurfaceCreateInfoKHR {
-	StructureType sType {StructureType::androidSurfaceCreateInfoKHR};
-	const void* pNext {};
-	AndroidSurfaceCreateFlagsKHR flags {};
-	--- unknown ---* window {};
-
-	AndroidSurfaceCreateInfoKHR(AndroidSurfaceCreateFlagsKHR xflags = {}, --- unknown ---* xwindow = {}) : flags(xflags), window(xwindow) {}
-
-	const VkAndroidSurfaceCreateInfoKHR& vkHandle() const { return reinterpret_cast<const VkAndroidSurfaceCreateInfoKHR&>(*this); }
-	VkAndroidSurfaceCreateInfoKHR& vkHandle() { return reinterpret_cast<VkAndroidSurfaceCreateInfoKHR&>(*this); }
-
-	operator const VkAndroidSurfaceCreateInfoKHR&() const { return vkHandle(); };
-	operator VkAndroidSurfaceCreateInfoKHR&() { return vkHandle(); };
-};
-
-
-#endif //android
-
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 struct Win32SurfaceCreateInfoKHR {
 	StructureType sType {StructureType::win32SurfaceCreateInfoKHR};
@@ -3230,7 +3210,7 @@ struct Win32SurfaceCreateInfoKHR {
 };
 
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
 struct DebugReportCallbackCreateInfoEXT {
 	StructureType sType {StructureType::debugReportCallbackCreateInfoEXT};
@@ -3454,7 +3434,7 @@ struct ShaderStatisticsInfoAMD {
 };
 
 
-#ifdef ggp
+#ifdef VK_USE_PLATFORM_GGP
 
 struct StreamDescriptorSurfaceCreateInfoGGP {
 	StructureType sType {StructureType::streamDescriptorSurfaceCreateInfoGGP};
@@ -3472,7 +3452,7 @@ struct StreamDescriptorSurfaceCreateInfoGGP {
 };
 
 
-#endif //ggp
+#endif //VK_USE_PLATFORM_GGP
 
 struct PhysicalDeviceCornerSampledImageFeaturesNV {
 	StructureType sType {StructureType::physicalDeviceCornerSampledImageFeaturesNV};
@@ -3532,7 +3512,7 @@ struct ExportMemoryAllocateInfoNV {
 };
 
 
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 struct ImportMemoryWin32HandleInfoNV {
 	StructureType sType {StructureType::importMemoryWin32HandleInfoNV};
@@ -3565,9 +3545,9 @@ struct ExportMemoryWin32HandleInfoNV {
 };
 
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 struct Win32KeyedMutexAcquireReleaseInfoNV {
 	StructureType sType {StructureType::win32KeyedMutexAcquireReleaseInfoNV};
@@ -3590,7 +3570,7 @@ struct Win32KeyedMutexAcquireReleaseInfoNV {
 };
 
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
 struct PhysicalDeviceSurfaceInfo2KHR {
 	StructureType sType {StructureType::physicalDeviceSurfaceInfo2KHR};
@@ -3623,7 +3603,7 @@ struct ValidationFlagsEXT {
 };
 
 
-#ifdef vi
+#ifdef VK_USE_PLATFORM_VI_NN
 
 struct ViSurfaceCreateInfoNN {
 	StructureType sType {StructureType::viSurfaceCreateInfoNN};
@@ -3641,7 +3621,7 @@ struct ViSurfaceCreateInfoNN {
 };
 
 
-#endif //vi
+#endif //VK_USE_PLATFORM_VI_NN
 
 struct ImageViewASTCDecodeModeEXT {
 	StructureType sType {StructureType::imageViewAstcDecodeModeEXT};
@@ -3672,7 +3652,7 @@ struct PhysicalDeviceASTCDecodeFeaturesEXT {
 };
 
 
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 struct ImportMemoryWin32HandleInfoKHR {
 	StructureType sType {StructureType::importMemoryWin32HandleInfoKHR};
@@ -3734,7 +3714,7 @@ struct MemoryGetWin32HandleInfoKHR {
 };
 
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
 struct ImportMemoryFdInfoKHR {
 	StructureType sType {StructureType::importMemoryFdInfoKHR};
@@ -3779,7 +3759,7 @@ struct MemoryGetFdInfoKHR {
 };
 
 
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 struct Win32KeyedMutexAcquireReleaseInfoKHR {
 	StructureType sType {StructureType::win32KeyedMutexAcquireReleaseInfoKHR};
@@ -3802,9 +3782,9 @@ struct Win32KeyedMutexAcquireReleaseInfoKHR {
 };
 
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 struct ImportSemaphoreWin32HandleInfoKHR {
 	StructureType sType {StructureType::importSemaphoreWin32HandleInfoKHR};
@@ -3873,7 +3853,7 @@ struct SemaphoreGetWin32HandleInfoKHR {
 };
 
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
 struct ImportSemaphoreFdInfoKHR {
 	StructureType sType {StructureType::importSemaphoreFdInfoKHR};
@@ -4487,7 +4467,7 @@ struct SharedPresentSurfaceCapabilitiesKHR {
 };
 
 
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 struct ImportFenceWin32HandleInfoKHR {
 	StructureType sType {StructureType::importFenceWin32HandleInfoKHR};
@@ -4539,7 +4519,7 @@ struct FenceGetWin32HandleInfoKHR {
 };
 
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
 struct ImportFenceFdInfoKHR {
 	StructureType sType {StructureType::importFenceFdInfoKHR};
@@ -4663,7 +4643,7 @@ struct DisplayPlaneCapabilities2KHR {
 };
 
 
-#ifdef ios
+#ifdef VK_USE_PLATFORM_IOS_MVK
 
 struct IOSSurfaceCreateInfoMVK {
 	StructureType sType {StructureType::iosSurfaceCreateInfoMVK};
@@ -4681,9 +4661,9 @@ struct IOSSurfaceCreateInfoMVK {
 };
 
 
-#endif //ios
+#endif //VK_USE_PLATFORM_IOS_MVK
 
-#ifdef macos
+#ifdef VK_USE_PLATFORM_MACOS_MVK
 
 struct MacOSSurfaceCreateInfoMVK {
 	StructureType sType {StructureType::macosSurfaceCreateInfoMVK};
@@ -4701,7 +4681,7 @@ struct MacOSSurfaceCreateInfoMVK {
 };
 
 
-#endif //macos
+#endif //VK_USE_PLATFORM_MACOS_MVK
 
 struct DebugUtilsObjectNameInfoEXT {
 	StructureType sType {StructureType::debugUtilsObjectNameInfoEXT};
@@ -4793,97 +4773,6 @@ struct DebugUtilsMessengerCreateInfoEXT {
 	operator VkDebugUtilsMessengerCreateInfoEXT&() { return vkHandle(); };
 };
 
-
-#ifdef android
-
-struct AndroidHardwareBufferUsageANDROID {
-	StructureType sType {StructureType::androidHardwareBufferUsageANDROID};
-	void* pNext {};
-	uint64_t androidHardwareBufferUsage {};
-
-	const VkAndroidHardwareBufferUsageANDROID& vkHandle() const { return reinterpret_cast<const VkAndroidHardwareBufferUsageANDROID&>(*this); }
-	VkAndroidHardwareBufferUsageANDROID& vkHandle() { return reinterpret_cast<VkAndroidHardwareBufferUsageANDROID&>(*this); }
-
-	operator const VkAndroidHardwareBufferUsageANDROID&() const { return vkHandle(); };
-	operator VkAndroidHardwareBufferUsageANDROID&() { return vkHandle(); };
-};
-
-struct AndroidHardwareBufferPropertiesANDROID {
-	StructureType sType {StructureType::androidHardwareBufferPropertiesANDROID};
-	void* pNext {};
-	DeviceSize allocationSize {};
-	uint32_t memoryTypeBits {};
-
-	const VkAndroidHardwareBufferPropertiesANDROID& vkHandle() const { return reinterpret_cast<const VkAndroidHardwareBufferPropertiesANDROID&>(*this); }
-	VkAndroidHardwareBufferPropertiesANDROID& vkHandle() { return reinterpret_cast<VkAndroidHardwareBufferPropertiesANDROID&>(*this); }
-
-	operator const VkAndroidHardwareBufferPropertiesANDROID&() const { return vkHandle(); };
-	operator VkAndroidHardwareBufferPropertiesANDROID&() { return vkHandle(); };
-};
-
-struct AndroidHardwareBufferFormatPropertiesANDROID {
-	StructureType sType {StructureType::androidHardwareBufferFormatPropertiesANDROID};
-	void* pNext {};
-	Format format {};
-	uint64_t externalFormat {};
-	FormatFeatureFlags formatFeatures {};
-	ComponentMapping samplerYcbcrConversionComponents {};
-	SamplerYcbcrModelConversion suggestedYcbcrModel {};
-	SamplerYcbcrRange suggestedYcbcrRange {};
-	ChromaLocation suggestedXChromaOffset {};
-	ChromaLocation suggestedYChromaOffset {};
-
-	const VkAndroidHardwareBufferFormatPropertiesANDROID& vkHandle() const { return reinterpret_cast<const VkAndroidHardwareBufferFormatPropertiesANDROID&>(*this); }
-	VkAndroidHardwareBufferFormatPropertiesANDROID& vkHandle() { return reinterpret_cast<VkAndroidHardwareBufferFormatPropertiesANDROID&>(*this); }
-
-	operator const VkAndroidHardwareBufferFormatPropertiesANDROID&() const { return vkHandle(); };
-	operator VkAndroidHardwareBufferFormatPropertiesANDROID&() { return vkHandle(); };
-};
-
-struct ImportAndroidHardwareBufferInfoANDROID {
-	StructureType sType {StructureType::importAndroidHardwareBufferInfoANDROID};
-	const void* pNext {};
-	--- unknown ---* buffer {};
-
-	ImportAndroidHardwareBufferInfoANDROID(--- unknown ---* xbuffer = {}) : buffer(xbuffer) {}
-
-	const VkImportAndroidHardwareBufferInfoANDROID& vkHandle() const { return reinterpret_cast<const VkImportAndroidHardwareBufferInfoANDROID&>(*this); }
-	VkImportAndroidHardwareBufferInfoANDROID& vkHandle() { return reinterpret_cast<VkImportAndroidHardwareBufferInfoANDROID&>(*this); }
-
-	operator const VkImportAndroidHardwareBufferInfoANDROID&() const { return vkHandle(); };
-	operator VkImportAndroidHardwareBufferInfoANDROID&() { return vkHandle(); };
-};
-
-struct MemoryGetAndroidHardwareBufferInfoANDROID {
-	StructureType sType {StructureType::memoryGetAndroidHardwareBufferInfoANDROID};
-	const void* pNext {};
-	DeviceMemory memory {};
-
-	MemoryGetAndroidHardwareBufferInfoANDROID(DeviceMemory xmemory = {}) : memory(xmemory) {}
-
-	const VkMemoryGetAndroidHardwareBufferInfoANDROID& vkHandle() const { return reinterpret_cast<const VkMemoryGetAndroidHardwareBufferInfoANDROID&>(*this); }
-	VkMemoryGetAndroidHardwareBufferInfoANDROID& vkHandle() { return reinterpret_cast<VkMemoryGetAndroidHardwareBufferInfoANDROID&>(*this); }
-
-	operator const VkMemoryGetAndroidHardwareBufferInfoANDROID&() const { return vkHandle(); };
-	operator VkMemoryGetAndroidHardwareBufferInfoANDROID&() { return vkHandle(); };
-};
-
-struct ExternalFormatANDROID {
-	StructureType sType {StructureType::externalFormatANDROID};
-	void* pNext {};
-	uint64_t externalFormat {};
-
-	ExternalFormatANDROID(uint64_t xexternalFormat = {}) : externalFormat(xexternalFormat) {}
-
-	const VkExternalFormatANDROID& vkHandle() const { return reinterpret_cast<const VkExternalFormatANDROID&>(*this); }
-	VkExternalFormatANDROID& vkHandle() { return reinterpret_cast<VkExternalFormatANDROID&>(*this); }
-
-	operator const VkExternalFormatANDROID&() const { return vkHandle(); };
-	operator VkExternalFormatANDROID&() { return vkHandle(); };
-};
-
-
-#endif //android
 
 struct SamplerReductionModeCreateInfoEXT {
 	StructureType sType {StructureType::samplerReductionModeCreateInfoEXT};
@@ -5974,7 +5863,7 @@ struct PhysicalDeviceVertexAttributeDivisorFeaturesEXT {
 };
 
 
-#ifdef ggp
+#ifdef VK_USE_PLATFORM_GGP
 
 struct PresentFrameTokenGGP {
 	StructureType sType {StructureType::presentFrameTokenGGP};
@@ -5991,7 +5880,7 @@ struct PresentFrameTokenGGP {
 };
 
 
-#endif //ggp
+#endif //VK_USE_PLATFORM_GGP
 
 struct PipelineCreationFeedbackEXT {
 	PipelineCreationFeedbackFlagsEXT flags {};
@@ -6324,7 +6213,7 @@ struct SwapchainDisplayNativeHdrCreateInfoAMD {
 };
 
 
-#ifdef fuchsia
+#ifdef VK_USE_PLATFORM_FUCHSIA
 
 struct ImagePipeSurfaceCreateInfoFUCHSIA {
 	StructureType sType {StructureType::imagepipeSurfaceCreateInfoFUCHSIA};
@@ -6342,27 +6231,7 @@ struct ImagePipeSurfaceCreateInfoFUCHSIA {
 };
 
 
-#endif //fuchsia
-
-#ifdef metal
-
-struct MetalSurfaceCreateInfoEXT {
-	StructureType sType {StructureType::metalSurfaceCreateInfoEXT};
-	const void* pNext {};
-	MetalSurfaceCreateFlagsEXT flags {};
-	--- unknown ---* pLayer {};
-
-	MetalSurfaceCreateInfoEXT(MetalSurfaceCreateFlagsEXT xflags = {}, --- unknown ---* xpLayer = {}) : flags(xflags), pLayer(xpLayer) {}
-
-	const VkMetalSurfaceCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkMetalSurfaceCreateInfoEXT&>(*this); }
-	VkMetalSurfaceCreateInfoEXT& vkHandle() { return reinterpret_cast<VkMetalSurfaceCreateInfoEXT&>(*this); }
-
-	operator const VkMetalSurfaceCreateInfoEXT&() const { return vkHandle(); };
-	operator VkMetalSurfaceCreateInfoEXT&() { return vkHandle(); };
-};
-
-
-#endif //metal
+#endif //VK_USE_PLATFORM_FUCHSIA
 
 struct PhysicalDeviceFragmentDensityMapFeaturesEXT {
 	StructureType sType {StructureType::physicalDeviceFragmentDensityMapFeaturesEXT};
@@ -6637,7 +6506,7 @@ struct PhysicalDeviceYcbcrImageArraysFeaturesEXT {
 };
 
 
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 struct SurfaceFullScreenExclusiveInfoEXT {
 	StructureType sType {StructureType::surfaceFullScreenExclusiveInfoEXT};
@@ -6682,7 +6551,7 @@ struct SurfaceFullScreenExclusiveWin32InfoEXT {
 };
 
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
 struct HeadlessSurfaceCreateInfoEXT {
 	StructureType sType {StructureType::headlessSurfaceCreateInfoEXT};

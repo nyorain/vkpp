@@ -181,7 +181,6 @@ enum class StructureType : int32_t {
 	xlibSurfaceCreateInfoKHR = 1000004000,
 	xcbSurfaceCreateInfoKHR = 1000005000,
 	waylandSurfaceCreateInfoKHR = 1000006000,
-	androidSurfaceCreateInfoKHR = 1000008000,
 	win32SurfaceCreateInfoKHR = 1000009000,
 	debugReportCallbackCreateInfoEXT = 1000011000,
 	debugReportCreateInfoEXT = 1000011000,
@@ -315,12 +314,6 @@ enum class StructureType : int32_t {
 	debugUtilsLabelEXT = 1000128002,
 	debugUtilsMessengerCallbackDataEXT = 1000128003,
 	debugUtilsMessengerCreateInfoEXT = 1000128004,
-	androidHardwareBufferUsageANDROID = 1000129000,
-	androidHardwareBufferPropertiesANDROID = 1000129001,
-	androidHardwareBufferFormatPropertiesANDROID = 1000129002,
-	importAndroidHardwareBufferInfoANDROID = 1000129003,
-	memoryGetAndroidHardwareBufferInfoANDROID = 1000129004,
-	externalFormatANDROID = 1000129005,
 	physicalDeviceSamplerFilterMinmaxPropertiesEXT = 1000130000,
 	samplerReductionModeCreateInfoEXT = 1000130001,
 	physicalDeviceInlineUniformBlockFeaturesEXT = 1000138000,
@@ -417,7 +410,6 @@ enum class StructureType : int32_t {
 	displayNativeHdrSurfaceCapabilitiesAMD = 1000213000,
 	swapchainDisplayNativeHdrCreateInfoAMD = 1000213001,
 	imagepipeSurfaceCreateInfoFUCHSIA = 1000214000,
-	metalSurfaceCreateInfoEXT = 1000217000,
 	physicalDeviceFragmentDensityMapFeaturesEXT = 1000218000,
 	physicalDeviceFragmentDensityMapPropertiesEXT = 1000218001,
 	renderPassFragmentDensityMapCreateInfoEXT = 1000218002,
@@ -1038,7 +1030,6 @@ enum class ExternalMemoryHandleTypeBits : int32_t {
 	d3d12HeapKHR = (1 << 5),
 	d3d12ResourceKHR = (1 << 6),
 	dmaBufEXT = (1 << 9),
-	androidHardwareBufferANDROID = (1 << 10),
 	hostAllocationEXT = (1 << 7),
 	hostMappedForeignMemoryEXT = (1 << 8)
 };
@@ -2080,7 +2071,7 @@ enum class ScopeNV : int32_t {
 };
 
 
-#ifdef win32
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 
 enum class FullScreenExclusiveEXT : int32_t {
 	eDefault = 0,
@@ -2090,7 +2081,7 @@ enum class FullScreenExclusiveEXT : int32_t {
 };
 
 
-#endif //win32
+#endif //VK_USE_PLATFORM_WIN32_KHR
 
 
 } // namespace vk
