@@ -15,6 +15,8 @@
 // workarounds. More lightweight like this but won't give you as much
 // debug messages (or support shitty compilers).
 // Changed to match C++20 standard more closely (especially initialization).
+// Will be removed when this project switches to C++20, i don't like
+// the microsoft copyright either.
 
 #pragma once
 
