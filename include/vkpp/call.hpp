@@ -5,12 +5,10 @@
 #pragma once
 
 #include <vkpp/enums.hpp>
-
-#ifdef VKPP_DYNAMIC_DISPATCH
-	#include <vkpp/dispatch.hpp>
-#endif
+#include <vkpp/dispatch.hpp>
 
 #include <string>
+#include <type_traits>
 #include <stdexcept>
 #include <vulkan/vulkan.h>
 
@@ -62,7 +60,7 @@ public:
 
 namespace error {
 
-/// Returns whether the error code inidicates success.
+/// Returns whether the result code inidicates success.
 inline bool success(vk::Result result) {
 	return static_cast<std::int64_t>(result) >= 0;
 }
@@ -91,7 +89,7 @@ namespace call {
 /// is undefined behaviour).
 template<typename FR, typename... FA, typename... Args>
 auto call(FR (*f)(FA...), Args&&... args) {
-	if constexpr (std::is_same_v<FR, VkResult>) {
+	if constexpr(std::is_same_v<FR, VkResult>) {
 		return static_cast<vk::Result>(f(((FA) args)...));
 	} else {
 		return f(((FA) args)...);
@@ -100,16 +98,23 @@ auto call(FR (*f)(FA...), Args&&... args) {
 
 } // namespace call
 
+
+/// Global default dispatcher. Used by default for non-core functions
+/// or when VKPP_DYNAMIC_DISPATCH is defined.
+/// After creating an instance you have to call `vk::dispatch.init(instance)`.
+/// Note that (implicit) dynamic dispatch does not work with multiple instances.
+DynamicDispatch dispatch;
+
+/// Dispatches function x via the given dispatcher (if not null), otherwise
+/// falls back to the globak vk::dispatch.
+#define VKPP_DISPATCH_GLOBAL(d, f, ...) ((d ? d : &::vk::dispatch)->f(__VA_ARGS__))
+
+/// If VKPP_DYNAMIC_DISPATCH is defined, functions will never be called
+/// directly.
 #ifdef VKPP_DYNAMIC_DISPATCH
-	/// If VKPP_DYNAMIC_DISPATCH is defined, functions will never be called
-	/// directly. After creating an instance (and optionally after having
-	/// created a device if only one is used) you have to call
-	/// `vk::dispatch.init(instance, dev (or null handle))`. Note that
-	/// dynamic dispatch does not work with multiple instances.
-	DynamicDispatch dispatch;
-	#define VKPP_DISPATCH(x) ::vk::dispatch.x
+	#define VKPP_DISPATCH(d, f, ...) (VKPP_DISPATCH_GLOBAL(d, f, __VA_ARGS__))
 #else
-	#define VKPP_DISPATCH(x) x
+	#define VKPP_DISPATCH(d, f, ...) ((d ? d->f : f)(__VA_ARGS__))
 #endif
 
 } // namespace vk
@@ -135,5 +140,5 @@ auto call(FR (*f)(FA...), Args&&... args) {
 #endif
 
 #ifndef VKPP_CALL
-	#define VKPP_CALL(x) VKPP_CHECK(VKPP_DISPATCH(x))
+	#define VKPP_CALL(d, f, ...) VKPP_CHECK(VKPP_DISPATCH(d, f, __VA_ARGS__))
 #endif

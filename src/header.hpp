@@ -73,32 +73,64 @@ auto constexpr functionsHeader = &R"SRC(
 	#error "vulkan.h version too old, does not match generated version"
 #endif
 
-#define VEC_FUNC(T, CT, F, ...) \
+// normal dispatch versions
+#define VEC_FUNC(D, T, CT, F, ...) \
 	std::vector<T> ret; \
 	CT count = 0u; \
-	if(!error::success(VKPP_CALL(F(__VA_ARGS__)))) return ret; \
+	auto res = VKPP_CHECK(VKPP_DISPATCH(D, F, __VA_ARGS__)); \
+	if(!error::success(res)) return ret; \
 	ret.resize(count); \
-	VKPP_CALL(F(__VA_ARGS__)); \
+	VKPP_CALL(D, F, __VA_ARGS__); \
 	return ret;
 
-#define VEC_FUNC_VOID(T, CT, F, ...) \
+#define VEC_FUNC_VOID(D, T, CT, F, ...) \
 	std::vector<T> ret; \
 	CT count = 0u; \
-	VKPP_DISPATCH(F(__VA_ARGS__)); \
+	VKPP_DISPATCH(D, F, __VA_ARGS__); \
 	ret.resize(count); \
-	F(__VA_ARGS__); \
+	VKPP_DISPATCH(D, F, __VA_ARGS__); \
 	return ret;
 
-#define VEC_FUNC_RET(T, C, F, ...) \
+#define VEC_FUNC_RET(D, T, C, F, ...) \
 	std::vector<T> ret; \
 	ret.resize(C); \
-	VKPP_CALL(F(__VA_ARGS__)); \
+	VKPP_CALL(D, F, __VA_ARGS__); \
 	return ret;
 
-#define VEC_FUNC_RET_VOID(T, C, F, ...) \
+#define VEC_FUNC_RET_VOID(D, T, C, F, ...) \
 	std::vector<T> ret; \
 	ret.resize(C); \
-	VKPP_DISPATCH(F(__VA_ARGS__)); \
+	VKPP_DISPATCH(D, F, __VA_ARGS__); \
+	return ret;
+
+// global dispatch versions
+#define VEC_FUNC_G(D, T, CT, F, ...) \
+	std::vector<T> ret; \
+	CT count = 0u; \
+	auto res = VKPP_CHECK(VKPP_DISPATCH_GLOBAL(D, F, __VA_ARGS__)); \
+	if(!error::success(res)) return ret; \
+	ret.resize(count); \
+	VKPP_CHECK(VKPP_DISPATCH_GLOBAL(D, F, __VA_ARGS__)); \
+	return ret;
+
+#define VEC_FUNC_VOID_G(D, T, CT, F, ...) \
+	std::vector<T> ret; \
+	CT count = 0u; \
+	VKPP_DISPATCH_GLOBAL(D, F, __VA_ARGS__); \
+	ret.resize(count); \
+	VKPP_DISPATCH_GLOBAL(D, F, __VA_ARGS__); \
+	return ret;
+
+#define VEC_FUNC_RET_G(D, T, C, F, ...) \
+	std::vector<T> ret; \
+	ret.resize(C); \
+	VKPP_CHECK(VKPP_DISPATCH_GLOBAL(D, F, __VA_ARGS__)); \
+	return ret;
+
+#define VEC_FUNC_RET_VOID_G(D, T, C, F, ...) \
+	std::vector<T> ret; \
+	ret.resize(C); \
+	VKPP_DISPATCH_GLOBAL(D, F, __VA_ARGS__); \
 	return ret;
 
 )SRC"[1];
@@ -152,6 +184,9 @@ public:
 )SRC"[1];
 
 
+// NOTE: instead of the macros we could also just use the functions
+// directly.
+
 // auto constexpr vecFuncTemplate = 1 + R"SRC(
 // 	std::vector<%t> ret;
 // 	%ct count = 0u;
@@ -162,7 +197,7 @@ public:
 // )SRC";
 
 auto constexpr vecFuncTemplate = &R"SRC(
-VEC_FUNC(%t, %ct, %f, %a); )SRC"[1];
+VEC_FUNC(dispatcher, %t, %ct, %f, %a); )SRC"[1];
 
 // auto constexpr vecFuncTemplateVoid = 1 + R"SRC(
 // 	std::vector<%t> ret;
@@ -174,7 +209,7 @@ VEC_FUNC(%t, %ct, %f, %a); )SRC"[1];
 // )SRC";
 
 auto constexpr vecFuncTemplateVoid = &R"SRC(
-VEC_FUNC_VOID(%t, %ct, %f, %a); )SRC"[1];
+VEC_FUNC_VOID(dispatcher, %t, %ct, %f, %a); )SRC"[1];
 
 // auto constexpr vecFuncTemplateRetGiven = 1 + R"SRC(
 // 	std::vector<%t> ret;
@@ -184,7 +219,7 @@ VEC_FUNC_VOID(%t, %ct, %f, %a); )SRC"[1];
 // )SRC";
 
 auto constexpr vecFuncTemplateRetGiven = &R"SRC(
-VEC_FUNC_RET(%t, %c, %f, %a); )SRC"[1];
+VEC_FUNC_RET(dispatcher, %t, %c, %f, %a); )SRC"[1];
 
 // auto constexpr vecFuncTemplateRetGivenVoid = 1 + R"SRC(
 // 	std::vector<%t> ret;
@@ -194,7 +229,17 @@ VEC_FUNC_RET(%t, %c, %f, %a); )SRC"[1];
 // )SRC";
 
 auto constexpr vecFuncTemplateRetGivenVoid = &R"SRC(
-VEC_FUNC_RET_VOID(%t, %c, %f, %a); )SRC"[1];
+VEC_FUNC_RET_VOID(dispatcher, %t, %c, %f, %a); )SRC"[1];
+
+// global
+auto constexpr vecFuncTemplateDispatch = &R"SRC(
+VEC_FUNC_G(dispatcher, %t, %ct, %f, %a); )SRC"[1];
+auto constexpr vecFuncTemplateVoidDispatch = &R"SRC(
+VEC_FUNC_VOID_G(dispatcher, %t, %ct, %f, %a); )SRC"[1];
+auto constexpr vecFuncTemplateRetGivenDispatch = &R"SRC(
+VEC_FUNC_RET_G(dispatcher, %t, %c, %f, %a); )SRC"[1];
+auto constexpr vecFuncTemplateRetGivenVoidDispatch = &R"SRC(
+VEC_FUNC_RET_VOID_G(dispatcher, %t, %c, %f, %a); )SRC"[1];
 
 constexpr const char* keywords[]= {"alignas", "alignof", "and", "and_eq", "asm", "auto", "bitand",
 	"bitor", "bool", "break", "case", "catch", "char", "char16_t", "char32_t", "class", "compl",

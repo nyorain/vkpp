@@ -11,6 +11,7 @@
 class Registry;
 class Param;
 class Type;
+class BaseType;
 class QualifiedType;
 class Enum;
 class Constant;
@@ -99,13 +100,15 @@ public:
 	// outputs everything of the given Requirements to the matching header files.
 	// the guard parameter can be passed for an additional macro guard around the reqs.
 	// will skip requirements that are already in the passed fulfilled ones.
-	void printReqs(Requirements&, const Requirements& fulfilled, const std::string& guard = "");
+	void printReqs(Requirements&, const Requirements& fulfilled,
+		const std::string& guard, bool forceDispatch);
 
 	// outputs the given entities to the matching headers files
 	void printStruct(const Struct& type);
-	void printCmd(const Command& command, std::string alias = "");
-	void printVecCmd(const Command& command, const Param& count, const Param& data);
-	void printVecCmd(const ParsedCommand& command, const std::string& name);
+	void printCmd(const Command& command, std::string alias,
+		bool forceDispatch);
+	void printVecCmd(const ParsedCommand& command, const std::string& name,
+		bool forceDispatch);
 
 	// parses the command, i.e. tries to vectorize and analyze it.
 	ParsedCommand parseCommand(const Command& cmd) const;
@@ -131,7 +134,9 @@ public:
 
 	// ensures the the given guard is set in guardVar, otherwise prints it to of and sets it
 	void ensureGuard(std::ofstream& of, bool& guardVar, const std::string& guard);
+	void ensureGuard(std::string& of, bool& guardVar, const std::string& guard);
 	void endGuard(std::ofstream& of, bool guardVar, const std::string& guard);
+	void endGuard(std::string& of, bool guardVar, const std::string& guard);
 
 protected:
 	std::ofstream functions_;

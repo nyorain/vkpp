@@ -230,29 +230,41 @@ void CCOutputGenerator::generate() {
 	Requirements fulfilled;
 
 	// output the default vulkan feature
-	auto features = {
-		"VK_VERSION_1_1",
-		"VK_VERSION_1_0",
+	struct {
+		const char* name;
+		bool forceDispatch;
+	} features[] = {
+		{"VK_VERSION_1_1", true},
+		{"VK_VERSION_1_0", false},
 	};
-	for(std::string fname : features) {
-		auto pf = registry().findFeatureByName(fname);
+
+	for(auto f : features) {
+		auto pf = registry().findFeatureByName(f.name);
 		if (!pf) {
-			log("Invalid feature ", fname);
+			log("Invalid feature ", f.name);
 			continue;
 		}
 
 		auto& feature = *pf;
 		auto& reqs = feature.reqs;
 
-		printReqs(reqs, fulfilled);
+		printReqs(reqs, fulfilled, "", f.forceDispatch);
 		fulfilled.add(reqs);
 
 		// output extensions
 		for(auto& ext : feature.extensions) {
-			auto guard = ext->platform ? ext->platform->name : "";
-			printReqs(ext->reqs, fulfilled, guard);
+			auto guard = ext->platform ? ext->platform->protect : "";
+			printReqs(ext->reqs, fulfilled, guard, true);
 			fulfilled.add(ext->reqs);
 		}
+	}
+
+	// TODO: other extensions
+	for(auto& ext : registry().extensions) {
+		auto& reqs = ext.reqs;
+		auto guard = ext.platform ? ext.platform->protect : "";
+		printReqs(reqs, fulfilled, guard, true);
+		fulfilled.add(reqs);
 	}
 
 	// undef function macros
@@ -291,12 +303,14 @@ void CCOutputGenerator::outputAll(const std::string& string) {
 }
 
 void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfilled,
-		const std::string& guard) {
+		const std::string& guard, bool forceDispatch) {
 
 	auto fwdGuard = false;
 	auto enumGuard = false;
 	auto funcGuard = false;
 	auto structGuard = false;
+	auto dispatchPtrGuard = false;
+	auto dispatchLoaderGuard = false;
 
 	// order:
 	// - constants
@@ -489,72 +503,11 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 		fwd_ << "using " << name << " = " << orig << ";\n";
 	}
 
-	// funcptrs
-	count = 0u;
-	for(auto* typeit : types) {
-		// NOTE: we currently don't define function pointers
-		// used from vulkan.h
-		break;
-
-		if(typeit->category != Type::Category::funcptr) {
-			continue;
-		}
-
-		auto& funcptr = static_cast<FuncPtr&>(*typeit);
-		++count;
-
-		ensureGuard(fwd_, fwdGuard, guard);
-
-		fwd_ << "using " << typeName(funcptr) << " = " << typeName(funcptr.signature.returnType);
-		fwd_ << "(*VKAPI_PTR)(";
-
-		auto sepr = "";
-		for(auto& param : funcptr.signature.params) {
-			fwd_ << sepr << paramName(param, "", true);
-			sepr = ", ";
-		}
-
-		fwd_ << ");\n";
-	}
-
-	if(count > 0) {
-		log("\tOutputted ", count, " funcptrs");
-		fwd_ << "\n";
-	}
-
-	// extra funcPointers
-	// extension specific, used to load the commands
-	count = 0;
-	for(auto* typeit : reqs.funcPtr) {
-		// NOTE: we currently don't define function pointers
-		// used from vulkan.h
-		break;
-
-		auto it = std::find(fulfilled.funcPtr.begin(), fulfilled.funcPtr.end(), typeit);
-		if(it != fulfilled.funcPtr.end()) continue;
-
-		auto& type = *typeit;
-		count++;
-
-		auto name = removeVkPrefix(type.name, nullptr);
-		ensureGuard(fwd_, fwdGuard, guard);
-
-		fwd_ << "using Pfn" << name << " = " << typeName(type.signature.returnType);
-		fwd_ << "(*VKAPI_PTR)(";
-
-		auto sepr = "";
-		for(auto& param : type.signature.params) {
-			fwd_ << sepr << paramName(param, "", true);
-			sepr = ", ";
-		}
-
-		fwd_ << ");\n";
-	}
-
-	if(count > 0) {
-		log("\tOutputted ", count, " extra api funcptrs");
-		fwd_ << "\n";
-	}
+	// NOTE: funcptrs would go here
+	// NOTE: extra funcptrs (req.funcPtr) would go here
+	//   we currently don't output function pointers since using them
+	//   with vk:: types instead of the original vulkan ones is
+	//   undefined behaviour and might seriously go wrong.
 
 	// commands
 	count = 0u;
@@ -566,10 +519,12 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 
 		++count;
 		ensureGuard(functions_, funcGuard, guard);
-		printCmd(*cmdit);
+		ensureGuard(dispatchDecl_, dispatchPtrGuard, guard);
+		ensureGuard(dispatchLoad_, dispatchLoaderGuard, guard);
+		printCmd(*cmdit, "", forceDispatch);
 
 		for(auto alias : cmdit->aliases) {
-			printCmd(*cmdit, alias);
+			printCmd(*cmdit, alias, forceDispatch);
 		}
 
 		// insert blank line between seperate function (groups)
@@ -586,6 +541,16 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 	endGuard(structs_, structGuard, guard);
 	endGuard(fwd_, fwdGuard, guard);
 	endGuard(enums_, enumGuard, guard);
+	endGuard(dispatchDecl_, dispatchPtrGuard, guard);
+	endGuard(dispatchLoad_, dispatchLoaderGuard, guard);
+}
+
+void CCOutputGenerator::ensureGuard(std::string& str, bool& guardVar, const std::string& guard)
+{
+	if(!guardVar) {
+		if(!guard.empty()) str += "#ifdef " + guard + "\n\n";
+		guardVar = true;
+	}
 }
 
 void CCOutputGenerator::ensureGuard(std::ofstream& of, bool& guardVar, const std::string& guard)
@@ -599,6 +564,11 @@ void CCOutputGenerator::ensureGuard(std::ofstream& of, bool& guardVar, const std
 void CCOutputGenerator::endGuard(std::ofstream& of, bool guardVar, const std::string& guard)
 {
 	if(guardVar && !guard.empty())of << "#endif //" << guard << "\n\n";
+}
+
+void CCOutputGenerator::endGuard(std::string& of, bool guardVar, const std::string& guard)
+{
+	if(guardVar && !guard.empty())of += "#endif //" + guard + "\n\n";
 }
 
 std::string CCOutputGenerator::enumName(const Enum& e, const std::string& name, bool* bit) const
@@ -683,12 +653,19 @@ std::string CCOutputGenerator::enumName(const Enum& e, const std::string& name, 
 
 std::string CCOutputGenerator::typeName(const Type& type) const {
 	auto ret = removeVkPrefix(type.name, nullptr);
-	if(type.category == Type::Category::enumeration) {
-		auto& e = static_cast<const Enum&>(type);
+
+	auto it = &type;
+	while(it->category == Type::Category::basetype) {
+		auto& bt = static_cast<const BaseType&>(*it);
+		it = bt.original;
+	}
+
+	if(it->category == Type::Category::enumeration) {
+		auto& e = static_cast<const Enum&>(*it);
 		std::size_t pos;
 		if(e.bitmask && (pos = ret.find("FlagBits")) != std::string::npos)
 			ret.erase(pos, 4); // erase "Flag" from the name
-	} else if(type.category == Type::Category::funcptr) {
+	} else if(it->category == Type::Category::funcptr) {
 		return type.name;
 		// We don't have custom function pointers but use the ones
 		// from vulkan.h (everything else is undefined behavior.)
@@ -985,7 +962,8 @@ ParsedCommand CCOutputGenerator::parseCommand(const Command& cmd) const
 }
 
 
-void CCOutputGenerator::printCmd(const Command& cmd, std::string alias) {
+void CCOutputGenerator::printCmd(const Command& cmd, std::string alias,
+		bool forceDispatch) {
 	if(alias == "") {
 		alias = cmd.name;
 	}
@@ -1042,16 +1020,17 @@ void CCOutputGenerator::printCmd(const Command& cmd, std::string alias) {
 		callSepr = ", ";
 	}
 
+	functions_ << declSepr << "DynamicDispatch* dispatcher = nullptr";
+
 	std::string before = "";
 	std::string after = "";
 	auto& retType = cmd.signature.returnType;
 
+	before = forceDispatch ? "VKPP_DISPATCH_GLOBAL(" : "VKPP_DISPATCH(";
+	after = ");";
 	if(retType.type->name == "VkResult") {
-		before = "VKPP_CALL(";
-		after = ");";
-	} else {
-		before = "VKPP_DISPATCH(";
-		after = ");";
+		before = "VKPP_CHECK(" + before;
+		after = ")" + after;
 	}
 
 	if(parsed.returnParam && !parsed.returnParam->countPar) {
@@ -1066,16 +1045,17 @@ void CCOutputGenerator::printCmd(const Command& cmd, std::string alias) {
 	}
 
 	functions_ << "){ ";
-	functions_ << before << cmd.name << "(" << args;
-	functions_ << ")" << after << " }\n";
+	functions_ << before << "dispatcher, " << cmd.name << ", " << args;
+	functions_ << after << " }\n";
 
 	// if possible/needed, output the std::vector version of the function
 	if(printVecVersion) {
-		printVecCmd(parsed, name);
+		printVecCmd(parsed, name, forceDispatch);
 	}
 }
 
-void CCOutputGenerator::printVecCmd(const ParsedCommand& pcmd, const std::string& name) {
+void CCOutputGenerator::printVecCmd(const ParsedCommand& pcmd,
+		const std::string& name, bool forceDispatch) {
 	auto& cmd = *pcmd.command;
 
 	std::pair<const ParsedParam*, const ParsedParam*> vecRetStackVar {};
@@ -1093,6 +1073,9 @@ void CCOutputGenerator::printVecCmd(const ParsedCommand& pcmd, const std::string
 		typeCpy.constant = false;
 		if(typeCpy.type->name != "void") retType = "std::vector<" + typeName(typeCpy) + ">";
 		else retType = "std::vector<uint8_t>";
+	} else if(pcmd.returnParam) {
+		auto derefType = pcmd.returnParam->param->type.pointer;
+		retType = typeName(*derefType);
 	}
 
 	functions_ << "inline " << retType << " " << name << "(";
@@ -1111,6 +1094,7 @@ void CCOutputGenerator::printVecCmd(const ParsedCommand& pcmd, const std::string
 		callSepr = ", ";
 	}
 
+	functions_ << declSepr << "DynamicDispatch* dispatcher = nullptr";
 	functions_ << "){ ";
 
 	if(vecRet) {
@@ -1118,9 +1102,13 @@ void CCOutputGenerator::printVecCmd(const ParsedCommand& pcmd, const std::string
 		auto& countPar = *pcmd.returnParam->countPar;
 		if(vecRet->second->memberAsCount || !vecRet->second->out) {
 			if(cmd.signature.returnType.type->name != "VkResult") {
-				code = vecFuncTemplateRetGivenVoid;
+				code = forceDispatch ?
+					vecFuncTemplateRetGivenVoidDispatch :
+					vecFuncTemplateRetGivenVoid;
 			} else {
-				code = vecFuncTemplateRetGiven;
+				code = forceDispatch ?
+					vecFuncTemplateRetGivenDispatch :
+					vecFuncTemplateRetGiven;
 			}
 
 			// TODO: check for pointer
@@ -1136,9 +1124,13 @@ void CCOutputGenerator::printVecCmd(const ParsedCommand& pcmd, const std::string
 			code = std::regex_replace(code, std::regex("%c"), count);
 		} else {
 			if(cmd.signature.returnType.type->name != "VkResult") {
-				code = vecFuncTemplateVoid;
+				code = forceDispatch ?
+					vecFuncTemplateVoidDispatch :
+					vecFuncTemplateVoid;
 			} else {
-				code = vecFuncTemplate;
+				code = forceDispatch ?
+					vecFuncTemplateDispatch :
+					vecFuncTemplate;
 			}
 		}
 
@@ -1166,23 +1158,30 @@ void CCOutputGenerator::printVecCmd(const ParsedCommand& pcmd, const std::string
 		functions_ << code;
 		functions_ << " }\n";
 	} else {
+		std::string before = "";
+		std::string after = "";
 		auto& retType = cmd.signature.returnType;
-		std::string returnString;
-		std::string returnStringEnd;
+
+		before = forceDispatch ? "VKPP_DISPATCH_GLOBAL(" : "VKPP_DISPATCH(";
+		after = ");";
 		if(retType.type->name == "VkResult") {
-			returnString = "return VKPP_CALL(";
-			returnStringEnd = ")";
-		} else if(retType.type->name != "void" || retType.pointer) {
-			returnString = "return static_cast<" + typeName(cmd.signature.returnType) + ">";
-			returnString += "(VKPP_DISPATCH(";
-			returnStringEnd = "))";
-		} else { // void return type
-			returnString = "VKPP_DISPATCH(";
-			returnStringEnd = ")";
+			before = "VKPP_CHECK(" + before;
+			after = ")" + after;
 		}
 
-		functions_ << returnString << cmd.name << "(" << args;
-		functions_ << ")" << returnStringEnd << "; }\n";
+		if(pcmd.returnParam && !pcmd.returnParam->countPar) {
+			auto derefType = pcmd.returnParam->param->type.pointer;
+			before = typeName(*derefType) + " ret = {}; " + before;
+			after = after + " return ret;";
+		} else if(retType.type->name != "void" || retType.pointer) {
+			before = "return static_cast<" + typeName(cmd.signature.returnType) + ">(" + before;
+			after = ")" + after;
+		} else {
+			before = "return " + before;
+		}
+
+		functions_ << before << "dispatcher, " << cmd.name << ", " << args;
+		functions_ << after << " }\n";
 	}
 }
 
@@ -1283,7 +1282,6 @@ std::string CCOutputGenerator::paramCall(const ParsedParam& param, bool rangeify
 			}
 		} else if(param.countPar)  {
 			//is data part of normal (nonRet) range
-			std::string ret = sepr;
 			ret += "(" + typeName(param.param->type, false) + ")(";
 			ret += param.param->name;
 			ret += ".data())";

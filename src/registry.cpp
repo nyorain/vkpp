@@ -177,6 +177,7 @@ void RegistryLoader::loadTypes(const pugi::xml_node& node) {
 			auto name = typeit.child_value("name");
 			auto alias = typeit.attribute("alias");
 			if(alias) {
+				name = typeit.attribute("name").as_string();
 				BaseType t(name, typeit);
 				t.original = registry_.findType(alias.as_string());
 				t.alias = true;
@@ -201,6 +202,7 @@ void RegistryLoader::loadTypes(const pugi::xml_node& node) {
 			auto name = typeit.child_value("name");
 			auto alias = typeit.attribute("alias");
 			if(alias) {
+				name = typeit.attribute("name").as_string();
 				BaseType t(name, typeit);
 				t.alias = true;
 				t.original = registry_.findType(alias.as_string());
@@ -580,12 +582,16 @@ void RegistryLoader::loadExtension(const pugi::xml_node& node) {
 		return;
 	}
 
+	// TODO: fix struct fwd decls
+	std::string platform = node.attribute("platform").as_string();
+	if(platform == "metal" || platform == "android") {
+		return;
+	}
+
 	Extension extension;
 	extension.supported = node.attribute("supported").as_string();
 	extension.number = node.attribute("number").as_int();
 	extension.name = node.attribute("name").as_string();
-
-	std::string platform = node.attribute("platform").as_string();
 	extension.platform = registry_.findPlatform(platform);
 
 	if(!extension.platform && !platform.empty()) {
@@ -851,7 +857,17 @@ Constant* Registry::findConstant(const std::string& name)
 }
 Command* Registry::findCommand(const std::string& name)
 {
-	for(auto& c : commands) if(c.name == name) return &c;
+	for(auto& c : commands) {
+		if(c.name == name) {
+			return &c;
+		}
+
+		for(auto& alias : c.aliases) {
+			if(alias == name) {
+				return &c;
+			}
+		}
+	}
 	return nullptr;
 }
 

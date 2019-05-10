@@ -320,5 +320,5 @@ public:
 protected:
 	Registry registry_;
 	pugi::xml_document doc_;
-	bool prototypes_ = false;
+	bool prototypes_ = true;
 };
