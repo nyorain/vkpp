@@ -406,12 +406,23 @@ void RegistryLoader::loadEnums(const pugi::xml_node& node)
 			std::pair<std::string, std::int64_t> value;
 
 			value.first = enumit.attribute("name").as_string();
-			auto attrib = enumit.attribute("value");
-			if(!attrib) attrib = enumit.attribute("bitpos");
+			auto alias = enumit.attribute("alias");
+			if(alias) {
+				auto an = alias.as_string();
+				for(auto& r : ret.values) {
+					if(r.first == an) {
+						value.second = r.second;
+						break;
+					}
+				}
+			} else {
+				auto attrib = enumit.attribute("value");
+				if(!attrib) attrib = enumit.attribute("bitpos");
 
-			auto str = std::string(attrib.as_string());
-			if(str.size() > 1 && str.substr(0, 2) == "0x") value.second = std::stoul(str, nullptr, 16);
-			else value.second = attrib.as_llong();
+				auto str = std::string(attrib.as_string());
+				if(str.size() > 1 && str.substr(0, 2) == "0x") value.second = std::stoul(str, nullptr, 16);
+				else value.second = attrib.as_llong();
+			}
 
 			ret.values.push_back(value);
 		}
