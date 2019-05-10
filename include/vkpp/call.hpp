@@ -98,19 +98,23 @@ auto call(FR (*f)(FA...), Args&&... args) {
 
 } // namespace call
 
+// Global default dispatcher. Used by default for non-core functions
+// or when VKPP_DYNAMIC_DISPATCH is defined.
+// After creating an instance you have to call `vk::dispatch.init(instance)`.
+// Note that (implicit) dynamic dispatch does not work with multiple instances.
+//
+// If you use VKPP_DYNAMIC_DISPATCH or non-core functions you have
+// to define `namespace vk { DynamicDispatch dispatch; }` somewhere in
+// you code, otherwise you get undefined reference errors. Alternatively,
+// you can link to libvkpp which only contains that single symbol.
+extern DynamicDispatch dispatch;
 
-/// Global default dispatcher. Used by default for non-core functions
-/// or when VKPP_DYNAMIC_DISPATCH is defined.
-/// After creating an instance you have to call `vk::dispatch.init(instance)`.
-/// Note that (implicit) dynamic dispatch does not work with multiple instances.
-DynamicDispatch dispatch;
-
-/// Dispatches function x via the given dispatcher (if not null), otherwise
-/// falls back to the globak vk::dispatch.
+// Dispatches function x via the given dispatcher (if not null), otherwise
+// falls back to the globak vk::dispatch.
 #define VKPP_DISPATCH_GLOBAL(d, f, ...) ((d ? d : &::vk::dispatch)->f(__VA_ARGS__))
 
-/// If VKPP_DYNAMIC_DISPATCH is defined, functions will never be called
-/// directly.
+// If VKPP_DYNAMIC_DISPATCH is defined, functions will never be called
+// directly.
 #ifdef VKPP_DYNAMIC_DISPATCH
 	#define VKPP_DISPATCH(d, f, ...) (VKPP_DISPATCH_GLOBAL(d, f, __VA_ARGS__))
 #else
