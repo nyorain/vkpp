@@ -1,7 +1,7 @@
 project('vkpp', ['c', 'cpp'],
 	license: 'BSL',
 	version: '1.1.107',
-	meson_version: '>=0.42',
+	meson_version: '>=0.46',
 	default_options: ['cpp_std=c++1z'])
 
 test = get_option('tests')
@@ -51,6 +51,7 @@ endif
 pkg = import('pkgconfig')
 pkg_dirs = ['.']
 pkg.generate(
+	vkpp_lib,
 	name: 'vkpp',
 	requires: ['vulkan'],
 	filebase: 'vkpp',
