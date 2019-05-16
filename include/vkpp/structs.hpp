@@ -13,8 +13,8 @@
 #include <array>
 #include <vulkan/vulkan.h>
 
-// Generated for vulkan version: 1.1.107
-#if !defined(VK_VERSION_1_1) || 107 > VK_HEADER_VERSION
+// Generated for vulkan version: 1.1.108
+#if !defined(VK_VERSION_1_1) || 108 > VK_HEADER_VERSION
 	#error "vulkan.h version too old, does not match generated version"
 #endif
 
@@ -3572,21 +3572,6 @@ struct Win32KeyedMutexAcquireReleaseInfoNV {
 
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
-struct PhysicalDeviceSurfaceInfo2KHR {
-	StructureType sType {StructureType::physicalDeviceSurfaceInfo2KHR};
-	const void* pNext {};
-	SurfaceKHR surface {};
-
-	PhysicalDeviceSurfaceInfo2KHR(SurfaceKHR xsurface = {}) : surface(xsurface) {}
-
-	const VkPhysicalDeviceSurfaceInfo2KHR& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceSurfaceInfo2KHR&>(*this); }
-	VkPhysicalDeviceSurfaceInfo2KHR& vkHandle() { return reinterpret_cast<VkPhysicalDeviceSurfaceInfo2KHR&>(*this); }
-
-	operator const VkPhysicalDeviceSurfaceInfo2KHR&() const { return vkHandle(); };
-	operator VkPhysicalDeviceSurfaceInfo2KHR&() { return vkHandle(); };
-};
-
-
 struct ValidationFlagsEXT {
 	StructureType sType {StructureType::validationFlagsEXT};
 	const void* pNext {};
@@ -4553,6 +4538,20 @@ struct FenceGetFdInfoKHR {
 	operator VkFenceGetFdInfoKHR&() { return vkHandle(); };
 };
 
+
+struct PhysicalDeviceSurfaceInfo2KHR {
+	StructureType sType {StructureType::physicalDeviceSurfaceInfo2KHR};
+	const void* pNext {};
+	SurfaceKHR surface {};
+
+	PhysicalDeviceSurfaceInfo2KHR(SurfaceKHR xsurface = {}) : surface(xsurface) {}
+
+	const VkPhysicalDeviceSurfaceInfo2KHR& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceSurfaceInfo2KHR&>(*this); }
+	VkPhysicalDeviceSurfaceInfo2KHR& vkHandle() { return reinterpret_cast<VkPhysicalDeviceSurfaceInfo2KHR&>(*this); }
+
+	operator const VkPhysicalDeviceSurfaceInfo2KHR&() const { return vkHandle(); };
+	operator VkPhysicalDeviceSurfaceInfo2KHR&() { return vkHandle(); };
+};
 
 struct SurfaceCapabilities2KHR {
 	StructureType sType {StructureType::surfaceCapabilities2KHR};
@@ -6491,6 +6490,51 @@ struct PhysicalDeviceCooperativeMatrixPropertiesNV {
 };
 
 
+struct PhysicalDeviceCoverageReductionModeFeaturesNV {
+	StructureType sType {StructureType::physicalDeviceCoverageReductionModeFeaturesNV};
+	void* pNext {};
+	Bool32 coverageReductionMode {};
+
+	PhysicalDeviceCoverageReductionModeFeaturesNV(Bool32 xcoverageReductionMode = {}) : coverageReductionMode(xcoverageReductionMode) {}
+
+	const VkPhysicalDeviceCoverageReductionModeFeaturesNV& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceCoverageReductionModeFeaturesNV&>(*this); }
+	VkPhysicalDeviceCoverageReductionModeFeaturesNV& vkHandle() { return reinterpret_cast<VkPhysicalDeviceCoverageReductionModeFeaturesNV&>(*this); }
+
+	operator const VkPhysicalDeviceCoverageReductionModeFeaturesNV&() const { return vkHandle(); };
+	operator VkPhysicalDeviceCoverageReductionModeFeaturesNV&() { return vkHandle(); };
+};
+
+struct PipelineCoverageReductionStateCreateInfoNV {
+	StructureType sType {StructureType::pipelineCoverageReductionStateCreateInfoNV};
+	const void* pNext {};
+	PipelineCoverageReductionStateCreateFlagsNV flags {};
+	CoverageReductionModeNV coverageReductionMode {};
+
+	PipelineCoverageReductionStateCreateInfoNV(PipelineCoverageReductionStateCreateFlagsNV xflags = {}, CoverageReductionModeNV xcoverageReductionMode = {}) : flags(xflags), coverageReductionMode(xcoverageReductionMode) {}
+
+	const VkPipelineCoverageReductionStateCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkPipelineCoverageReductionStateCreateInfoNV&>(*this); }
+	VkPipelineCoverageReductionStateCreateInfoNV& vkHandle() { return reinterpret_cast<VkPipelineCoverageReductionStateCreateInfoNV&>(*this); }
+
+	operator const VkPipelineCoverageReductionStateCreateInfoNV&() const { return vkHandle(); };
+	operator VkPipelineCoverageReductionStateCreateInfoNV&() { return vkHandle(); };
+};
+
+struct FramebufferMixedSamplesCombinationNV {
+	StructureType sType {StructureType::framebufferMixedSamplesCombinationNV};
+	void* pNext {};
+	CoverageReductionModeNV coverageReductionMode {};
+	SampleCountBits rasterizationSamples {};
+	SampleCountFlags depthStencilSamples {};
+	SampleCountFlags colorSamples {};
+
+	const VkFramebufferMixedSamplesCombinationNV& vkHandle() const { return reinterpret_cast<const VkFramebufferMixedSamplesCombinationNV&>(*this); }
+	VkFramebufferMixedSamplesCombinationNV& vkHandle() { return reinterpret_cast<VkFramebufferMixedSamplesCombinationNV&>(*this); }
+
+	operator const VkFramebufferMixedSamplesCombinationNV&() const { return vkHandle(); };
+	operator VkFramebufferMixedSamplesCombinationNV&() { return vkHandle(); };
+};
+
+
 struct PhysicalDeviceYcbcrImageArraysFeaturesEXT {
 	StructureType sType {StructureType::physicalDeviceYcbcrImageArraysFeaturesEXT};
 	void* pNext {};
@@ -6503,6 +6547,21 @@ struct PhysicalDeviceYcbcrImageArraysFeaturesEXT {
 
 	operator const VkPhysicalDeviceYcbcrImageArraysFeaturesEXT&() const { return vkHandle(); };
 	operator VkPhysicalDeviceYcbcrImageArraysFeaturesEXT&() { return vkHandle(); };
+};
+
+
+struct PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR {
+	StructureType sType {StructureType::physicalDeviceUniformBufferStandardLayoutFeaturesKHR};
+	void* pNext {};
+	Bool32 uniformBufferStandardLayout {};
+
+	PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR(Bool32 xuniformBufferStandardLayout = {}) : uniformBufferStandardLayout(xuniformBufferStandardLayout) {}
+
+	const VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR&>(*this); }
+	VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR& vkHandle() { return reinterpret_cast<VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR&>(*this); }
+
+	operator const VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR&() const { return vkHandle(); };
+	operator VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR&() { return vkHandle(); };
 };
 
 

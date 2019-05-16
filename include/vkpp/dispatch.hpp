@@ -14,7 +14,7 @@
 #include <vkpp/span.hpp>
 #include <vkpp/flags.hpp>
 
-// Generated for vulkan version: 1.1.107
+// Generated for vulkan version: 1.1.108
 
 namespace vk {
 
@@ -287,7 +287,6 @@ public:
 	PFN_vkGetMemoryWin32HandleNV vkGetMemoryWin32HandleNV {};
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
-	PFN_vkGetDeviceGroupSurfacePresentModes2EXT vkGetDeviceGroupSurfacePresentModes2EXT {};
 #ifdef VK_USE_PLATFORM_VI_NN
 
 	PFN_vkCreateViSurfaceNN vkCreateViSurfaceNN {};
@@ -410,11 +409,14 @@ public:
 
 	PFN_vkGetBufferDeviceAddressEXT vkGetBufferDeviceAddressEXT {};
 	PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV vkGetPhysicalDeviceCooperativeMatrixPropertiesNV {};
+	PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV {};
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 
 	PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT vkGetPhysicalDeviceSurfacePresentModes2EXT {};
 	PFN_vkAcquireFullScreenExclusiveModeEXT vkAcquireFullScreenExclusiveModeEXT {};
 	PFN_vkReleaseFullScreenExclusiveModeEXT vkReleaseFullScreenExclusiveModeEXT {};
+	PFN_vkGetDeviceGroupSurfacePresentModes2EXT vkGetDeviceGroupSurfacePresentModes2EXT {};
+	PFN_vkGetDeviceGroupSurfacePresentModes2EXT vkGetDeviceGroupSurfacePresentModes2EXT {};
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
 	PFN_vkCreateHeadlessSurfaceEXT vkCreateHeadlessSurfaceEXT {};
@@ -704,7 +706,6 @@ public:
 		VKPP_ILOAD(ini, vkGetMemoryWin32HandleNV);
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
-		VKPP_ILOAD(ini, vkGetDeviceGroupSurfacePresentModes2EXT);
 #ifdef VK_USE_PLATFORM_VI_NN
 
 		VKPP_ILOAD(ini, vkCreateViSurfaceNN);
@@ -827,11 +828,14 @@ public:
 
 		VKPP_ILOAD(ini, vkGetBufferDeviceAddressEXT);
 		VKPP_ILOAD(ini, vkGetPhysicalDeviceCooperativeMatrixPropertiesNV);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV);
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 
 		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfacePresentModes2EXT);
 		VKPP_ILOAD(ini, vkAcquireFullScreenExclusiveModeEXT);
 		VKPP_ILOAD(ini, vkReleaseFullScreenExclusiveModeEXT);
+		VKPP_ILOAD(ini, vkGetDeviceGroupSurfacePresentModes2EXT);
+		VKPP_ILOAD(ini, vkGetDeviceGroupSurfacePresentModes2EXT);
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
 		VKPP_ILOAD(ini, vkCreateHeadlessSurfaceEXT);

@@ -9,7 +9,7 @@
 #include <vkpp/fwd.hpp>
 #include <vkpp/flags.hpp>
 
-// Generated for vulkan version: 1.1.107
+// Generated for vulkan version: 1.1.108
 
 namespace vk {
 
@@ -428,7 +428,11 @@ enum class StructureType : int32_t {
 	physicalDeviceCooperativeMatrixFeaturesNV = 1000249000,
 	cooperativeMatrixPropertiesNV = 1000249001,
 	physicalDeviceCooperativeMatrixPropertiesNV = 1000249002,
+	physicalDeviceCoverageReductionModeFeaturesNV = 1000250000,
+	pipelineCoverageReductionStateCreateInfoNV = 1000250001,
+	framebufferMixedSamplesCombinationNV = 1000250002,
 	physicalDeviceYcbcrImageArraysFeaturesEXT = 1000252000,
+	physicalDeviceUniformBufferStandardLayoutFeaturesKHR = 1000253000,
 	surfaceFullScreenExclusiveInfoEXT = 1000255000,
 	surfaceCapabilitiesFullScreenExclusiveEXT = 1000255002,
 	surfaceFullScreenExclusiveWin32InfoEXT = 1000255001,
@@ -1660,7 +1664,7 @@ enum class ColorSpaceKHR : int32_t {
 	srgbNonlinear = 0,
 	displayP3NonlinearEXT = 1000104001,
 	extendedSrgbLinearEXT = 1000104002,
-	dciP3LinearEXT = 1000104003,
+	displayP3LinearEXT = 1000104003,
 	dciP3NonlinearEXT = 1000104004,
 	bt709LinearEXT = 1000104005,
 	bt709NonlinearEXT = 1000104006,
@@ -1672,6 +1676,7 @@ enum class ColorSpaceKHR : int32_t {
 	adobergbNonlinearEXT = 1000104012,
 	passThroughEXT = 1000104013,
 	extendedSrgbNonlinearEXT = 1000104014,
+	dciP3LinearEXT = 1000104003,
 	displayNativeAMD = 1000213000
 };
 
@@ -2068,6 +2073,12 @@ enum class ScopeNV : int32_t {
 	workgroup = 2,
 	subgroup = 3,
 	queueFamily = 5
+};
+
+
+enum class CoverageReductionModeNV : int32_t {
+	merge = 0,
+	truncate = 1
 };
 
 

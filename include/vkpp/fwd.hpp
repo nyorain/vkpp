@@ -12,7 +12,7 @@
 
 #include <vulkan/vk_platform.h>
 
-// Generated for vulkan version: 1.1.107
+// Generated for vulkan version: 1.1.108
 
 // Utility forward declarations
 namespace nytl {
@@ -593,8 +593,6 @@ using QueueFamilyProperties2KHR = QueueFamilyProperties2;
 using PhysicalDeviceMemoryProperties2KHR = PhysicalDeviceMemoryProperties2;
 using SparseImageFormatProperties2KHR = SparseImageFormatProperties2;
 using PhysicalDeviceSparseImageFormatInfo2KHR = PhysicalDeviceSparseImageFormatInfo2;
-struct PhysicalDeviceSurfaceInfo2KHR;
-
 using PeerMemoryFeatureFlagsKHR = PeerMemoryFeatureFlags;
 using PeerMemoryFeatureBitsKHR = PeerMemoryFeatureBits;
 using MemoryAllocateFlagsKHR = MemoryAllocateFlags;
@@ -794,6 +792,7 @@ using InputAttachmentAspectReferenceKHR = InputAttachmentAspectReference;
 using ImageViewUsageCreateInfoKHR = ImageViewUsageCreateInfo;
 using TessellationDomainOriginKHR = TessellationDomainOrigin;
 using PipelineTessellationDomainOriginStateCreateInfoKHR = PipelineTessellationDomainOriginStateCreateInfo;
+struct PhysicalDeviceSurfaceInfo2KHR;
 struct SurfaceCapabilities2KHR;
 struct SurfaceFormat2KHR;
 
@@ -1093,7 +1092,17 @@ struct CooperativeMatrixPropertiesNV;
 struct PhysicalDeviceCooperativeMatrixFeaturesNV;
 struct PhysicalDeviceCooperativeMatrixPropertiesNV;
 
+enum class CoverageReductionModeNV : int32_t;
+
+using PipelineCoverageReductionStateCreateFlagsNV = Flags<DummyEnum>;
+
+struct PhysicalDeviceCoverageReductionModeFeaturesNV;
+struct PipelineCoverageReductionStateCreateInfoNV;
+struct FramebufferMixedSamplesCombinationNV;
+
 struct PhysicalDeviceYcbcrImageArraysFeaturesEXT;
+
+struct PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR;
 
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 

@@ -16,8 +16,8 @@
 #include <vector>
 #include <vulkan/vulkan.h>
 
-// Generated for vulkan version: 1.1.107
-#if !defined(VK_VERSION_1_1) || 107 > VK_HEADER_VERSION
+// Generated for vulkan version: 1.1.108
+#if !defined(VK_VERSION_1_1) || 108 > VK_HEADER_VERSION
 	#error "vulkan.h version too old, does not match generated version"
 #endif
 
@@ -435,8 +435,6 @@ inline HANDLE getMemoryWin32HandleNV(Device device, DeviceMemory memory, Externa
 
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
-inline DeviceGroupPresentModeFlagsKHR getDeviceGroupSurfacePresentModes2EXT(Device device, const PhysicalDeviceSurfaceInfo2KHR& pSurfaceInfo, DynamicDispatch* dispatcher = nullptr){ DeviceGroupPresentModeFlagsKHR ret = {}; VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkGetDeviceGroupSurfacePresentModes2EXT, (VkDevice)(device), (const VkPhysicalDeviceSurfaceInfo2KHR*)(&pSurfaceInfo), (VkDeviceGroupPresentModeFlagsKHR*)(&ret))); return ret; }
-
 #ifdef VK_USE_PLATFORM_VI_NN
 
 inline SurfaceKHR createViSurfaceNN(Instance instance, const ViSurfaceCreateInfoNN& pCreateInfo, const AllocationCallbacks* pAllocator = {}, DynamicDispatch* dispatcher = nullptr){ SurfaceKHR ret = {}; VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkCreateViSurfaceNN, (VkInstance)(instance), (const VkViSurfaceCreateInfoNN*)(&pCreateInfo), (const VkAllocationCallbacks*)(pAllocator), (VkSurfaceKHR*)(&ret))); return ret; }
@@ -621,12 +619,17 @@ inline DeviceAddress getBufferDeviceAddressEXT(Device device, const BufferDevice
 inline Result getPhysicalDeviceCooperativeMatrixPropertiesNV(PhysicalDevice physicalDevice, uint32_t& pPropertyCount, CooperativeMatrixPropertiesNV* pProperties = {}, DynamicDispatch* dispatcher = nullptr){ return static_cast<Result>(VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkGetPhysicalDeviceCooperativeMatrixPropertiesNV, (VkPhysicalDevice)(physicalDevice), (uint32_t*)(&pPropertyCount), (VkCooperativeMatrixPropertiesNV*)(pProperties)))); }
 inline std::vector<CooperativeMatrixPropertiesNV> getPhysicalDeviceCooperativeMatrixPropertiesNV(PhysicalDevice physicalDevice, DynamicDispatch* dispatcher = nullptr){ VEC_FUNC_G(dispatcher, CooperativeMatrixPropertiesNV, uint32_t, vkGetPhysicalDeviceCooperativeMatrixPropertiesNV, (VkPhysicalDevice)(physicalDevice), &count, (VkCooperativeMatrixPropertiesNV*)(ret.data()));  }
 
+inline Result getPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(PhysicalDevice physicalDevice, uint32_t& pCombinationCount, FramebufferMixedSamplesCombinationNV* pCombinations = {}, DynamicDispatch* dispatcher = nullptr){ return static_cast<Result>(VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV, (VkPhysicalDevice)(physicalDevice), (uint32_t*)(&pCombinationCount), (VkFramebufferMixedSamplesCombinationNV*)(pCombinations)))); }
+inline std::vector<FramebufferMixedSamplesCombinationNV> getPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(PhysicalDevice physicalDevice, DynamicDispatch* dispatcher = nullptr){ VEC_FUNC_G(dispatcher, FramebufferMixedSamplesCombinationNV, uint32_t, vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV, (VkPhysicalDevice)(physicalDevice), &count, (VkFramebufferMixedSamplesCombinationNV*)(ret.data()));  }
+
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 
 inline Result getPhysicalDeviceSurfacePresentModes2EXT(PhysicalDevice physicalDevice, const PhysicalDeviceSurfaceInfo2KHR& pSurfaceInfo, uint32_t& pPresentModeCount, PresentModeKHR* pPresentModes = {}, DynamicDispatch* dispatcher = nullptr){ return static_cast<Result>(VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkGetPhysicalDeviceSurfacePresentModes2EXT, (VkPhysicalDevice)(physicalDevice), (const VkPhysicalDeviceSurfaceInfo2KHR*)(&pSurfaceInfo), (uint32_t*)(&pPresentModeCount), (VkPresentModeKHR*)(pPresentModes)))); }
 inline std::vector<PresentModeKHR> getPhysicalDeviceSurfacePresentModes2EXT(PhysicalDevice physicalDevice, const PhysicalDeviceSurfaceInfo2KHR& pSurfaceInfo, DynamicDispatch* dispatcher = nullptr){ VEC_FUNC_G(dispatcher, PresentModeKHR, uint32_t, vkGetPhysicalDeviceSurfacePresentModes2EXT, (VkPhysicalDevice)(physicalDevice), (const VkPhysicalDeviceSurfaceInfo2KHR*)(&pSurfaceInfo), &count, (VkPresentModeKHR*)(ret.data()));  }
 inline Result acquireFullScreenExclusiveModeEXT(Device device, SwapchainKHR swapchain, DynamicDispatch* dispatcher = nullptr){ return static_cast<Result>(VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkAcquireFullScreenExclusiveModeEXT, (VkDevice)(device), (VkSwapchainKHR)(swapchain)))); }
 inline Result releaseFullScreenExclusiveModeEXT(Device device, SwapchainKHR swapchain, DynamicDispatch* dispatcher = nullptr){ return static_cast<Result>(VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkReleaseFullScreenExclusiveModeEXT, (VkDevice)(device), (VkSwapchainKHR)(swapchain)))); }
+inline DeviceGroupPresentModeFlagsKHR getDeviceGroupSurfacePresentModes2EXT(Device device, const PhysicalDeviceSurfaceInfo2KHR& pSurfaceInfo, DynamicDispatch* dispatcher = nullptr){ DeviceGroupPresentModeFlagsKHR ret = {}; VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkGetDeviceGroupSurfacePresentModes2EXT, (VkDevice)(device), (const VkPhysicalDeviceSurfaceInfo2KHR*)(&pSurfaceInfo), (VkDeviceGroupPresentModeFlagsKHR*)(&ret))); return ret; }
+inline DeviceGroupPresentModeFlagsKHR getDeviceGroupSurfacePresentModes2EXT(Device device, const PhysicalDeviceSurfaceInfo2KHR& pSurfaceInfo, DynamicDispatch* dispatcher = nullptr){ DeviceGroupPresentModeFlagsKHR ret = {}; VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkGetDeviceGroupSurfacePresentModes2EXT, (VkDevice)(device), (const VkPhysicalDeviceSurfaceInfo2KHR*)(&pSurfaceInfo), (VkDeviceGroupPresentModeFlagsKHR*)(&ret))); return ret; }
 
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
