@@ -1,6 +1,6 @@
 project('vkpp', ['c', 'cpp'],
 	license: 'BSL',
-	version: '1.1.107',
+	version: '1.1.108',
 	meson_version: '>=0.46',
 	default_options: ['cpp_std=c++1z'])
 
