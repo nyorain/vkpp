@@ -757,7 +757,7 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 						offset += (extnum.as_llong() - 1) * 1000;
 					} else {
 						// extension number queried in the beginning
-						offset += (number - 1) * 1000;
+						offset += number * 1000;
 					}
 
 					std::int64_t value = 0;
