@@ -1,3 +1,6 @@
+- ternary operator *does* use lazy eval of arguments
+  we can probably remove half the macros and instead add a
+  forceDispatch argument to it
 - fix output bugs
 	- fix android,metal struct fwd declarations
 - all the reinterpret_cast'ing at the moment is undefined behaviour

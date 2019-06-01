@@ -750,8 +750,15 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 						dir = dirAttrib.as_string();
 					}
 
+					std::string name = req.attribute("name").as_string();
 					auto offset = req.attribute("offset").as_llong();
-					offset += number * 1000; //extension number queried in the beginning
+					auto extnum = req.attribute("extnumber");
+					if(extnum) {
+						offset += (extnum.as_llong() - 1) * 1000;
+					} else {
+						// extension number queried in the beginning
+						offset += (number - 1) * 1000;
+					}
 
 					std::int64_t value = 0;
 
@@ -763,8 +770,6 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 					} else {
 						std::cerr << "### invalid enum ext dir: '" << dir << "', " << enumName << "\n";
 					}
-
-					std::string name = req.attribute("name").as_string();
 
 					auto v = std::make_pair(name, value);
 					extEnum->values.push_back(v);
