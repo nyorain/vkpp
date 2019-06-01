@@ -4,7 +4,7 @@
 
 int main() {
 	auto version = vk::enumerateInstanceVersion();
-	std::printf("enumarted instance version: %d.%d.%d\n",
+	std::printf("enumerated instance version: %d.%d.%d\n",
 		VK_VERSION_MAJOR(version),
 		VK_VERSION_MINOR(version),
 		VK_VERSION_PATCH(version));

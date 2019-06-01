@@ -823,9 +823,10 @@ void CCOutputGenerator::printStruct(const Struct& type)
 	}
 
 	// init ctor
-	// there will only be one init constructor if the type isnt union, and there are members like
-	// pNext or structureType, other wise uniform init can be used to init the members
-	// if the struct is returnedonly there is no need for a constructor
+	// there will only be an init constructor if the type isnt union, and there
+	// are members like pNext or structureType, otherwise uniform init can be
+	// used to init the members
+	// if the struct is returnedonly there is also no need for a constructor
 	if(printCtor && !type.returnedonly && !type.isUnion) {
 		structs_ << "\n\t" << name << "(" << paramList << ")";
 		if(!initList.empty()) structs_ << " : " << initList;
