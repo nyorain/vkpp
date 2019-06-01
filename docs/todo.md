@@ -1,3 +1,5 @@
+- make the struct constructors constexpr! can be useful at times
+
 - fix output bugs
 	- fix android,metal struct fwd declarations
 - all the reinterpret_cast'ing at the moment is undefined behaviour
@@ -22,7 +24,6 @@
   entry. Come up with something better than the unordered_map
   in the output generator.
 - better feature/extension dependency/requirement handling
-- make the struct constructors constexpr?
 - clean up (rename) config macros (CHECK_THROW instead of CALL_THROW)
 	- support generating both, throwing an non-throwing functions
 - don't output all extensions. Only required (via settings) ones
