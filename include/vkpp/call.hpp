@@ -109,20 +109,35 @@ auto call(FR (*f)(FA...), Args&&... args) {
 // you can link to libvkpp which only contains that single symbol.
 extern DynamicDispatch dispatch;
 
-// Dispatches function x via the given dispatcher (if not null), otherwise
-// falls back to the globak vk::dispatch.
+// Dispatches (calls) function x via the given dispatcher (if not null),
+// otherwise falls back to the globak vk::dispatch.
+// - d: the dispatcher object (stores function pointers to all functions;
+//   type: const vk::DynamicDispatch*) to use. It must have the function f
+//   loaded. If d is null, will use the global vk::dispatch as fallback
+// - f: the name of the function to call
 #define VKPP_DISPATCH_GLOBAL(d, f, ...) ((d ? d : &::vk::dispatch)->f(__VA_ARGS__))
 
-// If VKPP_DYNAMIC_DISPATCH is defined, functions will never be called
-// directly.
 #ifdef VKPP_DYNAMIC_DISPATCH
+	// If VKPP_DYNAMIC_DISPATCH is defined, functions (name passed via argument 'f')
+	// will never be called directly.  Instead, dispatching will fall
+	// back to the global vk::dispatch object.
 	#define VKPP_DISPATCH(d, f, ...) (VKPP_DISPATCH_GLOBAL(d, f, __VA_ARGS__))
 #else
+	// Otherwise, VKPP_DISPATCH will use the given dispatcher objet d
+	// if given. If not given, it will simply call the function directly,
+	// i.e. requiring the application to link against libvulkan and
+	// hoping that the given symbol can be found (can't be expected
+	// for non-core functions!)
 	#define VKPP_DISPATCH(d, f, ...) ((d ? d->f : f)(__VA_ARGS__))
 #endif
 
 } // namespace vk
 
+// VKPP_CALL_THROW defines whether functions throw errors when the
+// underlying vulkan call returns an error.
+// NOTE/TODO: vkpp is currently somewhat broken when this is defined
+// as 0 since some functions don't return the result and therefore
+// offer no way to check it...
 #ifndef VKPP_CALL_THROW
 	#ifdef NDEBUG
 		#define VKPP_CALL_THROW 0
@@ -143,6 +158,28 @@ extern DynamicDispatch dispatch;
 	#endif
 #endif
 
+// Calls a given vulkan function with optional support for dynamic dispatching
+// an error checking (i.e. throwing exceptions), depending on configuration
+// macros.
+// Arguments:
+// - f: The vulkan function to be called. Must match exactly with the
+//   name of a vulkan functions, e.g. vkCreateGraphicsPipelines.
+// - d: Must have type (const) vk::DynamicDispatch*. If d is not NULL,
+//   will use the function pointer stored in it to call the function.
+//   The dispatcher object *must* have the function to be called loaded.
+//   If d is NULL, will:
+// 	 - defined(VKPP_DYNAMIC_DISPATCH) => fall back to the global
+// 	   vk::dispatch object.
+// 	 - otherwise will simply call the function f directly, i.e. requiring
+// 	   the application to link against libvulkan and libvulkan to expose
+// 	   the symbol for function 'f'
+// Configuration:
+// - when VKPP_CALL_THROW is 1, will throw an exception if the underlaying
+//   vulkan function returns an error
+// Valid example usages:
+// - VKPP_CALL(nullptr, vkCreateGraphicsPipelines, args...)
+// - VKPP_CALL(vk::dispatch, vkCreateSemaphore, args...)
+// - VKPP_CALL(&myDispatcher, vkDestroyPipeline, args...)
 #ifndef VKPP_CALL
 	#define VKPP_CALL(d, f, ...) VKPP_CHECK(VKPP_DISPATCH(d, f, __VA_ARGS__))
 #endif
