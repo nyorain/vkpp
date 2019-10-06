@@ -16,8 +16,8 @@
 #include <vector>
 #include <vulkan/vulkan.h>
 
-// Generated for vulkan version: 1.1.108
-#if !defined(VK_VERSION_1_1) || 108 > VK_HEADER_VERSION
+// Generated for vulkan version: 1.1.123
+#if !defined(VK_VERSION_1_1) || 123 > VK_HEADER_VERSION
 	#error "vulkan.h version too old, does not match generated version"
 #endif
 
@@ -606,6 +606,16 @@ inline void cmdSetCheckpointNV(CommandBuffer commandBuffer, const void* pCheckpo
 inline void getQueueCheckpointDataNV(Queue queue, uint32_t& pCheckpointDataCount, CheckpointDataNV* pCheckpointData = {}, DynamicDispatch* dispatcher = nullptr){ return VKPP_DISPATCH_GLOBAL(dispatcher, vkGetQueueCheckpointDataNV, (VkQueue)(queue), (uint32_t*)(&pCheckpointDataCount), (VkCheckpointDataNV*)(pCheckpointData)); }
 inline std::vector<CheckpointDataNV> getQueueCheckpointDataNV(Queue queue, DynamicDispatch* dispatcher = nullptr){ VEC_FUNC_VOID_G(dispatcher, CheckpointDataNV, uint32_t, vkGetQueueCheckpointDataNV, (VkQueue)(queue), &count, (VkCheckpointDataNV*)(ret.data()));  }
 
+inline Result initializePerformanceApiINTEL(Device device, const InitializePerformanceApiInfoINTEL& pInitializeInfo, DynamicDispatch* dispatcher = nullptr){ return static_cast<Result>(VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkInitializePerformanceApiINTEL, (VkDevice)(device), (const VkInitializePerformanceApiInfoINTEL*)(&pInitializeInfo)))); }
+inline void uninitializePerformanceApiINTEL(Device device, DynamicDispatch* dispatcher = nullptr){ return VKPP_DISPATCH_GLOBAL(dispatcher, vkUninitializePerformanceApiINTEL, (VkDevice)(device)); }
+inline Result cmdSetPerformanceMarkerINTEL(CommandBuffer commandBuffer, const PerformanceMarkerInfoINTEL& pMarkerInfo, DynamicDispatch* dispatcher = nullptr){ return static_cast<Result>(VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkCmdSetPerformanceMarkerINTEL, (VkCommandBuffer)(commandBuffer), (const VkPerformanceMarkerInfoINTEL*)(&pMarkerInfo)))); }
+inline Result cmdSetPerformanceStreamMarkerINTEL(CommandBuffer commandBuffer, const PerformanceStreamMarkerInfoINTEL& pMarkerInfo, DynamicDispatch* dispatcher = nullptr){ return static_cast<Result>(VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkCmdSetPerformanceStreamMarkerINTEL, (VkCommandBuffer)(commandBuffer), (const VkPerformanceStreamMarkerInfoINTEL*)(&pMarkerInfo)))); }
+inline Result cmdSetPerformanceOverrideINTEL(CommandBuffer commandBuffer, const PerformanceOverrideInfoINTEL& pOverrideInfo, DynamicDispatch* dispatcher = nullptr){ return static_cast<Result>(VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkCmdSetPerformanceOverrideINTEL, (VkCommandBuffer)(commandBuffer), (const VkPerformanceOverrideInfoINTEL*)(&pOverrideInfo)))); }
+inline PerformanceConfigurationINTEL acquirePerformanceConfigurationINTEL(Device device, const PerformanceConfigurationAcquireInfoINTEL& pAcquireInfo, DynamicDispatch* dispatcher = nullptr){ PerformanceConfigurationINTEL ret = {}; VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkAcquirePerformanceConfigurationINTEL, (VkDevice)(device), (const VkPerformanceConfigurationAcquireInfoINTEL*)(&pAcquireInfo), (VkPerformanceConfigurationINTEL*)(&ret))); return ret; }
+inline Result releasePerformanceConfigurationINTEL(Device device, PerformanceConfigurationINTEL configuration, DynamicDispatch* dispatcher = nullptr){ return static_cast<Result>(VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkReleasePerformanceConfigurationINTEL, (VkDevice)(device), (VkPerformanceConfigurationINTEL)(configuration)))); }
+inline Result queueSetPerformanceConfigurationINTEL(Queue queue, PerformanceConfigurationINTEL configuration, DynamicDispatch* dispatcher = nullptr){ return static_cast<Result>(VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkQueueSetPerformanceConfigurationINTEL, (VkQueue)(queue), (VkPerformanceConfigurationINTEL)(configuration)))); }
+inline Result getPerformanceParameterINTEL(Device device, PerformanceParameterTypeINTEL parameter, PerformanceValueINTEL& pValue, DynamicDispatch* dispatcher = nullptr){ return static_cast<Result>(VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkGetPerformanceParameterINTEL, (VkDevice)(device), static_cast<VkPerformanceParameterTypeINTEL>(parameter), (VkPerformanceValueINTEL*)(&pValue)))); }
+
 inline void setLocalDimmingAMD(Device device, SwapchainKHR swapChain, Bool32 localDimmingEnable, DynamicDispatch* dispatcher = nullptr){ return VKPP_DISPATCH_GLOBAL(dispatcher, vkSetLocalDimmingAMD, (VkDevice)(device), (VkSwapchainKHR)(swapChain), localDimmingEnable); }
 
 #ifdef VK_USE_PLATFORM_FUCHSIA
@@ -635,7 +645,16 @@ inline DeviceGroupPresentModeFlagsKHR getDeviceGroupSurfacePresentModes2EXT(Devi
 
 inline SurfaceKHR createHeadlessSurfaceEXT(Instance instance, const HeadlessSurfaceCreateInfoEXT& pCreateInfo, const AllocationCallbacks* pAllocator = {}, DynamicDispatch* dispatcher = nullptr){ SurfaceKHR ret = {}; VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkCreateHeadlessSurfaceEXT, (VkInstance)(instance), (const VkHeadlessSurfaceCreateInfoEXT*)(&pCreateInfo), (const VkAllocationCallbacks*)(pAllocator), (VkSurfaceKHR*)(&ret))); return ret; }
 
+inline void cmdSetLineStippleEXT(CommandBuffer commandBuffer, uint32_t lineStippleFactor, uint16_t lineStipplePattern, DynamicDispatch* dispatcher = nullptr){ return VKPP_DISPATCH_GLOBAL(dispatcher, vkCmdSetLineStippleEXT, (VkCommandBuffer)(commandBuffer), lineStippleFactor, lineStipplePattern); }
+
 inline void resetQueryPoolEXT(Device device, QueryPool queryPool, uint32_t firstQuery, uint32_t queryCount, DynamicDispatch* dispatcher = nullptr){ return VKPP_DISPATCH_GLOBAL(dispatcher, vkResetQueryPoolEXT, (VkDevice)(device), (VkQueryPool)(queryPool), firstQuery, queryCount); }
+
+inline Result getPipelineExecutablePropertiesKHR(Device device, const PipelineInfoKHR& pPipelineInfo, uint32_t& pExecutableCount, PipelineExecutablePropertiesKHR* pProperties = {}, DynamicDispatch* dispatcher = nullptr){ return static_cast<Result>(VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkGetPipelineExecutablePropertiesKHR, (VkDevice)(device), (const VkPipelineInfoKHR*)(&pPipelineInfo), (uint32_t*)(&pExecutableCount), (VkPipelineExecutablePropertiesKHR*)(pProperties)))); }
+inline std::vector<PipelineExecutablePropertiesKHR> getPipelineExecutablePropertiesKHR(Device device, const PipelineInfoKHR& pPipelineInfo, DynamicDispatch* dispatcher = nullptr){ VEC_FUNC_G(dispatcher, PipelineExecutablePropertiesKHR, uint32_t, vkGetPipelineExecutablePropertiesKHR, (VkDevice)(device), (const VkPipelineInfoKHR*)(&pPipelineInfo), &count, (VkPipelineExecutablePropertiesKHR*)(ret.data()));  }
+inline Result getPipelineExecutableStatisticsKHR(Device device, const PipelineExecutableInfoKHR& pExecutableInfo, uint32_t& pStatisticCount, PipelineExecutableStatisticKHR* pStatistics = {}, DynamicDispatch* dispatcher = nullptr){ return static_cast<Result>(VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkGetPipelineExecutableStatisticsKHR, (VkDevice)(device), (const VkPipelineExecutableInfoKHR*)(&pExecutableInfo), (uint32_t*)(&pStatisticCount), (VkPipelineExecutableStatisticKHR*)(pStatistics)))); }
+inline std::vector<PipelineExecutableStatisticKHR> getPipelineExecutableStatisticsKHR(Device device, const PipelineExecutableInfoKHR& pExecutableInfo, DynamicDispatch* dispatcher = nullptr){ VEC_FUNC_G(dispatcher, PipelineExecutableStatisticKHR, uint32_t, vkGetPipelineExecutableStatisticsKHR, (VkDevice)(device), (const VkPipelineExecutableInfoKHR*)(&pExecutableInfo), &count, (VkPipelineExecutableStatisticKHR*)(ret.data()));  }
+inline Result getPipelineExecutableInternalRepresentationsKHR(Device device, const PipelineExecutableInfoKHR& pExecutableInfo, uint32_t& pInternalRepresentationCount, PipelineExecutableInternalRepresentationKHR* pInternalRepresentations = {}, DynamicDispatch* dispatcher = nullptr){ return static_cast<Result>(VKPP_CHECK(VKPP_DISPATCH_GLOBAL(dispatcher, vkGetPipelineExecutableInternalRepresentationsKHR, (VkDevice)(device), (const VkPipelineExecutableInfoKHR*)(&pExecutableInfo), (uint32_t*)(&pInternalRepresentationCount), (VkPipelineExecutableInternalRepresentationKHR*)(pInternalRepresentations)))); }
+inline std::vector<PipelineExecutableInternalRepresentationKHR> getPipelineExecutableInternalRepresentationsKHR(Device device, const PipelineExecutableInfoKHR& pExecutableInfo, DynamicDispatch* dispatcher = nullptr){ VEC_FUNC_G(dispatcher, PipelineExecutableInternalRepresentationKHR, uint32_t, vkGetPipelineExecutableInternalRepresentationsKHR, (VkDevice)(device), (const VkPipelineExecutableInfoKHR*)(&pExecutableInfo), &count, (VkPipelineExecutableInternalRepresentationKHR*)(ret.data()));  }
 
 #undef VEC_FUNC
 #undef VEC_FUNC_VOID

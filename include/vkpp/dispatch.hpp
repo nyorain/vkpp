@@ -14,7 +14,7 @@
 #include <vkpp/span.hpp>
 #include <vkpp/flags.hpp>
 
-// Generated for vulkan version: 1.1.108
+// Generated for vulkan version: 1.1.123
 
 namespace vk {
 
@@ -401,6 +401,15 @@ public:
 	PFN_vkCmdSetExclusiveScissorNV vkCmdSetExclusiveScissorNV {};
 	PFN_vkCmdSetCheckpointNV vkCmdSetCheckpointNV {};
 	PFN_vkGetQueueCheckpointDataNV vkGetQueueCheckpointDataNV {};
+	PFN_vkInitializePerformanceApiINTEL vkInitializePerformanceApiINTEL {};
+	PFN_vkUninitializePerformanceApiINTEL vkUninitializePerformanceApiINTEL {};
+	PFN_vkCmdSetPerformanceMarkerINTEL vkCmdSetPerformanceMarkerINTEL {};
+	PFN_vkCmdSetPerformanceStreamMarkerINTEL vkCmdSetPerformanceStreamMarkerINTEL {};
+	PFN_vkCmdSetPerformanceOverrideINTEL vkCmdSetPerformanceOverrideINTEL {};
+	PFN_vkAcquirePerformanceConfigurationINTEL vkAcquirePerformanceConfigurationINTEL {};
+	PFN_vkReleasePerformanceConfigurationINTEL vkReleasePerformanceConfigurationINTEL {};
+	PFN_vkQueueSetPerformanceConfigurationINTEL vkQueueSetPerformanceConfigurationINTEL {};
+	PFN_vkGetPerformanceParameterINTEL vkGetPerformanceParameterINTEL {};
 	PFN_vkSetLocalDimmingAMD vkSetLocalDimmingAMD {};
 #ifdef VK_USE_PLATFORM_FUCHSIA
 
@@ -420,7 +429,11 @@ public:
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
 	PFN_vkCreateHeadlessSurfaceEXT vkCreateHeadlessSurfaceEXT {};
+	PFN_vkCmdSetLineStippleEXT vkCmdSetLineStippleEXT {};
 	PFN_vkResetQueryPoolEXT vkResetQueryPoolEXT {};
+	PFN_vkGetPipelineExecutablePropertiesKHR vkGetPipelineExecutablePropertiesKHR {};
+	PFN_vkGetPipelineExecutableStatisticsKHR vkGetPipelineExecutableStatisticsKHR {};
+	PFN_vkGetPipelineExecutableInternalRepresentationsKHR vkGetPipelineExecutableInternalRepresentationsKHR {};
 
 
 public:
@@ -820,6 +833,15 @@ public:
 		VKPP_ILOAD(ini, vkCmdSetExclusiveScissorNV);
 		VKPP_ILOAD(ini, vkCmdSetCheckpointNV);
 		VKPP_ILOAD(ini, vkGetQueueCheckpointDataNV);
+		VKPP_ILOAD(ini, vkInitializePerformanceApiINTEL);
+		VKPP_ILOAD(ini, vkUninitializePerformanceApiINTEL);
+		VKPP_ILOAD(ini, vkCmdSetPerformanceMarkerINTEL);
+		VKPP_ILOAD(ini, vkCmdSetPerformanceStreamMarkerINTEL);
+		VKPP_ILOAD(ini, vkCmdSetPerformanceOverrideINTEL);
+		VKPP_ILOAD(ini, vkAcquirePerformanceConfigurationINTEL);
+		VKPP_ILOAD(ini, vkReleasePerformanceConfigurationINTEL);
+		VKPP_ILOAD(ini, vkQueueSetPerformanceConfigurationINTEL);
+		VKPP_ILOAD(ini, vkGetPerformanceParameterINTEL);
 		VKPP_ILOAD(ini, vkSetLocalDimmingAMD);
 #ifdef VK_USE_PLATFORM_FUCHSIA
 
@@ -839,7 +861,11 @@ public:
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
 		VKPP_ILOAD(ini, vkCreateHeadlessSurfaceEXT);
+		VKPP_ILOAD(ini, vkCmdSetLineStippleEXT);
 		VKPP_ILOAD(ini, vkResetQueryPoolEXT);
+		VKPP_ILOAD(ini, vkGetPipelineExecutablePropertiesKHR);
+		VKPP_ILOAD(ini, vkGetPipelineExecutableStatisticsKHR);
+		VKPP_ILOAD(ini, vkGetPipelineExecutableInternalRepresentationsKHR);
 
 	}
 
