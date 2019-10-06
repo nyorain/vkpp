@@ -29,6 +29,8 @@ void log(Args... args) {
 
 /// string to lower in place
 void tolowerip(std::string& str) {
+	if (str.length()==0)
+		return;
 	static const auto& f = std::use_facet<std::ctype<char>>(std::locale());
 	f.tolower(&str.front(), &str.back() + 1);
 }
@@ -42,6 +44,8 @@ std::string tolower(const std::string& str) {
 
 /// string to upper in place
 void toupperip(std::string& str) {
+	if (str.length()==0)
+		return;
 	static const auto& f = std::use_facet<std::ctype<char>>(std::locale());
 	f.toupper(&str.front(), &str.back() + 1);
 }
