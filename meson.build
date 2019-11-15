@@ -26,6 +26,9 @@ endif
 spec = files('vk.xml')
 subdir('include/vkpp')
 
+vkpp_src = [vk_headers]
+vkpp_src += 'src/vkpp.cpp'
+
 vkpp_lib = library('vkpp',
 	sources: 'src/vkpp.cpp',
 	dependencies: dependency('vulkan', required: true),
