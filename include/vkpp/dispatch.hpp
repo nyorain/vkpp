@@ -14,7 +14,7 @@
 #include <vkpp/span.hpp>
 #include <vkpp/flags.hpp>
 
-// Generated for vulkan version: 1.1.108
+// Generated for vulkan version: 1.1.70
 
 namespace vk {
 
@@ -251,6 +251,12 @@ public:
 	PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR vkGetPhysicalDeviceWaylandPresentationSupportKHR {};
 #endif //VK_USE_PLATFORM_WAYLAND_KHR
 
+#ifdef VK_USE_PLATFORM_MIR_KHR
+
+	PFN_vkCreateMirSurfaceKHR vkCreateMirSurfaceKHR {};
+	PFN_vkGetPhysicalDeviceMirPresentationSupportKHR vkGetPhysicalDeviceMirPresentationSupportKHR {};
+#endif //VK_USE_PLATFORM_MIR_KHR
+
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 
 	PFN_vkCreateWin32SurfaceKHR vkCreateWin32SurfaceKHR {};
@@ -265,22 +271,9 @@ public:
 	PFN_vkCmdDebugMarkerBeginEXT vkCmdDebugMarkerBeginEXT {};
 	PFN_vkCmdDebugMarkerEndEXT vkCmdDebugMarkerEndEXT {};
 	PFN_vkCmdDebugMarkerInsertEXT vkCmdDebugMarkerInsertEXT {};
-	PFN_vkCmdBindTransformFeedbackBuffersEXT vkCmdBindTransformFeedbackBuffersEXT {};
-	PFN_vkCmdBeginTransformFeedbackEXT vkCmdBeginTransformFeedbackEXT {};
-	PFN_vkCmdEndTransformFeedbackEXT vkCmdEndTransformFeedbackEXT {};
-	PFN_vkCmdBeginQueryIndexedEXT vkCmdBeginQueryIndexedEXT {};
-	PFN_vkCmdEndQueryIndexedEXT vkCmdEndQueryIndexedEXT {};
-	PFN_vkCmdDrawIndirectByteCountEXT vkCmdDrawIndirectByteCountEXT {};
-	PFN_vkCmdDrawIndirectCountKHR vkCmdDrawIndirectCountKHR {};
 	PFN_vkCmdDrawIndirectCountAMD vkCmdDrawIndirectCountAMD {};
-	PFN_vkCmdDrawIndexedIndirectCountKHR vkCmdDrawIndexedIndirectCountKHR {};
 	PFN_vkCmdDrawIndexedIndirectCountAMD vkCmdDrawIndexedIndirectCountAMD {};
 	PFN_vkGetShaderInfoAMD vkGetShaderInfoAMD {};
-#ifdef VK_USE_PLATFORM_GGP
-
-	PFN_vkCreateStreamDescriptorSurfaceGGP vkCreateStreamDescriptorSurfaceGGP {};
-#endif //VK_USE_PLATFORM_GGP
-
 	PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV vkGetPhysicalDeviceExternalImageFormatPropertiesNV {};
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 
@@ -310,8 +303,6 @@ public:
 	PFN_vkGetSemaphoreFdKHR vkGetSemaphoreFdKHR {};
 	PFN_vkCmdPushDescriptorSetKHR vkCmdPushDescriptorSetKHR {};
 	PFN_vkCmdPushDescriptorSetWithTemplateKHR vkCmdPushDescriptorSetWithTemplateKHR {};
-	PFN_vkCmdBeginConditionalRenderingEXT vkCmdBeginConditionalRenderingEXT {};
-	PFN_vkCmdEndConditionalRenderingEXT vkCmdEndConditionalRenderingEXT {};
 	PFN_vkCmdSetViewportWScalingNV vkCmdSetViewportWScalingNV {};
 	PFN_vkReleaseDisplayEXT vkReleaseDisplayEXT {};
 #ifdef VK_USE_PLATFORM_XLIB_XRANDR_EXT
@@ -329,10 +320,6 @@ public:
 	PFN_vkGetPastPresentationTimingGOOGLE vkGetPastPresentationTimingGOOGLE {};
 	PFN_vkCmdSetDiscardRectangleEXT vkCmdSetDiscardRectangleEXT {};
 	PFN_vkSetHdrMetadataEXT vkSetHdrMetadataEXT {};
-	PFN_vkCreateRenderPass2KHR vkCreateRenderPass2KHR {};
-	PFN_vkCmdBeginRenderPass2KHR vkCmdBeginRenderPass2KHR {};
-	PFN_vkCmdNextSubpass2KHR vkCmdNextSubpass2KHR {};
-	PFN_vkCmdEndRenderPass2KHR vkCmdEndRenderPass2KHR {};
 	PFN_vkGetSwapchainStatusKHR vkGetSwapchainStatusKHR {};
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 
@@ -344,10 +331,6 @@ public:
 	PFN_vkGetFenceFdKHR vkGetFenceFdKHR {};
 	PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR vkGetPhysicalDeviceSurfaceCapabilities2KHR {};
 	PFN_vkGetPhysicalDeviceSurfaceFormats2KHR vkGetPhysicalDeviceSurfaceFormats2KHR {};
-	PFN_vkGetPhysicalDeviceDisplayProperties2KHR vkGetPhysicalDeviceDisplayProperties2KHR {};
-	PFN_vkGetPhysicalDeviceDisplayPlaneProperties2KHR vkGetPhysicalDeviceDisplayPlaneProperties2KHR {};
-	PFN_vkGetDisplayModeProperties2KHR vkGetDisplayModeProperties2KHR {};
-	PFN_vkGetDisplayPlaneCapabilities2KHR vkGetDisplayPlaneCapabilities2KHR {};
 #ifdef VK_USE_PLATFORM_IOS_MVK
 
 	PFN_vkCreateIOSSurfaceMVK vkCreateIOSSurfaceMVK {};
@@ -371,56 +354,12 @@ public:
 	PFN_vkSubmitDebugUtilsMessageEXT vkSubmitDebugUtilsMessageEXT {};
 	PFN_vkCmdSetSampleLocationsEXT vkCmdSetSampleLocationsEXT {};
 	PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT vkGetPhysicalDeviceMultisamplePropertiesEXT {};
-	PFN_vkGetImageDrmFormatModifierPropertiesEXT vkGetImageDrmFormatModifierPropertiesEXT {};
 	PFN_vkCreateValidationCacheEXT vkCreateValidationCacheEXT {};
 	PFN_vkDestroyValidationCacheEXT vkDestroyValidationCacheEXT {};
 	PFN_vkMergeValidationCachesEXT vkMergeValidationCachesEXT {};
 	PFN_vkGetValidationCacheDataEXT vkGetValidationCacheDataEXT {};
-	PFN_vkCmdBindShadingRateImageNV vkCmdBindShadingRateImageNV {};
-	PFN_vkCmdSetViewportShadingRatePaletteNV vkCmdSetViewportShadingRatePaletteNV {};
-	PFN_vkCmdSetCoarseSampleOrderNV vkCmdSetCoarseSampleOrderNV {};
-	PFN_vkCreateAccelerationStructureNV vkCreateAccelerationStructureNV {};
-	PFN_vkDestroyAccelerationStructureNV vkDestroyAccelerationStructureNV {};
-	PFN_vkGetAccelerationStructureMemoryRequirementsNV vkGetAccelerationStructureMemoryRequirementsNV {};
-	PFN_vkBindAccelerationStructureMemoryNV vkBindAccelerationStructureMemoryNV {};
-	PFN_vkCmdBuildAccelerationStructureNV vkCmdBuildAccelerationStructureNV {};
-	PFN_vkCmdCopyAccelerationStructureNV vkCmdCopyAccelerationStructureNV {};
-	PFN_vkCmdTraceRaysNV vkCmdTraceRaysNV {};
-	PFN_vkCreateRayTracingPipelinesNV vkCreateRayTracingPipelinesNV {};
-	PFN_vkGetRayTracingShaderGroupHandlesNV vkGetRayTracingShaderGroupHandlesNV {};
-	PFN_vkGetAccelerationStructureHandleNV vkGetAccelerationStructureHandleNV {};
-	PFN_vkCmdWriteAccelerationStructuresPropertiesNV vkCmdWriteAccelerationStructuresPropertiesNV {};
-	PFN_vkCompileDeferredNV vkCompileDeferredNV {};
 	PFN_vkGetMemoryHostPointerPropertiesEXT vkGetMemoryHostPointerPropertiesEXT {};
 	PFN_vkCmdWriteBufferMarkerAMD vkCmdWriteBufferMarkerAMD {};
-	PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT vkGetPhysicalDeviceCalibrateableTimeDomainsEXT {};
-	PFN_vkGetCalibratedTimestampsEXT vkGetCalibratedTimestampsEXT {};
-	PFN_vkCmdDrawMeshTasksNV vkCmdDrawMeshTasksNV {};
-	PFN_vkCmdDrawMeshTasksIndirectNV vkCmdDrawMeshTasksIndirectNV {};
-	PFN_vkCmdDrawMeshTasksIndirectCountNV vkCmdDrawMeshTasksIndirectCountNV {};
-	PFN_vkCmdSetExclusiveScissorNV vkCmdSetExclusiveScissorNV {};
-	PFN_vkCmdSetCheckpointNV vkCmdSetCheckpointNV {};
-	PFN_vkGetQueueCheckpointDataNV vkGetQueueCheckpointDataNV {};
-	PFN_vkSetLocalDimmingAMD vkSetLocalDimmingAMD {};
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-	PFN_vkCreateImagePipeSurfaceFUCHSIA vkCreateImagePipeSurfaceFUCHSIA {};
-#endif //VK_USE_PLATFORM_FUCHSIA
-
-	PFN_vkGetBufferDeviceAddressEXT vkGetBufferDeviceAddressEXT {};
-	PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV vkGetPhysicalDeviceCooperativeMatrixPropertiesNV {};
-	PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV {};
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-	PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT vkGetPhysicalDeviceSurfacePresentModes2EXT {};
-	PFN_vkAcquireFullScreenExclusiveModeEXT vkAcquireFullScreenExclusiveModeEXT {};
-	PFN_vkReleaseFullScreenExclusiveModeEXT vkReleaseFullScreenExclusiveModeEXT {};
-	PFN_vkGetDeviceGroupSurfacePresentModes2EXT vkGetDeviceGroupSurfacePresentModes2EXT {};
-	PFN_vkGetDeviceGroupSurfacePresentModes2EXT vkGetDeviceGroupSurfacePresentModes2EXT {};
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
-	PFN_vkCreateHeadlessSurfaceEXT vkCreateHeadlessSurfaceEXT {};
-	PFN_vkResetQueryPoolEXT vkResetQueryPoolEXT {};
 
 
 public:
@@ -670,6 +609,12 @@ public:
 		VKPP_ILOAD(ini, vkGetPhysicalDeviceWaylandPresentationSupportKHR);
 #endif //VK_USE_PLATFORM_WAYLAND_KHR
 
+#ifdef VK_USE_PLATFORM_MIR_KHR
+
+		VKPP_ILOAD(ini, vkCreateMirSurfaceKHR);
+		VKPP_ILOAD(ini, vkGetPhysicalDeviceMirPresentationSupportKHR);
+#endif //VK_USE_PLATFORM_MIR_KHR
+
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 
 		VKPP_ILOAD(ini, vkCreateWin32SurfaceKHR);
@@ -684,22 +629,9 @@ public:
 		VKPP_ILOAD(ini, vkCmdDebugMarkerBeginEXT);
 		VKPP_ILOAD(ini, vkCmdDebugMarkerEndEXT);
 		VKPP_ILOAD(ini, vkCmdDebugMarkerInsertEXT);
-		VKPP_ILOAD(ini, vkCmdBindTransformFeedbackBuffersEXT);
-		VKPP_ILOAD(ini, vkCmdBeginTransformFeedbackEXT);
-		VKPP_ILOAD(ini, vkCmdEndTransformFeedbackEXT);
-		VKPP_ILOAD(ini, vkCmdBeginQueryIndexedEXT);
-		VKPP_ILOAD(ini, vkCmdEndQueryIndexedEXT);
-		VKPP_ILOAD(ini, vkCmdDrawIndirectByteCountEXT);
-		VKPP_ILOAD(ini, vkCmdDrawIndirectCountKHR);
 		VKPP_ILOAD(ini, vkCmdDrawIndirectCountAMD);
-		VKPP_ILOAD(ini, vkCmdDrawIndexedIndirectCountKHR);
 		VKPP_ILOAD(ini, vkCmdDrawIndexedIndirectCountAMD);
 		VKPP_ILOAD(ini, vkGetShaderInfoAMD);
-#ifdef VK_USE_PLATFORM_GGP
-
-		VKPP_ILOAD(ini, vkCreateStreamDescriptorSurfaceGGP);
-#endif //VK_USE_PLATFORM_GGP
-
 		VKPP_ILOAD(ini, vkGetPhysicalDeviceExternalImageFormatPropertiesNV);
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 
@@ -729,8 +661,6 @@ public:
 		VKPP_ILOAD(ini, vkGetSemaphoreFdKHR);
 		VKPP_ILOAD(ini, vkCmdPushDescriptorSetKHR);
 		VKPP_ILOAD(ini, vkCmdPushDescriptorSetWithTemplateKHR);
-		VKPP_ILOAD(ini, vkCmdBeginConditionalRenderingEXT);
-		VKPP_ILOAD(ini, vkCmdEndConditionalRenderingEXT);
 		VKPP_ILOAD(ini, vkCmdSetViewportWScalingNV);
 		VKPP_ILOAD(ini, vkReleaseDisplayEXT);
 #ifdef VK_USE_PLATFORM_XLIB_XRANDR_EXT
@@ -748,10 +678,6 @@ public:
 		VKPP_ILOAD(ini, vkGetPastPresentationTimingGOOGLE);
 		VKPP_ILOAD(ini, vkCmdSetDiscardRectangleEXT);
 		VKPP_ILOAD(ini, vkSetHdrMetadataEXT);
-		VKPP_ILOAD(ini, vkCreateRenderPass2KHR);
-		VKPP_ILOAD(ini, vkCmdBeginRenderPass2KHR);
-		VKPP_ILOAD(ini, vkCmdNextSubpass2KHR);
-		VKPP_ILOAD(ini, vkCmdEndRenderPass2KHR);
 		VKPP_ILOAD(ini, vkGetSwapchainStatusKHR);
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 
@@ -763,10 +689,6 @@ public:
 		VKPP_ILOAD(ini, vkGetFenceFdKHR);
 		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfaceCapabilities2KHR);
 		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfaceFormats2KHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceDisplayProperties2KHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceDisplayPlaneProperties2KHR);
-		VKPP_ILOAD(ini, vkGetDisplayModeProperties2KHR);
-		VKPP_ILOAD(ini, vkGetDisplayPlaneCapabilities2KHR);
 #ifdef VK_USE_PLATFORM_IOS_MVK
 
 		VKPP_ILOAD(ini, vkCreateIOSSurfaceMVK);
@@ -790,56 +712,12 @@ public:
 		VKPP_ILOAD(ini, vkSubmitDebugUtilsMessageEXT);
 		VKPP_ILOAD(ini, vkCmdSetSampleLocationsEXT);
 		VKPP_ILOAD(ini, vkGetPhysicalDeviceMultisamplePropertiesEXT);
-		VKPP_ILOAD(ini, vkGetImageDrmFormatModifierPropertiesEXT);
 		VKPP_ILOAD(ini, vkCreateValidationCacheEXT);
 		VKPP_ILOAD(ini, vkDestroyValidationCacheEXT);
 		VKPP_ILOAD(ini, vkMergeValidationCachesEXT);
 		VKPP_ILOAD(ini, vkGetValidationCacheDataEXT);
-		VKPP_ILOAD(ini, vkCmdBindShadingRateImageNV);
-		VKPP_ILOAD(ini, vkCmdSetViewportShadingRatePaletteNV);
-		VKPP_ILOAD(ini, vkCmdSetCoarseSampleOrderNV);
-		VKPP_ILOAD(ini, vkCreateAccelerationStructureNV);
-		VKPP_ILOAD(ini, vkDestroyAccelerationStructureNV);
-		VKPP_ILOAD(ini, vkGetAccelerationStructureMemoryRequirementsNV);
-		VKPP_ILOAD(ini, vkBindAccelerationStructureMemoryNV);
-		VKPP_ILOAD(ini, vkCmdBuildAccelerationStructureNV);
-		VKPP_ILOAD(ini, vkCmdCopyAccelerationStructureNV);
-		VKPP_ILOAD(ini, vkCmdTraceRaysNV);
-		VKPP_ILOAD(ini, vkCreateRayTracingPipelinesNV);
-		VKPP_ILOAD(ini, vkGetRayTracingShaderGroupHandlesNV);
-		VKPP_ILOAD(ini, vkGetAccelerationStructureHandleNV);
-		VKPP_ILOAD(ini, vkCmdWriteAccelerationStructuresPropertiesNV);
-		VKPP_ILOAD(ini, vkCompileDeferredNV);
 		VKPP_ILOAD(ini, vkGetMemoryHostPointerPropertiesEXT);
 		VKPP_ILOAD(ini, vkCmdWriteBufferMarkerAMD);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceCalibrateableTimeDomainsEXT);
-		VKPP_ILOAD(ini, vkGetCalibratedTimestampsEXT);
-		VKPP_ILOAD(ini, vkCmdDrawMeshTasksNV);
-		VKPP_ILOAD(ini, vkCmdDrawMeshTasksIndirectNV);
-		VKPP_ILOAD(ini, vkCmdDrawMeshTasksIndirectCountNV);
-		VKPP_ILOAD(ini, vkCmdSetExclusiveScissorNV);
-		VKPP_ILOAD(ini, vkCmdSetCheckpointNV);
-		VKPP_ILOAD(ini, vkGetQueueCheckpointDataNV);
-		VKPP_ILOAD(ini, vkSetLocalDimmingAMD);
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-		VKPP_ILOAD(ini, vkCreateImagePipeSurfaceFUCHSIA);
-#endif //VK_USE_PLATFORM_FUCHSIA
-
-		VKPP_ILOAD(ini, vkGetBufferDeviceAddressEXT);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceCooperativeMatrixPropertiesNV);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV);
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfacePresentModes2EXT);
-		VKPP_ILOAD(ini, vkAcquireFullScreenExclusiveModeEXT);
-		VKPP_ILOAD(ini, vkReleaseFullScreenExclusiveModeEXT);
-		VKPP_ILOAD(ini, vkGetDeviceGroupSurfacePresentModes2EXT);
-		VKPP_ILOAD(ini, vkGetDeviceGroupSurfacePresentModes2EXT);
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
-		VKPP_ILOAD(ini, vkCreateHeadlessSurfaceEXT);
-		VKPP_ILOAD(ini, vkResetQueryPoolEXT);
 
 	}
 
@@ -850,7 +728,7 @@ public:
 
 // The specification (vk.xml) itself is published under the following license:
 
-// Copyright (c) 2015-2019 The Khronos Group Inc.
+// Copyright (c) 2015-2018 The Khronos Group Inc.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -864,19 +742,14 @@ public:
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // 
-// ---- Exceptions to the Apache 2.0 License: ----
+// ------------------------------------------------------------------------
 // 
-// As an exception, if you use this Software to generate code and portions of
-// this Software are embedded into the generated code as a result, you may
-// redistribute such product without providing attribution as would otherwise
-// be required by Sections 4(a), 4(b) and 4(d) of the License.
-// 
-// In addition, if you combine or link code generated by this Software with
-// software that is licensed under the GPLv2 or the LGPL v2.0 or 2.1
-// ("`Combined Software`") and if a court of competent jurisdiction determines
-// that the patent provision (Section 3), the indemnity provision (Section 9)
-// or other Section of the License conflicts with the conditions of the
-// applicable GPL or LGPL license, you may retroactively and prospectively
-// choose to deem waived or otherwise exclude such Section(s) of the License,
-// but only in their entirety and only with respect to the Combined Software.
+// This file, vk.xml, is the Vulkan API Registry. It is a critically important
+// and normative part of the Vulkan Specification, including a canonical
+// machine-readable definition of the API, parameter and member validation
+// language incorporated into the Specification and reference pages, and other
+// material which is registered by Khronos, such as tags used by extension and
+// layer authors. The authoritative public version of vk.xml is maintained in
+// the master branch of the Khronos Vulkan GitHub project. The authoritative
+// private version is maintained in the 1.0 branch of the member gitlab server.
     
