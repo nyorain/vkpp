@@ -104,9 +104,9 @@ auto call(FR (*f)(FA...), Args&&... args) {
 // Note that (implicit) dynamic dispatch does not work with multiple instances.
 //
 // If you use VKPP_DYNAMIC_DISPATCH or non-core functions you have
-// to define `namespace vk { DynamicDispatch dispatch; }` somewhere in
+// to include <vkpp/dispatch.cpp> somewhere in
 // you code, otherwise you get undefined reference errors. Alternatively,
-// you can link to libvkpp which only contains that single symbol.
+// you can link to libvkpp which only contains that symbol.
 extern DynamicDispatch dispatch;
 
 // Dispatches (calls) function x via the given dispatcher (if not null),

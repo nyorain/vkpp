@@ -23,22 +23,25 @@ if gen
 	  include_directories: codegen_inc)
 endif
 
-dispatchcpp = files('src/dispatch.cpp')
+dispatchcpp = files('include/vkpp/dispatch.cpp')
 spec = files('vk.xml')
 subdir('include/vkpp')
 
-vkpp_lib = library('vkpp',
-	sources: 'src/vkpp.cpp',
-	dependencies: dependency('vulkan', required: true),
-	include_directories: include_directories('include'),
-	install: true)
+vkpp_lib = []
+
+if get_option('lib')
+	vkpp_lib = library('vkpp',
+		sources: dispatchcpp,
+		dependencies: dependency('vulkan', required: true),
+		include_directories: include_directories('include'),
+		install: true)
+endif
 
 vkpp_dep = declare_dependency(
 	version: meson.project_version(),
 	link_with: vkpp_lib,
 	dependencies: dependency('vulkan', required: true),
-	include_directories: include_directories('include'),
-	sources: vk_headers[0])
+	include_directories: include_directories('include'))
 
 if test
 	vulkan_dep = dependency('vulkan')

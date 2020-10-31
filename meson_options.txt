@@ -1,2 +1,3 @@
 option('tests', type: 'boolean', value: 'false')
 option('regen', type: 'boolean', value: 'false') # builds generator and stuff
+option('lib', type: 'boolean', value: 'true') # whether to build library
