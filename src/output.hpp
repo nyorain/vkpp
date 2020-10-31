@@ -106,7 +106,8 @@ public:
 	// outputs the given entities to the matching headers files
 	void printStruct(const Struct& type);
 	void printCmd(const Command& command, std::string alias,
-		bool forceDispatch);
+		bool forceDispatch, bool guarded);
+	void printCmdRaw(const Command& command, std::string alias, bool forceDispatch);
 	void printVecCmd(const ParsedCommand& command, const std::string& name,
 		bool forceDispatch);
 
@@ -129,7 +130,7 @@ public:
 	std::string paramName(const Param&, const std::string& namePrefix = "",
 		bool plainArray = false) const;
 
-	// outputs to all headers
+	// outputs to all headers (except the dispatch stuff templates)
 	void outputAll(const std::string& output);
 
 	// ensures the the given guard is set in guardVar, otherwise prints it to of and sets it
@@ -139,12 +140,17 @@ public:
 	void endGuard(std::string& of, bool guardVar, const std::string& guard);
 
 protected:
-	std::ofstream functions_;
-	std::ofstream enums_;
-	std::ofstream structs_;
-	std::ofstream fwd_;
-	std::ofstream dispatch_;
+	std::ofstream functions_; // functions.hpp
+	std::ofstream enums_; // enums.hpp
+	std::ofstream structs_; // structs.hpp
+	std::ofstream fwd_; // fwd.hpp
+	std::ofstream dispatch_; // dispatch.hpp
+	std::ofstream dispatchSrc_; // dispatch.cpp
+	std::ofstream enumNames_; // names.hpp
+	std::ofstream rawf_; // rawFunctions.hpp
 
 	std::string dispatchDecl_;
-	std::string dispatchLoad_;
+	std::string dispatchDeclGuarded_;
+	std::string dispatchLoadIni_;
+	std::string dispatchLoadDev_;
 };

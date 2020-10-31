@@ -1,9 +1,12 @@
 outputs = [
+	'dispatch.cpp',
 	'functions.hpp',
 	'fwd.hpp',
 	'structs.hpp',
 	'enums.hpp',
 	'dispatch.hpp',
+	'names.hpp',
+	'rawf.hpp',
 ]
 
 iheaders = [
@@ -22,6 +25,7 @@ if gen
 		install: true,
 		install_dir: 'include/vkpp',
 		command: [vk_codegen, '@INPUT@', '@OUTDIR@'])
+	dispatchcpp = vk_headers[0]
 else
 	vk_headers = [] # no custom target
 	iheaders += outputs # install given ones

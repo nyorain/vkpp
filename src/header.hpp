@@ -1,5 +1,6 @@
+// Header applied to all generated files
 auto constexpr header = &R"SRC(
-// Copyright (c) 2019 nyorain
+// Copyright (c) 2020 nyorain
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt
 
@@ -9,7 +10,8 @@ auto constexpr header = &R"SRC(
 #pragma once
 )SRC"[1];
 
-auto constexpr fwdHeader = &R"SRC(
+// fwd.hpp header
+auto constexpr fwdHeader = R"SRC(
 #include <vkpp/handle.hpp> // VK_DEFINE_HANDLE
 #include <vkpp/flags.hpp>
 #include <cstddef>
@@ -31,10 +33,10 @@ namespace nytl {
 
 } // namespace nytl
 
-)SRC"[1];
+)SRC";
 
-
-auto constexpr structsHeader = &R"SRC(
+// structs.hpp header
+auto constexpr structsHeader = R"SRC(
 #include <vkpp/fwd.hpp>
 #include <vkpp/enums.hpp>
 #include <vkpp/flags.hpp>
@@ -47,17 +49,47 @@ auto constexpr structsHeader = &R"SRC(
 	#error "vulkan.h version too old, does not match generated version"
 #endif
 
-)SRC"[1];
+)SRC";
 
-auto constexpr enumsHeader = &R"SRC(
+// enums.hpp header
+auto constexpr enumsHeader = R"SRC(
 #include <vkpp/fwd.hpp>
 #include <vkpp/flags.hpp>
 
 // Generated for vulkan version: 1.1.%vp
 
-)SRC"[1];
+)SRC";
 
-auto constexpr functionsHeader = &R"SRC(
+// names.hpp header
+auto constexpr namesHeader = R"SRC(
+#include <vkpp/fwd.hpp>
+#include <vkpp/enums.hpp>
+#include <string>
+
+// Generated for vulkan version: 1.1.%vp
+
+)SRC";
+
+// rawFunctions.hpp header
+auto constexpr rawFunctionsHeader = R"SRC(
+#include <vkpp/fwd.hpp>
+#include <vkpp/enums.hpp>
+#include <vkpp/structs.hpp>
+#include <vkpp/span.hpp>
+#include <vkpp/flags.hpp>
+#include <vkpp/call.hpp>
+
+#include <vulkan/vulkan.h>
+
+// Generated for vulkan version: 1.1.%vp
+#if !defined(VK_VERSION_1_1) || %vp > VK_HEADER_VERSION
+	#error "vulkan.h version too old, does not match generated version"
+#endif
+
+)SRC";
+
+// functions.hpp header
+auto constexpr functionsHeader = R"SRC(
 #include <vkpp/fwd.hpp>
 #include <vkpp/enums.hpp>
 #include <vkpp/structs.hpp>
@@ -133,20 +165,13 @@ auto constexpr functionsHeader = &R"SRC(
 	VKPP_DISPATCH_GLOBAL(D, F, __VA_ARGS__); \
 	return ret;
 
-)SRC"[1];
+)SRC";
 
-// TODO: allow to per-device DynamicDispatch objects
-// #define VKPP_DLOAD(dev, fn) this->fn = getDeviceProcAddr(dev, fn);
-// #undef VKPP_DLOAD
-// TODO: we could also load the instance proc using dlsym like functionality
-
-auto constexpr dispatchHeader = &R"SRC(
-
+// dispatch.hpp template
+auto constexpr dispatchHeader = R"SRC(
 #include <vkpp/fwd.hpp>
 #include <vkpp/enums.hpp>
 #include <vkpp/structs.hpp>
-#include <vkpp/call.hpp>
-#include <vkpp/span.hpp>
 #include <vkpp/flags.hpp>
 
 // Generated for vulkan version: 1.1.%vp
@@ -155,33 +180,92 @@ namespace vk {
 
 class DynamicDispatch {
 public:
-%decl
+	// Initializes the functions that can be called without instance.
+	// If you link to libvulkan, just pass vkGetInstanceProcAddr as the
+	// loader function.
+	// - vkEnumerateInstanceVersion
+	// - vkEnumerateInstanceExtensionProperties
+	// - vkEnumerateInstanceLayerProperties
+	// - vkCreateInstance
+	// - vkGetInstanceProcAddr
+	void initLoader(PFN_vkGetInstanceProcAddr);
+
+	// Loads functions for a given instance.
+	// When no explicit loader is given, uses vkGetInstanceProcAddr loaded
+	// when initLoade was called.
+	// - all: When this is true, loads all functions, otherwise only
+	//   non-device funcs. You could then use init(Device) to load
+	//   the device-speicifc functions.
+	void init(Instance, PFN_vkGetInstanceProcAddr, bool all = true);
+	void init(Instance, bool all = true);
+
+	// Loads all device-specific functions.
+	// If no explicit loader is given, init(Instance) must have been called,
+	// will use the vkGetDeviceProcAddr loaded there.
+	void init(Device ini, PFN_vkGetDeviceProcAddr);
+	void init(Device);
 
 public:
-	#define VKPP_ILOAD(ini, fn) this->fn = (PFN_##fn) \
-		::vkGetInstanceProcAddr((VkInstance) ini, #fn);
+%decl
 
-	DynamicDispatch() {
-		VKPP_ILOAD(NULL, vkEnumerateInstanceVersion);
-		VKPP_ILOAD(NULL, vkEnumerateInstanceExtensionProperties);
-		VKPP_ILOAD(NULL, vkEnumerateInstanceLayerProperties);
-		VKPP_ILOAD(NULL, vkCreateInstance);
-	}
-
-	DynamicDispatch(Instance ini) {
-		init(ini);
-	}
-
-	void init(Instance ini) {
-%load
-	}
-
-	#undef VKPP_ILOAD
+%guardedDecl
 };
 
 } // namespace vk
+)SRC";
 
-)SRC"[1];
+// dispatch.cpp template
+auto constexpr dispatchSrc = R"SRC(
+#include <vkpp/dispatch.hpp>
+
+namespace vk {
+
+DynamicDispatch dispatch;
+
+void DynamicDispatch::initLoader(PFN_vkGetInstanceProcAddr loader) {
+#define VKPP_LOAD(fn) this->fn = (PFN_##fn) loader(VK_NULL_HANDLE, #fn)
+
+	VKPP_LOAD(vkEnumerateInstanceVersion);
+	VKPP_LOAD(vkEnumerateInstanceExtensionProperties);
+	VKPP_LOAD(vkEnumerateInstanceLayerProperties);
+	VKPP_LOAD(vkCreateInstance);
+	VKPP_LOAD(vkGetInstanceProcAddr);
+
+#undef VKPP_LOAD
+}
+
+void DynamicDispatch::init(Instance ini, bool all) {
+	init(ini, this->vkGetInstanceProcAddr, all);
+}
+
+void DynamicDispatch::init(Device dev) {
+	init(dev, this->vkGetDeviceProcAddr);
+}
+
+void DynamicDispatch::init(Instance ini, PFN_vkGetInstanceProcAddr loader, bool all) {
+	#define VKPP_LOAD(fn) this->fn = (PFN_##fn) loader((VkInstance) ini, #fn)
+
+%loadIni
+
+	if(all) {
+%loadDev
+	}
+
+	#undef VKPP_LOAD
+}
+
+void DynamicDispatch::init(Device dev, PFN_vkGetDeviceProcAddr loader) {
+	#define VKPP_LOAD(fn) this->fn = (PFN_##fn) loader((VkDevice) dev, #fn)
+
+	{
+%loadDev
+	}
+
+	#undef VKPP_LOAD
+}
+
+} // namespace vk
+)SRC";
 
 
 // NOTE: instead of the macros we could also just use the functions

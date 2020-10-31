@@ -1,4 +1,4 @@
-// Copyright (c) 2019 nyorain
+// Copyright (c) 2020 nyorain
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt
 
@@ -6,6 +6,7 @@
 // Do not edit manually, rather edit the codegen files.
 
 #pragma once
+
 #include <vkpp/fwd.hpp>
 #include <vkpp/flags.hpp>
 
@@ -1256,7 +1257,7 @@ enum class PipelineCreateBits : int32_t {
 	allowDerivatives = (1 << 1),
 	derivative = (1 << 2),
 	viewIndexFromDeviceIndex = (1 << 3),
-	dispatchBase = 4,
+	dispatchBase = (1 << 4),
 	viewIndexFromDeviceIndexKHR = (1 << 3),
 	dispatchBaseKHR = 4,
 	deferCompileNV = (1 << 5)
@@ -2082,8 +2083,8 @@ enum class CoverageReductionModeNV : int32_t {
 };
 
 
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 enum class FullScreenExclusiveEXT : int32_t {
 	eDefault = 0,
 	allowed = 1,

@@ -418,6 +418,10 @@ void RegistryLoader::loadEnums(const pugi::xml_node& node)
 			} else {
 				auto attrib = enumit.attribute("value");
 				if(!attrib) attrib = enumit.attribute("bitpos");
+				if(!attrib) {
+					std::cout << "### Invalid enum value, no value or bitpos\n";
+					return;
+				}
 
 				auto str = std::string(attrib.as_string());
 				if(str.size() > 1 && str.substr(0, 2) == "0x") value.second = std::stoul(str, nullptr, 16);

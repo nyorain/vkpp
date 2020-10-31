@@ -1,4 +1,4 @@
-// Copyright (c) 2019 nyorain
+// Copyright (c) 2020 nyorain
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt
 
@@ -10,8 +10,6 @@
 #include <vkpp/fwd.hpp>
 #include <vkpp/enums.hpp>
 #include <vkpp/structs.hpp>
-#include <vkpp/call.hpp>
-#include <vkpp/span.hpp>
 #include <vkpp/flags.hpp>
 
 // Generated for vulkan version: 1.1.108
@@ -19,6 +17,32 @@
 namespace vk {
 
 class DynamicDispatch {
+public:
+	// Initializes the functions that can be called without instance.
+	// If you link to libvulkan, just pass vkGetInstanceProcAddr as the
+	// loader function.
+	// - vkEnumerateInstanceVersion
+	// - vkEnumerateInstanceExtensionProperties
+	// - vkEnumerateInstanceLayerProperties
+	// - vkCreateInstance
+	// - vkGetInstanceProcAddr
+	void initLoader(PFN_vkGetInstanceProcAddr);
+
+	// Loads functions for a given instance.
+	// When no explicit loader is given, uses vkGetInstanceProcAddr loaded
+	// when initLoade was called.
+	// - all: When this is true, loads all functions, otherwise only
+	//   non-device funcs. You could then use init(Device) to load
+	//   the device-speicifc functions.
+	void init(Instance, PFN_vkGetInstanceProcAddr, bool all = true);
+	void init(Instance, bool all = true);
+
+	// Loads all device-specific functions.
+	// If no explicit loader is given, init(Instance) must have been called,
+	// will use the vkGetDeviceProcAddr loaded there.
+	void init(Device ini, PFN_vkGetDeviceProcAddr);
+	void init(Device);
+
 public:
 	PFN_vkEnumerateInstanceVersion vkEnumerateInstanceVersion {};
 	PFN_vkBindBufferMemory2 vkBindBufferMemory2 {};
@@ -233,30 +257,6 @@ public:
 	PFN_vkGetDisplayPlaneCapabilitiesKHR vkGetDisplayPlaneCapabilitiesKHR {};
 	PFN_vkCreateDisplayPlaneSurfaceKHR vkCreateDisplayPlaneSurfaceKHR {};
 	PFN_vkCreateSharedSwapchainsKHR vkCreateSharedSwapchainsKHR {};
-#ifdef VK_USE_PLATFORM_XLIB_KHR
-
-	PFN_vkCreateXlibSurfaceKHR vkCreateXlibSurfaceKHR {};
-	PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR vkGetPhysicalDeviceXlibPresentationSupportKHR {};
-#endif //VK_USE_PLATFORM_XLIB_KHR
-
-#ifdef VK_USE_PLATFORM_XCB_KHR
-
-	PFN_vkCreateXcbSurfaceKHR vkCreateXcbSurfaceKHR {};
-	PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR vkGetPhysicalDeviceXcbPresentationSupportKHR {};
-#endif //VK_USE_PLATFORM_XCB_KHR
-
-#ifdef VK_USE_PLATFORM_WAYLAND_KHR
-
-	PFN_vkCreateWaylandSurfaceKHR vkCreateWaylandSurfaceKHR {};
-	PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR vkGetPhysicalDeviceWaylandPresentationSupportKHR {};
-#endif //VK_USE_PLATFORM_WAYLAND_KHR
-
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-	PFN_vkCreateWin32SurfaceKHR vkCreateWin32SurfaceKHR {};
-	PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR vkGetPhysicalDeviceWin32PresentationSupportKHR {};
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
 	PFN_vkCreateDebugReportCallbackEXT vkCreateDebugReportCallbackEXT {};
 	PFN_vkDestroyDebugReportCallbackEXT vkDestroyDebugReportCallbackEXT {};
 	PFN_vkDebugReportMessageEXT vkDebugReportMessageEXT {};
@@ -276,36 +276,9 @@ public:
 	PFN_vkCmdDrawIndexedIndirectCountKHR vkCmdDrawIndexedIndirectCountKHR {};
 	PFN_vkCmdDrawIndexedIndirectCountAMD vkCmdDrawIndexedIndirectCountAMD {};
 	PFN_vkGetShaderInfoAMD vkGetShaderInfoAMD {};
-#ifdef VK_USE_PLATFORM_GGP
-
-	PFN_vkCreateStreamDescriptorSurfaceGGP vkCreateStreamDescriptorSurfaceGGP {};
-#endif //VK_USE_PLATFORM_GGP
-
 	PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV vkGetPhysicalDeviceExternalImageFormatPropertiesNV {};
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-	PFN_vkGetMemoryWin32HandleNV vkGetMemoryWin32HandleNV {};
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
-#ifdef VK_USE_PLATFORM_VI_NN
-
-	PFN_vkCreateViSurfaceNN vkCreateViSurfaceNN {};
-#endif //VK_USE_PLATFORM_VI_NN
-
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-	PFN_vkGetMemoryWin32HandleKHR vkGetMemoryWin32HandleKHR {};
-	PFN_vkGetMemoryWin32HandlePropertiesKHR vkGetMemoryWin32HandlePropertiesKHR {};
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
 	PFN_vkGetMemoryFdKHR vkGetMemoryFdKHR {};
 	PFN_vkGetMemoryFdPropertiesKHR vkGetMemoryFdPropertiesKHR {};
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-	PFN_vkImportSemaphoreWin32HandleKHR vkImportSemaphoreWin32HandleKHR {};
-	PFN_vkGetSemaphoreWin32HandleKHR vkGetSemaphoreWin32HandleKHR {};
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
 	PFN_vkImportSemaphoreFdKHR vkImportSemaphoreFdKHR {};
 	PFN_vkGetSemaphoreFdKHR vkGetSemaphoreFdKHR {};
 	PFN_vkCmdPushDescriptorSetKHR vkCmdPushDescriptorSetKHR {};
@@ -314,12 +287,6 @@ public:
 	PFN_vkCmdEndConditionalRenderingEXT vkCmdEndConditionalRenderingEXT {};
 	PFN_vkCmdSetViewportWScalingNV vkCmdSetViewportWScalingNV {};
 	PFN_vkReleaseDisplayEXT vkReleaseDisplayEXT {};
-#ifdef VK_USE_PLATFORM_XLIB_XRANDR_EXT
-
-	PFN_vkAcquireXlibDisplayEXT vkAcquireXlibDisplayEXT {};
-	PFN_vkGetRandROutputDisplayEXT vkGetRandROutputDisplayEXT {};
-#endif //VK_USE_PLATFORM_XLIB_XRANDR_EXT
-
 	PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT vkGetPhysicalDeviceSurfaceCapabilities2EXT {};
 	PFN_vkDisplayPowerControlEXT vkDisplayPowerControlEXT {};
 	PFN_vkRegisterDeviceEventEXT vkRegisterDeviceEventEXT {};
@@ -334,12 +301,6 @@ public:
 	PFN_vkCmdNextSubpass2KHR vkCmdNextSubpass2KHR {};
 	PFN_vkCmdEndRenderPass2KHR vkCmdEndRenderPass2KHR {};
 	PFN_vkGetSwapchainStatusKHR vkGetSwapchainStatusKHR {};
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-	PFN_vkImportFenceWin32HandleKHR vkImportFenceWin32HandleKHR {};
-	PFN_vkGetFenceWin32HandleKHR vkGetFenceWin32HandleKHR {};
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
 	PFN_vkImportFenceFdKHR vkImportFenceFdKHR {};
 	PFN_vkGetFenceFdKHR vkGetFenceFdKHR {};
 	PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR vkGetPhysicalDeviceSurfaceCapabilities2KHR {};
@@ -348,16 +309,6 @@ public:
 	PFN_vkGetPhysicalDeviceDisplayPlaneProperties2KHR vkGetPhysicalDeviceDisplayPlaneProperties2KHR {};
 	PFN_vkGetDisplayModeProperties2KHR vkGetDisplayModeProperties2KHR {};
 	PFN_vkGetDisplayPlaneCapabilities2KHR vkGetDisplayPlaneCapabilities2KHR {};
-#ifdef VK_USE_PLATFORM_IOS_MVK
-
-	PFN_vkCreateIOSSurfaceMVK vkCreateIOSSurfaceMVK {};
-#endif //VK_USE_PLATFORM_IOS_MVK
-
-#ifdef VK_USE_PLATFORM_MACOS_MVK
-
-	PFN_vkCreateMacOSSurfaceMVK vkCreateMacOSSurfaceMVK {};
-#endif //VK_USE_PLATFORM_MACOS_MVK
-
 	PFN_vkSetDebugUtilsObjectNameEXT vkSetDebugUtilsObjectNameEXT {};
 	PFN_vkSetDebugUtilsObjectTagEXT vkSetDebugUtilsObjectTagEXT {};
 	PFN_vkQueueBeginDebugUtilsLabelEXT vkQueueBeginDebugUtilsLabelEXT {};
@@ -402,16 +353,93 @@ public:
 	PFN_vkCmdSetCheckpointNV vkCmdSetCheckpointNV {};
 	PFN_vkGetQueueCheckpointDataNV vkGetQueueCheckpointDataNV {};
 	PFN_vkSetLocalDimmingAMD vkSetLocalDimmingAMD {};
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-	PFN_vkCreateImagePipeSurfaceFUCHSIA vkCreateImagePipeSurfaceFUCHSIA {};
-#endif //VK_USE_PLATFORM_FUCHSIA
-
 	PFN_vkGetBufferDeviceAddressEXT vkGetBufferDeviceAddressEXT {};
 	PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV vkGetPhysicalDeviceCooperativeMatrixPropertiesNV {};
 	PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV {};
-#ifdef VK_USE_PLATFORM_WIN32_KHR
+	PFN_vkCreateHeadlessSurfaceEXT vkCreateHeadlessSurfaceEXT {};
+	PFN_vkResetQueryPoolEXT vkResetQueryPoolEXT {};
 
+
+
+#ifdef VK_USE_PLATFORM_XLIB_KHR
+	PFN_vkCreateXlibSurfaceKHR vkCreateXlibSurfaceKHR {};
+	PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR vkGetPhysicalDeviceXlibPresentationSupportKHR {};
+#endif //VK_USE_PLATFORM_XLIB_KHR
+
+
+#ifdef VK_USE_PLATFORM_XCB_KHR
+	PFN_vkCreateXcbSurfaceKHR vkCreateXcbSurfaceKHR {};
+	PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR vkGetPhysicalDeviceXcbPresentationSupportKHR {};
+#endif //VK_USE_PLATFORM_XCB_KHR
+
+
+#ifdef VK_USE_PLATFORM_WAYLAND_KHR
+	PFN_vkCreateWaylandSurfaceKHR vkCreateWaylandSurfaceKHR {};
+	PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR vkGetPhysicalDeviceWaylandPresentationSupportKHR {};
+#endif //VK_USE_PLATFORM_WAYLAND_KHR
+
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+	PFN_vkCreateWin32SurfaceKHR vkCreateWin32SurfaceKHR {};
+	PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR vkGetPhysicalDeviceWin32PresentationSupportKHR {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+
+#ifdef VK_USE_PLATFORM_GGP
+	PFN_vkCreateStreamDescriptorSurfaceGGP vkCreateStreamDescriptorSurfaceGGP {};
+#endif //VK_USE_PLATFORM_GGP
+
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+	PFN_vkGetMemoryWin32HandleNV vkGetMemoryWin32HandleNV {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+
+#ifdef VK_USE_PLATFORM_VI_NN
+	PFN_vkCreateViSurfaceNN vkCreateViSurfaceNN {};
+#endif //VK_USE_PLATFORM_VI_NN
+
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+	PFN_vkGetMemoryWin32HandleKHR vkGetMemoryWin32HandleKHR {};
+	PFN_vkGetMemoryWin32HandlePropertiesKHR vkGetMemoryWin32HandlePropertiesKHR {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+	PFN_vkImportSemaphoreWin32HandleKHR vkImportSemaphoreWin32HandleKHR {};
+	PFN_vkGetSemaphoreWin32HandleKHR vkGetSemaphoreWin32HandleKHR {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+
+#ifdef VK_USE_PLATFORM_XLIB_XRANDR_EXT
+	PFN_vkAcquireXlibDisplayEXT vkAcquireXlibDisplayEXT {};
+	PFN_vkGetRandROutputDisplayEXT vkGetRandROutputDisplayEXT {};
+#endif //VK_USE_PLATFORM_XLIB_XRANDR_EXT
+
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+	PFN_vkImportFenceWin32HandleKHR vkImportFenceWin32HandleKHR {};
+	PFN_vkGetFenceWin32HandleKHR vkGetFenceWin32HandleKHR {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+
+#ifdef VK_USE_PLATFORM_IOS_MVK
+	PFN_vkCreateIOSSurfaceMVK vkCreateIOSSurfaceMVK {};
+#endif //VK_USE_PLATFORM_IOS_MVK
+
+
+#ifdef VK_USE_PLATFORM_MACOS_MVK
+	PFN_vkCreateMacOSSurfaceMVK vkCreateMacOSSurfaceMVK {};
+#endif //VK_USE_PLATFORM_MACOS_MVK
+
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+	PFN_vkCreateImagePipeSurfaceFUCHSIA vkCreateImagePipeSurfaceFUCHSIA {};
+#endif //VK_USE_PLATFORM_FUCHSIA
+
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 	PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT vkGetPhysicalDeviceSurfacePresentModes2EXT {};
 	PFN_vkAcquireFullScreenExclusiveModeEXT vkAcquireFullScreenExclusiveModeEXT {};
 	PFN_vkReleaseFullScreenExclusiveModeEXT vkReleaseFullScreenExclusiveModeEXT {};
@@ -419,435 +447,10 @@ public:
 	PFN_vkGetDeviceGroupSurfacePresentModes2EXT vkGetDeviceGroupSurfacePresentModes2EXT {};
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
-	PFN_vkCreateHeadlessSurfaceEXT vkCreateHeadlessSurfaceEXT {};
-	PFN_vkResetQueryPoolEXT vkResetQueryPoolEXT {};
 
-
-public:
-	#define VKPP_ILOAD(ini, fn) this->fn = (PFN_##fn) \
-		::vkGetInstanceProcAddr((VkInstance) ini, #fn);
-
-	DynamicDispatch() {
-		VKPP_ILOAD(NULL, vkEnumerateInstanceVersion);
-		VKPP_ILOAD(NULL, vkEnumerateInstanceExtensionProperties);
-		VKPP_ILOAD(NULL, vkEnumerateInstanceLayerProperties);
-		VKPP_ILOAD(NULL, vkCreateInstance);
-	}
-
-	DynamicDispatch(Instance ini) {
-		init(ini);
-	}
-
-	void init(Instance ini) {
-		VKPP_ILOAD(ini, vkEnumerateInstanceVersion);
-		VKPP_ILOAD(ini, vkBindBufferMemory2);
-		VKPP_ILOAD(ini, vkBindBufferMemory2KHR);
-		VKPP_ILOAD(ini, vkBindImageMemory2);
-		VKPP_ILOAD(ini, vkBindImageMemory2KHR);
-		VKPP_ILOAD(ini, vkGetDeviceGroupPeerMemoryFeatures);
-		VKPP_ILOAD(ini, vkGetDeviceGroupPeerMemoryFeaturesKHR);
-		VKPP_ILOAD(ini, vkCmdSetDeviceMask);
-		VKPP_ILOAD(ini, vkCmdSetDeviceMaskKHR);
-		VKPP_ILOAD(ini, vkCmdDispatchBase);
-		VKPP_ILOAD(ini, vkCmdDispatchBaseKHR);
-		VKPP_ILOAD(ini, vkEnumeratePhysicalDeviceGroups);
-		VKPP_ILOAD(ini, vkEnumeratePhysicalDeviceGroupsKHR);
-		VKPP_ILOAD(ini, vkGetImageMemoryRequirements2);
-		VKPP_ILOAD(ini, vkGetImageMemoryRequirements2KHR);
-		VKPP_ILOAD(ini, vkGetBufferMemoryRequirements2);
-		VKPP_ILOAD(ini, vkGetBufferMemoryRequirements2KHR);
-		VKPP_ILOAD(ini, vkGetImageSparseMemoryRequirements2);
-		VKPP_ILOAD(ini, vkGetImageSparseMemoryRequirements2KHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceFeatures2);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceFeatures2KHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceProperties2);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceProperties2KHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceFormatProperties2);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceFormatProperties2KHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceImageFormatProperties2);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceImageFormatProperties2KHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceQueueFamilyProperties2);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceQueueFamilyProperties2KHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceMemoryProperties2);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceMemoryProperties2KHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceSparseImageFormatProperties2);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceSparseImageFormatProperties2KHR);
-		VKPP_ILOAD(ini, vkTrimCommandPool);
-		VKPP_ILOAD(ini, vkTrimCommandPoolKHR);
-		VKPP_ILOAD(ini, vkGetDeviceQueue2);
-		VKPP_ILOAD(ini, vkCreateSamplerYcbcrConversion);
-		VKPP_ILOAD(ini, vkCreateSamplerYcbcrConversionKHR);
-		VKPP_ILOAD(ini, vkDestroySamplerYcbcrConversion);
-		VKPP_ILOAD(ini, vkDestroySamplerYcbcrConversionKHR);
-		VKPP_ILOAD(ini, vkCreateDescriptorUpdateTemplate);
-		VKPP_ILOAD(ini, vkCreateDescriptorUpdateTemplateKHR);
-		VKPP_ILOAD(ini, vkDestroyDescriptorUpdateTemplate);
-		VKPP_ILOAD(ini, vkDestroyDescriptorUpdateTemplateKHR);
-		VKPP_ILOAD(ini, vkUpdateDescriptorSetWithTemplate);
-		VKPP_ILOAD(ini, vkUpdateDescriptorSetWithTemplateKHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceExternalBufferProperties);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceExternalBufferPropertiesKHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceExternalFenceProperties);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceExternalFencePropertiesKHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceExternalSemaphoreProperties);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceExternalSemaphorePropertiesKHR);
-		VKPP_ILOAD(ini, vkGetDescriptorSetLayoutSupport);
-		VKPP_ILOAD(ini, vkGetDescriptorSetLayoutSupportKHR);
-		VKPP_ILOAD(ini, vkCreateInstance);
-		VKPP_ILOAD(ini, vkDestroyInstance);
-		VKPP_ILOAD(ini, vkEnumeratePhysicalDevices);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceFeatures);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceFormatProperties);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceImageFormatProperties);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceProperties);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceQueueFamilyProperties);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceMemoryProperties);
-		VKPP_ILOAD(ini, vkGetInstanceProcAddr);
-		VKPP_ILOAD(ini, vkGetDeviceProcAddr);
-		VKPP_ILOAD(ini, vkCreateDevice);
-		VKPP_ILOAD(ini, vkDestroyDevice);
-		VKPP_ILOAD(ini, vkEnumerateInstanceExtensionProperties);
-		VKPP_ILOAD(ini, vkEnumerateDeviceExtensionProperties);
-		VKPP_ILOAD(ini, vkEnumerateInstanceLayerProperties);
-		VKPP_ILOAD(ini, vkEnumerateDeviceLayerProperties);
-		VKPP_ILOAD(ini, vkGetDeviceQueue);
-		VKPP_ILOAD(ini, vkQueueSubmit);
-		VKPP_ILOAD(ini, vkQueueWaitIdle);
-		VKPP_ILOAD(ini, vkDeviceWaitIdle);
-		VKPP_ILOAD(ini, vkAllocateMemory);
-		VKPP_ILOAD(ini, vkFreeMemory);
-		VKPP_ILOAD(ini, vkMapMemory);
-		VKPP_ILOAD(ini, vkUnmapMemory);
-		VKPP_ILOAD(ini, vkFlushMappedMemoryRanges);
-		VKPP_ILOAD(ini, vkInvalidateMappedMemoryRanges);
-		VKPP_ILOAD(ini, vkGetDeviceMemoryCommitment);
-		VKPP_ILOAD(ini, vkBindBufferMemory);
-		VKPP_ILOAD(ini, vkBindImageMemory);
-		VKPP_ILOAD(ini, vkGetBufferMemoryRequirements);
-		VKPP_ILOAD(ini, vkGetImageMemoryRequirements);
-		VKPP_ILOAD(ini, vkGetImageSparseMemoryRequirements);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceSparseImageFormatProperties);
-		VKPP_ILOAD(ini, vkQueueBindSparse);
-		VKPP_ILOAD(ini, vkCreateFence);
-		VKPP_ILOAD(ini, vkDestroyFence);
-		VKPP_ILOAD(ini, vkResetFences);
-		VKPP_ILOAD(ini, vkGetFenceStatus);
-		VKPP_ILOAD(ini, vkWaitForFences);
-		VKPP_ILOAD(ini, vkCreateSemaphore);
-		VKPP_ILOAD(ini, vkDestroySemaphore);
-		VKPP_ILOAD(ini, vkCreateEvent);
-		VKPP_ILOAD(ini, vkDestroyEvent);
-		VKPP_ILOAD(ini, vkGetEventStatus);
-		VKPP_ILOAD(ini, vkSetEvent);
-		VKPP_ILOAD(ini, vkResetEvent);
-		VKPP_ILOAD(ini, vkCreateQueryPool);
-		VKPP_ILOAD(ini, vkDestroyQueryPool);
-		VKPP_ILOAD(ini, vkGetQueryPoolResults);
-		VKPP_ILOAD(ini, vkCreateBuffer);
-		VKPP_ILOAD(ini, vkDestroyBuffer);
-		VKPP_ILOAD(ini, vkCreateBufferView);
-		VKPP_ILOAD(ini, vkDestroyBufferView);
-		VKPP_ILOAD(ini, vkCreateImage);
-		VKPP_ILOAD(ini, vkDestroyImage);
-		VKPP_ILOAD(ini, vkGetImageSubresourceLayout);
-		VKPP_ILOAD(ini, vkCreateImageView);
-		VKPP_ILOAD(ini, vkDestroyImageView);
-		VKPP_ILOAD(ini, vkCreateShaderModule);
-		VKPP_ILOAD(ini, vkDestroyShaderModule);
-		VKPP_ILOAD(ini, vkCreatePipelineCache);
-		VKPP_ILOAD(ini, vkDestroyPipelineCache);
-		VKPP_ILOAD(ini, vkGetPipelineCacheData);
-		VKPP_ILOAD(ini, vkMergePipelineCaches);
-		VKPP_ILOAD(ini, vkCreateGraphicsPipelines);
-		VKPP_ILOAD(ini, vkCreateComputePipelines);
-		VKPP_ILOAD(ini, vkDestroyPipeline);
-		VKPP_ILOAD(ini, vkCreatePipelineLayout);
-		VKPP_ILOAD(ini, vkDestroyPipelineLayout);
-		VKPP_ILOAD(ini, vkCreateSampler);
-		VKPP_ILOAD(ini, vkDestroySampler);
-		VKPP_ILOAD(ini, vkCreateDescriptorSetLayout);
-		VKPP_ILOAD(ini, vkDestroyDescriptorSetLayout);
-		VKPP_ILOAD(ini, vkCreateDescriptorPool);
-		VKPP_ILOAD(ini, vkDestroyDescriptorPool);
-		VKPP_ILOAD(ini, vkResetDescriptorPool);
-		VKPP_ILOAD(ini, vkAllocateDescriptorSets);
-		VKPP_ILOAD(ini, vkFreeDescriptorSets);
-		VKPP_ILOAD(ini, vkUpdateDescriptorSets);
-		VKPP_ILOAD(ini, vkCreateFramebuffer);
-		VKPP_ILOAD(ini, vkDestroyFramebuffer);
-		VKPP_ILOAD(ini, vkCreateRenderPass);
-		VKPP_ILOAD(ini, vkDestroyRenderPass);
-		VKPP_ILOAD(ini, vkGetRenderAreaGranularity);
-		VKPP_ILOAD(ini, vkCreateCommandPool);
-		VKPP_ILOAD(ini, vkDestroyCommandPool);
-		VKPP_ILOAD(ini, vkResetCommandPool);
-		VKPP_ILOAD(ini, vkAllocateCommandBuffers);
-		VKPP_ILOAD(ini, vkFreeCommandBuffers);
-		VKPP_ILOAD(ini, vkBeginCommandBuffer);
-		VKPP_ILOAD(ini, vkEndCommandBuffer);
-		VKPP_ILOAD(ini, vkResetCommandBuffer);
-		VKPP_ILOAD(ini, vkCmdBindPipeline);
-		VKPP_ILOAD(ini, vkCmdSetViewport);
-		VKPP_ILOAD(ini, vkCmdSetScissor);
-		VKPP_ILOAD(ini, vkCmdSetLineWidth);
-		VKPP_ILOAD(ini, vkCmdSetDepthBias);
-		VKPP_ILOAD(ini, vkCmdSetBlendConstants);
-		VKPP_ILOAD(ini, vkCmdSetDepthBounds);
-		VKPP_ILOAD(ini, vkCmdSetStencilCompareMask);
-		VKPP_ILOAD(ini, vkCmdSetStencilWriteMask);
-		VKPP_ILOAD(ini, vkCmdSetStencilReference);
-		VKPP_ILOAD(ini, vkCmdBindDescriptorSets);
-		VKPP_ILOAD(ini, vkCmdBindIndexBuffer);
-		VKPP_ILOAD(ini, vkCmdBindVertexBuffers);
-		VKPP_ILOAD(ini, vkCmdDraw);
-		VKPP_ILOAD(ini, vkCmdDrawIndexed);
-		VKPP_ILOAD(ini, vkCmdDrawIndirect);
-		VKPP_ILOAD(ini, vkCmdDrawIndexedIndirect);
-		VKPP_ILOAD(ini, vkCmdDispatch);
-		VKPP_ILOAD(ini, vkCmdDispatchIndirect);
-		VKPP_ILOAD(ini, vkCmdCopyBuffer);
-		VKPP_ILOAD(ini, vkCmdCopyImage);
-		VKPP_ILOAD(ini, vkCmdBlitImage);
-		VKPP_ILOAD(ini, vkCmdCopyBufferToImage);
-		VKPP_ILOAD(ini, vkCmdCopyImageToBuffer);
-		VKPP_ILOAD(ini, vkCmdUpdateBuffer);
-		VKPP_ILOAD(ini, vkCmdFillBuffer);
-		VKPP_ILOAD(ini, vkCmdClearColorImage);
-		VKPP_ILOAD(ini, vkCmdClearDepthStencilImage);
-		VKPP_ILOAD(ini, vkCmdClearAttachments);
-		VKPP_ILOAD(ini, vkCmdResolveImage);
-		VKPP_ILOAD(ini, vkCmdSetEvent);
-		VKPP_ILOAD(ini, vkCmdResetEvent);
-		VKPP_ILOAD(ini, vkCmdWaitEvents);
-		VKPP_ILOAD(ini, vkCmdPipelineBarrier);
-		VKPP_ILOAD(ini, vkCmdBeginQuery);
-		VKPP_ILOAD(ini, vkCmdEndQuery);
-		VKPP_ILOAD(ini, vkCmdResetQueryPool);
-		VKPP_ILOAD(ini, vkCmdWriteTimestamp);
-		VKPP_ILOAD(ini, vkCmdCopyQueryPoolResults);
-		VKPP_ILOAD(ini, vkCmdPushConstants);
-		VKPP_ILOAD(ini, vkCmdBeginRenderPass);
-		VKPP_ILOAD(ini, vkCmdNextSubpass);
-		VKPP_ILOAD(ini, vkCmdEndRenderPass);
-		VKPP_ILOAD(ini, vkCmdExecuteCommands);
-		VKPP_ILOAD(ini, vkDestroySurfaceKHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfaceSupportKHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfaceCapabilitiesKHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfaceFormatsKHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfacePresentModesKHR);
-		VKPP_ILOAD(ini, vkCreateSwapchainKHR);
-		VKPP_ILOAD(ini, vkDestroySwapchainKHR);
-		VKPP_ILOAD(ini, vkGetSwapchainImagesKHR);
-		VKPP_ILOAD(ini, vkAcquireNextImageKHR);
-		VKPP_ILOAD(ini, vkQueuePresentKHR);
-		VKPP_ILOAD(ini, vkGetDeviceGroupPresentCapabilitiesKHR);
-		VKPP_ILOAD(ini, vkGetDeviceGroupSurfacePresentModesKHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDevicePresentRectanglesKHR);
-		VKPP_ILOAD(ini, vkAcquireNextImage2KHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceDisplayPropertiesKHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceDisplayPlanePropertiesKHR);
-		VKPP_ILOAD(ini, vkGetDisplayPlaneSupportedDisplaysKHR);
-		VKPP_ILOAD(ini, vkGetDisplayModePropertiesKHR);
-		VKPP_ILOAD(ini, vkCreateDisplayModeKHR);
-		VKPP_ILOAD(ini, vkGetDisplayPlaneCapabilitiesKHR);
-		VKPP_ILOAD(ini, vkCreateDisplayPlaneSurfaceKHR);
-		VKPP_ILOAD(ini, vkCreateSharedSwapchainsKHR);
-#ifdef VK_USE_PLATFORM_XLIB_KHR
-
-		VKPP_ILOAD(ini, vkCreateXlibSurfaceKHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceXlibPresentationSupportKHR);
-#endif //VK_USE_PLATFORM_XLIB_KHR
-
-#ifdef VK_USE_PLATFORM_XCB_KHR
-
-		VKPP_ILOAD(ini, vkCreateXcbSurfaceKHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceXcbPresentationSupportKHR);
-#endif //VK_USE_PLATFORM_XCB_KHR
-
-#ifdef VK_USE_PLATFORM_WAYLAND_KHR
-
-		VKPP_ILOAD(ini, vkCreateWaylandSurfaceKHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceWaylandPresentationSupportKHR);
-#endif //VK_USE_PLATFORM_WAYLAND_KHR
-
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-		VKPP_ILOAD(ini, vkCreateWin32SurfaceKHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceWin32PresentationSupportKHR);
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
-		VKPP_ILOAD(ini, vkCreateDebugReportCallbackEXT);
-		VKPP_ILOAD(ini, vkDestroyDebugReportCallbackEXT);
-		VKPP_ILOAD(ini, vkDebugReportMessageEXT);
-		VKPP_ILOAD(ini, vkDebugMarkerSetObjectTagEXT);
-		VKPP_ILOAD(ini, vkDebugMarkerSetObjectNameEXT);
-		VKPP_ILOAD(ini, vkCmdDebugMarkerBeginEXT);
-		VKPP_ILOAD(ini, vkCmdDebugMarkerEndEXT);
-		VKPP_ILOAD(ini, vkCmdDebugMarkerInsertEXT);
-		VKPP_ILOAD(ini, vkCmdBindTransformFeedbackBuffersEXT);
-		VKPP_ILOAD(ini, vkCmdBeginTransformFeedbackEXT);
-		VKPP_ILOAD(ini, vkCmdEndTransformFeedbackEXT);
-		VKPP_ILOAD(ini, vkCmdBeginQueryIndexedEXT);
-		VKPP_ILOAD(ini, vkCmdEndQueryIndexedEXT);
-		VKPP_ILOAD(ini, vkCmdDrawIndirectByteCountEXT);
-		VKPP_ILOAD(ini, vkCmdDrawIndirectCountKHR);
-		VKPP_ILOAD(ini, vkCmdDrawIndirectCountAMD);
-		VKPP_ILOAD(ini, vkCmdDrawIndexedIndirectCountKHR);
-		VKPP_ILOAD(ini, vkCmdDrawIndexedIndirectCountAMD);
-		VKPP_ILOAD(ini, vkGetShaderInfoAMD);
-#ifdef VK_USE_PLATFORM_GGP
-
-		VKPP_ILOAD(ini, vkCreateStreamDescriptorSurfaceGGP);
-#endif //VK_USE_PLATFORM_GGP
-
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceExternalImageFormatPropertiesNV);
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-		VKPP_ILOAD(ini, vkGetMemoryWin32HandleNV);
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
-#ifdef VK_USE_PLATFORM_VI_NN
-
-		VKPP_ILOAD(ini, vkCreateViSurfaceNN);
-#endif //VK_USE_PLATFORM_VI_NN
-
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-		VKPP_ILOAD(ini, vkGetMemoryWin32HandleKHR);
-		VKPP_ILOAD(ini, vkGetMemoryWin32HandlePropertiesKHR);
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
-		VKPP_ILOAD(ini, vkGetMemoryFdKHR);
-		VKPP_ILOAD(ini, vkGetMemoryFdPropertiesKHR);
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-		VKPP_ILOAD(ini, vkImportSemaphoreWin32HandleKHR);
-		VKPP_ILOAD(ini, vkGetSemaphoreWin32HandleKHR);
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
-		VKPP_ILOAD(ini, vkImportSemaphoreFdKHR);
-		VKPP_ILOAD(ini, vkGetSemaphoreFdKHR);
-		VKPP_ILOAD(ini, vkCmdPushDescriptorSetKHR);
-		VKPP_ILOAD(ini, vkCmdPushDescriptorSetWithTemplateKHR);
-		VKPP_ILOAD(ini, vkCmdBeginConditionalRenderingEXT);
-		VKPP_ILOAD(ini, vkCmdEndConditionalRenderingEXT);
-		VKPP_ILOAD(ini, vkCmdSetViewportWScalingNV);
-		VKPP_ILOAD(ini, vkReleaseDisplayEXT);
-#ifdef VK_USE_PLATFORM_XLIB_XRANDR_EXT
-
-		VKPP_ILOAD(ini, vkAcquireXlibDisplayEXT);
-		VKPP_ILOAD(ini, vkGetRandROutputDisplayEXT);
-#endif //VK_USE_PLATFORM_XLIB_XRANDR_EXT
-
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfaceCapabilities2EXT);
-		VKPP_ILOAD(ini, vkDisplayPowerControlEXT);
-		VKPP_ILOAD(ini, vkRegisterDeviceEventEXT);
-		VKPP_ILOAD(ini, vkRegisterDisplayEventEXT);
-		VKPP_ILOAD(ini, vkGetSwapchainCounterEXT);
-		VKPP_ILOAD(ini, vkGetRefreshCycleDurationGOOGLE);
-		VKPP_ILOAD(ini, vkGetPastPresentationTimingGOOGLE);
-		VKPP_ILOAD(ini, vkCmdSetDiscardRectangleEXT);
-		VKPP_ILOAD(ini, vkSetHdrMetadataEXT);
-		VKPP_ILOAD(ini, vkCreateRenderPass2KHR);
-		VKPP_ILOAD(ini, vkCmdBeginRenderPass2KHR);
-		VKPP_ILOAD(ini, vkCmdNextSubpass2KHR);
-		VKPP_ILOAD(ini, vkCmdEndRenderPass2KHR);
-		VKPP_ILOAD(ini, vkGetSwapchainStatusKHR);
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-		VKPP_ILOAD(ini, vkImportFenceWin32HandleKHR);
-		VKPP_ILOAD(ini, vkGetFenceWin32HandleKHR);
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
-		VKPP_ILOAD(ini, vkImportFenceFdKHR);
-		VKPP_ILOAD(ini, vkGetFenceFdKHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfaceCapabilities2KHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfaceFormats2KHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceDisplayProperties2KHR);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceDisplayPlaneProperties2KHR);
-		VKPP_ILOAD(ini, vkGetDisplayModeProperties2KHR);
-		VKPP_ILOAD(ini, vkGetDisplayPlaneCapabilities2KHR);
-#ifdef VK_USE_PLATFORM_IOS_MVK
-
-		VKPP_ILOAD(ini, vkCreateIOSSurfaceMVK);
-#endif //VK_USE_PLATFORM_IOS_MVK
-
-#ifdef VK_USE_PLATFORM_MACOS_MVK
-
-		VKPP_ILOAD(ini, vkCreateMacOSSurfaceMVK);
-#endif //VK_USE_PLATFORM_MACOS_MVK
-
-		VKPP_ILOAD(ini, vkSetDebugUtilsObjectNameEXT);
-		VKPP_ILOAD(ini, vkSetDebugUtilsObjectTagEXT);
-		VKPP_ILOAD(ini, vkQueueBeginDebugUtilsLabelEXT);
-		VKPP_ILOAD(ini, vkQueueEndDebugUtilsLabelEXT);
-		VKPP_ILOAD(ini, vkQueueInsertDebugUtilsLabelEXT);
-		VKPP_ILOAD(ini, vkCmdBeginDebugUtilsLabelEXT);
-		VKPP_ILOAD(ini, vkCmdEndDebugUtilsLabelEXT);
-		VKPP_ILOAD(ini, vkCmdInsertDebugUtilsLabelEXT);
-		VKPP_ILOAD(ini, vkCreateDebugUtilsMessengerEXT);
-		VKPP_ILOAD(ini, vkDestroyDebugUtilsMessengerEXT);
-		VKPP_ILOAD(ini, vkSubmitDebugUtilsMessageEXT);
-		VKPP_ILOAD(ini, vkCmdSetSampleLocationsEXT);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceMultisamplePropertiesEXT);
-		VKPP_ILOAD(ini, vkGetImageDrmFormatModifierPropertiesEXT);
-		VKPP_ILOAD(ini, vkCreateValidationCacheEXT);
-		VKPP_ILOAD(ini, vkDestroyValidationCacheEXT);
-		VKPP_ILOAD(ini, vkMergeValidationCachesEXT);
-		VKPP_ILOAD(ini, vkGetValidationCacheDataEXT);
-		VKPP_ILOAD(ini, vkCmdBindShadingRateImageNV);
-		VKPP_ILOAD(ini, vkCmdSetViewportShadingRatePaletteNV);
-		VKPP_ILOAD(ini, vkCmdSetCoarseSampleOrderNV);
-		VKPP_ILOAD(ini, vkCreateAccelerationStructureNV);
-		VKPP_ILOAD(ini, vkDestroyAccelerationStructureNV);
-		VKPP_ILOAD(ini, vkGetAccelerationStructureMemoryRequirementsNV);
-		VKPP_ILOAD(ini, vkBindAccelerationStructureMemoryNV);
-		VKPP_ILOAD(ini, vkCmdBuildAccelerationStructureNV);
-		VKPP_ILOAD(ini, vkCmdCopyAccelerationStructureNV);
-		VKPP_ILOAD(ini, vkCmdTraceRaysNV);
-		VKPP_ILOAD(ini, vkCreateRayTracingPipelinesNV);
-		VKPP_ILOAD(ini, vkGetRayTracingShaderGroupHandlesNV);
-		VKPP_ILOAD(ini, vkGetAccelerationStructureHandleNV);
-		VKPP_ILOAD(ini, vkCmdWriteAccelerationStructuresPropertiesNV);
-		VKPP_ILOAD(ini, vkCompileDeferredNV);
-		VKPP_ILOAD(ini, vkGetMemoryHostPointerPropertiesEXT);
-		VKPP_ILOAD(ini, vkCmdWriteBufferMarkerAMD);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceCalibrateableTimeDomainsEXT);
-		VKPP_ILOAD(ini, vkGetCalibratedTimestampsEXT);
-		VKPP_ILOAD(ini, vkCmdDrawMeshTasksNV);
-		VKPP_ILOAD(ini, vkCmdDrawMeshTasksIndirectNV);
-		VKPP_ILOAD(ini, vkCmdDrawMeshTasksIndirectCountNV);
-		VKPP_ILOAD(ini, vkCmdSetExclusiveScissorNV);
-		VKPP_ILOAD(ini, vkCmdSetCheckpointNV);
-		VKPP_ILOAD(ini, vkGetQueueCheckpointDataNV);
-		VKPP_ILOAD(ini, vkSetLocalDimmingAMD);
-#ifdef VK_USE_PLATFORM_FUCHSIA
-
-		VKPP_ILOAD(ini, vkCreateImagePipeSurfaceFUCHSIA);
-#endif //VK_USE_PLATFORM_FUCHSIA
-
-		VKPP_ILOAD(ini, vkGetBufferDeviceAddressEXT);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceCooperativeMatrixPropertiesNV);
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV);
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-
-		VKPP_ILOAD(ini, vkGetPhysicalDeviceSurfacePresentModes2EXT);
-		VKPP_ILOAD(ini, vkAcquireFullScreenExclusiveModeEXT);
-		VKPP_ILOAD(ini, vkReleaseFullScreenExclusiveModeEXT);
-		VKPP_ILOAD(ini, vkGetDeviceGroupSurfacePresentModes2EXT);
-		VKPP_ILOAD(ini, vkGetDeviceGroupSurfacePresentModes2EXT);
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
-		VKPP_ILOAD(ini, vkCreateHeadlessSurfaceEXT);
-		VKPP_ILOAD(ini, vkResetQueryPoolEXT);
-
-	}
-
-	#undef VKPP_ILOAD
 };
 
 } // namespace vk
-
 // The specification (vk.xml) itself is published under the following license:
 
 // Copyright (c) 2015-2019 The Khronos Group Inc.

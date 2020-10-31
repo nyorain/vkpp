@@ -1,8 +1,14 @@
 #define VKPP_DYNAMIC_DISPATCH
+
 #include <vkpp/vulkan.hpp>
+#include <vkpp/functions.hpp>
+#include <vkpp/rawf.hpp>
+#include <vkpp/names.hpp>
+
 #include <cstdio>
 
 int main() {
+	vk::dispatch.initLoader(::vkGetInstanceProcAddr);
 	auto version = vk::enumerateInstanceVersion();
 	std::printf("enumerated instance version: %d.%d.%d\n",
 		VK_VERSION_MAJOR(version),
@@ -15,6 +21,7 @@ int main() {
 	instanceInfo.pApplicationInfo = &appInfo;
 
 	auto instance = vk::createInstance(instanceInfo);
-	vk::dispatch.init(instance); // without this it fails for dynamic dispatch
+	vk::dispatch.init(instance);
+
 	vk::destroyInstance(instance);
 }

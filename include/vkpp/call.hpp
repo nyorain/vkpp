@@ -14,6 +14,18 @@
 
 namespace vk {
 
+/// Default exception class that will be thrown when a throw-checked vulkan function fails.
+/// This exception will carry the return vulkan result code.
+class VulkanError : public std::runtime_error {
+public:
+	VulkanError(Result err, const std::string& msg = "") :
+		std::runtime_error(msg), error(err) {}
+
+	const Result error {};
+};
+
+namespace error {
+
 /// Returns the name of the given vulkan result.
 /// Returns "<unknown>" if the error is not recognized.
 /// Might handle for extension result codes that are newer than
@@ -47,18 +59,6 @@ inline const char* name(Result result) {
 		default: return "<unknown>";
 	}
 }
-
-/// Default exception class that will be thrown when a throw-checked vulkan function fails.
-/// This exception will carry the return vulkan result code.
-class VulkanError : public std::runtime_error {
-public:
-	VulkanError(Result err, const std::string& msg = "") :
-		std::runtime_error(msg), error(err) {}
-
-	const Result error {};
-};
-
-namespace error {
 
 /// Returns whether the result code inidicates success.
 inline bool success(vk::Result result) {

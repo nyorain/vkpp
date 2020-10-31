@@ -1,4 +1,4 @@
-// Copyright (c) 2019 nyorain
+// Copyright (c) 2020 nyorain
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt
 
@@ -6,6 +6,7 @@
 // Do not edit manually, rather edit the codegen files.
 
 #pragma once
+
 #include <vkpp/fwd.hpp>
 #include <vkpp/enums.hpp>
 #include <vkpp/flags.hpp>
@@ -42,7 +43,7 @@ struct BindBufferMemoryInfo {
 	DeviceMemory memory {};
 	DeviceSize memoryOffset {};
 
-	BindBufferMemoryInfo(Buffer xbuffer = {}, DeviceMemory xmemory = {}, DeviceSize xmemoryOffset = {}) : buffer(xbuffer), memory(xmemory), memoryOffset(xmemoryOffset) {}
+	constexpr BindBufferMemoryInfo(Buffer xbuffer = {}, DeviceMemory xmemory = {}, DeviceSize xmemoryOffset = {}) : buffer(xbuffer), memory(xmemory), memoryOffset(xmemoryOffset) {}
 
 	const VkBindBufferMemoryInfo& vkHandle() const { return reinterpret_cast<const VkBindBufferMemoryInfo&>(*this); }
 	VkBindBufferMemoryInfo& vkHandle() { return reinterpret_cast<VkBindBufferMemoryInfo&>(*this); }
@@ -58,7 +59,7 @@ struct BindImageMemoryInfo {
 	DeviceMemory memory {};
 	DeviceSize memoryOffset {};
 
-	BindImageMemoryInfo(Image ximage = {}, DeviceMemory xmemory = {}, DeviceSize xmemoryOffset = {}) : image(ximage), memory(xmemory), memoryOffset(xmemoryOffset) {}
+	constexpr BindImageMemoryInfo(Image ximage = {}, DeviceMemory xmemory = {}, DeviceSize xmemoryOffset = {}) : image(ximage), memory(xmemory), memoryOffset(xmemoryOffset) {}
 
 	const VkBindImageMemoryInfo& vkHandle() const { return reinterpret_cast<const VkBindImageMemoryInfo&>(*this); }
 	VkBindImageMemoryInfo& vkHandle() { return reinterpret_cast<VkBindImageMemoryInfo&>(*this); }
@@ -75,7 +76,7 @@ struct PhysicalDevice16BitStorageFeatures {
 	Bool32 storagePushConstant16 {};
 	Bool32 storageInputOutput16 {};
 
-	PhysicalDevice16BitStorageFeatures(Bool32 xstorageBuffer16BitAccess = {}, Bool32 xuniformAndStorageBuffer16BitAccess = {}, Bool32 xstoragePushConstant16 = {}, Bool32 xstorageInputOutput16 = {}) : storageBuffer16BitAccess(xstorageBuffer16BitAccess), uniformAndStorageBuffer16BitAccess(xuniformAndStorageBuffer16BitAccess), storagePushConstant16(xstoragePushConstant16), storageInputOutput16(xstorageInputOutput16) {}
+	constexpr PhysicalDevice16BitStorageFeatures(Bool32 xstorageBuffer16BitAccess = {}, Bool32 xuniformAndStorageBuffer16BitAccess = {}, Bool32 xstoragePushConstant16 = {}, Bool32 xstorageInputOutput16 = {}) : storageBuffer16BitAccess(xstorageBuffer16BitAccess), uniformAndStorageBuffer16BitAccess(xuniformAndStorageBuffer16BitAccess), storagePushConstant16(xstoragePushConstant16), storageInputOutput16(xstorageInputOutput16) {}
 
 	const VkPhysicalDevice16BitStorageFeatures& vkHandle() const { return reinterpret_cast<const VkPhysicalDevice16BitStorageFeatures&>(*this); }
 	VkPhysicalDevice16BitStorageFeatures& vkHandle() { return reinterpret_cast<VkPhysicalDevice16BitStorageFeatures&>(*this); }
@@ -103,7 +104,7 @@ struct MemoryDedicatedAllocateInfo {
 	Image image {};
 	Buffer buffer {};
 
-	MemoryDedicatedAllocateInfo(Image ximage = {}, Buffer xbuffer = {}) : image(ximage), buffer(xbuffer) {}
+	constexpr MemoryDedicatedAllocateInfo(Image ximage = {}, Buffer xbuffer = {}) : image(ximage), buffer(xbuffer) {}
 
 	const VkMemoryDedicatedAllocateInfo& vkHandle() const { return reinterpret_cast<const VkMemoryDedicatedAllocateInfo&>(*this); }
 	VkMemoryDedicatedAllocateInfo& vkHandle() { return reinterpret_cast<VkMemoryDedicatedAllocateInfo&>(*this); }
@@ -118,7 +119,7 @@ struct MemoryAllocateFlagsInfo {
 	MemoryAllocateFlags flags {};
 	uint32_t deviceMask {};
 
-	MemoryAllocateFlagsInfo(MemoryAllocateFlags xflags = {}, uint32_t xdeviceMask = {}) : flags(xflags), deviceMask(xdeviceMask) {}
+	constexpr MemoryAllocateFlagsInfo(MemoryAllocateFlags xflags = {}, uint32_t xdeviceMask = {}) : flags(xflags), deviceMask(xdeviceMask) {}
 
 	const VkMemoryAllocateFlagsInfo& vkHandle() const { return reinterpret_cast<const VkMemoryAllocateFlagsInfo&>(*this); }
 	VkMemoryAllocateFlagsInfo& vkHandle() { return reinterpret_cast<VkMemoryAllocateFlagsInfo&>(*this); }
@@ -167,7 +168,7 @@ struct DeviceGroupRenderPassBeginInfo {
 	uint32_t deviceRenderAreaCount {};
 	const Rect2D* pDeviceRenderAreas {};
 
-	DeviceGroupRenderPassBeginInfo(uint32_t xdeviceMask = {}, uint32_t xdeviceRenderAreaCount = {}, const Rect2D* xpDeviceRenderAreas = {}) : deviceMask(xdeviceMask), deviceRenderAreaCount(xdeviceRenderAreaCount), pDeviceRenderAreas(xpDeviceRenderAreas) {}
+	constexpr DeviceGroupRenderPassBeginInfo(uint32_t xdeviceMask = {}, uint32_t xdeviceRenderAreaCount = {}, const Rect2D* xpDeviceRenderAreas = {}) : deviceMask(xdeviceMask), deviceRenderAreaCount(xdeviceRenderAreaCount), pDeviceRenderAreas(xpDeviceRenderAreas) {}
 
 	const VkDeviceGroupRenderPassBeginInfo& vkHandle() const { return reinterpret_cast<const VkDeviceGroupRenderPassBeginInfo&>(*this); }
 	VkDeviceGroupRenderPassBeginInfo& vkHandle() { return reinterpret_cast<VkDeviceGroupRenderPassBeginInfo&>(*this); }
@@ -181,7 +182,7 @@ struct DeviceGroupCommandBufferBeginInfo {
 	const void* pNext {};
 	uint32_t deviceMask {};
 
-	DeviceGroupCommandBufferBeginInfo(uint32_t xdeviceMask = {}) : deviceMask(xdeviceMask) {}
+	constexpr DeviceGroupCommandBufferBeginInfo(uint32_t xdeviceMask = {}) : deviceMask(xdeviceMask) {}
 
 	const VkDeviceGroupCommandBufferBeginInfo& vkHandle() const { return reinterpret_cast<const VkDeviceGroupCommandBufferBeginInfo&>(*this); }
 	VkDeviceGroupCommandBufferBeginInfo& vkHandle() { return reinterpret_cast<VkDeviceGroupCommandBufferBeginInfo&>(*this); }
@@ -200,7 +201,7 @@ struct DeviceGroupSubmitInfo {
 	uint32_t signalSemaphoreCount {};
 	const uint32_t* pSignalSemaphoreDeviceIndices {};
 
-	DeviceGroupSubmitInfo(uint32_t xwaitSemaphoreCount = {}, const uint32_t* xpWaitSemaphoreDeviceIndices = {}, uint32_t xcommandBufferCount = {}, const uint32_t* xpCommandBufferDeviceMasks = {}, uint32_t xsignalSemaphoreCount = {}, const uint32_t* xpSignalSemaphoreDeviceIndices = {}) : waitSemaphoreCount(xwaitSemaphoreCount), pWaitSemaphoreDeviceIndices(xpWaitSemaphoreDeviceIndices), commandBufferCount(xcommandBufferCount), pCommandBufferDeviceMasks(xpCommandBufferDeviceMasks), signalSemaphoreCount(xsignalSemaphoreCount), pSignalSemaphoreDeviceIndices(xpSignalSemaphoreDeviceIndices) {}
+	constexpr DeviceGroupSubmitInfo(uint32_t xwaitSemaphoreCount = {}, const uint32_t* xpWaitSemaphoreDeviceIndices = {}, uint32_t xcommandBufferCount = {}, const uint32_t* xpCommandBufferDeviceMasks = {}, uint32_t xsignalSemaphoreCount = {}, const uint32_t* xpSignalSemaphoreDeviceIndices = {}) : waitSemaphoreCount(xwaitSemaphoreCount), pWaitSemaphoreDeviceIndices(xpWaitSemaphoreDeviceIndices), commandBufferCount(xcommandBufferCount), pCommandBufferDeviceMasks(xpCommandBufferDeviceMasks), signalSemaphoreCount(xsignalSemaphoreCount), pSignalSemaphoreDeviceIndices(xpSignalSemaphoreDeviceIndices) {}
 
 	const VkDeviceGroupSubmitInfo& vkHandle() const { return reinterpret_cast<const VkDeviceGroupSubmitInfo&>(*this); }
 	VkDeviceGroupSubmitInfo& vkHandle() { return reinterpret_cast<VkDeviceGroupSubmitInfo&>(*this); }
@@ -215,7 +216,7 @@ struct DeviceGroupBindSparseInfo {
 	uint32_t resourceDeviceIndex {};
 	uint32_t memoryDeviceIndex {};
 
-	DeviceGroupBindSparseInfo(uint32_t xresourceDeviceIndex = {}, uint32_t xmemoryDeviceIndex = {}) : resourceDeviceIndex(xresourceDeviceIndex), memoryDeviceIndex(xmemoryDeviceIndex) {}
+	constexpr DeviceGroupBindSparseInfo(uint32_t xresourceDeviceIndex = {}, uint32_t xmemoryDeviceIndex = {}) : resourceDeviceIndex(xresourceDeviceIndex), memoryDeviceIndex(xmemoryDeviceIndex) {}
 
 	const VkDeviceGroupBindSparseInfo& vkHandle() const { return reinterpret_cast<const VkDeviceGroupBindSparseInfo&>(*this); }
 	VkDeviceGroupBindSparseInfo& vkHandle() { return reinterpret_cast<VkDeviceGroupBindSparseInfo&>(*this); }
@@ -230,7 +231,7 @@ struct BindBufferMemoryDeviceGroupInfo {
 	uint32_t deviceIndexCount {};
 	const uint32_t* pDeviceIndices {};
 
-	BindBufferMemoryDeviceGroupInfo(uint32_t xdeviceIndexCount = {}, const uint32_t* xpDeviceIndices = {}) : deviceIndexCount(xdeviceIndexCount), pDeviceIndices(xpDeviceIndices) {}
+	constexpr BindBufferMemoryDeviceGroupInfo(uint32_t xdeviceIndexCount = {}, const uint32_t* xpDeviceIndices = {}) : deviceIndexCount(xdeviceIndexCount), pDeviceIndices(xpDeviceIndices) {}
 
 	const VkBindBufferMemoryDeviceGroupInfo& vkHandle() const { return reinterpret_cast<const VkBindBufferMemoryDeviceGroupInfo&>(*this); }
 	VkBindBufferMemoryDeviceGroupInfo& vkHandle() { return reinterpret_cast<VkBindBufferMemoryDeviceGroupInfo&>(*this); }
@@ -247,7 +248,7 @@ struct BindImageMemoryDeviceGroupInfo {
 	uint32_t splitInstanceBindRegionCount {};
 	const Rect2D* pSplitInstanceBindRegions {};
 
-	BindImageMemoryDeviceGroupInfo(uint32_t xdeviceIndexCount = {}, const uint32_t* xpDeviceIndices = {}, uint32_t xsplitInstanceBindRegionCount = {}, const Rect2D* xpSplitInstanceBindRegions = {}) : deviceIndexCount(xdeviceIndexCount), pDeviceIndices(xpDeviceIndices), splitInstanceBindRegionCount(xsplitInstanceBindRegionCount), pSplitInstanceBindRegions(xpSplitInstanceBindRegions) {}
+	constexpr BindImageMemoryDeviceGroupInfo(uint32_t xdeviceIndexCount = {}, const uint32_t* xpDeviceIndices = {}, uint32_t xsplitInstanceBindRegionCount = {}, const Rect2D* xpSplitInstanceBindRegions = {}) : deviceIndexCount(xdeviceIndexCount), pDeviceIndices(xpDeviceIndices), splitInstanceBindRegionCount(xsplitInstanceBindRegionCount), pSplitInstanceBindRegions(xpSplitInstanceBindRegions) {}
 
 	const VkBindImageMemoryDeviceGroupInfo& vkHandle() const { return reinterpret_cast<const VkBindImageMemoryDeviceGroupInfo&>(*this); }
 	VkBindImageMemoryDeviceGroupInfo& vkHandle() { return reinterpret_cast<VkBindImageMemoryDeviceGroupInfo&>(*this); }
@@ -276,7 +277,7 @@ struct DeviceGroupDeviceCreateInfo {
 	uint32_t physicalDeviceCount {};
 	const PhysicalDevice* pPhysicalDevices {};
 
-	DeviceGroupDeviceCreateInfo(uint32_t xphysicalDeviceCount = {}, const PhysicalDevice* xpPhysicalDevices = {}) : physicalDeviceCount(xphysicalDeviceCount), pPhysicalDevices(xpPhysicalDevices) {}
+	constexpr DeviceGroupDeviceCreateInfo(uint32_t xphysicalDeviceCount = {}, const PhysicalDevice* xpPhysicalDevices = {}) : physicalDeviceCount(xphysicalDeviceCount), pPhysicalDevices(xpPhysicalDevices) {}
 
 	const VkDeviceGroupDeviceCreateInfo& vkHandle() const { return reinterpret_cast<const VkDeviceGroupDeviceCreateInfo&>(*this); }
 	VkDeviceGroupDeviceCreateInfo& vkHandle() { return reinterpret_cast<VkDeviceGroupDeviceCreateInfo&>(*this); }
@@ -290,7 +291,7 @@ struct BufferMemoryRequirementsInfo2 {
 	const void* pNext {};
 	Buffer buffer {};
 
-	BufferMemoryRequirementsInfo2(Buffer xbuffer = {}) : buffer(xbuffer) {}
+	constexpr BufferMemoryRequirementsInfo2(Buffer xbuffer = {}) : buffer(xbuffer) {}
 
 	const VkBufferMemoryRequirementsInfo2& vkHandle() const { return reinterpret_cast<const VkBufferMemoryRequirementsInfo2&>(*this); }
 	VkBufferMemoryRequirementsInfo2& vkHandle() { return reinterpret_cast<VkBufferMemoryRequirementsInfo2&>(*this); }
@@ -304,7 +305,7 @@ struct ImageMemoryRequirementsInfo2 {
 	const void* pNext {};
 	Image image {};
 
-	ImageMemoryRequirementsInfo2(Image ximage = {}) : image(ximage) {}
+	constexpr ImageMemoryRequirementsInfo2(Image ximage = {}) : image(ximage) {}
 
 	const VkImageMemoryRequirementsInfo2& vkHandle() const { return reinterpret_cast<const VkImageMemoryRequirementsInfo2&>(*this); }
 	VkImageMemoryRequirementsInfo2& vkHandle() { return reinterpret_cast<VkImageMemoryRequirementsInfo2&>(*this); }
@@ -318,7 +319,7 @@ struct ImageSparseMemoryRequirementsInfo2 {
 	const void* pNext {};
 	Image image {};
 
-	ImageSparseMemoryRequirementsInfo2(Image ximage = {}) : image(ximage) {}
+	constexpr ImageSparseMemoryRequirementsInfo2(Image ximage = {}) : image(ximage) {}
 
 	const VkImageSparseMemoryRequirementsInfo2& vkHandle() const { return reinterpret_cast<const VkImageSparseMemoryRequirementsInfo2&>(*this); }
 	VkImageSparseMemoryRequirementsInfo2& vkHandle() { return reinterpret_cast<VkImageSparseMemoryRequirementsInfo2&>(*this); }
@@ -470,7 +471,7 @@ struct PhysicalDeviceFeatures2 {
 	void* pNext {};
 	PhysicalDeviceFeatures features {};
 
-	PhysicalDeviceFeatures2(PhysicalDeviceFeatures xfeatures = {}) : features(xfeatures) {}
+	constexpr PhysicalDeviceFeatures2(PhysicalDeviceFeatures xfeatures = {}) : features(xfeatures) {}
 
 	const VkPhysicalDeviceFeatures2& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceFeatures2&>(*this); }
 	VkPhysicalDeviceFeatures2& vkHandle() { return reinterpret_cast<VkPhysicalDeviceFeatures2&>(*this); }
@@ -697,7 +698,7 @@ struct PhysicalDeviceImageFormatInfo2 {
 	ImageUsageFlags usage {};
 	ImageCreateFlags flags {};
 
-	PhysicalDeviceImageFormatInfo2(Format xformat = {}, ImageType xtype = {}, ImageTiling xtiling = {}, ImageUsageFlags xusage = {}, ImageCreateFlags xflags = {}) : format(xformat), type(xtype), tiling(xtiling), usage(xusage), flags(xflags) {}
+	constexpr PhysicalDeviceImageFormatInfo2(Format xformat = {}, ImageType xtype = {}, ImageTiling xtiling = {}, ImageUsageFlags xusage = {}, ImageCreateFlags xflags = {}) : format(xformat), type(xtype), tiling(xtiling), usage(xusage), flags(xflags) {}
 
 	const VkPhysicalDeviceImageFormatInfo2& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceImageFormatInfo2&>(*this); }
 	VkPhysicalDeviceImageFormatInfo2& vkHandle() { return reinterpret_cast<VkPhysicalDeviceImageFormatInfo2&>(*this); }
@@ -799,7 +800,7 @@ struct PhysicalDeviceSparseImageFormatInfo2 {
 	ImageUsageFlags usage {};
 	ImageTiling tiling {};
 
-	PhysicalDeviceSparseImageFormatInfo2(Format xformat = {}, ImageType xtype = {}, SampleCountBits xsamples = {}, ImageUsageFlags xusage = {}, ImageTiling xtiling = {}) : format(xformat), type(xtype), samples(xsamples), usage(xusage), tiling(xtiling) {}
+	constexpr PhysicalDeviceSparseImageFormatInfo2(Format xformat = {}, ImageType xtype = {}, SampleCountBits xsamples = {}, ImageUsageFlags xusage = {}, ImageTiling xtiling = {}) : format(xformat), type(xtype), samples(xsamples), usage(xusage), tiling(xtiling) {}
 
 	const VkPhysicalDeviceSparseImageFormatInfo2& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceSparseImageFormatInfo2&>(*this); }
 	VkPhysicalDeviceSparseImageFormatInfo2& vkHandle() { return reinterpret_cast<VkPhysicalDeviceSparseImageFormatInfo2&>(*this); }
@@ -838,7 +839,7 @@ struct RenderPassInputAttachmentAspectCreateInfo {
 	uint32_t aspectReferenceCount {};
 	const InputAttachmentAspectReference* pAspectReferences {};
 
-	RenderPassInputAttachmentAspectCreateInfo(uint32_t xaspectReferenceCount = {}, const InputAttachmentAspectReference* xpAspectReferences = {}) : aspectReferenceCount(xaspectReferenceCount), pAspectReferences(xpAspectReferences) {}
+	constexpr RenderPassInputAttachmentAspectCreateInfo(uint32_t xaspectReferenceCount = {}, const InputAttachmentAspectReference* xpAspectReferences = {}) : aspectReferenceCount(xaspectReferenceCount), pAspectReferences(xpAspectReferences) {}
 
 	const VkRenderPassInputAttachmentAspectCreateInfo& vkHandle() const { return reinterpret_cast<const VkRenderPassInputAttachmentAspectCreateInfo&>(*this); }
 	VkRenderPassInputAttachmentAspectCreateInfo& vkHandle() { return reinterpret_cast<VkRenderPassInputAttachmentAspectCreateInfo&>(*this); }
@@ -852,7 +853,7 @@ struct ImageViewUsageCreateInfo {
 	const void* pNext {};
 	ImageUsageFlags usage {};
 
-	ImageViewUsageCreateInfo(ImageUsageFlags xusage = {}) : usage(xusage) {}
+	constexpr ImageViewUsageCreateInfo(ImageUsageFlags xusage = {}) : usage(xusage) {}
 
 	const VkImageViewUsageCreateInfo& vkHandle() const { return reinterpret_cast<const VkImageViewUsageCreateInfo&>(*this); }
 	VkImageViewUsageCreateInfo& vkHandle() { return reinterpret_cast<VkImageViewUsageCreateInfo&>(*this); }
@@ -866,7 +867,7 @@ struct PipelineTessellationDomainOriginStateCreateInfo {
 	const void* pNext {};
 	TessellationDomainOrigin domainOrigin {};
 
-	PipelineTessellationDomainOriginStateCreateInfo(TessellationDomainOrigin xdomainOrigin = {}) : domainOrigin(xdomainOrigin) {}
+	constexpr PipelineTessellationDomainOriginStateCreateInfo(TessellationDomainOrigin xdomainOrigin = {}) : domainOrigin(xdomainOrigin) {}
 
 	const VkPipelineTessellationDomainOriginStateCreateInfo& vkHandle() const { return reinterpret_cast<const VkPipelineTessellationDomainOriginStateCreateInfo&>(*this); }
 	VkPipelineTessellationDomainOriginStateCreateInfo& vkHandle() { return reinterpret_cast<VkPipelineTessellationDomainOriginStateCreateInfo&>(*this); }
@@ -885,7 +886,7 @@ struct RenderPassMultiviewCreateInfo {
 	uint32_t correlationMaskCount {};
 	const uint32_t* pCorrelationMasks {};
 
-	RenderPassMultiviewCreateInfo(uint32_t xsubpassCount = {}, const uint32_t* xpViewMasks = {}, uint32_t xdependencyCount = {}, const int32_t* xpViewOffsets = {}, uint32_t xcorrelationMaskCount = {}, const uint32_t* xpCorrelationMasks = {}) : subpassCount(xsubpassCount), pViewMasks(xpViewMasks), dependencyCount(xdependencyCount), pViewOffsets(xpViewOffsets), correlationMaskCount(xcorrelationMaskCount), pCorrelationMasks(xpCorrelationMasks) {}
+	constexpr RenderPassMultiviewCreateInfo(uint32_t xsubpassCount = {}, const uint32_t* xpViewMasks = {}, uint32_t xdependencyCount = {}, const int32_t* xpViewOffsets = {}, uint32_t xcorrelationMaskCount = {}, const uint32_t* xpCorrelationMasks = {}) : subpassCount(xsubpassCount), pViewMasks(xpViewMasks), dependencyCount(xdependencyCount), pViewOffsets(xpViewOffsets), correlationMaskCount(xcorrelationMaskCount), pCorrelationMasks(xpCorrelationMasks) {}
 
 	const VkRenderPassMultiviewCreateInfo& vkHandle() const { return reinterpret_cast<const VkRenderPassMultiviewCreateInfo&>(*this); }
 	VkRenderPassMultiviewCreateInfo& vkHandle() { return reinterpret_cast<VkRenderPassMultiviewCreateInfo&>(*this); }
@@ -901,7 +902,7 @@ struct PhysicalDeviceMultiviewFeatures {
 	Bool32 multiviewGeometryShader {};
 	Bool32 multiviewTessellationShader {};
 
-	PhysicalDeviceMultiviewFeatures(Bool32 xmultiview = {}, Bool32 xmultiviewGeometryShader = {}, Bool32 xmultiviewTessellationShader = {}) : multiview(xmultiview), multiviewGeometryShader(xmultiviewGeometryShader), multiviewTessellationShader(xmultiviewTessellationShader) {}
+	constexpr PhysicalDeviceMultiviewFeatures(Bool32 xmultiview = {}, Bool32 xmultiviewGeometryShader = {}, Bool32 xmultiviewTessellationShader = {}) : multiview(xmultiview), multiviewGeometryShader(xmultiviewGeometryShader), multiviewTessellationShader(xmultiviewTessellationShader) {}
 
 	const VkPhysicalDeviceMultiviewFeatures& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceMultiviewFeatures&>(*this); }
 	VkPhysicalDeviceMultiviewFeatures& vkHandle() { return reinterpret_cast<VkPhysicalDeviceMultiviewFeatures&>(*this); }
@@ -929,7 +930,7 @@ struct PhysicalDeviceVariablePointersFeatures {
 	Bool32 variablePointersStorageBuffer {};
 	Bool32 variablePointers {};
 
-	PhysicalDeviceVariablePointersFeatures(Bool32 xvariablePointersStorageBuffer = {}, Bool32 xvariablePointers = {}) : variablePointersStorageBuffer(xvariablePointersStorageBuffer), variablePointers(xvariablePointers) {}
+	constexpr PhysicalDeviceVariablePointersFeatures(Bool32 xvariablePointersStorageBuffer = {}, Bool32 xvariablePointers = {}) : variablePointersStorageBuffer(xvariablePointersStorageBuffer), variablePointers(xvariablePointers) {}
 
 	const VkPhysicalDeviceVariablePointersFeatures& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceVariablePointersFeatures&>(*this); }
 	VkPhysicalDeviceVariablePointersFeatures& vkHandle() { return reinterpret_cast<VkPhysicalDeviceVariablePointersFeatures&>(*this); }
@@ -943,7 +944,7 @@ struct PhysicalDeviceProtectedMemoryFeatures {
 	void* pNext {};
 	Bool32 protectedMemory {};
 
-	PhysicalDeviceProtectedMemoryFeatures(Bool32 xprotectedMemory = {}) : protectedMemory(xprotectedMemory) {}
+	constexpr PhysicalDeviceProtectedMemoryFeatures(Bool32 xprotectedMemory = {}) : protectedMemory(xprotectedMemory) {}
 
 	const VkPhysicalDeviceProtectedMemoryFeatures& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceProtectedMemoryFeatures&>(*this); }
 	VkPhysicalDeviceProtectedMemoryFeatures& vkHandle() { return reinterpret_cast<VkPhysicalDeviceProtectedMemoryFeatures&>(*this); }
@@ -971,7 +972,7 @@ struct DeviceQueueInfo2 {
 	uint32_t queueFamilyIndex {};
 	uint32_t queueIndex {};
 
-	DeviceQueueInfo2(DeviceQueueCreateFlags xflags = {}, uint32_t xqueueFamilyIndex = {}, uint32_t xqueueIndex = {}) : flags(xflags), queueFamilyIndex(xqueueFamilyIndex), queueIndex(xqueueIndex) {}
+	constexpr DeviceQueueInfo2(DeviceQueueCreateFlags xflags = {}, uint32_t xqueueFamilyIndex = {}, uint32_t xqueueIndex = {}) : flags(xflags), queueFamilyIndex(xqueueFamilyIndex), queueIndex(xqueueIndex) {}
 
 	const VkDeviceQueueInfo2& vkHandle() const { return reinterpret_cast<const VkDeviceQueueInfo2&>(*this); }
 	VkDeviceQueueInfo2& vkHandle() { return reinterpret_cast<VkDeviceQueueInfo2&>(*this); }
@@ -985,7 +986,7 @@ struct ProtectedSubmitInfo {
 	const void* pNext {};
 	Bool32 protectedSubmit {};
 
-	ProtectedSubmitInfo(Bool32 xprotectedSubmit = {}) : protectedSubmit(xprotectedSubmit) {}
+	constexpr ProtectedSubmitInfo(Bool32 xprotectedSubmit = {}) : protectedSubmit(xprotectedSubmit) {}
 
 	const VkProtectedSubmitInfo& vkHandle() const { return reinterpret_cast<const VkProtectedSubmitInfo&>(*this); }
 	VkProtectedSubmitInfo& vkHandle() { return reinterpret_cast<VkProtectedSubmitInfo&>(*this); }
@@ -1019,7 +1020,7 @@ struct SamplerYcbcrConversionCreateInfo {
 	Filter chromaFilter {};
 	Bool32 forceExplicitReconstruction {};
 
-	SamplerYcbcrConversionCreateInfo(Format xformat = {}, SamplerYcbcrModelConversion xycbcrModel = {}, SamplerYcbcrRange xycbcrRange = {}, ComponentMapping xcomponents = {}, ChromaLocation xxChromaOffset = {}, ChromaLocation xyChromaOffset = {}, Filter xchromaFilter = {}, Bool32 xforceExplicitReconstruction = {}) : format(xformat), ycbcrModel(xycbcrModel), ycbcrRange(xycbcrRange), components(xcomponents), xChromaOffset(xxChromaOffset), yChromaOffset(xyChromaOffset), chromaFilter(xchromaFilter), forceExplicitReconstruction(xforceExplicitReconstruction) {}
+	constexpr SamplerYcbcrConversionCreateInfo(Format xformat = {}, SamplerYcbcrModelConversion xycbcrModel = {}, SamplerYcbcrRange xycbcrRange = {}, ComponentMapping xcomponents = {}, ChromaLocation xxChromaOffset = {}, ChromaLocation xyChromaOffset = {}, Filter xchromaFilter = {}, Bool32 xforceExplicitReconstruction = {}) : format(xformat), ycbcrModel(xycbcrModel), ycbcrRange(xycbcrRange), components(xcomponents), xChromaOffset(xxChromaOffset), yChromaOffset(xyChromaOffset), chromaFilter(xchromaFilter), forceExplicitReconstruction(xforceExplicitReconstruction) {}
 
 	const VkSamplerYcbcrConversionCreateInfo& vkHandle() const { return reinterpret_cast<const VkSamplerYcbcrConversionCreateInfo&>(*this); }
 	VkSamplerYcbcrConversionCreateInfo& vkHandle() { return reinterpret_cast<VkSamplerYcbcrConversionCreateInfo&>(*this); }
@@ -1033,7 +1034,7 @@ struct SamplerYcbcrConversionInfo {
 	const void* pNext {};
 	SamplerYcbcrConversion conversion {};
 
-	SamplerYcbcrConversionInfo(SamplerYcbcrConversion xconversion = {}) : conversion(xconversion) {}
+	constexpr SamplerYcbcrConversionInfo(SamplerYcbcrConversion xconversion = {}) : conversion(xconversion) {}
 
 	const VkSamplerYcbcrConversionInfo& vkHandle() const { return reinterpret_cast<const VkSamplerYcbcrConversionInfo&>(*this); }
 	VkSamplerYcbcrConversionInfo& vkHandle() { return reinterpret_cast<VkSamplerYcbcrConversionInfo&>(*this); }
@@ -1047,7 +1048,7 @@ struct BindImagePlaneMemoryInfo {
 	const void* pNext {};
 	ImageAspectBits planeAspect {};
 
-	BindImagePlaneMemoryInfo(ImageAspectBits xplaneAspect = {}) : planeAspect(xplaneAspect) {}
+	constexpr BindImagePlaneMemoryInfo(ImageAspectBits xplaneAspect = {}) : planeAspect(xplaneAspect) {}
 
 	const VkBindImagePlaneMemoryInfo& vkHandle() const { return reinterpret_cast<const VkBindImagePlaneMemoryInfo&>(*this); }
 	VkBindImagePlaneMemoryInfo& vkHandle() { return reinterpret_cast<VkBindImagePlaneMemoryInfo&>(*this); }
@@ -1061,7 +1062,7 @@ struct ImagePlaneMemoryRequirementsInfo {
 	const void* pNext {};
 	ImageAspectBits planeAspect {};
 
-	ImagePlaneMemoryRequirementsInfo(ImageAspectBits xplaneAspect = {}) : planeAspect(xplaneAspect) {}
+	constexpr ImagePlaneMemoryRequirementsInfo(ImageAspectBits xplaneAspect = {}) : planeAspect(xplaneAspect) {}
 
 	const VkImagePlaneMemoryRequirementsInfo& vkHandle() const { return reinterpret_cast<const VkImagePlaneMemoryRequirementsInfo&>(*this); }
 	VkImagePlaneMemoryRequirementsInfo& vkHandle() { return reinterpret_cast<VkImagePlaneMemoryRequirementsInfo&>(*this); }
@@ -1075,7 +1076,7 @@ struct PhysicalDeviceSamplerYcbcrConversionFeatures {
 	void* pNext {};
 	Bool32 samplerYcbcrConversion {};
 
-	PhysicalDeviceSamplerYcbcrConversionFeatures(Bool32 xsamplerYcbcrConversion = {}) : samplerYcbcrConversion(xsamplerYcbcrConversion) {}
+	constexpr PhysicalDeviceSamplerYcbcrConversionFeatures(Bool32 xsamplerYcbcrConversion = {}) : samplerYcbcrConversion(xsamplerYcbcrConversion) {}
 
 	const VkPhysicalDeviceSamplerYcbcrConversionFeatures& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceSamplerYcbcrConversionFeatures&>(*this); }
 	VkPhysicalDeviceSamplerYcbcrConversionFeatures& vkHandle() { return reinterpret_cast<VkPhysicalDeviceSamplerYcbcrConversionFeatures&>(*this); }
@@ -1138,7 +1139,7 @@ struct DescriptorUpdateTemplateCreateInfo {
 	PipelineLayout pipelineLayout {};
 	uint32_t set {};
 
-	DescriptorUpdateTemplateCreateInfo(DescriptorUpdateTemplateCreateFlags xflags = {}, uint32_t xdescriptorUpdateEntryCount = {}, const DescriptorUpdateTemplateEntry* xpDescriptorUpdateEntries = {}, DescriptorUpdateTemplateType xtemplateType = {}, DescriptorSetLayout xdescriptorSetLayout = {}, PipelineBindPoint xpipelineBindPoint = {}, PipelineLayout xpipelineLayout = {}, uint32_t xset = {}) : flags(xflags), descriptorUpdateEntryCount(xdescriptorUpdateEntryCount), pDescriptorUpdateEntries(xpDescriptorUpdateEntries), templateType(xtemplateType), descriptorSetLayout(xdescriptorSetLayout), pipelineBindPoint(xpipelineBindPoint), pipelineLayout(xpipelineLayout), set(xset) {}
+	constexpr DescriptorUpdateTemplateCreateInfo(DescriptorUpdateTemplateCreateFlags xflags = {}, uint32_t xdescriptorUpdateEntryCount = {}, const DescriptorUpdateTemplateEntry* xpDescriptorUpdateEntries = {}, DescriptorUpdateTemplateType xtemplateType = {}, DescriptorSetLayout xdescriptorSetLayout = {}, PipelineBindPoint xpipelineBindPoint = {}, PipelineLayout xpipelineLayout = {}, uint32_t xset = {}) : flags(xflags), descriptorUpdateEntryCount(xdescriptorUpdateEntryCount), pDescriptorUpdateEntries(xpDescriptorUpdateEntries), templateType(xtemplateType), descriptorSetLayout(xdescriptorSetLayout), pipelineBindPoint(xpipelineBindPoint), pipelineLayout(xpipelineLayout), set(xset) {}
 
 	const VkDescriptorUpdateTemplateCreateInfo& vkHandle() const { return reinterpret_cast<const VkDescriptorUpdateTemplateCreateInfo&>(*this); }
 	VkDescriptorUpdateTemplateCreateInfo& vkHandle() { return reinterpret_cast<VkDescriptorUpdateTemplateCreateInfo&>(*this); }
@@ -1164,7 +1165,7 @@ struct PhysicalDeviceExternalImageFormatInfo {
 	const void* pNext {};
 	ExternalMemoryHandleTypeBits handleType {};
 
-	PhysicalDeviceExternalImageFormatInfo(ExternalMemoryHandleTypeBits xhandleType = {}) : handleType(xhandleType) {}
+	constexpr PhysicalDeviceExternalImageFormatInfo(ExternalMemoryHandleTypeBits xhandleType = {}) : handleType(xhandleType) {}
 
 	const VkPhysicalDeviceExternalImageFormatInfo& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceExternalImageFormatInfo&>(*this); }
 	VkPhysicalDeviceExternalImageFormatInfo& vkHandle() { return reinterpret_cast<VkPhysicalDeviceExternalImageFormatInfo&>(*this); }
@@ -1192,7 +1193,7 @@ struct PhysicalDeviceExternalBufferInfo {
 	BufferUsageFlags usage {};
 	ExternalMemoryHandleTypeBits handleType {};
 
-	PhysicalDeviceExternalBufferInfo(BufferCreateFlags xflags = {}, BufferUsageFlags xusage = {}, ExternalMemoryHandleTypeBits xhandleType = {}) : flags(xflags), usage(xusage), handleType(xhandleType) {}
+	constexpr PhysicalDeviceExternalBufferInfo(BufferCreateFlags xflags = {}, BufferUsageFlags xusage = {}, ExternalMemoryHandleTypeBits xhandleType = {}) : flags(xflags), usage(xusage), handleType(xhandleType) {}
 
 	const VkPhysicalDeviceExternalBufferInfo& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceExternalBufferInfo&>(*this); }
 	VkPhysicalDeviceExternalBufferInfo& vkHandle() { return reinterpret_cast<VkPhysicalDeviceExternalBufferInfo&>(*this); }
@@ -1234,7 +1235,7 @@ struct ExternalMemoryImageCreateInfo {
 	const void* pNext {};
 	ExternalMemoryHandleTypeFlags handleTypes {};
 
-	ExternalMemoryImageCreateInfo(ExternalMemoryHandleTypeFlags xhandleTypes = {}) : handleTypes(xhandleTypes) {}
+	constexpr ExternalMemoryImageCreateInfo(ExternalMemoryHandleTypeFlags xhandleTypes = {}) : handleTypes(xhandleTypes) {}
 
 	const VkExternalMemoryImageCreateInfo& vkHandle() const { return reinterpret_cast<const VkExternalMemoryImageCreateInfo&>(*this); }
 	VkExternalMemoryImageCreateInfo& vkHandle() { return reinterpret_cast<VkExternalMemoryImageCreateInfo&>(*this); }
@@ -1248,7 +1249,7 @@ struct ExternalMemoryBufferCreateInfo {
 	const void* pNext {};
 	ExternalMemoryHandleTypeFlags handleTypes {};
 
-	ExternalMemoryBufferCreateInfo(ExternalMemoryHandleTypeFlags xhandleTypes = {}) : handleTypes(xhandleTypes) {}
+	constexpr ExternalMemoryBufferCreateInfo(ExternalMemoryHandleTypeFlags xhandleTypes = {}) : handleTypes(xhandleTypes) {}
 
 	const VkExternalMemoryBufferCreateInfo& vkHandle() const { return reinterpret_cast<const VkExternalMemoryBufferCreateInfo&>(*this); }
 	VkExternalMemoryBufferCreateInfo& vkHandle() { return reinterpret_cast<VkExternalMemoryBufferCreateInfo&>(*this); }
@@ -1262,7 +1263,7 @@ struct ExportMemoryAllocateInfo {
 	const void* pNext {};
 	ExternalMemoryHandleTypeFlags handleTypes {};
 
-	ExportMemoryAllocateInfo(ExternalMemoryHandleTypeFlags xhandleTypes = {}) : handleTypes(xhandleTypes) {}
+	constexpr ExportMemoryAllocateInfo(ExternalMemoryHandleTypeFlags xhandleTypes = {}) : handleTypes(xhandleTypes) {}
 
 	const VkExportMemoryAllocateInfo& vkHandle() const { return reinterpret_cast<const VkExportMemoryAllocateInfo&>(*this); }
 	VkExportMemoryAllocateInfo& vkHandle() { return reinterpret_cast<VkExportMemoryAllocateInfo&>(*this); }
@@ -1276,7 +1277,7 @@ struct PhysicalDeviceExternalFenceInfo {
 	const void* pNext {};
 	ExternalFenceHandleTypeBits handleType {};
 
-	PhysicalDeviceExternalFenceInfo(ExternalFenceHandleTypeBits xhandleType = {}) : handleType(xhandleType) {}
+	constexpr PhysicalDeviceExternalFenceInfo(ExternalFenceHandleTypeBits xhandleType = {}) : handleType(xhandleType) {}
 
 	const VkPhysicalDeviceExternalFenceInfo& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceExternalFenceInfo&>(*this); }
 	VkPhysicalDeviceExternalFenceInfo& vkHandle() { return reinterpret_cast<VkPhysicalDeviceExternalFenceInfo&>(*this); }
@@ -1304,7 +1305,7 @@ struct ExportFenceCreateInfo {
 	const void* pNext {};
 	ExternalFenceHandleTypeFlags handleTypes {};
 
-	ExportFenceCreateInfo(ExternalFenceHandleTypeFlags xhandleTypes = {}) : handleTypes(xhandleTypes) {}
+	constexpr ExportFenceCreateInfo(ExternalFenceHandleTypeFlags xhandleTypes = {}) : handleTypes(xhandleTypes) {}
 
 	const VkExportFenceCreateInfo& vkHandle() const { return reinterpret_cast<const VkExportFenceCreateInfo&>(*this); }
 	VkExportFenceCreateInfo& vkHandle() { return reinterpret_cast<VkExportFenceCreateInfo&>(*this); }
@@ -1318,7 +1319,7 @@ struct ExportSemaphoreCreateInfo {
 	const void* pNext {};
 	ExternalSemaphoreHandleTypeFlags handleTypes {};
 
-	ExportSemaphoreCreateInfo(ExternalSemaphoreHandleTypeFlags xhandleTypes = {}) : handleTypes(xhandleTypes) {}
+	constexpr ExportSemaphoreCreateInfo(ExternalSemaphoreHandleTypeFlags xhandleTypes = {}) : handleTypes(xhandleTypes) {}
 
 	const VkExportSemaphoreCreateInfo& vkHandle() const { return reinterpret_cast<const VkExportSemaphoreCreateInfo&>(*this); }
 	VkExportSemaphoreCreateInfo& vkHandle() { return reinterpret_cast<VkExportSemaphoreCreateInfo&>(*this); }
@@ -1332,7 +1333,7 @@ struct PhysicalDeviceExternalSemaphoreInfo {
 	const void* pNext {};
 	ExternalSemaphoreHandleTypeBits handleType {};
 
-	PhysicalDeviceExternalSemaphoreInfo(ExternalSemaphoreHandleTypeBits xhandleType = {}) : handleType(xhandleType) {}
+	constexpr PhysicalDeviceExternalSemaphoreInfo(ExternalSemaphoreHandleTypeBits xhandleType = {}) : handleType(xhandleType) {}
 
 	const VkPhysicalDeviceExternalSemaphoreInfo& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceExternalSemaphoreInfo&>(*this); }
 	VkPhysicalDeviceExternalSemaphoreInfo& vkHandle() { return reinterpret_cast<VkPhysicalDeviceExternalSemaphoreInfo&>(*this); }
@@ -1401,7 +1402,7 @@ struct DescriptorSetLayoutCreateInfo {
 	uint32_t bindingCount {};
 	const DescriptorSetLayoutBinding* pBindings {};
 
-	DescriptorSetLayoutCreateInfo(DescriptorSetLayoutCreateFlags xflags = {}, uint32_t xbindingCount = {}, const DescriptorSetLayoutBinding* xpBindings = {}) : flags(xflags), bindingCount(xbindingCount), pBindings(xpBindings) {}
+	constexpr DescriptorSetLayoutCreateInfo(DescriptorSetLayoutCreateFlags xflags = {}, uint32_t xbindingCount = {}, const DescriptorSetLayoutBinding* xpBindings = {}) : flags(xflags), bindingCount(xbindingCount), pBindings(xpBindings) {}
 
 	const VkDescriptorSetLayoutCreateInfo& vkHandle() const { return reinterpret_cast<const VkDescriptorSetLayoutCreateInfo&>(*this); }
 	VkDescriptorSetLayoutCreateInfo& vkHandle() { return reinterpret_cast<VkDescriptorSetLayoutCreateInfo&>(*this); }
@@ -1415,7 +1416,7 @@ struct PhysicalDeviceShaderDrawParametersFeatures {
 	void* pNext {};
 	Bool32 shaderDrawParameters {};
 
-	PhysicalDeviceShaderDrawParametersFeatures(Bool32 xshaderDrawParameters = {}) : shaderDrawParameters(xshaderDrawParameters) {}
+	constexpr PhysicalDeviceShaderDrawParametersFeatures(Bool32 xshaderDrawParameters = {}) : shaderDrawParameters(xshaderDrawParameters) {}
 
 	const VkPhysicalDeviceShaderDrawParametersFeatures& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceShaderDrawParametersFeatures&>(*this); }
 	VkPhysicalDeviceShaderDrawParametersFeatures& vkHandle() { return reinterpret_cast<VkPhysicalDeviceShaderDrawParametersFeatures&>(*this); }
@@ -1434,7 +1435,7 @@ struct ApplicationInfo {
 	uint32_t engineVersion {};
 	uint32_t apiVersion {};
 
-	ApplicationInfo(const char* xpApplicationName = {}, uint32_t xapplicationVersion = {}, const char* xpEngineName = {}, uint32_t xengineVersion = {}, uint32_t xapiVersion = {}) : pApplicationName(xpApplicationName), applicationVersion(xapplicationVersion), pEngineName(xpEngineName), engineVersion(xengineVersion), apiVersion(xapiVersion) {}
+	constexpr ApplicationInfo(const char* xpApplicationName = {}, uint32_t xapplicationVersion = {}, const char* xpEngineName = {}, uint32_t xengineVersion = {}, uint32_t xapiVersion = {}) : pApplicationName(xpApplicationName), applicationVersion(xapplicationVersion), pEngineName(xpEngineName), engineVersion(xengineVersion), apiVersion(xapiVersion) {}
 
 	const VkApplicationInfo& vkHandle() const { return reinterpret_cast<const VkApplicationInfo&>(*this); }
 	VkApplicationInfo& vkHandle() { return reinterpret_cast<VkApplicationInfo&>(*this); }
@@ -1453,7 +1454,7 @@ struct InstanceCreateInfo {
 	uint32_t enabledExtensionCount {};
 	const char* const* ppEnabledExtensionNames {};
 
-	InstanceCreateInfo(InstanceCreateFlags xflags = {}, const ApplicationInfo* xpApplicationInfo = {}, uint32_t xenabledLayerCount = {}, const char* const* xppEnabledLayerNames = {}, uint32_t xenabledExtensionCount = {}, const char* const* xppEnabledExtensionNames = {}) : flags(xflags), pApplicationInfo(xpApplicationInfo), enabledLayerCount(xenabledLayerCount), ppEnabledLayerNames(xppEnabledLayerNames), enabledExtensionCount(xenabledExtensionCount), ppEnabledExtensionNames(xppEnabledExtensionNames) {}
+	constexpr InstanceCreateInfo(InstanceCreateFlags xflags = {}, const ApplicationInfo* xpApplicationInfo = {}, uint32_t xenabledLayerCount = {}, const char* const* xppEnabledLayerNames = {}, uint32_t xenabledExtensionCount = {}, const char* const* xppEnabledExtensionNames = {}) : flags(xflags), pApplicationInfo(xpApplicationInfo), enabledLayerCount(xenabledLayerCount), ppEnabledLayerNames(xppEnabledLayerNames), enabledExtensionCount(xenabledExtensionCount), ppEnabledExtensionNames(xppEnabledExtensionNames) {}
 
 	const VkInstanceCreateInfo& vkHandle() const { return reinterpret_cast<const VkInstanceCreateInfo&>(*this); }
 	VkInstanceCreateInfo& vkHandle() { return reinterpret_cast<VkInstanceCreateInfo&>(*this); }
@@ -1470,7 +1471,7 @@ struct DeviceQueueCreateInfo {
 	uint32_t queueCount {};
 	const float* pQueuePriorities {};
 
-	DeviceQueueCreateInfo(DeviceQueueCreateFlags xflags = {}, uint32_t xqueueFamilyIndex = {}, uint32_t xqueueCount = {}, const float* xpQueuePriorities = {}) : flags(xflags), queueFamilyIndex(xqueueFamilyIndex), queueCount(xqueueCount), pQueuePriorities(xpQueuePriorities) {}
+	constexpr DeviceQueueCreateInfo(DeviceQueueCreateFlags xflags = {}, uint32_t xqueueFamilyIndex = {}, uint32_t xqueueCount = {}, const float* xpQueuePriorities = {}) : flags(xflags), queueFamilyIndex(xqueueFamilyIndex), queueCount(xqueueCount), pQueuePriorities(xpQueuePriorities) {}
 
 	const VkDeviceQueueCreateInfo& vkHandle() const { return reinterpret_cast<const VkDeviceQueueCreateInfo&>(*this); }
 	VkDeviceQueueCreateInfo& vkHandle() { return reinterpret_cast<VkDeviceQueueCreateInfo&>(*this); }
@@ -1491,7 +1492,7 @@ struct DeviceCreateInfo {
 	const char* const* ppEnabledExtensionNames {};
 	const PhysicalDeviceFeatures* pEnabledFeatures {};
 
-	DeviceCreateInfo(DeviceCreateFlags xflags = {}, uint32_t xqueueCreateInfoCount = {}, const DeviceQueueCreateInfo* xpQueueCreateInfos = {}, uint32_t xenabledLayerCount = {}, const char* const* xppEnabledLayerNames = {}, uint32_t xenabledExtensionCount = {}, const char* const* xppEnabledExtensionNames = {}, const PhysicalDeviceFeatures* xpEnabledFeatures = {}) : flags(xflags), queueCreateInfoCount(xqueueCreateInfoCount), pQueueCreateInfos(xpQueueCreateInfos), enabledLayerCount(xenabledLayerCount), ppEnabledLayerNames(xppEnabledLayerNames), enabledExtensionCount(xenabledExtensionCount), ppEnabledExtensionNames(xppEnabledExtensionNames), pEnabledFeatures(xpEnabledFeatures) {}
+	constexpr DeviceCreateInfo(DeviceCreateFlags xflags = {}, uint32_t xqueueCreateInfoCount = {}, const DeviceQueueCreateInfo* xpQueueCreateInfos = {}, uint32_t xenabledLayerCount = {}, const char* const* xppEnabledLayerNames = {}, uint32_t xenabledExtensionCount = {}, const char* const* xppEnabledExtensionNames = {}, const PhysicalDeviceFeatures* xpEnabledFeatures = {}) : flags(xflags), queueCreateInfoCount(xqueueCreateInfoCount), pQueueCreateInfos(xpQueueCreateInfos), enabledLayerCount(xenabledLayerCount), ppEnabledLayerNames(xppEnabledLayerNames), enabledExtensionCount(xenabledExtensionCount), ppEnabledExtensionNames(xppEnabledExtensionNames), pEnabledFeatures(xpEnabledFeatures) {}
 
 	const VkDeviceCreateInfo& vkHandle() const { return reinterpret_cast<const VkDeviceCreateInfo&>(*this); }
 	VkDeviceCreateInfo& vkHandle() { return reinterpret_cast<VkDeviceCreateInfo&>(*this); }
@@ -1535,7 +1536,7 @@ struct SubmitInfo {
 	uint32_t signalSemaphoreCount {};
 	const Semaphore* pSignalSemaphores {};
 
-	SubmitInfo(uint32_t xwaitSemaphoreCount = {}, const Semaphore* xpWaitSemaphores = {}, const PipelineStageFlags* xpWaitDstStageMask = {}, uint32_t xcommandBufferCount = {}, const CommandBuffer* xpCommandBuffers = {}, uint32_t xsignalSemaphoreCount = {}, const Semaphore* xpSignalSemaphores = {}) : waitSemaphoreCount(xwaitSemaphoreCount), pWaitSemaphores(xpWaitSemaphores), pWaitDstStageMask(xpWaitDstStageMask), commandBufferCount(xcommandBufferCount), pCommandBuffers(xpCommandBuffers), signalSemaphoreCount(xsignalSemaphoreCount), pSignalSemaphores(xpSignalSemaphores) {}
+	constexpr SubmitInfo(uint32_t xwaitSemaphoreCount = {}, const Semaphore* xpWaitSemaphores = {}, const PipelineStageFlags* xpWaitDstStageMask = {}, uint32_t xcommandBufferCount = {}, const CommandBuffer* xpCommandBuffers = {}, uint32_t xsignalSemaphoreCount = {}, const Semaphore* xpSignalSemaphores = {}) : waitSemaphoreCount(xwaitSemaphoreCount), pWaitSemaphores(xpWaitSemaphores), pWaitDstStageMask(xpWaitDstStageMask), commandBufferCount(xcommandBufferCount), pCommandBuffers(xpCommandBuffers), signalSemaphoreCount(xsignalSemaphoreCount), pSignalSemaphores(xpSignalSemaphores) {}
 
 	const VkSubmitInfo& vkHandle() const { return reinterpret_cast<const VkSubmitInfo&>(*this); }
 	VkSubmitInfo& vkHandle() { return reinterpret_cast<VkSubmitInfo&>(*this); }
@@ -1550,7 +1551,7 @@ struct MemoryAllocateInfo {
 	DeviceSize allocationSize {};
 	uint32_t memoryTypeIndex {};
 
-	MemoryAllocateInfo(DeviceSize xallocationSize = {}, uint32_t xmemoryTypeIndex = {}) : allocationSize(xallocationSize), memoryTypeIndex(xmemoryTypeIndex) {}
+	constexpr MemoryAllocateInfo(DeviceSize xallocationSize = {}, uint32_t xmemoryTypeIndex = {}) : allocationSize(xallocationSize), memoryTypeIndex(xmemoryTypeIndex) {}
 
 	const VkMemoryAllocateInfo& vkHandle() const { return reinterpret_cast<const VkMemoryAllocateInfo&>(*this); }
 	VkMemoryAllocateInfo& vkHandle() { return reinterpret_cast<VkMemoryAllocateInfo&>(*this); }
@@ -1566,7 +1567,7 @@ struct MappedMemoryRange {
 	DeviceSize offset {};
 	DeviceSize size {};
 
-	MappedMemoryRange(DeviceMemory xmemory = {}, DeviceSize xoffset = {}, DeviceSize xsize = {}) : memory(xmemory), offset(xoffset), size(xsize) {}
+	constexpr MappedMemoryRange(DeviceMemory xmemory = {}, DeviceSize xoffset = {}, DeviceSize xsize = {}) : memory(xmemory), offset(xoffset), size(xsize) {}
 
 	const VkMappedMemoryRange& vkHandle() const { return reinterpret_cast<const VkMappedMemoryRange&>(*this); }
 	VkMappedMemoryRange& vkHandle() { return reinterpret_cast<VkMappedMemoryRange&>(*this); }
@@ -1678,7 +1679,7 @@ struct BindSparseInfo {
 	uint32_t signalSemaphoreCount {};
 	const Semaphore* pSignalSemaphores {};
 
-	BindSparseInfo(uint32_t xwaitSemaphoreCount = {}, const Semaphore* xpWaitSemaphores = {}, uint32_t xbufferBindCount = {}, const SparseBufferMemoryBindInfo* xpBufferBinds = {}, uint32_t ximageOpaqueBindCount = {}, const SparseImageOpaqueMemoryBindInfo* xpImageOpaqueBinds = {}, uint32_t ximageBindCount = {}, const SparseImageMemoryBindInfo* xpImageBinds = {}, uint32_t xsignalSemaphoreCount = {}, const Semaphore* xpSignalSemaphores = {}) : waitSemaphoreCount(xwaitSemaphoreCount), pWaitSemaphores(xpWaitSemaphores), bufferBindCount(xbufferBindCount), pBufferBinds(xpBufferBinds), imageOpaqueBindCount(ximageOpaqueBindCount), pImageOpaqueBinds(xpImageOpaqueBinds), imageBindCount(ximageBindCount), pImageBinds(xpImageBinds), signalSemaphoreCount(xsignalSemaphoreCount), pSignalSemaphores(xpSignalSemaphores) {}
+	constexpr BindSparseInfo(uint32_t xwaitSemaphoreCount = {}, const Semaphore* xpWaitSemaphores = {}, uint32_t xbufferBindCount = {}, const SparseBufferMemoryBindInfo* xpBufferBinds = {}, uint32_t ximageOpaqueBindCount = {}, const SparseImageOpaqueMemoryBindInfo* xpImageOpaqueBinds = {}, uint32_t ximageBindCount = {}, const SparseImageMemoryBindInfo* xpImageBinds = {}, uint32_t xsignalSemaphoreCount = {}, const Semaphore* xpSignalSemaphores = {}) : waitSemaphoreCount(xwaitSemaphoreCount), pWaitSemaphores(xpWaitSemaphores), bufferBindCount(xbufferBindCount), pBufferBinds(xpBufferBinds), imageOpaqueBindCount(ximageOpaqueBindCount), pImageOpaqueBinds(xpImageOpaqueBinds), imageBindCount(ximageBindCount), pImageBinds(xpImageBinds), signalSemaphoreCount(xsignalSemaphoreCount), pSignalSemaphores(xpSignalSemaphores) {}
 
 	const VkBindSparseInfo& vkHandle() const { return reinterpret_cast<const VkBindSparseInfo&>(*this); }
 	VkBindSparseInfo& vkHandle() { return reinterpret_cast<VkBindSparseInfo&>(*this); }
@@ -1692,7 +1693,7 @@ struct FenceCreateInfo {
 	const void* pNext {};
 	FenceCreateFlags flags {};
 
-	FenceCreateInfo(FenceCreateFlags xflags = {}) : flags(xflags) {}
+	constexpr FenceCreateInfo(FenceCreateFlags xflags = {}) : flags(xflags) {}
 
 	const VkFenceCreateInfo& vkHandle() const { return reinterpret_cast<const VkFenceCreateInfo&>(*this); }
 	VkFenceCreateInfo& vkHandle() { return reinterpret_cast<VkFenceCreateInfo&>(*this); }
@@ -1706,7 +1707,7 @@ struct SemaphoreCreateInfo {
 	const void* pNext {};
 	SemaphoreCreateFlags flags {};
 
-	SemaphoreCreateInfo(SemaphoreCreateFlags xflags = {}) : flags(xflags) {}
+	constexpr SemaphoreCreateInfo(SemaphoreCreateFlags xflags = {}) : flags(xflags) {}
 
 	const VkSemaphoreCreateInfo& vkHandle() const { return reinterpret_cast<const VkSemaphoreCreateInfo&>(*this); }
 	VkSemaphoreCreateInfo& vkHandle() { return reinterpret_cast<VkSemaphoreCreateInfo&>(*this); }
@@ -1720,7 +1721,7 @@ struct EventCreateInfo {
 	const void* pNext {};
 	EventCreateFlags flags {};
 
-	EventCreateInfo(EventCreateFlags xflags = {}) : flags(xflags) {}
+	constexpr EventCreateInfo(EventCreateFlags xflags = {}) : flags(xflags) {}
 
 	const VkEventCreateInfo& vkHandle() const { return reinterpret_cast<const VkEventCreateInfo&>(*this); }
 	VkEventCreateInfo& vkHandle() { return reinterpret_cast<VkEventCreateInfo&>(*this); }
@@ -1737,7 +1738,7 @@ struct QueryPoolCreateInfo {
 	uint32_t queryCount {};
 	QueryPipelineStatisticFlags pipelineStatistics {};
 
-	QueryPoolCreateInfo(QueryPoolCreateFlags xflags = {}, QueryType xqueryType = {}, uint32_t xqueryCount = {}, QueryPipelineStatisticFlags xpipelineStatistics = {}) : flags(xflags), queryType(xqueryType), queryCount(xqueryCount), pipelineStatistics(xpipelineStatistics) {}
+	constexpr QueryPoolCreateInfo(QueryPoolCreateFlags xflags = {}, QueryType xqueryType = {}, uint32_t xqueryCount = {}, QueryPipelineStatisticFlags xpipelineStatistics = {}) : flags(xflags), queryType(xqueryType), queryCount(xqueryCount), pipelineStatistics(xpipelineStatistics) {}
 
 	const VkQueryPoolCreateInfo& vkHandle() const { return reinterpret_cast<const VkQueryPoolCreateInfo&>(*this); }
 	VkQueryPoolCreateInfo& vkHandle() { return reinterpret_cast<VkQueryPoolCreateInfo&>(*this); }
@@ -1756,7 +1757,7 @@ struct BufferCreateInfo {
 	uint32_t queueFamilyIndexCount {};
 	const uint32_t* pQueueFamilyIndices {};
 
-	BufferCreateInfo(BufferCreateFlags xflags = {}, DeviceSize xsize = {}, BufferUsageFlags xusage = {}, SharingMode xsharingMode = {}, uint32_t xqueueFamilyIndexCount = {}, const uint32_t* xpQueueFamilyIndices = {}) : flags(xflags), size(xsize), usage(xusage), sharingMode(xsharingMode), queueFamilyIndexCount(xqueueFamilyIndexCount), pQueueFamilyIndices(xpQueueFamilyIndices) {}
+	constexpr BufferCreateInfo(BufferCreateFlags xflags = {}, DeviceSize xsize = {}, BufferUsageFlags xusage = {}, SharingMode xsharingMode = {}, uint32_t xqueueFamilyIndexCount = {}, const uint32_t* xpQueueFamilyIndices = {}) : flags(xflags), size(xsize), usage(xusage), sharingMode(xsharingMode), queueFamilyIndexCount(xqueueFamilyIndexCount), pQueueFamilyIndices(xpQueueFamilyIndices) {}
 
 	const VkBufferCreateInfo& vkHandle() const { return reinterpret_cast<const VkBufferCreateInfo&>(*this); }
 	VkBufferCreateInfo& vkHandle() { return reinterpret_cast<VkBufferCreateInfo&>(*this); }
@@ -1774,7 +1775,7 @@ struct BufferViewCreateInfo {
 	DeviceSize offset {};
 	DeviceSize range {};
 
-	BufferViewCreateInfo(BufferViewCreateFlags xflags = {}, Buffer xbuffer = {}, Format xformat = {}, DeviceSize xoffset = {}, DeviceSize xrange = {}) : flags(xflags), buffer(xbuffer), format(xformat), offset(xoffset), range(xrange) {}
+	constexpr BufferViewCreateInfo(BufferViewCreateFlags xflags = {}, Buffer xbuffer = {}, Format xformat = {}, DeviceSize xoffset = {}, DeviceSize xrange = {}) : flags(xflags), buffer(xbuffer), format(xformat), offset(xoffset), range(xrange) {}
 
 	const VkBufferViewCreateInfo& vkHandle() const { return reinterpret_cast<const VkBufferViewCreateInfo&>(*this); }
 	VkBufferViewCreateInfo& vkHandle() { return reinterpret_cast<VkBufferViewCreateInfo&>(*this); }
@@ -1800,7 +1801,7 @@ struct ImageCreateInfo {
 	const uint32_t* pQueueFamilyIndices {};
 	ImageLayout initialLayout {};
 
-	ImageCreateInfo(ImageCreateFlags xflags = {}, ImageType ximageType = {}, Format xformat = {}, Extent3D xextent = {}, uint32_t xmipLevels = {}, uint32_t xarrayLayers = {}, SampleCountBits xsamples = {}, ImageTiling xtiling = {}, ImageUsageFlags xusage = {}, SharingMode xsharingMode = {}, uint32_t xqueueFamilyIndexCount = {}, const uint32_t* xpQueueFamilyIndices = {}, ImageLayout xinitialLayout = {}) : flags(xflags), imageType(ximageType), format(xformat), extent(xextent), mipLevels(xmipLevels), arrayLayers(xarrayLayers), samples(xsamples), tiling(xtiling), usage(xusage), sharingMode(xsharingMode), queueFamilyIndexCount(xqueueFamilyIndexCount), pQueueFamilyIndices(xpQueueFamilyIndices), initialLayout(xinitialLayout) {}
+	constexpr ImageCreateInfo(ImageCreateFlags xflags = {}, ImageType ximageType = {}, Format xformat = {}, Extent3D xextent = {}, uint32_t xmipLevels = {}, uint32_t xarrayLayers = {}, SampleCountBits xsamples = {}, ImageTiling xtiling = {}, ImageUsageFlags xusage = {}, SharingMode xsharingMode = {}, uint32_t xqueueFamilyIndexCount = {}, const uint32_t* xpQueueFamilyIndices = {}, ImageLayout xinitialLayout = {}) : flags(xflags), imageType(ximageType), format(xformat), extent(xextent), mipLevels(xmipLevels), arrayLayers(xarrayLayers), samples(xsamples), tiling(xtiling), usage(xusage), sharingMode(xsharingMode), queueFamilyIndexCount(xqueueFamilyIndexCount), pQueueFamilyIndices(xpQueueFamilyIndices), initialLayout(xinitialLayout) {}
 
 	const VkImageCreateInfo& vkHandle() const { return reinterpret_cast<const VkImageCreateInfo&>(*this); }
 	VkImageCreateInfo& vkHandle() { return reinterpret_cast<VkImageCreateInfo&>(*this); }
@@ -1847,7 +1848,7 @@ struct ImageViewCreateInfo {
 	ComponentMapping components {};
 	ImageSubresourceRange subresourceRange {};
 
-	ImageViewCreateInfo(ImageViewCreateFlags xflags = {}, Image ximage = {}, ImageViewType xviewType = {}, Format xformat = {}, ComponentMapping xcomponents = {}, ImageSubresourceRange xsubresourceRange = {}) : flags(xflags), image(ximage), viewType(xviewType), format(xformat), components(xcomponents), subresourceRange(xsubresourceRange) {}
+	constexpr ImageViewCreateInfo(ImageViewCreateFlags xflags = {}, Image ximage = {}, ImageViewType xviewType = {}, Format xformat = {}, ComponentMapping xcomponents = {}, ImageSubresourceRange xsubresourceRange = {}) : flags(xflags), image(ximage), viewType(xviewType), format(xformat), components(xcomponents), subresourceRange(xsubresourceRange) {}
 
 	const VkImageViewCreateInfo& vkHandle() const { return reinterpret_cast<const VkImageViewCreateInfo&>(*this); }
 	VkImageViewCreateInfo& vkHandle() { return reinterpret_cast<VkImageViewCreateInfo&>(*this); }
@@ -1863,7 +1864,7 @@ struct ShaderModuleCreateInfo {
 	size_t codeSize {};
 	const uint32_t* pCode {};
 
-	ShaderModuleCreateInfo(ShaderModuleCreateFlags xflags = {}, size_t xcodeSize = {}, const uint32_t* xpCode = {}) : flags(xflags), codeSize(xcodeSize), pCode(xpCode) {}
+	constexpr ShaderModuleCreateInfo(ShaderModuleCreateFlags xflags = {}, size_t xcodeSize = {}, const uint32_t* xpCode = {}) : flags(xflags), codeSize(xcodeSize), pCode(xpCode) {}
 
 	const VkShaderModuleCreateInfo& vkHandle() const { return reinterpret_cast<const VkShaderModuleCreateInfo&>(*this); }
 	VkShaderModuleCreateInfo& vkHandle() { return reinterpret_cast<VkShaderModuleCreateInfo&>(*this); }
@@ -1879,7 +1880,7 @@ struct PipelineCacheCreateInfo {
 	size_t initialDataSize {};
 	const void* pInitialData {};
 
-	PipelineCacheCreateInfo(PipelineCacheCreateFlags xflags = {}, size_t xinitialDataSize = {}, const void* xpInitialData = {}) : flags(xflags), initialDataSize(xinitialDataSize), pInitialData(xpInitialData) {}
+	constexpr PipelineCacheCreateInfo(PipelineCacheCreateFlags xflags = {}, size_t xinitialDataSize = {}, const void* xpInitialData = {}) : flags(xflags), initialDataSize(xinitialDataSize), pInitialData(xpInitialData) {}
 
 	const VkPipelineCacheCreateInfo& vkHandle() const { return reinterpret_cast<const VkPipelineCacheCreateInfo&>(*this); }
 	VkPipelineCacheCreateInfo& vkHandle() { return reinterpret_cast<VkPipelineCacheCreateInfo&>(*this); }
@@ -1922,7 +1923,7 @@ struct PipelineShaderStageCreateInfo {
 	const char* pName {};
 	const SpecializationInfo* pSpecializationInfo {};
 
-	PipelineShaderStageCreateInfo(PipelineShaderStageCreateFlags xflags = {}, ShaderStageBits xstage = {}, ShaderModule xmodule = {}, const char* xpName = {}, const SpecializationInfo* xpSpecializationInfo = {}) : flags(xflags), stage(xstage), module(xmodule), pName(xpName), pSpecializationInfo(xpSpecializationInfo) {}
+	constexpr PipelineShaderStageCreateInfo(PipelineShaderStageCreateFlags xflags = {}, ShaderStageBits xstage = {}, ShaderModule xmodule = {}, const char* xpName = {}, const SpecializationInfo* xpSpecializationInfo = {}) : flags(xflags), stage(xstage), module(xmodule), pName(xpName), pSpecializationInfo(xpSpecializationInfo) {}
 
 	const VkPipelineShaderStageCreateInfo& vkHandle() const { return reinterpret_cast<const VkPipelineShaderStageCreateInfo&>(*this); }
 	VkPipelineShaderStageCreateInfo& vkHandle() { return reinterpret_cast<VkPipelineShaderStageCreateInfo&>(*this); }
@@ -1965,7 +1966,7 @@ struct PipelineVertexInputStateCreateInfo {
 	uint32_t vertexAttributeDescriptionCount {};
 	const VertexInputAttributeDescription* pVertexAttributeDescriptions {};
 
-	PipelineVertexInputStateCreateInfo(PipelineVertexInputStateCreateFlags xflags = {}, uint32_t xvertexBindingDescriptionCount = {}, const VertexInputBindingDescription* xpVertexBindingDescriptions = {}, uint32_t xvertexAttributeDescriptionCount = {}, const VertexInputAttributeDescription* xpVertexAttributeDescriptions = {}) : flags(xflags), vertexBindingDescriptionCount(xvertexBindingDescriptionCount), pVertexBindingDescriptions(xpVertexBindingDescriptions), vertexAttributeDescriptionCount(xvertexAttributeDescriptionCount), pVertexAttributeDescriptions(xpVertexAttributeDescriptions) {}
+	constexpr PipelineVertexInputStateCreateInfo(PipelineVertexInputStateCreateFlags xflags = {}, uint32_t xvertexBindingDescriptionCount = {}, const VertexInputBindingDescription* xpVertexBindingDescriptions = {}, uint32_t xvertexAttributeDescriptionCount = {}, const VertexInputAttributeDescription* xpVertexAttributeDescriptions = {}) : flags(xflags), vertexBindingDescriptionCount(xvertexBindingDescriptionCount), pVertexBindingDescriptions(xpVertexBindingDescriptions), vertexAttributeDescriptionCount(xvertexAttributeDescriptionCount), pVertexAttributeDescriptions(xpVertexAttributeDescriptions) {}
 
 	const VkPipelineVertexInputStateCreateInfo& vkHandle() const { return reinterpret_cast<const VkPipelineVertexInputStateCreateInfo&>(*this); }
 	VkPipelineVertexInputStateCreateInfo& vkHandle() { return reinterpret_cast<VkPipelineVertexInputStateCreateInfo&>(*this); }
@@ -1981,7 +1982,7 @@ struct PipelineInputAssemblyStateCreateInfo {
 	PrimitiveTopology topology {};
 	Bool32 primitiveRestartEnable {};
 
-	PipelineInputAssemblyStateCreateInfo(PipelineInputAssemblyStateCreateFlags xflags = {}, PrimitiveTopology xtopology = {}, Bool32 xprimitiveRestartEnable = {}) : flags(xflags), topology(xtopology), primitiveRestartEnable(xprimitiveRestartEnable) {}
+	constexpr PipelineInputAssemblyStateCreateInfo(PipelineInputAssemblyStateCreateFlags xflags = {}, PrimitiveTopology xtopology = {}, Bool32 xprimitiveRestartEnable = {}) : flags(xflags), topology(xtopology), primitiveRestartEnable(xprimitiveRestartEnable) {}
 
 	const VkPipelineInputAssemblyStateCreateInfo& vkHandle() const { return reinterpret_cast<const VkPipelineInputAssemblyStateCreateInfo&>(*this); }
 	VkPipelineInputAssemblyStateCreateInfo& vkHandle() { return reinterpret_cast<VkPipelineInputAssemblyStateCreateInfo&>(*this); }
@@ -1996,7 +1997,7 @@ struct PipelineTessellationStateCreateInfo {
 	PipelineTessellationStateCreateFlags flags {};
 	uint32_t patchControlPoints {};
 
-	PipelineTessellationStateCreateInfo(PipelineTessellationStateCreateFlags xflags = {}, uint32_t xpatchControlPoints = {}) : flags(xflags), patchControlPoints(xpatchControlPoints) {}
+	constexpr PipelineTessellationStateCreateInfo(PipelineTessellationStateCreateFlags xflags = {}, uint32_t xpatchControlPoints = {}) : flags(xflags), patchControlPoints(xpatchControlPoints) {}
 
 	const VkPipelineTessellationStateCreateInfo& vkHandle() const { return reinterpret_cast<const VkPipelineTessellationStateCreateInfo&>(*this); }
 	VkPipelineTessellationStateCreateInfo& vkHandle() { return reinterpret_cast<VkPipelineTessellationStateCreateInfo&>(*this); }
@@ -2029,7 +2030,7 @@ struct PipelineViewportStateCreateInfo {
 	uint32_t scissorCount {};
 	const Rect2D* pScissors {};
 
-	PipelineViewportStateCreateInfo(PipelineViewportStateCreateFlags xflags = {}, uint32_t xviewportCount = {}, const Viewport* xpViewports = {}, uint32_t xscissorCount = {}, const Rect2D* xpScissors = {}) : flags(xflags), viewportCount(xviewportCount), pViewports(xpViewports), scissorCount(xscissorCount), pScissors(xpScissors) {}
+	constexpr PipelineViewportStateCreateInfo(PipelineViewportStateCreateFlags xflags = {}, uint32_t xviewportCount = {}, const Viewport* xpViewports = {}, uint32_t xscissorCount = {}, const Rect2D* xpScissors = {}) : flags(xflags), viewportCount(xviewportCount), pViewports(xpViewports), scissorCount(xscissorCount), pScissors(xpScissors) {}
 
 	const VkPipelineViewportStateCreateInfo& vkHandle() const { return reinterpret_cast<const VkPipelineViewportStateCreateInfo&>(*this); }
 	VkPipelineViewportStateCreateInfo& vkHandle() { return reinterpret_cast<VkPipelineViewportStateCreateInfo&>(*this); }
@@ -2053,7 +2054,7 @@ struct PipelineRasterizationStateCreateInfo {
 	float depthBiasSlopeFactor {};
 	float lineWidth {};
 
-	PipelineRasterizationStateCreateInfo(PipelineRasterizationStateCreateFlags xflags = {}, Bool32 xdepthClampEnable = {}, Bool32 xrasterizerDiscardEnable = {}, PolygonMode xpolygonMode = {}, CullModeFlags xcullMode = {}, FrontFace xfrontFace = {}, Bool32 xdepthBiasEnable = {}, float xdepthBiasConstantFactor = {}, float xdepthBiasClamp = {}, float xdepthBiasSlopeFactor = {}, float xlineWidth = {}) : flags(xflags), depthClampEnable(xdepthClampEnable), rasterizerDiscardEnable(xrasterizerDiscardEnable), polygonMode(xpolygonMode), cullMode(xcullMode), frontFace(xfrontFace), depthBiasEnable(xdepthBiasEnable), depthBiasConstantFactor(xdepthBiasConstantFactor), depthBiasClamp(xdepthBiasClamp), depthBiasSlopeFactor(xdepthBiasSlopeFactor), lineWidth(xlineWidth) {}
+	constexpr PipelineRasterizationStateCreateInfo(PipelineRasterizationStateCreateFlags xflags = {}, Bool32 xdepthClampEnable = {}, Bool32 xrasterizerDiscardEnable = {}, PolygonMode xpolygonMode = {}, CullModeFlags xcullMode = {}, FrontFace xfrontFace = {}, Bool32 xdepthBiasEnable = {}, float xdepthBiasConstantFactor = {}, float xdepthBiasClamp = {}, float xdepthBiasSlopeFactor = {}, float xlineWidth = {}) : flags(xflags), depthClampEnable(xdepthClampEnable), rasterizerDiscardEnable(xrasterizerDiscardEnable), polygonMode(xpolygonMode), cullMode(xcullMode), frontFace(xfrontFace), depthBiasEnable(xdepthBiasEnable), depthBiasConstantFactor(xdepthBiasConstantFactor), depthBiasClamp(xdepthBiasClamp), depthBiasSlopeFactor(xdepthBiasSlopeFactor), lineWidth(xlineWidth) {}
 
 	const VkPipelineRasterizationStateCreateInfo& vkHandle() const { return reinterpret_cast<const VkPipelineRasterizationStateCreateInfo&>(*this); }
 	VkPipelineRasterizationStateCreateInfo& vkHandle() { return reinterpret_cast<VkPipelineRasterizationStateCreateInfo&>(*this); }
@@ -2073,7 +2074,7 @@ struct PipelineMultisampleStateCreateInfo {
 	Bool32 alphaToCoverageEnable {};
 	Bool32 alphaToOneEnable {};
 
-	PipelineMultisampleStateCreateInfo(PipelineMultisampleStateCreateFlags xflags = {}, SampleCountBits xrasterizationSamples = {}, Bool32 xsampleShadingEnable = {}, float xminSampleShading = {}, const SampleMask* xpSampleMask = {}, Bool32 xalphaToCoverageEnable = {}, Bool32 xalphaToOneEnable = {}) : flags(xflags), rasterizationSamples(xrasterizationSamples), sampleShadingEnable(xsampleShadingEnable), minSampleShading(xminSampleShading), pSampleMask(xpSampleMask), alphaToCoverageEnable(xalphaToCoverageEnable), alphaToOneEnable(xalphaToOneEnable) {}
+	constexpr PipelineMultisampleStateCreateInfo(PipelineMultisampleStateCreateFlags xflags = {}, SampleCountBits xrasterizationSamples = {}, Bool32 xsampleShadingEnable = {}, float xminSampleShading = {}, const SampleMask* xpSampleMask = {}, Bool32 xalphaToCoverageEnable = {}, Bool32 xalphaToOneEnable = {}) : flags(xflags), rasterizationSamples(xrasterizationSamples), sampleShadingEnable(xsampleShadingEnable), minSampleShading(xminSampleShading), pSampleMask(xpSampleMask), alphaToCoverageEnable(xalphaToCoverageEnable), alphaToOneEnable(xalphaToOneEnable) {}
 
 	const VkPipelineMultisampleStateCreateInfo& vkHandle() const { return reinterpret_cast<const VkPipelineMultisampleStateCreateInfo&>(*this); }
 	VkPipelineMultisampleStateCreateInfo& vkHandle() { return reinterpret_cast<VkPipelineMultisampleStateCreateInfo&>(*this); }
@@ -2112,7 +2113,7 @@ struct PipelineDepthStencilStateCreateInfo {
 	float minDepthBounds {};
 	float maxDepthBounds {};
 
-	PipelineDepthStencilStateCreateInfo(PipelineDepthStencilStateCreateFlags xflags = {}, Bool32 xdepthTestEnable = {}, Bool32 xdepthWriteEnable = {}, CompareOp xdepthCompareOp = {}, Bool32 xdepthBoundsTestEnable = {}, Bool32 xstencilTestEnable = {}, StencilOpState xfront = {}, StencilOpState xback = {}, float xminDepthBounds = {}, float xmaxDepthBounds = {}) : flags(xflags), depthTestEnable(xdepthTestEnable), depthWriteEnable(xdepthWriteEnable), depthCompareOp(xdepthCompareOp), depthBoundsTestEnable(xdepthBoundsTestEnable), stencilTestEnable(xstencilTestEnable), front(xfront), back(xback), minDepthBounds(xminDepthBounds), maxDepthBounds(xmaxDepthBounds) {}
+	constexpr PipelineDepthStencilStateCreateInfo(PipelineDepthStencilStateCreateFlags xflags = {}, Bool32 xdepthTestEnable = {}, Bool32 xdepthWriteEnable = {}, CompareOp xdepthCompareOp = {}, Bool32 xdepthBoundsTestEnable = {}, Bool32 xstencilTestEnable = {}, StencilOpState xfront = {}, StencilOpState xback = {}, float xminDepthBounds = {}, float xmaxDepthBounds = {}) : flags(xflags), depthTestEnable(xdepthTestEnable), depthWriteEnable(xdepthWriteEnable), depthCompareOp(xdepthCompareOp), depthBoundsTestEnable(xdepthBoundsTestEnable), stencilTestEnable(xstencilTestEnable), front(xfront), back(xback), minDepthBounds(xminDepthBounds), maxDepthBounds(xmaxDepthBounds) {}
 
 	const VkPipelineDepthStencilStateCreateInfo& vkHandle() const { return reinterpret_cast<const VkPipelineDepthStencilStateCreateInfo&>(*this); }
 	VkPipelineDepthStencilStateCreateInfo& vkHandle() { return reinterpret_cast<VkPipelineDepthStencilStateCreateInfo&>(*this); }
@@ -2148,7 +2149,7 @@ struct PipelineColorBlendStateCreateInfo {
 	const PipelineColorBlendAttachmentState* pAttachments {};
 	std::array<float, 4> blendConstants {};
 
-	PipelineColorBlendStateCreateInfo(PipelineColorBlendStateCreateFlags xflags = {}, Bool32 xlogicOpEnable = {}, LogicOp xlogicOp = {}, uint32_t xattachmentCount = {}, const PipelineColorBlendAttachmentState* xpAttachments = {}, std::array<float, 4> xblendConstants = {}) : flags(xflags), logicOpEnable(xlogicOpEnable), logicOp(xlogicOp), attachmentCount(xattachmentCount), pAttachments(xpAttachments), blendConstants(xblendConstants) {}
+	constexpr PipelineColorBlendStateCreateInfo(PipelineColorBlendStateCreateFlags xflags = {}, Bool32 xlogicOpEnable = {}, LogicOp xlogicOp = {}, uint32_t xattachmentCount = {}, const PipelineColorBlendAttachmentState* xpAttachments = {}, std::array<float, 4> xblendConstants = {}) : flags(xflags), logicOpEnable(xlogicOpEnable), logicOp(xlogicOp), attachmentCount(xattachmentCount), pAttachments(xpAttachments), blendConstants(xblendConstants) {}
 
 	const VkPipelineColorBlendStateCreateInfo& vkHandle() const { return reinterpret_cast<const VkPipelineColorBlendStateCreateInfo&>(*this); }
 	VkPipelineColorBlendStateCreateInfo& vkHandle() { return reinterpret_cast<VkPipelineColorBlendStateCreateInfo&>(*this); }
@@ -2164,7 +2165,7 @@ struct PipelineDynamicStateCreateInfo {
 	uint32_t dynamicStateCount {};
 	const DynamicState* pDynamicStates {};
 
-	PipelineDynamicStateCreateInfo(PipelineDynamicStateCreateFlags xflags = {}, uint32_t xdynamicStateCount = {}, const DynamicState* xpDynamicStates = {}) : flags(xflags), dynamicStateCount(xdynamicStateCount), pDynamicStates(xpDynamicStates) {}
+	constexpr PipelineDynamicStateCreateInfo(PipelineDynamicStateCreateFlags xflags = {}, uint32_t xdynamicStateCount = {}, const DynamicState* xpDynamicStates = {}) : flags(xflags), dynamicStateCount(xdynamicStateCount), pDynamicStates(xpDynamicStates) {}
 
 	const VkPipelineDynamicStateCreateInfo& vkHandle() const { return reinterpret_cast<const VkPipelineDynamicStateCreateInfo&>(*this); }
 	VkPipelineDynamicStateCreateInfo& vkHandle() { return reinterpret_cast<VkPipelineDynamicStateCreateInfo&>(*this); }
@@ -2194,7 +2195,7 @@ struct GraphicsPipelineCreateInfo {
 	Pipeline basePipelineHandle {};
 	int32_t basePipelineIndex {};
 
-	GraphicsPipelineCreateInfo(PipelineCreateFlags xflags = {}, uint32_t xstageCount = {}, const PipelineShaderStageCreateInfo* xpStages = {}, const PipelineVertexInputStateCreateInfo* xpVertexInputState = {}, const PipelineInputAssemblyStateCreateInfo* xpInputAssemblyState = {}, const PipelineTessellationStateCreateInfo* xpTessellationState = {}, const PipelineViewportStateCreateInfo* xpViewportState = {}, const PipelineRasterizationStateCreateInfo* xpRasterizationState = {}, const PipelineMultisampleStateCreateInfo* xpMultisampleState = {}, const PipelineDepthStencilStateCreateInfo* xpDepthStencilState = {}, const PipelineColorBlendStateCreateInfo* xpColorBlendState = {}, const PipelineDynamicStateCreateInfo* xpDynamicState = {}, PipelineLayout xlayout = {}, RenderPass xrenderPass = {}, uint32_t xsubpass = {}, Pipeline xbasePipelineHandle = {}, int32_t xbasePipelineIndex = {}) : flags(xflags), stageCount(xstageCount), pStages(xpStages), pVertexInputState(xpVertexInputState), pInputAssemblyState(xpInputAssemblyState), pTessellationState(xpTessellationState), pViewportState(xpViewportState), pRasterizationState(xpRasterizationState), pMultisampleState(xpMultisampleState), pDepthStencilState(xpDepthStencilState), pColorBlendState(xpColorBlendState), pDynamicState(xpDynamicState), layout(xlayout), renderPass(xrenderPass), subpass(xsubpass), basePipelineHandle(xbasePipelineHandle), basePipelineIndex(xbasePipelineIndex) {}
+	constexpr GraphicsPipelineCreateInfo(PipelineCreateFlags xflags = {}, uint32_t xstageCount = {}, const PipelineShaderStageCreateInfo* xpStages = {}, const PipelineVertexInputStateCreateInfo* xpVertexInputState = {}, const PipelineInputAssemblyStateCreateInfo* xpInputAssemblyState = {}, const PipelineTessellationStateCreateInfo* xpTessellationState = {}, const PipelineViewportStateCreateInfo* xpViewportState = {}, const PipelineRasterizationStateCreateInfo* xpRasterizationState = {}, const PipelineMultisampleStateCreateInfo* xpMultisampleState = {}, const PipelineDepthStencilStateCreateInfo* xpDepthStencilState = {}, const PipelineColorBlendStateCreateInfo* xpColorBlendState = {}, const PipelineDynamicStateCreateInfo* xpDynamicState = {}, PipelineLayout xlayout = {}, RenderPass xrenderPass = {}, uint32_t xsubpass = {}, Pipeline xbasePipelineHandle = {}, int32_t xbasePipelineIndex = {}) : flags(xflags), stageCount(xstageCount), pStages(xpStages), pVertexInputState(xpVertexInputState), pInputAssemblyState(xpInputAssemblyState), pTessellationState(xpTessellationState), pViewportState(xpViewportState), pRasterizationState(xpRasterizationState), pMultisampleState(xpMultisampleState), pDepthStencilState(xpDepthStencilState), pColorBlendState(xpColorBlendState), pDynamicState(xpDynamicState), layout(xlayout), renderPass(xrenderPass), subpass(xsubpass), basePipelineHandle(xbasePipelineHandle), basePipelineIndex(xbasePipelineIndex) {}
 
 	const VkGraphicsPipelineCreateInfo& vkHandle() const { return reinterpret_cast<const VkGraphicsPipelineCreateInfo&>(*this); }
 	VkGraphicsPipelineCreateInfo& vkHandle() { return reinterpret_cast<VkGraphicsPipelineCreateInfo&>(*this); }
@@ -2212,7 +2213,7 @@ struct ComputePipelineCreateInfo {
 	Pipeline basePipelineHandle {};
 	int32_t basePipelineIndex {};
 
-	ComputePipelineCreateInfo(PipelineCreateFlags xflags = {}, PipelineShaderStageCreateInfo xstage = {}, PipelineLayout xlayout = {}, Pipeline xbasePipelineHandle = {}, int32_t xbasePipelineIndex = {}) : flags(xflags), stage(xstage), layout(xlayout), basePipelineHandle(xbasePipelineHandle), basePipelineIndex(xbasePipelineIndex) {}
+	constexpr ComputePipelineCreateInfo(PipelineCreateFlags xflags = {}, PipelineShaderStageCreateInfo xstage = {}, PipelineLayout xlayout = {}, Pipeline xbasePipelineHandle = {}, int32_t xbasePipelineIndex = {}) : flags(xflags), stage(xstage), layout(xlayout), basePipelineHandle(xbasePipelineHandle), basePipelineIndex(xbasePipelineIndex) {}
 
 	const VkComputePipelineCreateInfo& vkHandle() const { return reinterpret_cast<const VkComputePipelineCreateInfo&>(*this); }
 	VkComputePipelineCreateInfo& vkHandle() { return reinterpret_cast<VkComputePipelineCreateInfo&>(*this); }
@@ -2242,7 +2243,7 @@ struct PipelineLayoutCreateInfo {
 	uint32_t pushConstantRangeCount {};
 	const PushConstantRange* pPushConstantRanges {};
 
-	PipelineLayoutCreateInfo(PipelineLayoutCreateFlags xflags = {}, uint32_t xsetLayoutCount = {}, const DescriptorSetLayout* xpSetLayouts = {}, uint32_t xpushConstantRangeCount = {}, const PushConstantRange* xpPushConstantRanges = {}) : flags(xflags), setLayoutCount(xsetLayoutCount), pSetLayouts(xpSetLayouts), pushConstantRangeCount(xpushConstantRangeCount), pPushConstantRanges(xpPushConstantRanges) {}
+	constexpr PipelineLayoutCreateInfo(PipelineLayoutCreateFlags xflags = {}, uint32_t xsetLayoutCount = {}, const DescriptorSetLayout* xpSetLayouts = {}, uint32_t xpushConstantRangeCount = {}, const PushConstantRange* xpPushConstantRanges = {}) : flags(xflags), setLayoutCount(xsetLayoutCount), pSetLayouts(xpSetLayouts), pushConstantRangeCount(xpushConstantRangeCount), pPushConstantRanges(xpPushConstantRanges) {}
 
 	const VkPipelineLayoutCreateInfo& vkHandle() const { return reinterpret_cast<const VkPipelineLayoutCreateInfo&>(*this); }
 	VkPipelineLayoutCreateInfo& vkHandle() { return reinterpret_cast<VkPipelineLayoutCreateInfo&>(*this); }
@@ -2271,7 +2272,7 @@ struct SamplerCreateInfo {
 	BorderColor borderColor {};
 	Bool32 unnormalizedCoordinates {};
 
-	SamplerCreateInfo(SamplerCreateFlags xflags = {}, Filter xmagFilter = {}, Filter xminFilter = {}, SamplerMipmapMode xmipmapMode = {}, SamplerAddressMode xaddressModeU = {}, SamplerAddressMode xaddressModeV = {}, SamplerAddressMode xaddressModeW = {}, float xmipLodBias = {}, Bool32 xanisotropyEnable = {}, float xmaxAnisotropy = {}, Bool32 xcompareEnable = {}, CompareOp xcompareOp = {}, float xminLod = {}, float xmaxLod = {}, BorderColor xborderColor = {}, Bool32 xunnormalizedCoordinates = {}) : flags(xflags), magFilter(xmagFilter), minFilter(xminFilter), mipmapMode(xmipmapMode), addressModeU(xaddressModeU), addressModeV(xaddressModeV), addressModeW(xaddressModeW), mipLodBias(xmipLodBias), anisotropyEnable(xanisotropyEnable), maxAnisotropy(xmaxAnisotropy), compareEnable(xcompareEnable), compareOp(xcompareOp), minLod(xminLod), maxLod(xmaxLod), borderColor(xborderColor), unnormalizedCoordinates(xunnormalizedCoordinates) {}
+	constexpr SamplerCreateInfo(SamplerCreateFlags xflags = {}, Filter xmagFilter = {}, Filter xminFilter = {}, SamplerMipmapMode xmipmapMode = {}, SamplerAddressMode xaddressModeU = {}, SamplerAddressMode xaddressModeV = {}, SamplerAddressMode xaddressModeW = {}, float xmipLodBias = {}, Bool32 xanisotropyEnable = {}, float xmaxAnisotropy = {}, Bool32 xcompareEnable = {}, CompareOp xcompareOp = {}, float xminLod = {}, float xmaxLod = {}, BorderColor xborderColor = {}, Bool32 xunnormalizedCoordinates = {}) : flags(xflags), magFilter(xmagFilter), minFilter(xminFilter), mipmapMode(xmipmapMode), addressModeU(xaddressModeU), addressModeV(xaddressModeV), addressModeW(xaddressModeW), mipLodBias(xmipLodBias), anisotropyEnable(xanisotropyEnable), maxAnisotropy(xmaxAnisotropy), compareEnable(xcompareEnable), compareOp(xcompareOp), minLod(xminLod), maxLod(xmaxLod), borderColor(xborderColor), unnormalizedCoordinates(xunnormalizedCoordinates) {}
 
 	const VkSamplerCreateInfo& vkHandle() const { return reinterpret_cast<const VkSamplerCreateInfo&>(*this); }
 	VkSamplerCreateInfo& vkHandle() { return reinterpret_cast<VkSamplerCreateInfo&>(*this); }
@@ -2299,7 +2300,7 @@ struct DescriptorPoolCreateInfo {
 	uint32_t poolSizeCount {};
 	const DescriptorPoolSize* pPoolSizes {};
 
-	DescriptorPoolCreateInfo(DescriptorPoolCreateFlags xflags = {}, uint32_t xmaxSets = {}, uint32_t xpoolSizeCount = {}, const DescriptorPoolSize* xpPoolSizes = {}) : flags(xflags), maxSets(xmaxSets), poolSizeCount(xpoolSizeCount), pPoolSizes(xpPoolSizes) {}
+	constexpr DescriptorPoolCreateInfo(DescriptorPoolCreateFlags xflags = {}, uint32_t xmaxSets = {}, uint32_t xpoolSizeCount = {}, const DescriptorPoolSize* xpPoolSizes = {}) : flags(xflags), maxSets(xmaxSets), poolSizeCount(xpoolSizeCount), pPoolSizes(xpPoolSizes) {}
 
 	const VkDescriptorPoolCreateInfo& vkHandle() const { return reinterpret_cast<const VkDescriptorPoolCreateInfo&>(*this); }
 	VkDescriptorPoolCreateInfo& vkHandle() { return reinterpret_cast<VkDescriptorPoolCreateInfo&>(*this); }
@@ -2315,7 +2316,7 @@ struct DescriptorSetAllocateInfo {
 	uint32_t descriptorSetCount {};
 	const DescriptorSetLayout* pSetLayouts {};
 
-	DescriptorSetAllocateInfo(DescriptorPool xdescriptorPool = {}, uint32_t xdescriptorSetCount = {}, const DescriptorSetLayout* xpSetLayouts = {}) : descriptorPool(xdescriptorPool), descriptorSetCount(xdescriptorSetCount), pSetLayouts(xpSetLayouts) {}
+	constexpr DescriptorSetAllocateInfo(DescriptorPool xdescriptorPool = {}, uint32_t xdescriptorSetCount = {}, const DescriptorSetLayout* xpSetLayouts = {}) : descriptorPool(xdescriptorPool), descriptorSetCount(xdescriptorSetCount), pSetLayouts(xpSetLayouts) {}
 
 	const VkDescriptorSetAllocateInfo& vkHandle() const { return reinterpret_cast<const VkDescriptorSetAllocateInfo&>(*this); }
 	VkDescriptorSetAllocateInfo& vkHandle() { return reinterpret_cast<VkDescriptorSetAllocateInfo&>(*this); }
@@ -2360,7 +2361,7 @@ struct WriteDescriptorSet {
 	const DescriptorBufferInfo* pBufferInfo {};
 	const BufferView* pTexelBufferView {};
 
-	WriteDescriptorSet(DescriptorSet xdstSet = {}, uint32_t xdstBinding = {}, uint32_t xdstArrayElement = {}, uint32_t xdescriptorCount = {}, DescriptorType xdescriptorType = {}, const DescriptorImageInfo* xpImageInfo = {}, const DescriptorBufferInfo* xpBufferInfo = {}, const BufferView* xpTexelBufferView = {}) : dstSet(xdstSet), dstBinding(xdstBinding), dstArrayElement(xdstArrayElement), descriptorCount(xdescriptorCount), descriptorType(xdescriptorType), pImageInfo(xpImageInfo), pBufferInfo(xpBufferInfo), pTexelBufferView(xpTexelBufferView) {}
+	constexpr WriteDescriptorSet(DescriptorSet xdstSet = {}, uint32_t xdstBinding = {}, uint32_t xdstArrayElement = {}, uint32_t xdescriptorCount = {}, DescriptorType xdescriptorType = {}, const DescriptorImageInfo* xpImageInfo = {}, const DescriptorBufferInfo* xpBufferInfo = {}, const BufferView* xpTexelBufferView = {}) : dstSet(xdstSet), dstBinding(xdstBinding), dstArrayElement(xdstArrayElement), descriptorCount(xdescriptorCount), descriptorType(xdescriptorType), pImageInfo(xpImageInfo), pBufferInfo(xpBufferInfo), pTexelBufferView(xpTexelBufferView) {}
 
 	const VkWriteDescriptorSet& vkHandle() const { return reinterpret_cast<const VkWriteDescriptorSet&>(*this); }
 	VkWriteDescriptorSet& vkHandle() { return reinterpret_cast<VkWriteDescriptorSet&>(*this); }
@@ -2380,7 +2381,7 @@ struct CopyDescriptorSet {
 	uint32_t dstArrayElement {};
 	uint32_t descriptorCount {};
 
-	CopyDescriptorSet(DescriptorSet xsrcSet = {}, uint32_t xsrcBinding = {}, uint32_t xsrcArrayElement = {}, DescriptorSet xdstSet = {}, uint32_t xdstBinding = {}, uint32_t xdstArrayElement = {}, uint32_t xdescriptorCount = {}) : srcSet(xsrcSet), srcBinding(xsrcBinding), srcArrayElement(xsrcArrayElement), dstSet(xdstSet), dstBinding(xdstBinding), dstArrayElement(xdstArrayElement), descriptorCount(xdescriptorCount) {}
+	constexpr CopyDescriptorSet(DescriptorSet xsrcSet = {}, uint32_t xsrcBinding = {}, uint32_t xsrcArrayElement = {}, DescriptorSet xdstSet = {}, uint32_t xdstBinding = {}, uint32_t xdstArrayElement = {}, uint32_t xdescriptorCount = {}) : srcSet(xsrcSet), srcBinding(xsrcBinding), srcArrayElement(xsrcArrayElement), dstSet(xdstSet), dstBinding(xdstBinding), dstArrayElement(xdstArrayElement), descriptorCount(xdescriptorCount) {}
 
 	const VkCopyDescriptorSet& vkHandle() const { return reinterpret_cast<const VkCopyDescriptorSet&>(*this); }
 	VkCopyDescriptorSet& vkHandle() { return reinterpret_cast<VkCopyDescriptorSet&>(*this); }
@@ -2400,7 +2401,7 @@ struct FramebufferCreateInfo {
 	uint32_t height {};
 	uint32_t layers {};
 
-	FramebufferCreateInfo(FramebufferCreateFlags xflags = {}, RenderPass xrenderPass = {}, uint32_t xattachmentCount = {}, const ImageView* xpAttachments = {}, uint32_t xwidth = {}, uint32_t xheight = {}, uint32_t xlayers = {}) : flags(xflags), renderPass(xrenderPass), attachmentCount(xattachmentCount), pAttachments(xpAttachments), width(xwidth), height(xheight), layers(xlayers) {}
+	constexpr FramebufferCreateInfo(FramebufferCreateFlags xflags = {}, RenderPass xrenderPass = {}, uint32_t xattachmentCount = {}, const ImageView* xpAttachments = {}, uint32_t xwidth = {}, uint32_t xheight = {}, uint32_t xlayers = {}) : flags(xflags), renderPass(xrenderPass), attachmentCount(xattachmentCount), pAttachments(xpAttachments), width(xwidth), height(xheight), layers(xlayers) {}
 
 	const VkFramebufferCreateInfo& vkHandle() const { return reinterpret_cast<const VkFramebufferCreateInfo&>(*this); }
 	VkFramebufferCreateInfo& vkHandle() { return reinterpret_cast<VkFramebufferCreateInfo&>(*this); }
@@ -2484,7 +2485,7 @@ struct RenderPassCreateInfo {
 	uint32_t dependencyCount {};
 	const SubpassDependency* pDependencies {};
 
-	RenderPassCreateInfo(RenderPassCreateFlags xflags = {}, uint32_t xattachmentCount = {}, const AttachmentDescription* xpAttachments = {}, uint32_t xsubpassCount = {}, const SubpassDescription* xpSubpasses = {}, uint32_t xdependencyCount = {}, const SubpassDependency* xpDependencies = {}) : flags(xflags), attachmentCount(xattachmentCount), pAttachments(xpAttachments), subpassCount(xsubpassCount), pSubpasses(xpSubpasses), dependencyCount(xdependencyCount), pDependencies(xpDependencies) {}
+	constexpr RenderPassCreateInfo(RenderPassCreateFlags xflags = {}, uint32_t xattachmentCount = {}, const AttachmentDescription* xpAttachments = {}, uint32_t xsubpassCount = {}, const SubpassDescription* xpSubpasses = {}, uint32_t xdependencyCount = {}, const SubpassDependency* xpDependencies = {}) : flags(xflags), attachmentCount(xattachmentCount), pAttachments(xpAttachments), subpassCount(xsubpassCount), pSubpasses(xpSubpasses), dependencyCount(xdependencyCount), pDependencies(xpDependencies) {}
 
 	const VkRenderPassCreateInfo& vkHandle() const { return reinterpret_cast<const VkRenderPassCreateInfo&>(*this); }
 	VkRenderPassCreateInfo& vkHandle() { return reinterpret_cast<VkRenderPassCreateInfo&>(*this); }
@@ -2499,7 +2500,7 @@ struct CommandPoolCreateInfo {
 	CommandPoolCreateFlags flags {};
 	uint32_t queueFamilyIndex {};
 
-	CommandPoolCreateInfo(CommandPoolCreateFlags xflags = {}, uint32_t xqueueFamilyIndex = {}) : flags(xflags), queueFamilyIndex(xqueueFamilyIndex) {}
+	constexpr CommandPoolCreateInfo(CommandPoolCreateFlags xflags = {}, uint32_t xqueueFamilyIndex = {}) : flags(xflags), queueFamilyIndex(xqueueFamilyIndex) {}
 
 	const VkCommandPoolCreateInfo& vkHandle() const { return reinterpret_cast<const VkCommandPoolCreateInfo&>(*this); }
 	VkCommandPoolCreateInfo& vkHandle() { return reinterpret_cast<VkCommandPoolCreateInfo&>(*this); }
@@ -2515,7 +2516,7 @@ struct CommandBufferAllocateInfo {
 	CommandBufferLevel level {};
 	uint32_t commandBufferCount {};
 
-	CommandBufferAllocateInfo(CommandPool xcommandPool = {}, CommandBufferLevel xlevel = {}, uint32_t xcommandBufferCount = {}) : commandPool(xcommandPool), level(xlevel), commandBufferCount(xcommandBufferCount) {}
+	constexpr CommandBufferAllocateInfo(CommandPool xcommandPool = {}, CommandBufferLevel xlevel = {}, uint32_t xcommandBufferCount = {}) : commandPool(xcommandPool), level(xlevel), commandBufferCount(xcommandBufferCount) {}
 
 	const VkCommandBufferAllocateInfo& vkHandle() const { return reinterpret_cast<const VkCommandBufferAllocateInfo&>(*this); }
 	VkCommandBufferAllocateInfo& vkHandle() { return reinterpret_cast<VkCommandBufferAllocateInfo&>(*this); }
@@ -2534,7 +2535,7 @@ struct CommandBufferInheritanceInfo {
 	QueryControlFlags queryFlags {};
 	QueryPipelineStatisticFlags pipelineStatistics {};
 
-	CommandBufferInheritanceInfo(RenderPass xrenderPass = {}, uint32_t xsubpass = {}, Framebuffer xframebuffer = {}, Bool32 xocclusionQueryEnable = {}, QueryControlFlags xqueryFlags = {}, QueryPipelineStatisticFlags xpipelineStatistics = {}) : renderPass(xrenderPass), subpass(xsubpass), framebuffer(xframebuffer), occlusionQueryEnable(xocclusionQueryEnable), queryFlags(xqueryFlags), pipelineStatistics(xpipelineStatistics) {}
+	constexpr CommandBufferInheritanceInfo(RenderPass xrenderPass = {}, uint32_t xsubpass = {}, Framebuffer xframebuffer = {}, Bool32 xocclusionQueryEnable = {}, QueryControlFlags xqueryFlags = {}, QueryPipelineStatisticFlags xpipelineStatistics = {}) : renderPass(xrenderPass), subpass(xsubpass), framebuffer(xframebuffer), occlusionQueryEnable(xocclusionQueryEnable), queryFlags(xqueryFlags), pipelineStatistics(xpipelineStatistics) {}
 
 	const VkCommandBufferInheritanceInfo& vkHandle() const { return reinterpret_cast<const VkCommandBufferInheritanceInfo&>(*this); }
 	VkCommandBufferInheritanceInfo& vkHandle() { return reinterpret_cast<VkCommandBufferInheritanceInfo&>(*this); }
@@ -2549,7 +2550,7 @@ struct CommandBufferBeginInfo {
 	CommandBufferUsageFlags flags {};
 	const CommandBufferInheritanceInfo* pInheritanceInfo {};
 
-	CommandBufferBeginInfo(CommandBufferUsageFlags xflags = {}, const CommandBufferInheritanceInfo* xpInheritanceInfo = {}) : flags(xflags), pInheritanceInfo(xpInheritanceInfo) {}
+	constexpr CommandBufferBeginInfo(CommandBufferUsageFlags xflags = {}, const CommandBufferInheritanceInfo* xpInheritanceInfo = {}) : flags(xflags), pInheritanceInfo(xpInheritanceInfo) {}
 
 	const VkCommandBufferBeginInfo& vkHandle() const { return reinterpret_cast<const VkCommandBufferBeginInfo&>(*this); }
 	VkCommandBufferBeginInfo& vkHandle() { return reinterpret_cast<VkCommandBufferBeginInfo&>(*this); }
@@ -2703,7 +2704,7 @@ struct MemoryBarrier {
 	AccessFlags srcAccessMask {};
 	AccessFlags dstAccessMask {};
 
-	MemoryBarrier(AccessFlags xsrcAccessMask = {}, AccessFlags xdstAccessMask = {}) : srcAccessMask(xsrcAccessMask), dstAccessMask(xdstAccessMask) {}
+	constexpr MemoryBarrier(AccessFlags xsrcAccessMask = {}, AccessFlags xdstAccessMask = {}) : srcAccessMask(xsrcAccessMask), dstAccessMask(xdstAccessMask) {}
 
 	const VkMemoryBarrier& vkHandle() const { return reinterpret_cast<const VkMemoryBarrier&>(*this); }
 	VkMemoryBarrier& vkHandle() { return reinterpret_cast<VkMemoryBarrier&>(*this); }
@@ -2723,7 +2724,7 @@ struct BufferMemoryBarrier {
 	DeviceSize offset {};
 	DeviceSize size {};
 
-	BufferMemoryBarrier(AccessFlags xsrcAccessMask = {}, AccessFlags xdstAccessMask = {}, uint32_t xsrcQueueFamilyIndex = {}, uint32_t xdstQueueFamilyIndex = {}, Buffer xbuffer = {}, DeviceSize xoffset = {}, DeviceSize xsize = {}) : srcAccessMask(xsrcAccessMask), dstAccessMask(xdstAccessMask), srcQueueFamilyIndex(xsrcQueueFamilyIndex), dstQueueFamilyIndex(xdstQueueFamilyIndex), buffer(xbuffer), offset(xoffset), size(xsize) {}
+	constexpr BufferMemoryBarrier(AccessFlags xsrcAccessMask = {}, AccessFlags xdstAccessMask = {}, uint32_t xsrcQueueFamilyIndex = {}, uint32_t xdstQueueFamilyIndex = {}, Buffer xbuffer = {}, DeviceSize xoffset = {}, DeviceSize xsize = {}) : srcAccessMask(xsrcAccessMask), dstAccessMask(xdstAccessMask), srcQueueFamilyIndex(xsrcQueueFamilyIndex), dstQueueFamilyIndex(xdstQueueFamilyIndex), buffer(xbuffer), offset(xoffset), size(xsize) {}
 
 	const VkBufferMemoryBarrier& vkHandle() const { return reinterpret_cast<const VkBufferMemoryBarrier&>(*this); }
 	VkBufferMemoryBarrier& vkHandle() { return reinterpret_cast<VkBufferMemoryBarrier&>(*this); }
@@ -2744,7 +2745,7 @@ struct ImageMemoryBarrier {
 	Image image {};
 	ImageSubresourceRange subresourceRange {};
 
-	ImageMemoryBarrier(AccessFlags xsrcAccessMask = {}, AccessFlags xdstAccessMask = {}, ImageLayout xoldLayout = {}, ImageLayout xnewLayout = {}, uint32_t xsrcQueueFamilyIndex = {}, uint32_t xdstQueueFamilyIndex = {}, Image ximage = {}, ImageSubresourceRange xsubresourceRange = {}) : srcAccessMask(xsrcAccessMask), dstAccessMask(xdstAccessMask), oldLayout(xoldLayout), newLayout(xnewLayout), srcQueueFamilyIndex(xsrcQueueFamilyIndex), dstQueueFamilyIndex(xdstQueueFamilyIndex), image(ximage), subresourceRange(xsubresourceRange) {}
+	constexpr ImageMemoryBarrier(AccessFlags xsrcAccessMask = {}, AccessFlags xdstAccessMask = {}, ImageLayout xoldLayout = {}, ImageLayout xnewLayout = {}, uint32_t xsrcQueueFamilyIndex = {}, uint32_t xdstQueueFamilyIndex = {}, Image ximage = {}, ImageSubresourceRange xsubresourceRange = {}) : srcAccessMask(xsrcAccessMask), dstAccessMask(xdstAccessMask), oldLayout(xoldLayout), newLayout(xnewLayout), srcQueueFamilyIndex(xsrcQueueFamilyIndex), dstQueueFamilyIndex(xdstQueueFamilyIndex), image(ximage), subresourceRange(xsubresourceRange) {}
 
 	const VkImageMemoryBarrier& vkHandle() const { return reinterpret_cast<const VkImageMemoryBarrier&>(*this); }
 	VkImageMemoryBarrier& vkHandle() { return reinterpret_cast<VkImageMemoryBarrier&>(*this); }
@@ -2762,7 +2763,7 @@ struct RenderPassBeginInfo {
 	uint32_t clearValueCount {};
 	const ClearValue* pClearValues {};
 
-	RenderPassBeginInfo(RenderPass xrenderPass = {}, Framebuffer xframebuffer = {}, Rect2D xrenderArea = {}, uint32_t xclearValueCount = {}, const ClearValue* xpClearValues = {}) : renderPass(xrenderPass), framebuffer(xframebuffer), renderArea(xrenderArea), clearValueCount(xclearValueCount), pClearValues(xpClearValues) {}
+	constexpr RenderPassBeginInfo(RenderPass xrenderPass = {}, Framebuffer xframebuffer = {}, Rect2D xrenderArea = {}, uint32_t xclearValueCount = {}, const ClearValue* xpClearValues = {}) : renderPass(xrenderPass), framebuffer(xframebuffer), renderArea(xrenderArea), clearValueCount(xclearValueCount), pClearValues(xpClearValues) {}
 
 	const VkRenderPassBeginInfo& vkHandle() const { return reinterpret_cast<const VkRenderPassBeginInfo&>(*this); }
 	VkRenderPassBeginInfo& vkHandle() { return reinterpret_cast<VkRenderPassBeginInfo&>(*this); }
@@ -2814,7 +2815,7 @@ struct BaseOutStructure {
 	StructureType sType {};
 	BaseOutStructure* pNext {};
 
-	BaseOutStructure() {}
+	constexpr BaseOutStructure() {}
 
 	const VkBaseOutStructure& vkHandle() const { return reinterpret_cast<const VkBaseOutStructure&>(*this); }
 	VkBaseOutStructure& vkHandle() { return reinterpret_cast<VkBaseOutStructure&>(*this); }
@@ -2827,7 +2828,7 @@ struct BaseInStructure {
 	StructureType sType {};
 	const BaseInStructure* pNext {};
 
-	BaseInStructure() {}
+	constexpr BaseInStructure() {}
 
 	const VkBaseInStructure& vkHandle() const { return reinterpret_cast<const VkBaseInStructure&>(*this); }
 	VkBaseInStructure& vkHandle() { return reinterpret_cast<VkBaseInStructure&>(*this); }
@@ -2888,7 +2889,7 @@ struct SwapchainCreateInfoKHR {
 	Bool32 clipped {};
 	SwapchainKHR oldSwapchain {};
 
-	SwapchainCreateInfoKHR(SwapchainCreateFlagsKHR xflags = {}, SurfaceKHR xsurface = {}, uint32_t xminImageCount = {}, Format ximageFormat = {}, ColorSpaceKHR ximageColorSpace = {}, Extent2D ximageExtent = {}, uint32_t ximageArrayLayers = {}, ImageUsageFlags ximageUsage = {}, SharingMode ximageSharingMode = {}, uint32_t xqueueFamilyIndexCount = {}, const uint32_t* xpQueueFamilyIndices = {}, SurfaceTransformBitsKHR xpreTransform = {}, CompositeAlphaBitsKHR xcompositeAlpha = {}, PresentModeKHR xpresentMode = {}, Bool32 xclipped = {}, SwapchainKHR xoldSwapchain = {}) : flags(xflags), surface(xsurface), minImageCount(xminImageCount), imageFormat(ximageFormat), imageColorSpace(ximageColorSpace), imageExtent(ximageExtent), imageArrayLayers(ximageArrayLayers), imageUsage(ximageUsage), imageSharingMode(ximageSharingMode), queueFamilyIndexCount(xqueueFamilyIndexCount), pQueueFamilyIndices(xpQueueFamilyIndices), preTransform(xpreTransform), compositeAlpha(xcompositeAlpha), presentMode(xpresentMode), clipped(xclipped), oldSwapchain(xoldSwapchain) {}
+	constexpr SwapchainCreateInfoKHR(SwapchainCreateFlagsKHR xflags = {}, SurfaceKHR xsurface = {}, uint32_t xminImageCount = {}, Format ximageFormat = {}, ColorSpaceKHR ximageColorSpace = {}, Extent2D ximageExtent = {}, uint32_t ximageArrayLayers = {}, ImageUsageFlags ximageUsage = {}, SharingMode ximageSharingMode = {}, uint32_t xqueueFamilyIndexCount = {}, const uint32_t* xpQueueFamilyIndices = {}, SurfaceTransformBitsKHR xpreTransform = {}, CompositeAlphaBitsKHR xcompositeAlpha = {}, PresentModeKHR xpresentMode = {}, Bool32 xclipped = {}, SwapchainKHR xoldSwapchain = {}) : flags(xflags), surface(xsurface), minImageCount(xminImageCount), imageFormat(ximageFormat), imageColorSpace(ximageColorSpace), imageExtent(ximageExtent), imageArrayLayers(ximageArrayLayers), imageUsage(ximageUsage), imageSharingMode(ximageSharingMode), queueFamilyIndexCount(xqueueFamilyIndexCount), pQueueFamilyIndices(xpQueueFamilyIndices), preTransform(xpreTransform), compositeAlpha(xcompositeAlpha), presentMode(xpresentMode), clipped(xclipped), oldSwapchain(xoldSwapchain) {}
 
 	const VkSwapchainCreateInfoKHR& vkHandle() const { return reinterpret_cast<const VkSwapchainCreateInfoKHR&>(*this); }
 	VkSwapchainCreateInfoKHR& vkHandle() { return reinterpret_cast<VkSwapchainCreateInfoKHR&>(*this); }
@@ -2907,7 +2908,7 @@ struct PresentInfoKHR {
 	const uint32_t* pImageIndices {};
 	Result* pResults {};
 
-	PresentInfoKHR(uint32_t xwaitSemaphoreCount = {}, const Semaphore* xpWaitSemaphores = {}, uint32_t xswapchainCount = {}, const SwapchainKHR* xpSwapchains = {}, const uint32_t* xpImageIndices = {}, Result* xpResults = {}) : waitSemaphoreCount(xwaitSemaphoreCount), pWaitSemaphores(xpWaitSemaphores), swapchainCount(xswapchainCount), pSwapchains(xpSwapchains), pImageIndices(xpImageIndices), pResults(xpResults) {}
+	constexpr PresentInfoKHR(uint32_t xwaitSemaphoreCount = {}, const Semaphore* xpWaitSemaphores = {}, uint32_t xswapchainCount = {}, const SwapchainKHR* xpSwapchains = {}, const uint32_t* xpImageIndices = {}, Result* xpResults = {}) : waitSemaphoreCount(xwaitSemaphoreCount), pWaitSemaphores(xpWaitSemaphores), swapchainCount(xswapchainCount), pSwapchains(xpSwapchains), pImageIndices(xpImageIndices), pResults(xpResults) {}
 
 	const VkPresentInfoKHR& vkHandle() const { return reinterpret_cast<const VkPresentInfoKHR&>(*this); }
 	VkPresentInfoKHR& vkHandle() { return reinterpret_cast<VkPresentInfoKHR&>(*this); }
@@ -2921,7 +2922,7 @@ struct ImageSwapchainCreateInfoKHR {
 	const void* pNext {};
 	SwapchainKHR swapchain {};
 
-	ImageSwapchainCreateInfoKHR(SwapchainKHR xswapchain = {}) : swapchain(xswapchain) {}
+	constexpr ImageSwapchainCreateInfoKHR(SwapchainKHR xswapchain = {}) : swapchain(xswapchain) {}
 
 	const VkImageSwapchainCreateInfoKHR& vkHandle() const { return reinterpret_cast<const VkImageSwapchainCreateInfoKHR&>(*this); }
 	VkImageSwapchainCreateInfoKHR& vkHandle() { return reinterpret_cast<VkImageSwapchainCreateInfoKHR&>(*this); }
@@ -2936,7 +2937,7 @@ struct BindImageMemorySwapchainInfoKHR {
 	SwapchainKHR swapchain {};
 	uint32_t imageIndex {};
 
-	BindImageMemorySwapchainInfoKHR(SwapchainKHR xswapchain = {}, uint32_t ximageIndex = {}) : swapchain(xswapchain), imageIndex(ximageIndex) {}
+	constexpr BindImageMemorySwapchainInfoKHR(SwapchainKHR xswapchain = {}, uint32_t ximageIndex = {}) : swapchain(xswapchain), imageIndex(ximageIndex) {}
 
 	const VkBindImageMemorySwapchainInfoKHR& vkHandle() const { return reinterpret_cast<const VkBindImageMemorySwapchainInfoKHR&>(*this); }
 	VkBindImageMemorySwapchainInfoKHR& vkHandle() { return reinterpret_cast<VkBindImageMemorySwapchainInfoKHR&>(*this); }
@@ -2954,7 +2955,7 @@ struct AcquireNextImageInfoKHR {
 	Fence fence {};
 	uint32_t deviceMask {};
 
-	AcquireNextImageInfoKHR(SwapchainKHR xswapchain = {}, uint64_t xtimeout = {}, Semaphore xsemaphore = {}, Fence xfence = {}, uint32_t xdeviceMask = {}) : swapchain(xswapchain), timeout(xtimeout), semaphore(xsemaphore), fence(xfence), deviceMask(xdeviceMask) {}
+	constexpr AcquireNextImageInfoKHR(SwapchainKHR xswapchain = {}, uint64_t xtimeout = {}, Semaphore xsemaphore = {}, Fence xfence = {}, uint32_t xdeviceMask = {}) : swapchain(xswapchain), timeout(xtimeout), semaphore(xsemaphore), fence(xfence), deviceMask(xdeviceMask) {}
 
 	const VkAcquireNextImageInfoKHR& vkHandle() const { return reinterpret_cast<const VkAcquireNextImageInfoKHR&>(*this); }
 	VkAcquireNextImageInfoKHR& vkHandle() { return reinterpret_cast<VkAcquireNextImageInfoKHR&>(*this); }
@@ -2983,7 +2984,7 @@ struct DeviceGroupPresentInfoKHR {
 	const uint32_t* pDeviceMasks {};
 	DeviceGroupPresentModeBitsKHR mode {};
 
-	DeviceGroupPresentInfoKHR(uint32_t xswapchainCount = {}, const uint32_t* xpDeviceMasks = {}, DeviceGroupPresentModeBitsKHR xmode = {}) : swapchainCount(xswapchainCount), pDeviceMasks(xpDeviceMasks), mode(xmode) {}
+	constexpr DeviceGroupPresentInfoKHR(uint32_t xswapchainCount = {}, const uint32_t* xpDeviceMasks = {}, DeviceGroupPresentModeBitsKHR xmode = {}) : swapchainCount(xswapchainCount), pDeviceMasks(xpDeviceMasks), mode(xmode) {}
 
 	const VkDeviceGroupPresentInfoKHR& vkHandle() const { return reinterpret_cast<const VkDeviceGroupPresentInfoKHR&>(*this); }
 	VkDeviceGroupPresentInfoKHR& vkHandle() { return reinterpret_cast<VkDeviceGroupPresentInfoKHR&>(*this); }
@@ -2997,7 +2998,7 @@ struct DeviceGroupSwapchainCreateInfoKHR {
 	const void* pNext {};
 	DeviceGroupPresentModeFlagsKHR modes {};
 
-	DeviceGroupSwapchainCreateInfoKHR(DeviceGroupPresentModeFlagsKHR xmodes = {}) : modes(xmodes) {}
+	constexpr DeviceGroupSwapchainCreateInfoKHR(DeviceGroupPresentModeFlagsKHR xmodes = {}) : modes(xmodes) {}
 
 	const VkDeviceGroupSwapchainCreateInfoKHR& vkHandle() const { return reinterpret_cast<const VkDeviceGroupSwapchainCreateInfoKHR&>(*this); }
 	VkDeviceGroupSwapchainCreateInfoKHR& vkHandle() { return reinterpret_cast<VkDeviceGroupSwapchainCreateInfoKHR&>(*this); }
@@ -3051,7 +3052,7 @@ struct DisplayModeCreateInfoKHR {
 	DisplayModeCreateFlagsKHR flags {};
 	DisplayModeParametersKHR parameters {};
 
-	DisplayModeCreateInfoKHR(DisplayModeCreateFlagsKHR xflags = {}, DisplayModeParametersKHR xparameters = {}) : flags(xflags), parameters(xparameters) {}
+	constexpr DisplayModeCreateInfoKHR(DisplayModeCreateFlagsKHR xflags = {}, DisplayModeParametersKHR xparameters = {}) : flags(xflags), parameters(xparameters) {}
 
 	const VkDisplayModeCreateInfoKHR& vkHandle() const { return reinterpret_cast<const VkDisplayModeCreateInfoKHR&>(*this); }
 	VkDisplayModeCreateInfoKHR& vkHandle() { return reinterpret_cast<VkDisplayModeCreateInfoKHR&>(*this); }
@@ -3101,7 +3102,7 @@ struct DisplaySurfaceCreateInfoKHR {
 	DisplayPlaneAlphaBitsKHR alphaMode {};
 	Extent2D imageExtent {};
 
-	DisplaySurfaceCreateInfoKHR(DisplaySurfaceCreateFlagsKHR xflags = {}, DisplayModeKHR xdisplayMode = {}, uint32_t xplaneIndex = {}, uint32_t xplaneStackIndex = {}, SurfaceTransformBitsKHR xtransform = {}, float xglobalAlpha = {}, DisplayPlaneAlphaBitsKHR xalphaMode = {}, Extent2D ximageExtent = {}) : flags(xflags), displayMode(xdisplayMode), planeIndex(xplaneIndex), planeStackIndex(xplaneStackIndex), transform(xtransform), globalAlpha(xglobalAlpha), alphaMode(xalphaMode), imageExtent(ximageExtent) {}
+	constexpr DisplaySurfaceCreateInfoKHR(DisplaySurfaceCreateFlagsKHR xflags = {}, DisplayModeKHR xdisplayMode = {}, uint32_t xplaneIndex = {}, uint32_t xplaneStackIndex = {}, SurfaceTransformBitsKHR xtransform = {}, float xglobalAlpha = {}, DisplayPlaneAlphaBitsKHR xalphaMode = {}, Extent2D ximageExtent = {}) : flags(xflags), displayMode(xdisplayMode), planeIndex(xplaneIndex), planeStackIndex(xplaneStackIndex), transform(xtransform), globalAlpha(xglobalAlpha), alphaMode(xalphaMode), imageExtent(ximageExtent) {}
 
 	const VkDisplaySurfaceCreateInfoKHR& vkHandle() const { return reinterpret_cast<const VkDisplaySurfaceCreateInfoKHR&>(*this); }
 	VkDisplaySurfaceCreateInfoKHR& vkHandle() { return reinterpret_cast<VkDisplaySurfaceCreateInfoKHR&>(*this); }
@@ -3118,7 +3119,7 @@ struct DisplayPresentInfoKHR {
 	Rect2D dstRect {};
 	Bool32 persistent {};
 
-	DisplayPresentInfoKHR(Rect2D xsrcRect = {}, Rect2D xdstRect = {}, Bool32 xpersistent = {}) : srcRect(xsrcRect), dstRect(xdstRect), persistent(xpersistent) {}
+	constexpr DisplayPresentInfoKHR(Rect2D xsrcRect = {}, Rect2D xdstRect = {}, Bool32 xpersistent = {}) : srcRect(xsrcRect), dstRect(xdstRect), persistent(xpersistent) {}
 
 	const VkDisplayPresentInfoKHR& vkHandle() const { return reinterpret_cast<const VkDisplayPresentInfoKHR&>(*this); }
 	VkDisplayPresentInfoKHR& vkHandle() { return reinterpret_cast<VkDisplayPresentInfoKHR&>(*this); }
@@ -3128,8 +3129,8 @@ struct DisplayPresentInfoKHR {
 };
 
 
-#ifdef VK_USE_PLATFORM_XLIB_KHR
 
+#ifdef VK_USE_PLATFORM_XLIB_KHR
 struct XlibSurfaceCreateInfoKHR {
 	StructureType sType {StructureType::xlibSurfaceCreateInfoKHR};
 	const void* pNext {};
@@ -3137,7 +3138,7 @@ struct XlibSurfaceCreateInfoKHR {
 	Display* dpy {};
 	Window window {};
 
-	XlibSurfaceCreateInfoKHR(XlibSurfaceCreateFlagsKHR xflags = {}, Display* xdpy = {}, Window xwindow = {}) : flags(xflags), dpy(xdpy), window(xwindow) {}
+	constexpr XlibSurfaceCreateInfoKHR(XlibSurfaceCreateFlagsKHR xflags = {}, Display* xdpy = {}, Window xwindow = {}) : flags(xflags), dpy(xdpy), window(xwindow) {}
 
 	const VkXlibSurfaceCreateInfoKHR& vkHandle() const { return reinterpret_cast<const VkXlibSurfaceCreateInfoKHR&>(*this); }
 	VkXlibSurfaceCreateInfoKHR& vkHandle() { return reinterpret_cast<VkXlibSurfaceCreateInfoKHR&>(*this); }
@@ -3149,8 +3150,8 @@ struct XlibSurfaceCreateInfoKHR {
 
 #endif //VK_USE_PLATFORM_XLIB_KHR
 
-#ifdef VK_USE_PLATFORM_XCB_KHR
 
+#ifdef VK_USE_PLATFORM_XCB_KHR
 struct XcbSurfaceCreateInfoKHR {
 	StructureType sType {StructureType::xcbSurfaceCreateInfoKHR};
 	const void* pNext {};
@@ -3158,7 +3159,7 @@ struct XcbSurfaceCreateInfoKHR {
 	xcb_connection_t* connection {};
 	xcb_window_t window {};
 
-	XcbSurfaceCreateInfoKHR(XcbSurfaceCreateFlagsKHR xflags = {}, xcb_connection_t* xconnection = {}, xcb_window_t xwindow = {}) : flags(xflags), connection(xconnection), window(xwindow) {}
+	constexpr XcbSurfaceCreateInfoKHR(XcbSurfaceCreateFlagsKHR xflags = {}, xcb_connection_t* xconnection = {}, xcb_window_t xwindow = {}) : flags(xflags), connection(xconnection), window(xwindow) {}
 
 	const VkXcbSurfaceCreateInfoKHR& vkHandle() const { return reinterpret_cast<const VkXcbSurfaceCreateInfoKHR&>(*this); }
 	VkXcbSurfaceCreateInfoKHR& vkHandle() { return reinterpret_cast<VkXcbSurfaceCreateInfoKHR&>(*this); }
@@ -3170,8 +3171,8 @@ struct XcbSurfaceCreateInfoKHR {
 
 #endif //VK_USE_PLATFORM_XCB_KHR
 
-#ifdef VK_USE_PLATFORM_WAYLAND_KHR
 
+#ifdef VK_USE_PLATFORM_WAYLAND_KHR
 struct WaylandSurfaceCreateInfoKHR {
 	StructureType sType {StructureType::waylandSurfaceCreateInfoKHR};
 	const void* pNext {};
@@ -3179,7 +3180,7 @@ struct WaylandSurfaceCreateInfoKHR {
 	wl_display* display {};
 	wl_surface* surface {};
 
-	WaylandSurfaceCreateInfoKHR(WaylandSurfaceCreateFlagsKHR xflags = {}, wl_display* xdisplay = {}, wl_surface* xsurface = {}) : flags(xflags), display(xdisplay), surface(xsurface) {}
+	constexpr WaylandSurfaceCreateInfoKHR(WaylandSurfaceCreateFlagsKHR xflags = {}, wl_display* xdisplay = {}, wl_surface* xsurface = {}) : flags(xflags), display(xdisplay), surface(xsurface) {}
 
 	const VkWaylandSurfaceCreateInfoKHR& vkHandle() const { return reinterpret_cast<const VkWaylandSurfaceCreateInfoKHR&>(*this); }
 	VkWaylandSurfaceCreateInfoKHR& vkHandle() { return reinterpret_cast<VkWaylandSurfaceCreateInfoKHR&>(*this); }
@@ -3191,8 +3192,8 @@ struct WaylandSurfaceCreateInfoKHR {
 
 #endif //VK_USE_PLATFORM_WAYLAND_KHR
 
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 struct Win32SurfaceCreateInfoKHR {
 	StructureType sType {StructureType::win32SurfaceCreateInfoKHR};
 	const void* pNext {};
@@ -3200,7 +3201,7 @@ struct Win32SurfaceCreateInfoKHR {
 	HINSTANCE hinstance {};
 	HWND hwnd {};
 
-	Win32SurfaceCreateInfoKHR(Win32SurfaceCreateFlagsKHR xflags = {}, HINSTANCE xhinstance = {}, HWND xhwnd = {}) : flags(xflags), hinstance(xhinstance), hwnd(xhwnd) {}
+	constexpr Win32SurfaceCreateInfoKHR(Win32SurfaceCreateFlagsKHR xflags = {}, HINSTANCE xhinstance = {}, HWND xhwnd = {}) : flags(xflags), hinstance(xhinstance), hwnd(xhwnd) {}
 
 	const VkWin32SurfaceCreateInfoKHR& vkHandle() const { return reinterpret_cast<const VkWin32SurfaceCreateInfoKHR&>(*this); }
 	VkWin32SurfaceCreateInfoKHR& vkHandle() { return reinterpret_cast<VkWin32SurfaceCreateInfoKHR&>(*this); }
@@ -3219,7 +3220,7 @@ struct DebugReportCallbackCreateInfoEXT {
 	PFN_vkDebugReportCallbackEXT pfnCallback {};
 	void* pUserData {};
 
-	DebugReportCallbackCreateInfoEXT(DebugReportFlagsEXT xflags = {}, PFN_vkDebugReportCallbackEXT xpfnCallback = {}, void* xpUserData = {}) : flags(xflags), pfnCallback(xpfnCallback), pUserData(xpUserData) {}
+	constexpr DebugReportCallbackCreateInfoEXT(DebugReportFlagsEXT xflags = {}, PFN_vkDebugReportCallbackEXT xpfnCallback = {}, void* xpUserData = {}) : flags(xflags), pfnCallback(xpfnCallback), pUserData(xpUserData) {}
 
 	const VkDebugReportCallbackCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkDebugReportCallbackCreateInfoEXT&>(*this); }
 	VkDebugReportCallbackCreateInfoEXT& vkHandle() { return reinterpret_cast<VkDebugReportCallbackCreateInfoEXT&>(*this); }
@@ -3234,7 +3235,7 @@ struct PipelineRasterizationStateRasterizationOrderAMD {
 	const void* pNext {};
 	RasterizationOrderAMD rasterizationOrder {};
 
-	PipelineRasterizationStateRasterizationOrderAMD(RasterizationOrderAMD xrasterizationOrder = {}) : rasterizationOrder(xrasterizationOrder) {}
+	constexpr PipelineRasterizationStateRasterizationOrderAMD(RasterizationOrderAMD xrasterizationOrder = {}) : rasterizationOrder(xrasterizationOrder) {}
 
 	const VkPipelineRasterizationStateRasterizationOrderAMD& vkHandle() const { return reinterpret_cast<const VkPipelineRasterizationStateRasterizationOrderAMD&>(*this); }
 	VkPipelineRasterizationStateRasterizationOrderAMD& vkHandle() { return reinterpret_cast<VkPipelineRasterizationStateRasterizationOrderAMD&>(*this); }
@@ -3251,7 +3252,7 @@ struct DebugMarkerObjectNameInfoEXT {
 	uint64_t object {};
 	const char* pObjectName {};
 
-	DebugMarkerObjectNameInfoEXT(DebugReportObjectTypeEXT xobjectType = {}, uint64_t xobject = {}, const char* xpObjectName = {}) : objectType(xobjectType), object(xobject), pObjectName(xpObjectName) {}
+	constexpr DebugMarkerObjectNameInfoEXT(DebugReportObjectTypeEXT xobjectType = {}, uint64_t xobject = {}, const char* xpObjectName = {}) : objectType(xobjectType), object(xobject), pObjectName(xpObjectName) {}
 
 	const VkDebugMarkerObjectNameInfoEXT& vkHandle() const { return reinterpret_cast<const VkDebugMarkerObjectNameInfoEXT&>(*this); }
 	VkDebugMarkerObjectNameInfoEXT& vkHandle() { return reinterpret_cast<VkDebugMarkerObjectNameInfoEXT&>(*this); }
@@ -3269,7 +3270,7 @@ struct DebugMarkerObjectTagInfoEXT {
 	size_t tagSize {};
 	const void* pTag {};
 
-	DebugMarkerObjectTagInfoEXT(DebugReportObjectTypeEXT xobjectType = {}, uint64_t xobject = {}, uint64_t xtagName = {}, size_t xtagSize = {}, const void* xpTag = {}) : objectType(xobjectType), object(xobject), tagName(xtagName), tagSize(xtagSize), pTag(xpTag) {}
+	constexpr DebugMarkerObjectTagInfoEXT(DebugReportObjectTypeEXT xobjectType = {}, uint64_t xobject = {}, uint64_t xtagName = {}, size_t xtagSize = {}, const void* xpTag = {}) : objectType(xobjectType), object(xobject), tagName(xtagName), tagSize(xtagSize), pTag(xpTag) {}
 
 	const VkDebugMarkerObjectTagInfoEXT& vkHandle() const { return reinterpret_cast<const VkDebugMarkerObjectTagInfoEXT&>(*this); }
 	VkDebugMarkerObjectTagInfoEXT& vkHandle() { return reinterpret_cast<VkDebugMarkerObjectTagInfoEXT&>(*this); }
@@ -3284,7 +3285,7 @@ struct DebugMarkerMarkerInfoEXT {
 	const char* pMarkerName {};
 	std::array<float, 4> color {};
 
-	DebugMarkerMarkerInfoEXT(const char* xpMarkerName = {}, std::array<float, 4> xcolor = {}) : pMarkerName(xpMarkerName), color(xcolor) {}
+	constexpr DebugMarkerMarkerInfoEXT(const char* xpMarkerName = {}, std::array<float, 4> xcolor = {}) : pMarkerName(xpMarkerName), color(xcolor) {}
 
 	const VkDebugMarkerMarkerInfoEXT& vkHandle() const { return reinterpret_cast<const VkDebugMarkerMarkerInfoEXT&>(*this); }
 	VkDebugMarkerMarkerInfoEXT& vkHandle() { return reinterpret_cast<VkDebugMarkerMarkerInfoEXT&>(*this); }
@@ -3299,7 +3300,7 @@ struct DedicatedAllocationImageCreateInfoNV {
 	const void* pNext {};
 	Bool32 dedicatedAllocation {};
 
-	DedicatedAllocationImageCreateInfoNV(Bool32 xdedicatedAllocation = {}) : dedicatedAllocation(xdedicatedAllocation) {}
+	constexpr DedicatedAllocationImageCreateInfoNV(Bool32 xdedicatedAllocation = {}) : dedicatedAllocation(xdedicatedAllocation) {}
 
 	const VkDedicatedAllocationImageCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkDedicatedAllocationImageCreateInfoNV&>(*this); }
 	VkDedicatedAllocationImageCreateInfoNV& vkHandle() { return reinterpret_cast<VkDedicatedAllocationImageCreateInfoNV&>(*this); }
@@ -3313,7 +3314,7 @@ struct DedicatedAllocationBufferCreateInfoNV {
 	const void* pNext {};
 	Bool32 dedicatedAllocation {};
 
-	DedicatedAllocationBufferCreateInfoNV(Bool32 xdedicatedAllocation = {}) : dedicatedAllocation(xdedicatedAllocation) {}
+	constexpr DedicatedAllocationBufferCreateInfoNV(Bool32 xdedicatedAllocation = {}) : dedicatedAllocation(xdedicatedAllocation) {}
 
 	const VkDedicatedAllocationBufferCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkDedicatedAllocationBufferCreateInfoNV&>(*this); }
 	VkDedicatedAllocationBufferCreateInfoNV& vkHandle() { return reinterpret_cast<VkDedicatedAllocationBufferCreateInfoNV&>(*this); }
@@ -3328,7 +3329,7 @@ struct DedicatedAllocationMemoryAllocateInfoNV {
 	Image image {};
 	Buffer buffer {};
 
-	DedicatedAllocationMemoryAllocateInfoNV(Image ximage = {}, Buffer xbuffer = {}) : image(ximage), buffer(xbuffer) {}
+	constexpr DedicatedAllocationMemoryAllocateInfoNV(Image ximage = {}, Buffer xbuffer = {}) : image(ximage), buffer(xbuffer) {}
 
 	const VkDedicatedAllocationMemoryAllocateInfoNV& vkHandle() const { return reinterpret_cast<const VkDedicatedAllocationMemoryAllocateInfoNV&>(*this); }
 	VkDedicatedAllocationMemoryAllocateInfoNV& vkHandle() { return reinterpret_cast<VkDedicatedAllocationMemoryAllocateInfoNV&>(*this); }
@@ -3344,7 +3345,7 @@ struct PhysicalDeviceTransformFeedbackFeaturesEXT {
 	Bool32 transformFeedback {};
 	Bool32 geometryStreams {};
 
-	PhysicalDeviceTransformFeedbackFeaturesEXT(Bool32 xtransformFeedback = {}, Bool32 xgeometryStreams = {}) : transformFeedback(xtransformFeedback), geometryStreams(xgeometryStreams) {}
+	constexpr PhysicalDeviceTransformFeedbackFeaturesEXT(Bool32 xtransformFeedback = {}, Bool32 xgeometryStreams = {}) : transformFeedback(xtransformFeedback), geometryStreams(xgeometryStreams) {}
 
 	const VkPhysicalDeviceTransformFeedbackFeaturesEXT& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceTransformFeedbackFeaturesEXT&>(*this); }
 	VkPhysicalDeviceTransformFeedbackFeaturesEXT& vkHandle() { return reinterpret_cast<VkPhysicalDeviceTransformFeedbackFeaturesEXT&>(*this); }
@@ -3380,7 +3381,7 @@ struct PipelineRasterizationStateStreamCreateInfoEXT {
 	PipelineRasterizationStateStreamCreateFlagsEXT flags {};
 	uint32_t rasterizationStream {};
 
-	PipelineRasterizationStateStreamCreateInfoEXT(PipelineRasterizationStateStreamCreateFlagsEXT xflags = {}, uint32_t xrasterizationStream = {}) : flags(xflags), rasterizationStream(xrasterizationStream) {}
+	constexpr PipelineRasterizationStateStreamCreateInfoEXT(PipelineRasterizationStateStreamCreateFlagsEXT xflags = {}, uint32_t xrasterizationStream = {}) : flags(xflags), rasterizationStream(xrasterizationStream) {}
 
 	const VkPipelineRasterizationStateStreamCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkPipelineRasterizationStateStreamCreateInfoEXT&>(*this); }
 	VkPipelineRasterizationStateStreamCreateInfoEXT& vkHandle() { return reinterpret_cast<VkPipelineRasterizationStateStreamCreateInfoEXT&>(*this); }
@@ -3434,15 +3435,15 @@ struct ShaderStatisticsInfoAMD {
 };
 
 
-#ifdef VK_USE_PLATFORM_GGP
 
+#ifdef VK_USE_PLATFORM_GGP
 struct StreamDescriptorSurfaceCreateInfoGGP {
 	StructureType sType {StructureType::streamDescriptorSurfaceCreateInfoGGP};
 	const void* pNext {};
 	StreamDescriptorSurfaceCreateFlagsGGP flags {};
 	GgpStreamDescriptor streamDescriptor {};
 
-	StreamDescriptorSurfaceCreateInfoGGP(StreamDescriptorSurfaceCreateFlagsGGP xflags = {}, GgpStreamDescriptor xstreamDescriptor = {}) : flags(xflags), streamDescriptor(xstreamDescriptor) {}
+	constexpr StreamDescriptorSurfaceCreateInfoGGP(StreamDescriptorSurfaceCreateFlagsGGP xflags = {}, GgpStreamDescriptor xstreamDescriptor = {}) : flags(xflags), streamDescriptor(xstreamDescriptor) {}
 
 	const VkStreamDescriptorSurfaceCreateInfoGGP& vkHandle() const { return reinterpret_cast<const VkStreamDescriptorSurfaceCreateInfoGGP&>(*this); }
 	VkStreamDescriptorSurfaceCreateInfoGGP& vkHandle() { return reinterpret_cast<VkStreamDescriptorSurfaceCreateInfoGGP&>(*this); }
@@ -3459,7 +3460,7 @@ struct PhysicalDeviceCornerSampledImageFeaturesNV {
 	void* pNext {};
 	Bool32 cornerSampledImage {};
 
-	PhysicalDeviceCornerSampledImageFeaturesNV(Bool32 xcornerSampledImage = {}) : cornerSampledImage(xcornerSampledImage) {}
+	constexpr PhysicalDeviceCornerSampledImageFeaturesNV(Bool32 xcornerSampledImage = {}) : cornerSampledImage(xcornerSampledImage) {}
 
 	const VkPhysicalDeviceCornerSampledImageFeaturesNV& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceCornerSampledImageFeaturesNV&>(*this); }
 	VkPhysicalDeviceCornerSampledImageFeaturesNV& vkHandle() { return reinterpret_cast<VkPhysicalDeviceCornerSampledImageFeaturesNV&>(*this); }
@@ -3488,7 +3489,7 @@ struct ExternalMemoryImageCreateInfoNV {
 	const void* pNext {};
 	ExternalMemoryHandleTypeFlagsNV handleTypes {};
 
-	ExternalMemoryImageCreateInfoNV(ExternalMemoryHandleTypeFlagsNV xhandleTypes = {}) : handleTypes(xhandleTypes) {}
+	constexpr ExternalMemoryImageCreateInfoNV(ExternalMemoryHandleTypeFlagsNV xhandleTypes = {}) : handleTypes(xhandleTypes) {}
 
 	const VkExternalMemoryImageCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkExternalMemoryImageCreateInfoNV&>(*this); }
 	VkExternalMemoryImageCreateInfoNV& vkHandle() { return reinterpret_cast<VkExternalMemoryImageCreateInfoNV&>(*this); }
@@ -3502,7 +3503,7 @@ struct ExportMemoryAllocateInfoNV {
 	const void* pNext {};
 	ExternalMemoryHandleTypeFlagsNV handleTypes {};
 
-	ExportMemoryAllocateInfoNV(ExternalMemoryHandleTypeFlagsNV xhandleTypes = {}) : handleTypes(xhandleTypes) {}
+	constexpr ExportMemoryAllocateInfoNV(ExternalMemoryHandleTypeFlagsNV xhandleTypes = {}) : handleTypes(xhandleTypes) {}
 
 	const VkExportMemoryAllocateInfoNV& vkHandle() const { return reinterpret_cast<const VkExportMemoryAllocateInfoNV&>(*this); }
 	VkExportMemoryAllocateInfoNV& vkHandle() { return reinterpret_cast<VkExportMemoryAllocateInfoNV&>(*this); }
@@ -3512,15 +3513,15 @@ struct ExportMemoryAllocateInfoNV {
 };
 
 
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 struct ImportMemoryWin32HandleInfoNV {
 	StructureType sType {StructureType::importMemoryWin32HandleInfoNV};
 	const void* pNext {};
 	ExternalMemoryHandleTypeFlagsNV handleType {};
 	HANDLE handle {};
 
-	ImportMemoryWin32HandleInfoNV(ExternalMemoryHandleTypeFlagsNV xhandleType = {}, HANDLE xhandle = {}) : handleType(xhandleType), handle(xhandle) {}
+	constexpr ImportMemoryWin32HandleInfoNV(ExternalMemoryHandleTypeFlagsNV xhandleType = {}, HANDLE xhandle = {}) : handleType(xhandleType), handle(xhandle) {}
 
 	const VkImportMemoryWin32HandleInfoNV& vkHandle() const { return reinterpret_cast<const VkImportMemoryWin32HandleInfoNV&>(*this); }
 	VkImportMemoryWin32HandleInfoNV& vkHandle() { return reinterpret_cast<VkImportMemoryWin32HandleInfoNV&>(*this); }
@@ -3535,7 +3536,7 @@ struct ExportMemoryWin32HandleInfoNV {
 	const SECURITY_ATTRIBUTES* pAttributes {};
 	DWORD dwAccess {};
 
-	ExportMemoryWin32HandleInfoNV(const SECURITY_ATTRIBUTES* xpAttributes = {}, DWORD xdwAccess = {}) : pAttributes(xpAttributes), dwAccess(xdwAccess) {}
+	constexpr ExportMemoryWin32HandleInfoNV(const SECURITY_ATTRIBUTES* xpAttributes = {}, DWORD xdwAccess = {}) : pAttributes(xpAttributes), dwAccess(xdwAccess) {}
 
 	const VkExportMemoryWin32HandleInfoNV& vkHandle() const { return reinterpret_cast<const VkExportMemoryWin32HandleInfoNV&>(*this); }
 	VkExportMemoryWin32HandleInfoNV& vkHandle() { return reinterpret_cast<VkExportMemoryWin32HandleInfoNV&>(*this); }
@@ -3547,8 +3548,8 @@ struct ExportMemoryWin32HandleInfoNV {
 
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 struct Win32KeyedMutexAcquireReleaseInfoNV {
 	StructureType sType {StructureType::win32KeyedMutexAcquireReleaseInfoNV};
 	const void* pNext {};
@@ -3560,7 +3561,7 @@ struct Win32KeyedMutexAcquireReleaseInfoNV {
 	const DeviceMemory* pReleaseSyncs {};
 	const uint64_t* pReleaseKeys {};
 
-	Win32KeyedMutexAcquireReleaseInfoNV(uint32_t xacquireCount = {}, const DeviceMemory* xpAcquireSyncs = {}, const uint64_t* xpAcquireKeys = {}, const uint32_t* xpAcquireTimeoutMilliseconds = {}, uint32_t xreleaseCount = {}, const DeviceMemory* xpReleaseSyncs = {}, const uint64_t* xpReleaseKeys = {}) : acquireCount(xacquireCount), pAcquireSyncs(xpAcquireSyncs), pAcquireKeys(xpAcquireKeys), pAcquireTimeoutMilliseconds(xpAcquireTimeoutMilliseconds), releaseCount(xreleaseCount), pReleaseSyncs(xpReleaseSyncs), pReleaseKeys(xpReleaseKeys) {}
+	constexpr Win32KeyedMutexAcquireReleaseInfoNV(uint32_t xacquireCount = {}, const DeviceMemory* xpAcquireSyncs = {}, const uint64_t* xpAcquireKeys = {}, const uint32_t* xpAcquireTimeoutMilliseconds = {}, uint32_t xreleaseCount = {}, const DeviceMemory* xpReleaseSyncs = {}, const uint64_t* xpReleaseKeys = {}) : acquireCount(xacquireCount), pAcquireSyncs(xpAcquireSyncs), pAcquireKeys(xpAcquireKeys), pAcquireTimeoutMilliseconds(xpAcquireTimeoutMilliseconds), releaseCount(xreleaseCount), pReleaseSyncs(xpReleaseSyncs), pReleaseKeys(xpReleaseKeys) {}
 
 	const VkWin32KeyedMutexAcquireReleaseInfoNV& vkHandle() const { return reinterpret_cast<const VkWin32KeyedMutexAcquireReleaseInfoNV&>(*this); }
 	VkWin32KeyedMutexAcquireReleaseInfoNV& vkHandle() { return reinterpret_cast<VkWin32KeyedMutexAcquireReleaseInfoNV&>(*this); }
@@ -3578,7 +3579,7 @@ struct ValidationFlagsEXT {
 	uint32_t disabledValidationCheckCount {};
 	const ValidationCheckEXT* pDisabledValidationChecks {};
 
-	ValidationFlagsEXT(uint32_t xdisabledValidationCheckCount = {}, const ValidationCheckEXT* xpDisabledValidationChecks = {}) : disabledValidationCheckCount(xdisabledValidationCheckCount), pDisabledValidationChecks(xpDisabledValidationChecks) {}
+	constexpr ValidationFlagsEXT(uint32_t xdisabledValidationCheckCount = {}, const ValidationCheckEXT* xpDisabledValidationChecks = {}) : disabledValidationCheckCount(xdisabledValidationCheckCount), pDisabledValidationChecks(xpDisabledValidationChecks) {}
 
 	const VkValidationFlagsEXT& vkHandle() const { return reinterpret_cast<const VkValidationFlagsEXT&>(*this); }
 	VkValidationFlagsEXT& vkHandle() { return reinterpret_cast<VkValidationFlagsEXT&>(*this); }
@@ -3588,15 +3589,15 @@ struct ValidationFlagsEXT {
 };
 
 
-#ifdef VK_USE_PLATFORM_VI_NN
 
+#ifdef VK_USE_PLATFORM_VI_NN
 struct ViSurfaceCreateInfoNN {
 	StructureType sType {StructureType::viSurfaceCreateInfoNN};
 	const void* pNext {};
 	ViSurfaceCreateFlagsNN flags {};
 	void* window {};
 
-	ViSurfaceCreateInfoNN(ViSurfaceCreateFlagsNN xflags = {}, void* xwindow = {}) : flags(xflags), window(xwindow) {}
+	constexpr ViSurfaceCreateInfoNN(ViSurfaceCreateFlagsNN xflags = {}, void* xwindow = {}) : flags(xflags), window(xwindow) {}
 
 	const VkViSurfaceCreateInfoNN& vkHandle() const { return reinterpret_cast<const VkViSurfaceCreateInfoNN&>(*this); }
 	VkViSurfaceCreateInfoNN& vkHandle() { return reinterpret_cast<VkViSurfaceCreateInfoNN&>(*this); }
@@ -3613,7 +3614,7 @@ struct ImageViewASTCDecodeModeEXT {
 	const void* pNext {};
 	Format decodeMode {};
 
-	ImageViewASTCDecodeModeEXT(Format xdecodeMode = {}) : decodeMode(xdecodeMode) {}
+	constexpr ImageViewASTCDecodeModeEXT(Format xdecodeMode = {}) : decodeMode(xdecodeMode) {}
 
 	const VkImageViewASTCDecodeModeEXT& vkHandle() const { return reinterpret_cast<const VkImageViewASTCDecodeModeEXT&>(*this); }
 	VkImageViewASTCDecodeModeEXT& vkHandle() { return reinterpret_cast<VkImageViewASTCDecodeModeEXT&>(*this); }
@@ -3627,7 +3628,7 @@ struct PhysicalDeviceASTCDecodeFeaturesEXT {
 	void* pNext {};
 	Bool32 decodeModeSharedExponent {};
 
-	PhysicalDeviceASTCDecodeFeaturesEXT(Bool32 xdecodeModeSharedExponent = {}) : decodeModeSharedExponent(xdecodeModeSharedExponent) {}
+	constexpr PhysicalDeviceASTCDecodeFeaturesEXT(Bool32 xdecodeModeSharedExponent = {}) : decodeModeSharedExponent(xdecodeModeSharedExponent) {}
 
 	const VkPhysicalDeviceASTCDecodeFeaturesEXT& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceASTCDecodeFeaturesEXT&>(*this); }
 	VkPhysicalDeviceASTCDecodeFeaturesEXT& vkHandle() { return reinterpret_cast<VkPhysicalDeviceASTCDecodeFeaturesEXT&>(*this); }
@@ -3637,8 +3638,8 @@ struct PhysicalDeviceASTCDecodeFeaturesEXT {
 };
 
 
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 struct ImportMemoryWin32HandleInfoKHR {
 	StructureType sType {StructureType::importMemoryWin32HandleInfoKHR};
 	const void* pNext {};
@@ -3646,7 +3647,7 @@ struct ImportMemoryWin32HandleInfoKHR {
 	HANDLE handle {};
 	LPCWSTR name {};
 
-	ImportMemoryWin32HandleInfoKHR(ExternalMemoryHandleTypeBits xhandleType = {}, HANDLE xhandle = {}, LPCWSTR xname = {}) : handleType(xhandleType), handle(xhandle), name(xname) {}
+	constexpr ImportMemoryWin32HandleInfoKHR(ExternalMemoryHandleTypeBits xhandleType = {}, HANDLE xhandle = {}, LPCWSTR xname = {}) : handleType(xhandleType), handle(xhandle), name(xname) {}
 
 	const VkImportMemoryWin32HandleInfoKHR& vkHandle() const { return reinterpret_cast<const VkImportMemoryWin32HandleInfoKHR&>(*this); }
 	VkImportMemoryWin32HandleInfoKHR& vkHandle() { return reinterpret_cast<VkImportMemoryWin32HandleInfoKHR&>(*this); }
@@ -3662,7 +3663,7 @@ struct ExportMemoryWin32HandleInfoKHR {
 	DWORD dwAccess {};
 	LPCWSTR name {};
 
-	ExportMemoryWin32HandleInfoKHR(const SECURITY_ATTRIBUTES* xpAttributes = {}, DWORD xdwAccess = {}, LPCWSTR xname = {}) : pAttributes(xpAttributes), dwAccess(xdwAccess), name(xname) {}
+	constexpr ExportMemoryWin32HandleInfoKHR(const SECURITY_ATTRIBUTES* xpAttributes = {}, DWORD xdwAccess = {}, LPCWSTR xname = {}) : pAttributes(xpAttributes), dwAccess(xdwAccess), name(xname) {}
 
 	const VkExportMemoryWin32HandleInfoKHR& vkHandle() const { return reinterpret_cast<const VkExportMemoryWin32HandleInfoKHR&>(*this); }
 	VkExportMemoryWin32HandleInfoKHR& vkHandle() { return reinterpret_cast<VkExportMemoryWin32HandleInfoKHR&>(*this); }
@@ -3689,7 +3690,7 @@ struct MemoryGetWin32HandleInfoKHR {
 	DeviceMemory memory {};
 	ExternalMemoryHandleTypeBits handleType {};
 
-	MemoryGetWin32HandleInfoKHR(DeviceMemory xmemory = {}, ExternalMemoryHandleTypeBits xhandleType = {}) : memory(xmemory), handleType(xhandleType) {}
+	constexpr MemoryGetWin32HandleInfoKHR(DeviceMemory xmemory = {}, ExternalMemoryHandleTypeBits xhandleType = {}) : memory(xmemory), handleType(xhandleType) {}
 
 	const VkMemoryGetWin32HandleInfoKHR& vkHandle() const { return reinterpret_cast<const VkMemoryGetWin32HandleInfoKHR&>(*this); }
 	VkMemoryGetWin32HandleInfoKHR& vkHandle() { return reinterpret_cast<VkMemoryGetWin32HandleInfoKHR&>(*this); }
@@ -3707,7 +3708,7 @@ struct ImportMemoryFdInfoKHR {
 	ExternalMemoryHandleTypeBits handleType {};
 	int fd {};
 
-	ImportMemoryFdInfoKHR(ExternalMemoryHandleTypeBits xhandleType = {}, int xfd = {}) : handleType(xhandleType), fd(xfd) {}
+	constexpr ImportMemoryFdInfoKHR(ExternalMemoryHandleTypeBits xhandleType = {}, int xfd = {}) : handleType(xhandleType), fd(xfd) {}
 
 	const VkImportMemoryFdInfoKHR& vkHandle() const { return reinterpret_cast<const VkImportMemoryFdInfoKHR&>(*this); }
 	VkImportMemoryFdInfoKHR& vkHandle() { return reinterpret_cast<VkImportMemoryFdInfoKHR&>(*this); }
@@ -3734,7 +3735,7 @@ struct MemoryGetFdInfoKHR {
 	DeviceMemory memory {};
 	ExternalMemoryHandleTypeBits handleType {};
 
-	MemoryGetFdInfoKHR(DeviceMemory xmemory = {}, ExternalMemoryHandleTypeBits xhandleType = {}) : memory(xmemory), handleType(xhandleType) {}
+	constexpr MemoryGetFdInfoKHR(DeviceMemory xmemory = {}, ExternalMemoryHandleTypeBits xhandleType = {}) : memory(xmemory), handleType(xhandleType) {}
 
 	const VkMemoryGetFdInfoKHR& vkHandle() const { return reinterpret_cast<const VkMemoryGetFdInfoKHR&>(*this); }
 	VkMemoryGetFdInfoKHR& vkHandle() { return reinterpret_cast<VkMemoryGetFdInfoKHR&>(*this); }
@@ -3744,8 +3745,8 @@ struct MemoryGetFdInfoKHR {
 };
 
 
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 struct Win32KeyedMutexAcquireReleaseInfoKHR {
 	StructureType sType {StructureType::win32KeyedMutexAcquireReleaseInfoKHR};
 	const void* pNext {};
@@ -3757,7 +3758,7 @@ struct Win32KeyedMutexAcquireReleaseInfoKHR {
 	const DeviceMemory* pReleaseSyncs {};
 	const uint64_t* pReleaseKeys {};
 
-	Win32KeyedMutexAcquireReleaseInfoKHR(uint32_t xacquireCount = {}, const DeviceMemory* xpAcquireSyncs = {}, const uint64_t* xpAcquireKeys = {}, const uint32_t* xpAcquireTimeouts = {}, uint32_t xreleaseCount = {}, const DeviceMemory* xpReleaseSyncs = {}, const uint64_t* xpReleaseKeys = {}) : acquireCount(xacquireCount), pAcquireSyncs(xpAcquireSyncs), pAcquireKeys(xpAcquireKeys), pAcquireTimeouts(xpAcquireTimeouts), releaseCount(xreleaseCount), pReleaseSyncs(xpReleaseSyncs), pReleaseKeys(xpReleaseKeys) {}
+	constexpr Win32KeyedMutexAcquireReleaseInfoKHR(uint32_t xacquireCount = {}, const DeviceMemory* xpAcquireSyncs = {}, const uint64_t* xpAcquireKeys = {}, const uint32_t* xpAcquireTimeouts = {}, uint32_t xreleaseCount = {}, const DeviceMemory* xpReleaseSyncs = {}, const uint64_t* xpReleaseKeys = {}) : acquireCount(xacquireCount), pAcquireSyncs(xpAcquireSyncs), pAcquireKeys(xpAcquireKeys), pAcquireTimeouts(xpAcquireTimeouts), releaseCount(xreleaseCount), pReleaseSyncs(xpReleaseSyncs), pReleaseKeys(xpReleaseKeys) {}
 
 	const VkWin32KeyedMutexAcquireReleaseInfoKHR& vkHandle() const { return reinterpret_cast<const VkWin32KeyedMutexAcquireReleaseInfoKHR&>(*this); }
 	VkWin32KeyedMutexAcquireReleaseInfoKHR& vkHandle() { return reinterpret_cast<VkWin32KeyedMutexAcquireReleaseInfoKHR&>(*this); }
@@ -3769,8 +3770,8 @@ struct Win32KeyedMutexAcquireReleaseInfoKHR {
 
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 struct ImportSemaphoreWin32HandleInfoKHR {
 	StructureType sType {StructureType::importSemaphoreWin32HandleInfoKHR};
 	const void* pNext {};
@@ -3780,7 +3781,7 @@ struct ImportSemaphoreWin32HandleInfoKHR {
 	HANDLE handle {};
 	LPCWSTR name {};
 
-	ImportSemaphoreWin32HandleInfoKHR(Semaphore xsemaphore = {}, SemaphoreImportFlags xflags = {}, ExternalSemaphoreHandleTypeBits xhandleType = {}, HANDLE xhandle = {}, LPCWSTR xname = {}) : semaphore(xsemaphore), flags(xflags), handleType(xhandleType), handle(xhandle), name(xname) {}
+	constexpr ImportSemaphoreWin32HandleInfoKHR(Semaphore xsemaphore = {}, SemaphoreImportFlags xflags = {}, ExternalSemaphoreHandleTypeBits xhandleType = {}, HANDLE xhandle = {}, LPCWSTR xname = {}) : semaphore(xsemaphore), flags(xflags), handleType(xhandleType), handle(xhandle), name(xname) {}
 
 	const VkImportSemaphoreWin32HandleInfoKHR& vkHandle() const { return reinterpret_cast<const VkImportSemaphoreWin32HandleInfoKHR&>(*this); }
 	VkImportSemaphoreWin32HandleInfoKHR& vkHandle() { return reinterpret_cast<VkImportSemaphoreWin32HandleInfoKHR&>(*this); }
@@ -3796,7 +3797,7 @@ struct ExportSemaphoreWin32HandleInfoKHR {
 	DWORD dwAccess {};
 	LPCWSTR name {};
 
-	ExportSemaphoreWin32HandleInfoKHR(const SECURITY_ATTRIBUTES* xpAttributes = {}, DWORD xdwAccess = {}, LPCWSTR xname = {}) : pAttributes(xpAttributes), dwAccess(xdwAccess), name(xname) {}
+	constexpr ExportSemaphoreWin32HandleInfoKHR(const SECURITY_ATTRIBUTES* xpAttributes = {}, DWORD xdwAccess = {}, LPCWSTR xname = {}) : pAttributes(xpAttributes), dwAccess(xdwAccess), name(xname) {}
 
 	const VkExportSemaphoreWin32HandleInfoKHR& vkHandle() const { return reinterpret_cast<const VkExportSemaphoreWin32HandleInfoKHR&>(*this); }
 	VkExportSemaphoreWin32HandleInfoKHR& vkHandle() { return reinterpret_cast<VkExportSemaphoreWin32HandleInfoKHR&>(*this); }
@@ -3813,7 +3814,7 @@ struct D3D12FenceSubmitInfoKHR {
 	uint32_t signalSemaphoreValuesCount {};
 	const uint64_t* pSignalSemaphoreValues {};
 
-	D3D12FenceSubmitInfoKHR(uint32_t xwaitSemaphoreValuesCount = {}, const uint64_t* xpWaitSemaphoreValues = {}, uint32_t xsignalSemaphoreValuesCount = {}, const uint64_t* xpSignalSemaphoreValues = {}) : waitSemaphoreValuesCount(xwaitSemaphoreValuesCount), pWaitSemaphoreValues(xpWaitSemaphoreValues), signalSemaphoreValuesCount(xsignalSemaphoreValuesCount), pSignalSemaphoreValues(xpSignalSemaphoreValues) {}
+	constexpr D3D12FenceSubmitInfoKHR(uint32_t xwaitSemaphoreValuesCount = {}, const uint64_t* xpWaitSemaphoreValues = {}, uint32_t xsignalSemaphoreValuesCount = {}, const uint64_t* xpSignalSemaphoreValues = {}) : waitSemaphoreValuesCount(xwaitSemaphoreValuesCount), pWaitSemaphoreValues(xpWaitSemaphoreValues), signalSemaphoreValuesCount(xsignalSemaphoreValuesCount), pSignalSemaphoreValues(xpSignalSemaphoreValues) {}
 
 	const VkD3D12FenceSubmitInfoKHR& vkHandle() const { return reinterpret_cast<const VkD3D12FenceSubmitInfoKHR&>(*this); }
 	VkD3D12FenceSubmitInfoKHR& vkHandle() { return reinterpret_cast<VkD3D12FenceSubmitInfoKHR&>(*this); }
@@ -3828,7 +3829,7 @@ struct SemaphoreGetWin32HandleInfoKHR {
 	Semaphore semaphore {};
 	ExternalSemaphoreHandleTypeBits handleType {};
 
-	SemaphoreGetWin32HandleInfoKHR(Semaphore xsemaphore = {}, ExternalSemaphoreHandleTypeBits xhandleType = {}) : semaphore(xsemaphore), handleType(xhandleType) {}
+	constexpr SemaphoreGetWin32HandleInfoKHR(Semaphore xsemaphore = {}, ExternalSemaphoreHandleTypeBits xhandleType = {}) : semaphore(xsemaphore), handleType(xhandleType) {}
 
 	const VkSemaphoreGetWin32HandleInfoKHR& vkHandle() const { return reinterpret_cast<const VkSemaphoreGetWin32HandleInfoKHR&>(*this); }
 	VkSemaphoreGetWin32HandleInfoKHR& vkHandle() { return reinterpret_cast<VkSemaphoreGetWin32HandleInfoKHR&>(*this); }
@@ -3848,7 +3849,7 @@ struct ImportSemaphoreFdInfoKHR {
 	ExternalSemaphoreHandleTypeBits handleType {};
 	int fd {};
 
-	ImportSemaphoreFdInfoKHR(Semaphore xsemaphore = {}, SemaphoreImportFlags xflags = {}, ExternalSemaphoreHandleTypeBits xhandleType = {}, int xfd = {}) : semaphore(xsemaphore), flags(xflags), handleType(xhandleType), fd(xfd) {}
+	constexpr ImportSemaphoreFdInfoKHR(Semaphore xsemaphore = {}, SemaphoreImportFlags xflags = {}, ExternalSemaphoreHandleTypeBits xhandleType = {}, int xfd = {}) : semaphore(xsemaphore), flags(xflags), handleType(xhandleType), fd(xfd) {}
 
 	const VkImportSemaphoreFdInfoKHR& vkHandle() const { return reinterpret_cast<const VkImportSemaphoreFdInfoKHR&>(*this); }
 	VkImportSemaphoreFdInfoKHR& vkHandle() { return reinterpret_cast<VkImportSemaphoreFdInfoKHR&>(*this); }
@@ -3863,7 +3864,7 @@ struct SemaphoreGetFdInfoKHR {
 	Semaphore semaphore {};
 	ExternalSemaphoreHandleTypeBits handleType {};
 
-	SemaphoreGetFdInfoKHR(Semaphore xsemaphore = {}, ExternalSemaphoreHandleTypeBits xhandleType = {}) : semaphore(xsemaphore), handleType(xhandleType) {}
+	constexpr SemaphoreGetFdInfoKHR(Semaphore xsemaphore = {}, ExternalSemaphoreHandleTypeBits xhandleType = {}) : semaphore(xsemaphore), handleType(xhandleType) {}
 
 	const VkSemaphoreGetFdInfoKHR& vkHandle() const { return reinterpret_cast<const VkSemaphoreGetFdInfoKHR&>(*this); }
 	VkSemaphoreGetFdInfoKHR& vkHandle() { return reinterpret_cast<VkSemaphoreGetFdInfoKHR&>(*this); }
@@ -3893,7 +3894,7 @@ struct ConditionalRenderingBeginInfoEXT {
 	DeviceSize offset {};
 	ConditionalRenderingFlagsEXT flags {};
 
-	ConditionalRenderingBeginInfoEXT(Buffer xbuffer = {}, DeviceSize xoffset = {}, ConditionalRenderingFlagsEXT xflags = {}) : buffer(xbuffer), offset(xoffset), flags(xflags) {}
+	constexpr ConditionalRenderingBeginInfoEXT(Buffer xbuffer = {}, DeviceSize xoffset = {}, ConditionalRenderingFlagsEXT xflags = {}) : buffer(xbuffer), offset(xoffset), flags(xflags) {}
 
 	const VkConditionalRenderingBeginInfoEXT& vkHandle() const { return reinterpret_cast<const VkConditionalRenderingBeginInfoEXT&>(*this); }
 	VkConditionalRenderingBeginInfoEXT& vkHandle() { return reinterpret_cast<VkConditionalRenderingBeginInfoEXT&>(*this); }
@@ -3908,7 +3909,7 @@ struct PhysicalDeviceConditionalRenderingFeaturesEXT {
 	Bool32 conditionalRendering {};
 	Bool32 inheritedConditionalRendering {};
 
-	PhysicalDeviceConditionalRenderingFeaturesEXT(Bool32 xconditionalRendering = {}, Bool32 xinheritedConditionalRendering = {}) : conditionalRendering(xconditionalRendering), inheritedConditionalRendering(xinheritedConditionalRendering) {}
+	constexpr PhysicalDeviceConditionalRenderingFeaturesEXT(Bool32 xconditionalRendering = {}, Bool32 xinheritedConditionalRendering = {}) : conditionalRendering(xconditionalRendering), inheritedConditionalRendering(xinheritedConditionalRendering) {}
 
 	const VkPhysicalDeviceConditionalRenderingFeaturesEXT& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceConditionalRenderingFeaturesEXT&>(*this); }
 	VkPhysicalDeviceConditionalRenderingFeaturesEXT& vkHandle() { return reinterpret_cast<VkPhysicalDeviceConditionalRenderingFeaturesEXT&>(*this); }
@@ -3922,7 +3923,7 @@ struct CommandBufferInheritanceConditionalRenderingInfoEXT {
 	const void* pNext {};
 	Bool32 conditionalRenderingEnable {};
 
-	CommandBufferInheritanceConditionalRenderingInfoEXT(Bool32 xconditionalRenderingEnable = {}) : conditionalRenderingEnable(xconditionalRenderingEnable) {}
+	constexpr CommandBufferInheritanceConditionalRenderingInfoEXT(Bool32 xconditionalRenderingEnable = {}) : conditionalRenderingEnable(xconditionalRenderingEnable) {}
 
 	const VkCommandBufferInheritanceConditionalRenderingInfoEXT& vkHandle() const { return reinterpret_cast<const VkCommandBufferInheritanceConditionalRenderingInfoEXT&>(*this); }
 	VkCommandBufferInheritanceConditionalRenderingInfoEXT& vkHandle() { return reinterpret_cast<VkCommandBufferInheritanceConditionalRenderingInfoEXT&>(*this); }
@@ -3938,7 +3939,7 @@ struct PhysicalDeviceFloat16Int8FeaturesKHR {
 	Bool32 shaderFloat16 {};
 	Bool32 shaderInt8 {};
 
-	PhysicalDeviceFloat16Int8FeaturesKHR(Bool32 xshaderFloat16 = {}, Bool32 xshaderInt8 = {}) : shaderFloat16(xshaderFloat16), shaderInt8(xshaderInt8) {}
+	constexpr PhysicalDeviceFloat16Int8FeaturesKHR(Bool32 xshaderFloat16 = {}, Bool32 xshaderInt8 = {}) : shaderFloat16(xshaderFloat16), shaderInt8(xshaderInt8) {}
 
 	const VkPhysicalDeviceFloat16Int8FeaturesKHR& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceFloat16Int8FeaturesKHR&>(*this); }
 	VkPhysicalDeviceFloat16Int8FeaturesKHR& vkHandle() { return reinterpret_cast<VkPhysicalDeviceFloat16Int8FeaturesKHR&>(*this); }
@@ -3977,7 +3978,7 @@ struct PresentRegionsKHR {
 	uint32_t swapchainCount {};
 	const PresentRegionKHR* pRegions {};
 
-	PresentRegionsKHR(uint32_t xswapchainCount = {}, const PresentRegionKHR* xpRegions = {}) : swapchainCount(xswapchainCount), pRegions(xpRegions) {}
+	constexpr PresentRegionsKHR(uint32_t xswapchainCount = {}, const PresentRegionKHR* xpRegions = {}) : swapchainCount(xswapchainCount), pRegions(xpRegions) {}
 
 	const VkPresentRegionsKHR& vkHandle() const { return reinterpret_cast<const VkPresentRegionsKHR&>(*this); }
 	VkPresentRegionsKHR& vkHandle() { return reinterpret_cast<VkPresentRegionsKHR&>(*this); }
@@ -4005,7 +4006,7 @@ struct PipelineViewportWScalingStateCreateInfoNV {
 	uint32_t viewportCount {};
 	const ViewportWScalingNV* pViewportWScalings {};
 
-	PipelineViewportWScalingStateCreateInfoNV(Bool32 xviewportWScalingEnable = {}, uint32_t xviewportCount = {}, const ViewportWScalingNV* xpViewportWScalings = {}) : viewportWScalingEnable(xviewportWScalingEnable), viewportCount(xviewportCount), pViewportWScalings(xpViewportWScalings) {}
+	constexpr PipelineViewportWScalingStateCreateInfoNV(Bool32 xviewportWScalingEnable = {}, uint32_t xviewportCount = {}, const ViewportWScalingNV* xpViewportWScalings = {}) : viewportWScalingEnable(xviewportWScalingEnable), viewportCount(xviewportCount), pViewportWScalings(xpViewportWScalings) {}
 
 	const VkPipelineViewportWScalingStateCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkPipelineViewportWScalingStateCreateInfoNV&>(*this); }
 	VkPipelineViewportWScalingStateCreateInfoNV& vkHandle() { return reinterpret_cast<VkPipelineViewportWScalingStateCreateInfoNV&>(*this); }
@@ -4043,7 +4044,7 @@ struct DisplayPowerInfoEXT {
 	const void* pNext {};
 	DisplayPowerStateEXT powerState {};
 
-	DisplayPowerInfoEXT(DisplayPowerStateEXT xpowerState = {}) : powerState(xpowerState) {}
+	constexpr DisplayPowerInfoEXT(DisplayPowerStateEXT xpowerState = {}) : powerState(xpowerState) {}
 
 	const VkDisplayPowerInfoEXT& vkHandle() const { return reinterpret_cast<const VkDisplayPowerInfoEXT&>(*this); }
 	VkDisplayPowerInfoEXT& vkHandle() { return reinterpret_cast<VkDisplayPowerInfoEXT&>(*this); }
@@ -4057,7 +4058,7 @@ struct DeviceEventInfoEXT {
 	const void* pNext {};
 	DeviceEventTypeEXT deviceEvent {};
 
-	DeviceEventInfoEXT(DeviceEventTypeEXT xdeviceEvent = {}) : deviceEvent(xdeviceEvent) {}
+	constexpr DeviceEventInfoEXT(DeviceEventTypeEXT xdeviceEvent = {}) : deviceEvent(xdeviceEvent) {}
 
 	const VkDeviceEventInfoEXT& vkHandle() const { return reinterpret_cast<const VkDeviceEventInfoEXT&>(*this); }
 	VkDeviceEventInfoEXT& vkHandle() { return reinterpret_cast<VkDeviceEventInfoEXT&>(*this); }
@@ -4071,7 +4072,7 @@ struct DisplayEventInfoEXT {
 	const void* pNext {};
 	DisplayEventTypeEXT displayEvent {};
 
-	DisplayEventInfoEXT(DisplayEventTypeEXT xdisplayEvent = {}) : displayEvent(xdisplayEvent) {}
+	constexpr DisplayEventInfoEXT(DisplayEventTypeEXT xdisplayEvent = {}) : displayEvent(xdisplayEvent) {}
 
 	const VkDisplayEventInfoEXT& vkHandle() const { return reinterpret_cast<const VkDisplayEventInfoEXT&>(*this); }
 	VkDisplayEventInfoEXT& vkHandle() { return reinterpret_cast<VkDisplayEventInfoEXT&>(*this); }
@@ -4085,7 +4086,7 @@ struct SwapchainCounterCreateInfoEXT {
 	const void* pNext {};
 	SurfaceCounterFlagsEXT surfaceCounters {};
 
-	SwapchainCounterCreateInfoEXT(SurfaceCounterFlagsEXT xsurfaceCounters = {}) : surfaceCounters(xsurfaceCounters) {}
+	constexpr SwapchainCounterCreateInfoEXT(SurfaceCounterFlagsEXT xsurfaceCounters = {}) : surfaceCounters(xsurfaceCounters) {}
 
 	const VkSwapchainCounterCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkSwapchainCounterCreateInfoEXT&>(*this); }
 	VkSwapchainCounterCreateInfoEXT& vkHandle() { return reinterpret_cast<VkSwapchainCounterCreateInfoEXT&>(*this); }
@@ -4136,7 +4137,7 @@ struct PresentTimesInfoGOOGLE {
 	uint32_t swapchainCount {};
 	const PresentTimeGOOGLE* pTimes {};
 
-	PresentTimesInfoGOOGLE(uint32_t xswapchainCount = {}, const PresentTimeGOOGLE* xpTimes = {}) : swapchainCount(xswapchainCount), pTimes(xpTimes) {}
+	constexpr PresentTimesInfoGOOGLE(uint32_t xswapchainCount = {}, const PresentTimeGOOGLE* xpTimes = {}) : swapchainCount(xswapchainCount), pTimes(xpTimes) {}
 
 	const VkPresentTimesInfoGOOGLE& vkHandle() const { return reinterpret_cast<const VkPresentTimesInfoGOOGLE&>(*this); }
 	VkPresentTimesInfoGOOGLE& vkHandle() { return reinterpret_cast<VkPresentTimesInfoGOOGLE&>(*this); }
@@ -4166,7 +4167,7 @@ struct PipelineViewportSwizzleStateCreateInfoNV {
 	uint32_t viewportCount {};
 	const ViewportSwizzleNV* pViewportSwizzles {};
 
-	PipelineViewportSwizzleStateCreateInfoNV(PipelineViewportSwizzleStateCreateFlagsNV xflags = {}, uint32_t xviewportCount = {}, const ViewportSwizzleNV* xpViewportSwizzles = {}) : flags(xflags), viewportCount(xviewportCount), pViewportSwizzles(xpViewportSwizzles) {}
+	constexpr PipelineViewportSwizzleStateCreateInfoNV(PipelineViewportSwizzleStateCreateFlagsNV xflags = {}, uint32_t xviewportCount = {}, const ViewportSwizzleNV* xpViewportSwizzles = {}) : flags(xflags), viewportCount(xviewportCount), pViewportSwizzles(xpViewportSwizzles) {}
 
 	const VkPipelineViewportSwizzleStateCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkPipelineViewportSwizzleStateCreateInfoNV&>(*this); }
 	VkPipelineViewportSwizzleStateCreateInfoNV& vkHandle() { return reinterpret_cast<VkPipelineViewportSwizzleStateCreateInfoNV&>(*this); }
@@ -4196,7 +4197,7 @@ struct PipelineDiscardRectangleStateCreateInfoEXT {
 	uint32_t discardRectangleCount {};
 	const Rect2D* pDiscardRectangles {};
 
-	PipelineDiscardRectangleStateCreateInfoEXT(PipelineDiscardRectangleStateCreateFlagsEXT xflags = {}, DiscardRectangleModeEXT xdiscardRectangleMode = {}, uint32_t xdiscardRectangleCount = {}, const Rect2D* xpDiscardRectangles = {}) : flags(xflags), discardRectangleMode(xdiscardRectangleMode), discardRectangleCount(xdiscardRectangleCount), pDiscardRectangles(xpDiscardRectangles) {}
+	constexpr PipelineDiscardRectangleStateCreateInfoEXT(PipelineDiscardRectangleStateCreateFlagsEXT xflags = {}, DiscardRectangleModeEXT xdiscardRectangleMode = {}, uint32_t xdiscardRectangleCount = {}, const Rect2D* xpDiscardRectangles = {}) : flags(xflags), discardRectangleMode(xdiscardRectangleMode), discardRectangleCount(xdiscardRectangleCount), pDiscardRectangles(xpDiscardRectangles) {}
 
 	const VkPipelineDiscardRectangleStateCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkPipelineDiscardRectangleStateCreateInfoEXT&>(*this); }
 	VkPipelineDiscardRectangleStateCreateInfoEXT& vkHandle() { return reinterpret_cast<VkPipelineDiscardRectangleStateCreateInfoEXT&>(*this); }
@@ -4233,7 +4234,7 @@ struct PipelineRasterizationConservativeStateCreateInfoEXT {
 	ConservativeRasterizationModeEXT conservativeRasterizationMode {};
 	float extraPrimitiveOverestimationSize {};
 
-	PipelineRasterizationConservativeStateCreateInfoEXT(PipelineRasterizationConservativeStateCreateFlagsEXT xflags = {}, ConservativeRasterizationModeEXT xconservativeRasterizationMode = {}, float xextraPrimitiveOverestimationSize = {}) : flags(xflags), conservativeRasterizationMode(xconservativeRasterizationMode), extraPrimitiveOverestimationSize(xextraPrimitiveOverestimationSize) {}
+	constexpr PipelineRasterizationConservativeStateCreateInfoEXT(PipelineRasterizationConservativeStateCreateFlagsEXT xflags = {}, ConservativeRasterizationModeEXT xconservativeRasterizationMode = {}, float xextraPrimitiveOverestimationSize = {}) : flags(xflags), conservativeRasterizationMode(xconservativeRasterizationMode), extraPrimitiveOverestimationSize(xextraPrimitiveOverestimationSize) {}
 
 	const VkPipelineRasterizationConservativeStateCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkPipelineRasterizationConservativeStateCreateInfoEXT&>(*this); }
 	VkPipelineRasterizationConservativeStateCreateInfoEXT& vkHandle() { return reinterpret_cast<VkPipelineRasterizationConservativeStateCreateInfoEXT&>(*this); }
@@ -4248,7 +4249,7 @@ struct PhysicalDeviceDepthClipEnableFeaturesEXT {
 	void* pNext {};
 	Bool32 depthClipEnable {};
 
-	PhysicalDeviceDepthClipEnableFeaturesEXT(Bool32 xdepthClipEnable = {}) : depthClipEnable(xdepthClipEnable) {}
+	constexpr PhysicalDeviceDepthClipEnableFeaturesEXT(Bool32 xdepthClipEnable = {}) : depthClipEnable(xdepthClipEnable) {}
 
 	const VkPhysicalDeviceDepthClipEnableFeaturesEXT& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceDepthClipEnableFeaturesEXT&>(*this); }
 	VkPhysicalDeviceDepthClipEnableFeaturesEXT& vkHandle() { return reinterpret_cast<VkPhysicalDeviceDepthClipEnableFeaturesEXT&>(*this); }
@@ -4263,7 +4264,7 @@ struct PipelineRasterizationDepthClipStateCreateInfoEXT {
 	PipelineRasterizationDepthClipStateCreateFlagsEXT flags {};
 	Bool32 depthClipEnable {};
 
-	PipelineRasterizationDepthClipStateCreateInfoEXT(PipelineRasterizationDepthClipStateCreateFlagsEXT xflags = {}, Bool32 xdepthClipEnable = {}) : flags(xflags), depthClipEnable(xdepthClipEnable) {}
+	constexpr PipelineRasterizationDepthClipStateCreateInfoEXT(PipelineRasterizationDepthClipStateCreateFlagsEXT xflags = {}, Bool32 xdepthClipEnable = {}) : flags(xflags), depthClipEnable(xdepthClipEnable) {}
 
 	const VkPipelineRasterizationDepthClipStateCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkPipelineRasterizationDepthClipStateCreateInfoEXT&>(*this); }
 	VkPipelineRasterizationDepthClipStateCreateInfoEXT& vkHandle() { return reinterpret_cast<VkPipelineRasterizationDepthClipStateCreateInfoEXT&>(*this); }
@@ -4296,7 +4297,7 @@ struct HdrMetadataEXT {
 	float maxContentLightLevel {};
 	float maxFrameAverageLightLevel {};
 
-	HdrMetadataEXT(XYColorEXT xdisplayPrimaryRed = {}, XYColorEXT xdisplayPrimaryGreen = {}, XYColorEXT xdisplayPrimaryBlue = {}, XYColorEXT xwhitePoint = {}, float xmaxLuminance = {}, float xminLuminance = {}, float xmaxContentLightLevel = {}, float xmaxFrameAverageLightLevel = {}) : displayPrimaryRed(xdisplayPrimaryRed), displayPrimaryGreen(xdisplayPrimaryGreen), displayPrimaryBlue(xdisplayPrimaryBlue), whitePoint(xwhitePoint), maxLuminance(xmaxLuminance), minLuminance(xminLuminance), maxContentLightLevel(xmaxContentLightLevel), maxFrameAverageLightLevel(xmaxFrameAverageLightLevel) {}
+	constexpr HdrMetadataEXT(XYColorEXT xdisplayPrimaryRed = {}, XYColorEXT xdisplayPrimaryGreen = {}, XYColorEXT xdisplayPrimaryBlue = {}, XYColorEXT xwhitePoint = {}, float xmaxLuminance = {}, float xminLuminance = {}, float xmaxContentLightLevel = {}, float xmaxFrameAverageLightLevel = {}) : displayPrimaryRed(xdisplayPrimaryRed), displayPrimaryGreen(xdisplayPrimaryGreen), displayPrimaryBlue(xdisplayPrimaryBlue), whitePoint(xwhitePoint), maxLuminance(xmaxLuminance), minLuminance(xminLuminance), maxContentLightLevel(xmaxContentLightLevel), maxFrameAverageLightLevel(xmaxFrameAverageLightLevel) {}
 
 	const VkHdrMetadataEXT& vkHandle() const { return reinterpret_cast<const VkHdrMetadataEXT&>(*this); }
 	VkHdrMetadataEXT& vkHandle() { return reinterpret_cast<VkHdrMetadataEXT&>(*this); }
@@ -4319,7 +4320,7 @@ struct AttachmentDescription2KHR {
 	ImageLayout initialLayout {};
 	ImageLayout finalLayout {};
 
-	AttachmentDescription2KHR(AttachmentDescriptionFlags xflags = {}, Format xformat = {}, SampleCountBits xsamples = {}, AttachmentLoadOp xloadOp = {}, AttachmentStoreOp xstoreOp = {}, AttachmentLoadOp xstencilLoadOp = {}, AttachmentStoreOp xstencilStoreOp = {}, ImageLayout xinitialLayout = {}, ImageLayout xfinalLayout = {}) : flags(xflags), format(xformat), samples(xsamples), loadOp(xloadOp), storeOp(xstoreOp), stencilLoadOp(xstencilLoadOp), stencilStoreOp(xstencilStoreOp), initialLayout(xinitialLayout), finalLayout(xfinalLayout) {}
+	constexpr AttachmentDescription2KHR(AttachmentDescriptionFlags xflags = {}, Format xformat = {}, SampleCountBits xsamples = {}, AttachmentLoadOp xloadOp = {}, AttachmentStoreOp xstoreOp = {}, AttachmentLoadOp xstencilLoadOp = {}, AttachmentStoreOp xstencilStoreOp = {}, ImageLayout xinitialLayout = {}, ImageLayout xfinalLayout = {}) : flags(xflags), format(xformat), samples(xsamples), loadOp(xloadOp), storeOp(xstoreOp), stencilLoadOp(xstencilLoadOp), stencilStoreOp(xstencilStoreOp), initialLayout(xinitialLayout), finalLayout(xfinalLayout) {}
 
 	const VkAttachmentDescription2KHR& vkHandle() const { return reinterpret_cast<const VkAttachmentDescription2KHR&>(*this); }
 	VkAttachmentDescription2KHR& vkHandle() { return reinterpret_cast<VkAttachmentDescription2KHR&>(*this); }
@@ -4335,7 +4336,7 @@ struct AttachmentReference2KHR {
 	ImageLayout layout {};
 	ImageAspectFlags aspectMask {};
 
-	AttachmentReference2KHR(uint32_t xattachment = {}, ImageLayout xlayout = {}, ImageAspectFlags xaspectMask = {}) : attachment(xattachment), layout(xlayout), aspectMask(xaspectMask) {}
+	constexpr AttachmentReference2KHR(uint32_t xattachment = {}, ImageLayout xlayout = {}, ImageAspectFlags xaspectMask = {}) : attachment(xattachment), layout(xlayout), aspectMask(xaspectMask) {}
 
 	const VkAttachmentReference2KHR& vkHandle() const { return reinterpret_cast<const VkAttachmentReference2KHR&>(*this); }
 	VkAttachmentReference2KHR& vkHandle() { return reinterpret_cast<VkAttachmentReference2KHR&>(*this); }
@@ -4359,7 +4360,7 @@ struct SubpassDescription2KHR {
 	uint32_t preserveAttachmentCount {};
 	const uint32_t* pPreserveAttachments {};
 
-	SubpassDescription2KHR(SubpassDescriptionFlags xflags = {}, PipelineBindPoint xpipelineBindPoint = {}, uint32_t xviewMask = {}, uint32_t xinputAttachmentCount = {}, const AttachmentReference2KHR* xpInputAttachments = {}, uint32_t xcolorAttachmentCount = {}, const AttachmentReference2KHR* xpColorAttachments = {}, const AttachmentReference2KHR* xpResolveAttachments = {}, const AttachmentReference2KHR* xpDepthStencilAttachment = {}, uint32_t xpreserveAttachmentCount = {}, const uint32_t* xpPreserveAttachments = {}) : flags(xflags), pipelineBindPoint(xpipelineBindPoint), viewMask(xviewMask), inputAttachmentCount(xinputAttachmentCount), pInputAttachments(xpInputAttachments), colorAttachmentCount(xcolorAttachmentCount), pColorAttachments(xpColorAttachments), pResolveAttachments(xpResolveAttachments), pDepthStencilAttachment(xpDepthStencilAttachment), preserveAttachmentCount(xpreserveAttachmentCount), pPreserveAttachments(xpPreserveAttachments) {}
+	constexpr SubpassDescription2KHR(SubpassDescriptionFlags xflags = {}, PipelineBindPoint xpipelineBindPoint = {}, uint32_t xviewMask = {}, uint32_t xinputAttachmentCount = {}, const AttachmentReference2KHR* xpInputAttachments = {}, uint32_t xcolorAttachmentCount = {}, const AttachmentReference2KHR* xpColorAttachments = {}, const AttachmentReference2KHR* xpResolveAttachments = {}, const AttachmentReference2KHR* xpDepthStencilAttachment = {}, uint32_t xpreserveAttachmentCount = {}, const uint32_t* xpPreserveAttachments = {}) : flags(xflags), pipelineBindPoint(xpipelineBindPoint), viewMask(xviewMask), inputAttachmentCount(xinputAttachmentCount), pInputAttachments(xpInputAttachments), colorAttachmentCount(xcolorAttachmentCount), pColorAttachments(xpColorAttachments), pResolveAttachments(xpResolveAttachments), pDepthStencilAttachment(xpDepthStencilAttachment), preserveAttachmentCount(xpreserveAttachmentCount), pPreserveAttachments(xpPreserveAttachments) {}
 
 	const VkSubpassDescription2KHR& vkHandle() const { return reinterpret_cast<const VkSubpassDescription2KHR&>(*this); }
 	VkSubpassDescription2KHR& vkHandle() { return reinterpret_cast<VkSubpassDescription2KHR&>(*this); }
@@ -4380,7 +4381,7 @@ struct SubpassDependency2KHR {
 	DependencyFlags dependencyFlags {};
 	int32_t viewOffset {};
 
-	SubpassDependency2KHR(uint32_t xsrcSubpass = {}, uint32_t xdstSubpass = {}, PipelineStageFlags xsrcStageMask = {}, PipelineStageFlags xdstStageMask = {}, AccessFlags xsrcAccessMask = {}, AccessFlags xdstAccessMask = {}, DependencyFlags xdependencyFlags = {}, int32_t xviewOffset = {}) : srcSubpass(xsrcSubpass), dstSubpass(xdstSubpass), srcStageMask(xsrcStageMask), dstStageMask(xdstStageMask), srcAccessMask(xsrcAccessMask), dstAccessMask(xdstAccessMask), dependencyFlags(xdependencyFlags), viewOffset(xviewOffset) {}
+	constexpr SubpassDependency2KHR(uint32_t xsrcSubpass = {}, uint32_t xdstSubpass = {}, PipelineStageFlags xsrcStageMask = {}, PipelineStageFlags xdstStageMask = {}, AccessFlags xsrcAccessMask = {}, AccessFlags xdstAccessMask = {}, DependencyFlags xdependencyFlags = {}, int32_t xviewOffset = {}) : srcSubpass(xsrcSubpass), dstSubpass(xdstSubpass), srcStageMask(xsrcStageMask), dstStageMask(xdstStageMask), srcAccessMask(xsrcAccessMask), dstAccessMask(xdstAccessMask), dependencyFlags(xdependencyFlags), viewOffset(xviewOffset) {}
 
 	const VkSubpassDependency2KHR& vkHandle() const { return reinterpret_cast<const VkSubpassDependency2KHR&>(*this); }
 	VkSubpassDependency2KHR& vkHandle() { return reinterpret_cast<VkSubpassDependency2KHR&>(*this); }
@@ -4402,7 +4403,7 @@ struct RenderPassCreateInfo2KHR {
 	uint32_t correlatedViewMaskCount {};
 	const uint32_t* pCorrelatedViewMasks {};
 
-	RenderPassCreateInfo2KHR(RenderPassCreateFlags xflags = {}, uint32_t xattachmentCount = {}, const AttachmentDescription2KHR* xpAttachments = {}, uint32_t xsubpassCount = {}, const SubpassDescription2KHR* xpSubpasses = {}, uint32_t xdependencyCount = {}, const SubpassDependency2KHR* xpDependencies = {}, uint32_t xcorrelatedViewMaskCount = {}, const uint32_t* xpCorrelatedViewMasks = {}) : flags(xflags), attachmentCount(xattachmentCount), pAttachments(xpAttachments), subpassCount(xsubpassCount), pSubpasses(xpSubpasses), dependencyCount(xdependencyCount), pDependencies(xpDependencies), correlatedViewMaskCount(xcorrelatedViewMaskCount), pCorrelatedViewMasks(xpCorrelatedViewMasks) {}
+	constexpr RenderPassCreateInfo2KHR(RenderPassCreateFlags xflags = {}, uint32_t xattachmentCount = {}, const AttachmentDescription2KHR* xpAttachments = {}, uint32_t xsubpassCount = {}, const SubpassDescription2KHR* xpSubpasses = {}, uint32_t xdependencyCount = {}, const SubpassDependency2KHR* xpDependencies = {}, uint32_t xcorrelatedViewMaskCount = {}, const uint32_t* xpCorrelatedViewMasks = {}) : flags(xflags), attachmentCount(xattachmentCount), pAttachments(xpAttachments), subpassCount(xsubpassCount), pSubpasses(xpSubpasses), dependencyCount(xdependencyCount), pDependencies(xpDependencies), correlatedViewMaskCount(xcorrelatedViewMaskCount), pCorrelatedViewMasks(xpCorrelatedViewMasks) {}
 
 	const VkRenderPassCreateInfo2KHR& vkHandle() const { return reinterpret_cast<const VkRenderPassCreateInfo2KHR&>(*this); }
 	VkRenderPassCreateInfo2KHR& vkHandle() { return reinterpret_cast<VkRenderPassCreateInfo2KHR&>(*this); }
@@ -4416,7 +4417,7 @@ struct SubpassBeginInfoKHR {
 	const void* pNext {};
 	SubpassContents contents {};
 
-	SubpassBeginInfoKHR(SubpassContents xcontents = {}) : contents(xcontents) {}
+	constexpr SubpassBeginInfoKHR(SubpassContents xcontents = {}) : contents(xcontents) {}
 
 	const VkSubpassBeginInfoKHR& vkHandle() const { return reinterpret_cast<const VkSubpassBeginInfoKHR&>(*this); }
 	VkSubpassBeginInfoKHR& vkHandle() { return reinterpret_cast<VkSubpassBeginInfoKHR&>(*this); }
@@ -4429,7 +4430,7 @@ struct SubpassEndInfoKHR {
 	StructureType sType {StructureType::subpassEndInfoKHR};
 	const void* pNext {};
 
-	SubpassEndInfoKHR() {}
+	constexpr SubpassEndInfoKHR() {}
 
 	const VkSubpassEndInfoKHR& vkHandle() const { return reinterpret_cast<const VkSubpassEndInfoKHR&>(*this); }
 	VkSubpassEndInfoKHR& vkHandle() { return reinterpret_cast<VkSubpassEndInfoKHR&>(*this); }
@@ -4452,8 +4453,8 @@ struct SharedPresentSurfaceCapabilitiesKHR {
 };
 
 
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 struct ImportFenceWin32HandleInfoKHR {
 	StructureType sType {StructureType::importFenceWin32HandleInfoKHR};
 	const void* pNext {};
@@ -4463,7 +4464,7 @@ struct ImportFenceWin32HandleInfoKHR {
 	HANDLE handle {};
 	LPCWSTR name {};
 
-	ImportFenceWin32HandleInfoKHR(Fence xfence = {}, FenceImportFlags xflags = {}, ExternalFenceHandleTypeBits xhandleType = {}, HANDLE xhandle = {}, LPCWSTR xname = {}) : fence(xfence), flags(xflags), handleType(xhandleType), handle(xhandle), name(xname) {}
+	constexpr ImportFenceWin32HandleInfoKHR(Fence xfence = {}, FenceImportFlags xflags = {}, ExternalFenceHandleTypeBits xhandleType = {}, HANDLE xhandle = {}, LPCWSTR xname = {}) : fence(xfence), flags(xflags), handleType(xhandleType), handle(xhandle), name(xname) {}
 
 	const VkImportFenceWin32HandleInfoKHR& vkHandle() const { return reinterpret_cast<const VkImportFenceWin32HandleInfoKHR&>(*this); }
 	VkImportFenceWin32HandleInfoKHR& vkHandle() { return reinterpret_cast<VkImportFenceWin32HandleInfoKHR&>(*this); }
@@ -4479,7 +4480,7 @@ struct ExportFenceWin32HandleInfoKHR {
 	DWORD dwAccess {};
 	LPCWSTR name {};
 
-	ExportFenceWin32HandleInfoKHR(const SECURITY_ATTRIBUTES* xpAttributes = {}, DWORD xdwAccess = {}, LPCWSTR xname = {}) : pAttributes(xpAttributes), dwAccess(xdwAccess), name(xname) {}
+	constexpr ExportFenceWin32HandleInfoKHR(const SECURITY_ATTRIBUTES* xpAttributes = {}, DWORD xdwAccess = {}, LPCWSTR xname = {}) : pAttributes(xpAttributes), dwAccess(xdwAccess), name(xname) {}
 
 	const VkExportFenceWin32HandleInfoKHR& vkHandle() const { return reinterpret_cast<const VkExportFenceWin32HandleInfoKHR&>(*this); }
 	VkExportFenceWin32HandleInfoKHR& vkHandle() { return reinterpret_cast<VkExportFenceWin32HandleInfoKHR&>(*this); }
@@ -4494,7 +4495,7 @@ struct FenceGetWin32HandleInfoKHR {
 	Fence fence {};
 	ExternalFenceHandleTypeBits handleType {};
 
-	FenceGetWin32HandleInfoKHR(Fence xfence = {}, ExternalFenceHandleTypeBits xhandleType = {}) : fence(xfence), handleType(xhandleType) {}
+	constexpr FenceGetWin32HandleInfoKHR(Fence xfence = {}, ExternalFenceHandleTypeBits xhandleType = {}) : fence(xfence), handleType(xhandleType) {}
 
 	const VkFenceGetWin32HandleInfoKHR& vkHandle() const { return reinterpret_cast<const VkFenceGetWin32HandleInfoKHR&>(*this); }
 	VkFenceGetWin32HandleInfoKHR& vkHandle() { return reinterpret_cast<VkFenceGetWin32HandleInfoKHR&>(*this); }
@@ -4514,7 +4515,7 @@ struct ImportFenceFdInfoKHR {
 	ExternalFenceHandleTypeBits handleType {};
 	int fd {};
 
-	ImportFenceFdInfoKHR(Fence xfence = {}, FenceImportFlags xflags = {}, ExternalFenceHandleTypeBits xhandleType = {}, int xfd = {}) : fence(xfence), flags(xflags), handleType(xhandleType), fd(xfd) {}
+	constexpr ImportFenceFdInfoKHR(Fence xfence = {}, FenceImportFlags xflags = {}, ExternalFenceHandleTypeBits xhandleType = {}, int xfd = {}) : fence(xfence), flags(xflags), handleType(xhandleType), fd(xfd) {}
 
 	const VkImportFenceFdInfoKHR& vkHandle() const { return reinterpret_cast<const VkImportFenceFdInfoKHR&>(*this); }
 	VkImportFenceFdInfoKHR& vkHandle() { return reinterpret_cast<VkImportFenceFdInfoKHR&>(*this); }
@@ -4529,7 +4530,7 @@ struct FenceGetFdInfoKHR {
 	Fence fence {};
 	ExternalFenceHandleTypeBits handleType {};
 
-	FenceGetFdInfoKHR(Fence xfence = {}, ExternalFenceHandleTypeBits xhandleType = {}) : fence(xfence), handleType(xhandleType) {}
+	constexpr FenceGetFdInfoKHR(Fence xfence = {}, ExternalFenceHandleTypeBits xhandleType = {}) : fence(xfence), handleType(xhandleType) {}
 
 	const VkFenceGetFdInfoKHR& vkHandle() const { return reinterpret_cast<const VkFenceGetFdInfoKHR&>(*this); }
 	VkFenceGetFdInfoKHR& vkHandle() { return reinterpret_cast<VkFenceGetFdInfoKHR&>(*this); }
@@ -4544,7 +4545,7 @@ struct PhysicalDeviceSurfaceInfo2KHR {
 	const void* pNext {};
 	SurfaceKHR surface {};
 
-	PhysicalDeviceSurfaceInfo2KHR(SurfaceKHR xsurface = {}) : surface(xsurface) {}
+	constexpr PhysicalDeviceSurfaceInfo2KHR(SurfaceKHR xsurface = {}) : surface(xsurface) {}
 
 	const VkPhysicalDeviceSurfaceInfo2KHR& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceSurfaceInfo2KHR&>(*this); }
 	VkPhysicalDeviceSurfaceInfo2KHR& vkHandle() { return reinterpret_cast<VkPhysicalDeviceSurfaceInfo2KHR&>(*this); }
@@ -4620,7 +4621,7 @@ struct DisplayPlaneInfo2KHR {
 	DisplayModeKHR mode {};
 	uint32_t planeIndex {};
 
-	DisplayPlaneInfo2KHR(DisplayModeKHR xmode = {}, uint32_t xplaneIndex = {}) : mode(xmode), planeIndex(xplaneIndex) {}
+	constexpr DisplayPlaneInfo2KHR(DisplayModeKHR xmode = {}, uint32_t xplaneIndex = {}) : mode(xmode), planeIndex(xplaneIndex) {}
 
 	const VkDisplayPlaneInfo2KHR& vkHandle() const { return reinterpret_cast<const VkDisplayPlaneInfo2KHR&>(*this); }
 	VkDisplayPlaneInfo2KHR& vkHandle() { return reinterpret_cast<VkDisplayPlaneInfo2KHR&>(*this); }
@@ -4642,15 +4643,15 @@ struct DisplayPlaneCapabilities2KHR {
 };
 
 
-#ifdef VK_USE_PLATFORM_IOS_MVK
 
+#ifdef VK_USE_PLATFORM_IOS_MVK
 struct IOSSurfaceCreateInfoMVK {
 	StructureType sType {StructureType::iosSurfaceCreateInfoMVK};
 	const void* pNext {};
 	IOSSurfaceCreateFlagsMVK flags {};
 	const void* pView {};
 
-	IOSSurfaceCreateInfoMVK(IOSSurfaceCreateFlagsMVK xflags = {}, const void* xpView = {}) : flags(xflags), pView(xpView) {}
+	constexpr IOSSurfaceCreateInfoMVK(IOSSurfaceCreateFlagsMVK xflags = {}, const void* xpView = {}) : flags(xflags), pView(xpView) {}
 
 	const VkIOSSurfaceCreateInfoMVK& vkHandle() const { return reinterpret_cast<const VkIOSSurfaceCreateInfoMVK&>(*this); }
 	VkIOSSurfaceCreateInfoMVK& vkHandle() { return reinterpret_cast<VkIOSSurfaceCreateInfoMVK&>(*this); }
@@ -4662,15 +4663,15 @@ struct IOSSurfaceCreateInfoMVK {
 
 #endif //VK_USE_PLATFORM_IOS_MVK
 
-#ifdef VK_USE_PLATFORM_MACOS_MVK
 
+#ifdef VK_USE_PLATFORM_MACOS_MVK
 struct MacOSSurfaceCreateInfoMVK {
 	StructureType sType {StructureType::macosSurfaceCreateInfoMVK};
 	const void* pNext {};
 	MacOSSurfaceCreateFlagsMVK flags {};
 	const void* pView {};
 
-	MacOSSurfaceCreateInfoMVK(MacOSSurfaceCreateFlagsMVK xflags = {}, const void* xpView = {}) : flags(xflags), pView(xpView) {}
+	constexpr MacOSSurfaceCreateInfoMVK(MacOSSurfaceCreateFlagsMVK xflags = {}, const void* xpView = {}) : flags(xflags), pView(xpView) {}
 
 	const VkMacOSSurfaceCreateInfoMVK& vkHandle() const { return reinterpret_cast<const VkMacOSSurfaceCreateInfoMVK&>(*this); }
 	VkMacOSSurfaceCreateInfoMVK& vkHandle() { return reinterpret_cast<VkMacOSSurfaceCreateInfoMVK&>(*this); }
@@ -4689,7 +4690,7 @@ struct DebugUtilsObjectNameInfoEXT {
 	uint64_t objectHandle {};
 	const char* pObjectName {};
 
-	DebugUtilsObjectNameInfoEXT(ObjectType xobjectType = {}, uint64_t xobjectHandle = {}, const char* xpObjectName = {}) : objectType(xobjectType), objectHandle(xobjectHandle), pObjectName(xpObjectName) {}
+	constexpr DebugUtilsObjectNameInfoEXT(ObjectType xobjectType = {}, uint64_t xobjectHandle = {}, const char* xpObjectName = {}) : objectType(xobjectType), objectHandle(xobjectHandle), pObjectName(xpObjectName) {}
 
 	const VkDebugUtilsObjectNameInfoEXT& vkHandle() const { return reinterpret_cast<const VkDebugUtilsObjectNameInfoEXT&>(*this); }
 	VkDebugUtilsObjectNameInfoEXT& vkHandle() { return reinterpret_cast<VkDebugUtilsObjectNameInfoEXT&>(*this); }
@@ -4707,7 +4708,7 @@ struct DebugUtilsObjectTagInfoEXT {
 	size_t tagSize {};
 	const void* pTag {};
 
-	DebugUtilsObjectTagInfoEXT(ObjectType xobjectType = {}, uint64_t xobjectHandle = {}, uint64_t xtagName = {}, size_t xtagSize = {}, const void* xpTag = {}) : objectType(xobjectType), objectHandle(xobjectHandle), tagName(xtagName), tagSize(xtagSize), pTag(xpTag) {}
+	constexpr DebugUtilsObjectTagInfoEXT(ObjectType xobjectType = {}, uint64_t xobjectHandle = {}, uint64_t xtagName = {}, size_t xtagSize = {}, const void* xpTag = {}) : objectType(xobjectType), objectHandle(xobjectHandle), tagName(xtagName), tagSize(xtagSize), pTag(xpTag) {}
 
 	const VkDebugUtilsObjectTagInfoEXT& vkHandle() const { return reinterpret_cast<const VkDebugUtilsObjectTagInfoEXT&>(*this); }
 	VkDebugUtilsObjectTagInfoEXT& vkHandle() { return reinterpret_cast<VkDebugUtilsObjectTagInfoEXT&>(*this); }
@@ -4722,7 +4723,7 @@ struct DebugUtilsLabelEXT {
 	const char* pLabelName {};
 	std::array<float, 4> color {};
 
-	DebugUtilsLabelEXT(const char* xpLabelName = {}, std::array<float, 4> xcolor = {}) : pLabelName(xpLabelName), color(xcolor) {}
+	constexpr DebugUtilsLabelEXT(const char* xpLabelName = {}, std::array<float, 4> xcolor = {}) : pLabelName(xpLabelName), color(xcolor) {}
 
 	const VkDebugUtilsLabelEXT& vkHandle() const { return reinterpret_cast<const VkDebugUtilsLabelEXT&>(*this); }
 	VkDebugUtilsLabelEXT& vkHandle() { return reinterpret_cast<VkDebugUtilsLabelEXT&>(*this); }
@@ -4745,7 +4746,7 @@ struct DebugUtilsMessengerCallbackDataEXT {
 	uint32_t objectCount {};
 	const DebugUtilsObjectNameInfoEXT* pObjects {};
 
-	DebugUtilsMessengerCallbackDataEXT(DebugUtilsMessengerCallbackDataFlagsEXT xflags = {}, const char* xpMessageIdName = {}, int32_t xmessageIdNumber = {}, const char* xpMessage = {}, uint32_t xqueueLabelCount = {}, const DebugUtilsLabelEXT* xpQueueLabels = {}, uint32_t xcmdBufLabelCount = {}, const DebugUtilsLabelEXT* xpCmdBufLabels = {}, uint32_t xobjectCount = {}, const DebugUtilsObjectNameInfoEXT* xpObjects = {}) : flags(xflags), pMessageIdName(xpMessageIdName), messageIdNumber(xmessageIdNumber), pMessage(xpMessage), queueLabelCount(xqueueLabelCount), pQueueLabels(xpQueueLabels), cmdBufLabelCount(xcmdBufLabelCount), pCmdBufLabels(xpCmdBufLabels), objectCount(xobjectCount), pObjects(xpObjects) {}
+	constexpr DebugUtilsMessengerCallbackDataEXT(DebugUtilsMessengerCallbackDataFlagsEXT xflags = {}, const char* xpMessageIdName = {}, int32_t xmessageIdNumber = {}, const char* xpMessage = {}, uint32_t xqueueLabelCount = {}, const DebugUtilsLabelEXT* xpQueueLabels = {}, uint32_t xcmdBufLabelCount = {}, const DebugUtilsLabelEXT* xpCmdBufLabels = {}, uint32_t xobjectCount = {}, const DebugUtilsObjectNameInfoEXT* xpObjects = {}) : flags(xflags), pMessageIdName(xpMessageIdName), messageIdNumber(xmessageIdNumber), pMessage(xpMessage), queueLabelCount(xqueueLabelCount), pQueueLabels(xpQueueLabels), cmdBufLabelCount(xcmdBufLabelCount), pCmdBufLabels(xpCmdBufLabels), objectCount(xobjectCount), pObjects(xpObjects) {}
 
 	const VkDebugUtilsMessengerCallbackDataEXT& vkHandle() const { return reinterpret_cast<const VkDebugUtilsMessengerCallbackDataEXT&>(*this); }
 	VkDebugUtilsMessengerCallbackDataEXT& vkHandle() { return reinterpret_cast<VkDebugUtilsMessengerCallbackDataEXT&>(*this); }
@@ -4763,7 +4764,7 @@ struct DebugUtilsMessengerCreateInfoEXT {
 	PFN_vkDebugUtilsMessengerCallbackEXT pfnUserCallback {};
 	void* pUserData {};
 
-	DebugUtilsMessengerCreateInfoEXT(DebugUtilsMessengerCreateFlagsEXT xflags = {}, DebugUtilsMessageSeverityFlagsEXT xmessageSeverity = {}, DebugUtilsMessageTypeFlagsEXT xmessageType = {}, PFN_vkDebugUtilsMessengerCallbackEXT xpfnUserCallback = {}, void* xpUserData = {}) : flags(xflags), messageSeverity(xmessageSeverity), messageType(xmessageType), pfnUserCallback(xpfnUserCallback), pUserData(xpUserData) {}
+	constexpr DebugUtilsMessengerCreateInfoEXT(DebugUtilsMessengerCreateFlagsEXT xflags = {}, DebugUtilsMessageSeverityFlagsEXT xmessageSeverity = {}, DebugUtilsMessageTypeFlagsEXT xmessageType = {}, PFN_vkDebugUtilsMessengerCallbackEXT xpfnUserCallback = {}, void* xpUserData = {}) : flags(xflags), messageSeverity(xmessageSeverity), messageType(xmessageType), pfnUserCallback(xpfnUserCallback), pUserData(xpUserData) {}
 
 	const VkDebugUtilsMessengerCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkDebugUtilsMessengerCreateInfoEXT&>(*this); }
 	VkDebugUtilsMessengerCreateInfoEXT& vkHandle() { return reinterpret_cast<VkDebugUtilsMessengerCreateInfoEXT&>(*this); }
@@ -4778,7 +4779,7 @@ struct SamplerReductionModeCreateInfoEXT {
 	const void* pNext {};
 	SamplerReductionModeEXT reductionMode {};
 
-	SamplerReductionModeCreateInfoEXT(SamplerReductionModeEXT xreductionMode = {}) : reductionMode(xreductionMode) {}
+	constexpr SamplerReductionModeCreateInfoEXT(SamplerReductionModeEXT xreductionMode = {}) : reductionMode(xreductionMode) {}
 
 	const VkSamplerReductionModeCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkSamplerReductionModeCreateInfoEXT&>(*this); }
 	VkSamplerReductionModeCreateInfoEXT& vkHandle() { return reinterpret_cast<VkSamplerReductionModeCreateInfoEXT&>(*this); }
@@ -4807,7 +4808,7 @@ struct PhysicalDeviceInlineUniformBlockFeaturesEXT {
 	Bool32 inlineUniformBlock {};
 	Bool32 descriptorBindingInlineUniformBlockUpdateAfterBind {};
 
-	PhysicalDeviceInlineUniformBlockFeaturesEXT(Bool32 xinlineUniformBlock = {}, Bool32 xdescriptorBindingInlineUniformBlockUpdateAfterBind = {}) : inlineUniformBlock(xinlineUniformBlock), descriptorBindingInlineUniformBlockUpdateAfterBind(xdescriptorBindingInlineUniformBlockUpdateAfterBind) {}
+	constexpr PhysicalDeviceInlineUniformBlockFeaturesEXT(Bool32 xinlineUniformBlock = {}, Bool32 xdescriptorBindingInlineUniformBlockUpdateAfterBind = {}) : inlineUniformBlock(xinlineUniformBlock), descriptorBindingInlineUniformBlockUpdateAfterBind(xdescriptorBindingInlineUniformBlockUpdateAfterBind) {}
 
 	const VkPhysicalDeviceInlineUniformBlockFeaturesEXT& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceInlineUniformBlockFeaturesEXT&>(*this); }
 	VkPhysicalDeviceInlineUniformBlockFeaturesEXT& vkHandle() { return reinterpret_cast<VkPhysicalDeviceInlineUniformBlockFeaturesEXT&>(*this); }
@@ -4838,7 +4839,7 @@ struct WriteDescriptorSetInlineUniformBlockEXT {
 	uint32_t dataSize {};
 	const void* pData {};
 
-	WriteDescriptorSetInlineUniformBlockEXT(uint32_t xdataSize = {}, const void* xpData = {}) : dataSize(xdataSize), pData(xpData) {}
+	constexpr WriteDescriptorSetInlineUniformBlockEXT(uint32_t xdataSize = {}, const void* xpData = {}) : dataSize(xdataSize), pData(xpData) {}
 
 	const VkWriteDescriptorSetInlineUniformBlockEXT& vkHandle() const { return reinterpret_cast<const VkWriteDescriptorSetInlineUniformBlockEXT&>(*this); }
 	VkWriteDescriptorSetInlineUniformBlockEXT& vkHandle() { return reinterpret_cast<VkWriteDescriptorSetInlineUniformBlockEXT&>(*this); }
@@ -4852,7 +4853,7 @@ struct DescriptorPoolInlineUniformBlockCreateInfoEXT {
 	const void* pNext {};
 	uint32_t maxInlineUniformBlockBindings {};
 
-	DescriptorPoolInlineUniformBlockCreateInfoEXT(uint32_t xmaxInlineUniformBlockBindings = {}) : maxInlineUniformBlockBindings(xmaxInlineUniformBlockBindings) {}
+	constexpr DescriptorPoolInlineUniformBlockCreateInfoEXT(uint32_t xmaxInlineUniformBlockBindings = {}) : maxInlineUniformBlockBindings(xmaxInlineUniformBlockBindings) {}
 
 	const VkDescriptorPoolInlineUniformBlockCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkDescriptorPoolInlineUniformBlockCreateInfoEXT&>(*this); }
 	VkDescriptorPoolInlineUniformBlockCreateInfoEXT& vkHandle() { return reinterpret_cast<VkDescriptorPoolInlineUniformBlockCreateInfoEXT&>(*this); }
@@ -4881,7 +4882,7 @@ struct SampleLocationsInfoEXT {
 	uint32_t sampleLocationsCount {};
 	const SampleLocationEXT* pSampleLocations {};
 
-	SampleLocationsInfoEXT(SampleCountBits xsampleLocationsPerPixel = {}, Extent2D xsampleLocationGridSize = {}, uint32_t xsampleLocationsCount = {}, const SampleLocationEXT* xpSampleLocations = {}) : sampleLocationsPerPixel(xsampleLocationsPerPixel), sampleLocationGridSize(xsampleLocationGridSize), sampleLocationsCount(xsampleLocationsCount), pSampleLocations(xpSampleLocations) {}
+	constexpr SampleLocationsInfoEXT(SampleCountBits xsampleLocationsPerPixel = {}, Extent2D xsampleLocationGridSize = {}, uint32_t xsampleLocationsCount = {}, const SampleLocationEXT* xpSampleLocations = {}) : sampleLocationsPerPixel(xsampleLocationsPerPixel), sampleLocationGridSize(xsampleLocationGridSize), sampleLocationsCount(xsampleLocationsCount), pSampleLocations(xpSampleLocations) {}
 
 	const VkSampleLocationsInfoEXT& vkHandle() const { return reinterpret_cast<const VkSampleLocationsInfoEXT&>(*this); }
 	VkSampleLocationsInfoEXT& vkHandle() { return reinterpret_cast<VkSampleLocationsInfoEXT&>(*this); }
@@ -4920,7 +4921,7 @@ struct RenderPassSampleLocationsBeginInfoEXT {
 	uint32_t postSubpassSampleLocationsCount {};
 	const SubpassSampleLocationsEXT* pPostSubpassSampleLocations {};
 
-	RenderPassSampleLocationsBeginInfoEXT(uint32_t xattachmentInitialSampleLocationsCount = {}, const AttachmentSampleLocationsEXT* xpAttachmentInitialSampleLocations = {}, uint32_t xpostSubpassSampleLocationsCount = {}, const SubpassSampleLocationsEXT* xpPostSubpassSampleLocations = {}) : attachmentInitialSampleLocationsCount(xattachmentInitialSampleLocationsCount), pAttachmentInitialSampleLocations(xpAttachmentInitialSampleLocations), postSubpassSampleLocationsCount(xpostSubpassSampleLocationsCount), pPostSubpassSampleLocations(xpPostSubpassSampleLocations) {}
+	constexpr RenderPassSampleLocationsBeginInfoEXT(uint32_t xattachmentInitialSampleLocationsCount = {}, const AttachmentSampleLocationsEXT* xpAttachmentInitialSampleLocations = {}, uint32_t xpostSubpassSampleLocationsCount = {}, const SubpassSampleLocationsEXT* xpPostSubpassSampleLocations = {}) : attachmentInitialSampleLocationsCount(xattachmentInitialSampleLocationsCount), pAttachmentInitialSampleLocations(xpAttachmentInitialSampleLocations), postSubpassSampleLocationsCount(xpostSubpassSampleLocationsCount), pPostSubpassSampleLocations(xpPostSubpassSampleLocations) {}
 
 	const VkRenderPassSampleLocationsBeginInfoEXT& vkHandle() const { return reinterpret_cast<const VkRenderPassSampleLocationsBeginInfoEXT&>(*this); }
 	VkRenderPassSampleLocationsBeginInfoEXT& vkHandle() { return reinterpret_cast<VkRenderPassSampleLocationsBeginInfoEXT&>(*this); }
@@ -4935,7 +4936,7 @@ struct PipelineSampleLocationsStateCreateInfoEXT {
 	Bool32 sampleLocationsEnable {};
 	SampleLocationsInfoEXT sampleLocationsInfo {};
 
-	PipelineSampleLocationsStateCreateInfoEXT(Bool32 xsampleLocationsEnable = {}, SampleLocationsInfoEXT xsampleLocationsInfo = {}) : sampleLocationsEnable(xsampleLocationsEnable), sampleLocationsInfo(xsampleLocationsInfo) {}
+	constexpr PipelineSampleLocationsStateCreateInfoEXT(Bool32 xsampleLocationsEnable = {}, SampleLocationsInfoEXT xsampleLocationsInfo = {}) : sampleLocationsEnable(xsampleLocationsEnable), sampleLocationsInfo(xsampleLocationsInfo) {}
 
 	const VkPipelineSampleLocationsStateCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkPipelineSampleLocationsStateCreateInfoEXT&>(*this); }
 	VkPipelineSampleLocationsStateCreateInfoEXT& vkHandle() { return reinterpret_cast<VkPipelineSampleLocationsStateCreateInfoEXT&>(*this); }
@@ -4979,7 +4980,7 @@ struct ImageFormatListCreateInfoKHR {
 	uint32_t viewFormatCount {};
 	const Format* pViewFormats {};
 
-	ImageFormatListCreateInfoKHR(uint32_t xviewFormatCount = {}, const Format* xpViewFormats = {}) : viewFormatCount(xviewFormatCount), pViewFormats(xpViewFormats) {}
+	constexpr ImageFormatListCreateInfoKHR(uint32_t xviewFormatCount = {}, const Format* xpViewFormats = {}) : viewFormatCount(xviewFormatCount), pViewFormats(xpViewFormats) {}
 
 	const VkImageFormatListCreateInfoKHR& vkHandle() const { return reinterpret_cast<const VkImageFormatListCreateInfoKHR&>(*this); }
 	VkImageFormatListCreateInfoKHR& vkHandle() { return reinterpret_cast<VkImageFormatListCreateInfoKHR&>(*this); }
@@ -4994,7 +4995,7 @@ struct PhysicalDeviceBlendOperationAdvancedFeaturesEXT {
 	void* pNext {};
 	Bool32 advancedBlendCoherentOperations {};
 
-	PhysicalDeviceBlendOperationAdvancedFeaturesEXT(Bool32 xadvancedBlendCoherentOperations = {}) : advancedBlendCoherentOperations(xadvancedBlendCoherentOperations) {}
+	constexpr PhysicalDeviceBlendOperationAdvancedFeaturesEXT(Bool32 xadvancedBlendCoherentOperations = {}) : advancedBlendCoherentOperations(xadvancedBlendCoherentOperations) {}
 
 	const VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT&>(*this); }
 	VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT& vkHandle() { return reinterpret_cast<VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT&>(*this); }
@@ -5027,7 +5028,7 @@ struct PipelineColorBlendAdvancedStateCreateInfoEXT {
 	Bool32 dstPremultiplied {};
 	BlendOverlapEXT blendOverlap {};
 
-	PipelineColorBlendAdvancedStateCreateInfoEXT(Bool32 xsrcPremultiplied = {}, Bool32 xdstPremultiplied = {}, BlendOverlapEXT xblendOverlap = {}) : srcPremultiplied(xsrcPremultiplied), dstPremultiplied(xdstPremultiplied), blendOverlap(xblendOverlap) {}
+	constexpr PipelineColorBlendAdvancedStateCreateInfoEXT(Bool32 xsrcPremultiplied = {}, Bool32 xdstPremultiplied = {}, BlendOverlapEXT xblendOverlap = {}) : srcPremultiplied(xsrcPremultiplied), dstPremultiplied(xdstPremultiplied), blendOverlap(xblendOverlap) {}
 
 	const VkPipelineColorBlendAdvancedStateCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkPipelineColorBlendAdvancedStateCreateInfoEXT&>(*this); }
 	VkPipelineColorBlendAdvancedStateCreateInfoEXT& vkHandle() { return reinterpret_cast<VkPipelineColorBlendAdvancedStateCreateInfoEXT&>(*this); }
@@ -5044,7 +5045,7 @@ struct PipelineCoverageToColorStateCreateInfoNV {
 	Bool32 coverageToColorEnable {};
 	uint32_t coverageToColorLocation {};
 
-	PipelineCoverageToColorStateCreateInfoNV(PipelineCoverageToColorStateCreateFlagsNV xflags = {}, Bool32 xcoverageToColorEnable = {}, uint32_t xcoverageToColorLocation = {}) : flags(xflags), coverageToColorEnable(xcoverageToColorEnable), coverageToColorLocation(xcoverageToColorLocation) {}
+	constexpr PipelineCoverageToColorStateCreateInfoNV(PipelineCoverageToColorStateCreateFlagsNV xflags = {}, Bool32 xcoverageToColorEnable = {}, uint32_t xcoverageToColorLocation = {}) : flags(xflags), coverageToColorEnable(xcoverageToColorEnable), coverageToColorLocation(xcoverageToColorLocation) {}
 
 	const VkPipelineCoverageToColorStateCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkPipelineCoverageToColorStateCreateInfoNV&>(*this); }
 	VkPipelineCoverageToColorStateCreateInfoNV& vkHandle() { return reinterpret_cast<VkPipelineCoverageToColorStateCreateInfoNV&>(*this); }
@@ -5063,7 +5064,7 @@ struct PipelineCoverageModulationStateCreateInfoNV {
 	uint32_t coverageModulationTableCount {};
 	const float* pCoverageModulationTable {};
 
-	PipelineCoverageModulationStateCreateInfoNV(PipelineCoverageModulationStateCreateFlagsNV xflags = {}, CoverageModulationModeNV xcoverageModulationMode = {}, Bool32 xcoverageModulationTableEnable = {}, uint32_t xcoverageModulationTableCount = {}, const float* xpCoverageModulationTable = {}) : flags(xflags), coverageModulationMode(xcoverageModulationMode), coverageModulationTableEnable(xcoverageModulationTableEnable), coverageModulationTableCount(xcoverageModulationTableCount), pCoverageModulationTable(xpCoverageModulationTable) {}
+	constexpr PipelineCoverageModulationStateCreateInfoNV(PipelineCoverageModulationStateCreateFlagsNV xflags = {}, CoverageModulationModeNV xcoverageModulationMode = {}, Bool32 xcoverageModulationTableEnable = {}, uint32_t xcoverageModulationTableCount = {}, const float* xpCoverageModulationTable = {}) : flags(xflags), coverageModulationMode(xcoverageModulationMode), coverageModulationTableEnable(xcoverageModulationTableEnable), coverageModulationTableCount(xcoverageModulationTableCount), pCoverageModulationTable(xpCoverageModulationTable) {}
 
 	const VkPipelineCoverageModulationStateCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkPipelineCoverageModulationStateCreateInfoNV&>(*this); }
 	VkPipelineCoverageModulationStateCreateInfoNV& vkHandle() { return reinterpret_cast<VkPipelineCoverageModulationStateCreateInfoNV&>(*this); }
@@ -5106,7 +5107,7 @@ struct PhysicalDeviceImageDrmFormatModifierInfoEXT {
 	uint32_t queueFamilyIndexCount {};
 	const uint32_t* pQueueFamilyIndices {};
 
-	PhysicalDeviceImageDrmFormatModifierInfoEXT(uint64_t xdrmFormatModifier = {}, SharingMode xsharingMode = {}, uint32_t xqueueFamilyIndexCount = {}, const uint32_t* xpQueueFamilyIndices = {}) : drmFormatModifier(xdrmFormatModifier), sharingMode(xsharingMode), queueFamilyIndexCount(xqueueFamilyIndexCount), pQueueFamilyIndices(xpQueueFamilyIndices) {}
+	constexpr PhysicalDeviceImageDrmFormatModifierInfoEXT(uint64_t xdrmFormatModifier = {}, SharingMode xsharingMode = {}, uint32_t xqueueFamilyIndexCount = {}, const uint32_t* xpQueueFamilyIndices = {}) : drmFormatModifier(xdrmFormatModifier), sharingMode(xsharingMode), queueFamilyIndexCount(xqueueFamilyIndexCount), pQueueFamilyIndices(xpQueueFamilyIndices) {}
 
 	const VkPhysicalDeviceImageDrmFormatModifierInfoEXT& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceImageDrmFormatModifierInfoEXT&>(*this); }
 	VkPhysicalDeviceImageDrmFormatModifierInfoEXT& vkHandle() { return reinterpret_cast<VkPhysicalDeviceImageDrmFormatModifierInfoEXT&>(*this); }
@@ -5121,7 +5122,7 @@ struct ImageDrmFormatModifierListCreateInfoEXT {
 	uint32_t drmFormatModifierCount {};
 	const uint64_t* pDrmFormatModifiers {};
 
-	ImageDrmFormatModifierListCreateInfoEXT(uint32_t xdrmFormatModifierCount = {}, const uint64_t* xpDrmFormatModifiers = {}) : drmFormatModifierCount(xdrmFormatModifierCount), pDrmFormatModifiers(xpDrmFormatModifiers) {}
+	constexpr ImageDrmFormatModifierListCreateInfoEXT(uint32_t xdrmFormatModifierCount = {}, const uint64_t* xpDrmFormatModifiers = {}) : drmFormatModifierCount(xdrmFormatModifierCount), pDrmFormatModifiers(xpDrmFormatModifiers) {}
 
 	const VkImageDrmFormatModifierListCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkImageDrmFormatModifierListCreateInfoEXT&>(*this); }
 	VkImageDrmFormatModifierListCreateInfoEXT& vkHandle() { return reinterpret_cast<VkImageDrmFormatModifierListCreateInfoEXT&>(*this); }
@@ -5137,7 +5138,7 @@ struct ImageDrmFormatModifierExplicitCreateInfoEXT {
 	uint32_t drmFormatModifierPlaneCount {};
 	const SubresourceLayout* pPlaneLayouts {};
 
-	ImageDrmFormatModifierExplicitCreateInfoEXT(uint64_t xdrmFormatModifier = {}, uint32_t xdrmFormatModifierPlaneCount = {}, const SubresourceLayout* xpPlaneLayouts = {}) : drmFormatModifier(xdrmFormatModifier), drmFormatModifierPlaneCount(xdrmFormatModifierPlaneCount), pPlaneLayouts(xpPlaneLayouts) {}
+	constexpr ImageDrmFormatModifierExplicitCreateInfoEXT(uint64_t xdrmFormatModifier = {}, uint32_t xdrmFormatModifierPlaneCount = {}, const SubresourceLayout* xpPlaneLayouts = {}) : drmFormatModifier(xdrmFormatModifier), drmFormatModifierPlaneCount(xdrmFormatModifierPlaneCount), pPlaneLayouts(xpPlaneLayouts) {}
 
 	const VkImageDrmFormatModifierExplicitCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkImageDrmFormatModifierExplicitCreateInfoEXT&>(*this); }
 	VkImageDrmFormatModifierExplicitCreateInfoEXT& vkHandle() { return reinterpret_cast<VkImageDrmFormatModifierExplicitCreateInfoEXT&>(*this); }
@@ -5166,7 +5167,7 @@ struct ValidationCacheCreateInfoEXT {
 	size_t initialDataSize {};
 	const void* pInitialData {};
 
-	ValidationCacheCreateInfoEXT(ValidationCacheCreateFlagsEXT xflags = {}, size_t xinitialDataSize = {}, const void* xpInitialData = {}) : flags(xflags), initialDataSize(xinitialDataSize), pInitialData(xpInitialData) {}
+	constexpr ValidationCacheCreateInfoEXT(ValidationCacheCreateFlagsEXT xflags = {}, size_t xinitialDataSize = {}, const void* xpInitialData = {}) : flags(xflags), initialDataSize(xinitialDataSize), pInitialData(xpInitialData) {}
 
 	const VkValidationCacheCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkValidationCacheCreateInfoEXT&>(*this); }
 	VkValidationCacheCreateInfoEXT& vkHandle() { return reinterpret_cast<VkValidationCacheCreateInfoEXT&>(*this); }
@@ -5180,7 +5181,7 @@ struct ShaderModuleValidationCacheCreateInfoEXT {
 	const void* pNext {};
 	ValidationCacheEXT validationCache {};
 
-	ShaderModuleValidationCacheCreateInfoEXT(ValidationCacheEXT xvalidationCache = {}) : validationCache(xvalidationCache) {}
+	constexpr ShaderModuleValidationCacheCreateInfoEXT(ValidationCacheEXT xvalidationCache = {}) : validationCache(xvalidationCache) {}
 
 	const VkShaderModuleValidationCacheCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkShaderModuleValidationCacheCreateInfoEXT&>(*this); }
 	VkShaderModuleValidationCacheCreateInfoEXT& vkHandle() { return reinterpret_cast<VkShaderModuleValidationCacheCreateInfoEXT&>(*this); }
@@ -5196,7 +5197,7 @@ struct DescriptorSetLayoutBindingFlagsCreateInfoEXT {
 	uint32_t bindingCount {};
 	const DescriptorBindingFlagsEXT* pBindingFlags {};
 
-	DescriptorSetLayoutBindingFlagsCreateInfoEXT(uint32_t xbindingCount = {}, const DescriptorBindingFlagsEXT* xpBindingFlags = {}) : bindingCount(xbindingCount), pBindingFlags(xpBindingFlags) {}
+	constexpr DescriptorSetLayoutBindingFlagsCreateInfoEXT(uint32_t xbindingCount = {}, const DescriptorBindingFlagsEXT* xpBindingFlags = {}) : bindingCount(xbindingCount), pBindingFlags(xpBindingFlags) {}
 
 	const VkDescriptorSetLayoutBindingFlagsCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkDescriptorSetLayoutBindingFlagsCreateInfoEXT&>(*this); }
 	VkDescriptorSetLayoutBindingFlagsCreateInfoEXT& vkHandle() { return reinterpret_cast<VkDescriptorSetLayoutBindingFlagsCreateInfoEXT&>(*this); }
@@ -5229,7 +5230,7 @@ struct PhysicalDeviceDescriptorIndexingFeaturesEXT {
 	Bool32 descriptorBindingVariableDescriptorCount {};
 	Bool32 runtimeDescriptorArray {};
 
-	PhysicalDeviceDescriptorIndexingFeaturesEXT(Bool32 xshaderInputAttachmentArrayDynamicIndexing = {}, Bool32 xshaderUniformTexelBufferArrayDynamicIndexing = {}, Bool32 xshaderStorageTexelBufferArrayDynamicIndexing = {}, Bool32 xshaderUniformBufferArrayNonUniformIndexing = {}, Bool32 xshaderSampledImageArrayNonUniformIndexing = {}, Bool32 xshaderStorageBufferArrayNonUniformIndexing = {}, Bool32 xshaderStorageImageArrayNonUniformIndexing = {}, Bool32 xshaderInputAttachmentArrayNonUniformIndexing = {}, Bool32 xshaderUniformTexelBufferArrayNonUniformIndexing = {}, Bool32 xshaderStorageTexelBufferArrayNonUniformIndexing = {}, Bool32 xdescriptorBindingUniformBufferUpdateAfterBind = {}, Bool32 xdescriptorBindingSampledImageUpdateAfterBind = {}, Bool32 xdescriptorBindingStorageImageUpdateAfterBind = {}, Bool32 xdescriptorBindingStorageBufferUpdateAfterBind = {}, Bool32 xdescriptorBindingUniformTexelBufferUpdateAfterBind = {}, Bool32 xdescriptorBindingStorageTexelBufferUpdateAfterBind = {}, Bool32 xdescriptorBindingUpdateUnusedWhilePending = {}, Bool32 xdescriptorBindingPartiallyBound = {}, Bool32 xdescriptorBindingVariableDescriptorCount = {}, Bool32 xruntimeDescriptorArray = {}) : shaderInputAttachmentArrayDynamicIndexing(xshaderInputAttachmentArrayDynamicIndexing), shaderUniformTexelBufferArrayDynamicIndexing(xshaderUniformTexelBufferArrayDynamicIndexing), shaderStorageTexelBufferArrayDynamicIndexing(xshaderStorageTexelBufferArrayDynamicIndexing), shaderUniformBufferArrayNonUniformIndexing(xshaderUniformBufferArrayNonUniformIndexing), shaderSampledImageArrayNonUniformIndexing(xshaderSampledImageArrayNonUniformIndexing), shaderStorageBufferArrayNonUniformIndexing(xshaderStorageBufferArrayNonUniformIndexing), shaderStorageImageArrayNonUniformIndexing(xshaderStorageImageArrayNonUniformIndexing), shaderInputAttachmentArrayNonUniformIndexing(xshaderInputAttachmentArrayNonUniformIndexing), shaderUniformTexelBufferArrayNonUniformIndexing(xshaderUniformTexelBufferArrayNonUniformIndexing), shaderStorageTexelBufferArrayNonUniformIndexing(xshaderStorageTexelBufferArrayNonUniformIndexing), descriptorBindingUniformBufferUpdateAfterBind(xdescriptorBindingUniformBufferUpdateAfterBind), descriptorBindingSampledImageUpdateAfterBind(xdescriptorBindingSampledImageUpdateAfterBind), descriptorBindingStorageImageUpdateAfterBind(xdescriptorBindingStorageImageUpdateAfterBind), descriptorBindingStorageBufferUpdateAfterBind(xdescriptorBindingStorageBufferUpdateAfterBind), descriptorBindingUniformTexelBufferUpdateAfterBind(xdescriptorBindingUniformTexelBufferUpdateAfterBind), descriptorBindingStorageTexelBufferUpdateAfterBind(xdescriptorBindingStorageTexelBufferUpdateAfterBind), descriptorBindingUpdateUnusedWhilePending(xdescriptorBindingUpdateUnusedWhilePending), descriptorBindingPartiallyBound(xdescriptorBindingPartiallyBound), descriptorBindingVariableDescriptorCount(xdescriptorBindingVariableDescriptorCount), runtimeDescriptorArray(xruntimeDescriptorArray) {}
+	constexpr PhysicalDeviceDescriptorIndexingFeaturesEXT(Bool32 xshaderInputAttachmentArrayDynamicIndexing = {}, Bool32 xshaderUniformTexelBufferArrayDynamicIndexing = {}, Bool32 xshaderStorageTexelBufferArrayDynamicIndexing = {}, Bool32 xshaderUniformBufferArrayNonUniformIndexing = {}, Bool32 xshaderSampledImageArrayNonUniformIndexing = {}, Bool32 xshaderStorageBufferArrayNonUniformIndexing = {}, Bool32 xshaderStorageImageArrayNonUniformIndexing = {}, Bool32 xshaderInputAttachmentArrayNonUniformIndexing = {}, Bool32 xshaderUniformTexelBufferArrayNonUniformIndexing = {}, Bool32 xshaderStorageTexelBufferArrayNonUniformIndexing = {}, Bool32 xdescriptorBindingUniformBufferUpdateAfterBind = {}, Bool32 xdescriptorBindingSampledImageUpdateAfterBind = {}, Bool32 xdescriptorBindingStorageImageUpdateAfterBind = {}, Bool32 xdescriptorBindingStorageBufferUpdateAfterBind = {}, Bool32 xdescriptorBindingUniformTexelBufferUpdateAfterBind = {}, Bool32 xdescriptorBindingStorageTexelBufferUpdateAfterBind = {}, Bool32 xdescriptorBindingUpdateUnusedWhilePending = {}, Bool32 xdescriptorBindingPartiallyBound = {}, Bool32 xdescriptorBindingVariableDescriptorCount = {}, Bool32 xruntimeDescriptorArray = {}) : shaderInputAttachmentArrayDynamicIndexing(xshaderInputAttachmentArrayDynamicIndexing), shaderUniformTexelBufferArrayDynamicIndexing(xshaderUniformTexelBufferArrayDynamicIndexing), shaderStorageTexelBufferArrayDynamicIndexing(xshaderStorageTexelBufferArrayDynamicIndexing), shaderUniformBufferArrayNonUniformIndexing(xshaderUniformBufferArrayNonUniformIndexing), shaderSampledImageArrayNonUniformIndexing(xshaderSampledImageArrayNonUniformIndexing), shaderStorageBufferArrayNonUniformIndexing(xshaderStorageBufferArrayNonUniformIndexing), shaderStorageImageArrayNonUniformIndexing(xshaderStorageImageArrayNonUniformIndexing), shaderInputAttachmentArrayNonUniformIndexing(xshaderInputAttachmentArrayNonUniformIndexing), shaderUniformTexelBufferArrayNonUniformIndexing(xshaderUniformTexelBufferArrayNonUniformIndexing), shaderStorageTexelBufferArrayNonUniformIndexing(xshaderStorageTexelBufferArrayNonUniformIndexing), descriptorBindingUniformBufferUpdateAfterBind(xdescriptorBindingUniformBufferUpdateAfterBind), descriptorBindingSampledImageUpdateAfterBind(xdescriptorBindingSampledImageUpdateAfterBind), descriptorBindingStorageImageUpdateAfterBind(xdescriptorBindingStorageImageUpdateAfterBind), descriptorBindingStorageBufferUpdateAfterBind(xdescriptorBindingStorageBufferUpdateAfterBind), descriptorBindingUniformTexelBufferUpdateAfterBind(xdescriptorBindingUniformTexelBufferUpdateAfterBind), descriptorBindingStorageTexelBufferUpdateAfterBind(xdescriptorBindingStorageTexelBufferUpdateAfterBind), descriptorBindingUpdateUnusedWhilePending(xdescriptorBindingUpdateUnusedWhilePending), descriptorBindingPartiallyBound(xdescriptorBindingPartiallyBound), descriptorBindingVariableDescriptorCount(xdescriptorBindingVariableDescriptorCount), runtimeDescriptorArray(xruntimeDescriptorArray) {}
 
 	const VkPhysicalDeviceDescriptorIndexingFeaturesEXT& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceDescriptorIndexingFeaturesEXT&>(*this); }
 	VkPhysicalDeviceDescriptorIndexingFeaturesEXT& vkHandle() { return reinterpret_cast<VkPhysicalDeviceDescriptorIndexingFeaturesEXT&>(*this); }
@@ -5278,7 +5279,7 @@ struct DescriptorSetVariableDescriptorCountAllocateInfoEXT {
 	uint32_t descriptorSetCount {};
 	const uint32_t* pDescriptorCounts {};
 
-	DescriptorSetVariableDescriptorCountAllocateInfoEXT(uint32_t xdescriptorSetCount = {}, const uint32_t* xpDescriptorCounts = {}) : descriptorSetCount(xdescriptorSetCount), pDescriptorCounts(xpDescriptorCounts) {}
+	constexpr DescriptorSetVariableDescriptorCountAllocateInfoEXT(uint32_t xdescriptorSetCount = {}, const uint32_t* xpDescriptorCounts = {}) : descriptorSetCount(xdescriptorSetCount), pDescriptorCounts(xpDescriptorCounts) {}
 
 	const VkDescriptorSetVariableDescriptorCountAllocateInfoEXT& vkHandle() const { return reinterpret_cast<const VkDescriptorSetVariableDescriptorCountAllocateInfoEXT&>(*this); }
 	VkDescriptorSetVariableDescriptorCountAllocateInfoEXT& vkHandle() { return reinterpret_cast<VkDescriptorSetVariableDescriptorCountAllocateInfoEXT&>(*this); }
@@ -5318,7 +5319,7 @@ struct PipelineViewportShadingRateImageStateCreateInfoNV {
 	uint32_t viewportCount {};
 	const ShadingRatePaletteNV* pShadingRatePalettes {};
 
-	PipelineViewportShadingRateImageStateCreateInfoNV(Bool32 xshadingRateImageEnable = {}, uint32_t xviewportCount = {}, const ShadingRatePaletteNV* xpShadingRatePalettes = {}) : shadingRateImageEnable(xshadingRateImageEnable), viewportCount(xviewportCount), pShadingRatePalettes(xpShadingRatePalettes) {}
+	constexpr PipelineViewportShadingRateImageStateCreateInfoNV(Bool32 xshadingRateImageEnable = {}, uint32_t xviewportCount = {}, const ShadingRatePaletteNV* xpShadingRatePalettes = {}) : shadingRateImageEnable(xshadingRateImageEnable), viewportCount(xviewportCount), pShadingRatePalettes(xpShadingRatePalettes) {}
 
 	const VkPipelineViewportShadingRateImageStateCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkPipelineViewportShadingRateImageStateCreateInfoNV&>(*this); }
 	VkPipelineViewportShadingRateImageStateCreateInfoNV& vkHandle() { return reinterpret_cast<VkPipelineViewportShadingRateImageStateCreateInfoNV&>(*this); }
@@ -5333,7 +5334,7 @@ struct PhysicalDeviceShadingRateImageFeaturesNV {
 	Bool32 shadingRateImage {};
 	Bool32 shadingRateCoarseSampleOrder {};
 
-	PhysicalDeviceShadingRateImageFeaturesNV(Bool32 xshadingRateImage = {}, Bool32 xshadingRateCoarseSampleOrder = {}) : shadingRateImage(xshadingRateImage), shadingRateCoarseSampleOrder(xshadingRateCoarseSampleOrder) {}
+	constexpr PhysicalDeviceShadingRateImageFeaturesNV(Bool32 xshadingRateImage = {}, Bool32 xshadingRateCoarseSampleOrder = {}) : shadingRateImage(xshadingRateImage), shadingRateCoarseSampleOrder(xshadingRateCoarseSampleOrder) {}
 
 	const VkPhysicalDeviceShadingRateImageFeaturesNV& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceShadingRateImageFeaturesNV&>(*this); }
 	VkPhysicalDeviceShadingRateImageFeaturesNV& vkHandle() { return reinterpret_cast<VkPhysicalDeviceShadingRateImageFeaturesNV&>(*this); }
@@ -5388,7 +5389,7 @@ struct PipelineViewportCoarseSampleOrderStateCreateInfoNV {
 	uint32_t customSampleOrderCount {};
 	const CoarseSampleOrderCustomNV* pCustomSampleOrders {};
 
-	PipelineViewportCoarseSampleOrderStateCreateInfoNV(CoarseSampleOrderTypeNV xsampleOrderType = {}, uint32_t xcustomSampleOrderCount = {}, const CoarseSampleOrderCustomNV* xpCustomSampleOrders = {}) : sampleOrderType(xsampleOrderType), customSampleOrderCount(xcustomSampleOrderCount), pCustomSampleOrders(xpCustomSampleOrders) {}
+	constexpr PipelineViewportCoarseSampleOrderStateCreateInfoNV(CoarseSampleOrderTypeNV xsampleOrderType = {}, uint32_t xcustomSampleOrderCount = {}, const CoarseSampleOrderCustomNV* xpCustomSampleOrders = {}) : sampleOrderType(xsampleOrderType), customSampleOrderCount(xcustomSampleOrderCount), pCustomSampleOrders(xpCustomSampleOrders) {}
 
 	const VkPipelineViewportCoarseSampleOrderStateCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkPipelineViewportCoarseSampleOrderStateCreateInfoNV&>(*this); }
 	VkPipelineViewportCoarseSampleOrderStateCreateInfoNV& vkHandle() { return reinterpret_cast<VkPipelineViewportCoarseSampleOrderStateCreateInfoNV&>(*this); }
@@ -5407,7 +5408,7 @@ struct RayTracingShaderGroupCreateInfoNV {
 	uint32_t anyHitShader {};
 	uint32_t intersectionShader {};
 
-	RayTracingShaderGroupCreateInfoNV(RayTracingShaderGroupTypeNV xtype = {}, uint32_t xgeneralShader = {}, uint32_t xclosestHitShader = {}, uint32_t xanyHitShader = {}, uint32_t xintersectionShader = {}) : type(xtype), generalShader(xgeneralShader), closestHitShader(xclosestHitShader), anyHitShader(xanyHitShader), intersectionShader(xintersectionShader) {}
+	constexpr RayTracingShaderGroupCreateInfoNV(RayTracingShaderGroupTypeNV xtype = {}, uint32_t xgeneralShader = {}, uint32_t xclosestHitShader = {}, uint32_t xanyHitShader = {}, uint32_t xintersectionShader = {}) : type(xtype), generalShader(xgeneralShader), closestHitShader(xclosestHitShader), anyHitShader(xanyHitShader), intersectionShader(xintersectionShader) {}
 
 	const VkRayTracingShaderGroupCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkRayTracingShaderGroupCreateInfoNV&>(*this); }
 	VkRayTracingShaderGroupCreateInfoNV& vkHandle() { return reinterpret_cast<VkRayTracingShaderGroupCreateInfoNV&>(*this); }
@@ -5429,7 +5430,7 @@ struct RayTracingPipelineCreateInfoNV {
 	Pipeline basePipelineHandle {};
 	int32_t basePipelineIndex {};
 
-	RayTracingPipelineCreateInfoNV(PipelineCreateFlags xflags = {}, uint32_t xstageCount = {}, const PipelineShaderStageCreateInfo* xpStages = {}, uint32_t xgroupCount = {}, const RayTracingShaderGroupCreateInfoNV* xpGroups = {}, uint32_t xmaxRecursionDepth = {}, PipelineLayout xlayout = {}, Pipeline xbasePipelineHandle = {}, int32_t xbasePipelineIndex = {}) : flags(xflags), stageCount(xstageCount), pStages(xpStages), groupCount(xgroupCount), pGroups(xpGroups), maxRecursionDepth(xmaxRecursionDepth), layout(xlayout), basePipelineHandle(xbasePipelineHandle), basePipelineIndex(xbasePipelineIndex) {}
+	constexpr RayTracingPipelineCreateInfoNV(PipelineCreateFlags xflags = {}, uint32_t xstageCount = {}, const PipelineShaderStageCreateInfo* xpStages = {}, uint32_t xgroupCount = {}, const RayTracingShaderGroupCreateInfoNV* xpGroups = {}, uint32_t xmaxRecursionDepth = {}, PipelineLayout xlayout = {}, Pipeline xbasePipelineHandle = {}, int32_t xbasePipelineIndex = {}) : flags(xflags), stageCount(xstageCount), pStages(xpStages), groupCount(xgroupCount), pGroups(xpGroups), maxRecursionDepth(xmaxRecursionDepth), layout(xlayout), basePipelineHandle(xbasePipelineHandle), basePipelineIndex(xbasePipelineIndex) {}
 
 	const VkRayTracingPipelineCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkRayTracingPipelineCreateInfoNV&>(*this); }
 	VkRayTracingPipelineCreateInfoNV& vkHandle() { return reinterpret_cast<VkRayTracingPipelineCreateInfoNV&>(*this); }
@@ -5453,7 +5454,7 @@ struct GeometryTrianglesNV {
 	Buffer transformData {};
 	DeviceSize transformOffset {};
 
-	GeometryTrianglesNV(Buffer xvertexData = {}, DeviceSize xvertexOffset = {}, uint32_t xvertexCount = {}, DeviceSize xvertexStride = {}, Format xvertexFormat = {}, Buffer xindexData = {}, DeviceSize xindexOffset = {}, uint32_t xindexCount = {}, IndexType xindexType = {}, Buffer xtransformData = {}, DeviceSize xtransformOffset = {}) : vertexData(xvertexData), vertexOffset(xvertexOffset), vertexCount(xvertexCount), vertexStride(xvertexStride), vertexFormat(xvertexFormat), indexData(xindexData), indexOffset(xindexOffset), indexCount(xindexCount), indexType(xindexType), transformData(xtransformData), transformOffset(xtransformOffset) {}
+	constexpr GeometryTrianglesNV(Buffer xvertexData = {}, DeviceSize xvertexOffset = {}, uint32_t xvertexCount = {}, DeviceSize xvertexStride = {}, Format xvertexFormat = {}, Buffer xindexData = {}, DeviceSize xindexOffset = {}, uint32_t xindexCount = {}, IndexType xindexType = {}, Buffer xtransformData = {}, DeviceSize xtransformOffset = {}) : vertexData(xvertexData), vertexOffset(xvertexOffset), vertexCount(xvertexCount), vertexStride(xvertexStride), vertexFormat(xvertexFormat), indexData(xindexData), indexOffset(xindexOffset), indexCount(xindexCount), indexType(xindexType), transformData(xtransformData), transformOffset(xtransformOffset) {}
 
 	const VkGeometryTrianglesNV& vkHandle() const { return reinterpret_cast<const VkGeometryTrianglesNV&>(*this); }
 	VkGeometryTrianglesNV& vkHandle() { return reinterpret_cast<VkGeometryTrianglesNV&>(*this); }
@@ -5470,7 +5471,7 @@ struct GeometryAABBNV {
 	uint32_t stride {};
 	DeviceSize offset {};
 
-	GeometryAABBNV(Buffer xaabbData = {}, uint32_t xnumAABBs = {}, uint32_t xstride = {}, DeviceSize xoffset = {}) : aabbData(xaabbData), numAABBs(xnumAABBs), stride(xstride), offset(xoffset) {}
+	constexpr GeometryAABBNV(Buffer xaabbData = {}, uint32_t xnumAABBs = {}, uint32_t xstride = {}, DeviceSize xoffset = {}) : aabbData(xaabbData), numAABBs(xnumAABBs), stride(xstride), offset(xoffset) {}
 
 	const VkGeometryAABBNV& vkHandle() const { return reinterpret_cast<const VkGeometryAABBNV&>(*this); }
 	VkGeometryAABBNV& vkHandle() { return reinterpret_cast<VkGeometryAABBNV&>(*this); }
@@ -5497,7 +5498,7 @@ struct GeometryNV {
 	GeometryDataNV geometry {};
 	GeometryFlagsNV flags {};
 
-	GeometryNV(GeometryTypeNV xgeometryType = {}, GeometryDataNV xgeometry = {}, GeometryFlagsNV xflags = {}) : geometryType(xgeometryType), geometry(xgeometry), flags(xflags) {}
+	constexpr GeometryNV(GeometryTypeNV xgeometryType = {}, GeometryDataNV xgeometry = {}, GeometryFlagsNV xflags = {}) : geometryType(xgeometryType), geometry(xgeometry), flags(xflags) {}
 
 	const VkGeometryNV& vkHandle() const { return reinterpret_cast<const VkGeometryNV&>(*this); }
 	VkGeometryNV& vkHandle() { return reinterpret_cast<VkGeometryNV&>(*this); }
@@ -5515,7 +5516,7 @@ struct AccelerationStructureInfoNV {
 	uint32_t geometryCount {};
 	const GeometryNV* pGeometries {};
 
-	AccelerationStructureInfoNV(AccelerationStructureTypeNV xtype = {}, BuildAccelerationStructureFlagsNV xflags = {}, uint32_t xinstanceCount = {}, uint32_t xgeometryCount = {}, const GeometryNV* xpGeometries = {}) : type(xtype), flags(xflags), instanceCount(xinstanceCount), geometryCount(xgeometryCount), pGeometries(xpGeometries) {}
+	constexpr AccelerationStructureInfoNV(AccelerationStructureTypeNV xtype = {}, BuildAccelerationStructureFlagsNV xflags = {}, uint32_t xinstanceCount = {}, uint32_t xgeometryCount = {}, const GeometryNV* xpGeometries = {}) : type(xtype), flags(xflags), instanceCount(xinstanceCount), geometryCount(xgeometryCount), pGeometries(xpGeometries) {}
 
 	const VkAccelerationStructureInfoNV& vkHandle() const { return reinterpret_cast<const VkAccelerationStructureInfoNV&>(*this); }
 	VkAccelerationStructureInfoNV& vkHandle() { return reinterpret_cast<VkAccelerationStructureInfoNV&>(*this); }
@@ -5530,7 +5531,7 @@ struct AccelerationStructureCreateInfoNV {
 	DeviceSize compactedSize {};
 	AccelerationStructureInfoNV info {};
 
-	AccelerationStructureCreateInfoNV(DeviceSize xcompactedSize = {}, AccelerationStructureInfoNV xinfo = {}) : compactedSize(xcompactedSize), info(xinfo) {}
+	constexpr AccelerationStructureCreateInfoNV(DeviceSize xcompactedSize = {}, AccelerationStructureInfoNV xinfo = {}) : compactedSize(xcompactedSize), info(xinfo) {}
 
 	const VkAccelerationStructureCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkAccelerationStructureCreateInfoNV&>(*this); }
 	VkAccelerationStructureCreateInfoNV& vkHandle() { return reinterpret_cast<VkAccelerationStructureCreateInfoNV&>(*this); }
@@ -5548,7 +5549,7 @@ struct BindAccelerationStructureMemoryInfoNV {
 	uint32_t deviceIndexCount {};
 	const uint32_t* pDeviceIndices {};
 
-	BindAccelerationStructureMemoryInfoNV(AccelerationStructureNV xaccelerationStructure = {}, DeviceMemory xmemory = {}, DeviceSize xmemoryOffset = {}, uint32_t xdeviceIndexCount = {}, const uint32_t* xpDeviceIndices = {}) : accelerationStructure(xaccelerationStructure), memory(xmemory), memoryOffset(xmemoryOffset), deviceIndexCount(xdeviceIndexCount), pDeviceIndices(xpDeviceIndices) {}
+	constexpr BindAccelerationStructureMemoryInfoNV(AccelerationStructureNV xaccelerationStructure = {}, DeviceMemory xmemory = {}, DeviceSize xmemoryOffset = {}, uint32_t xdeviceIndexCount = {}, const uint32_t* xpDeviceIndices = {}) : accelerationStructure(xaccelerationStructure), memory(xmemory), memoryOffset(xmemoryOffset), deviceIndexCount(xdeviceIndexCount), pDeviceIndices(xpDeviceIndices) {}
 
 	const VkBindAccelerationStructureMemoryInfoNV& vkHandle() const { return reinterpret_cast<const VkBindAccelerationStructureMemoryInfoNV&>(*this); }
 	VkBindAccelerationStructureMemoryInfoNV& vkHandle() { return reinterpret_cast<VkBindAccelerationStructureMemoryInfoNV&>(*this); }
@@ -5563,7 +5564,7 @@ struct WriteDescriptorSetAccelerationStructureNV {
 	uint32_t accelerationStructureCount {};
 	const AccelerationStructureNV* pAccelerationStructures {};
 
-	WriteDescriptorSetAccelerationStructureNV(uint32_t xaccelerationStructureCount = {}, const AccelerationStructureNV* xpAccelerationStructures = {}) : accelerationStructureCount(xaccelerationStructureCount), pAccelerationStructures(xpAccelerationStructures) {}
+	constexpr WriteDescriptorSetAccelerationStructureNV(uint32_t xaccelerationStructureCount = {}, const AccelerationStructureNV* xpAccelerationStructures = {}) : accelerationStructureCount(xaccelerationStructureCount), pAccelerationStructures(xpAccelerationStructures) {}
 
 	const VkWriteDescriptorSetAccelerationStructureNV& vkHandle() const { return reinterpret_cast<const VkWriteDescriptorSetAccelerationStructureNV&>(*this); }
 	VkWriteDescriptorSetAccelerationStructureNV& vkHandle() { return reinterpret_cast<VkWriteDescriptorSetAccelerationStructureNV&>(*this); }
@@ -5578,7 +5579,7 @@ struct AccelerationStructureMemoryRequirementsInfoNV {
 	AccelerationStructureMemoryRequirementsTypeNV type {};
 	AccelerationStructureNV accelerationStructure {};
 
-	AccelerationStructureMemoryRequirementsInfoNV(AccelerationStructureMemoryRequirementsTypeNV xtype = {}, AccelerationStructureNV xaccelerationStructure = {}) : type(xtype), accelerationStructure(xaccelerationStructure) {}
+	constexpr AccelerationStructureMemoryRequirementsInfoNV(AccelerationStructureMemoryRequirementsTypeNV xtype = {}, AccelerationStructureNV xaccelerationStructure = {}) : type(xtype), accelerationStructure(xaccelerationStructure) {}
 
 	const VkAccelerationStructureMemoryRequirementsInfoNV& vkHandle() const { return reinterpret_cast<const VkAccelerationStructureMemoryRequirementsInfoNV&>(*this); }
 	VkAccelerationStructureMemoryRequirementsInfoNV& vkHandle() { return reinterpret_cast<VkAccelerationStructureMemoryRequirementsInfoNV&>(*this); }
@@ -5612,7 +5613,7 @@ struct PhysicalDeviceRepresentativeFragmentTestFeaturesNV {
 	void* pNext {};
 	Bool32 representativeFragmentTest {};
 
-	PhysicalDeviceRepresentativeFragmentTestFeaturesNV(Bool32 xrepresentativeFragmentTest = {}) : representativeFragmentTest(xrepresentativeFragmentTest) {}
+	constexpr PhysicalDeviceRepresentativeFragmentTestFeaturesNV(Bool32 xrepresentativeFragmentTest = {}) : representativeFragmentTest(xrepresentativeFragmentTest) {}
 
 	const VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV&>(*this); }
 	VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV& vkHandle() { return reinterpret_cast<VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV&>(*this); }
@@ -5626,7 +5627,7 @@ struct PipelineRepresentativeFragmentTestStateCreateInfoNV {
 	const void* pNext {};
 	Bool32 representativeFragmentTestEnable {};
 
-	PipelineRepresentativeFragmentTestStateCreateInfoNV(Bool32 xrepresentativeFragmentTestEnable = {}) : representativeFragmentTestEnable(xrepresentativeFragmentTestEnable) {}
+	constexpr PipelineRepresentativeFragmentTestStateCreateInfoNV(Bool32 xrepresentativeFragmentTestEnable = {}) : representativeFragmentTestEnable(xrepresentativeFragmentTestEnable) {}
 
 	const VkPipelineRepresentativeFragmentTestStateCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkPipelineRepresentativeFragmentTestStateCreateInfoNV&>(*this); }
 	VkPipelineRepresentativeFragmentTestStateCreateInfoNV& vkHandle() { return reinterpret_cast<VkPipelineRepresentativeFragmentTestStateCreateInfoNV&>(*this); }
@@ -5641,7 +5642,7 @@ struct PhysicalDeviceImageViewImageFormatInfoEXT {
 	void* pNext {};
 	ImageViewType imageViewType {};
 
-	PhysicalDeviceImageViewImageFormatInfoEXT(ImageViewType ximageViewType = {}) : imageViewType(ximageViewType) {}
+	constexpr PhysicalDeviceImageViewImageFormatInfoEXT(ImageViewType ximageViewType = {}) : imageViewType(ximageViewType) {}
 
 	const VkPhysicalDeviceImageViewImageFormatInfoEXT& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceImageViewImageFormatInfoEXT&>(*this); }
 	VkPhysicalDeviceImageViewImageFormatInfoEXT& vkHandle() { return reinterpret_cast<VkPhysicalDeviceImageViewImageFormatInfoEXT&>(*this); }
@@ -5669,7 +5670,7 @@ struct DeviceQueueGlobalPriorityCreateInfoEXT {
 	const void* pNext {};
 	QueueGlobalPriorityEXT globalPriority {};
 
-	DeviceQueueGlobalPriorityCreateInfoEXT(QueueGlobalPriorityEXT xglobalPriority = {}) : globalPriority(xglobalPriority) {}
+	constexpr DeviceQueueGlobalPriorityCreateInfoEXT(QueueGlobalPriorityEXT xglobalPriority = {}) : globalPriority(xglobalPriority) {}
 
 	const VkDeviceQueueGlobalPriorityCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkDeviceQueueGlobalPriorityCreateInfoEXT&>(*this); }
 	VkDeviceQueueGlobalPriorityCreateInfoEXT& vkHandle() { return reinterpret_cast<VkDeviceQueueGlobalPriorityCreateInfoEXT&>(*this); }
@@ -5686,7 +5687,7 @@ struct PhysicalDevice8BitStorageFeaturesKHR {
 	Bool32 uniformAndStorageBuffer8BitAccess {};
 	Bool32 storagePushConstant8 {};
 
-	PhysicalDevice8BitStorageFeaturesKHR(Bool32 xstorageBuffer8BitAccess = {}, Bool32 xuniformAndStorageBuffer8BitAccess = {}, Bool32 xstoragePushConstant8 = {}) : storageBuffer8BitAccess(xstorageBuffer8BitAccess), uniformAndStorageBuffer8BitAccess(xuniformAndStorageBuffer8BitAccess), storagePushConstant8(xstoragePushConstant8) {}
+	constexpr PhysicalDevice8BitStorageFeaturesKHR(Bool32 xstorageBuffer8BitAccess = {}, Bool32 xuniformAndStorageBuffer8BitAccess = {}, Bool32 xstoragePushConstant8 = {}) : storageBuffer8BitAccess(xstorageBuffer8BitAccess), uniformAndStorageBuffer8BitAccess(xuniformAndStorageBuffer8BitAccess), storagePushConstant8(xstoragePushConstant8) {}
 
 	const VkPhysicalDevice8BitStorageFeaturesKHR& vkHandle() const { return reinterpret_cast<const VkPhysicalDevice8BitStorageFeaturesKHR&>(*this); }
 	VkPhysicalDevice8BitStorageFeaturesKHR& vkHandle() { return reinterpret_cast<VkPhysicalDevice8BitStorageFeaturesKHR&>(*this); }
@@ -5702,7 +5703,7 @@ struct ImportMemoryHostPointerInfoEXT {
 	ExternalMemoryHandleTypeBits handleType {};
 	void* pHostPointer {};
 
-	ImportMemoryHostPointerInfoEXT(ExternalMemoryHandleTypeBits xhandleType = {}, void* xpHostPointer = {}) : handleType(xhandleType), pHostPointer(xpHostPointer) {}
+	constexpr ImportMemoryHostPointerInfoEXT(ExternalMemoryHandleTypeBits xhandleType = {}, void* xpHostPointer = {}) : handleType(xhandleType), pHostPointer(xpHostPointer) {}
 
 	const VkImportMemoryHostPointerInfoEXT& vkHandle() const { return reinterpret_cast<const VkImportMemoryHostPointerInfoEXT&>(*this); }
 	VkImportMemoryHostPointerInfoEXT& vkHandle() { return reinterpret_cast<VkImportMemoryHostPointerInfoEXT&>(*this); }
@@ -5742,7 +5743,7 @@ struct PhysicalDeviceShaderAtomicInt64FeaturesKHR {
 	Bool32 shaderBufferInt64Atomics {};
 	Bool32 shaderSharedInt64Atomics {};
 
-	PhysicalDeviceShaderAtomicInt64FeaturesKHR(Bool32 xshaderBufferInt64Atomics = {}, Bool32 xshaderSharedInt64Atomics = {}) : shaderBufferInt64Atomics(xshaderBufferInt64Atomics), shaderSharedInt64Atomics(xshaderSharedInt64Atomics) {}
+	constexpr PhysicalDeviceShaderAtomicInt64FeaturesKHR(Bool32 xshaderBufferInt64Atomics = {}, Bool32 xshaderSharedInt64Atomics = {}) : shaderBufferInt64Atomics(xshaderBufferInt64Atomics), shaderSharedInt64Atomics(xshaderSharedInt64Atomics) {}
 
 	const VkPhysicalDeviceShaderAtomicInt64FeaturesKHR& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceShaderAtomicInt64FeaturesKHR&>(*this); }
 	VkPhysicalDeviceShaderAtomicInt64FeaturesKHR& vkHandle() { return reinterpret_cast<VkPhysicalDeviceShaderAtomicInt64FeaturesKHR&>(*this); }
@@ -5757,7 +5758,7 @@ struct CalibratedTimestampInfoEXT {
 	const void* pNext {};
 	TimeDomainEXT timeDomain {};
 
-	CalibratedTimestampInfoEXT(TimeDomainEXT xtimeDomain = {}) : timeDomain(xtimeDomain) {}
+	constexpr CalibratedTimestampInfoEXT(TimeDomainEXT xtimeDomain = {}) : timeDomain(xtimeDomain) {}
 
 	const VkCalibratedTimestampInfoEXT& vkHandle() const { return reinterpret_cast<const VkCalibratedTimestampInfoEXT&>(*this); }
 	VkCalibratedTimestampInfoEXT& vkHandle() { return reinterpret_cast<VkCalibratedTimestampInfoEXT&>(*this); }
@@ -5798,7 +5799,7 @@ struct DeviceMemoryOverallocationCreateInfoAMD {
 	const void* pNext {};
 	MemoryOverallocationBehaviorAMD overallocationBehavior {};
 
-	DeviceMemoryOverallocationCreateInfoAMD(MemoryOverallocationBehaviorAMD xoverallocationBehavior = {}) : overallocationBehavior(xoverallocationBehavior) {}
+	constexpr DeviceMemoryOverallocationCreateInfoAMD(MemoryOverallocationBehaviorAMD xoverallocationBehavior = {}) : overallocationBehavior(xoverallocationBehavior) {}
 
 	const VkDeviceMemoryOverallocationCreateInfoAMD& vkHandle() const { return reinterpret_cast<const VkDeviceMemoryOverallocationCreateInfoAMD&>(*this); }
 	VkDeviceMemoryOverallocationCreateInfoAMD& vkHandle() { return reinterpret_cast<VkDeviceMemoryOverallocationCreateInfoAMD&>(*this); }
@@ -5837,7 +5838,7 @@ struct PipelineVertexInputDivisorStateCreateInfoEXT {
 	uint32_t vertexBindingDivisorCount {};
 	const VertexInputBindingDivisorDescriptionEXT* pVertexBindingDivisors {};
 
-	PipelineVertexInputDivisorStateCreateInfoEXT(uint32_t xvertexBindingDivisorCount = {}, const VertexInputBindingDivisorDescriptionEXT* xpVertexBindingDivisors = {}) : vertexBindingDivisorCount(xvertexBindingDivisorCount), pVertexBindingDivisors(xpVertexBindingDivisors) {}
+	constexpr PipelineVertexInputDivisorStateCreateInfoEXT(uint32_t xvertexBindingDivisorCount = {}, const VertexInputBindingDivisorDescriptionEXT* xpVertexBindingDivisors = {}) : vertexBindingDivisorCount(xvertexBindingDivisorCount), pVertexBindingDivisors(xpVertexBindingDivisors) {}
 
 	const VkPipelineVertexInputDivisorStateCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkPipelineVertexInputDivisorStateCreateInfoEXT&>(*this); }
 	VkPipelineVertexInputDivisorStateCreateInfoEXT& vkHandle() { return reinterpret_cast<VkPipelineVertexInputDivisorStateCreateInfoEXT&>(*this); }
@@ -5852,7 +5853,7 @@ struct PhysicalDeviceVertexAttributeDivisorFeaturesEXT {
 	Bool32 vertexAttributeInstanceRateDivisor {};
 	Bool32 vertexAttributeInstanceRateZeroDivisor {};
 
-	PhysicalDeviceVertexAttributeDivisorFeaturesEXT(Bool32 xvertexAttributeInstanceRateDivisor = {}, Bool32 xvertexAttributeInstanceRateZeroDivisor = {}) : vertexAttributeInstanceRateDivisor(xvertexAttributeInstanceRateDivisor), vertexAttributeInstanceRateZeroDivisor(xvertexAttributeInstanceRateZeroDivisor) {}
+	constexpr PhysicalDeviceVertexAttributeDivisorFeaturesEXT(Bool32 xvertexAttributeInstanceRateDivisor = {}, Bool32 xvertexAttributeInstanceRateZeroDivisor = {}) : vertexAttributeInstanceRateDivisor(xvertexAttributeInstanceRateDivisor), vertexAttributeInstanceRateZeroDivisor(xvertexAttributeInstanceRateZeroDivisor) {}
 
 	const VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT&>(*this); }
 	VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT& vkHandle() { return reinterpret_cast<VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT&>(*this); }
@@ -5862,14 +5863,14 @@ struct PhysicalDeviceVertexAttributeDivisorFeaturesEXT {
 };
 
 
-#ifdef VK_USE_PLATFORM_GGP
 
+#ifdef VK_USE_PLATFORM_GGP
 struct PresentFrameTokenGGP {
 	StructureType sType {StructureType::presentFrameTokenGGP};
 	const void* pNext {};
 	GgpFrameToken frameToken {};
 
-	PresentFrameTokenGGP(GgpFrameToken xframeToken = {}) : frameToken(xframeToken) {}
+	constexpr PresentFrameTokenGGP(GgpFrameToken xframeToken = {}) : frameToken(xframeToken) {}
 
 	const VkPresentFrameTokenGGP& vkHandle() const { return reinterpret_cast<const VkPresentFrameTokenGGP&>(*this); }
 	VkPresentFrameTokenGGP& vkHandle() { return reinterpret_cast<VkPresentFrameTokenGGP&>(*this); }
@@ -5899,7 +5900,7 @@ struct PipelineCreationFeedbackCreateInfoEXT {
 	uint32_t pipelineStageCreationFeedbackCount {};
 	PipelineCreationFeedbackEXT* pPipelineStageCreationFeedbacks {};
 
-	PipelineCreationFeedbackCreateInfoEXT(PipelineCreationFeedbackEXT* xpPipelineCreationFeedback = {}, uint32_t xpipelineStageCreationFeedbackCount = {}, PipelineCreationFeedbackEXT* xpPipelineStageCreationFeedbacks = {}) : pPipelineCreationFeedback(xpPipelineCreationFeedback), pipelineStageCreationFeedbackCount(xpipelineStageCreationFeedbackCount), pPipelineStageCreationFeedbacks(xpPipelineStageCreationFeedbacks) {}
+	constexpr PipelineCreationFeedbackCreateInfoEXT(PipelineCreationFeedbackEXT* xpPipelineCreationFeedback = {}, uint32_t xpipelineStageCreationFeedbackCount = {}, PipelineCreationFeedbackEXT* xpPipelineStageCreationFeedbacks = {}) : pPipelineCreationFeedback(xpPipelineCreationFeedback), pipelineStageCreationFeedbackCount(xpipelineStageCreationFeedbackCount), pPipelineStageCreationFeedbacks(xpPipelineStageCreationFeedbacks) {}
 
 	const VkPipelineCreationFeedbackCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkPipelineCreationFeedbackCreateInfoEXT&>(*this); }
 	VkPipelineCreationFeedbackCreateInfoEXT& vkHandle() { return reinterpret_cast<VkPipelineCreationFeedbackCreateInfoEXT&>(*this); }
@@ -5974,7 +5975,7 @@ struct SubpassDescriptionDepthStencilResolveKHR {
 	ResolveModeBitsKHR stencilResolveMode {};
 	const AttachmentReference2KHR* pDepthStencilResolveAttachment {};
 
-	SubpassDescriptionDepthStencilResolveKHR(ResolveModeBitsKHR xdepthResolveMode = {}, ResolveModeBitsKHR xstencilResolveMode = {}, const AttachmentReference2KHR* xpDepthStencilResolveAttachment = {}) : depthResolveMode(xdepthResolveMode), stencilResolveMode(xstencilResolveMode), pDepthStencilResolveAttachment(xpDepthStencilResolveAttachment) {}
+	constexpr SubpassDescriptionDepthStencilResolveKHR(ResolveModeBitsKHR xdepthResolveMode = {}, ResolveModeBitsKHR xstencilResolveMode = {}, const AttachmentReference2KHR* xpDepthStencilResolveAttachment = {}) : depthResolveMode(xdepthResolveMode), stencilResolveMode(xstencilResolveMode), pDepthStencilResolveAttachment(xpDepthStencilResolveAttachment) {}
 
 	const VkSubpassDescriptionDepthStencilResolveKHR& vkHandle() const { return reinterpret_cast<const VkSubpassDescriptionDepthStencilResolveKHR&>(*this); }
 	VkSubpassDescriptionDepthStencilResolveKHR& vkHandle() { return reinterpret_cast<VkSubpassDescriptionDepthStencilResolveKHR&>(*this); }
@@ -6005,7 +6006,7 @@ struct PhysicalDeviceComputeShaderDerivativesFeaturesNV {
 	Bool32 computeDerivativeGroupQuads {};
 	Bool32 computeDerivativeGroupLinear {};
 
-	PhysicalDeviceComputeShaderDerivativesFeaturesNV(Bool32 xcomputeDerivativeGroupQuads = {}, Bool32 xcomputeDerivativeGroupLinear = {}) : computeDerivativeGroupQuads(xcomputeDerivativeGroupQuads), computeDerivativeGroupLinear(xcomputeDerivativeGroupLinear) {}
+	constexpr PhysicalDeviceComputeShaderDerivativesFeaturesNV(Bool32 xcomputeDerivativeGroupQuads = {}, Bool32 xcomputeDerivativeGroupLinear = {}) : computeDerivativeGroupQuads(xcomputeDerivativeGroupQuads), computeDerivativeGroupLinear(xcomputeDerivativeGroupLinear) {}
 
 	const VkPhysicalDeviceComputeShaderDerivativesFeaturesNV& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceComputeShaderDerivativesFeaturesNV&>(*this); }
 	VkPhysicalDeviceComputeShaderDerivativesFeaturesNV& vkHandle() { return reinterpret_cast<VkPhysicalDeviceComputeShaderDerivativesFeaturesNV&>(*this); }
@@ -6021,7 +6022,7 @@ struct PhysicalDeviceMeshShaderFeaturesNV {
 	Bool32 taskShader {};
 	Bool32 meshShader {};
 
-	PhysicalDeviceMeshShaderFeaturesNV(Bool32 xtaskShader = {}, Bool32 xmeshShader = {}) : taskShader(xtaskShader), meshShader(xmeshShader) {}
+	constexpr PhysicalDeviceMeshShaderFeaturesNV(Bool32 xtaskShader = {}, Bool32 xmeshShader = {}) : taskShader(xtaskShader), meshShader(xmeshShader) {}
 
 	const VkPhysicalDeviceMeshShaderFeaturesNV& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceMeshShaderFeaturesNV&>(*this); }
 	VkPhysicalDeviceMeshShaderFeaturesNV& vkHandle() { return reinterpret_cast<VkPhysicalDeviceMeshShaderFeaturesNV&>(*this); }
@@ -6071,7 +6072,7 @@ struct PhysicalDeviceFragmentShaderBarycentricFeaturesNV {
 	void* pNext {};
 	Bool32 fragmentShaderBarycentric {};
 
-	PhysicalDeviceFragmentShaderBarycentricFeaturesNV(Bool32 xfragmentShaderBarycentric = {}) : fragmentShaderBarycentric(xfragmentShaderBarycentric) {}
+	constexpr PhysicalDeviceFragmentShaderBarycentricFeaturesNV(Bool32 xfragmentShaderBarycentric = {}) : fragmentShaderBarycentric(xfragmentShaderBarycentric) {}
 
 	const VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV&>(*this); }
 	VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV& vkHandle() { return reinterpret_cast<VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV&>(*this); }
@@ -6086,7 +6087,7 @@ struct PhysicalDeviceShaderImageFootprintFeaturesNV {
 	void* pNext {};
 	Bool32 imageFootprint {};
 
-	PhysicalDeviceShaderImageFootprintFeaturesNV(Bool32 ximageFootprint = {}) : imageFootprint(ximageFootprint) {}
+	constexpr PhysicalDeviceShaderImageFootprintFeaturesNV(Bool32 ximageFootprint = {}) : imageFootprint(ximageFootprint) {}
 
 	const VkPhysicalDeviceShaderImageFootprintFeaturesNV& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceShaderImageFootprintFeaturesNV&>(*this); }
 	VkPhysicalDeviceShaderImageFootprintFeaturesNV& vkHandle() { return reinterpret_cast<VkPhysicalDeviceShaderImageFootprintFeaturesNV&>(*this); }
@@ -6102,7 +6103,7 @@ struct PipelineViewportExclusiveScissorStateCreateInfoNV {
 	uint32_t exclusiveScissorCount {};
 	const Rect2D* pExclusiveScissors {};
 
-	PipelineViewportExclusiveScissorStateCreateInfoNV(uint32_t xexclusiveScissorCount = {}, const Rect2D* xpExclusiveScissors = {}) : exclusiveScissorCount(xexclusiveScissorCount), pExclusiveScissors(xpExclusiveScissors) {}
+	constexpr PipelineViewportExclusiveScissorStateCreateInfoNV(uint32_t xexclusiveScissorCount = {}, const Rect2D* xpExclusiveScissors = {}) : exclusiveScissorCount(xexclusiveScissorCount), pExclusiveScissors(xpExclusiveScissors) {}
 
 	const VkPipelineViewportExclusiveScissorStateCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkPipelineViewportExclusiveScissorStateCreateInfoNV&>(*this); }
 	VkPipelineViewportExclusiveScissorStateCreateInfoNV& vkHandle() { return reinterpret_cast<VkPipelineViewportExclusiveScissorStateCreateInfoNV&>(*this); }
@@ -6116,7 +6117,7 @@ struct PhysicalDeviceExclusiveScissorFeaturesNV {
 	void* pNext {};
 	Bool32 exclusiveScissor {};
 
-	PhysicalDeviceExclusiveScissorFeaturesNV(Bool32 xexclusiveScissor = {}) : exclusiveScissor(xexclusiveScissor) {}
+	constexpr PhysicalDeviceExclusiveScissorFeaturesNV(Bool32 xexclusiveScissor = {}) : exclusiveScissor(xexclusiveScissor) {}
 
 	const VkPhysicalDeviceExclusiveScissorFeaturesNV& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceExclusiveScissorFeaturesNV&>(*this); }
 	VkPhysicalDeviceExclusiveScissorFeaturesNV& vkHandle() { return reinterpret_cast<VkPhysicalDeviceExclusiveScissorFeaturesNV&>(*this); }
@@ -6159,7 +6160,7 @@ struct PhysicalDeviceVulkanMemoryModelFeaturesKHR {
 	Bool32 vulkanMemoryModelDeviceScope {};
 	Bool32 vulkanMemoryModelAvailabilityVisibilityChains {};
 
-	PhysicalDeviceVulkanMemoryModelFeaturesKHR(Bool32 xvulkanMemoryModel = {}, Bool32 xvulkanMemoryModelDeviceScope = {}, Bool32 xvulkanMemoryModelAvailabilityVisibilityChains = {}) : vulkanMemoryModel(xvulkanMemoryModel), vulkanMemoryModelDeviceScope(xvulkanMemoryModelDeviceScope), vulkanMemoryModelAvailabilityVisibilityChains(xvulkanMemoryModelAvailabilityVisibilityChains) {}
+	constexpr PhysicalDeviceVulkanMemoryModelFeaturesKHR(Bool32 xvulkanMemoryModel = {}, Bool32 xvulkanMemoryModelDeviceScope = {}, Bool32 xvulkanMemoryModelAvailabilityVisibilityChains = {}) : vulkanMemoryModel(xvulkanMemoryModel), vulkanMemoryModelDeviceScope(xvulkanMemoryModelDeviceScope), vulkanMemoryModelAvailabilityVisibilityChains(xvulkanMemoryModelAvailabilityVisibilityChains) {}
 
 	const VkPhysicalDeviceVulkanMemoryModelFeaturesKHR& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceVulkanMemoryModelFeaturesKHR&>(*this); }
 	VkPhysicalDeviceVulkanMemoryModelFeaturesKHR& vkHandle() { return reinterpret_cast<VkPhysicalDeviceVulkanMemoryModelFeaturesKHR&>(*this); }
@@ -6202,7 +6203,7 @@ struct SwapchainDisplayNativeHdrCreateInfoAMD {
 	const void* pNext {};
 	Bool32 localDimmingEnable {};
 
-	SwapchainDisplayNativeHdrCreateInfoAMD(Bool32 xlocalDimmingEnable = {}) : localDimmingEnable(xlocalDimmingEnable) {}
+	constexpr SwapchainDisplayNativeHdrCreateInfoAMD(Bool32 xlocalDimmingEnable = {}) : localDimmingEnable(xlocalDimmingEnable) {}
 
 	const VkSwapchainDisplayNativeHdrCreateInfoAMD& vkHandle() const { return reinterpret_cast<const VkSwapchainDisplayNativeHdrCreateInfoAMD&>(*this); }
 	VkSwapchainDisplayNativeHdrCreateInfoAMD& vkHandle() { return reinterpret_cast<VkSwapchainDisplayNativeHdrCreateInfoAMD&>(*this); }
@@ -6212,15 +6213,15 @@ struct SwapchainDisplayNativeHdrCreateInfoAMD {
 };
 
 
-#ifdef VK_USE_PLATFORM_FUCHSIA
 
+#ifdef VK_USE_PLATFORM_FUCHSIA
 struct ImagePipeSurfaceCreateInfoFUCHSIA {
 	StructureType sType {StructureType::imagepipeSurfaceCreateInfoFUCHSIA};
 	const void* pNext {};
 	ImagePipeSurfaceCreateFlagsFUCHSIA flags {};
 	zx_handle_t imagePipeHandle {};
 
-	ImagePipeSurfaceCreateInfoFUCHSIA(ImagePipeSurfaceCreateFlagsFUCHSIA xflags = {}, zx_handle_t ximagePipeHandle = {}) : flags(xflags), imagePipeHandle(ximagePipeHandle) {}
+	constexpr ImagePipeSurfaceCreateInfoFUCHSIA(ImagePipeSurfaceCreateFlagsFUCHSIA xflags = {}, zx_handle_t ximagePipeHandle = {}) : flags(xflags), imagePipeHandle(ximagePipeHandle) {}
 
 	const VkImagePipeSurfaceCreateInfoFUCHSIA& vkHandle() const { return reinterpret_cast<const VkImagePipeSurfaceCreateInfoFUCHSIA&>(*this); }
 	VkImagePipeSurfaceCreateInfoFUCHSIA& vkHandle() { return reinterpret_cast<VkImagePipeSurfaceCreateInfoFUCHSIA&>(*this); }
@@ -6265,7 +6266,7 @@ struct RenderPassFragmentDensityMapCreateInfoEXT {
 	const void* pNext {};
 	AttachmentReference fragmentDensityMapAttachment {};
 
-	RenderPassFragmentDensityMapCreateInfoEXT(AttachmentReference xfragmentDensityMapAttachment = {}) : fragmentDensityMapAttachment(xfragmentDensityMapAttachment) {}
+	constexpr RenderPassFragmentDensityMapCreateInfoEXT(AttachmentReference xfragmentDensityMapAttachment = {}) : fragmentDensityMapAttachment(xfragmentDensityMapAttachment) {}
 
 	const VkRenderPassFragmentDensityMapCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkRenderPassFragmentDensityMapCreateInfoEXT&>(*this); }
 	VkRenderPassFragmentDensityMapCreateInfoEXT& vkHandle() { return reinterpret_cast<VkRenderPassFragmentDensityMapCreateInfoEXT&>(*this); }
@@ -6280,7 +6281,7 @@ struct PhysicalDeviceScalarBlockLayoutFeaturesEXT {
 	void* pNext {};
 	Bool32 scalarBlockLayout {};
 
-	PhysicalDeviceScalarBlockLayoutFeaturesEXT(Bool32 xscalarBlockLayout = {}) : scalarBlockLayout(xscalarBlockLayout) {}
+	constexpr PhysicalDeviceScalarBlockLayoutFeaturesEXT(Bool32 xscalarBlockLayout = {}) : scalarBlockLayout(xscalarBlockLayout) {}
 
 	const VkPhysicalDeviceScalarBlockLayoutFeaturesEXT& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceScalarBlockLayoutFeaturesEXT&>(*this); }
 	VkPhysicalDeviceScalarBlockLayoutFeaturesEXT& vkHandle() { return reinterpret_cast<VkPhysicalDeviceScalarBlockLayoutFeaturesEXT&>(*this); }
@@ -6309,7 +6310,7 @@ struct PhysicalDeviceMemoryPriorityFeaturesEXT {
 	void* pNext {};
 	Bool32 memoryPriority {};
 
-	PhysicalDeviceMemoryPriorityFeaturesEXT(Bool32 xmemoryPriority = {}) : memoryPriority(xmemoryPriority) {}
+	constexpr PhysicalDeviceMemoryPriorityFeaturesEXT(Bool32 xmemoryPriority = {}) : memoryPriority(xmemoryPriority) {}
 
 	const VkPhysicalDeviceMemoryPriorityFeaturesEXT& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceMemoryPriorityFeaturesEXT&>(*this); }
 	VkPhysicalDeviceMemoryPriorityFeaturesEXT& vkHandle() { return reinterpret_cast<VkPhysicalDeviceMemoryPriorityFeaturesEXT&>(*this); }
@@ -6323,7 +6324,7 @@ struct MemoryPriorityAllocateInfoEXT {
 	const void* pNext {};
 	float priority {};
 
-	MemoryPriorityAllocateInfoEXT(float xpriority = {}) : priority(xpriority) {}
+	constexpr MemoryPriorityAllocateInfoEXT(float xpriority = {}) : priority(xpriority) {}
 
 	const VkMemoryPriorityAllocateInfoEXT& vkHandle() const { return reinterpret_cast<const VkMemoryPriorityAllocateInfoEXT&>(*this); }
 	VkMemoryPriorityAllocateInfoEXT& vkHandle() { return reinterpret_cast<VkMemoryPriorityAllocateInfoEXT&>(*this); }
@@ -6338,7 +6339,7 @@ struct SurfaceProtectedCapabilitiesKHR {
 	const void* pNext {};
 	Bool32 supportsProtected {};
 
-	SurfaceProtectedCapabilitiesKHR(Bool32 xsupportsProtected = {}) : supportsProtected(xsupportsProtected) {}
+	constexpr SurfaceProtectedCapabilitiesKHR(Bool32 xsupportsProtected = {}) : supportsProtected(xsupportsProtected) {}
 
 	const VkSurfaceProtectedCapabilitiesKHR& vkHandle() const { return reinterpret_cast<const VkSurfaceProtectedCapabilitiesKHR&>(*this); }
 	VkSurfaceProtectedCapabilitiesKHR& vkHandle() { return reinterpret_cast<VkSurfaceProtectedCapabilitiesKHR&>(*this); }
@@ -6353,7 +6354,7 @@ struct PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
 	void* pNext {};
 	Bool32 dedicatedAllocationImageAliasing {};
 
-	PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(Bool32 xdedicatedAllocationImageAliasing = {}) : dedicatedAllocationImageAliasing(xdedicatedAllocationImageAliasing) {}
+	constexpr PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(Bool32 xdedicatedAllocationImageAliasing = {}) : dedicatedAllocationImageAliasing(xdedicatedAllocationImageAliasing) {}
 
 	const VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV&>(*this); }
 	VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV& vkHandle() { return reinterpret_cast<VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV&>(*this); }
@@ -6370,7 +6371,7 @@ struct PhysicalDeviceBufferDeviceAddressFeaturesEXT {
 	Bool32 bufferDeviceAddressCaptureReplay {};
 	Bool32 bufferDeviceAddressMultiDevice {};
 
-	PhysicalDeviceBufferDeviceAddressFeaturesEXT(Bool32 xbufferDeviceAddress = {}, Bool32 xbufferDeviceAddressCaptureReplay = {}, Bool32 xbufferDeviceAddressMultiDevice = {}) : bufferDeviceAddress(xbufferDeviceAddress), bufferDeviceAddressCaptureReplay(xbufferDeviceAddressCaptureReplay), bufferDeviceAddressMultiDevice(xbufferDeviceAddressMultiDevice) {}
+	constexpr PhysicalDeviceBufferDeviceAddressFeaturesEXT(Bool32 xbufferDeviceAddress = {}, Bool32 xbufferDeviceAddressCaptureReplay = {}, Bool32 xbufferDeviceAddressMultiDevice = {}) : bufferDeviceAddress(xbufferDeviceAddress), bufferDeviceAddressCaptureReplay(xbufferDeviceAddressCaptureReplay), bufferDeviceAddressMultiDevice(xbufferDeviceAddressMultiDevice) {}
 
 	const VkPhysicalDeviceBufferDeviceAddressFeaturesEXT& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceBufferDeviceAddressFeaturesEXT&>(*this); }
 	VkPhysicalDeviceBufferDeviceAddressFeaturesEXT& vkHandle() { return reinterpret_cast<VkPhysicalDeviceBufferDeviceAddressFeaturesEXT&>(*this); }
@@ -6384,7 +6385,7 @@ struct BufferDeviceAddressInfoEXT {
 	const void* pNext {};
 	Buffer buffer {};
 
-	BufferDeviceAddressInfoEXT(Buffer xbuffer = {}) : buffer(xbuffer) {}
+	constexpr BufferDeviceAddressInfoEXT(Buffer xbuffer = {}) : buffer(xbuffer) {}
 
 	const VkBufferDeviceAddressInfoEXT& vkHandle() const { return reinterpret_cast<const VkBufferDeviceAddressInfoEXT&>(*this); }
 	VkBufferDeviceAddressInfoEXT& vkHandle() { return reinterpret_cast<VkBufferDeviceAddressInfoEXT&>(*this); }
@@ -6398,7 +6399,7 @@ struct BufferDeviceAddressCreateInfoEXT {
 	const void* pNext {};
 	DeviceAddress deviceAddress {};
 
-	BufferDeviceAddressCreateInfoEXT(DeviceAddress xdeviceAddress = {}) : deviceAddress(xdeviceAddress) {}
+	constexpr BufferDeviceAddressCreateInfoEXT(DeviceAddress xdeviceAddress = {}) : deviceAddress(xdeviceAddress) {}
 
 	const VkBufferDeviceAddressCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkBufferDeviceAddressCreateInfoEXT&>(*this); }
 	VkBufferDeviceAddressCreateInfoEXT& vkHandle() { return reinterpret_cast<VkBufferDeviceAddressCreateInfoEXT&>(*this); }
@@ -6413,7 +6414,7 @@ struct ImageStencilUsageCreateInfoEXT {
 	const void* pNext {};
 	ImageUsageFlags stencilUsage {};
 
-	ImageStencilUsageCreateInfoEXT(ImageUsageFlags xstencilUsage = {}) : stencilUsage(xstencilUsage) {}
+	constexpr ImageStencilUsageCreateInfoEXT(ImageUsageFlags xstencilUsage = {}) : stencilUsage(xstencilUsage) {}
 
 	const VkImageStencilUsageCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkImageStencilUsageCreateInfoEXT&>(*this); }
 	VkImageStencilUsageCreateInfoEXT& vkHandle() { return reinterpret_cast<VkImageStencilUsageCreateInfoEXT&>(*this); }
@@ -6431,7 +6432,7 @@ struct ValidationFeaturesEXT {
 	uint32_t disabledValidationFeatureCount {};
 	const ValidationFeatureDisableEXT* pDisabledValidationFeatures {};
 
-	ValidationFeaturesEXT(uint32_t xenabledValidationFeatureCount = {}, const ValidationFeatureEnableEXT* xpEnabledValidationFeatures = {}, uint32_t xdisabledValidationFeatureCount = {}, const ValidationFeatureDisableEXT* xpDisabledValidationFeatures = {}) : enabledValidationFeatureCount(xenabledValidationFeatureCount), pEnabledValidationFeatures(xpEnabledValidationFeatures), disabledValidationFeatureCount(xdisabledValidationFeatureCount), pDisabledValidationFeatures(xpDisabledValidationFeatures) {}
+	constexpr ValidationFeaturesEXT(uint32_t xenabledValidationFeatureCount = {}, const ValidationFeatureEnableEXT* xpEnabledValidationFeatures = {}, uint32_t xdisabledValidationFeatureCount = {}, const ValidationFeatureDisableEXT* xpDisabledValidationFeatures = {}) : enabledValidationFeatureCount(xenabledValidationFeatureCount), pEnabledValidationFeatures(xpEnabledValidationFeatures), disabledValidationFeatureCount(xdisabledValidationFeatureCount), pDisabledValidationFeatures(xpDisabledValidationFeatures) {}
 
 	const VkValidationFeaturesEXT& vkHandle() const { return reinterpret_cast<const VkValidationFeaturesEXT&>(*this); }
 	VkValidationFeaturesEXT& vkHandle() { return reinterpret_cast<VkValidationFeaturesEXT&>(*this); }
@@ -6453,7 +6454,7 @@ struct CooperativeMatrixPropertiesNV {
 	ComponentTypeNV DType {};
 	ScopeNV scope {};
 
-	CooperativeMatrixPropertiesNV(uint32_t xMSize = {}, uint32_t xNSize = {}, uint32_t xKSize = {}, ComponentTypeNV xAType = {}, ComponentTypeNV xBType = {}, ComponentTypeNV xCType = {}, ComponentTypeNV xDType = {}, ScopeNV xscope = {}) : MSize(xMSize), NSize(xNSize), KSize(xKSize), AType(xAType), BType(xBType), CType(xCType), DType(xDType), scope(xscope) {}
+	constexpr CooperativeMatrixPropertiesNV(uint32_t xMSize = {}, uint32_t xNSize = {}, uint32_t xKSize = {}, ComponentTypeNV xAType = {}, ComponentTypeNV xBType = {}, ComponentTypeNV xCType = {}, ComponentTypeNV xDType = {}, ScopeNV xscope = {}) : MSize(xMSize), NSize(xNSize), KSize(xKSize), AType(xAType), BType(xBType), CType(xCType), DType(xDType), scope(xscope) {}
 
 	const VkCooperativeMatrixPropertiesNV& vkHandle() const { return reinterpret_cast<const VkCooperativeMatrixPropertiesNV&>(*this); }
 	VkCooperativeMatrixPropertiesNV& vkHandle() { return reinterpret_cast<VkCooperativeMatrixPropertiesNV&>(*this); }
@@ -6468,7 +6469,7 @@ struct PhysicalDeviceCooperativeMatrixFeaturesNV {
 	Bool32 cooperativeMatrix {};
 	Bool32 cooperativeMatrixRobustBufferAccess {};
 
-	PhysicalDeviceCooperativeMatrixFeaturesNV(Bool32 xcooperativeMatrix = {}, Bool32 xcooperativeMatrixRobustBufferAccess = {}) : cooperativeMatrix(xcooperativeMatrix), cooperativeMatrixRobustBufferAccess(xcooperativeMatrixRobustBufferAccess) {}
+	constexpr PhysicalDeviceCooperativeMatrixFeaturesNV(Bool32 xcooperativeMatrix = {}, Bool32 xcooperativeMatrixRobustBufferAccess = {}) : cooperativeMatrix(xcooperativeMatrix), cooperativeMatrixRobustBufferAccess(xcooperativeMatrixRobustBufferAccess) {}
 
 	const VkPhysicalDeviceCooperativeMatrixFeaturesNV& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceCooperativeMatrixFeaturesNV&>(*this); }
 	VkPhysicalDeviceCooperativeMatrixFeaturesNV& vkHandle() { return reinterpret_cast<VkPhysicalDeviceCooperativeMatrixFeaturesNV&>(*this); }
@@ -6495,7 +6496,7 @@ struct PhysicalDeviceCoverageReductionModeFeaturesNV {
 	void* pNext {};
 	Bool32 coverageReductionMode {};
 
-	PhysicalDeviceCoverageReductionModeFeaturesNV(Bool32 xcoverageReductionMode = {}) : coverageReductionMode(xcoverageReductionMode) {}
+	constexpr PhysicalDeviceCoverageReductionModeFeaturesNV(Bool32 xcoverageReductionMode = {}) : coverageReductionMode(xcoverageReductionMode) {}
 
 	const VkPhysicalDeviceCoverageReductionModeFeaturesNV& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceCoverageReductionModeFeaturesNV&>(*this); }
 	VkPhysicalDeviceCoverageReductionModeFeaturesNV& vkHandle() { return reinterpret_cast<VkPhysicalDeviceCoverageReductionModeFeaturesNV&>(*this); }
@@ -6510,7 +6511,7 @@ struct PipelineCoverageReductionStateCreateInfoNV {
 	PipelineCoverageReductionStateCreateFlagsNV flags {};
 	CoverageReductionModeNV coverageReductionMode {};
 
-	PipelineCoverageReductionStateCreateInfoNV(PipelineCoverageReductionStateCreateFlagsNV xflags = {}, CoverageReductionModeNV xcoverageReductionMode = {}) : flags(xflags), coverageReductionMode(xcoverageReductionMode) {}
+	constexpr PipelineCoverageReductionStateCreateInfoNV(PipelineCoverageReductionStateCreateFlagsNV xflags = {}, CoverageReductionModeNV xcoverageReductionMode = {}) : flags(xflags), coverageReductionMode(xcoverageReductionMode) {}
 
 	const VkPipelineCoverageReductionStateCreateInfoNV& vkHandle() const { return reinterpret_cast<const VkPipelineCoverageReductionStateCreateInfoNV&>(*this); }
 	VkPipelineCoverageReductionStateCreateInfoNV& vkHandle() { return reinterpret_cast<VkPipelineCoverageReductionStateCreateInfoNV&>(*this); }
@@ -6540,7 +6541,7 @@ struct PhysicalDeviceYcbcrImageArraysFeaturesEXT {
 	void* pNext {};
 	Bool32 ycbcrImageArrays {};
 
-	PhysicalDeviceYcbcrImageArraysFeaturesEXT(Bool32 xycbcrImageArrays = {}) : ycbcrImageArrays(xycbcrImageArrays) {}
+	constexpr PhysicalDeviceYcbcrImageArraysFeaturesEXT(Bool32 xycbcrImageArrays = {}) : ycbcrImageArrays(xycbcrImageArrays) {}
 
 	const VkPhysicalDeviceYcbcrImageArraysFeaturesEXT& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceYcbcrImageArraysFeaturesEXT&>(*this); }
 	VkPhysicalDeviceYcbcrImageArraysFeaturesEXT& vkHandle() { return reinterpret_cast<VkPhysicalDeviceYcbcrImageArraysFeaturesEXT&>(*this); }
@@ -6555,7 +6556,7 @@ struct PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR {
 	void* pNext {};
 	Bool32 uniformBufferStandardLayout {};
 
-	PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR(Bool32 xuniformBufferStandardLayout = {}) : uniformBufferStandardLayout(xuniformBufferStandardLayout) {}
+	constexpr PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR(Bool32 xuniformBufferStandardLayout = {}) : uniformBufferStandardLayout(xuniformBufferStandardLayout) {}
 
 	const VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR&>(*this); }
 	VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR& vkHandle() { return reinterpret_cast<VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR&>(*this); }
@@ -6565,14 +6566,14 @@ struct PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR {
 };
 
 
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 struct SurfaceFullScreenExclusiveInfoEXT {
 	StructureType sType {StructureType::surfaceFullScreenExclusiveInfoEXT};
 	void* pNext {};
 	FullScreenExclusiveEXT fullScreenExclusive {};
 
-	SurfaceFullScreenExclusiveInfoEXT(FullScreenExclusiveEXT xfullScreenExclusive = {}) : fullScreenExclusive(xfullScreenExclusive) {}
+	constexpr SurfaceFullScreenExclusiveInfoEXT(FullScreenExclusiveEXT xfullScreenExclusive = {}) : fullScreenExclusive(xfullScreenExclusive) {}
 
 	const VkSurfaceFullScreenExclusiveInfoEXT& vkHandle() const { return reinterpret_cast<const VkSurfaceFullScreenExclusiveInfoEXT&>(*this); }
 	VkSurfaceFullScreenExclusiveInfoEXT& vkHandle() { return reinterpret_cast<VkSurfaceFullScreenExclusiveInfoEXT&>(*this); }
@@ -6586,7 +6587,7 @@ struct SurfaceCapabilitiesFullScreenExclusiveEXT {
 	void* pNext {};
 	Bool32 fullScreenExclusiveSupported {};
 
-	SurfaceCapabilitiesFullScreenExclusiveEXT(Bool32 xfullScreenExclusiveSupported = {}) : fullScreenExclusiveSupported(xfullScreenExclusiveSupported) {}
+	constexpr SurfaceCapabilitiesFullScreenExclusiveEXT(Bool32 xfullScreenExclusiveSupported = {}) : fullScreenExclusiveSupported(xfullScreenExclusiveSupported) {}
 
 	const VkSurfaceCapabilitiesFullScreenExclusiveEXT& vkHandle() const { return reinterpret_cast<const VkSurfaceCapabilitiesFullScreenExclusiveEXT&>(*this); }
 	VkSurfaceCapabilitiesFullScreenExclusiveEXT& vkHandle() { return reinterpret_cast<VkSurfaceCapabilitiesFullScreenExclusiveEXT&>(*this); }
@@ -6600,7 +6601,7 @@ struct SurfaceFullScreenExclusiveWin32InfoEXT {
 	const void* pNext {};
 	HMONITOR hmonitor {};
 
-	SurfaceFullScreenExclusiveWin32InfoEXT(HMONITOR xhmonitor = {}) : hmonitor(xhmonitor) {}
+	constexpr SurfaceFullScreenExclusiveWin32InfoEXT(HMONITOR xhmonitor = {}) : hmonitor(xhmonitor) {}
 
 	const VkSurfaceFullScreenExclusiveWin32InfoEXT& vkHandle() const { return reinterpret_cast<const VkSurfaceFullScreenExclusiveWin32InfoEXT&>(*this); }
 	VkSurfaceFullScreenExclusiveWin32InfoEXT& vkHandle() { return reinterpret_cast<VkSurfaceFullScreenExclusiveWin32InfoEXT&>(*this); }
@@ -6617,7 +6618,7 @@ struct HeadlessSurfaceCreateInfoEXT {
 	const void* pNext {};
 	HeadlessSurfaceCreateFlagsEXT flags {};
 
-	HeadlessSurfaceCreateInfoEXT(HeadlessSurfaceCreateFlagsEXT xflags = {}) : flags(xflags) {}
+	constexpr HeadlessSurfaceCreateInfoEXT(HeadlessSurfaceCreateFlagsEXT xflags = {}) : flags(xflags) {}
 
 	const VkHeadlessSurfaceCreateInfoEXT& vkHandle() const { return reinterpret_cast<const VkHeadlessSurfaceCreateInfoEXT&>(*this); }
 	VkHeadlessSurfaceCreateInfoEXT& vkHandle() { return reinterpret_cast<VkHeadlessSurfaceCreateInfoEXT&>(*this); }
@@ -6632,7 +6633,7 @@ struct PhysicalDeviceHostQueryResetFeaturesEXT {
 	void* pNext {};
 	Bool32 hostQueryReset {};
 
-	PhysicalDeviceHostQueryResetFeaturesEXT(Bool32 xhostQueryReset = {}) : hostQueryReset(xhostQueryReset) {}
+	constexpr PhysicalDeviceHostQueryResetFeaturesEXT(Bool32 xhostQueryReset = {}) : hostQueryReset(xhostQueryReset) {}
 
 	const VkPhysicalDeviceHostQueryResetFeaturesEXT& vkHandle() const { return reinterpret_cast<const VkPhysicalDeviceHostQueryResetFeaturesEXT&>(*this); }
 	VkPhysicalDeviceHostQueryResetFeaturesEXT& vkHandle() { return reinterpret_cast<VkPhysicalDeviceHostQueryResetFeaturesEXT&>(*this); }

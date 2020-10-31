@@ -1,3 +1,5 @@
 build/
 .clang_complete
 *.sublime*
+compile_commands.json
+.clangd/

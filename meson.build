@@ -23,11 +23,9 @@ if gen
 	  include_directories: codegen_inc)
 endif
 
+dispatchcpp = files('src/dispatch.cpp')
 spec = files('vk.xml')
 subdir('include/vkpp')
-
-vkpp_src = [vk_headers]
-vkpp_src += 'src/vkpp.cpp'
 
 vkpp_lib = library('vkpp',
 	sources: 'src/vkpp.cpp',
@@ -40,7 +38,7 @@ vkpp_dep = declare_dependency(
 	link_with: vkpp_lib,
 	dependencies: dependency('vulkan', required: true),
 	include_directories: include_directories('include'),
-	sources: vk_headers)
+	sources: vk_headers[0])
 
 if test
 	vulkan_dep = dependency('vulkan')

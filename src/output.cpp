@@ -210,6 +210,9 @@ CCOutputGenerator::CCOutputGenerator(Registry& reg, const CCOutputGeneratorSetti
 	fwd_.open(fold + "/fwd.hpp", std::ios_base::out | std::ios_base::binary);
 	structs_.open(fold + "/structs.hpp", std::ios_base::out | std::ios_base::binary);
 	dispatch_.open(fold + "/dispatch.hpp", std::ios_base::out | std::ios_base::binary);
+	dispatchSrc_.open(fold + "/dispatch.cpp", std::ios_base::out | std::ios_base::binary);
+	enumNames_.open(fold + "/names.hpp", std::ios_base::out | std::ios_base::binary);
+	rawf_.open(fold + "/rawf.hpp", std::ios_base::out | std::ios_base::binary);
 }
 
 void CCOutputGenerator::generate() {
@@ -221,14 +224,21 @@ void CCOutputGenerator::generate() {
 	functions_ << std::regex_replace(functionsHeader, std::regex("%vp"), version);
 	structs_ << std::regex_replace(structsHeader, std::regex("%vp"), version);
 	enums_ << std::regex_replace(enumsHeader, std::regex("%vp"), version);
+	enumNames_ << std::regex_replace(namesHeader, std::regex("%vp"), version);
+	rawf_ << std::regex_replace(rawFunctionsHeader, std::regex("%vp"), version);
 
-	outputAll("namespace vk {\n\n");
+	outputAll("namespace vk {\n");
+	rawf_ << "namespace raw {\n";
+	outputAll("\n");
 
 	// fwd dummy enum
 	fwd_ << "using nytl::Span; // span.hpp\n";
 	fwd_ << "using nytl::Flags; // flags.hpp\n\n";
 
 	fwd_ << "enum class DummyEnum : int32_t {};\n\n";
+
+	// name function for dummy Enum flags
+	enumNames_ << "std::string name(nytl::Flags<DummyEnum>) { return {}; } \n\n";
 
 	// all printed requirements
 	Requirements fulfilled;
@@ -279,6 +289,7 @@ void CCOutputGenerator::generate() {
 		<< "#undef VEC_FUNC_RET_VOID\n";
 
 	// end the header files
+	rawf_ << "} // namespace raw\n";
 	outputAll("\n} // namespace vk\n\n");
 
 	outputAll("// The specification (vk.xml) itself is published under the following license:\n");
@@ -286,17 +297,29 @@ void CCOutputGenerator::generate() {
 
 	fwd_ << "\n\n";
 
-	// dispatch
+	// dispatch.hpp
 	std::string dispatch = dispatchHeader;
 
 	dispatch = std::regex_replace(dispatch, std::regex("%vp"), version);
 	dispatch = std::regex_replace(dispatch, std::regex("%decl"), dispatchDecl_);
-	dispatch = std::regex_replace(dispatch, std::regex("%load"), dispatchLoad_);
+	dispatch = std::regex_replace(dispatch, std::regex("%guardedDecl"), dispatchDeclGuarded_);
 
 	dispatch_ << header;
 	dispatch_ << dispatch;
 	dispatch_ << "// The specification (vk.xml) itself is published under the following license:\n";
 	dispatch_ << registry().copyright;
+
+	// dispatch.cpp
+	dispatch = dispatchSrc;
+
+	dispatch = std::regex_replace(dispatch, std::regex("%vp"), version);
+	dispatch = std::regex_replace(dispatch, std::regex("%loadIni"), dispatchLoadIni_);
+	dispatch = std::regex_replace(dispatch, std::regex("%loadDev"), dispatchLoadDev_);
+
+	dispatchSrc_ << header;
+	dispatchSrc_ << dispatch;
+	dispatchSrc_ << "// The specification (vk.xml) itself is published under the following license:\n";
+	dispatchSrc_ << registry().copyright;
 }
 
 void CCOutputGenerator::outputAll(const std::string& string) {
@@ -304,6 +327,8 @@ void CCOutputGenerator::outputAll(const std::string& string) {
 	structs_ << string;
 	enums_ << string;
 	functions_ << string;
+	enumNames_ << string;
+	rawf_ << string;
 }
 
 void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfilled,
@@ -313,8 +338,12 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 	auto enumGuard = false;
 	auto funcGuard = false;
 	auto structGuard = false;
-	auto dispatchPtrGuard = false;
-	auto dispatchLoaderGuard = false;
+	auto nameGuard = false;
+	auto rawfGuard = false;
+
+	auto dispatchDeclGuard = false;
+	auto dispatchDevGuard = false;
+	auto dispatchIniGuard = false;
 
 	// order:
 	// - constants
@@ -415,6 +444,7 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 		++count;
 		ensureGuard(fwd_, fwdGuard, guard);
 		ensureGuard(enums_, enumGuard, guard);
+		ensureGuard(enumNames_, nameGuard, guard);
 
 		fwd_ << "enum class " << name << " : int32_t;\n";
 
@@ -440,6 +470,24 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 
 		if(enumeration.bitmask) enums_<< "NYTL_FLAG_OPS(" << name << ")\n";
 		enums_ << "\n";
+
+		// output names
+		enumNames_ << "const char* name(" << name << " val) {\n";
+		enumNames_ << "\tswitch(val) {\n";
+		std::unordered_set<std::int32_t> alreadyVals {};
+		for(auto& value : enumeration.values) {
+			bool bit;
+			auto n = enumName(enumeration, value.first, &bit);
+			if(!alreadyVals.insert(value.second).second) {
+				// doubled
+				continue;
+			}
+
+			enumNames_ << "\t\tcase " << name << "::" << n << ": return \"" << n << "\";\n";
+		}
+
+		enumNames_ << "\t\tdefault: return nullptr;\n";
+		enumNames_ << "\t}\n}\n";
 	}
 
 	if(count > 0) {
@@ -457,12 +505,36 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 
 		auto name = typeName(bitmask);
 		ensureGuard(fwd_, fwdGuard, guard);
+		ensureGuard(enumNames_, nameGuard, guard);
 
 		std::string enumName;
 		if(!bitmask.bits) enumName = "DummyEnum";
 		else enumName = typeName(*bitmask.bits);
 
 		fwd_ << "using " << name << " = Flags<" << enumName << ">;\n";
+
+		// output names
+		if(bitmask.bits) {
+			enumNames_ << "std::string name(" << name << " val) {\n";
+
+			enumNames_ << "\tstd::string ret;\n";
+			auto& enumeration = *bitmask.bits;
+			std::unordered_set<std::int32_t> alreadyVals {};
+			for(auto& value : enumeration.values) {
+				bool bit;
+				auto n = this->enumName(enumeration, value.first, &bit);
+				if(!alreadyVals.insert(value.second).second) {
+					// doubled
+					continue;
+				}
+
+				enumNames_ << "\tif((val & " << enumName << "::" << n << ")) ret += \"" << n << " | \";\n";
+			}
+
+			enumNames_ << "\tif(!ret.empty()) ret.erase(ret.size() - 2, 2);\n";
+			enumNames_ << "\treturn ret;\n";
+			enumNames_ << "\n}\n";
+		}
 	}
 
 	if(count > 0) {
@@ -523,12 +595,16 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 
 		++count;
 		ensureGuard(functions_, funcGuard, guard);
-		ensureGuard(dispatchDecl_, dispatchPtrGuard, guard);
-		ensureGuard(dispatchLoad_, dispatchLoaderGuard, guard);
-		printCmd(*cmdit, "", forceDispatch);
+		ensureGuard(rawf_, rawfGuard, guard);
+
+		ensureGuard(dispatchDeclGuarded_, dispatchDeclGuard, guard);
+		ensureGuard(dispatchLoadIni_, dispatchIniGuard, guard);
+		ensureGuard(dispatchLoadDev_, dispatchDevGuard, guard);
+
+		printCmd(*cmdit, "", forceDispatch, !guard.empty());
 
 		for(auto alias : cmdit->aliases) {
-			printCmd(*cmdit, alias, forceDispatch);
+			printCmd(*cmdit, alias, forceDispatch, !guard.empty());
 		}
 
 		// insert blank line between seperate function (groups)
@@ -545,14 +621,18 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 	endGuard(structs_, structGuard, guard);
 	endGuard(fwd_, fwdGuard, guard);
 	endGuard(enums_, enumGuard, guard);
-	endGuard(dispatchDecl_, dispatchPtrGuard, guard);
-	endGuard(dispatchLoad_, dispatchLoaderGuard, guard);
+	endGuard(enumNames_, nameGuard, guard);
+	endGuard(rawf_, rawfGuard, guard);
+
+	endGuard(dispatchDeclGuarded_, dispatchDeclGuard, guard);
+	endGuard(dispatchLoadIni_, dispatchIniGuard, guard);
+	endGuard(dispatchLoadDev_, dispatchDevGuard, guard);
 }
 
 void CCOutputGenerator::ensureGuard(std::string& str, bool& guardVar, const std::string& guard)
 {
 	if(!guardVar) {
-		if(!guard.empty()) str += "#ifdef " + guard + "\n\n";
+		if(!guard.empty()) str += "\n#ifdef " + guard + "\n";
 		guardVar = true;
 	}
 }
@@ -560,7 +640,7 @@ void CCOutputGenerator::ensureGuard(std::string& str, bool& guardVar, const std:
 void CCOutputGenerator::ensureGuard(std::ofstream& of, bool& guardVar, const std::string& guard)
 {
 	if(!guardVar) {
-		if(!guard.empty())of << "#ifdef " << guard << "\n\n";
+		if(!guard.empty())of << "\n#ifdef " << guard << "\n";
 		guardVar = true;
 	}
 }
@@ -651,6 +731,11 @@ std::string CCOutputGenerator::enumName(const Enum& e, const std::string& name, 
 	if(!ret.empty())
 		for(auto i = 0u; i < ext.size(); ++i)
 			ret[ret.size() - i] = std::toupper(ret[ret.size() - i], std::locale());
+
+	// TODO: custom fix for spec defect
+	if(name == "VK_PIPELINE_CREATE_DISPATCH_BASE") {
+		*bit = true;
+	}
 
 	return ret;
 }
@@ -832,7 +917,7 @@ void CCOutputGenerator::printStruct(const Struct& type)
 	// used to init the members
 	// if the struct is returnedonly there is also no need for a constructor
 	if(printCtor && !type.returnedonly && !type.isUnion) {
-		structs_ << "\n\t" << name << "(" << paramList << ")";
+		structs_ << "\n\tconstexpr " << name << "(" << paramList << ")";
 		if(!initList.empty()) structs_ << " : " << initList;
 		structs_ << " {}\n";
 	}
@@ -966,9 +1051,85 @@ ParsedCommand CCOutputGenerator::parseCommand(const Command& cmd) const
 	return parsed;
 }
 
+void CCOutputGenerator::printCmdRaw(const Command& cmd, std::string alias,
+		bool forceDispatch) {
+	if(alias == "") {
+		alias = cmd.name;
+	}
+	auto name = removeVkPrefix(alias, nullptr);
+	name[0] = std::tolower(name[0], std::locale());
+
+	rawf_ << "inline " << typeName(cmd.signature.returnType) << " " << name << "(";
+
+	auto sepr = "";
+	std::string args;
+
+	// iterate over parameters and output their declarations
+	// append thei call usage to args
+	for(auto& param : cmd.signature.params) {
+		rawf_ << sepr << typeName(param.type) << " " << param.name;
+		if(param.type.array) {
+			rawf_ << "[ " << param.type.arraySize << "]";
+		}
+
+		// argument
+		args += sepr;
+
+		// cast-conversion
+		Type::Category category {};
+		std::string name {};
+		if(param.type.type) {
+			category = param.type.type->category;
+			name = param.type.type->name;
+		} else {
+			auto it = &param.type;
+			while(!it->type) {
+				if(it->pointer) it = it->pointer;
+				if(it->array) it = it->array;
+			}
+
+			category = it->type->category;
+			name = it->type->name;
+		}
+
+		if(param.type.pointer ||
+				category == Type::Category::handle ||
+				category == Type::Category::enumeration ||
+				category == Type::Category::bitmask) {
+			args += "(";
+			args += typeName(param.type, false);
+			args += ")(";
+			args += param.name;
+			args += ")";
+		} else {
+			args += param.name;
+		}
+
+		sepr = ", ";
+	}
+
+	rawf_ << sepr << "DynamicDispatch* dispatcher = {}";
+
+	std::string before = "";
+	std::string after = "";
+
+	before += "return ";
+	before += "(";
+	before += typeName(cmd.signature.returnType);
+	before += ")(";
+	before += forceDispatch ? "VKPP_DISPATCH_GLOBAL(" : "VKPP_DISPATCH(";
+
+	after = "));";
+
+	rawf_ << "){ ";
+	rawf_ << before << "dispatcher, " << cmd.name << sepr << args;
+	rawf_ << after << " }\n";
+}
 
 void CCOutputGenerator::printCmd(const Command& cmd, std::string alias,
-		bool forceDispatch) {
+		bool forceDispatch, bool guarded) {
+	printCmdRaw(cmd, alias, forceDispatch);
+
 	if(alias == "") {
 		alias = cmd.name;
 	}
@@ -977,19 +1138,27 @@ void CCOutputGenerator::printCmd(const Command& cmd, std::string alias,
 
 	// add to dispatcher
 	{
-		dispatchDecl_ += "\t";
-		dispatchDecl_ += "PFN_";
-		dispatchDecl_ += alias;
-		dispatchDecl_ += " ";
-		dispatchDecl_ += alias;
-		dispatchDecl_ += " {};\n";
+		auto& declDst = guarded ? dispatchDeclGuarded_ : dispatchDecl_;
 
-		// TODO: allow per-device dispatcher, see dispatch header template
-		// auto* firstParam = cmd.signature.params[0].type.type;
-		// auto& fpn = firstParam->name;
-		dispatchLoad_ += "\t\tVKPP_ILOAD(ini, ";
-		dispatchLoad_ += alias;
-		dispatchLoad_ += ");\n";
+		declDst += "\t";
+		declDst += "PFN_";
+		declDst += alias;
+		declDst += " ";
+		declDst += alias;
+		declDst += " {};\n";
+
+		auto firstParamType = cmd.signature.params[0].type.type;
+		// NOTE: might need to be adjusted for more function catogories
+		static std::unordered_set<std::string_view> devTypes {"VkDevice", "VkQueue", "VkCommandBuffer"};
+		if(firstParamType && devTypes.find(firstParamType->name) != devTypes.end()) {
+			dispatchLoadDev_ += "\t\tVKPP_LOAD(";
+			dispatchLoadDev_ += alias;
+			dispatchLoadDev_ += ");\n";
+		} else {
+			dispatchLoadIni_ += "\tVKPP_LOAD(";
+			dispatchLoadIni_ += alias;
+			dispatchLoadIni_ += ");\n";
+		}
 	}
 
 	// parseCommand will analyse intput/output/optional/return attributes
@@ -1025,7 +1194,7 @@ void CCOutputGenerator::printCmd(const Command& cmd, std::string alias,
 		callSepr = ", ";
 	}
 
-	functions_ << declSepr << "DynamicDispatch* dispatcher = nullptr";
+	functions_ << declSepr << "DynamicDispatch* dispatcher = {}";
 
 	std::string before = "";
 	std::string after = "";
@@ -1099,7 +1268,7 @@ void CCOutputGenerator::printVecCmd(const ParsedCommand& pcmd,
 		callSepr = ", ";
 	}
 
-	functions_ << declSepr << "DynamicDispatch* dispatcher = nullptr";
+	functions_ << declSepr << "DynamicDispatch* dispatcher = {}";
 	functions_ << "){ ";
 
 	if(vecRet) {

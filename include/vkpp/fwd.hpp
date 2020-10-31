@@ -1,4 +1,4 @@
-// Copyright (c) 2019 nyorain
+// Copyright (c) 2020 nyorain
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt
 
@@ -6,6 +6,7 @@
 // Do not edit manually, rather edit the codegen files.
 
 #pragma once
+
 #include <vkpp/handle.hpp> // VK_DEFINE_HANDLE
 #include <vkpp/flags.hpp>
 #include <cstddef>
@@ -481,32 +482,32 @@ struct DisplaySurfaceCreateInfoKHR;
 
 struct DisplayPresentInfoKHR;
 
-#ifdef VK_USE_PLATFORM_XLIB_KHR
 
+#ifdef VK_USE_PLATFORM_XLIB_KHR
 using XlibSurfaceCreateFlagsKHR = Flags<DummyEnum>;
 
 struct XlibSurfaceCreateInfoKHR;
 
 #endif //VK_USE_PLATFORM_XLIB_KHR
 
-#ifdef VK_USE_PLATFORM_XCB_KHR
 
+#ifdef VK_USE_PLATFORM_XCB_KHR
 using XcbSurfaceCreateFlagsKHR = Flags<DummyEnum>;
 
 struct XcbSurfaceCreateInfoKHR;
 
 #endif //VK_USE_PLATFORM_XCB_KHR
 
-#ifdef VK_USE_PLATFORM_WAYLAND_KHR
 
+#ifdef VK_USE_PLATFORM_WAYLAND_KHR
 using WaylandSurfaceCreateFlagsKHR = Flags<DummyEnum>;
 
 struct WaylandSurfaceCreateInfoKHR;
 
 #endif //VK_USE_PLATFORM_WAYLAND_KHR
 
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 using Win32SurfaceCreateFlagsKHR = Flags<DummyEnum>;
 
 struct Win32SurfaceCreateInfoKHR;
@@ -547,8 +548,8 @@ enum class ShaderInfoTypeAMD : int32_t;
 struct ShaderResourceUsageAMD;
 struct ShaderStatisticsInfoAMD;
 
-#ifdef VK_USE_PLATFORM_GGP
 
+#ifdef VK_USE_PLATFORM_GGP
 using StreamDescriptorSurfaceCreateFlagsGGP = Flags<DummyEnum>;
 
 struct StreamDescriptorSurfaceCreateInfoGGP;
@@ -571,15 +572,15 @@ struct ExternalImageFormatPropertiesNV;
 struct ExternalMemoryImageCreateInfoNV;
 struct ExportMemoryAllocateInfoNV;
 
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 struct ImportMemoryWin32HandleInfoNV;
 struct ExportMemoryWin32HandleInfoNV;
 
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 struct Win32KeyedMutexAcquireReleaseInfoNV;
 
 #endif //VK_USE_PLATFORM_WIN32_KHR
@@ -608,8 +609,8 @@ enum class ValidationCheckEXT : int32_t;
 
 struct ValidationFlagsEXT;
 
-#ifdef VK_USE_PLATFORM_VI_NN
 
+#ifdef VK_USE_PLATFORM_VI_NN
 using ViSurfaceCreateFlagsNN = Flags<DummyEnum>;
 
 struct ViSurfaceCreateInfoNN;
@@ -641,8 +642,8 @@ constexpr auto queueFamilyExternalKHR = (~0U-1);
 using ExternalMemoryImageCreateInfoKHR = ExternalMemoryImageCreateInfo;
 using ExternalMemoryBufferCreateInfoKHR = ExternalMemoryBufferCreateInfo;
 using ExportMemoryAllocateInfoKHR = ExportMemoryAllocateInfo;
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 struct ImportMemoryWin32HandleInfoKHR;
 struct ExportMemoryWin32HandleInfoKHR;
 struct MemoryWin32HandlePropertiesKHR;
@@ -654,8 +655,8 @@ struct ImportMemoryFdInfoKHR;
 struct MemoryFdPropertiesKHR;
 struct MemoryGetFdInfoKHR;
 
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 struct Win32KeyedMutexAcquireReleaseInfoKHR;
 
 #endif //VK_USE_PLATFORM_WIN32_KHR
@@ -669,8 +670,8 @@ using ExternalSemaphorePropertiesKHR = ExternalSemaphoreProperties;
 using SemaphoreImportFlagsKHR = SemaphoreImportFlags;
 using SemaphoreImportBitsKHR = SemaphoreImportBits;
 using ExportSemaphoreCreateInfoKHR = ExportSemaphoreCreateInfo;
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 struct ImportSemaphoreWin32HandleInfoKHR;
 struct ExportSemaphoreWin32HandleInfoKHR;
 struct D3D12FenceSubmitInfoKHR;
@@ -774,8 +775,8 @@ using ExternalFencePropertiesKHR = ExternalFenceProperties;
 using FenceImportFlagsKHR = FenceImportFlags;
 using FenceImportBitsKHR = FenceImportBits;
 using ExportFenceCreateInfoKHR = ExportFenceCreateInfo;
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 struct ImportFenceWin32HandleInfoKHR;
 struct ExportFenceWin32HandleInfoKHR;
 struct FenceGetWin32HandleInfoKHR;
@@ -804,16 +805,16 @@ struct DisplayModeProperties2KHR;
 struct DisplayPlaneInfo2KHR;
 struct DisplayPlaneCapabilities2KHR;
 
-#ifdef VK_USE_PLATFORM_IOS_MVK
 
+#ifdef VK_USE_PLATFORM_IOS_MVK
 using IOSSurfaceCreateFlagsMVK = Flags<DummyEnum>;
 
 struct IOSSurfaceCreateInfoMVK;
 
 #endif //VK_USE_PLATFORM_IOS_MVK
 
-#ifdef VK_USE_PLATFORM_MACOS_MVK
 
+#ifdef VK_USE_PLATFORM_MACOS_MVK
 using MacOSSurfaceCreateFlagsMVK = Flags<DummyEnum>;
 
 struct MacOSSurfaceCreateInfoMVK;
@@ -995,8 +996,8 @@ struct VertexInputBindingDivisorDescriptionEXT;
 struct PipelineVertexInputDivisorStateCreateInfoEXT;
 struct PhysicalDeviceVertexAttributeDivisorFeaturesEXT;
 
-#ifdef VK_USE_PLATFORM_GGP
 
+#ifdef VK_USE_PLATFORM_GGP
 struct PresentFrameTokenGGP;
 
 #endif //VK_USE_PLATFORM_GGP
@@ -1048,8 +1049,8 @@ struct PhysicalDevicePCIBusInfoPropertiesEXT;
 struct DisplayNativeHdrSurfaceCapabilitiesAMD;
 struct SwapchainDisplayNativeHdrCreateInfoAMD;
 
-#ifdef VK_USE_PLATFORM_FUCHSIA
 
+#ifdef VK_USE_PLATFORM_FUCHSIA
 using ImagePipeSurfaceCreateFlagsFUCHSIA = Flags<DummyEnum>;
 
 struct ImagePipeSurfaceCreateInfoFUCHSIA;
@@ -1104,8 +1105,8 @@ struct PhysicalDeviceYcbcrImageArraysFeaturesEXT;
 
 struct PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR;
 
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
 enum class FullScreenExclusiveEXT : int32_t;
 
 struct SurfaceFullScreenExclusiveInfoEXT;
@@ -1126,26 +1127,26 @@ struct PhysicalDeviceHostQueryResetFeaturesEXT;
 // The specification (vk.xml) itself is published under the following license:
 
 // Copyright (c) 2015-2019 The Khronos Group Inc.
-//
+// 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-//
+// 
 //     http://www.apache.org/licenses/LICENSE-2.0
-//
+// 
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
+// 
 // ---- Exceptions to the Apache 2.0 License: ----
-//
+// 
 // As an exception, if you use this Software to generate code and portions of
 // this Software are embedded into the generated code as a result, you may
 // redistribute such product without providing attribution as would otherwise
 // be required by Sections 4(a), 4(b) and 4(d) of the License.
-//
+// 
 // In addition, if you combine or link code generated by this Software with
 // software that is licensed under the GPLv2 or the LGPL v2.0 or 2.1
 // ("`Combined Software`") and if a court of competent jurisdiction determines
@@ -1154,5 +1155,5 @@ struct PhysicalDeviceHostQueryResetFeaturesEXT;
 // applicable GPL or LGPL license, you may retroactively and prospectively
 // choose to deem waived or otherwise exclude such Section(s) of the License,
 // but only in their entirety and only with respect to the Combined Software.
-
+    
 
