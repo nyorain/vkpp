@@ -316,7 +316,6 @@ void CCOutputGenerator::generate() {
 	dispatch = std::regex_replace(dispatch, std::regex("%loadIni"), dispatchLoadIni_);
 	dispatch = std::regex_replace(dispatch, std::regex("%loadDev"), dispatchLoadDev_);
 
-	dispatchSrc_ << header;
 	dispatchSrc_ << dispatch;
 	dispatchSrc_ << "// The specification (vk.xml) itself is published under the following license:\n";
 	dispatchSrc_ << registry().copyright;
@@ -515,10 +514,15 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 
 		// output names
 		if(bitmask.bits) {
-			enumNames_ << "std::string name(" << name << " val) {\n";
+			enumNames_ << "std::string name(" << name;
+
+			auto& enumeration = *bitmask.bits;
+			if(!enumeration.values.empty()) {
+				enumNames_ << " val";
+			}
+			enumNames_ << ") {\n";
 
 			enumNames_ << "\tstd::string ret;\n";
-			auto& enumeration = *bitmask.bits;
 			std::unordered_set<std::int32_t> alreadyVals {};
 			for(auto& value : enumeration.values) {
 				bool bit;

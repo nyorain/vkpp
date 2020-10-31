@@ -216,6 +216,13 @@ public:
 
 // dispatch.cpp template
 auto constexpr dispatchSrc = R"SRC(
+// Copyright (c) 2020 nyorain
+// Distributed under the Boost Software License, Version 1.0.
+// See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt
+
+// Automaitcally generated vulkan header, see nyorain/vkpp
+// Do not edit manually, rather edit the codegen files.
+
 #include <vkpp/dispatch.hpp>
 
 namespace vk {
