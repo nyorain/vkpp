@@ -40,6 +40,7 @@ endif
 vkpp_dep = declare_dependency(
 	version: meson.project_version(),
 	link_with: vkpp_lib,
+	sources: vk_headers[1], # skip dispatch.cpp
 	dependencies: dependency('vulkan', required: true),
 	include_directories: include_directories('include'))
 

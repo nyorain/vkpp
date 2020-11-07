@@ -238,7 +238,7 @@ void CCOutputGenerator::generate() {
 	fwd_ << "enum class DummyEnum : int32_t {};\n\n";
 
 	// name function for dummy Enum flags
-	enumNames_ << "std::string name(nytl::Flags<DummyEnum>) { return {}; } \n\n";
+	enumNames_ << "inline std::string name(nytl::Flags<DummyEnum>) { return {}; } \n\n";
 
 	// all printed requirements
 	Requirements fulfilled;
@@ -471,7 +471,7 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 		enums_ << "\n";
 
 		// output names
-		enumNames_ << "const char* name(" << name << " val) {\n";
+		enumNames_ << "inline const char* name(" << name << " val) {\n";
 		enumNames_ << "\tswitch(val) {\n";
 		std::unordered_set<std::int32_t> alreadyVals {};
 		for(auto& value : enumeration.values) {
@@ -514,7 +514,7 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 
 		// output names
 		if(bitmask.bits) {
-			enumNames_ << "std::string name(" << name;
+			enumNames_ << "inline std::string name(" << name;
 
 			auto& enumeration = *bitmask.bits;
 			if(!enumeration.values.empty()) {
