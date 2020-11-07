@@ -17,6 +17,9 @@ iheaders = [
 	'handle.hpp',
 ]
 
+dispatchcpp = files('dispatch.cpp')
+vk_headers_src = []
+
 if gen
 	# custom target
 	vk_headers = custom_target('vk-headers',
@@ -26,8 +29,8 @@ if gen
 		install_dir: 'include/vkpp',
 		command: [vk_codegen, '@INPUT@', '@OUTDIR@'])
 	dispatchcpp = vk_headers[0]
+	vk_headers_src = vk_headers[1] # skip dispatch.cpp
 else
-	vk_headers = [] # no custom target
 	iheaders += outputs # install given ones
 endif
 
