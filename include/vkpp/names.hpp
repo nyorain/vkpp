@@ -15,9 +15,9 @@
 
 namespace vk {
 
-std::string name(nytl::Flags<DummyEnum>) { return {}; } 
+inline std::string name(nytl::Flags<DummyEnum>) { return {}; } 
 
-const char* name(Result val) {
+inline const char* name(Result val) {
 	switch(val) {
 		case Result::success: return "success";
 		case Result::notReady: return "notReady";
@@ -54,7 +54,7 @@ const char* name(Result val) {
 		default: return nullptr;
 	}
 }
-const char* name(StructureType val) {
+inline const char* name(StructureType val) {
 	switch(val) {
 		case StructureType::applicationInfo: return "applicationInfo";
 		case StructureType::instanceCreateInfo: return "instanceCreateInfo";
@@ -382,7 +382,7 @@ const char* name(StructureType val) {
 		default: return nullptr;
 	}
 }
-const char* name(ShaderStageBits val) {
+inline const char* name(ShaderStageBits val) {
 	switch(val) {
 		case ShaderStageBits::vertex: return "vertex";
 		case ShaderStageBits::tessellationControl: return "tessellationControl";
@@ -403,7 +403,7 @@ const char* name(ShaderStageBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(SubgroupFeatureBits val) {
+inline const char* name(SubgroupFeatureBits val) {
 	switch(val) {
 		case SubgroupFeatureBits::basic: return "basic";
 		case SubgroupFeatureBits::vote: return "vote";
@@ -417,7 +417,7 @@ const char* name(SubgroupFeatureBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(PeerMemoryFeatureBits val) {
+inline const char* name(PeerMemoryFeatureBits val) {
 	switch(val) {
 		case PeerMemoryFeatureBits::copySrc: return "copySrc";
 		case PeerMemoryFeatureBits::copyDst: return "copyDst";
@@ -426,13 +426,13 @@ const char* name(PeerMemoryFeatureBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(MemoryAllocateBits val) {
+inline const char* name(MemoryAllocateBits val) {
 	switch(val) {
 		case MemoryAllocateBits::deviceMask: return "deviceMask";
 		default: return nullptr;
 	}
 }
-const char* name(ImageAspectBits val) {
+inline const char* name(ImageAspectBits val) {
 	switch(val) {
 		case ImageAspectBits::color: return "color";
 		case ImageAspectBits::depth: return "depth";
@@ -448,7 +448,7 @@ const char* name(ImageAspectBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(SparseImageFormatBits val) {
+inline const char* name(SparseImageFormatBits val) {
 	switch(val) {
 		case SparseImageFormatBits::singleMiptail: return "singleMiptail";
 		case SparseImageFormatBits::alignedMipSize: return "alignedMipSize";
@@ -456,7 +456,7 @@ const char* name(SparseImageFormatBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(PhysicalDeviceType val) {
+inline const char* name(PhysicalDeviceType val) {
 	switch(val) {
 		case PhysicalDeviceType::other: return "other";
 		case PhysicalDeviceType::integratedGpu: return "integratedGpu";
@@ -466,7 +466,7 @@ const char* name(PhysicalDeviceType val) {
 		default: return nullptr;
 	}
 }
-const char* name(SampleCountBits val) {
+inline const char* name(SampleCountBits val) {
 	switch(val) {
 		case SampleCountBits::e1: return "e1";
 		case SampleCountBits::e2: return "e2";
@@ -478,7 +478,7 @@ const char* name(SampleCountBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(FormatFeatureBits val) {
+inline const char* name(FormatFeatureBits val) {
 	switch(val) {
 		case FormatFeatureBits::sampledImage: return "sampledImage";
 		case FormatFeatureBits::storageImage: return "storageImage";
@@ -508,7 +508,7 @@ const char* name(FormatFeatureBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(Format val) {
+inline const char* name(Format val) {
 	switch(val) {
 		case Format::undefined: return "undefined";
 		case Format::r4g4UnormPack8: return "r4g4UnormPack8";
@@ -740,7 +740,7 @@ const char* name(Format val) {
 		default: return nullptr;
 	}
 }
-const char* name(ImageType val) {
+inline const char* name(ImageType val) {
 	switch(val) {
 		case ImageType::e1d: return "e1d";
 		case ImageType::e2d: return "e2d";
@@ -748,7 +748,7 @@ const char* name(ImageType val) {
 		default: return nullptr;
 	}
 }
-const char* name(ImageTiling val) {
+inline const char* name(ImageTiling val) {
 	switch(val) {
 		case ImageTiling::optimal: return "optimal";
 		case ImageTiling::linear: return "linear";
@@ -756,7 +756,7 @@ const char* name(ImageTiling val) {
 		default: return nullptr;
 	}
 }
-const char* name(ImageUsageBits val) {
+inline const char* name(ImageUsageBits val) {
 	switch(val) {
 		case ImageUsageBits::transferSrc: return "transferSrc";
 		case ImageUsageBits::transferDst: return "transferDst";
@@ -771,7 +771,7 @@ const char* name(ImageUsageBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(ImageCreateBits val) {
+inline const char* name(ImageCreateBits val) {
 	switch(val) {
 		case ImageCreateBits::sparseBinding: return "sparseBinding";
 		case ImageCreateBits::sparseResidency: return "sparseResidency";
@@ -791,7 +791,7 @@ const char* name(ImageCreateBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(QueueBits val) {
+inline const char* name(QueueBits val) {
 	switch(val) {
 		case QueueBits::graphics: return "graphics";
 		case QueueBits::compute: return "compute";
@@ -801,7 +801,7 @@ const char* name(QueueBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(MemoryPropertyBits val) {
+inline const char* name(MemoryPropertyBits val) {
 	switch(val) {
 		case MemoryPropertyBits::deviceLocal: return "deviceLocal";
 		case MemoryPropertyBits::hostVisible: return "hostVisible";
@@ -812,34 +812,34 @@ const char* name(MemoryPropertyBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(MemoryHeapBits val) {
+inline const char* name(MemoryHeapBits val) {
 	switch(val) {
 		case MemoryHeapBits::deviceLocal: return "deviceLocal";
 		case MemoryHeapBits::multiInstance: return "multiInstance";
 		default: return nullptr;
 	}
 }
-const char* name(PointClippingBehavior val) {
+inline const char* name(PointClippingBehavior val) {
 	switch(val) {
 		case PointClippingBehavior::allClipPlanes: return "allClipPlanes";
 		case PointClippingBehavior::userClipPlanesOnly: return "userClipPlanesOnly";
 		default: return nullptr;
 	}
 }
-const char* name(TessellationDomainOrigin val) {
+inline const char* name(TessellationDomainOrigin val) {
 	switch(val) {
 		case TessellationDomainOrigin::upperLeft: return "upperLeft";
 		case TessellationDomainOrigin::lowerLeft: return "lowerLeft";
 		default: return nullptr;
 	}
 }
-const char* name(DeviceQueueCreateBits val) {
+inline const char* name(DeviceQueueCreateBits val) {
 	switch(val) {
 		case DeviceQueueCreateBits::eProtected: return "eProtected";
 		default: return nullptr;
 	}
 }
-const char* name(SamplerYcbcrModelConversion val) {
+inline const char* name(SamplerYcbcrModelConversion val) {
 	switch(val) {
 		case SamplerYcbcrModelConversion::rgbIDentity: return "rgbIDentity";
 		case SamplerYcbcrModelConversion::ycbcrIDentity: return "ycbcrIDentity";
@@ -849,14 +849,14 @@ const char* name(SamplerYcbcrModelConversion val) {
 		default: return nullptr;
 	}
 }
-const char* name(SamplerYcbcrRange val) {
+inline const char* name(SamplerYcbcrRange val) {
 	switch(val) {
 		case SamplerYcbcrRange::ituFull: return "ituFull";
 		case SamplerYcbcrRange::ituNarrow: return "ituNarrow";
 		default: return nullptr;
 	}
 }
-const char* name(ComponentSwizzle val) {
+inline const char* name(ComponentSwizzle val) {
 	switch(val) {
 		case ComponentSwizzle::identity: return "identity";
 		case ComponentSwizzle::zero: return "zero";
@@ -868,14 +868,14 @@ const char* name(ComponentSwizzle val) {
 		default: return nullptr;
 	}
 }
-const char* name(ChromaLocation val) {
+inline const char* name(ChromaLocation val) {
 	switch(val) {
 		case ChromaLocation::cositedEven: return "cositedEven";
 		case ChromaLocation::midpoint: return "midpoint";
 		default: return nullptr;
 	}
 }
-const char* name(Filter val) {
+inline const char* name(Filter val) {
 	switch(val) {
 		case Filter::nearest: return "nearest";
 		case Filter::linear: return "linear";
@@ -883,7 +883,7 @@ const char* name(Filter val) {
 		default: return nullptr;
 	}
 }
-const char* name(SystemAllocationScope val) {
+inline const char* name(SystemAllocationScope val) {
 	switch(val) {
 		case SystemAllocationScope::command: return "command";
 		case SystemAllocationScope::object: return "object";
@@ -893,20 +893,20 @@ const char* name(SystemAllocationScope val) {
 		default: return nullptr;
 	}
 }
-const char* name(InternalAllocationType val) {
+inline const char* name(InternalAllocationType val) {
 	switch(val) {
 		case InternalAllocationType::executable: return "executable";
 		default: return nullptr;
 	}
 }
-const char* name(DescriptorUpdateTemplateType val) {
+inline const char* name(DescriptorUpdateTemplateType val) {
 	switch(val) {
 		case DescriptorUpdateTemplateType::descriptorSet: return "descriptorSet";
 		case DescriptorUpdateTemplateType::pushDescriptorsKHR: return "pushDescriptorsKHR";
 		default: return nullptr;
 	}
 }
-const char* name(DescriptorType val) {
+inline const char* name(DescriptorType val) {
 	switch(val) {
 		case DescriptorType::sampler: return "sampler";
 		case DescriptorType::combinedImageSampler: return "combinedImageSampler";
@@ -924,7 +924,7 @@ const char* name(DescriptorType val) {
 		default: return nullptr;
 	}
 }
-const char* name(PipelineBindPoint val) {
+inline const char* name(PipelineBindPoint val) {
 	switch(val) {
 		case PipelineBindPoint::graphics: return "graphics";
 		case PipelineBindPoint::compute: return "compute";
@@ -932,7 +932,7 @@ const char* name(PipelineBindPoint val) {
 		default: return nullptr;
 	}
 }
-const char* name(ExternalMemoryHandleTypeBits val) {
+inline const char* name(ExternalMemoryHandleTypeBits val) {
 	switch(val) {
 		case ExternalMemoryHandleTypeBits::opaqueFd: return "opaqueFd";
 		case ExternalMemoryHandleTypeBits::opaqueWin32: return "opaqueWin32";
@@ -947,7 +947,7 @@ const char* name(ExternalMemoryHandleTypeBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(ExternalMemoryFeatureBits val) {
+inline const char* name(ExternalMemoryFeatureBits val) {
 	switch(val) {
 		case ExternalMemoryFeatureBits::dedicatedOnly: return "dedicatedOnly";
 		case ExternalMemoryFeatureBits::exportable: return "exportable";
@@ -955,7 +955,7 @@ const char* name(ExternalMemoryFeatureBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(BufferCreateBits val) {
+inline const char* name(BufferCreateBits val) {
 	switch(val) {
 		case BufferCreateBits::sparseBinding: return "sparseBinding";
 		case BufferCreateBits::sparseResidency: return "sparseResidency";
@@ -965,7 +965,7 @@ const char* name(BufferCreateBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(BufferUsageBits val) {
+inline const char* name(BufferUsageBits val) {
 	switch(val) {
 		case BufferUsageBits::transferSrc: return "transferSrc";
 		case BufferUsageBits::transferDst: return "transferDst";
@@ -984,7 +984,7 @@ const char* name(BufferUsageBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(ExternalFenceHandleTypeBits val) {
+inline const char* name(ExternalFenceHandleTypeBits val) {
 	switch(val) {
 		case ExternalFenceHandleTypeBits::opaqueFd: return "opaqueFd";
 		case ExternalFenceHandleTypeBits::opaqueWin32: return "opaqueWin32";
@@ -993,26 +993,26 @@ const char* name(ExternalFenceHandleTypeBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(ExternalFenceFeatureBits val) {
+inline const char* name(ExternalFenceFeatureBits val) {
 	switch(val) {
 		case ExternalFenceFeatureBits::exportable: return "exportable";
 		case ExternalFenceFeatureBits::importable: return "importable";
 		default: return nullptr;
 	}
 }
-const char* name(FenceImportBits val) {
+inline const char* name(FenceImportBits val) {
 	switch(val) {
 		case FenceImportBits::temporary: return "temporary";
 		default: return nullptr;
 	}
 }
-const char* name(SemaphoreImportBits val) {
+inline const char* name(SemaphoreImportBits val) {
 	switch(val) {
 		case SemaphoreImportBits::temporary: return "temporary";
 		default: return nullptr;
 	}
 }
-const char* name(ExternalSemaphoreHandleTypeBits val) {
+inline const char* name(ExternalSemaphoreHandleTypeBits val) {
 	switch(val) {
 		case ExternalSemaphoreHandleTypeBits::opaqueFd: return "opaqueFd";
 		case ExternalSemaphoreHandleTypeBits::opaqueWin32: return "opaqueWin32";
@@ -1022,21 +1022,21 @@ const char* name(ExternalSemaphoreHandleTypeBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(ExternalSemaphoreFeatureBits val) {
+inline const char* name(ExternalSemaphoreFeatureBits val) {
 	switch(val) {
 		case ExternalSemaphoreFeatureBits::exportable: return "exportable";
 		case ExternalSemaphoreFeatureBits::importable: return "importable";
 		default: return nullptr;
 	}
 }
-const char* name(DescriptorSetLayoutCreateBits val) {
+inline const char* name(DescriptorSetLayoutCreateBits val) {
 	switch(val) {
 		case DescriptorSetLayoutCreateBits::pushDescriptorKHR: return "pushDescriptorKHR";
 		case DescriptorSetLayoutCreateBits::updateAfterBindPoolEXT: return "updateAfterBindPoolEXT";
 		default: return nullptr;
 	}
 }
-std::string name(ShaderStageFlags val) {
+inline std::string name(ShaderStageFlags val) {
 	std::string ret;
 	if((val & ShaderStageBits::vertex)) ret += "vertex | ";
 	if((val & ShaderStageBits::tessellationControl)) ret += "tessellationControl | ";
@@ -1058,7 +1058,7 @@ std::string name(ShaderStageFlags val) {
 	return ret;
 
 }
-std::string name(SubgroupFeatureFlags val) {
+inline std::string name(SubgroupFeatureFlags val) {
 	std::string ret;
 	if((val & SubgroupFeatureBits::basic)) ret += "basic | ";
 	if((val & SubgroupFeatureBits::vote)) ret += "vote | ";
@@ -1073,7 +1073,7 @@ std::string name(SubgroupFeatureFlags val) {
 	return ret;
 
 }
-std::string name(PeerMemoryFeatureFlags val) {
+inline std::string name(PeerMemoryFeatureFlags val) {
 	std::string ret;
 	if((val & PeerMemoryFeatureBits::copySrc)) ret += "copySrc | ";
 	if((val & PeerMemoryFeatureBits::copyDst)) ret += "copyDst | ";
@@ -1083,14 +1083,14 @@ std::string name(PeerMemoryFeatureFlags val) {
 	return ret;
 
 }
-std::string name(MemoryAllocateFlags val) {
+inline std::string name(MemoryAllocateFlags val) {
 	std::string ret;
 	if((val & MemoryAllocateBits::deviceMask)) ret += "deviceMask | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
-std::string name(ImageAspectFlags val) {
+inline std::string name(ImageAspectFlags val) {
 	std::string ret;
 	if((val & ImageAspectBits::color)) ret += "color | ";
 	if((val & ImageAspectBits::depth)) ret += "depth | ";
@@ -1107,7 +1107,7 @@ std::string name(ImageAspectFlags val) {
 	return ret;
 
 }
-std::string name(SparseImageFormatFlags val) {
+inline std::string name(SparseImageFormatFlags val) {
 	std::string ret;
 	if((val & SparseImageFormatBits::singleMiptail)) ret += "singleMiptail | ";
 	if((val & SparseImageFormatBits::alignedMipSize)) ret += "alignedMipSize | ";
@@ -1116,7 +1116,7 @@ std::string name(SparseImageFormatFlags val) {
 	return ret;
 
 }
-std::string name(SampleCountFlags val) {
+inline std::string name(SampleCountFlags val) {
 	std::string ret;
 	if((val & SampleCountBits::e1)) ret += "e1 | ";
 	if((val & SampleCountBits::e2)) ret += "e2 | ";
@@ -1129,7 +1129,7 @@ std::string name(SampleCountFlags val) {
 	return ret;
 
 }
-std::string name(FormatFeatureFlags val) {
+inline std::string name(FormatFeatureFlags val) {
 	std::string ret;
 	if((val & FormatFeatureBits::sampledImage)) ret += "sampledImage | ";
 	if((val & FormatFeatureBits::storageImage)) ret += "storageImage | ";
@@ -1160,7 +1160,7 @@ std::string name(FormatFeatureFlags val) {
 	return ret;
 
 }
-std::string name(ImageUsageFlags val) {
+inline std::string name(ImageUsageFlags val) {
 	std::string ret;
 	if((val & ImageUsageBits::transferSrc)) ret += "transferSrc | ";
 	if((val & ImageUsageBits::transferDst)) ret += "transferDst | ";
@@ -1176,7 +1176,7 @@ std::string name(ImageUsageFlags val) {
 	return ret;
 
 }
-std::string name(ImageCreateFlags val) {
+inline std::string name(ImageCreateFlags val) {
 	std::string ret;
 	if((val & ImageCreateBits::sparseBinding)) ret += "sparseBinding | ";
 	if((val & ImageCreateBits::sparseResidency)) ret += "sparseResidency | ";
@@ -1197,7 +1197,7 @@ std::string name(ImageCreateFlags val) {
 	return ret;
 
 }
-std::string name(QueueFlags val) {
+inline std::string name(QueueFlags val) {
 	std::string ret;
 	if((val & QueueBits::graphics)) ret += "graphics | ";
 	if((val & QueueBits::compute)) ret += "compute | ";
@@ -1208,7 +1208,7 @@ std::string name(QueueFlags val) {
 	return ret;
 
 }
-std::string name(MemoryPropertyFlags val) {
+inline std::string name(MemoryPropertyFlags val) {
 	std::string ret;
 	if((val & MemoryPropertyBits::deviceLocal)) ret += "deviceLocal | ";
 	if((val & MemoryPropertyBits::hostVisible)) ret += "hostVisible | ";
@@ -1220,7 +1220,7 @@ std::string name(MemoryPropertyFlags val) {
 	return ret;
 
 }
-std::string name(MemoryHeapFlags val) {
+inline std::string name(MemoryHeapFlags val) {
 	std::string ret;
 	if((val & MemoryHeapBits::deviceLocal)) ret += "deviceLocal | ";
 	if((val & MemoryHeapBits::multiInstance)) ret += "multiInstance | ";
@@ -1228,14 +1228,14 @@ std::string name(MemoryHeapFlags val) {
 	return ret;
 
 }
-std::string name(DeviceQueueCreateFlags val) {
+inline std::string name(DeviceQueueCreateFlags val) {
 	std::string ret;
 	if((val & DeviceQueueCreateBits::eProtected)) ret += "eProtected | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
-std::string name(ExternalMemoryHandleTypeFlags val) {
+inline std::string name(ExternalMemoryHandleTypeFlags val) {
 	std::string ret;
 	if((val & ExternalMemoryHandleTypeBits::opaqueFd)) ret += "opaqueFd | ";
 	if((val & ExternalMemoryHandleTypeBits::opaqueWin32)) ret += "opaqueWin32 | ";
@@ -1251,7 +1251,7 @@ std::string name(ExternalMemoryHandleTypeFlags val) {
 	return ret;
 
 }
-std::string name(ExternalMemoryFeatureFlags val) {
+inline std::string name(ExternalMemoryFeatureFlags val) {
 	std::string ret;
 	if((val & ExternalMemoryFeatureBits::dedicatedOnly)) ret += "dedicatedOnly | ";
 	if((val & ExternalMemoryFeatureBits::exportable)) ret += "exportable | ";
@@ -1260,7 +1260,7 @@ std::string name(ExternalMemoryFeatureFlags val) {
 	return ret;
 
 }
-std::string name(BufferCreateFlags val) {
+inline std::string name(BufferCreateFlags val) {
 	std::string ret;
 	if((val & BufferCreateBits::sparseBinding)) ret += "sparseBinding | ";
 	if((val & BufferCreateBits::sparseResidency)) ret += "sparseResidency | ";
@@ -1271,7 +1271,7 @@ std::string name(BufferCreateFlags val) {
 	return ret;
 
 }
-std::string name(BufferUsageFlags val) {
+inline std::string name(BufferUsageFlags val) {
 	std::string ret;
 	if((val & BufferUsageBits::transferSrc)) ret += "transferSrc | ";
 	if((val & BufferUsageBits::transferDst)) ret += "transferDst | ";
@@ -1291,7 +1291,7 @@ std::string name(BufferUsageFlags val) {
 	return ret;
 
 }
-std::string name(ExternalFenceHandleTypeFlags val) {
+inline std::string name(ExternalFenceHandleTypeFlags val) {
 	std::string ret;
 	if((val & ExternalFenceHandleTypeBits::opaqueFd)) ret += "opaqueFd | ";
 	if((val & ExternalFenceHandleTypeBits::opaqueWin32)) ret += "opaqueWin32 | ";
@@ -1301,7 +1301,7 @@ std::string name(ExternalFenceHandleTypeFlags val) {
 	return ret;
 
 }
-std::string name(ExternalFenceFeatureFlags val) {
+inline std::string name(ExternalFenceFeatureFlags val) {
 	std::string ret;
 	if((val & ExternalFenceFeatureBits::exportable)) ret += "exportable | ";
 	if((val & ExternalFenceFeatureBits::importable)) ret += "importable | ";
@@ -1309,21 +1309,21 @@ std::string name(ExternalFenceFeatureFlags val) {
 	return ret;
 
 }
-std::string name(FenceImportFlags val) {
+inline std::string name(FenceImportFlags val) {
 	std::string ret;
 	if((val & FenceImportBits::temporary)) ret += "temporary | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
-std::string name(SemaphoreImportFlags val) {
+inline std::string name(SemaphoreImportFlags val) {
 	std::string ret;
 	if((val & SemaphoreImportBits::temporary)) ret += "temporary | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
-std::string name(ExternalSemaphoreHandleTypeFlags val) {
+inline std::string name(ExternalSemaphoreHandleTypeFlags val) {
 	std::string ret;
 	if((val & ExternalSemaphoreHandleTypeBits::opaqueFd)) ret += "opaqueFd | ";
 	if((val & ExternalSemaphoreHandleTypeBits::opaqueWin32)) ret += "opaqueWin32 | ";
@@ -1334,7 +1334,7 @@ std::string name(ExternalSemaphoreHandleTypeFlags val) {
 	return ret;
 
 }
-std::string name(ExternalSemaphoreFeatureFlags val) {
+inline std::string name(ExternalSemaphoreFeatureFlags val) {
 	std::string ret;
 	if((val & ExternalSemaphoreFeatureBits::exportable)) ret += "exportable | ";
 	if((val & ExternalSemaphoreFeatureBits::importable)) ret += "importable | ";
@@ -1342,7 +1342,7 @@ std::string name(ExternalSemaphoreFeatureFlags val) {
 	return ret;
 
 }
-std::string name(DescriptorSetLayoutCreateFlags val) {
+inline std::string name(DescriptorSetLayoutCreateFlags val) {
 	std::string ret;
 	if((val & DescriptorSetLayoutCreateBits::pushDescriptorKHR)) ret += "pushDescriptorKHR | ";
 	if((val & DescriptorSetLayoutCreateBits::updateAfterBindPoolEXT)) ret += "updateAfterBindPoolEXT | ";
@@ -1350,13 +1350,13 @@ std::string name(DescriptorSetLayoutCreateFlags val) {
 	return ret;
 
 }
-const char* name(PipelineCacheHeaderVersion val) {
+inline const char* name(PipelineCacheHeaderVersion val) {
 	switch(val) {
 		case PipelineCacheHeaderVersion::one: return "one";
 		default: return nullptr;
 	}
 }
-const char* name(PipelineStageBits val) {
+inline const char* name(PipelineStageBits val) {
 	switch(val) {
 		case PipelineStageBits::topOfPipe: return "topOfPipe";
 		case PipelineStageBits::drawIndirect: return "drawIndirect";
@@ -1386,19 +1386,19 @@ const char* name(PipelineStageBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(SparseMemoryBindBits val) {
+inline const char* name(SparseMemoryBindBits val) {
 	switch(val) {
 		case SparseMemoryBindBits::metadata: return "metadata";
 		default: return nullptr;
 	}
 }
-const char* name(FenceCreateBits val) {
+inline const char* name(FenceCreateBits val) {
 	switch(val) {
 		case FenceCreateBits::signaled: return "signaled";
 		default: return nullptr;
 	}
 }
-const char* name(QueryType val) {
+inline const char* name(QueryType val) {
 	switch(val) {
 		case QueryType::occlusion: return "occlusion";
 		case QueryType::pipelineStatistics: return "pipelineStatistics";
@@ -1408,7 +1408,7 @@ const char* name(QueryType val) {
 		default: return nullptr;
 	}
 }
-const char* name(QueryPipelineStatisticBits val) {
+inline const char* name(QueryPipelineStatisticBits val) {
 	switch(val) {
 		case QueryPipelineStatisticBits::inputAssemblyVertices: return "inputAssemblyVertices";
 		case QueryPipelineStatisticBits::inputAssemblyPrimitives: return "inputAssemblyPrimitives";
@@ -1424,7 +1424,7 @@ const char* name(QueryPipelineStatisticBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(QueryResultBits val) {
+inline const char* name(QueryResultBits val) {
 	switch(val) {
 		case QueryResultBits::e64: return "e64";
 		case QueryResultBits::wait: return "wait";
@@ -1433,14 +1433,14 @@ const char* name(QueryResultBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(SharingMode val) {
+inline const char* name(SharingMode val) {
 	switch(val) {
 		case SharingMode::exclusive: return "exclusive";
 		case SharingMode::concurrent: return "concurrent";
 		default: return nullptr;
 	}
 }
-const char* name(ImageLayout val) {
+inline const char* name(ImageLayout val) {
 	switch(val) {
 		case ImageLayout::undefined: return "undefined";
 		case ImageLayout::general: return "general";
@@ -1460,13 +1460,13 @@ const char* name(ImageLayout val) {
 		default: return nullptr;
 	}
 }
-const char* name(ImageViewCreateBits val) {
+inline const char* name(ImageViewCreateBits val) {
 	switch(val) {
 		case ImageViewCreateBits::fragmentDensityMapDynamicEXT: return "fragmentDensityMapDynamicEXT";
 		default: return nullptr;
 	}
 }
-const char* name(ImageViewType val) {
+inline const char* name(ImageViewType val) {
 	switch(val) {
 		case ImageViewType::e1d: return "e1d";
 		case ImageViewType::e2d: return "e2d";
@@ -1478,7 +1478,7 @@ const char* name(ImageViewType val) {
 		default: return nullptr;
 	}
 }
-const char* name(PipelineCreateBits val) {
+inline const char* name(PipelineCreateBits val) {
 	switch(val) {
 		case PipelineCreateBits::disableOptimization: return "disableOptimization";
 		case PipelineCreateBits::allowDerivatives: return "allowDerivatives";
@@ -1489,14 +1489,14 @@ const char* name(PipelineCreateBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(VertexInputRate val) {
+inline const char* name(VertexInputRate val) {
 	switch(val) {
 		case VertexInputRate::vertex: return "vertex";
 		case VertexInputRate::instance: return "instance";
 		default: return nullptr;
 	}
 }
-const char* name(PrimitiveTopology val) {
+inline const char* name(PrimitiveTopology val) {
 	switch(val) {
 		case PrimitiveTopology::pointList: return "pointList";
 		case PrimitiveTopology::lineList: return "lineList";
@@ -1512,7 +1512,7 @@ const char* name(PrimitiveTopology val) {
 		default: return nullptr;
 	}
 }
-const char* name(PolygonMode val) {
+inline const char* name(PolygonMode val) {
 	switch(val) {
 		case PolygonMode::fill: return "fill";
 		case PolygonMode::line: return "line";
@@ -1521,7 +1521,7 @@ const char* name(PolygonMode val) {
 		default: return nullptr;
 	}
 }
-const char* name(CullModeBits val) {
+inline const char* name(CullModeBits val) {
 	switch(val) {
 		case CullModeBits::none: return "none";
 		case CullModeBits::back: return "back";
@@ -1529,14 +1529,14 @@ const char* name(CullModeBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(FrontFace val) {
+inline const char* name(FrontFace val) {
 	switch(val) {
 		case FrontFace::counterClockwise: return "counterClockwise";
 		case FrontFace::clockwise: return "clockwise";
 		default: return nullptr;
 	}
 }
-const char* name(CompareOp val) {
+inline const char* name(CompareOp val) {
 	switch(val) {
 		case CompareOp::never: return "never";
 		case CompareOp::less: return "less";
@@ -1549,7 +1549,7 @@ const char* name(CompareOp val) {
 		default: return nullptr;
 	}
 }
-const char* name(StencilOp val) {
+inline const char* name(StencilOp val) {
 	switch(val) {
 		case StencilOp::keep: return "keep";
 		case StencilOp::zero: return "zero";
@@ -1562,7 +1562,7 @@ const char* name(StencilOp val) {
 		default: return nullptr;
 	}
 }
-const char* name(LogicOp val) {
+inline const char* name(LogicOp val) {
 	switch(val) {
 		case LogicOp::clear: return "clear";
 		case LogicOp::eAnd: return "eAnd";
@@ -1583,7 +1583,7 @@ const char* name(LogicOp val) {
 		default: return nullptr;
 	}
 }
-const char* name(BlendFactor val) {
+inline const char* name(BlendFactor val) {
 	switch(val) {
 		case BlendFactor::zero: return "zero";
 		case BlendFactor::one: return "one";
@@ -1607,7 +1607,7 @@ const char* name(BlendFactor val) {
 		default: return nullptr;
 	}
 }
-const char* name(BlendOp val) {
+inline const char* name(BlendOp val) {
 	switch(val) {
 		case BlendOp::add: return "add";
 		case BlendOp::subtract: return "subtract";
@@ -1663,7 +1663,7 @@ const char* name(BlendOp val) {
 		default: return nullptr;
 	}
 }
-const char* name(ColorComponentBits val) {
+inline const char* name(ColorComponentBits val) {
 	switch(val) {
 		case ColorComponentBits::r: return "r";
 		case ColorComponentBits::g: return "g";
@@ -1672,7 +1672,7 @@ const char* name(ColorComponentBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(DynamicState val) {
+inline const char* name(DynamicState val) {
 	switch(val) {
 		case DynamicState::viewport: return "viewport";
 		case DynamicState::scissor: return "scissor";
@@ -1692,21 +1692,21 @@ const char* name(DynamicState val) {
 		default: return nullptr;
 	}
 }
-const char* name(SamplerCreateBits val) {
+inline const char* name(SamplerCreateBits val) {
 	switch(val) {
 		case SamplerCreateBits::subsampledEXT: return "subsampledEXT";
 		case SamplerCreateBits::subsampledCoarseReconstructionEXT: return "subsampledCoarseReconstructionEXT";
 		default: return nullptr;
 	}
 }
-const char* name(SamplerMipmapMode val) {
+inline const char* name(SamplerMipmapMode val) {
 	switch(val) {
 		case SamplerMipmapMode::nearest: return "nearest";
 		case SamplerMipmapMode::linear: return "linear";
 		default: return nullptr;
 	}
 }
-const char* name(SamplerAddressMode val) {
+inline const char* name(SamplerAddressMode val) {
 	switch(val) {
 		case SamplerAddressMode::repeat: return "repeat";
 		case SamplerAddressMode::mirroredRepeat: return "mirroredRepeat";
@@ -1716,7 +1716,7 @@ const char* name(SamplerAddressMode val) {
 		default: return nullptr;
 	}
 }
-const char* name(BorderColor val) {
+inline const char* name(BorderColor val) {
 	switch(val) {
 		case BorderColor::floatTransparentBlack: return "floatTransparentBlack";
 		case BorderColor::intTransparentBlack: return "intTransparentBlack";
@@ -1727,20 +1727,20 @@ const char* name(BorderColor val) {
 		default: return nullptr;
 	}
 }
-const char* name(DescriptorPoolCreateBits val) {
+inline const char* name(DescriptorPoolCreateBits val) {
 	switch(val) {
 		case DescriptorPoolCreateBits::freeDescriptorSet: return "freeDescriptorSet";
 		case DescriptorPoolCreateBits::updateAfterBindEXT: return "updateAfterBindEXT";
 		default: return nullptr;
 	}
 }
-const char* name(AttachmentDescriptionBits val) {
+inline const char* name(AttachmentDescriptionBits val) {
 	switch(val) {
 		case AttachmentDescriptionBits::mayAlias: return "mayAlias";
 		default: return nullptr;
 	}
 }
-const char* name(AttachmentLoadOp val) {
+inline const char* name(AttachmentLoadOp val) {
 	switch(val) {
 		case AttachmentLoadOp::load: return "load";
 		case AttachmentLoadOp::clear: return "clear";
@@ -1748,19 +1748,19 @@ const char* name(AttachmentLoadOp val) {
 		default: return nullptr;
 	}
 }
-const char* name(AttachmentStoreOp val) {
+inline const char* name(AttachmentStoreOp val) {
 	switch(val) {
 		case AttachmentStoreOp::store: return "store";
 		case AttachmentStoreOp::dontCare: return "dontCare";
 		default: return nullptr;
 	}
 }
-const char* name(SubpassDescriptionBits val) {
+inline const char* name(SubpassDescriptionBits val) {
 	switch(val) {
 		default: return nullptr;
 	}
 }
-const char* name(AccessBits val) {
+inline const char* name(AccessBits val) {
 	switch(val) {
 		case AccessBits::indirectCommandRead: return "indirectCommandRead";
 		case AccessBits::indexRead: return "indexRead";
@@ -1791,7 +1791,7 @@ const char* name(AccessBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(DependencyBits val) {
+inline const char* name(DependencyBits val) {
 	switch(val) {
 		case DependencyBits::byRegion: return "byRegion";
 		case DependencyBits::deviceGroup: return "deviceGroup";
@@ -1799,7 +1799,7 @@ const char* name(DependencyBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(CommandPoolCreateBits val) {
+inline const char* name(CommandPoolCreateBits val) {
 	switch(val) {
 		case CommandPoolCreateBits::transient: return "transient";
 		case CommandPoolCreateBits::resetCommandBuffer: return "resetCommandBuffer";
@@ -1807,20 +1807,20 @@ const char* name(CommandPoolCreateBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(CommandPoolResetBits val) {
+inline const char* name(CommandPoolResetBits val) {
 	switch(val) {
 		case CommandPoolResetBits::releaseResources: return "releaseResources";
 		default: return nullptr;
 	}
 }
-const char* name(CommandBufferLevel val) {
+inline const char* name(CommandBufferLevel val) {
 	switch(val) {
 		case CommandBufferLevel::primary: return "primary";
 		case CommandBufferLevel::secondary: return "secondary";
 		default: return nullptr;
 	}
 }
-const char* name(CommandBufferUsageBits val) {
+inline const char* name(CommandBufferUsageBits val) {
 	switch(val) {
 		case CommandBufferUsageBits::oneTimeSubmit: return "oneTimeSubmit";
 		case CommandBufferUsageBits::renderPassContinue: return "renderPassContinue";
@@ -1828,19 +1828,19 @@ const char* name(CommandBufferUsageBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(QueryControlBits val) {
+inline const char* name(QueryControlBits val) {
 	switch(val) {
 		case QueryControlBits::precise: return "precise";
 		default: return nullptr;
 	}
 }
-const char* name(CommandBufferResetBits val) {
+inline const char* name(CommandBufferResetBits val) {
 	switch(val) {
 		case CommandBufferResetBits::releaseResources: return "releaseResources";
 		default: return nullptr;
 	}
 }
-const char* name(StencilFaceBits val) {
+inline const char* name(StencilFaceBits val) {
 	switch(val) {
 		case StencilFaceBits::front: return "front";
 		case StencilFaceBits::back: return "back";
@@ -1848,7 +1848,7 @@ const char* name(StencilFaceBits val) {
 		default: return nullptr;
 	}
 }
-const char* name(IndexType val) {
+inline const char* name(IndexType val) {
 	switch(val) {
 		case IndexType::uint16: return "uint16";
 		case IndexType::uint32: return "uint32";
@@ -1856,14 +1856,14 @@ const char* name(IndexType val) {
 		default: return nullptr;
 	}
 }
-const char* name(SubpassContents val) {
+inline const char* name(SubpassContents val) {
 	switch(val) {
 		case SubpassContents::eInline: return "eInline";
 		case SubpassContents::secondaryCommandBuffers: return "secondaryCommandBuffers";
 		default: return nullptr;
 	}
 }
-const char* name(ObjectType val) {
+inline const char* name(ObjectType val) {
 	switch(val) {
 		case ObjectType::unknown: return "unknown";
 		case ObjectType::instance: return "instance";
@@ -1904,7 +1904,7 @@ const char* name(ObjectType val) {
 		default: return nullptr;
 	}
 }
-const char* name(VendorId val) {
+inline const char* name(VendorId val) {
 	switch(val) {
 		case VendorId::vIV: return "vIV";
 		case VendorId::vSI: return "vSI";
@@ -1912,7 +1912,7 @@ const char* name(VendorId val) {
 		default: return nullptr;
 	}
 }
-std::string name(PipelineStageFlags val) {
+inline std::string name(PipelineStageFlags val) {
 	std::string ret;
 	if((val & PipelineStageBits::topOfPipe)) ret += "topOfPipe | ";
 	if((val & PipelineStageBits::drawIndirect)) ret += "drawIndirect | ";
@@ -1943,21 +1943,21 @@ std::string name(PipelineStageFlags val) {
 	return ret;
 
 }
-std::string name(SparseMemoryBindFlags val) {
+inline std::string name(SparseMemoryBindFlags val) {
 	std::string ret;
 	if((val & SparseMemoryBindBits::metadata)) ret += "metadata | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
-std::string name(FenceCreateFlags val) {
+inline std::string name(FenceCreateFlags val) {
 	std::string ret;
 	if((val & FenceCreateBits::signaled)) ret += "signaled | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
-std::string name(QueryPipelineStatisticFlags val) {
+inline std::string name(QueryPipelineStatisticFlags val) {
 	std::string ret;
 	if((val & QueryPipelineStatisticBits::inputAssemblyVertices)) ret += "inputAssemblyVertices | ";
 	if((val & QueryPipelineStatisticBits::inputAssemblyPrimitives)) ret += "inputAssemblyPrimitives | ";
@@ -1974,7 +1974,7 @@ std::string name(QueryPipelineStatisticFlags val) {
 	return ret;
 
 }
-std::string name(QueryResultFlags val) {
+inline std::string name(QueryResultFlags val) {
 	std::string ret;
 	if((val & QueryResultBits::e64)) ret += "e64 | ";
 	if((val & QueryResultBits::wait)) ret += "wait | ";
@@ -1984,14 +1984,14 @@ std::string name(QueryResultFlags val) {
 	return ret;
 
 }
-std::string name(ImageViewCreateFlags val) {
+inline std::string name(ImageViewCreateFlags val) {
 	std::string ret;
 	if((val & ImageViewCreateBits::fragmentDensityMapDynamicEXT)) ret += "fragmentDensityMapDynamicEXT | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
-std::string name(PipelineCreateFlags val) {
+inline std::string name(PipelineCreateFlags val) {
 	std::string ret;
 	if((val & PipelineCreateBits::disableOptimization)) ret += "disableOptimization | ";
 	if((val & PipelineCreateBits::allowDerivatives)) ret += "allowDerivatives | ";
@@ -2003,7 +2003,7 @@ std::string name(PipelineCreateFlags val) {
 	return ret;
 
 }
-std::string name(CullModeFlags val) {
+inline std::string name(CullModeFlags val) {
 	std::string ret;
 	if((val & CullModeBits::none)) ret += "none | ";
 	if((val & CullModeBits::back)) ret += "back | ";
@@ -2012,7 +2012,7 @@ std::string name(CullModeFlags val) {
 	return ret;
 
 }
-std::string name(ColorComponentFlags val) {
+inline std::string name(ColorComponentFlags val) {
 	std::string ret;
 	if((val & ColorComponentBits::r)) ret += "r | ";
 	if((val & ColorComponentBits::g)) ret += "g | ";
@@ -2022,7 +2022,7 @@ std::string name(ColorComponentFlags val) {
 	return ret;
 
 }
-std::string name(SamplerCreateFlags val) {
+inline std::string name(SamplerCreateFlags val) {
 	std::string ret;
 	if((val & SamplerCreateBits::subsampledEXT)) ret += "subsampledEXT | ";
 	if((val & SamplerCreateBits::subsampledCoarseReconstructionEXT)) ret += "subsampledCoarseReconstructionEXT | ";
@@ -2030,7 +2030,7 @@ std::string name(SamplerCreateFlags val) {
 	return ret;
 
 }
-std::string name(DescriptorPoolCreateFlags val) {
+inline std::string name(DescriptorPoolCreateFlags val) {
 	std::string ret;
 	if((val & DescriptorPoolCreateBits::freeDescriptorSet)) ret += "freeDescriptorSet | ";
 	if((val & DescriptorPoolCreateBits::updateAfterBindEXT)) ret += "updateAfterBindEXT | ";
@@ -2038,20 +2038,20 @@ std::string name(DescriptorPoolCreateFlags val) {
 	return ret;
 
 }
-std::string name(AttachmentDescriptionFlags val) {
+inline std::string name(AttachmentDescriptionFlags val) {
 	std::string ret;
 	if((val & AttachmentDescriptionBits::mayAlias)) ret += "mayAlias | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
-std::string name(SubpassDescriptionFlags val) {
+inline std::string name(SubpassDescriptionFlags) {
 	std::string ret;
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
-std::string name(AccessFlags val) {
+inline std::string name(AccessFlags val) {
 	std::string ret;
 	if((val & AccessBits::indirectCommandRead)) ret += "indirectCommandRead | ";
 	if((val & AccessBits::indexRead)) ret += "indexRead | ";
@@ -2083,7 +2083,7 @@ std::string name(AccessFlags val) {
 	return ret;
 
 }
-std::string name(DependencyFlags val) {
+inline std::string name(DependencyFlags val) {
 	std::string ret;
 	if((val & DependencyBits::byRegion)) ret += "byRegion | ";
 	if((val & DependencyBits::deviceGroup)) ret += "deviceGroup | ";
@@ -2092,7 +2092,7 @@ std::string name(DependencyFlags val) {
 	return ret;
 
 }
-std::string name(CommandPoolCreateFlags val) {
+inline std::string name(CommandPoolCreateFlags val) {
 	std::string ret;
 	if((val & CommandPoolCreateBits::transient)) ret += "transient | ";
 	if((val & CommandPoolCreateBits::resetCommandBuffer)) ret += "resetCommandBuffer | ";
@@ -2101,14 +2101,14 @@ std::string name(CommandPoolCreateFlags val) {
 	return ret;
 
 }
-std::string name(CommandPoolResetFlags val) {
+inline std::string name(CommandPoolResetFlags val) {
 	std::string ret;
 	if((val & CommandPoolResetBits::releaseResources)) ret += "releaseResources | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
-std::string name(CommandBufferUsageFlags val) {
+inline std::string name(CommandBufferUsageFlags val) {
 	std::string ret;
 	if((val & CommandBufferUsageBits::oneTimeSubmit)) ret += "oneTimeSubmit | ";
 	if((val & CommandBufferUsageBits::renderPassContinue)) ret += "renderPassContinue | ";
@@ -2117,21 +2117,21 @@ std::string name(CommandBufferUsageFlags val) {
 	return ret;
 
 }
-std::string name(QueryControlFlags val) {
+inline std::string name(QueryControlFlags val) {
 	std::string ret;
 	if((val & QueryControlBits::precise)) ret += "precise | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
-std::string name(CommandBufferResetFlags val) {
+inline std::string name(CommandBufferResetFlags val) {
 	std::string ret;
 	if((val & CommandBufferResetBits::releaseResources)) ret += "releaseResources | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
-std::string name(StencilFaceFlags val) {
+inline std::string name(StencilFaceFlags val) {
 	std::string ret;
 	if((val & StencilFaceBits::front)) ret += "front | ";
 	if((val & StencilFaceBits::back)) ret += "back | ";
@@ -2140,7 +2140,7 @@ std::string name(StencilFaceFlags val) {
 	return ret;
 
 }
-const char* name(SurfaceTransformBitsKHR val) {
+inline const char* name(SurfaceTransformBitsKHR val) {
 	switch(val) {
 		case SurfaceTransformBitsKHR::identity: return "identity";
 		case SurfaceTransformBitsKHR::rotate90: return "rotate90";
@@ -2154,7 +2154,7 @@ const char* name(SurfaceTransformBitsKHR val) {
 		default: return nullptr;
 	}
 }
-const char* name(CompositeAlphaBitsKHR val) {
+inline const char* name(CompositeAlphaBitsKHR val) {
 	switch(val) {
 		case CompositeAlphaBitsKHR::opaque: return "opaque";
 		case CompositeAlphaBitsKHR::preMultiplied: return "preMultiplied";
@@ -2163,7 +2163,7 @@ const char* name(CompositeAlphaBitsKHR val) {
 		default: return nullptr;
 	}
 }
-const char* name(ColorSpaceKHR val) {
+inline const char* name(ColorSpaceKHR val) {
 	switch(val) {
 		case ColorSpaceKHR::srgbNonlinear: return "srgbNonlinear";
 		case ColorSpaceKHR::displayP3NonlinearEXT: return "displayP3NonlinearEXT";
@@ -2184,7 +2184,7 @@ const char* name(ColorSpaceKHR val) {
 		default: return nullptr;
 	}
 }
-const char* name(PresentModeKHR val) {
+inline const char* name(PresentModeKHR val) {
 	switch(val) {
 		case PresentModeKHR::immediate: return "immediate";
 		case PresentModeKHR::mailbox: return "mailbox";
@@ -2195,7 +2195,7 @@ const char* name(PresentModeKHR val) {
 		default: return nullptr;
 	}
 }
-std::string name(SurfaceTransformFlagsKHR val) {
+inline std::string name(SurfaceTransformFlagsKHR val) {
 	std::string ret;
 	if((val & SurfaceTransformBitsKHR::identity)) ret += "identity | ";
 	if((val & SurfaceTransformBitsKHR::rotate90)) ret += "rotate90 | ";
@@ -2210,7 +2210,7 @@ std::string name(SurfaceTransformFlagsKHR val) {
 	return ret;
 
 }
-std::string name(CompositeAlphaFlagsKHR val) {
+inline std::string name(CompositeAlphaFlagsKHR val) {
 	std::string ret;
 	if((val & CompositeAlphaBitsKHR::opaque)) ret += "opaque | ";
 	if((val & CompositeAlphaBitsKHR::preMultiplied)) ret += "preMultiplied | ";
@@ -2220,7 +2220,7 @@ std::string name(CompositeAlphaFlagsKHR val) {
 	return ret;
 
 }
-const char* name(SwapchainCreateBitsKHR val) {
+inline const char* name(SwapchainCreateBitsKHR val) {
 	switch(val) {
 		case SwapchainCreateBitsKHR::splitInstanceBindRegions: return "splitInstanceBindRegions";
 		case SwapchainCreateBitsKHR::eProtected: return "eProtected";
@@ -2228,7 +2228,7 @@ const char* name(SwapchainCreateBitsKHR val) {
 		default: return nullptr;
 	}
 }
-const char* name(DeviceGroupPresentModeBitsKHR val) {
+inline const char* name(DeviceGroupPresentModeBitsKHR val) {
 	switch(val) {
 		case DeviceGroupPresentModeBitsKHR::local: return "local";
 		case DeviceGroupPresentModeBitsKHR::remote: return "remote";
@@ -2237,7 +2237,7 @@ const char* name(DeviceGroupPresentModeBitsKHR val) {
 		default: return nullptr;
 	}
 }
-std::string name(SwapchainCreateFlagsKHR val) {
+inline std::string name(SwapchainCreateFlagsKHR val) {
 	std::string ret;
 	if((val & SwapchainCreateBitsKHR::splitInstanceBindRegions)) ret += "splitInstanceBindRegions | ";
 	if((val & SwapchainCreateBitsKHR::eProtected)) ret += "eProtected | ";
@@ -2246,7 +2246,7 @@ std::string name(SwapchainCreateFlagsKHR val) {
 	return ret;
 
 }
-std::string name(DeviceGroupPresentModeFlagsKHR val) {
+inline std::string name(DeviceGroupPresentModeFlagsKHR val) {
 	std::string ret;
 	if((val & DeviceGroupPresentModeBitsKHR::local)) ret += "local | ";
 	if((val & DeviceGroupPresentModeBitsKHR::remote)) ret += "remote | ";
@@ -2256,7 +2256,7 @@ std::string name(DeviceGroupPresentModeFlagsKHR val) {
 	return ret;
 
 }
-const char* name(DisplayPlaneAlphaBitsKHR val) {
+inline const char* name(DisplayPlaneAlphaBitsKHR val) {
 	switch(val) {
 		case DisplayPlaneAlphaBitsKHR::opaque: return "opaque";
 		case DisplayPlaneAlphaBitsKHR::global: return "global";
@@ -2265,7 +2265,7 @@ const char* name(DisplayPlaneAlphaBitsKHR val) {
 		default: return nullptr;
 	}
 }
-std::string name(DisplayPlaneAlphaFlagsKHR val) {
+inline std::string name(DisplayPlaneAlphaFlagsKHR val) {
 	std::string ret;
 	if((val & DisplayPlaneAlphaBitsKHR::opaque)) ret += "opaque | ";
 	if((val & DisplayPlaneAlphaBitsKHR::global)) ret += "global | ";
@@ -2291,7 +2291,7 @@ std::string name(DisplayPlaneAlphaFlagsKHR val) {
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
-const char* name(DebugReportObjectTypeEXT val) {
+inline const char* name(DebugReportObjectTypeEXT val) {
 	switch(val) {
 		case DebugReportObjectTypeEXT::unknown: return "unknown";
 		case DebugReportObjectTypeEXT::instance: return "instance";
@@ -2333,7 +2333,7 @@ const char* name(DebugReportObjectTypeEXT val) {
 		default: return nullptr;
 	}
 }
-const char* name(DebugReportBitsEXT val) {
+inline const char* name(DebugReportBitsEXT val) {
 	switch(val) {
 		case DebugReportBitsEXT::information: return "information";
 		case DebugReportBitsEXT::warning: return "warning";
@@ -2343,7 +2343,7 @@ const char* name(DebugReportBitsEXT val) {
 		default: return nullptr;
 	}
 }
-std::string name(DebugReportFlagsEXT val) {
+inline std::string name(DebugReportFlagsEXT val) {
 	std::string ret;
 	if((val & DebugReportBitsEXT::information)) ret += "information | ";
 	if((val & DebugReportBitsEXT::warning)) ret += "warning | ";
@@ -2354,14 +2354,14 @@ std::string name(DebugReportFlagsEXT val) {
 	return ret;
 
 }
-const char* name(RasterizationOrderAMD val) {
+inline const char* name(RasterizationOrderAMD val) {
 	switch(val) {
 		case RasterizationOrderAMD::strict: return "strict";
 		case RasterizationOrderAMD::relaxed: return "relaxed";
 		default: return nullptr;
 	}
 }
-const char* name(ShaderInfoTypeAMD val) {
+inline const char* name(ShaderInfoTypeAMD val) {
 	switch(val) {
 		case ShaderInfoTypeAMD::statistics: return "statistics";
 		case ShaderInfoTypeAMD::binary: return "binary";
@@ -2373,7 +2373,7 @@ const char* name(ShaderInfoTypeAMD val) {
 #ifdef VK_USE_PLATFORM_GGP
 #endif //VK_USE_PLATFORM_GGP
 
-const char* name(ExternalMemoryHandleTypeBitsNV val) {
+inline const char* name(ExternalMemoryHandleTypeBitsNV val) {
 	switch(val) {
 		case ExternalMemoryHandleTypeBitsNV::opaqueWin32: return "opaqueWin32";
 		case ExternalMemoryHandleTypeBitsNV::opaqueWin32Kmt: return "opaqueWin32Kmt";
@@ -2382,7 +2382,7 @@ const char* name(ExternalMemoryHandleTypeBitsNV val) {
 		default: return nullptr;
 	}
 }
-const char* name(ExternalMemoryFeatureBitsNV val) {
+inline const char* name(ExternalMemoryFeatureBitsNV val) {
 	switch(val) {
 		case ExternalMemoryFeatureBitsNV::dedicatedOnly: return "dedicatedOnly";
 		case ExternalMemoryFeatureBitsNV::exportable: return "exportable";
@@ -2390,7 +2390,7 @@ const char* name(ExternalMemoryFeatureBitsNV val) {
 		default: return nullptr;
 	}
 }
-std::string name(ExternalMemoryHandleTypeFlagsNV val) {
+inline std::string name(ExternalMemoryHandleTypeFlagsNV val) {
 	std::string ret;
 	if((val & ExternalMemoryHandleTypeBitsNV::opaqueWin32)) ret += "opaqueWin32 | ";
 	if((val & ExternalMemoryHandleTypeBitsNV::opaqueWin32Kmt)) ret += "opaqueWin32Kmt | ";
@@ -2400,7 +2400,7 @@ std::string name(ExternalMemoryHandleTypeFlagsNV val) {
 	return ret;
 
 }
-std::string name(ExternalMemoryFeatureFlagsNV val) {
+inline std::string name(ExternalMemoryFeatureFlagsNV val) {
 	std::string ret;
 	if((val & ExternalMemoryFeatureBitsNV::dedicatedOnly)) ret += "dedicatedOnly | ";
 	if((val & ExternalMemoryFeatureBitsNV::exportable)) ret += "exportable | ";
@@ -2409,7 +2409,7 @@ std::string name(ExternalMemoryFeatureFlagsNV val) {
 	return ret;
 
 }
-const char* name(ValidationCheckEXT val) {
+inline const char* name(ValidationCheckEXT val) {
 	switch(val) {
 		case ValidationCheckEXT::all: return "all";
 		case ValidationCheckEXT::shaders: return "shaders";
@@ -2420,33 +2420,33 @@ const char* name(ValidationCheckEXT val) {
 #ifdef VK_USE_PLATFORM_VI_NN
 #endif //VK_USE_PLATFORM_VI_NN
 
-const char* name(ConditionalRenderingBitsEXT val) {
+inline const char* name(ConditionalRenderingBitsEXT val) {
 	switch(val) {
 		case ConditionalRenderingBitsEXT::inverted: return "inverted";
 		default: return nullptr;
 	}
 }
-std::string name(ConditionalRenderingFlagsEXT val) {
+inline std::string name(ConditionalRenderingFlagsEXT val) {
 	std::string ret;
 	if((val & ConditionalRenderingBitsEXT::inverted)) ret += "inverted | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
-const char* name(SurfaceCounterBitsEXT val) {
+inline const char* name(SurfaceCounterBitsEXT val) {
 	switch(val) {
 		case SurfaceCounterBitsEXT::vblank: return "vblank";
 		default: return nullptr;
 	}
 }
-std::string name(SurfaceCounterFlagsEXT val) {
+inline std::string name(SurfaceCounterFlagsEXT val) {
 	std::string ret;
 	if((val & SurfaceCounterBitsEXT::vblank)) ret += "vblank | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
-const char* name(DisplayPowerStateEXT val) {
+inline const char* name(DisplayPowerStateEXT val) {
 	switch(val) {
 		case DisplayPowerStateEXT::off: return "off";
 		case DisplayPowerStateEXT::suspend: return "suspend";
@@ -2454,19 +2454,19 @@ const char* name(DisplayPowerStateEXT val) {
 		default: return nullptr;
 	}
 }
-const char* name(DeviceEventTypeEXT val) {
+inline const char* name(DeviceEventTypeEXT val) {
 	switch(val) {
 		case DeviceEventTypeEXT::displayHotplug: return "displayHotplug";
 		default: return nullptr;
 	}
 }
-const char* name(DisplayEventTypeEXT val) {
+inline const char* name(DisplayEventTypeEXT val) {
 	switch(val) {
 		case DisplayEventTypeEXT::firstPixelOut: return "firstPixelOut";
 		default: return nullptr;
 	}
 }
-const char* name(ViewportCoordinateSwizzleNV val) {
+inline const char* name(ViewportCoordinateSwizzleNV val) {
 	switch(val) {
 		case ViewportCoordinateSwizzleNV::positiveX: return "positiveX";
 		case ViewportCoordinateSwizzleNV::negativeX: return "negativeX";
@@ -2479,14 +2479,14 @@ const char* name(ViewportCoordinateSwizzleNV val) {
 		default: return nullptr;
 	}
 }
-const char* name(DiscardRectangleModeEXT val) {
+inline const char* name(DiscardRectangleModeEXT val) {
 	switch(val) {
 		case DiscardRectangleModeEXT::inclusive: return "inclusive";
 		case DiscardRectangleModeEXT::exclusive: return "exclusive";
 		default: return nullptr;
 	}
 }
-const char* name(ConservativeRasterizationModeEXT val) {
+inline const char* name(ConservativeRasterizationModeEXT val) {
 	switch(val) {
 		case ConservativeRasterizationModeEXT::disabled: return "disabled";
 		case ConservativeRasterizationModeEXT::overestimate: return "overestimate";
@@ -2502,7 +2502,7 @@ const char* name(ConservativeRasterizationModeEXT val) {
 #ifdef VK_USE_PLATFORM_MACOS_MVK
 #endif //VK_USE_PLATFORM_MACOS_MVK
 
-const char* name(DebugUtilsMessageSeverityBitsEXT val) {
+inline const char* name(DebugUtilsMessageSeverityBitsEXT val) {
 	switch(val) {
 		case DebugUtilsMessageSeverityBitsEXT::verbose: return "verbose";
 		case DebugUtilsMessageSeverityBitsEXT::info: return "info";
@@ -2511,7 +2511,7 @@ const char* name(DebugUtilsMessageSeverityBitsEXT val) {
 		default: return nullptr;
 	}
 }
-const char* name(DebugUtilsMessageTypeBitsEXT val) {
+inline const char* name(DebugUtilsMessageTypeBitsEXT val) {
 	switch(val) {
 		case DebugUtilsMessageTypeBitsEXT::general: return "general";
 		case DebugUtilsMessageTypeBitsEXT::validation: return "validation";
@@ -2519,7 +2519,7 @@ const char* name(DebugUtilsMessageTypeBitsEXT val) {
 		default: return nullptr;
 	}
 }
-std::string name(DebugUtilsMessageSeverityFlagsEXT val) {
+inline std::string name(DebugUtilsMessageSeverityFlagsEXT val) {
 	std::string ret;
 	if((val & DebugUtilsMessageSeverityBitsEXT::verbose)) ret += "verbose | ";
 	if((val & DebugUtilsMessageSeverityBitsEXT::info)) ret += "info | ";
@@ -2529,7 +2529,7 @@ std::string name(DebugUtilsMessageSeverityFlagsEXT val) {
 	return ret;
 
 }
-std::string name(DebugUtilsMessageTypeFlagsEXT val) {
+inline std::string name(DebugUtilsMessageTypeFlagsEXT val) {
 	std::string ret;
 	if((val & DebugUtilsMessageTypeBitsEXT::general)) ret += "general | ";
 	if((val & DebugUtilsMessageTypeBitsEXT::validation)) ret += "validation | ";
@@ -2538,7 +2538,7 @@ std::string name(DebugUtilsMessageTypeFlagsEXT val) {
 	return ret;
 
 }
-const char* name(SamplerReductionModeEXT val) {
+inline const char* name(SamplerReductionModeEXT val) {
 	switch(val) {
 		case SamplerReductionModeEXT::weightedAverage: return "weightedAverage";
 		case SamplerReductionModeEXT::min: return "min";
@@ -2546,7 +2546,7 @@ const char* name(SamplerReductionModeEXT val) {
 		default: return nullptr;
 	}
 }
-const char* name(BlendOverlapEXT val) {
+inline const char* name(BlendOverlapEXT val) {
 	switch(val) {
 		case BlendOverlapEXT::uncorrelated: return "uncorrelated";
 		case BlendOverlapEXT::disjoint: return "disjoint";
@@ -2554,7 +2554,7 @@ const char* name(BlendOverlapEXT val) {
 		default: return nullptr;
 	}
 }
-const char* name(CoverageModulationModeNV val) {
+inline const char* name(CoverageModulationModeNV val) {
 	switch(val) {
 		case CoverageModulationModeNV::none: return "none";
 		case CoverageModulationModeNV::rgb: return "rgb";
@@ -2563,13 +2563,13 @@ const char* name(CoverageModulationModeNV val) {
 		default: return nullptr;
 	}
 }
-const char* name(ValidationCacheHeaderVersionEXT val) {
+inline const char* name(ValidationCacheHeaderVersionEXT val) {
 	switch(val) {
 		case ValidationCacheHeaderVersionEXT::one: return "one";
 		default: return nullptr;
 	}
 }
-const char* name(DescriptorBindingBitsEXT val) {
+inline const char* name(DescriptorBindingBitsEXT val) {
 	switch(val) {
 		case DescriptorBindingBitsEXT::updateAfterBind: return "updateAfterBind";
 		case DescriptorBindingBitsEXT::updateUnusedWhilePending: return "updateUnusedWhilePending";
@@ -2578,7 +2578,7 @@ const char* name(DescriptorBindingBitsEXT val) {
 		default: return nullptr;
 	}
 }
-std::string name(DescriptorBindingFlagsEXT val) {
+inline std::string name(DescriptorBindingFlagsEXT val) {
 	std::string ret;
 	if((val & DescriptorBindingBitsEXT::updateAfterBind)) ret += "updateAfterBind | ";
 	if((val & DescriptorBindingBitsEXT::updateUnusedWhilePending)) ret += "updateUnusedWhilePending | ";
@@ -2588,7 +2588,7 @@ std::string name(DescriptorBindingFlagsEXT val) {
 	return ret;
 
 }
-const char* name(ShadingRatePaletteEntryNV val) {
+inline const char* name(ShadingRatePaletteEntryNV val) {
 	switch(val) {
 		case ShadingRatePaletteEntryNV::noInvocations: return "noInvocations";
 		case ShadingRatePaletteEntryNV::e16InvocationsPerPixel: return "e16InvocationsPerPixel";
@@ -2605,7 +2605,7 @@ const char* name(ShadingRatePaletteEntryNV val) {
 		default: return nullptr;
 	}
 }
-const char* name(CoarseSampleOrderTypeNV val) {
+inline const char* name(CoarseSampleOrderTypeNV val) {
 	switch(val) {
 		case CoarseSampleOrderTypeNV::eDefault: return "eDefault";
 		case CoarseSampleOrderTypeNV::custom: return "custom";
@@ -2614,7 +2614,7 @@ const char* name(CoarseSampleOrderTypeNV val) {
 		default: return nullptr;
 	}
 }
-const char* name(RayTracingShaderGroupTypeNV val) {
+inline const char* name(RayTracingShaderGroupTypeNV val) {
 	switch(val) {
 		case RayTracingShaderGroupTypeNV::general: return "general";
 		case RayTracingShaderGroupTypeNV::trianglesHitGroup: return "trianglesHitGroup";
@@ -2622,21 +2622,21 @@ const char* name(RayTracingShaderGroupTypeNV val) {
 		default: return nullptr;
 	}
 }
-const char* name(GeometryTypeNV val) {
+inline const char* name(GeometryTypeNV val) {
 	switch(val) {
 		case GeometryTypeNV::triangles: return "triangles";
 		case GeometryTypeNV::aabbs: return "aabbs";
 		default: return nullptr;
 	}
 }
-const char* name(GeometryBitsNV val) {
+inline const char* name(GeometryBitsNV val) {
 	switch(val) {
 		case GeometryBitsNV::opaque: return "opaque";
 		case GeometryBitsNV::noDuplicateAnyHitInvocation: return "noDuplicateAnyHitInvocation";
 		default: return nullptr;
 	}
 }
-const char* name(GeometryInstanceBitsNV val) {
+inline const char* name(GeometryInstanceBitsNV val) {
 	switch(val) {
 		case GeometryInstanceBitsNV::triangleCullDisable: return "triangleCullDisable";
 		case GeometryInstanceBitsNV::triangleFrontCounterclockwise: return "triangleFrontCounterclockwise";
@@ -2645,14 +2645,14 @@ const char* name(GeometryInstanceBitsNV val) {
 		default: return nullptr;
 	}
 }
-const char* name(AccelerationStructureTypeNV val) {
+inline const char* name(AccelerationStructureTypeNV val) {
 	switch(val) {
 		case AccelerationStructureTypeNV::topLevel: return "topLevel";
 		case AccelerationStructureTypeNV::bottomLevel: return "bottomLevel";
 		default: return nullptr;
 	}
 }
-const char* name(BuildAccelerationStructureBitsNV val) {
+inline const char* name(BuildAccelerationStructureBitsNV val) {
 	switch(val) {
 		case BuildAccelerationStructureBitsNV::allowUpdate: return "allowUpdate";
 		case BuildAccelerationStructureBitsNV::allowCompaction: return "allowCompaction";
@@ -2662,14 +2662,14 @@ const char* name(BuildAccelerationStructureBitsNV val) {
 		default: return nullptr;
 	}
 }
-const char* name(CopyAccelerationStructureModeNV val) {
+inline const char* name(CopyAccelerationStructureModeNV val) {
 	switch(val) {
 		case CopyAccelerationStructureModeNV::clone: return "clone";
 		case CopyAccelerationStructureModeNV::compact: return "compact";
 		default: return nullptr;
 	}
 }
-const char* name(AccelerationStructureMemoryRequirementsTypeNV val) {
+inline const char* name(AccelerationStructureMemoryRequirementsTypeNV val) {
 	switch(val) {
 		case AccelerationStructureMemoryRequirementsTypeNV::object: return "object";
 		case AccelerationStructureMemoryRequirementsTypeNV::buildScratch: return "buildScratch";
@@ -2677,7 +2677,7 @@ const char* name(AccelerationStructureMemoryRequirementsTypeNV val) {
 		default: return nullptr;
 	}
 }
-std::string name(GeometryFlagsNV val) {
+inline std::string name(GeometryFlagsNV val) {
 	std::string ret;
 	if((val & GeometryBitsNV::opaque)) ret += "opaque | ";
 	if((val & GeometryBitsNV::noDuplicateAnyHitInvocation)) ret += "noDuplicateAnyHitInvocation | ";
@@ -2685,7 +2685,7 @@ std::string name(GeometryFlagsNV val) {
 	return ret;
 
 }
-std::string name(GeometryInstanceFlagsNV val) {
+inline std::string name(GeometryInstanceFlagsNV val) {
 	std::string ret;
 	if((val & GeometryInstanceBitsNV::triangleCullDisable)) ret += "triangleCullDisable | ";
 	if((val & GeometryInstanceBitsNV::triangleFrontCounterclockwise)) ret += "triangleFrontCounterclockwise | ";
@@ -2695,7 +2695,7 @@ std::string name(GeometryInstanceFlagsNV val) {
 	return ret;
 
 }
-std::string name(BuildAccelerationStructureFlagsNV val) {
+inline std::string name(BuildAccelerationStructureFlagsNV val) {
 	std::string ret;
 	if((val & BuildAccelerationStructureBitsNV::allowUpdate)) ret += "allowUpdate | ";
 	if((val & BuildAccelerationStructureBitsNV::allowCompaction)) ret += "allowCompaction | ";
@@ -2706,7 +2706,7 @@ std::string name(BuildAccelerationStructureFlagsNV val) {
 	return ret;
 
 }
-const char* name(QueueGlobalPriorityEXT val) {
+inline const char* name(QueueGlobalPriorityEXT val) {
 	switch(val) {
 		case QueueGlobalPriorityEXT::low: return "low";
 		case QueueGlobalPriorityEXT::medium: return "medium";
@@ -2715,7 +2715,7 @@ const char* name(QueueGlobalPriorityEXT val) {
 		default: return nullptr;
 	}
 }
-const char* name(TimeDomainEXT val) {
+inline const char* name(TimeDomainEXT val) {
 	switch(val) {
 		case TimeDomainEXT::device: return "device";
 		case TimeDomainEXT::clockMonotonic: return "clockMonotonic";
@@ -2724,7 +2724,7 @@ const char* name(TimeDomainEXT val) {
 		default: return nullptr;
 	}
 }
-const char* name(MemoryOverallocationBehaviorAMD val) {
+inline const char* name(MemoryOverallocationBehaviorAMD val) {
 	switch(val) {
 		case MemoryOverallocationBehaviorAMD::eDefault: return "eDefault";
 		case MemoryOverallocationBehaviorAMD::allowed: return "allowed";
@@ -2732,7 +2732,7 @@ const char* name(MemoryOverallocationBehaviorAMD val) {
 		default: return nullptr;
 	}
 }
-const char* name(PipelineCreationFeedbackBitsEXT val) {
+inline const char* name(PipelineCreationFeedbackBitsEXT val) {
 	switch(val) {
 		case PipelineCreationFeedbackBitsEXT::valid: return "valid";
 		case PipelineCreationFeedbackBitsEXT::applicationPipelineCacheHit: return "applicationPipelineCacheHit";
@@ -2740,7 +2740,7 @@ const char* name(PipelineCreationFeedbackBitsEXT val) {
 		default: return nullptr;
 	}
 }
-std::string name(PipelineCreationFeedbackFlagsEXT val) {
+inline std::string name(PipelineCreationFeedbackFlagsEXT val) {
 	std::string ret;
 	if((val & PipelineCreationFeedbackBitsEXT::valid)) ret += "valid | ";
 	if((val & PipelineCreationFeedbackBitsEXT::applicationPipelineCacheHit)) ret += "applicationPipelineCacheHit | ";
@@ -2749,7 +2749,7 @@ std::string name(PipelineCreationFeedbackFlagsEXT val) {
 	return ret;
 
 }
-const char* name(DriverIdKHR val) {
+inline const char* name(DriverIdKHR val) {
 	switch(val) {
 		case DriverIdKHR::amdProprietary: return "amdProprietary";
 		case DriverIdKHR::amdOpenSource: return "amdOpenSource";
@@ -2765,7 +2765,7 @@ const char* name(DriverIdKHR val) {
 		default: return nullptr;
 	}
 }
-const char* name(ResolveModeBitsKHR val) {
+inline const char* name(ResolveModeBitsKHR val) {
 	switch(val) {
 		case ResolveModeBitsKHR::none: return "none";
 		case ResolveModeBitsKHR::average: return "average";
@@ -2774,7 +2774,7 @@ const char* name(ResolveModeBitsKHR val) {
 		default: return nullptr;
 	}
 }
-std::string name(ResolveModeFlagsKHR val) {
+inline std::string name(ResolveModeFlagsKHR val) {
 	std::string ret;
 	if((val & ResolveModeBitsKHR::none)) ret += "none | ";
 	if((val & ResolveModeBitsKHR::average)) ret += "average | ";
@@ -2788,14 +2788,14 @@ std::string name(ResolveModeFlagsKHR val) {
 #ifdef VK_USE_PLATFORM_FUCHSIA
 #endif //VK_USE_PLATFORM_FUCHSIA
 
-const char* name(ValidationFeatureEnableEXT val) {
+inline const char* name(ValidationFeatureEnableEXT val) {
 	switch(val) {
 		case ValidationFeatureEnableEXT::gpuAssisted: return "gpuAssisted";
 		case ValidationFeatureEnableEXT::gpuAssistedReserveBindingSlot: return "gpuAssistedReserveBindingSlot";
 		default: return nullptr;
 	}
 }
-const char* name(ValidationFeatureDisableEXT val) {
+inline const char* name(ValidationFeatureDisableEXT val) {
 	switch(val) {
 		case ValidationFeatureDisableEXT::all: return "all";
 		case ValidationFeatureDisableEXT::shaders: return "shaders";
@@ -2807,7 +2807,7 @@ const char* name(ValidationFeatureDisableEXT val) {
 		default: return nullptr;
 	}
 }
-const char* name(ComponentTypeNV val) {
+inline const char* name(ComponentTypeNV val) {
 	switch(val) {
 		case ComponentTypeNV::float16: return "float16";
 		case ComponentTypeNV::float32: return "float32";
@@ -2823,7 +2823,7 @@ const char* name(ComponentTypeNV val) {
 		default: return nullptr;
 	}
 }
-const char* name(ScopeNV val) {
+inline const char* name(ScopeNV val) {
 	switch(val) {
 		case ScopeNV::device: return "device";
 		case ScopeNV::workgroup: return "workgroup";
@@ -2832,7 +2832,7 @@ const char* name(ScopeNV val) {
 		default: return nullptr;
 	}
 }
-const char* name(CoverageReductionModeNV val) {
+inline const char* name(CoverageReductionModeNV val) {
 	switch(val) {
 		case CoverageReductionModeNV::merge: return "merge";
 		case CoverageReductionModeNV::truncate: return "truncate";
@@ -2841,7 +2841,7 @@ const char* name(CoverageReductionModeNV val) {
 }
 
 #ifdef VK_USE_PLATFORM_WIN32_KHR
-const char* name(FullScreenExclusiveEXT val) {
+inline const char* name(FullScreenExclusiveEXT val) {
 	switch(val) {
 		case FullScreenExclusiveEXT::eDefault: return "eDefault";
 		case FullScreenExclusiveEXT::allowed: return "allowed";
