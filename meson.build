@@ -23,7 +23,6 @@ if gen
 	  include_directories: codegen_inc)
 endif
 
-dispatchcpp = files('include/vkpp/dispatch.cpp')
 spec = files('vk.xml')
 subdir('include/vkpp')
 
