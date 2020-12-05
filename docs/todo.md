@@ -1,3 +1,6 @@
+- names.hpp: Fix special member for flags.
+  Something like "all" should probably never appear?
+  or detect that special case and return just "all"?
 - better feature/extension dependency/requirement handling
 	- basically: ifdef-out all extensions, features, versions.
 	  That way, the vkpp header will always adapt to the vulkan.h header

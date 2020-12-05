@@ -532,7 +532,8 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 					continue;
 				}
 
-				enumNames_ << "\tif((val & " << enumName << "::" << n << ")) ret += \"" << n << " | \";\n";
+				auto qname = enumName + "::" + n;
+				enumNames_ << "\tif((val & " << qname << ") == " << qname << ") ret += \"" << n << " | \";\n";
 			}
 
 			enumNames_ << "\tif(!ret.empty()) ret.erase(ret.size() - 2, 2);\n";
