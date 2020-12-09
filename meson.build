@@ -21,6 +21,15 @@ if gen
 	  codegen_src,
 	  native: true, # allow generation on cross compilation
 	  include_directories: codegen_inc)
+
+  util_src = [
+	  'src/genutil.cpp',
+	  'src/registry.cpp',
+	  'src/pugixml/pugixml.cpp']
+  util_codegen = executable('util-codegen',
+	  util_src,
+	  native: true,
+	  include_directories: codegen_inc)
 endif
 
 spec = files('vk.xml')
