@@ -782,6 +782,22 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 		}
 	}
 
+	// make sure everything in requirements is unique
+	auto uniquify = [](auto& vec) {
+		for(auto it = vec.begin(); it != vec.end(); /*nop*/) {
+			if(std::find(vec.begin(), it, *it) != it) {
+				it = vec.erase(it);
+			} else {
+				++it;
+			}
+		}
+	};
+
+	uniquify(ret.commands);
+	uniquify(ret.funcPtr);
+	uniquify(ret.types);
+	uniquify(ret.constants);
+
 	return ret;
 }
 

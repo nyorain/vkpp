@@ -15,7 +15,7 @@
 
 // utility
 // the outputted copyright for the parsed header
-constexpr auto logEnabled = false;
+constexpr auto logEnabled = true;
 
 /// log output function
 template<typename... Args>
@@ -248,6 +248,7 @@ void CCOutputGenerator::generate() {
 		const char* name;
 		bool forceDispatch;
 	} features[] = {
+		{"VK_VERSION_1_2", true},
 		{"VK_VERSION_1_1", true},
 		{"VK_VERSION_1_0", false},
 	};
@@ -372,7 +373,7 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 	}
 
 	if(count > 0) {
-		log("\tOutputted ", count, " constants\n");
+		log("\tGenerated ", count, " constants\n");
 		fwd_ << "\n";
 	}
 
@@ -405,7 +406,7 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 	}
 
 	if(count > 0) {
-		log("\tOutputted ", count, " handles");
+		log("\tGenerated ", count, " handles");
 		fwd_ << "\n";
 	}
 
@@ -429,7 +430,7 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 	}
 
 	if(count > 0) {
-		log("\tOutputted ", count, " typedefs");
+		log("\tGenerated ", count, " typedefs");
 		fwd_ << "\n";
 	}
 
@@ -490,7 +491,7 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 	}
 
 	if(count > 0) {
-		log("\tOutputted ", count, " enums");
+		log("\tGenerated ", count, " enums");
 		fwd_ << "\n";
 		enums_ << "\n";
 	}
@@ -543,7 +544,7 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 	}
 
 	if(count > 0) {
-		log("\tOutputted ", count, " bitmasks");
+		log("\tGenerated ", count, " bitmasks");
 		fwd_ << "\n";
 	}
 
@@ -560,7 +561,7 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 	}
 
 	if(count > 0) {
-		log("\tOutputted ", count, " structs");
+		log("\tGenerated ", count, " structs");
 		fwd_ << "\n";
 		structs_ << "\n";
 	}
@@ -617,7 +618,7 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 	}
 
 	if(count > 0) {
-		log("\tOutputted ", count, " commands");
+		log("\tGenerated ", count, " commands");
 		functions_ << "\n";
 	}
 
@@ -1387,8 +1388,8 @@ std::string CCOutputGenerator::paramDecl(const ParsedParam& param, bool rangeify
 			auto type = &param.param->type;
 			QualifiedType localqt;
 			Type localt;
-			if(type->pointer) type = param.param->type.pointer;
-			if(type->type->name == "void") {
+			if(type->pointer) type = type->pointer;
+			if(type->type && type->type->name == "void") {
 				localqt = *type;
 				localqt.type = &localt;
 				localt = *type->type;
@@ -1500,11 +1501,21 @@ std::string CCOutputGenerator::paramCall(const ParsedParam& param, bool rangeify
 		ret += param.param->name;
 		ret += ")";
 	} else if(category == Type::Category::enumeration || category == Type::Category::bitmask) {
-		ret += "static_cast<";
-		ret += typeName(param.param->type, false);
-		ret += ">(";
-		ret += param.param->name;
-		ret += ")";
+		if(param.param->type.array) {
+			ret += "(";
+			ret += typeName(param.param->type, false);
+			ret += "*";
+			ret += ")(";
+			ret += param.param->name;
+			ret += ".data()";
+			ret += ")";
+		} else {
+			ret += "static_cast<";
+			ret += typeName(param.param->type, false);
+			ret += ">(";
+			ret += param.param->name;
+			ret += ")";
+		}
 	} else if(param.param->type.array) {
 		ret += param.param->name + ".data()";
 	} else {

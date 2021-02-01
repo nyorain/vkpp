@@ -183,7 +183,7 @@ public:
 	// Initializes the functions that can be called without instance.
 	// If you link to libvulkan, just pass vkGetInstanceProcAddr as the
 	// loader function.
-	// - vkEnumerateInstanceVersion
+	// - vkEnumerateInstanceVersion (if available)
 	// - vkEnumerateInstanceExtensionProperties
 	// - vkEnumerateInstanceLayerProperties
 	// - vkCreateInstance
