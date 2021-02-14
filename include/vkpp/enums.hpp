@@ -10,46 +10,9 @@
 #include <vkpp/fwd.hpp>
 #include <vkpp/flags.hpp>
 
-// Generated for vulkan version: 1.1.108
+// Generated for vulkan version: 1.1.168
 
 namespace vk {
-
-enum class Result : int32_t {
-	success = 0,
-	notReady = 1,
-	timeout = 2,
-	eventSet = 3,
-	eventReset = 4,
-	incomplete = 5,
-	errorOutOfHostMemory = -1,
-	errorOutOfDeviceMemory = -2,
-	errorInitializationFailed = -3,
-	errorDeviceLost = -4,
-	errorMemoryMapFailed = -5,
-	errorLayerNotPresent = -6,
-	errorExtensionNotPresent = -7,
-	errorFeatureNotPresent = -8,
-	errorIncompatibleDriver = -9,
-	errorTooManyObjects = -10,
-	errorFormatNotSupported = -11,
-	errorFragmentedPool = -12,
-	errorOutOfPoolMemory = -1000069000,
-	errorInvalidExternalHandle = -1000072003,
-	errorSurfaceLostKHR = -1000000000,
-	errorNativeWindowInUseKHR = -1000000001,
-	suboptimalKHR = 1000001003,
-	errorOutOfDateKHR = -1000001004,
-	errorIncompatibleDisplayKHR = -1000003001,
-	errorValidationFailedEXT = -1000011001,
-	errorInvalidShaderNV = -1000012000,
-	errorOutOfPoolMemoryKHR = -1000069000,
-	errorInvalidExternalHandleKHR = -1000072003,
-	errorInvalidDrmFormatModifierPlaneLayoutEXT = -1000158000,
-	errorFragmentationEXT = -1000161000,
-	errorNotPermittedEXT = -1000174001,
-	errorInvalidDeviceAddressEXT = -1000244000,
-	errorFullScreenExclusiveModeLostEXT = -1000255000
-};
 
 enum class StructureType : int32_t {
 	applicationInfo = 0,
@@ -168,6 +131,56 @@ enum class StructureType : int32_t {
 	descriptorSetLayoutSupport = 1000168001,
 	physicalDeviceShaderDrawParametersFeatures = 1000063000,
 	physicalDeviceShaderDrawParameterFeatures = 1000063000,
+	physicalDeviceVulkan11Features = 49,
+	physicalDeviceVulkan11Properties = 50,
+	physicalDeviceVulkan12Features = 51,
+	physicalDeviceVulkan12Properties = 52,
+	imageFormatListCreateInfo = 1000147000,
+	attachmentDescription2 = 1000109000,
+	attachmentReference2 = 1000109001,
+	subpassDescription2 = 1000109002,
+	subpassDependency2 = 1000109003,
+	renderPassCreateInfo2 = 1000109004,
+	subpassBeginInfo = 1000109005,
+	subpassEndInfo = 1000109006,
+	physicalDevice8bitStorageFeatures = 1000177000,
+	physicalDeviceDriverProperties = 1000196000,
+	physicalDeviceShaderAtomicInt64Features = 1000180000,
+	physicalDeviceShaderFloat16Int8Features = 1000082000,
+	physicalDeviceFloatControlsProperties = 1000197000,
+	descriptorSetLayoutBindingFlagsCreateInfo = 1000161000,
+	physicalDeviceDescriptorIndexingFeatures = 1000161001,
+	physicalDeviceDescriptorIndexingProperties = 1000161002,
+	descriptorSetVariableDescriptorCountAllocateInfo = 1000161003,
+	descriptorSetVariableDescriptorCountLayoutSupport = 1000161004,
+	physicalDeviceDepthStencilResolveProperties = 1000199000,
+	subpassDescriptionDepthStencilResolve = 1000199001,
+	physicalDeviceScalarBlockLayoutFeatures = 1000221000,
+	imageStencilUsageCreateInfo = 1000246000,
+	physicalDeviceSamplerFilterMinmaxProperties = 1000130000,
+	samplerReductionModeCreateInfo = 1000130001,
+	physicalDeviceVulkanMemoryModelFeatures = 1000211000,
+	physicalDeviceImagelessFramebufferFeatures = 1000108000,
+	framebufferAttachmentsCreateInfo = 1000108001,
+	framebufferAttachmentImageInfo = 1000108002,
+	renderPassAttachmentBeginInfo = 1000108003,
+	physicalDeviceUniformBufferStandardLayoutFeatures = 1000253000,
+	physicalDeviceShaderSubgroupExtendedTypesFeatures = 1000175000,
+	physicalDeviceSeparateDepthStencilLayoutsFeatures = 1000241000,
+	attachmentReferenceStencilLayout = 1000241001,
+	attachmentDescriptionStencilLayout = 1000241002,
+	physicalDeviceHostQueryResetFeatures = 1000261000,
+	physicalDeviceTimelineSemaphoreFeatures = 1000207000,
+	physicalDeviceTimelineSemaphoreProperties = 1000207001,
+	semaphoreTypeCreateInfo = 1000207002,
+	timelineSemaphoreSubmitInfo = 1000207003,
+	semaphoreWaitInfo = 1000207004,
+	semaphoreSignalInfo = 1000207005,
+	physicalDeviceBufferDeviceAddressFeatures = 1000257000,
+	bufferDeviceAddressInfo = 1000244001,
+	bufferOpaqueCaptureAddressCreateInfo = 1000257002,
+	memoryOpaqueCaptureAddressAllocateInfo = 1000257003,
+	deviceMemoryOpaqueCaptureAddressInfo = 1000257004,
 	swapchainCreateInfoKHR = 1000001000,
 	presentInfoKHR = 1000001001,
 	deviceGroupPresentCapabilitiesKHR = 1000060007,
@@ -224,6 +237,7 @@ enum class StructureType : int32_t {
 	bindImageMemoryDeviceGroupInfoKHR = 1000060014,
 	validationFlagsEXT = 1000061000,
 	viSurfaceCreateInfoNN = 1000062000,
+	physicalDeviceTextureCompressionAstcHdrFeaturesEXT = 1000066000,
 	imageViewAstcDecodeModeEXT = 1000067000,
 	physicalDeviceAstcDecodeFeaturesEXT = 1000067001,
 	physicalDeviceGroupPropertiesKHR = 1000070000,
@@ -257,6 +271,7 @@ enum class StructureType : int32_t {
 	commandBufferInheritanceConditionalRenderingInfoEXT = 1000081000,
 	physicalDeviceConditionalRenderingFeaturesEXT = 1000081001,
 	conditionalRenderingBeginInfoEXT = 1000081002,
+	physicalDeviceShaderFloat16Int8FeaturesKHR = 1000082000,
 	physicalDeviceFloat16Int8FeaturesKHR = 1000082000,
 	physicalDevice16bitStorageFeaturesKHR = 1000083000,
 	presentRegionsKHR = 1000084000,
@@ -276,6 +291,10 @@ enum class StructureType : int32_t {
 	physicalDeviceDepthClipEnableFeaturesEXT = 1000102000,
 	pipelineRasterizationDepthClipStateCreateInfoEXT = 1000102001,
 	hdrMetadataEXT = 1000105000,
+	physicalDeviceImagelessFramebufferFeaturesKHR = 1000108000,
+	framebufferAttachmentsCreateInfoKHR = 1000108001,
+	framebufferAttachmentImageInfoKHR = 1000108002,
+	renderPassAttachmentBeginInfoKHR = 1000108003,
 	attachmentDescription2KHR = 1000109000,
 	attachmentReference2KHR = 1000109001,
 	subpassDescription2KHR = 1000109002,
@@ -292,6 +311,13 @@ enum class StructureType : int32_t {
 	fenceGetWin32HandleInfoKHR = 1000114002,
 	importFenceFdInfoKHR = 1000115000,
 	fenceGetFdInfoKHR = 1000115001,
+	physicalDevicePerformanceQueryFeaturesKHR = 1000116000,
+	physicalDevicePerformanceQueryPropertiesKHR = 1000116001,
+	queryPoolPerformanceCreateInfoKHR = 1000116002,
+	performanceQuerySubmitInfoKHR = 1000116003,
+	acquireProfilingLockInfoKHR = 1000116004,
+	performanceCounterKHR = 1000116005,
+	performanceCounterDescriptionKHR = 1000116006,
 	physicalDevicePointClippingPropertiesKHR = 1000117000,
 	renderPassInputAttachmentAspectCreateInfoKHR = 1000117001,
 	imageViewUsageCreateInfoKHR = 1000117002,
@@ -299,8 +325,8 @@ enum class StructureType : int32_t {
 	physicalDeviceSurfaceInfo2KHR = 1000119000,
 	surfaceCapabilities2KHR = 1000119001,
 	surfaceFormat2KHR = 1000119002,
-	physicalDeviceVariablePointerFeaturesKHR = 1000120000,
 	physicalDeviceVariablePointersFeaturesKHR = 1000120000,
+	physicalDeviceVariablePointerFeaturesKHR = 1000120000,
 	displayProperties2KHR = 1000121000,
 	displayPlaneProperties2KHR = 1000121001,
 	displayModeProperties2KHR = 1000121002,
@@ -336,7 +362,30 @@ enum class StructureType : int32_t {
 	physicalDeviceBlendOperationAdvancedPropertiesEXT = 1000148001,
 	pipelineColorBlendAdvancedStateCreateInfoEXT = 1000148002,
 	pipelineCoverageToColorStateCreateInfoNV = 1000149000,
+	writeDescriptorSetAccelerationStructureKHR = 1000150007,
+	accelerationStructureBuildGeometryInfoKHR = 1000150000,
+	accelerationStructureDeviceAddressInfoKHR = 1000150002,
+	accelerationStructureGeometryAabbsDataKHR = 1000150003,
+	accelerationStructureGeometryInstancesDataKHR = 1000150004,
+	accelerationStructureGeometryTrianglesDataKHR = 1000150005,
+	accelerationStructureGeometryKHR = 1000150006,
+	accelerationStructureVersionInfoKHR = 1000150009,
+	copyAccelerationStructureInfoKHR = 1000150010,
+	copyAccelerationStructureToMemoryInfoKHR = 1000150011,
+	copyMemoryToAccelerationStructureInfoKHR = 1000150012,
+	physicalDeviceAccelerationStructureFeaturesKHR = 1000150013,
+	physicalDeviceAccelerationStructurePropertiesKHR = 1000150014,
+	accelerationStructureCreateInfoKHR = 1000150017,
+	accelerationStructureBuildSizesInfoKHR = 1000150020,
+	physicalDeviceRayTracingPipelineFeaturesKHR = 1000347000,
+	physicalDeviceRayTracingPipelinePropertiesKHR = 1000347001,
+	rayTracingPipelineCreateInfoKHR = 1000150015,
+	rayTracingShaderGroupCreateInfoKHR = 1000150016,
+	rayTracingPipelineInterfaceCreateInfoKHR = 1000150018,
+	physicalDeviceRayQueryFeaturesKHR = 1000348013,
 	pipelineCoverageModulationStateCreateInfoNV = 1000152000,
+	physicalDeviceShaderSmBuiltinsFeaturesNV = 1000154000,
+	physicalDeviceShaderSmBuiltinsPropertiesNV = 1000154001,
 	samplerYcbcrConversionCreateInfoKHR = 1000156000,
 	samplerYcbcrConversionInfoKHR = 1000156001,
 	bindImagePlaneMemoryInfoKHR = 1000156002,
@@ -346,7 +395,6 @@ enum class StructureType : int32_t {
 	bindBufferMemoryInfoKHR = 1000157000,
 	bindImageMemoryInfoKHR = 1000157001,
 	drmFormatModifierPropertiesListEXT = 1000158000,
-	drmFormatModifierPropertiesEXT = 1000158001,
 	physicalDeviceImageDrmFormatModifierInfoEXT = 1000158002,
 	imageDrmFormatModifierListCreateInfoEXT = 1000158003,
 	imageDrmFormatModifierExplicitCreateInfoEXT = 1000158004,
@@ -358,6 +406,8 @@ enum class StructureType : int32_t {
 	physicalDeviceDescriptorIndexingPropertiesEXT = 1000161002,
 	descriptorSetVariableDescriptorCountAllocateInfoEXT = 1000161003,
 	descriptorSetVariableDescriptorCountLayoutSupportEXT = 1000161004,
+	physicalDevicePortabilitySubsetFeaturesKHR = 1000163000,
+	physicalDevicePortabilitySubsetPropertiesKHR = 1000163001,
 	pipelineViewportShadingRateImageStateCreateInfoNV = 1000164000,
 	physicalDeviceShadingRateImageFeaturesNV = 1000164001,
 	physicalDeviceShadingRateImagePropertiesNV = 1000164002,
@@ -380,11 +430,14 @@ enum class StructureType : int32_t {
 	physicalDeviceImageViewImageFormatInfoEXT = 1000170000,
 	filterCubicImageViewImageFormatPropertiesEXT = 1000170001,
 	deviceQueueGlobalPriorityCreateInfoEXT = 1000174000,
+	physicalDeviceShaderSubgroupExtendedTypesFeaturesKHR = 1000175000,
 	physicalDevice8bitStorageFeaturesKHR = 1000177000,
 	importMemoryHostPointerInfoEXT = 1000178000,
 	memoryHostPointerPropertiesEXT = 1000178001,
 	physicalDeviceExternalMemoryHostPropertiesEXT = 1000178002,
 	physicalDeviceShaderAtomicInt64FeaturesKHR = 1000180000,
+	physicalDeviceShaderClockFeaturesKHR = 1000181000,
+	pipelineCompilerControlCreateInfoAMD = 1000183000,
 	calibratedTimestampInfoEXT = 1000184000,
 	physicalDeviceShaderCorePropertiesAMD = 1000185000,
 	deviceMemoryOverallocationCreateInfoAMD = 1000189000,
@@ -406,24 +459,54 @@ enum class StructureType : int32_t {
 	physicalDeviceExclusiveScissorFeaturesNV = 1000205002,
 	checkpointDataNV = 1000206000,
 	queueFamilyCheckpointPropertiesNV = 1000206001,
+	physicalDeviceTimelineSemaphoreFeaturesKHR = 1000207000,
+	physicalDeviceTimelineSemaphorePropertiesKHR = 1000207001,
+	semaphoreTypeCreateInfoKHR = 1000207002,
+	timelineSemaphoreSubmitInfoKHR = 1000207003,
+	semaphoreWaitInfoKHR = 1000207004,
+	semaphoreSignalInfoKHR = 1000207005,
+	physicalDeviceShaderIntegerFunctions2FeaturesINTEL = 1000209000,
+	queryPoolPerformanceQueryCreateInfoINTEL = 1000210000,
+	queryPoolCreateInfoINTEL = 1000210000,
+	initializePerformanceApiInfoINTEL = 1000210001,
+	performanceMarkerInfoINTEL = 1000210002,
+	performanceStreamMarkerInfoINTEL = 1000210003,
+	performanceOverrideInfoINTEL = 1000210004,
+	performanceConfigurationAcquireInfoINTEL = 1000210005,
 	physicalDeviceVulkanMemoryModelFeaturesKHR = 1000211000,
 	physicalDevicePciBusInfoPropertiesEXT = 1000212000,
 	displayNativeHdrSurfaceCapabilitiesAMD = 1000213000,
 	swapchainDisplayNativeHdrCreateInfoAMD = 1000213001,
 	imagepipeSurfaceCreateInfoFUCHSIA = 1000214000,
+	physicalDeviceShaderTerminateInvocationFeaturesKHR = 1000215000,
 	physicalDeviceFragmentDensityMapFeaturesEXT = 1000218000,
 	physicalDeviceFragmentDensityMapPropertiesEXT = 1000218001,
 	renderPassFragmentDensityMapCreateInfoEXT = 1000218002,
 	physicalDeviceScalarBlockLayoutFeaturesEXT = 1000221000,
+	physicalDeviceSubgroupSizeControlPropertiesEXT = 1000225000,
+	pipelineShaderStageRequiredSubgroupSizeCreateInfoEXT = 1000225001,
+	physicalDeviceSubgroupSizeControlFeaturesEXT = 1000225002,
+	fragmentShadingRateAttachmentInfoKHR = 1000226000,
+	pipelineFragmentShadingRateStateCreateInfoKHR = 1000226001,
+	physicalDeviceFragmentShadingRatePropertiesKHR = 1000226002,
+	physicalDeviceFragmentShadingRateFeaturesKHR = 1000226003,
+	physicalDeviceFragmentShadingRateKHR = 1000226004,
+	physicalDeviceShaderCoreProperties2AMD = 1000227000,
+	physicalDeviceCoherentMemoryFeaturesAMD = 1000229000,
+	physicalDeviceShaderImageAtomicInt64FeaturesEXT = 1000234000,
 	physicalDeviceMemoryBudgetPropertiesEXT = 1000237000,
 	physicalDeviceMemoryPriorityFeaturesEXT = 1000238000,
 	memoryPriorityAllocateInfoEXT = 1000238001,
 	surfaceProtectedCapabilitiesKHR = 1000239000,
 	physicalDeviceDedicatedAllocationImageAliasingFeaturesNV = 1000240000,
+	physicalDeviceSeparateDepthStencilLayoutsFeaturesKHR = 1000241000,
+	attachmentReferenceStencilLayoutKHR = 1000241001,
+	attachmentDescriptionStencilLayoutKHR = 1000241002,
 	physicalDeviceBufferDeviceAddressFeaturesEXT = 1000244000,
 	physicalDeviceBufferAddressFeaturesEXT = 1000244000,
 	bufferDeviceAddressInfoEXT = 1000244001,
 	bufferDeviceAddressCreateInfoEXT = 1000244002,
+	physicalDeviceToolPropertiesEXT = 1000245000,
 	imageStencilUsageCreateInfoEXT = 1000246000,
 	validationFeaturesEXT = 1000247000,
 	physicalDeviceCooperativeMatrixFeaturesNV = 1000249000,
@@ -432,13 +515,83 @@ enum class StructureType : int32_t {
 	physicalDeviceCoverageReductionModeFeaturesNV = 1000250000,
 	pipelineCoverageReductionStateCreateInfoNV = 1000250001,
 	framebufferMixedSamplesCombinationNV = 1000250002,
+	physicalDeviceFragmentShaderInterlockFeaturesEXT = 1000251000,
 	physicalDeviceYcbcrImageArraysFeaturesEXT = 1000252000,
 	physicalDeviceUniformBufferStandardLayoutFeaturesKHR = 1000253000,
 	surfaceFullScreenExclusiveInfoEXT = 1000255000,
 	surfaceCapabilitiesFullScreenExclusiveEXT = 1000255002,
 	surfaceFullScreenExclusiveWin32InfoEXT = 1000255001,
 	headlessSurfaceCreateInfoEXT = 1000256000,
-	physicalDeviceHostQueryResetFeaturesEXT = 1000261000
+	physicalDeviceBufferDeviceAddressFeaturesKHR = 1000257000,
+	bufferDeviceAddressInfoKHR = 1000244001,
+	bufferOpaqueCaptureAddressCreateInfoKHR = 1000257002,
+	memoryOpaqueCaptureAddressAllocateInfoKHR = 1000257003,
+	deviceMemoryOpaqueCaptureAddressInfoKHR = 1000257004,
+	physicalDeviceLineRasterizationFeaturesEXT = 1000259000,
+	pipelineRasterizationLineStateCreateInfoEXT = 1000259001,
+	physicalDeviceLineRasterizationPropertiesEXT = 1000259002,
+	physicalDeviceShaderAtomicFloatFeaturesEXT = 1000260000,
+	physicalDeviceHostQueryResetFeaturesEXT = 1000261000,
+	physicalDeviceIndexTypeUint8FeaturesEXT = 1000265000,
+	physicalDeviceExtendedDynamicStateFeaturesEXT = 1000267000,
+	physicalDevicePipelineExecutablePropertiesFeaturesKHR = 1000269000,
+	pipelineInfoKHR = 1000269001,
+	pipelineExecutablePropertiesKHR = 1000269002,
+	pipelineExecutableInfoKHR = 1000269003,
+	pipelineExecutableStatisticKHR = 1000269004,
+	pipelineExecutableInternalRepresentationKHR = 1000269005,
+	physicalDeviceShaderDemoteToHelperInvocationFeaturesEXT = 1000276000,
+	physicalDeviceDeviceGeneratedCommandsPropertiesNV = 1000277000,
+	graphicsShaderGroupCreateInfoNV = 1000277001,
+	graphicsPipelineShaderGroupsCreateInfoNV = 1000277002,
+	indirectCommandsLayoutTokenNV = 1000277003,
+	indirectCommandsLayoutCreateInfoNV = 1000277004,
+	generatedCommandsInfoNV = 1000277005,
+	generatedCommandsMemoryRequirementsInfoNV = 1000277006,
+	physicalDeviceDeviceGeneratedCommandsFeaturesNV = 1000277007,
+	physicalDeviceTexelBufferAlignmentFeaturesEXT = 1000281000,
+	physicalDeviceTexelBufferAlignmentPropertiesEXT = 1000281001,
+	commandBufferInheritanceRenderPassTransformInfoQCOM = 1000282000,
+	renderPassTransformBeginInfoQCOM = 1000282001,
+	physicalDeviceDeviceMemoryReportFeaturesEXT = 1000284000,
+	deviceDeviceMemoryReportCreateInfoEXT = 1000284001,
+	deviceMemoryReportCallbackDataEXT = 1000284002,
+	physicalDeviceRobustness2FeaturesEXT = 1000286000,
+	physicalDeviceRobustness2PropertiesEXT = 1000286001,
+	samplerCustomBorderColorCreateInfoEXT = 1000287000,
+	physicalDeviceCustomBorderColorPropertiesEXT = 1000287001,
+	physicalDeviceCustomBorderColorFeaturesEXT = 1000287002,
+	pipelineLibraryCreateInfoKHR = 1000290000,
+	physicalDevicePrivateDataFeaturesEXT = 1000295000,
+	devicePrivateDataCreateInfoEXT = 1000295001,
+	privateDataSlotCreateInfoEXT = 1000295002,
+	physicalDevicePipelineCreationCacheControlFeaturesEXT = 1000297000,
+	physicalDeviceDiagnosticsConfigFeaturesNV = 1000300000,
+	deviceDiagnosticsConfigCreateInfoNV = 1000300001,
+	physicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR = 1000325000,
+	physicalDeviceFragmentShadingRateEnumsPropertiesNV = 1000326000,
+	physicalDeviceFragmentShadingRateEnumsFeaturesNV = 1000326001,
+	pipelineFragmentShadingRateEnumStateCreateInfoNV = 1000326002,
+	physicalDeviceFragmentDensityMap2FeaturesEXT = 1000332000,
+	physicalDeviceFragmentDensityMap2PropertiesEXT = 1000332001,
+	copyCommandTransformInfoQCOM = 1000333000,
+	physicalDeviceImageRobustnessFeaturesEXT = 1000335000,
+	physicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR = 1000336000,
+	copyBufferInfo2KHR = 1000337000,
+	copyImageInfo2KHR = 1000337001,
+	copyBufferToImageInfo2KHR = 1000337002,
+	copyImageToBufferInfo2KHR = 1000337003,
+	blitImageInfo2KHR = 1000337004,
+	resolveImageInfo2KHR = 1000337005,
+	bufferCopy2KHR = 1000337006,
+	imageCopy2KHR = 1000337007,
+	imageBlit2KHR = 1000337008,
+	bufferImageCopy2KHR = 1000337009,
+	imageResolve2KHR = 1000337010,
+	physicalDevice4444FormatsFeaturesEXT = 1000340000,
+	directfbSurfaceCreateInfoEXT = 1000346000,
+	physicalDeviceMutableDescriptorTypeFeaturesVALVE = 1000351000,
+	mutableDescriptorTypeCreateInfoVALVE = 1000351002
 };
 
 enum class ShaderStageBits : int32_t {
@@ -450,6 +603,12 @@ enum class ShaderStageBits : int32_t {
 	compute = (1 << 5),
 	allGraphics = 31,
 	all = 2147483647,
+	raygenKHR = (1 << 8),
+	anyHitKHR = (1 << 9),
+	closestHitKHR = (1 << 10),
+	missKHR = (1 << 11),
+	intersectionKHR = (1 << 12),
+	callableKHR = (1 << 13),
 	raygenNV = (1 << 8),
 	anyHitNV = (1 << 9),
 	closestHitNV = (1 << 10),
@@ -474,56 +633,64 @@ enum class SubgroupFeatureBits : int32_t {
 };
 NYTL_FLAG_OPS(SubgroupFeatureBits)
 
-enum class PeerMemoryFeatureBits : int32_t {
-	copySrc = (1 << 0),
-	copyDst = (1 << 1),
-	genericSrc = (1 << 2),
-	genericDst = (1 << 3),
-	copySrcKHR = (1 << 0),
-	copyDstKHR = (1 << 1),
-	genericSrcKHR = (1 << 2),
-	genericDstKHR = (1 << 3)
+enum class PointClippingBehavior : int32_t {
+	allClipPlanes = 0,
+	userClipPlanesOnly = 1,
+	allClipPlanesKHR = 0,
+	userClipPlanesOnlyKHR = 1
 };
-NYTL_FLAG_OPS(PeerMemoryFeatureBits)
 
-enum class MemoryAllocateBits : int32_t {
-	deviceMask = (1 << 0),
-	deviceMaskKHR = (1 << 0)
+enum class DriverId : int32_t {
+	amdProprietary = 1,
+	amdOpenSource = 2,
+	mesaRadv = 3,
+	nvidiaProprietary = 4,
+	intelProprietaryWindows = 5,
+	intelOpenSourceMESA = 6,
+	imaginationProprietary = 7,
+	qualcommProprietary = 8,
+	armProprietary = 9,
+	googleSwiftshader = 10,
+	ggpProprietary = 11,
+	broadcomProprietary = 12,
+	mesaLlvmpipe = 13,
+	moltenvk = 14,
+	amdProprietaryKHR = 1,
+	amdOpenSourceKHR = 2,
+	mesaRadvKHR = 3,
+	nvidiaProprietaryKHR = 4,
+	intelProprietaryWindowsKHR = 5,
+	intelOpenSourceMesaKHR = 6,
+	imaginationProprietaryKHR = 7,
+	qualcommProprietaryKHR = 8,
+	armProprietaryKHR = 9,
+	googleSwiftshaderKHR = 10,
+	ggpProprietaryKHR = 11,
+	broadcomProprietaryKHR = 12
 };
-NYTL_FLAG_OPS(MemoryAllocateBits)
 
-enum class ImageAspectBits : int32_t {
-	color = (1 << 0),
-	depth = (1 << 1),
-	stencil = (1 << 2),
-	metadata = (1 << 3),
-	plane0 = (1 << 4),
-	plane1 = (1 << 5),
-	plane2 = (1 << 6),
-	plane0KHR = (1 << 4),
-	plane1KHR = (1 << 5),
-	plane2KHR = (1 << 6),
-	memoryPlane0EXT = (1 << 7),
-	memoryPlane1EXT = (1 << 8),
-	memoryPlane2EXT = (1 << 9),
-	memoryPlane3EXT = (1 << 10)
+enum class ShaderFloatControlsIndependence : int32_t {
+	e32BitOnly = 0,
+	all = 1,
+	none = 2,
+	e32BitOnlyKHR = 0,
+	allKHR = 1,
+	noneKHR = 2
 };
-NYTL_FLAG_OPS(ImageAspectBits)
 
-enum class SparseImageFormatBits : int32_t {
-	singleMiptail = (1 << 0),
-	alignedMipSize = (1 << 1),
-	nonstandardBlockSize = (1 << 2)
+enum class ResolveModeBits : int32_t {
+	none = 0,
+	sampleZero = (1 << 0),
+	average = (1 << 1),
+	min = (1 << 2),
+	max = (1 << 3),
+	noneKHR = 0,
+	sampleZeroKHR = (1 << 0),
+	averageKHR = (1 << 1),
+	minKHR = (1 << 2),
+	maxKHR = (1 << 3)
 };
-NYTL_FLAG_OPS(SparseImageFormatBits)
-
-enum class PhysicalDeviceType : int32_t {
-	other = 0,
-	integratedGpu = 1,
-	discreteGpu = 2,
-	virtualGpu = 3,
-	cpu = 4
-};
+NYTL_FLAG_OPS(ResolveModeBits)
 
 enum class SampleCountBits : int32_t {
 	e1 = (1 << 0),
@@ -535,45 +702,6 @@ enum class SampleCountBits : int32_t {
 	e64 = (1 << 6)
 };
 NYTL_FLAG_OPS(SampleCountBits)
-
-enum class FormatFeatureBits : int32_t {
-	sampledImage = (1 << 0),
-	storageImage = (1 << 1),
-	storageImageAtomic = (1 << 2),
-	uniformTexelBuffer = (1 << 3),
-	storageTexelBuffer = (1 << 4),
-	storageTexelBufferAtomic = (1 << 5),
-	vertexBuffer = (1 << 6),
-	colorAttachment = (1 << 7),
-	colorAttachmentBlend = (1 << 8),
-	depthStencilAttachment = (1 << 9),
-	blitSrc = (1 << 10),
-	blitDst = (1 << 11),
-	sampledImageFilterLinear = (1 << 12),
-	transferSrc = (1 << 14),
-	transferDst = (1 << 15),
-	midpointChromaSamples = (1 << 17),
-	sampledImageYcbcrConversionLinearFilter = (1 << 18),
-	sampledImageYcbcrConversionSeparateReconstructionFilter = (1 << 19),
-	sampledImageYcbcrConversionChromaReconstructionExplicit = (1 << 20),
-	sampledImageYcbcrConversionChromaReconstructionExplicitForceable = (1 << 21),
-	disjoint = (1 << 22),
-	cositedChromaSamples = (1 << 23),
-	sampledImageFilterCubicIMG = (1 << 13),
-	transferSrcKHR = (1 << 14),
-	transferDstKHR = (1 << 15),
-	sampledImageFilterMinmaxEXT = (1 << 16),
-	midpointChromaSamplesKHR = (1 << 17),
-	sampledImageYcbcrConversionLinearFilterKHR = (1 << 18),
-	sampledImageYcbcrConversionSeparateReconstructionFilterKHR = (1 << 19),
-	sampledImageYcbcrConversionChromaReconstructionExplicitKHR = (1 << 20),
-	sampledImageYcbcrConversionChromaReconstructionExplicitForceableKHR = (1 << 21),
-	disjointKHR = (1 << 22),
-	cositedChromaSamplesKHR = (1 << 23),
-	sampledImageFilterCubicEXT = (1 << 13),
-	fragmentDensityMapEXT = (1 << 24)
-};
-NYTL_FLAG_OPS(FormatFeatureBits)
 
 enum class Format : int32_t {
 	undefined = 0,
@@ -803,6 +931,20 @@ enum class Format : int32_t {
 	pvrtc14bppSrgbBlockIMG = 1000054005,
 	pvrtc22bppSrgbBlockIMG = 1000054006,
 	pvrtc24bppSrgbBlockIMG = 1000054007,
+	astc4x4SfloatBlockEXT = 1000066000,
+	astc5x4SfloatBlockEXT = 1000066001,
+	astc5x5SfloatBlockEXT = 1000066002,
+	astc6x5SfloatBlockEXT = 1000066003,
+	astc6x6SfloatBlockEXT = 1000066004,
+	astc8x5SfloatBlockEXT = 1000066005,
+	astc8x6SfloatBlockEXT = 1000066006,
+	astc8x8SfloatBlockEXT = 1000066007,
+	astc10x5SfloatBlockEXT = 1000066008,
+	astc10x6SfloatBlockEXT = 1000066009,
+	astc10x8SfloatBlockEXT = 1000066010,
+	astc10x10SfloatBlockEXT = 1000066011,
+	astc12x10SfloatBlockEXT = 1000066012,
+	astc12x12SfloatBlockEXT = 1000066013,
 	g8b8g8r8422UnormKHR = 1000156000,
 	b8g8r8g8422UnormKHR = 1000156001,
 	g8B8R83plane420UnormKHR = 1000156002,
@@ -836,20 +978,245 @@ enum class Format : int32_t {
 	g16B16r162plane420UnormKHR = 1000156030,
 	g16B16R163plane422UnormKHR = 1000156031,
 	g16B16r162plane422UnormKHR = 1000156032,
-	g16B16R163plane444UnormKHR = 1000156033
+	g16B16R163plane444UnormKHR = 1000156033,
+	a4r4g4b4UnormPack16EXT = 1000340000,
+	a4b4g4r4UnormPack16EXT = 1000340001
 };
 
-enum class ImageType : int32_t {
-	e1d = 0,
-	e2d = 1,
-	e3d = 2
+enum class RenderPassCreateBits : int32_t {
+	transformQCOM = (1 << 1)
+};
+NYTL_FLAG_OPS(RenderPassCreateBits)
+
+enum class AttachmentDescriptionBits : int32_t {
+	mayAlias = (1 << 0)
+};
+NYTL_FLAG_OPS(AttachmentDescriptionBits)
+
+enum class AttachmentLoadOp : int32_t {
+	load = 0,
+	clear = 1,
+	dontCare = 2
 };
 
-enum class ImageTiling : int32_t {
-	optimal = 0,
-	linear = 1,
-	drmFormatModifierEXT = 1000158000
+enum class AttachmentStoreOp : int32_t {
+	store = 0,
+	dontCare = 1,
+	noneQCOM = 1000301000
 };
+
+enum class ImageLayout : int32_t {
+	undefined = 0,
+	general = 1,
+	colorAttachmentOptimal = 2,
+	depthStencilAttachmentOptimal = 3,
+	depthStencilReadOnlyOptimal = 4,
+	shaderReadOnlyOptimal = 5,
+	transferSrcOptimal = 6,
+	transferDstOptimal = 7,
+	preinitialized = 8,
+	depthReadOnlyStencilAttachmentOptimal = 1000117000,
+	depthAttachmentStencilReadOnlyOptimal = 1000117001,
+	depthAttachmentOptimal = 1000241000,
+	depthReadOnlyOptimal = 1000241001,
+	stencilAttachmentOptimal = 1000241002,
+	stencilReadOnlyOptimal = 1000241003,
+	presentSrcKHR = 1000001002,
+	sharedPresentKHR = 1000111000,
+	depthReadOnlyStencilAttachmentOptimalKHR = 1000117000,
+	depthAttachmentStencilReadOnlyOptimalKHR = 1000117001,
+	shadingRateOptimalNV = 1000164003,
+	fragmentDensityMapOptimalEXT = 1000218000,
+	fragmentShadingRateAttachmentOptimalKHR = 1000164003,
+	depthAttachmentOptimalKHR = 1000241000,
+	depthReadOnlyOptimalKHR = 1000241001,
+	stencilAttachmentOptimalKHR = 1000241002,
+	stencilReadOnlyOptimalKHR = 1000241003
+};
+
+enum class SubpassDescriptionBits : int32_t {
+	fragmentRegionQCOM = (1 << 2),
+	shaderResolveQCOM = (1 << 3)
+};
+NYTL_FLAG_OPS(SubpassDescriptionBits)
+
+enum class PipelineBindPoint : int32_t {
+	graphics = 0,
+	compute = 1,
+	rayTracingKHR = 1000165000,
+	rayTracingNV = 1000165000
+};
+
+enum class ImageAspectBits : int32_t {
+	color = (1 << 0),
+	depth = (1 << 1),
+	stencil = (1 << 2),
+	metadata = (1 << 3),
+	plane0 = (1 << 4),
+	plane1 = (1 << 5),
+	plane2 = (1 << 6),
+	plane0KHR = (1 << 4),
+	plane1KHR = (1 << 5),
+	plane2KHR = (1 << 6),
+	memoryPlane0EXT = (1 << 7),
+	memoryPlane1EXT = (1 << 8),
+	memoryPlane2EXT = (1 << 9),
+	memoryPlane3EXT = (1 << 10)
+};
+NYTL_FLAG_OPS(ImageAspectBits)
+
+enum class PipelineStageBits : int32_t {
+	topOfPipe = (1 << 0),
+	drawIndirect = (1 << 1),
+	vertexInput = (1 << 2),
+	vertexShader = (1 << 3),
+	tessellationControlShader = (1 << 4),
+	tessellationEvaluationShader = (1 << 5),
+	geometryShader = (1 << 6),
+	fragmentShader = (1 << 7),
+	earlyFragmentTests = (1 << 8),
+	lateFragmentTests = (1 << 9),
+	colorAttachmentOutput = (1 << 10),
+	computeShader = (1 << 11),
+	transfer = (1 << 12),
+	bottomOfPipe = (1 << 13),
+	host = (1 << 14),
+	allGraphics = (1 << 15),
+	allCommands = (1 << 16),
+	transformFeedbackEXT = (1 << 24),
+	conditionalRenderingEXT = (1 << 18),
+	accelerationStructureBuildKHR = (1 << 25),
+	rayTracingShaderKHR = (1 << 21),
+	shadingRateImageNV = (1 << 22),
+	rayTracingShaderNV = (1 << 21),
+	accelerationStructureBuildNV = (1 << 25),
+	taskShaderNV = (1 << 19),
+	meshShaderNV = (1 << 20),
+	fragmentDensityProcessEXT = (1 << 23),
+	fragmentShadingRateAttachmentKHR = (1 << 22),
+	commandPreprocessNV = (1 << 17)
+};
+NYTL_FLAG_OPS(PipelineStageBits)
+
+enum class AccessBits : int32_t {
+	indirectCommandRead = (1 << 0),
+	indexRead = (1 << 1),
+	vertexAttributeRead = (1 << 2),
+	uniformRead = (1 << 3),
+	inputAttachmentRead = (1 << 4),
+	shaderRead = (1 << 5),
+	shaderWrite = (1 << 6),
+	colorAttachmentRead = (1 << 7),
+	colorAttachmentWrite = (1 << 8),
+	depthStencilAttachmentRead = (1 << 9),
+	depthStencilAttachmentWrite = (1 << 10),
+	transferRead = (1 << 11),
+	transferWrite = (1 << 12),
+	hostRead = (1 << 13),
+	hostWrite = (1 << 14),
+	memoryRead = (1 << 15),
+	memoryWrite = (1 << 16),
+	transformFeedbackWriteEXT = (1 << 25),
+	transformFeedbackCounterReadEXT = (1 << 26),
+	transformFeedbackCounterWriteEXT = (1 << 27),
+	conditionalRenderingReadEXT = (1 << 20),
+	colorAttachmentReadNoncoherentEXT = (1 << 19),
+	accelerationStructureReadKHR = (1 << 21),
+	accelerationStructureWriteKHR = (1 << 22),
+	shadingRateImageReadNV = (1 << 23),
+	accelerationStructureReadNV = (1 << 21),
+	accelerationStructureWriteNV = (1 << 22),
+	fragmentDensityMapReadEXT = (1 << 24),
+	fragmentShadingRateAttachmentReadKHR = (1 << 23),
+	commandPreprocessReadNV = (1 << 17),
+	commandPreprocessWriteNV = (1 << 18)
+};
+NYTL_FLAG_OPS(AccessBits)
+
+enum class DependencyBits : int32_t {
+	byRegion = (1 << 0),
+	deviceGroup = (1 << 2),
+	viewLocal = (1 << 1),
+	viewLocalKHR = (1 << 1),
+	deviceGroupKHR = (1 << 2)
+};
+NYTL_FLAG_OPS(DependencyBits)
+
+enum class SubpassContents : int32_t {
+	eInline = 0,
+	secondaryCommandBuffers = 1
+};
+
+enum class SystemAllocationScope : int32_t {
+	command = 0,
+	object = 1,
+	cache = 2,
+	device = 3,
+	instance = 4
+};
+
+enum class InternalAllocationType : int32_t {
+	executable = 0
+};
+
+enum class Result : int32_t {
+	success = 0,
+	notReady = 1,
+	timeout = 2,
+	eventSet = 3,
+	eventReset = 4,
+	incomplete = 5,
+	errorOutOfHostMemory = -1,
+	errorOutOfDeviceMemory = -2,
+	errorInitializationFailed = -3,
+	errorDeviceLost = -4,
+	errorMemoryMapFailed = -5,
+	errorLayerNotPresent = -6,
+	errorExtensionNotPresent = -7,
+	errorFeatureNotPresent = -8,
+	errorIncompatibleDriver = -9,
+	errorTooManyObjects = -10,
+	errorFormatNotSupported = -11,
+	errorFragmentedPool = -12,
+	errorUnknown = -13,
+	errorOutOfPoolMemory = -1000069000,
+	errorInvalidExternalHandle = -1000072003,
+	errorFragmentation = -1000161000,
+	errorInvalidOpaqueCaptureAddress = -1000257000,
+	errorSurfaceLostKHR = -1000000000,
+	errorNativeWindowInUseKHR = -1000000001,
+	suboptimalKHR = 1000001003,
+	errorOutOfDateKHR = -1000001004,
+	errorIncompatibleDisplayKHR = -1000003001,
+	errorValidationFailedEXT = -1000011001,
+	errorInvalidShaderNV = -1000012000,
+	errorOutOfPoolMemoryKHR = -1000069000,
+	errorInvalidExternalHandleKHR = -1000072003,
+	errorInvalidDrmFormatModifierPlaneLayoutEXT = -1000158000,
+	errorFragmentationEXT = -1000161000,
+	errorNotPermittedEXT = -1000174001,
+	errorInvalidDeviceAddressEXT = -1000257000,
+	errorFullScreenExclusiveModeLostEXT = -1000255000,
+	errorInvalidOpaqueCaptureAddressKHR = -1000257000,
+	threadIDleKHR = 1000268000,
+	threadDoneKHR = 1000268001,
+	operationDeferredKHR = 1000268002,
+	operationNotDeferredKHR = 1000268003,
+	pipelineCompileRequiredEXT = 1000297000,
+	errorPipelineCompileRequiredEXT = 1000297000
+};
+
+enum class DescriptorBindingBits : int32_t {
+	updateAfterBind = (1 << 0),
+	updateUnusedWhilePending = (1 << 1),
+	partiallyBound = (1 << 2),
+	variableDescriptorCount = (1 << 3),
+	updateAfterBindEXT = (1 << 0),
+	updateUnusedWhilePendingEXT = (1 << 1),
+	partiallyBoundEXT = (1 << 2),
+	variableDescriptorCountEXT = (1 << 3)
+};
+NYTL_FLAG_OPS(DescriptorBindingBits)
 
 enum class ImageUsageBits : int32_t {
 	transferSrc = (1 << 0),
@@ -861,9 +1228,19 @@ enum class ImageUsageBits : int32_t {
 	transientAttachment = (1 << 6),
 	inputAttachment = (1 << 7),
 	shadingRateImageNV = (1 << 8),
-	fragmentDensityMapEXT = (1 << 9)
+	fragmentDensityMapEXT = (1 << 9),
+	fragmentShadingRateAttachmentKHR = (1 << 8)
 };
 NYTL_FLAG_OPS(ImageUsageBits)
+
+enum class SamplerReductionMode : int32_t {
+	weightedAverage = 0,
+	min = 1,
+	max = 2,
+	weightedAverageEXT = 0,
+	minEXT = 1,
+	maxEXT = 2
+};
 
 enum class ImageCreateBits : int32_t {
 	sparseBinding = (1 << 0),
@@ -890,6 +1267,111 @@ enum class ImageCreateBits : int32_t {
 };
 NYTL_FLAG_OPS(ImageCreateBits)
 
+enum class SemaphoreType : int32_t {
+	binary = 0,
+	timeline = 1,
+	binaryKHR = 0,
+	timelineKHR = 1
+};
+
+enum class SemaphoreWaitBits : int32_t {
+	any = (1 << 0),
+	anyKHR = (1 << 0)
+};
+NYTL_FLAG_OPS(SemaphoreWaitBits)
+
+
+enum class PeerMemoryFeatureBits : int32_t {
+	copySrc = (1 << 0),
+	copyDst = (1 << 1),
+	genericSrc = (1 << 2),
+	genericDst = (1 << 3),
+	copySrcKHR = (1 << 0),
+	copyDstKHR = (1 << 1),
+	genericSrcKHR = (1 << 2),
+	genericDstKHR = (1 << 3)
+};
+NYTL_FLAG_OPS(PeerMemoryFeatureBits)
+
+enum class MemoryAllocateBits : int32_t {
+	deviceMask = (1 << 0),
+	deviceAddress = (1 << 1),
+	deviceAddressCaptureReplay = (1 << 2),
+	deviceMaskKHR = (1 << 0),
+	deviceAddressKHR = (1 << 1),
+	deviceAddressCaptureReplayKHR = (1 << 2)
+};
+NYTL_FLAG_OPS(MemoryAllocateBits)
+
+enum class SparseImageFormatBits : int32_t {
+	singleMiptail = (1 << 0),
+	alignedMipSize = (1 << 1),
+	nonstandardBlockSize = (1 << 2)
+};
+NYTL_FLAG_OPS(SparseImageFormatBits)
+
+enum class PhysicalDeviceType : int32_t {
+	other = 0,
+	integratedGpu = 1,
+	discreteGpu = 2,
+	virtualGpu = 3,
+	cpu = 4
+};
+
+enum class FormatFeatureBits : int32_t {
+	sampledImage = (1 << 0),
+	storageImage = (1 << 1),
+	storageImageAtomic = (1 << 2),
+	uniformTexelBuffer = (1 << 3),
+	storageTexelBuffer = (1 << 4),
+	storageTexelBufferAtomic = (1 << 5),
+	vertexBuffer = (1 << 6),
+	colorAttachment = (1 << 7),
+	colorAttachmentBlend = (1 << 8),
+	depthStencilAttachment = (1 << 9),
+	blitSrc = (1 << 10),
+	blitDst = (1 << 11),
+	sampledImageFilterLinear = (1 << 12),
+	transferSrc = (1 << 14),
+	transferDst = (1 << 15),
+	midpointChromaSamples = (1 << 17),
+	sampledImageYcbcrConversionLinearFilter = (1 << 18),
+	sampledImageYcbcrConversionSeparateReconstructionFilter = (1 << 19),
+	sampledImageYcbcrConversionChromaReconstructionExplicit = (1 << 20),
+	sampledImageYcbcrConversionChromaReconstructionExplicitForceable = (1 << 21),
+	disjoint = (1 << 22),
+	cositedChromaSamples = (1 << 23),
+	sampledImageFilterMinmax = (1 << 16),
+	sampledImageFilterCubicIMG = (1 << 13),
+	transferSrcKHR = (1 << 14),
+	transferDstKHR = (1 << 15),
+	sampledImageFilterMinmaxEXT = (1 << 16),
+	accelerationStructureVertexBufferKHR = (1 << 29),
+	midpointChromaSamplesKHR = (1 << 17),
+	sampledImageYcbcrConversionLinearFilterKHR = (1 << 18),
+	sampledImageYcbcrConversionSeparateReconstructionFilterKHR = (1 << 19),
+	sampledImageYcbcrConversionChromaReconstructionExplicitKHR = (1 << 20),
+	sampledImageYcbcrConversionChromaReconstructionExplicitForceableKHR = (1 << 21),
+	disjointKHR = (1 << 22),
+	cositedChromaSamplesKHR = (1 << 23),
+	sampledImageFilterCubicEXT = (1 << 13),
+	fragmentDensityMapEXT = (1 << 24),
+	fragmentShadingRateAttachmentKHR = (1 << 30)
+};
+NYTL_FLAG_OPS(FormatFeatureBits)
+
+enum class ImageType : int32_t {
+	e1d = 0,
+	e2d = 1,
+	e3d = 2
+};
+
+enum class ImageTiling : int32_t {
+	optimal = 0,
+	linear = 1,
+	drmFormatModifierEXT = 1000158000
+};
+
 enum class QueueBits : int32_t {
 	graphics = (1 << 0),
 	compute = (1 << 1),
@@ -905,7 +1387,9 @@ enum class MemoryPropertyBits : int32_t {
 	hostCoherent = (1 << 2),
 	hostCached = (1 << 3),
 	lazilyAllocated = (1 << 4),
-	eProtected = (1 << 5)
+	eProtected = (1 << 5),
+	deviceCoherentAMD = (1 << 6),
+	deviceUncachedAMD = (1 << 7)
 };
 NYTL_FLAG_OPS(MemoryPropertyBits)
 
@@ -915,13 +1399,6 @@ enum class MemoryHeapBits : int32_t {
 	multiInstanceKHR = (1 << 1)
 };
 NYTL_FLAG_OPS(MemoryHeapBits)
-
-enum class PointClippingBehavior : int32_t {
-	allClipPlanes = 0,
-	userClipPlanesOnly = 1,
-	allClipPlanesKHR = 0,
-	userClipPlanesOnlyKHR = 1
-};
 
 enum class TessellationDomainOrigin : int32_t {
 	upperLeft = 0,
@@ -979,18 +1456,6 @@ enum class Filter : int32_t {
 	cubicEXT = 1000015000
 };
 
-enum class SystemAllocationScope : int32_t {
-	command = 0,
-	object = 1,
-	cache = 2,
-	device = 3,
-	instance = 4
-};
-
-enum class InternalAllocationType : int32_t {
-	executable = 0
-};
-
 enum class DescriptorUpdateTemplateType : int32_t {
 	descriptorSet = 0,
 	pushDescriptorsKHR = 1,
@@ -1010,13 +1475,9 @@ enum class DescriptorType : int32_t {
 	storageBufferDynamic = 9,
 	inputAttachment = 10,
 	inlineUniformBlockEXT = 1000138000,
-	accelerationStructureNV = 1000165000
-};
-
-enum class PipelineBindPoint : int32_t {
-	graphics = 0,
-	compute = 1,
-	rayTracingNV = 1000165000
+	accelerationStructureKHR = 1000150000,
+	accelerationStructureNV = 1000165000,
+	mutableVALVE = 1000351000
 };
 
 enum class ExternalMemoryHandleTypeBits : int32_t {
@@ -1055,7 +1516,9 @@ enum class BufferCreateBits : int32_t {
 	sparseResidency = (1 << 1),
 	sparseAliased = (1 << 2),
 	eProtected = (1 << 3),
-	deviceAddressCaptureReplayEXT = (1 << 4)
+	deviceAddressCaptureReplay = (1 << 4),
+	deviceAddressCaptureReplayEXT = (1 << 4),
+	deviceAddressCaptureReplayKHR = (1 << 4)
 };
 NYTL_FLAG_OPS(BufferCreateBits)
 
@@ -1069,11 +1532,16 @@ enum class BufferUsageBits : int32_t {
 	indexBuffer = (1 << 6),
 	vertexBuffer = (1 << 7),
 	indirectBuffer = (1 << 8),
+	shaderDeviceAddress = (1 << 17),
 	transformFeedbackBufferEXT = (1 << 11),
 	transformFeedbackCounterBufferEXT = (1 << 12),
 	conditionalRenderingEXT = (1 << 9),
+	accelerationStructureBuildInputReadOnlyKHR = (1 << 19),
+	accelerationStructureStorageKHR = (1 << 20),
+	shaderBindingTableKHR = (1 << 10),
 	rayTracingNV = (1 << 10),
-	shaderDeviceAddressEXT = (1 << 17)
+	shaderDeviceAddressEXT = (1 << 17),
+	shaderDeviceAddressKHR = (1 << 17)
 };
 NYTL_FLAG_OPS(BufferUsageBits)
 
@@ -1114,6 +1582,7 @@ enum class ExternalSemaphoreHandleTypeBits : int32_t {
 	opaqueWin32 = (1 << 1),
 	opaqueWin32Kmt = (1 << 2),
 	d3d12Fence = (1 << 3),
+	d3d11Fence = (1 << 3),
 	syncFd = (1 << 4),
 	opaqueFdKHR = (1 << 0),
 	opaqueWin32KHR = (1 << 1),
@@ -1132,44 +1601,72 @@ enum class ExternalSemaphoreFeatureBits : int32_t {
 NYTL_FLAG_OPS(ExternalSemaphoreFeatureBits)
 
 enum class DescriptorSetLayoutCreateBits : int32_t {
+	updateAfterBindPool = (1 << 1),
 	pushDescriptorKHR = (1 << 0),
-	updateAfterBindPoolEXT = (1 << 1)
+	updateAfterBindPoolEXT = (1 << 1),
+	hostOnlyPoolVALVE = (1 << 2)
 };
 NYTL_FLAG_OPS(DescriptorSetLayoutCreateBits)
 
 
+enum class ObjectType : int32_t {
+	unknown = 0,
+	instance = 1,
+	physicalDevice = 2,
+	device = 3,
+	queue = 4,
+	semaphore = 5,
+	commandBuffer = 6,
+	fence = 7,
+	deviceMemory = 8,
+	buffer = 9,
+	image = 10,
+	event = 11,
+	queryPool = 12,
+	bufferView = 13,
+	imageView = 14,
+	shaderModule = 15,
+	pipelineCache = 16,
+	pipelineLayout = 17,
+	renderPass = 18,
+	pipeline = 19,
+	descriptorSetLayout = 20,
+	sampler = 21,
+	descriptorPool = 22,
+	descriptorSet = 23,
+	framebuffer = 24,
+	commandPool = 25,
+	samplerYcbcrConversion = 1000156000,
+	descriptorUpdateTemplate = 1000085000,
+	surfaceKHR = 1000000000,
+	swapchainKHR = 1000001000,
+	displayKHR = 1000002000,
+	displayModeKHR = 1000002001,
+	debugReportCallbackEXT = 1000011000,
+	descriptorUpdateTemplateKHR = 1000085000,
+	debugUtilsMessengerEXT = 1000128000,
+	accelerationStructureKHR = 1000150000,
+	samplerYcbcrConversionKHR = 1000156000,
+	validationCacheEXT = 1000160000,
+	accelerationStructureNV = 1000165000,
+	performanceConfigurationINTEL = 1000210000,
+	deferredOperationKHR = 1000268000,
+	indirectCommandsLayoutNV = 1000277000,
+	privateDataSlotEXT = 1000295000
+};
+
+enum class VendorId : int32_t {
+	vIV = 65537,
+	vSI = 65538,
+	kazan = 65539,
+	codeplay = 65540,
+	mESA = 65541,
+	pocl = 65542
+};
+
 enum class PipelineCacheHeaderVersion : int32_t {
 	one = 1
 };
-
-enum class PipelineStageBits : int32_t {
-	topOfPipe = (1 << 0),
-	drawIndirect = (1 << 1),
-	vertexInput = (1 << 2),
-	vertexShader = (1 << 3),
-	tessellationControlShader = (1 << 4),
-	tessellationEvaluationShader = (1 << 5),
-	geometryShader = (1 << 6),
-	fragmentShader = (1 << 7),
-	earlyFragmentTests = (1 << 8),
-	lateFragmentTests = (1 << 9),
-	colorAttachmentOutput = (1 << 10),
-	computeShader = (1 << 11),
-	transfer = (1 << 12),
-	bottomOfPipe = (1 << 13),
-	host = (1 << 14),
-	allGraphics = (1 << 15),
-	allCommands = (1 << 16),
-	transformFeedbackEXT = (1 << 24),
-	conditionalRenderingEXT = (1 << 18),
-	shadingRateImageNV = (1 << 22),
-	rayTracingShaderNV = (1 << 21),
-	accelerationStructureBuildNV = (1 << 25),
-	taskShaderNV = (1 << 19),
-	meshShaderNV = (1 << 20),
-	fragmentDensityProcessEXT = (1 << 23)
-};
-NYTL_FLAG_OPS(PipelineStageBits)
 
 enum class SparseMemoryBindBits : int32_t {
 	metadata = (1 << 0)
@@ -1180,14 +1677,6 @@ enum class FenceCreateBits : int32_t {
 	signaled = (1 << 0)
 };
 NYTL_FLAG_OPS(FenceCreateBits)
-
-enum class QueryType : int32_t {
-	occlusion = 0,
-	pipelineStatistics = 1,
-	timestamp = 2,
-	transformFeedbackStreamEXT = 1000028004,
-	accelerationStructureCompactedSizeNV = 1000165000
-};
 
 enum class QueryPipelineStatisticBits : int32_t {
 	inputAssemblyVertices = (1 << 0),
@@ -1204,6 +1693,18 @@ enum class QueryPipelineStatisticBits : int32_t {
 };
 NYTL_FLAG_OPS(QueryPipelineStatisticBits)
 
+enum class QueryType : int32_t {
+	occlusion = 0,
+	pipelineStatistics = 1,
+	timestamp = 2,
+	transformFeedbackStreamEXT = 1000028004,
+	performanceQueryKHR = 1000116000,
+	accelerationStructureCompactedSizeKHR = 1000150000,
+	accelerationStructureSerializationSizeKHR = 1000150001,
+	accelerationStructureCompactedSizeNV = 1000165000,
+	performanceQueryINTEL = 1000210000
+};
+
 enum class QueryResultBits : int32_t {
 	e64 = (1 << 0),
 	wait = (1 << 1),
@@ -1217,28 +1718,9 @@ enum class SharingMode : int32_t {
 	concurrent = 1
 };
 
-enum class ImageLayout : int32_t {
-	undefined = 0,
-	general = 1,
-	colorAttachmentOptimal = 2,
-	depthStencilAttachmentOptimal = 3,
-	depthStencilReadOnlyOptimal = 4,
-	shaderReadOnlyOptimal = 5,
-	transferSrcOptimal = 6,
-	transferDstOptimal = 7,
-	preinitialized = 8,
-	depthReadOnlyStencilAttachmentOptimal = 1000117000,
-	depthAttachmentStencilReadOnlyOptimal = 1000117001,
-	presentSrcKHR = 1000001002,
-	sharedPresentKHR = 1000111000,
-	depthReadOnlyStencilAttachmentOptimalKHR = 1000117000,
-	depthAttachmentStencilReadOnlyOptimalKHR = 1000117001,
-	shadingRateOptimalNV = 1000164003,
-	fragmentDensityMapOptimalEXT = 1000218000
-};
-
 enum class ImageViewCreateBits : int32_t {
-	fragmentDensityMapDynamicEXT = (1 << 0)
+	fragmentDensityMapDynamicEXT = (1 << 0),
+	fragmentDensityMapDeferredEXT = (1 << 1)
 };
 NYTL_FLAG_OPS(ImageViewCreateBits)
 
@@ -1252,97 +1734,15 @@ enum class ImageViewType : int32_t {
 	cubeArray = 6
 };
 
-enum class PipelineCreateBits : int32_t {
-	disableOptimization = (1 << 0),
-	allowDerivatives = (1 << 1),
-	derivative = (1 << 2),
-	viewIndexFromDeviceIndex = (1 << 3),
-	dispatchBase = (1 << 4),
-	viewIndexFromDeviceIndexKHR = (1 << 3),
-	dispatchBaseKHR = 4,
-	deferCompileNV = (1 << 5)
-};
-NYTL_FLAG_OPS(PipelineCreateBits)
+enum class ShaderModuleCreateBits : int32_t {
 
-enum class VertexInputRate : int32_t {
-	vertex = 0,
-	instance = 1
 };
+NYTL_FLAG_OPS(ShaderModuleCreateBits)
 
-enum class PrimitiveTopology : int32_t {
-	pointList = 0,
-	lineList = 1,
-	lineStrip = 2,
-	triangleList = 3,
-	triangleStrip = 4,
-	triangleFan = 5,
-	lineListWithAdjacency = 6,
-	lineStripWithAdjacency = 7,
-	triangleListWithAdjacency = 8,
-	triangleStripWithAdjacency = 9,
-	patchList = 10
+enum class PipelineCacheCreateBits : int32_t {
+	externallySynchronizedEXT = (1 << 0)
 };
-
-enum class PolygonMode : int32_t {
-	fill = 0,
-	line = 1,
-	point = 2,
-	fillRectangleNV = 1000153000
-};
-
-enum class CullModeBits : int32_t {
-	none = 0,
-	front = (1 << 0),
-	back = (1 << 1),
-	frontAndBack = 3
-};
-NYTL_FLAG_OPS(CullModeBits)
-
-enum class FrontFace : int32_t {
-	counterClockwise = 0,
-	clockwise = 1
-};
-
-enum class CompareOp : int32_t {
-	never = 0,
-	less = 1,
-	equal = 2,
-	lessOrEqual = 3,
-	greater = 4,
-	notEqual = 5,
-	greaterOrEqual = 6,
-	always = 7
-};
-
-enum class StencilOp : int32_t {
-	keep = 0,
-	zero = 1,
-	replace = 2,
-	incrementAndClamp = 3,
-	decrementAndClamp = 4,
-	invert = 5,
-	incrementAndWrap = 6,
-	decrementAndWrap = 7
-};
-
-enum class LogicOp : int32_t {
-	clear = 0,
-	eAnd = 1,
-	andReverse = 2,
-	copy = 3,
-	andInverted = 4,
-	noOp = 5,
-	eXor = 6,
-	eOr = 7,
-	nor = 8,
-	equivalent = 9,
-	invert = 10,
-	orReverse = 11,
-	copyInverted = 12,
-	orInverted = 13,
-	nand = 14,
-	set = 15
-};
+NYTL_FLAG_OPS(PipelineCacheCreateBits)
 
 enum class BlendFactor : int32_t {
 	zero = 0,
@@ -1428,6 +1828,56 @@ enum class ColorComponentBits : int32_t {
 };
 NYTL_FLAG_OPS(ColorComponentBits)
 
+enum class CompareOp : int32_t {
+	never = 0,
+	less = 1,
+	equal = 2,
+	lessOrEqual = 3,
+	greater = 4,
+	notEqual = 5,
+	greaterOrEqual = 6,
+	always = 7
+};
+
+enum class PipelineCreateBits : int32_t {
+	disableOptimization = (1 << 0),
+	allowDerivatives = (1 << 1),
+	derivative = (1 << 2),
+	viewIndexFromDeviceIndex = (1 << 3),
+	dispatchBase = (1 << 4),
+	viewIndexFromDeviceIndexKHR = (1 << 3),
+	dispatchBaseKHR = 4,
+	rayTracingNoNullAnyHitShadersKHR = (1 << 14),
+	rayTracingNoNullClosestHitShadersKHR = (1 << 15),
+	rayTracingNoNullMissShadersKHR = (1 << 16),
+	rayTracingNoNullIntersectionShadersKHR = (1 << 17),
+	rayTracingSkipTrianglesKHR = (1 << 12),
+	rayTracingSkipAabbsKHR = (1 << 13),
+	rayTracingShaderGroupHandleCaptureReplayKHR = (1 << 19),
+	deferCompileNV = (1 << 5),
+	captureStatisticsKHR = (1 << 6),
+	captureInternalRepresentationsKHR = (1 << 7),
+	indirectBindableNV = (1 << 18),
+	libraryKHR = (1 << 11),
+	failOnPipelineCompileRequiredEXT = (1 << 8),
+	earlyReturnOnFailureEXT = (1 << 9)
+};
+NYTL_FLAG_OPS(PipelineCreateBits)
+
+enum class PipelineShaderStageCreateBits : int32_t {
+	allowVaryingSubgroupSizeEXT = (1 << 0),
+	requireFullSubgroupsEXT = (1 << 1)
+};
+NYTL_FLAG_OPS(PipelineShaderStageCreateBits)
+
+enum class CullModeBits : int32_t {
+	none = 0,
+	front = (1 << 0),
+	back = (1 << 1),
+	frontAndBack = 3
+};
+NYTL_FLAG_OPS(CullModeBits)
+
 enum class DynamicState : int32_t {
 	viewport = 0,
 	scissor = 1,
@@ -1441,9 +1891,105 @@ enum class DynamicState : int32_t {
 	viewportWScalingNV = 1000087000,
 	discardRectangleEXT = 1000099000,
 	sampleLocationsEXT = 1000143000,
+	rayTracingPipelineStackSizeKHR = 1000347000,
 	viewportShadingRatePaletteNV = 1000164004,
 	viewportCoarseSampleOrderNV = 1000164006,
-	exclusiveScissorNV = 1000205001
+	exclusiveScissorNV = 1000205001,
+	fragmentShadingRateKHR = 1000226000,
+	lineStippleEXT = 1000259000,
+	cullModeEXT = 1000267000,
+	frontFaceEXT = 1000267001,
+	primitiveTopologyEXT = 1000267002,
+	viewportWithCountEXT = 1000267003,
+	scissorWithCountEXT = 1000267004,
+	vertexInputBindingStrideEXT = 1000267005,
+	depthTestEnableEXT = 1000267006,
+	depthWriteEnableEXT = 1000267007,
+	depthCompareOpEXT = 1000267008,
+	depthBoundsTestEnableEXT = 1000267009,
+	stencilTestEnableEXT = 1000267010,
+	stencilOpEXT = 1000267011
+};
+
+enum class FrontFace : int32_t {
+	counterClockwise = 0,
+	clockwise = 1
+};
+
+enum class VertexInputRate : int32_t {
+	vertex = 0,
+	instance = 1
+};
+
+enum class PrimitiveTopology : int32_t {
+	pointList = 0,
+	lineList = 1,
+	lineStrip = 2,
+	triangleList = 3,
+	triangleStrip = 4,
+	triangleFan = 5,
+	lineListWithAdjacency = 6,
+	lineStripWithAdjacency = 7,
+	triangleListWithAdjacency = 8,
+	triangleStripWithAdjacency = 9,
+	patchList = 10
+};
+
+enum class PolygonMode : int32_t {
+	fill = 0,
+	line = 1,
+	point = 2,
+	fillRectangleNV = 1000153000
+};
+
+enum class StencilOp : int32_t {
+	keep = 0,
+	zero = 1,
+	replace = 2,
+	incrementAndClamp = 3,
+	decrementAndClamp = 4,
+	invert = 5,
+	incrementAndWrap = 6,
+	decrementAndWrap = 7
+};
+
+enum class LogicOp : int32_t {
+	clear = 0,
+	eAnd = 1,
+	andReverse = 2,
+	copy = 3,
+	andInverted = 4,
+	noOp = 5,
+	eXor = 6,
+	eOr = 7,
+	nor = 8,
+	equivalent = 9,
+	invert = 10,
+	orReverse = 11,
+	copyInverted = 12,
+	orInverted = 13,
+	nand = 14,
+	set = 15
+};
+
+enum class BorderColor : int32_t {
+	floatTransparentBlack = 0,
+	intTransparentBlack = 1,
+	floatOpaqueBlack = 2,
+	intOpaqueBlack = 3,
+	floatOpaqueWhite = 4,
+	intOpaqueWhite = 5,
+	floatCustomEXT = 1000287003,
+	intCustomEXT = 1000287004
+};
+
+enum class SamplerAddressMode : int32_t {
+	repeat = 0,
+	mirroredRepeat = 1,
+	clampToEdge = 2,
+	clampToBorder = 3,
+	mirrorClampToEdge = 4,
+	mirrorClampToEdgeKHR = 4
 };
 
 enum class SamplerCreateBits : int32_t {
@@ -1457,88 +2003,19 @@ enum class SamplerMipmapMode : int32_t {
 	linear = 1
 };
 
-enum class SamplerAddressMode : int32_t {
-	repeat = 0,
-	mirroredRepeat = 1,
-	clampToEdge = 2,
-	clampToBorder = 3,
-	mirrorClampToEdge = 4
-};
-
-enum class BorderColor : int32_t {
-	floatTransparentBlack = 0,
-	intTransparentBlack = 1,
-	floatOpaqueBlack = 2,
-	intOpaqueBlack = 3,
-	floatOpaqueWhite = 4,
-	intOpaqueWhite = 5
-};
-
 enum class DescriptorPoolCreateBits : int32_t {
 	freeDescriptorSet = (1 << 0),
-	updateAfterBindEXT = (1 << 1)
+	updateAfterBind = (1 << 1),
+	updateAfterBindEXT = (1 << 1),
+	hostOnlyVALVE = (1 << 2)
 };
 NYTL_FLAG_OPS(DescriptorPoolCreateBits)
 
-enum class AttachmentDescriptionBits : int32_t {
-	mayAlias = (1 << 0)
+enum class FramebufferCreateBits : int32_t {
+	imageless = (1 << 0),
+	imagelessKHR = (1 << 0)
 };
-NYTL_FLAG_OPS(AttachmentDescriptionBits)
-
-enum class AttachmentLoadOp : int32_t {
-	load = 0,
-	clear = 1,
-	dontCare = 2
-};
-
-enum class AttachmentStoreOp : int32_t {
-	store = 0,
-	dontCare = 1
-};
-
-enum class SubpassDescriptionBits : int32_t {
-
-};
-NYTL_FLAG_OPS(SubpassDescriptionBits)
-
-enum class AccessBits : int32_t {
-	indirectCommandRead = (1 << 0),
-	indexRead = (1 << 1),
-	vertexAttributeRead = (1 << 2),
-	uniformRead = (1 << 3),
-	inputAttachmentRead = (1 << 4),
-	shaderRead = (1 << 5),
-	shaderWrite = (1 << 6),
-	colorAttachmentRead = (1 << 7),
-	colorAttachmentWrite = (1 << 8),
-	depthStencilAttachmentRead = (1 << 9),
-	depthStencilAttachmentWrite = (1 << 10),
-	transferRead = (1 << 11),
-	transferWrite = (1 << 12),
-	hostRead = (1 << 13),
-	hostWrite = (1 << 14),
-	memoryRead = (1 << 15),
-	memoryWrite = (1 << 16),
-	transformFeedbackWriteEXT = (1 << 25),
-	transformFeedbackCounterReadEXT = (1 << 26),
-	transformFeedbackCounterWriteEXT = (1 << 27),
-	conditionalRenderingReadEXT = (1 << 20),
-	colorAttachmentReadNoncoherentEXT = (1 << 19),
-	shadingRateImageReadNV = (1 << 23),
-	accelerationStructureReadNV = (1 << 21),
-	accelerationStructureWriteNV = (1 << 22),
-	fragmentDensityMapReadEXT = (1 << 24)
-};
-NYTL_FLAG_OPS(AccessBits)
-
-enum class DependencyBits : int32_t {
-	byRegion = (1 << 0),
-	deviceGroup = (1 << 2),
-	viewLocal = (1 << 1),
-	viewLocalKHR = (1 << 1),
-	deviceGroupKHR = (1 << 2)
-};
-NYTL_FLAG_OPS(DependencyBits)
+NYTL_FLAG_OPS(FramebufferCreateBits)
 
 enum class CommandPoolCreateBits : int32_t {
 	transient = (1 << 0),
@@ -1574,70 +2051,21 @@ enum class CommandBufferResetBits : int32_t {
 };
 NYTL_FLAG_OPS(CommandBufferResetBits)
 
-enum class StencilFaceBits : int32_t {
-	front = (1 << 0),
-	back = (1 << 1),
-	rontAndBack = 3
-};
-NYTL_FLAG_OPS(StencilFaceBits)
-
 enum class IndexType : int32_t {
 	uint16 = 0,
 	uint32 = 1,
-	noneNV = 1000165000
+	noneKHR = 1000165000,
+	noneNV = 1000165000,
+	uint8EXT = 1000265000
 };
 
-enum class SubpassContents : int32_t {
-	eInline = 0,
-	secondaryCommandBuffers = 1
+enum class StencilFaceBits : int32_t {
+	front = (1 << 0),
+	back = (1 << 1),
+	frontAndBack = 3,
+	rontAndBack = 3
 };
-
-enum class ObjectType : int32_t {
-	unknown = 0,
-	instance = 1,
-	physicalDevice = 2,
-	device = 3,
-	queue = 4,
-	semaphore = 5,
-	commandBuffer = 6,
-	fence = 7,
-	deviceMemory = 8,
-	buffer = 9,
-	image = 10,
-	event = 11,
-	queryPool = 12,
-	bufferView = 13,
-	imageView = 14,
-	shaderModule = 15,
-	pipelineCache = 16,
-	pipelineLayout = 17,
-	renderPass = 18,
-	pipeline = 19,
-	descriptorSetLayout = 20,
-	sampler = 21,
-	descriptorPool = 22,
-	descriptorSet = 23,
-	framebuffer = 24,
-	commandPool = 25,
-	samplerYcbcrConversion = 1000156000,
-	descriptorUpdateTemplate = 1000085000,
-	surfaceKHR = 1000000000,
-	swapchainKHR = 1000001000,
-	displayKHR = 1000002000,
-	displayModeKHR = 1000002001,
-	debugReportCallbackEXT = 1000011000,
-	descriptorUpdateTemplateKHR = 1000085000,
-	debugUtilsMessengerEXT = 1000128000,
-	samplerYcbcrConversionKHR = 1000156000,
-	validationCacheEXT = 1000160000,
-	accelerationStructureNV = 1000165000
-};
-
-enum class VendorId : int32_t {
-	vIV = 65537,
-	vSI = 65538,
-	kazan = 65539
-};
+NYTL_FLAG_OPS(StencilFaceBits)
 
 
 enum class SurfaceTransformBitsKHR : int32_t {
@@ -1653,13 +2081,14 @@ enum class SurfaceTransformBitsKHR : int32_t {
 };
 NYTL_FLAG_OPS(SurfaceTransformBitsKHR)
 
-enum class CompositeAlphaBitsKHR : int32_t {
-	opaque = (1 << 0),
-	preMultiplied = (1 << 1),
-	postMultiplied = (1 << 2),
-	inherit = (1 << 3)
+enum class PresentModeKHR : int32_t {
+	immediate = 0,
+	mailbox = 1,
+	fifo = 2,
+	fifoRelaxed = 3,
+	sharedDemandRefresh = 1000111000,
+	sharedContinuousRefresh = 1000111001
 };
-NYTL_FLAG_OPS(CompositeAlphaBitsKHR)
 
 enum class ColorSpaceKHR : int32_t {
 	srgbNonlinear = 0,
@@ -1681,14 +2110,13 @@ enum class ColorSpaceKHR : int32_t {
 	displayNativeAMD = 1000213000
 };
 
-enum class PresentModeKHR : int32_t {
-	immediate = 0,
-	mailbox = 1,
-	fifo = 2,
-	fifoRelaxed = 3,
-	sharedDemandRefresh = 1000111000,
-	sharedContinuousRefresh = 1000111001
+enum class CompositeAlphaBitsKHR : int32_t {
+	opaque = (1 << 0),
+	preMultiplied = (1 << 1),
+	postMultiplied = (1 << 2),
+	inherit = (1 << 3)
 };
+NYTL_FLAG_OPS(CompositeAlphaBitsKHR)
 
 
 enum class SwapchainCreateBitsKHR : int32_t {
@@ -1715,6 +2143,15 @@ enum class DisplayPlaneAlphaBitsKHR : int32_t {
 };
 NYTL_FLAG_OPS(DisplayPlaneAlphaBitsKHR)
 
+
+enum class DebugReportBitsEXT : int32_t {
+	information = (1 << 0),
+	warning = (1 << 1),
+	performanceWarning = (1 << 2),
+	error = (1 << 3),
+	debug = (1 << 4)
+};
+NYTL_FLAG_OPS(DebugReportBitsEXT)
 
 enum class DebugReportObjectTypeEXT : int32_t {
 	unknown = 0,
@@ -1749,25 +2186,15 @@ enum class DebugReportObjectTypeEXT : int32_t {
 	debugReport = 28,
 	displayKHR = 29,
 	displayModeKHR = 30,
-	objectTableNVX = 31,
-	indirectCommandsLayoutNVX = 32,
 	validationCacheEXT = 33,
 	validationCache = 33,
 	samplerYcbcrConversion = 1000156000,
 	descriptorUpdateTemplate = 1000085000,
 	descriptorUpdateTemplateKHR = 1000085000,
+	accelerationStructureKHR = 1000150000,
 	samplerYcbcrConversionKHR = 1000156000,
 	accelerationStructureNV = 1000165000
 };
-
-enum class DebugReportBitsEXT : int32_t {
-	information = (1 << 0),
-	warning = (1 << 1),
-	performanceWarning = (1 << 2),
-	error = (1 << 3),
-	debug = (1 << 4)
-};
-NYTL_FLAG_OPS(DebugReportBitsEXT)
 
 
 enum class RasterizationOrderAMD : int32_t {
@@ -1812,7 +2239,7 @@ NYTL_FLAG_OPS(ConditionalRenderingBitsEXT)
 
 
 enum class SurfaceCounterBitsEXT : int32_t {
-	vblank = 0
+	vblank = (1 << 0)
 };
 NYTL_FLAG_OPS(SurfaceCounterBitsEXT)
 
@@ -1857,6 +2284,50 @@ enum class ConservativeRasterizationModeEXT : int32_t {
 };
 
 
+enum class PerformanceCounterUnitKHR : int32_t {
+	generic = 0,
+	percentage = 1,
+	nanoseconds = 2,
+	bytes = 3,
+	bytesPerSecond = 4,
+	kelvin = 5,
+	watts = 6,
+	volts = 7,
+	amps = 8,
+	hertz = 9,
+	cycles = 10
+};
+
+enum class PerformanceCounterScopeKHR : int32_t {
+	commandBuffer = 0,
+	renderPass = 1,
+	command = 2,
+	queryScopeCommandBuffer = 0,
+	queryScopeRenderPass = 1,
+	queryScopeCommand = 2
+};
+
+enum class PerformanceCounterStorageKHR : int32_t {
+	int32 = 0,
+	int64 = 1,
+	uint32 = 2,
+	uint64 = 3,
+	float32 = 4,
+	float64 = 5
+};
+
+enum class PerformanceCounterDescriptionBitsKHR : int32_t {
+	performanceImpacting = (1 << 0),
+	concurrentlyImpacted = (1 << 1)
+};
+NYTL_FLAG_OPS(PerformanceCounterDescriptionBitsKHR)
+
+enum class AcquireProfilingLockBitsKHR : int32_t {
+
+};
+NYTL_FLAG_OPS(AcquireProfilingLockBitsKHR)
+
+
 enum class DebugUtilsMessageSeverityBitsEXT : int32_t {
 	verbose = (1 << 0),
 	info = (1 << 4),
@@ -1873,17 +2344,108 @@ enum class DebugUtilsMessageTypeBitsEXT : int32_t {
 NYTL_FLAG_OPS(DebugUtilsMessageTypeBitsEXT)
 
 
-enum class SamplerReductionModeEXT : int32_t {
-	weightedAverage = 0,
-	min = 1,
-	max = 2
-};
-
-
 enum class BlendOverlapEXT : int32_t {
 	uncorrelated = 0,
 	disjoint = 1,
 	conjoint = 2
+};
+
+
+enum class AccelerationStructureTypeKHR : int32_t {
+	topLevel = 0,
+	bottomLevel = 1,
+	generic = 2,
+	topLevelNV = 0,
+	bottomLevelNV = 1
+};
+
+enum class BuildAccelerationStructureBitsKHR : int32_t {
+	allowUpdate = (1 << 0),
+	allowCompaction = (1 << 1),
+	preferFastTrace = (1 << 2),
+	preferFastBuild = (1 << 3),
+	lowMemory = (1 << 4),
+	allowUpdateNV = (1 << 0),
+	allowCompactionNV = (1 << 1),
+	preferFastTraceNV = (1 << 2),
+	preferFastBuildNV = (1 << 3),
+	lowMemoryNV = (1 << 4)
+};
+NYTL_FLAG_OPS(BuildAccelerationStructureBitsKHR)
+
+enum class BuildAccelerationStructureModeKHR : int32_t {
+	build = 0,
+	update = 1
+};
+
+enum class GeometryTypeKHR : int32_t {
+	triangles = 0,
+	aabbs = 1,
+	instances = 2,
+	trianglesNV = 0,
+	aabbsNV = 1
+};
+
+enum class GeometryBitsKHR : int32_t {
+	opaque = (1 << 0),
+	noDuplicateAnyHitInvocation = (1 << 1),
+	opaqueNV = (1 << 0),
+	noDuplicateAnyHitInvocationNV = (1 << 1)
+};
+NYTL_FLAG_OPS(GeometryBitsKHR)
+
+enum class AccelerationStructureBuildTypeKHR : int32_t {
+	host = 0,
+	device = 1,
+	hostOrDevice = 2
+};
+
+enum class GeometryInstanceBitsKHR : int32_t {
+	triangleFacingCullDisable = (1 << 0),
+	triangleFrontCounterclockwise = (1 << 1),
+	forceOpaque = (1 << 2),
+	forceNoOpaque = (1 << 3),
+	triangleCullDisableNV = (1 << 0),
+	triangleFrontCounterclockwiseNV = (1 << 1),
+	forceOpaqueNV = (1 << 2),
+	forceNoOpaqueNV = (1 << 3)
+};
+NYTL_FLAG_OPS(GeometryInstanceBitsKHR)
+
+enum class AccelerationStructureCreateBitsKHR : int32_t {
+	deviceAddressCaptureReplay = (1 << 0)
+};
+NYTL_FLAG_OPS(AccelerationStructureCreateBitsKHR)
+
+enum class CopyAccelerationStructureModeKHR : int32_t {
+	clone = 0,
+	compact = 1,
+	serialize = 2,
+	deserialize = 3,
+	cloneNV = 0,
+	compactNV = 1
+};
+
+enum class AccelerationStructureCompatibilityKHR : int32_t {
+	compatible = 0,
+	incompatible = 1
+};
+
+
+enum class RayTracingShaderGroupTypeKHR : int32_t {
+	general = 0,
+	trianglesHitGroup = 1,
+	proceduralHitGroup = 2,
+	generalNV = 0,
+	trianglesHitGroupNV = 1,
+	proceduralHitGroupNV = 2
+};
+
+enum class ShaderGroupShaderKHR : int32_t {
+	general = 0,
+	closestHit = 1,
+	anyHit = 2,
+	intersection = 3
 };
 
 
@@ -1898,15 +2460,6 @@ enum class CoverageModulationModeNV : int32_t {
 enum class ValidationCacheHeaderVersionEXT : int32_t {
 	one = 1
 };
-
-
-enum class DescriptorBindingBitsEXT : int32_t {
-	updateAfterBind = (1 << 0),
-	updateUnusedWhilePending = (1 << 1),
-	partiallyBound = (1 << 2),
-	variableDescriptorCount = (1 << 3)
-};
-NYTL_FLAG_OPS(DescriptorBindingBitsEXT)
 
 
 enum class ShadingRatePaletteEntryNV : int32_t {
@@ -1932,50 +2485,6 @@ enum class CoarseSampleOrderTypeNV : int32_t {
 };
 
 
-enum class RayTracingShaderGroupTypeNV : int32_t {
-	general = 0,
-	trianglesHitGroup = 1,
-	proceduralHitGroup = 2
-};
-
-enum class GeometryTypeNV : int32_t {
-	triangles = 0,
-	aabbs = 1
-};
-
-enum class GeometryBitsNV : int32_t {
-	opaque = (1 << 0),
-	noDuplicateAnyHitInvocation = (1 << 1)
-};
-NYTL_FLAG_OPS(GeometryBitsNV)
-
-enum class GeometryInstanceBitsNV : int32_t {
-	triangleCullDisable = (1 << 0),
-	triangleFrontCounterclockwise = (1 << 1),
-	forceOpaque = (1 << 2),
-	forceNoOpaque = (1 << 3)
-};
-NYTL_FLAG_OPS(GeometryInstanceBitsNV)
-
-enum class AccelerationStructureTypeNV : int32_t {
-	topLevel = 0,
-	bottomLevel = 1
-};
-
-enum class BuildAccelerationStructureBitsNV : int32_t {
-	allowUpdate = (1 << 0),
-	allowCompaction = (1 << 1),
-	preferFastTrace = (1 << 2),
-	preferFastBuild = (1 << 3),
-	lowMemory = (1 << 4)
-};
-NYTL_FLAG_OPS(BuildAccelerationStructureBitsNV)
-
-enum class CopyAccelerationStructureModeNV : int32_t {
-	clone = 0,
-	compact = 1
-};
-
 enum class AccelerationStructureMemoryRequirementsTypeNV : int32_t {
 	object = 0,
 	buildScratch = 1,
@@ -1989,6 +2498,12 @@ enum class QueueGlobalPriorityEXT : int32_t {
 	high = 512,
 	realtime = 1024
 };
+
+
+enum class PipelineCompilerControlBitsAMD : int32_t {
+
+};
+NYTL_FLAG_OPS(PipelineCompilerControlBitsAMD)
 
 
 enum class TimeDomainEXT : int32_t {
@@ -2014,34 +2529,66 @@ enum class PipelineCreationFeedbackBitsEXT : int32_t {
 NYTL_FLAG_OPS(PipelineCreationFeedbackBitsEXT)
 
 
-enum class DriverIdKHR : int32_t {
-	amdProprietary = 1,
-	amdOpenSource = 2,
-	mesaRadv = 3,
-	nvidiaProprietary = 4,
-	intelProprietaryWindows = 5,
-	intelOpenSourceMESA = 6,
-	imaginationProprietary = 7,
-	qualcommProprietary = 8,
-	armProprietary = 9,
-	googlePastel = 10,
-	ggpProprietary = 11
+enum class PerformanceConfigurationTypeINTEL : int32_t {
+	commandQueueMetricsDiscoveryActivated = 0
+};
+
+enum class QueryPoolSamplingModeINTEL : int32_t {
+	manual = 0
+};
+
+enum class PerformanceOverrideTypeINTEL : int32_t {
+	nullHardware = 0,
+	flushGpuCaches = 1
+};
+
+enum class PerformanceParameterTypeINTEL : int32_t {
+	hwCountersSupported = 0,
+	streamMarkerValidBits = 1
+};
+
+enum class PerformanceValueTypeINTEL : int32_t {
+	uint32 = 0,
+	uint64 = 1,
+	eFloat = 2,
+	eBool = 3,
+	string = 4
 };
 
 
-enum class ResolveModeBitsKHR : int32_t {
-	none = 0,
-	sampleZero = (1 << 0),
-	average = (1 << 1),
-	min = (1 << 2),
-	max = (1 << 3)
+enum class FragmentShadingRateCombinerOpKHR : int32_t {
+	keep = 0,
+	replace = 1,
+	min = 2,
+	max = 3,
+	mul = 4
 };
-NYTL_FLAG_OPS(ResolveModeBitsKHR)
+
+
+enum class ShaderCorePropertiesBitsAMD : int32_t {
+
+};
+NYTL_FLAG_OPS(ShaderCorePropertiesBitsAMD)
+
+
+enum class ToolPurposeBitsEXT : int32_t {
+	validation = (1 << 0),
+	profiling = (1 << 1),
+	tracing = (1 << 2),
+	additionalFeatures = (1 << 3),
+	modifyingFeatures = (1 << 4),
+	debugReporting = (1 << 5),
+	debugMarkers = (1 << 6)
+};
+NYTL_FLAG_OPS(ToolPurposeBitsEXT)
 
 
 enum class ValidationFeatureEnableEXT : int32_t {
 	gpuAssisted = 0,
-	gpuAssistedReserveBindingSlot = 1
+	gpuAssistedReserveBindingSlot = 1,
+	bestPractices = 2,
+	debugPrintf = 3,
+	synchronizationValidation = 4
 };
 
 enum class ValidationFeatureDisableEXT : int32_t {
@@ -2095,38 +2642,96 @@ enum class FullScreenExclusiveEXT : int32_t {
 
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
+enum class LineRasterizationModeEXT : int32_t {
+	eDefault = 0,
+	rectangular = 1,
+	bresenham = 2,
+	rectangularSmooth = 3
+};
+
+
+enum class PipelineExecutableStatisticFormatKHR : int32_t {
+	bool32 = 0,
+	int64 = 1,
+	uint64 = 2,
+	float64 = 3
+};
+
+
+enum class IndirectStateBitsNV : int32_t {
+	flagFrontface = (1 << 0)
+};
+NYTL_FLAG_OPS(IndirectStateBitsNV)
+
+enum class IndirectCommandsTokenTypeNV : int32_t {
+	shaderGroup = 0,
+	stateFlags = 1,
+	indexBuffer = 2,
+	vertexBuffer = 3,
+	pushConstant = 4,
+	drawIndexed = 5,
+	draw = 6,
+	drawTasks = 7
+};
+
+enum class IndirectCommandsLayoutUsageBitsNV : int32_t {
+	explicitPreprocess = (1 << 0),
+	indexedSequences = (1 << 1),
+	unorderedSequences = (1 << 2)
+};
+NYTL_FLAG_OPS(IndirectCommandsLayoutUsageBitsNV)
+
+
+enum class DeviceMemoryReportEventTypeEXT : int32_t {
+	allocate = 0,
+	free = 1,
+	import = 2,
+	unimport = 3,
+	allocationFailed = 4
+};
+
+
+enum class PrivateDataSlotCreateBitsEXT : int32_t {
+
+};
+NYTL_FLAG_OPS(PrivateDataSlotCreateBitsEXT)
+
+
+enum class DeviceDiagnosticsConfigBitsNV : int32_t {
+	enableShaderDebugInfo = (1 << 0),
+	enableResourceTracking = (1 << 1),
+	enableAutomaticCheckpoints = (1 << 2)
+};
+NYTL_FLAG_OPS(DeviceDiagnosticsConfigBitsNV)
+
+
+enum class FragmentShadingRateTypeNV : int32_t {
+	fragmentSize = 0,
+	enums = 1
+};
+
+enum class FragmentShadingRateNV : int32_t {
+	e1InvocationPerPixel = 0,
+	e1InvocationPer1x2Pixels = 1,
+	e1InvocationPer2x1Pixels = 4,
+	e1InvocationPer2x2Pixels = 5,
+	e1InvocationPer2x4Pixels = 6,
+	e1InvocationPer4x2Pixels = 9,
+	e1InvocationPer4x4Pixels = 10,
+	e2InvocationsPerPixel = 11,
+	e4InvocationsPerPixel = 12,
+	e8InvocationsPerPixel = 13,
+	e16InvocationsPerPixel = 14,
+	noInvocations = 15
+};
+
+
 
 } // namespace vk
 
 // The specification (vk.xml) itself is published under the following license:
 
-// Copyright (c) 2015-2019 The Khronos Group Inc.
+// Copyright (c) 2015-2020 The Khronos Group Inc.
 // 
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// 
-//     http://www.apache.org/licenses/LICENSE-2.0
-// 
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-// 
-// ---- Exceptions to the Apache 2.0 License: ----
-// 
-// As an exception, if you use this Software to generate code and portions of
-// this Software are embedded into the generated code as a result, you may
-// redistribute such product without providing attribution as would otherwise
-// be required by Sections 4(a), 4(b) and 4(d) of the License.
-// 
-// In addition, if you combine or link code generated by this Software with
-// software that is licensed under the GPLv2 or the LGPL v2.0 or 2.1
-// ("`Combined Software`") and if a court of competent jurisdiction determines
-// that the patent provision (Section 3), the indemnity provision (Section 9)
-// or other Section of the License conflicts with the conditions of the
-// applicable GPL or LGPL license, you may retroactively and prospectively
-// choose to deem waived or otherwise exclude such Section(s) of the License,
-// but only in their entirety and only with respect to the Combined Software.
+// SPDX-License-Identifier: Apache-2.0 OR MIT
     

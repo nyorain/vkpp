@@ -149,6 +149,8 @@ void DynamicDispatch::init(Instance ini, PFN_vkGetInstanceProcAddr loader, bool 
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
+	VKPP_LOAD(vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR);
+	VKPP_LOAD(vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR);
 	VKPP_LOAD(vkGetPhysicalDeviceSurfaceCapabilities2KHR);
 	VKPP_LOAD(vkGetPhysicalDeviceSurfaceFormats2KHR);
 	VKPP_LOAD(vkGetPhysicalDeviceDisplayProperties2KHR);
@@ -175,6 +177,8 @@ void DynamicDispatch::init(Instance ini, PFN_vkGetInstanceProcAddr loader, bool 
 	VKPP_LOAD(vkCreateImagePipeSurfaceFUCHSIA);
 #endif //VK_USE_PLATFORM_FUCHSIA
 
+	VKPP_LOAD(vkGetPhysicalDeviceFragmentShadingRatesKHR);
+	VKPP_LOAD(vkGetPhysicalDeviceToolPropertiesEXT);
 	VKPP_LOAD(vkGetPhysicalDeviceCooperativeMatrixPropertiesNV);
 	VKPP_LOAD(vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV);
 
@@ -184,8 +188,49 @@ void DynamicDispatch::init(Instance ini, PFN_vkGetInstanceProcAddr loader, bool 
 
 	VKPP_LOAD(vkCreateHeadlessSurfaceEXT);
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+	VKPP_LOAD(vkAcquireWinrtDisplayNV);
+	VKPP_LOAD(vkGetWinrtDisplayNV);
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+
+#ifdef VK_USE_PLATFORM_DIRECTFB_EXT
+	VKPP_LOAD(vkCreateDirectFBSurfaceEXT);
+	VKPP_LOAD(vkGetPhysicalDeviceDirectFBPresentationSupportEXT);
+#endif //VK_USE_PLATFORM_DIRECTFB_EXT
+
+
 
 	if(all) {
+		VKPP_LOAD(vkCmdDrawIndirectCount);
+		VKPP_LOAD(vkCmdDrawIndirectCountKHR);
+		VKPP_LOAD(vkCmdDrawIndirectCountAMD);
+		VKPP_LOAD(vkCmdDrawIndexedIndirectCount);
+		VKPP_LOAD(vkCmdDrawIndexedIndirectCountKHR);
+		VKPP_LOAD(vkCmdDrawIndexedIndirectCountAMD);
+		VKPP_LOAD(vkCreateRenderPass2);
+		VKPP_LOAD(vkCreateRenderPass2KHR);
+		VKPP_LOAD(vkCmdBeginRenderPass2);
+		VKPP_LOAD(vkCmdBeginRenderPass2KHR);
+		VKPP_LOAD(vkCmdNextSubpass2);
+		VKPP_LOAD(vkCmdNextSubpass2KHR);
+		VKPP_LOAD(vkCmdEndRenderPass2);
+		VKPP_LOAD(vkCmdEndRenderPass2KHR);
+		VKPP_LOAD(vkResetQueryPool);
+		VKPP_LOAD(vkResetQueryPoolEXT);
+		VKPP_LOAD(vkGetSemaphoreCounterValue);
+		VKPP_LOAD(vkGetSemaphoreCounterValueKHR);
+		VKPP_LOAD(vkWaitSemaphores);
+		VKPP_LOAD(vkWaitSemaphoresKHR);
+		VKPP_LOAD(vkSignalSemaphore);
+		VKPP_LOAD(vkSignalSemaphoreKHR);
+		VKPP_LOAD(vkGetBufferDeviceAddress);
+		VKPP_LOAD(vkGetBufferDeviceAddressKHR);
+		VKPP_LOAD(vkGetBufferDeviceAddressEXT);
+		VKPP_LOAD(vkGetBufferOpaqueCaptureAddress);
+		VKPP_LOAD(vkGetBufferOpaqueCaptureAddressKHR);
+		VKPP_LOAD(vkGetDeviceMemoryOpaqueCaptureAddress);
+		VKPP_LOAD(vkGetDeviceMemoryOpaqueCaptureAddressKHR);
 		VKPP_LOAD(vkBindBufferMemory2);
 		VKPP_LOAD(vkBindBufferMemory2KHR);
 		VKPP_LOAD(vkBindImageMemory2);
@@ -374,10 +419,6 @@ void DynamicDispatch::init(Instance ini, PFN_vkGetInstanceProcAddr loader, bool 
 		VKPP_LOAD(vkCmdBeginQueryIndexedEXT);
 		VKPP_LOAD(vkCmdEndQueryIndexedEXT);
 		VKPP_LOAD(vkCmdDrawIndirectByteCountEXT);
-		VKPP_LOAD(vkCmdDrawIndirectCountKHR);
-		VKPP_LOAD(vkCmdDrawIndirectCountAMD);
-		VKPP_LOAD(vkCmdDrawIndexedIndirectCountKHR);
-		VKPP_LOAD(vkCmdDrawIndexedIndirectCountAMD);
 		VKPP_LOAD(vkGetShaderInfoAMD);
 
 #ifdef VK_USE_PLATFORM_GGP
@@ -425,10 +466,6 @@ void DynamicDispatch::init(Instance ini, PFN_vkGetInstanceProcAddr loader, bool 
 		VKPP_LOAD(vkGetPastPresentationTimingGOOGLE);
 		VKPP_LOAD(vkCmdSetDiscardRectangleEXT);
 		VKPP_LOAD(vkSetHdrMetadataEXT);
-		VKPP_LOAD(vkCreateRenderPass2KHR);
-		VKPP_LOAD(vkCmdBeginRenderPass2KHR);
-		VKPP_LOAD(vkCmdNextSubpass2KHR);
-		VKPP_LOAD(vkCmdEndRenderPass2KHR);
 		VKPP_LOAD(vkGetSwapchainStatusKHR);
 
 #ifdef VK_USE_PLATFORM_WIN32_KHR
@@ -438,6 +475,8 @@ void DynamicDispatch::init(Instance ini, PFN_vkGetInstanceProcAddr loader, bool 
 
 		VKPP_LOAD(vkImportFenceFdKHR);
 		VKPP_LOAD(vkGetFenceFdKHR);
+		VKPP_LOAD(vkAcquireProfilingLockKHR);
+		VKPP_LOAD(vkReleaseProfilingLockKHR);
 
 #ifdef VK_USE_PLATFORM_IOS_MVK
 #endif //VK_USE_PLATFORM_IOS_MVK
@@ -455,6 +494,30 @@ void DynamicDispatch::init(Instance ini, PFN_vkGetInstanceProcAddr loader, bool 
 		VKPP_LOAD(vkCmdEndDebugUtilsLabelEXT);
 		VKPP_LOAD(vkCmdInsertDebugUtilsLabelEXT);
 		VKPP_LOAD(vkCmdSetSampleLocationsEXT);
+		VKPP_LOAD(vkCreateAccelerationStructureKHR);
+		VKPP_LOAD(vkDestroyAccelerationStructureKHR);
+		VKPP_LOAD(vkCmdBuildAccelerationStructuresKHR);
+		VKPP_LOAD(vkCmdBuildAccelerationStructuresIndirectKHR);
+		VKPP_LOAD(vkBuildAccelerationStructuresKHR);
+		VKPP_LOAD(vkCopyAccelerationStructureKHR);
+		VKPP_LOAD(vkCopyAccelerationStructureToMemoryKHR);
+		VKPP_LOAD(vkCopyMemoryToAccelerationStructureKHR);
+		VKPP_LOAD(vkWriteAccelerationStructuresPropertiesKHR);
+		VKPP_LOAD(vkCmdCopyAccelerationStructureKHR);
+		VKPP_LOAD(vkCmdCopyAccelerationStructureToMemoryKHR);
+		VKPP_LOAD(vkCmdCopyMemoryToAccelerationStructureKHR);
+		VKPP_LOAD(vkGetAccelerationStructureDeviceAddressKHR);
+		VKPP_LOAD(vkCmdWriteAccelerationStructuresPropertiesKHR);
+		VKPP_LOAD(vkGetDeviceAccelerationStructureCompatibilityKHR);
+		VKPP_LOAD(vkGetAccelerationStructureBuildSizesKHR);
+		VKPP_LOAD(vkCmdTraceRaysKHR);
+		VKPP_LOAD(vkCreateRayTracingPipelinesKHR);
+		VKPP_LOAD(vkGetRayTracingShaderGroupHandlesKHR);
+		VKPP_LOAD(vkGetRayTracingShaderGroupHandlesNV);
+		VKPP_LOAD(vkGetRayTracingCaptureReplayShaderGroupHandlesKHR);
+		VKPP_LOAD(vkCmdTraceRaysIndirectKHR);
+		VKPP_LOAD(vkGetRayTracingShaderGroupStackSizeKHR);
+		VKPP_LOAD(vkCmdSetRayTracingPipelineStackSizeKHR);
 		VKPP_LOAD(vkGetImageDrmFormatModifierPropertiesEXT);
 		VKPP_LOAD(vkCreateValidationCacheEXT);
 		VKPP_LOAD(vkDestroyValidationCacheEXT);
@@ -471,7 +534,6 @@ void DynamicDispatch::init(Instance ini, PFN_vkGetInstanceProcAddr loader, bool 
 		VKPP_LOAD(vkCmdCopyAccelerationStructureNV);
 		VKPP_LOAD(vkCmdTraceRaysNV);
 		VKPP_LOAD(vkCreateRayTracingPipelinesNV);
-		VKPP_LOAD(vkGetRayTracingShaderGroupHandlesNV);
 		VKPP_LOAD(vkGetAccelerationStructureHandleNV);
 		VKPP_LOAD(vkCmdWriteAccelerationStructuresPropertiesNV);
 		VKPP_LOAD(vkCompileDeferredNV);
@@ -484,21 +546,74 @@ void DynamicDispatch::init(Instance ini, PFN_vkGetInstanceProcAddr loader, bool 
 		VKPP_LOAD(vkCmdSetExclusiveScissorNV);
 		VKPP_LOAD(vkCmdSetCheckpointNV);
 		VKPP_LOAD(vkGetQueueCheckpointDataNV);
+		VKPP_LOAD(vkInitializePerformanceApiINTEL);
+		VKPP_LOAD(vkUninitializePerformanceApiINTEL);
+		VKPP_LOAD(vkCmdSetPerformanceMarkerINTEL);
+		VKPP_LOAD(vkCmdSetPerformanceStreamMarkerINTEL);
+		VKPP_LOAD(vkCmdSetPerformanceOverrideINTEL);
+		VKPP_LOAD(vkAcquirePerformanceConfigurationINTEL);
+		VKPP_LOAD(vkReleasePerformanceConfigurationINTEL);
+		VKPP_LOAD(vkQueueSetPerformanceConfigurationINTEL);
+		VKPP_LOAD(vkGetPerformanceParameterINTEL);
 		VKPP_LOAD(vkSetLocalDimmingAMD);
 
 #ifdef VK_USE_PLATFORM_FUCHSIA
 #endif //VK_USE_PLATFORM_FUCHSIA
 
-		VKPP_LOAD(vkGetBufferDeviceAddressEXT);
+		VKPP_LOAD(vkCmdSetFragmentShadingRateKHR);
 
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 		VKPP_LOAD(vkAcquireFullScreenExclusiveModeEXT);
 		VKPP_LOAD(vkReleaseFullScreenExclusiveModeEXT);
 		VKPP_LOAD(vkGetDeviceGroupSurfacePresentModes2EXT);
-		VKPP_LOAD(vkGetDeviceGroupSurfacePresentModes2EXT);
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
-		VKPP_LOAD(vkResetQueryPoolEXT);
+		VKPP_LOAD(vkCmdSetLineStippleEXT);
+		VKPP_LOAD(vkCmdSetCullModeEXT);
+		VKPP_LOAD(vkCmdSetFrontFaceEXT);
+		VKPP_LOAD(vkCmdSetPrimitiveTopologyEXT);
+		VKPP_LOAD(vkCmdSetViewportWithCountEXT);
+		VKPP_LOAD(vkCmdSetScissorWithCountEXT);
+		VKPP_LOAD(vkCmdBindVertexBuffers2EXT);
+		VKPP_LOAD(vkCmdSetDepthTestEnableEXT);
+		VKPP_LOAD(vkCmdSetDepthWriteEnableEXT);
+		VKPP_LOAD(vkCmdSetDepthCompareOpEXT);
+		VKPP_LOAD(vkCmdSetDepthBoundsTestEnableEXT);
+		VKPP_LOAD(vkCmdSetStencilTestEnableEXT);
+		VKPP_LOAD(vkCmdSetStencilOpEXT);
+		VKPP_LOAD(vkCreateDeferredOperationKHR);
+		VKPP_LOAD(vkDestroyDeferredOperationKHR);
+		VKPP_LOAD(vkGetDeferredOperationMaxConcurrencyKHR);
+		VKPP_LOAD(vkGetDeferredOperationResultKHR);
+		VKPP_LOAD(vkDeferredOperationJoinKHR);
+		VKPP_LOAD(vkGetPipelineExecutablePropertiesKHR);
+		VKPP_LOAD(vkGetPipelineExecutableStatisticsKHR);
+		VKPP_LOAD(vkGetPipelineExecutableInternalRepresentationsKHR);
+		VKPP_LOAD(vkGetGeneratedCommandsMemoryRequirementsNV);
+		VKPP_LOAD(vkCmdPreprocessGeneratedCommandsNV);
+		VKPP_LOAD(vkCmdExecuteGeneratedCommandsNV);
+		VKPP_LOAD(vkCmdBindPipelineShaderGroupNV);
+		VKPP_LOAD(vkCreateIndirectCommandsLayoutNV);
+		VKPP_LOAD(vkDestroyIndirectCommandsLayoutNV);
+		VKPP_LOAD(vkCreatePrivateDataSlotEXT);
+		VKPP_LOAD(vkDestroyPrivateDataSlotEXT);
+		VKPP_LOAD(vkSetPrivateDataEXT);
+		VKPP_LOAD(vkGetPrivateDataEXT);
+		VKPP_LOAD(vkCmdSetFragmentShadingRateEnumNV);
+		VKPP_LOAD(vkCmdCopyBuffer2KHR);
+		VKPP_LOAD(vkCmdCopyImage2KHR);
+		VKPP_LOAD(vkCmdCopyBufferToImage2KHR);
+		VKPP_LOAD(vkCmdCopyImageToBuffer2KHR);
+		VKPP_LOAD(vkCmdBlitImage2KHR);
+		VKPP_LOAD(vkCmdResolveImage2KHR);
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+
+#ifdef VK_USE_PLATFORM_DIRECTFB_EXT
+#endif //VK_USE_PLATFORM_DIRECTFB_EXT
+
 
 	}
 
@@ -509,6 +624,35 @@ void DynamicDispatch::init(Device dev, PFN_vkGetDeviceProcAddr loader) {
 	#define VKPP_LOAD(fn) this->fn = (PFN_##fn) loader((VkDevice) dev, #fn)
 
 	{
+		VKPP_LOAD(vkCmdDrawIndirectCount);
+		VKPP_LOAD(vkCmdDrawIndirectCountKHR);
+		VKPP_LOAD(vkCmdDrawIndirectCountAMD);
+		VKPP_LOAD(vkCmdDrawIndexedIndirectCount);
+		VKPP_LOAD(vkCmdDrawIndexedIndirectCountKHR);
+		VKPP_LOAD(vkCmdDrawIndexedIndirectCountAMD);
+		VKPP_LOAD(vkCreateRenderPass2);
+		VKPP_LOAD(vkCreateRenderPass2KHR);
+		VKPP_LOAD(vkCmdBeginRenderPass2);
+		VKPP_LOAD(vkCmdBeginRenderPass2KHR);
+		VKPP_LOAD(vkCmdNextSubpass2);
+		VKPP_LOAD(vkCmdNextSubpass2KHR);
+		VKPP_LOAD(vkCmdEndRenderPass2);
+		VKPP_LOAD(vkCmdEndRenderPass2KHR);
+		VKPP_LOAD(vkResetQueryPool);
+		VKPP_LOAD(vkResetQueryPoolEXT);
+		VKPP_LOAD(vkGetSemaphoreCounterValue);
+		VKPP_LOAD(vkGetSemaphoreCounterValueKHR);
+		VKPP_LOAD(vkWaitSemaphores);
+		VKPP_LOAD(vkWaitSemaphoresKHR);
+		VKPP_LOAD(vkSignalSemaphore);
+		VKPP_LOAD(vkSignalSemaphoreKHR);
+		VKPP_LOAD(vkGetBufferDeviceAddress);
+		VKPP_LOAD(vkGetBufferDeviceAddressKHR);
+		VKPP_LOAD(vkGetBufferDeviceAddressEXT);
+		VKPP_LOAD(vkGetBufferOpaqueCaptureAddress);
+		VKPP_LOAD(vkGetBufferOpaqueCaptureAddressKHR);
+		VKPP_LOAD(vkGetDeviceMemoryOpaqueCaptureAddress);
+		VKPP_LOAD(vkGetDeviceMemoryOpaqueCaptureAddressKHR);
 		VKPP_LOAD(vkBindBufferMemory2);
 		VKPP_LOAD(vkBindBufferMemory2KHR);
 		VKPP_LOAD(vkBindImageMemory2);
@@ -697,10 +841,6 @@ void DynamicDispatch::init(Device dev, PFN_vkGetDeviceProcAddr loader) {
 		VKPP_LOAD(vkCmdBeginQueryIndexedEXT);
 		VKPP_LOAD(vkCmdEndQueryIndexedEXT);
 		VKPP_LOAD(vkCmdDrawIndirectByteCountEXT);
-		VKPP_LOAD(vkCmdDrawIndirectCountKHR);
-		VKPP_LOAD(vkCmdDrawIndirectCountAMD);
-		VKPP_LOAD(vkCmdDrawIndexedIndirectCountKHR);
-		VKPP_LOAD(vkCmdDrawIndexedIndirectCountAMD);
 		VKPP_LOAD(vkGetShaderInfoAMD);
 
 #ifdef VK_USE_PLATFORM_GGP
@@ -748,10 +888,6 @@ void DynamicDispatch::init(Device dev, PFN_vkGetDeviceProcAddr loader) {
 		VKPP_LOAD(vkGetPastPresentationTimingGOOGLE);
 		VKPP_LOAD(vkCmdSetDiscardRectangleEXT);
 		VKPP_LOAD(vkSetHdrMetadataEXT);
-		VKPP_LOAD(vkCreateRenderPass2KHR);
-		VKPP_LOAD(vkCmdBeginRenderPass2KHR);
-		VKPP_LOAD(vkCmdNextSubpass2KHR);
-		VKPP_LOAD(vkCmdEndRenderPass2KHR);
 		VKPP_LOAD(vkGetSwapchainStatusKHR);
 
 #ifdef VK_USE_PLATFORM_WIN32_KHR
@@ -761,6 +897,8 @@ void DynamicDispatch::init(Device dev, PFN_vkGetDeviceProcAddr loader) {
 
 		VKPP_LOAD(vkImportFenceFdKHR);
 		VKPP_LOAD(vkGetFenceFdKHR);
+		VKPP_LOAD(vkAcquireProfilingLockKHR);
+		VKPP_LOAD(vkReleaseProfilingLockKHR);
 
 #ifdef VK_USE_PLATFORM_IOS_MVK
 #endif //VK_USE_PLATFORM_IOS_MVK
@@ -778,6 +916,30 @@ void DynamicDispatch::init(Device dev, PFN_vkGetDeviceProcAddr loader) {
 		VKPP_LOAD(vkCmdEndDebugUtilsLabelEXT);
 		VKPP_LOAD(vkCmdInsertDebugUtilsLabelEXT);
 		VKPP_LOAD(vkCmdSetSampleLocationsEXT);
+		VKPP_LOAD(vkCreateAccelerationStructureKHR);
+		VKPP_LOAD(vkDestroyAccelerationStructureKHR);
+		VKPP_LOAD(vkCmdBuildAccelerationStructuresKHR);
+		VKPP_LOAD(vkCmdBuildAccelerationStructuresIndirectKHR);
+		VKPP_LOAD(vkBuildAccelerationStructuresKHR);
+		VKPP_LOAD(vkCopyAccelerationStructureKHR);
+		VKPP_LOAD(vkCopyAccelerationStructureToMemoryKHR);
+		VKPP_LOAD(vkCopyMemoryToAccelerationStructureKHR);
+		VKPP_LOAD(vkWriteAccelerationStructuresPropertiesKHR);
+		VKPP_LOAD(vkCmdCopyAccelerationStructureKHR);
+		VKPP_LOAD(vkCmdCopyAccelerationStructureToMemoryKHR);
+		VKPP_LOAD(vkCmdCopyMemoryToAccelerationStructureKHR);
+		VKPP_LOAD(vkGetAccelerationStructureDeviceAddressKHR);
+		VKPP_LOAD(vkCmdWriteAccelerationStructuresPropertiesKHR);
+		VKPP_LOAD(vkGetDeviceAccelerationStructureCompatibilityKHR);
+		VKPP_LOAD(vkGetAccelerationStructureBuildSizesKHR);
+		VKPP_LOAD(vkCmdTraceRaysKHR);
+		VKPP_LOAD(vkCreateRayTracingPipelinesKHR);
+		VKPP_LOAD(vkGetRayTracingShaderGroupHandlesKHR);
+		VKPP_LOAD(vkGetRayTracingShaderGroupHandlesNV);
+		VKPP_LOAD(vkGetRayTracingCaptureReplayShaderGroupHandlesKHR);
+		VKPP_LOAD(vkCmdTraceRaysIndirectKHR);
+		VKPP_LOAD(vkGetRayTracingShaderGroupStackSizeKHR);
+		VKPP_LOAD(vkCmdSetRayTracingPipelineStackSizeKHR);
 		VKPP_LOAD(vkGetImageDrmFormatModifierPropertiesEXT);
 		VKPP_LOAD(vkCreateValidationCacheEXT);
 		VKPP_LOAD(vkDestroyValidationCacheEXT);
@@ -794,7 +956,6 @@ void DynamicDispatch::init(Device dev, PFN_vkGetDeviceProcAddr loader) {
 		VKPP_LOAD(vkCmdCopyAccelerationStructureNV);
 		VKPP_LOAD(vkCmdTraceRaysNV);
 		VKPP_LOAD(vkCreateRayTracingPipelinesNV);
-		VKPP_LOAD(vkGetRayTracingShaderGroupHandlesNV);
 		VKPP_LOAD(vkGetAccelerationStructureHandleNV);
 		VKPP_LOAD(vkCmdWriteAccelerationStructuresPropertiesNV);
 		VKPP_LOAD(vkCompileDeferredNV);
@@ -807,21 +968,74 @@ void DynamicDispatch::init(Device dev, PFN_vkGetDeviceProcAddr loader) {
 		VKPP_LOAD(vkCmdSetExclusiveScissorNV);
 		VKPP_LOAD(vkCmdSetCheckpointNV);
 		VKPP_LOAD(vkGetQueueCheckpointDataNV);
+		VKPP_LOAD(vkInitializePerformanceApiINTEL);
+		VKPP_LOAD(vkUninitializePerformanceApiINTEL);
+		VKPP_LOAD(vkCmdSetPerformanceMarkerINTEL);
+		VKPP_LOAD(vkCmdSetPerformanceStreamMarkerINTEL);
+		VKPP_LOAD(vkCmdSetPerformanceOverrideINTEL);
+		VKPP_LOAD(vkAcquirePerformanceConfigurationINTEL);
+		VKPP_LOAD(vkReleasePerformanceConfigurationINTEL);
+		VKPP_LOAD(vkQueueSetPerformanceConfigurationINTEL);
+		VKPP_LOAD(vkGetPerformanceParameterINTEL);
 		VKPP_LOAD(vkSetLocalDimmingAMD);
 
 #ifdef VK_USE_PLATFORM_FUCHSIA
 #endif //VK_USE_PLATFORM_FUCHSIA
 
-		VKPP_LOAD(vkGetBufferDeviceAddressEXT);
+		VKPP_LOAD(vkCmdSetFragmentShadingRateKHR);
 
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 		VKPP_LOAD(vkAcquireFullScreenExclusiveModeEXT);
 		VKPP_LOAD(vkReleaseFullScreenExclusiveModeEXT);
 		VKPP_LOAD(vkGetDeviceGroupSurfacePresentModes2EXT);
-		VKPP_LOAD(vkGetDeviceGroupSurfacePresentModes2EXT);
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
-		VKPP_LOAD(vkResetQueryPoolEXT);
+		VKPP_LOAD(vkCmdSetLineStippleEXT);
+		VKPP_LOAD(vkCmdSetCullModeEXT);
+		VKPP_LOAD(vkCmdSetFrontFaceEXT);
+		VKPP_LOAD(vkCmdSetPrimitiveTopologyEXT);
+		VKPP_LOAD(vkCmdSetViewportWithCountEXT);
+		VKPP_LOAD(vkCmdSetScissorWithCountEXT);
+		VKPP_LOAD(vkCmdBindVertexBuffers2EXT);
+		VKPP_LOAD(vkCmdSetDepthTestEnableEXT);
+		VKPP_LOAD(vkCmdSetDepthWriteEnableEXT);
+		VKPP_LOAD(vkCmdSetDepthCompareOpEXT);
+		VKPP_LOAD(vkCmdSetDepthBoundsTestEnableEXT);
+		VKPP_LOAD(vkCmdSetStencilTestEnableEXT);
+		VKPP_LOAD(vkCmdSetStencilOpEXT);
+		VKPP_LOAD(vkCreateDeferredOperationKHR);
+		VKPP_LOAD(vkDestroyDeferredOperationKHR);
+		VKPP_LOAD(vkGetDeferredOperationMaxConcurrencyKHR);
+		VKPP_LOAD(vkGetDeferredOperationResultKHR);
+		VKPP_LOAD(vkDeferredOperationJoinKHR);
+		VKPP_LOAD(vkGetPipelineExecutablePropertiesKHR);
+		VKPP_LOAD(vkGetPipelineExecutableStatisticsKHR);
+		VKPP_LOAD(vkGetPipelineExecutableInternalRepresentationsKHR);
+		VKPP_LOAD(vkGetGeneratedCommandsMemoryRequirementsNV);
+		VKPP_LOAD(vkCmdPreprocessGeneratedCommandsNV);
+		VKPP_LOAD(vkCmdExecuteGeneratedCommandsNV);
+		VKPP_LOAD(vkCmdBindPipelineShaderGroupNV);
+		VKPP_LOAD(vkCreateIndirectCommandsLayoutNV);
+		VKPP_LOAD(vkDestroyIndirectCommandsLayoutNV);
+		VKPP_LOAD(vkCreatePrivateDataSlotEXT);
+		VKPP_LOAD(vkDestroyPrivateDataSlotEXT);
+		VKPP_LOAD(vkSetPrivateDataEXT);
+		VKPP_LOAD(vkGetPrivateDataEXT);
+		VKPP_LOAD(vkCmdSetFragmentShadingRateEnumNV);
+		VKPP_LOAD(vkCmdCopyBuffer2KHR);
+		VKPP_LOAD(vkCmdCopyImage2KHR);
+		VKPP_LOAD(vkCmdCopyBufferToImage2KHR);
+		VKPP_LOAD(vkCmdCopyImageToBuffer2KHR);
+		VKPP_LOAD(vkCmdBlitImage2KHR);
+		VKPP_LOAD(vkCmdResolveImage2KHR);
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+
+#ifdef VK_USE_PLATFORM_DIRECTFB_EXT
+#endif //VK_USE_PLATFORM_DIRECTFB_EXT
+
 
 	}
 
@@ -831,33 +1045,7 @@ void DynamicDispatch::init(Device dev, PFN_vkGetDeviceProcAddr loader) {
 } // namespace vk
 // The specification (vk.xml) itself is published under the following license:
 
-// Copyright (c) 2015-2019 The Khronos Group Inc.
+// Copyright (c) 2015-2020 The Khronos Group Inc.
 // 
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// 
-//     http://www.apache.org/licenses/LICENSE-2.0
-// 
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-// 
-// ---- Exceptions to the Apache 2.0 License: ----
-// 
-// As an exception, if you use this Software to generate code and portions of
-// this Software are embedded into the generated code as a result, you may
-// redistribute such product without providing attribution as would otherwise
-// be required by Sections 4(a), 4(b) and 4(d) of the License.
-// 
-// In addition, if you combine or link code generated by this Software with
-// software that is licensed under the GPLv2 or the LGPL v2.0 or 2.1
-// ("`Combined Software`") and if a court of competent jurisdiction determines
-// that the patent provision (Section 3), the indemnity provision (Section 9)
-// or other Section of the License conflicts with the conditions of the
-// applicable GPL or LGPL license, you may retroactively and prospectively
-// choose to deem waived or otherwise exclude such Section(s) of the License,
-// but only in their entirety and only with respect to the Combined Software.
+// SPDX-License-Identifier: Apache-2.0 OR MIT
     

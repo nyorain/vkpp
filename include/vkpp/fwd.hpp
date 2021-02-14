@@ -13,7 +13,7 @@
 
 #include <vulkan/vk_platform.h>
 
-// Generated for vulkan version: 1.1.108
+// Generated for vulkan version: 1.1.168
 
 // Utility forward declarations
 namespace nytl {
@@ -35,19 +35,139 @@ using nytl::Flags; // flags.hpp
 
 enum class DummyEnum : int32_t {};
 
+constexpr auto uuidSize = 16;
+constexpr auto luidSize = 8;
+constexpr auto maxDriverNameSize = 256;
+constexpr auto maxDriverInfoSize = 256;
+
+VK_DEFINE_HANDLE(CommandBuffer)
+VK_DEFINE_NON_DISPATCHABLE_HANDLE(Buffer)
+VK_DEFINE_HANDLE(Device)
+VK_DEFINE_NON_DISPATCHABLE_HANDLE(RenderPass)
+VK_DEFINE_NON_DISPATCHABLE_HANDLE(Framebuffer)
+VK_DEFINE_NON_DISPATCHABLE_HANDLE(ImageView)
+VK_DEFINE_NON_DISPATCHABLE_HANDLE(QueryPool)
+VK_DEFINE_NON_DISPATCHABLE_HANDLE(Semaphore)
+VK_DEFINE_NON_DISPATCHABLE_HANDLE(DeviceMemory)
+
+using Bool32 = uint32_t;
+using DeviceSize = uint64_t;
+using DeviceAddress = uint64_t;
+
+enum class StructureType : int32_t;
+enum class ShaderStageBits : int32_t;
+enum class SubgroupFeatureBits : int32_t;
+enum class PointClippingBehavior : int32_t;
+enum class DriverId : int32_t;
+enum class ShaderFloatControlsIndependence : int32_t;
+enum class ResolveModeBits : int32_t;
+enum class SampleCountBits : int32_t;
+enum class Format : int32_t;
+enum class RenderPassCreateBits : int32_t;
+enum class AttachmentDescriptionBits : int32_t;
+enum class AttachmentLoadOp : int32_t;
+enum class AttachmentStoreOp : int32_t;
+enum class ImageLayout : int32_t;
+enum class SubpassDescriptionBits : int32_t;
+enum class PipelineBindPoint : int32_t;
+enum class ImageAspectBits : int32_t;
+enum class PipelineStageBits : int32_t;
+enum class AccessBits : int32_t;
+enum class DependencyBits : int32_t;
+enum class SubpassContents : int32_t;
+enum class SystemAllocationScope : int32_t;
+enum class InternalAllocationType : int32_t;
+enum class Result : int32_t;
+enum class DescriptorBindingBits : int32_t;
+enum class ImageUsageBits : int32_t;
+enum class SamplerReductionMode : int32_t;
+enum class ImageCreateBits : int32_t;
+enum class SemaphoreType : int32_t;
+enum class SemaphoreWaitBits : int32_t;
+
+using ShaderStageFlags = Flags<ShaderStageBits>;
+using SubgroupFeatureFlags = Flags<SubgroupFeatureBits>;
+using ResolveModeFlags = Flags<ResolveModeBits>;
+using SampleCountFlags = Flags<SampleCountBits>;
+using RenderPassCreateFlags = Flags<RenderPassCreateBits>;
+using AttachmentDescriptionFlags = Flags<AttachmentDescriptionBits>;
+using SubpassDescriptionFlags = Flags<SubpassDescriptionBits>;
+using ImageAspectFlags = Flags<ImageAspectBits>;
+using PipelineStageFlags = Flags<PipelineStageBits>;
+using AccessFlags = Flags<AccessBits>;
+using DependencyFlags = Flags<DependencyBits>;
+using DescriptorBindingFlags = Flags<DescriptorBindingBits>;
+using ImageUsageFlags = Flags<ImageUsageBits>;
+using ImageCreateFlags = Flags<ImageCreateBits>;
+using SemaphoreWaitFlags = Flags<SemaphoreWaitBits>;
+
+struct PhysicalDeviceVulkan11Features;
+struct PhysicalDeviceVulkan11Properties;
+struct PhysicalDeviceVulkan12Features;
+struct ConformanceVersion;
+struct PhysicalDeviceVulkan12Properties;
+struct ImageFormatListCreateInfo;
+struct AttachmentDescription2;
+struct AttachmentReference2;
+struct SubpassDescription2;
+struct SubpassDependency2;
+struct RenderPassCreateInfo2;
+struct SubpassBeginInfo;
+struct SubpassEndInfo;
+struct AllocationCallbacks;
+struct Offset2D;
+struct Extent2D;
+struct Rect2D;
+union ClearColorValue;
+struct ClearDepthStencilValue;
+union ClearValue;
+struct RenderPassBeginInfo;
+struct PhysicalDevice8BitStorageFeatures;
+struct PhysicalDeviceDriverProperties;
+struct PhysicalDeviceShaderAtomicInt64Features;
+struct PhysicalDeviceShaderFloat16Int8Features;
+struct PhysicalDeviceFloatControlsProperties;
+struct DescriptorSetLayoutBindingFlagsCreateInfo;
+struct PhysicalDeviceDescriptorIndexingFeatures;
+struct PhysicalDeviceDescriptorIndexingProperties;
+struct DescriptorSetVariableDescriptorCountAllocateInfo;
+struct DescriptorSetVariableDescriptorCountLayoutSupport;
+struct SubpassDescriptionDepthStencilResolve;
+struct PhysicalDeviceDepthStencilResolveProperties;
+struct PhysicalDeviceScalarBlockLayoutFeatures;
+struct ImageStencilUsageCreateInfo;
+struct SamplerReductionModeCreateInfo;
+struct PhysicalDeviceSamplerFilterMinmaxProperties;
+struct PhysicalDeviceVulkanMemoryModelFeatures;
+struct PhysicalDeviceImagelessFramebufferFeatures;
+struct FramebufferAttachmentImageInfo;
+struct FramebufferAttachmentsCreateInfo;
+struct RenderPassAttachmentBeginInfo;
+struct PhysicalDeviceUniformBufferStandardLayoutFeatures;
+struct PhysicalDeviceShaderSubgroupExtendedTypesFeatures;
+struct PhysicalDeviceSeparateDepthStencilLayoutsFeatures;
+struct AttachmentReferenceStencilLayout;
+struct AttachmentDescriptionStencilLayout;
+struct PhysicalDeviceHostQueryResetFeatures;
+struct PhysicalDeviceTimelineSemaphoreFeatures;
+struct PhysicalDeviceTimelineSemaphoreProperties;
+struct SemaphoreTypeCreateInfo;
+struct TimelineSemaphoreSubmitInfo;
+struct SemaphoreWaitInfo;
+struct SemaphoreSignalInfo;
+struct PhysicalDeviceBufferDeviceAddressFeatures;
+struct BufferDeviceAddressInfo;
+struct BufferOpaqueCaptureAddressCreateInfo;
+struct MemoryOpaqueCaptureAddressAllocateInfo;
+struct DeviceMemoryOpaqueCaptureAddressInfo;
+
 constexpr auto maxDeviceGroupSize = 32;
 constexpr auto maxPhysicalDeviceNameSize = 256;
-constexpr auto uuidSize = 16;
 constexpr auto maxMemoryTypes = 32;
 constexpr auto maxMemoryHeaps = 16;
-constexpr auto luidSize = 8;
 constexpr auto queueFamilyExternal = (~0U-1);
 
-VK_DEFINE_NON_DISPATCHABLE_HANDLE(Buffer)
-VK_DEFINE_NON_DISPATCHABLE_HANDLE(DeviceMemory)
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(Image)
-VK_DEFINE_HANDLE(Device)
-VK_DEFINE_HANDLE(CommandBuffer)
 VK_DEFINE_HANDLE(PhysicalDevice)
 VK_DEFINE_HANDLE(Instance)
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(CommandPool)
@@ -59,29 +179,16 @@ VK_DEFINE_NON_DISPATCHABLE_HANDLE(PipelineLayout)
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(DescriptorSet)
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(Sampler)
 
-using Bool32 = uint32_t;
-using DeviceSize = uint64_t;
-
-enum class Result : int32_t;
-enum class StructureType : int32_t;
-enum class ShaderStageBits : int32_t;
-enum class SubgroupFeatureBits : int32_t;
 enum class PeerMemoryFeatureBits : int32_t;
 enum class MemoryAllocateBits : int32_t;
-enum class ImageAspectBits : int32_t;
 enum class SparseImageFormatBits : int32_t;
 enum class PhysicalDeviceType : int32_t;
-enum class SampleCountBits : int32_t;
 enum class FormatFeatureBits : int32_t;
-enum class Format : int32_t;
 enum class ImageType : int32_t;
 enum class ImageTiling : int32_t;
-enum class ImageUsageBits : int32_t;
-enum class ImageCreateBits : int32_t;
 enum class QueueBits : int32_t;
 enum class MemoryPropertyBits : int32_t;
 enum class MemoryHeapBits : int32_t;
-enum class PointClippingBehavior : int32_t;
 enum class TessellationDomainOrigin : int32_t;
 enum class DeviceQueueCreateBits : int32_t;
 enum class SamplerYcbcrModelConversion : int32_t;
@@ -89,11 +196,8 @@ enum class SamplerYcbcrRange : int32_t;
 enum class ComponentSwizzle : int32_t;
 enum class ChromaLocation : int32_t;
 enum class Filter : int32_t;
-enum class SystemAllocationScope : int32_t;
-enum class InternalAllocationType : int32_t;
 enum class DescriptorUpdateTemplateType : int32_t;
 enum class DescriptorType : int32_t;
-enum class PipelineBindPoint : int32_t;
 enum class ExternalMemoryHandleTypeBits : int32_t;
 enum class ExternalMemoryFeatureBits : int32_t;
 enum class BufferCreateBits : int32_t;
@@ -106,16 +210,10 @@ enum class ExternalSemaphoreHandleTypeBits : int32_t;
 enum class ExternalSemaphoreFeatureBits : int32_t;
 enum class DescriptorSetLayoutCreateBits : int32_t;
 
-using ShaderStageFlags = Flags<ShaderStageBits>;
-using SubgroupFeatureFlags = Flags<SubgroupFeatureBits>;
 using PeerMemoryFeatureFlags = Flags<PeerMemoryFeatureBits>;
 using MemoryAllocateFlags = Flags<MemoryAllocateBits>;
-using ImageAspectFlags = Flags<ImageAspectBits>;
 using SparseImageFormatFlags = Flags<SparseImageFormatBits>;
-using SampleCountFlags = Flags<SampleCountBits>;
 using FormatFeatureFlags = Flags<FormatFeatureBits>;
-using ImageUsageFlags = Flags<ImageUsageBits>;
-using ImageCreateFlags = Flags<ImageCreateBits>;
 using QueueFlags = Flags<QueueBits>;
 using MemoryPropertyFlags = Flags<MemoryPropertyBits>;
 using MemoryHeapFlags = Flags<MemoryHeapBits>;
@@ -141,9 +239,6 @@ struct PhysicalDevice16BitStorageFeatures;
 struct MemoryDedicatedRequirements;
 struct MemoryDedicatedAllocateInfo;
 struct MemoryAllocateFlagsInfo;
-struct Offset2D;
-struct Extent2D;
-struct Rect2D;
 struct DeviceGroupRenderPassBeginInfo;
 struct DeviceGroupCommandBufferBeginInfo;
 struct DeviceGroupSubmitInfo;
@@ -200,7 +295,6 @@ struct BindImagePlaneMemoryInfo;
 struct ImagePlaneMemoryRequirementsInfo;
 struct PhysicalDeviceSamplerYcbcrConversionFeatures;
 struct SamplerYcbcrConversionImageFormatProperties;
-struct AllocationCallbacks;
 struct DescriptorUpdateTemplateEntry;
 struct DescriptorUpdateTemplateCreateInfo;
 struct ExternalMemoryProperties;
@@ -224,119 +318,102 @@ struct DescriptorSetLayoutBinding;
 struct DescriptorSetLayoutCreateInfo;
 struct PhysicalDeviceShaderDrawParametersFeatures;
 
-using MemoryRequirements2KHR = MemoryRequirements2;
 using PhysicalDeviceVariablePointerFeatures = PhysicalDeviceVariablePointersFeatures;
 using PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures;
-constexpr auto lodClampNone = 1000.0f;
-constexpr auto remainingMipLevels = (~0U);
-constexpr auto remainingArrayLayers = (~0U);
-constexpr auto wholeSize = (~0ULL);
 constexpr auto attachmentUnused = (~0U);
+constexpr auto lodClampNone = 1000.0f;
 constexpr auto queueFamilyIgnored = (~0U);
+constexpr auto remainingArrayLayers = (~0U);
+constexpr auto remainingMipLevels = (~0U);
 constexpr auto subpassExternal = (~0U);
+constexpr auto wholeSize = (~0ULL);
 constexpr auto maxExtensionNameSize = 256;
 constexpr auto maxDescriptionSize = 256;
 
-VK_DEFINE_NON_DISPATCHABLE_HANDLE(Semaphore)
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(Fence)
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(Event)
-VK_DEFINE_NON_DISPATCHABLE_HANDLE(QueryPool)
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(BufferView)
-VK_DEFINE_NON_DISPATCHABLE_HANDLE(ImageView)
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(ShaderModule)
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(PipelineCache)
-VK_DEFINE_NON_DISPATCHABLE_HANDLE(RenderPass)
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(Pipeline)
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(DescriptorPool)
-VK_DEFINE_NON_DISPATCHABLE_HANDLE(Framebuffer)
 
 using SampleMask = uint32_t;
 
+enum class ObjectType : int32_t;
+enum class VendorId : int32_t;
 enum class PipelineCacheHeaderVersion : int32_t;
-enum class PipelineStageBits : int32_t;
 enum class SparseMemoryBindBits : int32_t;
 enum class FenceCreateBits : int32_t;
-enum class QueryType : int32_t;
 enum class QueryPipelineStatisticBits : int32_t;
+enum class QueryType : int32_t;
 enum class QueryResultBits : int32_t;
 enum class SharingMode : int32_t;
-enum class ImageLayout : int32_t;
 enum class ImageViewCreateBits : int32_t;
 enum class ImageViewType : int32_t;
-enum class PipelineCreateBits : int32_t;
-enum class VertexInputRate : int32_t;
-enum class PrimitiveTopology : int32_t;
-enum class PolygonMode : int32_t;
-enum class CullModeBits : int32_t;
-enum class FrontFace : int32_t;
-enum class CompareOp : int32_t;
-enum class StencilOp : int32_t;
-enum class LogicOp : int32_t;
+enum class ShaderModuleCreateBits : int32_t;
+enum class PipelineCacheCreateBits : int32_t;
 enum class BlendFactor : int32_t;
 enum class BlendOp : int32_t;
 enum class ColorComponentBits : int32_t;
+enum class CompareOp : int32_t;
+enum class PipelineCreateBits : int32_t;
+enum class PipelineShaderStageCreateBits : int32_t;
+enum class CullModeBits : int32_t;
 enum class DynamicState : int32_t;
+enum class FrontFace : int32_t;
+enum class VertexInputRate : int32_t;
+enum class PrimitiveTopology : int32_t;
+enum class PolygonMode : int32_t;
+enum class StencilOp : int32_t;
+enum class LogicOp : int32_t;
+enum class BorderColor : int32_t;
+enum class SamplerAddressMode : int32_t;
 enum class SamplerCreateBits : int32_t;
 enum class SamplerMipmapMode : int32_t;
-enum class SamplerAddressMode : int32_t;
-enum class BorderColor : int32_t;
 enum class DescriptorPoolCreateBits : int32_t;
-enum class AttachmentDescriptionBits : int32_t;
-enum class AttachmentLoadOp : int32_t;
-enum class AttachmentStoreOp : int32_t;
-enum class SubpassDescriptionBits : int32_t;
-enum class AccessBits : int32_t;
-enum class DependencyBits : int32_t;
+enum class FramebufferCreateBits : int32_t;
 enum class CommandPoolCreateBits : int32_t;
 enum class CommandPoolResetBits : int32_t;
 enum class CommandBufferLevel : int32_t;
 enum class CommandBufferUsageBits : int32_t;
 enum class QueryControlBits : int32_t;
 enum class CommandBufferResetBits : int32_t;
-enum class StencilFaceBits : int32_t;
 enum class IndexType : int32_t;
-enum class SubpassContents : int32_t;
-enum class ObjectType : int32_t;
-enum class VendorId : int32_t;
+enum class StencilFaceBits : int32_t;
 
 using InstanceCreateFlags = Flags<DummyEnum>;
 using DeviceCreateFlags = Flags<DummyEnum>;
-using PipelineStageFlags = Flags<PipelineStageBits>;
 using MemoryMapFlags = Flags<DummyEnum>;
 using SparseMemoryBindFlags = Flags<SparseMemoryBindBits>;
 using FenceCreateFlags = Flags<FenceCreateBits>;
 using SemaphoreCreateFlags = Flags<DummyEnum>;
 using EventCreateFlags = Flags<DummyEnum>;
-using QueryPoolCreateFlags = Flags<DummyEnum>;
 using QueryPipelineStatisticFlags = Flags<QueryPipelineStatisticBits>;
+using QueryPoolCreateFlags = Flags<DummyEnum>;
 using QueryResultFlags = Flags<QueryResultBits>;
 using BufferViewCreateFlags = Flags<DummyEnum>;
 using ImageViewCreateFlags = Flags<ImageViewCreateBits>;
-using ShaderModuleCreateFlags = Flags<DummyEnum>;
-using PipelineCacheCreateFlags = Flags<DummyEnum>;
+using ShaderModuleCreateFlags = Flags<ShaderModuleCreateBits>;
+using PipelineCacheCreateFlags = Flags<PipelineCacheCreateBits>;
+using ColorComponentFlags = Flags<ColorComponentBits>;
 using PipelineCreateFlags = Flags<PipelineCreateBits>;
-using PipelineShaderStageCreateFlags = Flags<DummyEnum>;
+using PipelineShaderStageCreateFlags = Flags<PipelineShaderStageCreateBits>;
+using CullModeFlags = Flags<CullModeBits>;
 using PipelineVertexInputStateCreateFlags = Flags<DummyEnum>;
 using PipelineInputAssemblyStateCreateFlags = Flags<DummyEnum>;
 using PipelineTessellationStateCreateFlags = Flags<DummyEnum>;
 using PipelineViewportStateCreateFlags = Flags<DummyEnum>;
 using PipelineRasterizationStateCreateFlags = Flags<DummyEnum>;
-using CullModeFlags = Flags<CullModeBits>;
 using PipelineMultisampleStateCreateFlags = Flags<DummyEnum>;
 using PipelineDepthStencilStateCreateFlags = Flags<DummyEnum>;
 using PipelineColorBlendStateCreateFlags = Flags<DummyEnum>;
-using ColorComponentFlags = Flags<ColorComponentBits>;
 using PipelineDynamicStateCreateFlags = Flags<DummyEnum>;
 using PipelineLayoutCreateFlags = Flags<DummyEnum>;
 using SamplerCreateFlags = Flags<SamplerCreateBits>;
 using DescriptorPoolCreateFlags = Flags<DescriptorPoolCreateBits>;
 using DescriptorPoolResetFlags = Flags<DummyEnum>;
-using FramebufferCreateFlags = Flags<DummyEnum>;
-using RenderPassCreateFlags = Flags<DummyEnum>;
-using AttachmentDescriptionFlags = Flags<AttachmentDescriptionBits>;
-using SubpassDescriptionFlags = Flags<SubpassDescriptionBits>;
-using AccessFlags = Flags<AccessBits>;
-using DependencyFlags = Flags<DependencyBits>;
+using FramebufferCreateFlags = Flags<FramebufferCreateBits>;
 using CommandPoolCreateFlags = Flags<CommandPoolCreateBits>;
 using CommandPoolResetFlags = Flags<CommandPoolResetBits>;
 using CommandBufferUsageFlags = Flags<CommandBufferUsageBits>;
@@ -344,6 +421,16 @@ using QueryControlFlags = Flags<QueryControlBits>;
 using CommandBufferResetFlags = Flags<CommandBufferResetBits>;
 using StencilFaceFlags = Flags<StencilFaceBits>;
 
+struct Offset3D;
+struct BaseInStructure;
+struct BaseOutStructure;
+struct BufferMemoryBarrier;
+struct DispatchIndirectCommand;
+struct DrawIndexedIndirectCommand;
+struct DrawIndirectCommand;
+struct ImageSubresourceRange;
+struct ImageMemoryBarrier;
+struct MemoryBarrier;
 struct ApplicationInfo;
 struct InstanceCreateInfo;
 struct DeviceQueueCreateInfo;
@@ -351,13 +438,12 @@ struct DeviceCreateInfo;
 struct ExtensionProperties;
 struct LayerProperties;
 struct SubmitInfo;
-struct MemoryAllocateInfo;
 struct MappedMemoryRange;
+struct MemoryAllocateInfo;
 struct SparseMemoryBind;
 struct SparseBufferMemoryBindInfo;
 struct SparseImageOpaqueMemoryBindInfo;
 struct ImageSubresource;
-struct Offset3D;
 struct SparseImageMemoryBind;
 struct SparseImageMemoryBindInfo;
 struct BindSparseInfo;
@@ -369,13 +455,13 @@ struct BufferCreateInfo;
 struct BufferViewCreateInfo;
 struct ImageCreateInfo;
 struct SubresourceLayout;
-struct ImageSubresourceRange;
 struct ImageViewCreateInfo;
 struct ShaderModuleCreateInfo;
 struct PipelineCacheCreateInfo;
 struct SpecializationMapEntry;
 struct SpecializationInfo;
 struct PipelineShaderStageCreateInfo;
+struct ComputePipelineCreateInfo;
 struct VertexInputBindingDescription;
 struct VertexInputAttributeDescription;
 struct PipelineVertexInputStateCreateInfo;
@@ -391,20 +477,19 @@ struct PipelineColorBlendAttachmentState;
 struct PipelineColorBlendStateCreateInfo;
 struct PipelineDynamicStateCreateInfo;
 struct GraphicsPipelineCreateInfo;
-struct ComputePipelineCreateInfo;
 struct PushConstantRange;
 struct PipelineLayoutCreateInfo;
 struct SamplerCreateInfo;
+struct CopyDescriptorSet;
+struct DescriptorBufferInfo;
+struct DescriptorImageInfo;
 struct DescriptorPoolSize;
 struct DescriptorPoolCreateInfo;
 struct DescriptorSetAllocateInfo;
-struct DescriptorImageInfo;
-struct DescriptorBufferInfo;
 struct WriteDescriptorSet;
-struct CopyDescriptorSet;
-struct FramebufferCreateInfo;
 struct AttachmentDescription;
 struct AttachmentReference;
+struct FramebufferCreateInfo;
 struct SubpassDescription;
 struct SubpassDependency;
 struct RenderPassCreateInfo;
@@ -414,34 +499,22 @@ struct CommandBufferInheritanceInfo;
 struct CommandBufferBeginInfo;
 struct BufferCopy;
 struct ImageSubresourceLayers;
-struct ImageCopy;
-struct ImageBlit;
 struct BufferImageCopy;
-union ClearColorValue;
-struct ClearDepthStencilValue;
-union ClearValue;
 struct ClearAttachment;
 struct ClearRect;
+struct ImageBlit;
+struct ImageCopy;
 struct ImageResolve;
-struct MemoryBarrier;
-struct BufferMemoryBarrier;
-struct ImageMemoryBarrier;
-struct RenderPassBeginInfo;
-struct DispatchIndirectCommand;
-struct DrawIndexedIndirectCommand;
-struct DrawIndirectCommand;
-struct BaseOutStructure;
-struct BaseInStructure;
 
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(SurfaceKHR)
 
 enum class SurfaceTransformBitsKHR : int32_t;
-enum class CompositeAlphaBitsKHR : int32_t;
-enum class ColorSpaceKHR : int32_t;
 enum class PresentModeKHR : int32_t;
+enum class ColorSpaceKHR : int32_t;
+enum class CompositeAlphaBitsKHR : int32_t;
 
-using SurfaceTransformFlagsKHR = Flags<SurfaceTransformBitsKHR>;
 using CompositeAlphaFlagsKHR = Flags<CompositeAlphaBitsKHR>;
+using SurfaceTransformFlagsKHR = Flags<SurfaceTransformBitsKHR>;
 
 struct SurfaceCapabilitiesKHR;
 struct SurfaceFormatKHR;
@@ -468,16 +541,16 @@ VK_DEFINE_NON_DISPATCHABLE_HANDLE(DisplayModeKHR)
 
 enum class DisplayPlaneAlphaBitsKHR : int32_t;
 
-using DisplayPlaneAlphaFlagsKHR = Flags<DisplayPlaneAlphaBitsKHR>;
 using DisplayModeCreateFlagsKHR = Flags<DummyEnum>;
+using DisplayPlaneAlphaFlagsKHR = Flags<DisplayPlaneAlphaBitsKHR>;
 using DisplaySurfaceCreateFlagsKHR = Flags<DummyEnum>;
 
-struct DisplayPropertiesKHR;
 struct DisplayModeParametersKHR;
-struct DisplayModePropertiesKHR;
 struct DisplayModeCreateInfoKHR;
+struct DisplayModePropertiesKHR;
 struct DisplayPlaneCapabilitiesKHR;
 struct DisplayPlanePropertiesKHR;
+struct DisplayPropertiesKHR;
 struct DisplaySurfaceCreateInfoKHR;
 
 struct DisplayPresentInfoKHR;
@@ -516,8 +589,8 @@ struct Win32SurfaceCreateInfoKHR;
 
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(DebugReportCallbackEXT)
 
-enum class DebugReportObjectTypeEXT : int32_t;
 enum class DebugReportBitsEXT : int32_t;
+enum class DebugReportObjectTypeEXT : int32_t;
 
 using DebugReportFlagsEXT = Flags<DebugReportBitsEXT>;
 
@@ -617,6 +690,8 @@ struct ViSurfaceCreateInfoNN;
 
 #endif //VK_USE_PLATFORM_VI_NN
 
+struct PhysicalDeviceTextureCompressionASTCHDRFeaturesEXT;
+
 struct ImageViewASTCDecodeModeEXT;
 struct PhysicalDeviceASTCDecodeFeaturesEXT;
 
@@ -692,8 +767,8 @@ struct ConditionalRenderingBeginInfoEXT;
 struct PhysicalDeviceConditionalRenderingFeaturesEXT;
 struct CommandBufferInheritanceConditionalRenderingInfoEXT;
 
-struct PhysicalDeviceFloat16Int8FeaturesKHR;
-
+using PhysicalDeviceShaderFloat16Int8FeaturesKHR = PhysicalDeviceShaderFloat16Int8Features;
+using PhysicalDeviceFloat16Int8FeaturesKHR = PhysicalDeviceShaderFloat16Int8Features;
 using PhysicalDevice16BitStorageFeaturesKHR = PhysicalDevice16BitStorageFeatures;
 struct RectLayerKHR;
 struct PresentRegionKHR;
@@ -756,14 +831,17 @@ struct PipelineRasterizationDepthClipStateCreateInfoEXT;
 struct XYColorEXT;
 struct HdrMetadataEXT;
 
-struct AttachmentDescription2KHR;
-struct AttachmentReference2KHR;
-struct SubpassDescription2KHR;
-struct SubpassDependency2KHR;
-struct RenderPassCreateInfo2KHR;
-struct SubpassBeginInfoKHR;
-struct SubpassEndInfoKHR;
-
+using PhysicalDeviceImagelessFramebufferFeaturesKHR = PhysicalDeviceImagelessFramebufferFeatures;
+using FramebufferAttachmentsCreateInfoKHR = FramebufferAttachmentsCreateInfo;
+using FramebufferAttachmentImageInfoKHR = FramebufferAttachmentImageInfo;
+using RenderPassAttachmentBeginInfoKHR = RenderPassAttachmentBeginInfo;
+using RenderPassCreateInfo2KHR = RenderPassCreateInfo2;
+using AttachmentDescription2KHR = AttachmentDescription2;
+using AttachmentReference2KHR = AttachmentReference2;
+using SubpassDescription2KHR = SubpassDescription2;
+using SubpassDependency2KHR = SubpassDependency2;
+using SubpassBeginInfoKHR = SubpassBeginInfo;
+using SubpassEndInfoKHR = SubpassEndInfo;
 struct SharedPresentSurfaceCapabilitiesKHR;
 
 using ExternalFenceHandleTypeFlagsKHR = ExternalFenceHandleTypeFlags;
@@ -785,6 +863,24 @@ struct FenceGetWin32HandleInfoKHR;
 
 struct ImportFenceFdInfoKHR;
 struct FenceGetFdInfoKHR;
+
+enum class PerformanceCounterUnitKHR : int32_t;
+enum class PerformanceCounterScopeKHR : int32_t;
+enum class PerformanceCounterStorageKHR : int32_t;
+enum class PerformanceCounterDescriptionBitsKHR : int32_t;
+enum class AcquireProfilingLockBitsKHR : int32_t;
+
+using PerformanceCounterDescriptionFlagsKHR = Flags<PerformanceCounterDescriptionBitsKHR>;
+using AcquireProfilingLockFlagsKHR = Flags<AcquireProfilingLockBitsKHR>;
+
+struct PhysicalDevicePerformanceQueryFeaturesKHR;
+struct PhysicalDevicePerformanceQueryPropertiesKHR;
+struct PerformanceCounterKHR;
+struct PerformanceCounterDescriptionKHR;
+struct QueryPoolPerformanceCreateInfoKHR;
+union PerformanceCounterResultKHR;
+struct AcquireProfilingLockInfoKHR;
+struct PerformanceQuerySubmitInfoKHR;
 
 using PhysicalDevicePointClippingPropertiesKHR = PhysicalDevicePointClippingProperties;
 using PointClippingBehaviorKHR = PointClippingBehavior;
@@ -830,22 +926,20 @@ VK_DEFINE_NON_DISPATCHABLE_HANDLE(DebugUtilsMessengerEXT)
 enum class DebugUtilsMessageSeverityBitsEXT : int32_t;
 enum class DebugUtilsMessageTypeBitsEXT : int32_t;
 
-using DebugUtilsMessengerCallbackDataFlagsEXT = Flags<DummyEnum>;
-using DebugUtilsMessengerCreateFlagsEXT = Flags<DummyEnum>;
-using DebugUtilsMessageSeverityFlagsEXT = Flags<DebugUtilsMessageSeverityBitsEXT>;
 using DebugUtilsMessageTypeFlagsEXT = Flags<DebugUtilsMessageTypeBitsEXT>;
+using DebugUtilsMessengerCallbackDataFlagsEXT = Flags<DummyEnum>;
+using DebugUtilsMessageSeverityFlagsEXT = Flags<DebugUtilsMessageSeverityBitsEXT>;
+using DebugUtilsMessengerCreateFlagsEXT = Flags<DummyEnum>;
 
-struct DebugUtilsObjectNameInfoEXT;
-struct DebugUtilsObjectTagInfoEXT;
 struct DebugUtilsLabelEXT;
+struct DebugUtilsObjectNameInfoEXT;
 struct DebugUtilsMessengerCallbackDataEXT;
 struct DebugUtilsMessengerCreateInfoEXT;
+struct DebugUtilsObjectTagInfoEXT;
 
-enum class SamplerReductionModeEXT : int32_t;
-
-struct SamplerReductionModeCreateInfoEXT;
-struct PhysicalDeviceSamplerFilterMinmaxPropertiesEXT;
-
+using SamplerReductionModeEXT = SamplerReductionMode;
+using SamplerReductionModeCreateInfoEXT = SamplerReductionModeCreateInfo;
+using PhysicalDeviceSamplerFilterMinmaxPropertiesEXT = PhysicalDeviceSamplerFilterMinmaxProperties;
 struct PhysicalDeviceInlineUniformBlockFeaturesEXT;
 struct PhysicalDeviceInlineUniformBlockPropertiesEXT;
 struct WriteDescriptorSetInlineUniformBlockEXT;
@@ -863,9 +957,9 @@ struct MultisamplePropertiesEXT;
 using BufferMemoryRequirementsInfo2KHR = BufferMemoryRequirementsInfo2;
 using ImageMemoryRequirementsInfo2KHR = ImageMemoryRequirementsInfo2;
 using ImageSparseMemoryRequirementsInfo2KHR = ImageSparseMemoryRequirementsInfo2;
+using MemoryRequirements2KHR = MemoryRequirements2;
 using SparseImageMemoryRequirements2KHR = SparseImageMemoryRequirements2;
-struct ImageFormatListCreateInfoKHR;
-
+using ImageFormatListCreateInfoKHR = ImageFormatListCreateInfo;
 enum class BlendOverlapEXT : int32_t;
 
 struct PhysicalDeviceBlendOperationAdvancedFeaturesEXT;
@@ -876,11 +970,72 @@ using PipelineCoverageToColorStateCreateFlagsNV = Flags<DummyEnum>;
 
 struct PipelineCoverageToColorStateCreateInfoNV;
 
+VK_DEFINE_NON_DISPATCHABLE_HANDLE(AccelerationStructureKHR)
+VK_DEFINE_NON_DISPATCHABLE_HANDLE(DeferredOperationKHR)
+
+enum class AccelerationStructureTypeKHR : int32_t;
+enum class BuildAccelerationStructureBitsKHR : int32_t;
+enum class BuildAccelerationStructureModeKHR : int32_t;
+enum class GeometryTypeKHR : int32_t;
+enum class GeometryBitsKHR : int32_t;
+enum class AccelerationStructureBuildTypeKHR : int32_t;
+enum class GeometryInstanceBitsKHR : int32_t;
+enum class AccelerationStructureCreateBitsKHR : int32_t;
+enum class CopyAccelerationStructureModeKHR : int32_t;
+enum class AccelerationStructureCompatibilityKHR : int32_t;
+
+using BuildAccelerationStructureFlagsKHR = Flags<BuildAccelerationStructureBitsKHR>;
+using GeometryFlagsKHR = Flags<GeometryBitsKHR>;
+using GeometryInstanceFlagsKHR = Flags<GeometryInstanceBitsKHR>;
+using AccelerationStructureCreateFlagsKHR = Flags<AccelerationStructureCreateBitsKHR>;
+
+union DeviceOrHostAddressKHR;
+union DeviceOrHostAddressConstKHR;
+struct AccelerationStructureBuildRangeInfoKHR;
+struct AabbPositionsKHR;
+struct AccelerationStructureGeometryTrianglesDataKHR;
+struct TransformMatrixKHR;
+struct AccelerationStructureGeometryAabbsDataKHR;
+struct AccelerationStructureGeometryInstancesDataKHR;
+union AccelerationStructureGeometryDataKHR;
+struct AccelerationStructureGeometryKHR;
+struct AccelerationStructureBuildGeometryInfoKHR;
+struct AccelerationStructureInstanceKHR;
+struct AccelerationStructureCreateInfoKHR;
+struct WriteDescriptorSetAccelerationStructureKHR;
+struct PhysicalDeviceAccelerationStructureFeaturesKHR;
+struct PhysicalDeviceAccelerationStructurePropertiesKHR;
+struct AccelerationStructureDeviceAddressInfoKHR;
+struct AccelerationStructureVersionInfoKHR;
+struct CopyAccelerationStructureToMemoryInfoKHR;
+struct CopyMemoryToAccelerationStructureInfoKHR;
+struct CopyAccelerationStructureInfoKHR;
+struct AccelerationStructureBuildSizesInfoKHR;
+
+constexpr auto shaderUnusedKHR = (~0U);
+
+enum class RayTracingShaderGroupTypeKHR : int32_t;
+enum class ShaderGroupShaderKHR : int32_t;
+
+struct RayTracingShaderGroupCreateInfoKHR;
+struct PipelineLibraryCreateInfoKHR;
+struct RayTracingPipelineInterfaceCreateInfoKHR;
+struct RayTracingPipelineCreateInfoKHR;
+struct PhysicalDeviceRayTracingPipelineFeaturesKHR;
+struct PhysicalDeviceRayTracingPipelinePropertiesKHR;
+struct StridedDeviceAddressRegionKHR;
+struct TraceRaysIndirectCommandKHR;
+
+struct PhysicalDeviceRayQueryFeaturesKHR;
+
 enum class CoverageModulationModeNV : int32_t;
 
 using PipelineCoverageModulationStateCreateFlagsNV = Flags<DummyEnum>;
 
 struct PipelineCoverageModulationStateCreateInfoNV;
+
+struct PhysicalDeviceShaderSMBuiltinsPropertiesNV;
+struct PhysicalDeviceShaderSMBuiltinsFeaturesNV;
 
 using SamplerYcbcrConversionCreateInfoKHR = SamplerYcbcrConversionCreateInfo;
 using SamplerYcbcrConversionInfoKHR = SamplerYcbcrConversionInfo;
@@ -910,15 +1065,19 @@ using ValidationCacheCreateFlagsEXT = Flags<DummyEnum>;
 struct ValidationCacheCreateInfoEXT;
 struct ShaderModuleValidationCacheCreateInfoEXT;
 
-enum class DescriptorBindingBitsEXT : int32_t;
+using DescriptorSetLayoutBindingFlagsCreateInfoEXT = DescriptorSetLayoutBindingFlagsCreateInfo;
+using PhysicalDeviceDescriptorIndexingFeaturesEXT = PhysicalDeviceDescriptorIndexingFeatures;
+using PhysicalDeviceDescriptorIndexingPropertiesEXT = PhysicalDeviceDescriptorIndexingProperties;
+using DescriptorSetVariableDescriptorCountAllocateInfoEXT = DescriptorSetVariableDescriptorCountAllocateInfo;
+using DescriptorSetVariableDescriptorCountLayoutSupportEXT = DescriptorSetVariableDescriptorCountLayoutSupport;
+using DescriptorBindingBitsEXT = DescriptorBindingBits;
+using DescriptorBindingFlagsEXT = DescriptorBindingFlags;
 
-using DescriptorBindingFlagsEXT = Flags<DescriptorBindingBitsEXT>;
+#ifdef VK_ENABLE_BETA_EXTENSIONS
+struct PhysicalDevicePortabilitySubsetFeaturesKHR;
+struct PhysicalDevicePortabilitySubsetPropertiesKHR;
 
-struct DescriptorSetLayoutBindingFlagsCreateInfoEXT;
-struct PhysicalDeviceDescriptorIndexingFeaturesEXT;
-struct PhysicalDeviceDescriptorIndexingPropertiesEXT;
-struct DescriptorSetVariableDescriptorCountAllocateInfoEXT;
-struct DescriptorSetVariableDescriptorCountLayoutSupportEXT;
+#endif //VK_ENABLE_BETA_EXTENSIONS
 
 enum class ShadingRatePaletteEntryNV : int32_t;
 enum class CoarseSampleOrderTypeNV : int32_t;
@@ -935,18 +1094,7 @@ constexpr auto shaderUnusedNV = (~0U);
 
 VK_DEFINE_NON_DISPATCHABLE_HANDLE(AccelerationStructureNV)
 
-enum class RayTracingShaderGroupTypeNV : int32_t;
-enum class GeometryTypeNV : int32_t;
-enum class GeometryBitsNV : int32_t;
-enum class GeometryInstanceBitsNV : int32_t;
-enum class AccelerationStructureTypeNV : int32_t;
-enum class BuildAccelerationStructureBitsNV : int32_t;
-enum class CopyAccelerationStructureModeNV : int32_t;
 enum class AccelerationStructureMemoryRequirementsTypeNV : int32_t;
-
-using GeometryFlagsNV = Flags<GeometryBitsNV>;
-using GeometryInstanceFlagsNV = Flags<GeometryInstanceBitsNV>;
-using BuildAccelerationStructureFlagsNV = Flags<BuildAccelerationStructureBitsNV>;
 
 struct RayTracingShaderGroupCreateInfoNV;
 struct RayTracingPipelineCreateInfoNV;
@@ -961,6 +1109,19 @@ struct WriteDescriptorSetAccelerationStructureNV;
 struct AccelerationStructureMemoryRequirementsInfoNV;
 struct PhysicalDeviceRayTracingPropertiesNV;
 
+using RayTracingShaderGroupTypeNV = RayTracingShaderGroupTypeKHR;
+using GeometryTypeNV = GeometryTypeKHR;
+using AccelerationStructureTypeNV = AccelerationStructureTypeKHR;
+using GeometryFlagsNV = GeometryFlagsKHR;
+using GeometryBitsNV = GeometryBitsKHR;
+using GeometryInstanceFlagsNV = GeometryInstanceFlagsKHR;
+using GeometryInstanceBitsNV = GeometryInstanceBitsKHR;
+using BuildAccelerationStructureFlagsNV = BuildAccelerationStructureFlagsKHR;
+using BuildAccelerationStructureBitsNV = BuildAccelerationStructureBitsKHR;
+using CopyAccelerationStructureModeNV = CopyAccelerationStructureModeKHR;
+using TransformMatrixNV = TransformMatrixKHR;
+using AabbPositionsNV = AabbPositionsKHR;
+using AccelerationStructureInstanceNV = AccelerationStructureInstanceKHR;
 struct PhysicalDeviceRepresentativeFragmentTestFeaturesNV;
 struct PipelineRepresentativeFragmentTestStateCreateInfoNV;
 
@@ -973,13 +1134,20 @@ enum class QueueGlobalPriorityEXT : int32_t;
 
 struct DeviceQueueGlobalPriorityCreateInfoEXT;
 
-struct PhysicalDevice8BitStorageFeaturesKHR;
-
+using PhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR = PhysicalDeviceShaderSubgroupExtendedTypesFeatures;
+using PhysicalDevice8BitStorageFeaturesKHR = PhysicalDevice8BitStorageFeatures;
 struct ImportMemoryHostPointerInfoEXT;
 struct MemoryHostPointerPropertiesEXT;
 struct PhysicalDeviceExternalMemoryHostPropertiesEXT;
 
-struct PhysicalDeviceShaderAtomicInt64FeaturesKHR;
+using PhysicalDeviceShaderAtomicInt64FeaturesKHR = PhysicalDeviceShaderAtomicInt64Features;
+struct PhysicalDeviceShaderClockFeaturesKHR;
+
+enum class PipelineCompilerControlBitsAMD : int32_t;
+
+using PipelineCompilerControlFlagsAMD = Flags<PipelineCompilerControlBitsAMD>;
+
+struct PipelineCompilerControlCreateInfoAMD;
 
 enum class TimeDomainEXT : int32_t;
 
@@ -1012,20 +1180,15 @@ struct PipelineCreationFeedbackCreateInfoEXT;
 constexpr auto maxDriverNameSizeKHR = 256;
 constexpr auto maxDriverInfoSizeKHR = 256;
 
-enum class DriverIdKHR : int32_t;
-
-struct ConformanceVersionKHR;
-struct PhysicalDeviceDriverPropertiesKHR;
-
-struct PhysicalDeviceFloatControlsPropertiesKHR;
-
-enum class ResolveModeBitsKHR : int32_t;
-
-using ResolveModeFlagsKHR = Flags<ResolveModeBitsKHR>;
-
-struct SubpassDescriptionDepthStencilResolveKHR;
-struct PhysicalDeviceDepthStencilResolvePropertiesKHR;
-
+using DriverIdKHR = DriverId;
+using ConformanceVersionKHR = ConformanceVersion;
+using PhysicalDeviceDriverPropertiesKHR = PhysicalDeviceDriverProperties;
+using PhysicalDeviceFloatControlsPropertiesKHR = PhysicalDeviceFloatControlsProperties;
+using ShaderFloatControlsIndependenceKHR = ShaderFloatControlsIndependence;
+using SubpassDescriptionDepthStencilResolveKHR = SubpassDescriptionDepthStencilResolve;
+using PhysicalDeviceDepthStencilResolvePropertiesKHR = PhysicalDeviceDepthStencilResolveProperties;
+using ResolveModeBitsKHR = ResolveModeBits;
+using ResolveModeFlagsKHR = ResolveModeFlags;
 struct PhysicalDeviceComputeShaderDerivativesFeaturesNV;
 
 struct PhysicalDeviceMeshShaderFeaturesNV;
@@ -1042,8 +1205,36 @@ struct PhysicalDeviceExclusiveScissorFeaturesNV;
 struct QueueFamilyCheckpointPropertiesNV;
 struct CheckpointDataNV;
 
-struct PhysicalDeviceVulkanMemoryModelFeaturesKHR;
+using SemaphoreTypeKHR = SemaphoreType;
+using PhysicalDeviceTimelineSemaphoreFeaturesKHR = PhysicalDeviceTimelineSemaphoreFeatures;
+using PhysicalDeviceTimelineSemaphorePropertiesKHR = PhysicalDeviceTimelineSemaphoreProperties;
+using SemaphoreTypeCreateInfoKHR = SemaphoreTypeCreateInfo;
+using TimelineSemaphoreSubmitInfoKHR = TimelineSemaphoreSubmitInfo;
+using SemaphoreWaitBitsKHR = SemaphoreWaitBits;
+using SemaphoreWaitFlagsKHR = SemaphoreWaitFlags;
+using SemaphoreWaitInfoKHR = SemaphoreWaitInfo;
+using SemaphoreSignalInfoKHR = SemaphoreSignalInfo;
+struct PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL;
 
+VK_DEFINE_NON_DISPATCHABLE_HANDLE(PerformanceConfigurationINTEL)
+
+enum class PerformanceConfigurationTypeINTEL : int32_t;
+enum class QueryPoolSamplingModeINTEL : int32_t;
+enum class PerformanceOverrideTypeINTEL : int32_t;
+enum class PerformanceParameterTypeINTEL : int32_t;
+enum class PerformanceValueTypeINTEL : int32_t;
+
+union PerformanceValueDataINTEL;
+struct PerformanceValueINTEL;
+struct InitializePerformanceApiInfoINTEL;
+struct QueryPoolPerformanceQueryCreateInfoINTEL;
+struct PerformanceMarkerInfoINTEL;
+struct PerformanceStreamMarkerInfoINTEL;
+struct PerformanceOverrideInfoINTEL;
+struct PerformanceConfigurationAcquireInfoINTEL;
+
+using QueryPoolCreateInfoINTEL = QueryPoolPerformanceQueryCreateInfoINTEL;
+using PhysicalDeviceVulkanMemoryModelFeaturesKHR = PhysicalDeviceVulkanMemoryModelFeatures;
 struct PhysicalDevicePCIBusInfoPropertiesEXT;
 
 struct DisplayNativeHdrSurfaceCapabilitiesAMD;
@@ -1057,11 +1248,34 @@ struct ImagePipeSurfaceCreateInfoFUCHSIA;
 
 #endif //VK_USE_PLATFORM_FUCHSIA
 
+struct PhysicalDeviceShaderTerminateInvocationFeaturesKHR;
+
 struct PhysicalDeviceFragmentDensityMapFeaturesEXT;
 struct PhysicalDeviceFragmentDensityMapPropertiesEXT;
 struct RenderPassFragmentDensityMapCreateInfoEXT;
 
-struct PhysicalDeviceScalarBlockLayoutFeaturesEXT;
+using PhysicalDeviceScalarBlockLayoutFeaturesEXT = PhysicalDeviceScalarBlockLayoutFeatures;
+struct PhysicalDeviceSubgroupSizeControlFeaturesEXT;
+struct PhysicalDeviceSubgroupSizeControlPropertiesEXT;
+struct PipelineShaderStageRequiredSubgroupSizeCreateInfoEXT;
+
+enum class FragmentShadingRateCombinerOpKHR : int32_t;
+
+struct FragmentShadingRateAttachmentInfoKHR;
+struct PipelineFragmentShadingRateStateCreateInfoKHR;
+struct PhysicalDeviceFragmentShadingRateFeaturesKHR;
+struct PhysicalDeviceFragmentShadingRatePropertiesKHR;
+struct PhysicalDeviceFragmentShadingRateKHR;
+
+enum class ShaderCorePropertiesBitsAMD : int32_t;
+
+using ShaderCorePropertiesFlagsAMD = Flags<ShaderCorePropertiesBitsAMD>;
+
+struct PhysicalDeviceShaderCoreProperties2AMD;
+
+struct PhysicalDeviceCoherentMemoryFeaturesAMD;
+
+struct PhysicalDeviceShaderImageAtomicInt64FeaturesEXT;
 
 struct PhysicalDeviceMemoryBudgetPropertiesEXT;
 
@@ -1072,15 +1286,21 @@ struct SurfaceProtectedCapabilitiesKHR;
 
 struct PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV;
 
-using DeviceAddress = uint64_t;
-
+using PhysicalDeviceSeparateDepthStencilLayoutsFeaturesKHR = PhysicalDeviceSeparateDepthStencilLayoutsFeatures;
+using AttachmentReferenceStencilLayoutKHR = AttachmentReferenceStencilLayout;
+using AttachmentDescriptionStencilLayoutKHR = AttachmentDescriptionStencilLayout;
 struct PhysicalDeviceBufferDeviceAddressFeaturesEXT;
-struct BufferDeviceAddressInfoEXT;
 struct BufferDeviceAddressCreateInfoEXT;
 
 using PhysicalDeviceBufferAddressFeaturesEXT = PhysicalDeviceBufferDeviceAddressFeaturesEXT;
-struct ImageStencilUsageCreateInfoEXT;
+using BufferDeviceAddressInfoEXT = BufferDeviceAddressInfo;
+enum class ToolPurposeBitsEXT : int32_t;
 
+using ToolPurposeFlagsEXT = Flags<ToolPurposeBitsEXT>;
+
+struct PhysicalDeviceToolPropertiesEXT;
+
+using ImageStencilUsageCreateInfoEXT = ImageStencilUsageCreateInfo;
 enum class ValidationFeatureEnableEXT : int32_t;
 enum class ValidationFeatureDisableEXT : int32_t;
 
@@ -1101,10 +1321,11 @@ struct PhysicalDeviceCoverageReductionModeFeaturesNV;
 struct PipelineCoverageReductionStateCreateInfoNV;
 struct FramebufferMixedSamplesCombinationNV;
 
+struct PhysicalDeviceFragmentShaderInterlockFeaturesEXT;
+
 struct PhysicalDeviceYcbcrImageArraysFeaturesEXT;
 
-struct PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR;
-
+using PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR = PhysicalDeviceUniformBufferStandardLayoutFeatures;
 
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 enum class FullScreenExclusiveEXT : int32_t;
@@ -1119,41 +1340,150 @@ using HeadlessSurfaceCreateFlagsEXT = Flags<DummyEnum>;
 
 struct HeadlessSurfaceCreateInfoEXT;
 
-struct PhysicalDeviceHostQueryResetFeaturesEXT;
+using PhysicalDeviceBufferDeviceAddressFeaturesKHR = PhysicalDeviceBufferDeviceAddressFeatures;
+using BufferDeviceAddressInfoKHR = BufferDeviceAddressInfo;
+using BufferOpaqueCaptureAddressCreateInfoKHR = BufferOpaqueCaptureAddressCreateInfo;
+using MemoryOpaqueCaptureAddressAllocateInfoKHR = MemoryOpaqueCaptureAddressAllocateInfo;
+using DeviceMemoryOpaqueCaptureAddressInfoKHR = DeviceMemoryOpaqueCaptureAddressInfo;
+enum class LineRasterizationModeEXT : int32_t;
+
+struct PhysicalDeviceLineRasterizationFeaturesEXT;
+struct PhysicalDeviceLineRasterizationPropertiesEXT;
+struct PipelineRasterizationLineStateCreateInfoEXT;
+
+struct PhysicalDeviceShaderAtomicFloatFeaturesEXT;
+
+using PhysicalDeviceHostQueryResetFeaturesEXT = PhysicalDeviceHostQueryResetFeatures;
+struct PhysicalDeviceIndexTypeUint8FeaturesEXT;
+
+struct PhysicalDeviceExtendedDynamicStateFeaturesEXT;
+
+enum class PipelineExecutableStatisticFormatKHR : int32_t;
+
+struct PhysicalDevicePipelineExecutablePropertiesFeaturesKHR;
+struct PipelineInfoKHR;
+struct PipelineExecutablePropertiesKHR;
+struct PipelineExecutableInfoKHR;
+union PipelineExecutableStatisticValueKHR;
+struct PipelineExecutableStatisticKHR;
+struct PipelineExecutableInternalRepresentationKHR;
+
+struct PhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT;
+
+VK_DEFINE_NON_DISPATCHABLE_HANDLE(IndirectCommandsLayoutNV)
+
+enum class IndirectStateBitsNV : int32_t;
+enum class IndirectCommandsTokenTypeNV : int32_t;
+enum class IndirectCommandsLayoutUsageBitsNV : int32_t;
+
+using IndirectStateFlagsNV = Flags<IndirectStateBitsNV>;
+using IndirectCommandsLayoutUsageFlagsNV = Flags<IndirectCommandsLayoutUsageBitsNV>;
+
+struct PhysicalDeviceDeviceGeneratedCommandsPropertiesNV;
+struct PhysicalDeviceDeviceGeneratedCommandsFeaturesNV;
+struct GraphicsShaderGroupCreateInfoNV;
+struct GraphicsPipelineShaderGroupsCreateInfoNV;
+struct BindShaderGroupIndirectCommandNV;
+struct BindIndexBufferIndirectCommandNV;
+struct BindVertexBufferIndirectCommandNV;
+struct SetStateFlagsIndirectCommandNV;
+struct IndirectCommandsStreamNV;
+struct IndirectCommandsLayoutTokenNV;
+struct IndirectCommandsLayoutCreateInfoNV;
+struct GeneratedCommandsInfoNV;
+struct GeneratedCommandsMemoryRequirementsInfoNV;
+
+struct PhysicalDeviceTexelBufferAlignmentFeaturesEXT;
+struct PhysicalDeviceTexelBufferAlignmentPropertiesEXT;
+
+struct RenderPassTransformBeginInfoQCOM;
+struct CommandBufferInheritanceRenderPassTransformInfoQCOM;
+
+enum class DeviceMemoryReportEventTypeEXT : int32_t;
+
+using DeviceMemoryReportFlagsEXT = Flags<DummyEnum>;
+
+struct PhysicalDeviceDeviceMemoryReportFeaturesEXT;
+struct DeviceMemoryReportCallbackDataEXT;
+struct DeviceDeviceMemoryReportCreateInfoEXT;
+
+struct PhysicalDeviceRobustness2FeaturesEXT;
+struct PhysicalDeviceRobustness2PropertiesEXT;
+
+struct SamplerCustomBorderColorCreateInfoEXT;
+struct PhysicalDeviceCustomBorderColorPropertiesEXT;
+struct PhysicalDeviceCustomBorderColorFeaturesEXT;
+
+VK_DEFINE_NON_DISPATCHABLE_HANDLE(PrivateDataSlotEXT)
+
+enum class PrivateDataSlotCreateBitsEXT : int32_t;
+
+using PrivateDataSlotCreateFlagsEXT = Flags<PrivateDataSlotCreateBitsEXT>;
+
+struct PhysicalDevicePrivateDataFeaturesEXT;
+struct DevicePrivateDataCreateInfoEXT;
+struct PrivateDataSlotCreateInfoEXT;
+
+struct PhysicalDevicePipelineCreationCacheControlFeaturesEXT;
+
+enum class DeviceDiagnosticsConfigBitsNV : int32_t;
+
+using DeviceDiagnosticsConfigFlagsNV = Flags<DeviceDiagnosticsConfigBitsNV>;
+
+struct PhysicalDeviceDiagnosticsConfigFeaturesNV;
+struct DeviceDiagnosticsConfigCreateInfoNV;
+
+struct PhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR;
+
+enum class FragmentShadingRateTypeNV : int32_t;
+enum class FragmentShadingRateNV : int32_t;
+
+struct PhysicalDeviceFragmentShadingRateEnumsFeaturesNV;
+struct PhysicalDeviceFragmentShadingRateEnumsPropertiesNV;
+struct PipelineFragmentShadingRateEnumStateCreateInfoNV;
+
+struct PhysicalDeviceFragmentDensityMap2FeaturesEXT;
+struct PhysicalDeviceFragmentDensityMap2PropertiesEXT;
+
+struct CopyCommandTransformInfoQCOM;
+
+struct PhysicalDeviceImageRobustnessFeaturesEXT;
+
+struct PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR;
+
+struct BufferCopy2KHR;
+struct CopyBufferInfo2KHR;
+struct ImageCopy2KHR;
+struct CopyImageInfo2KHR;
+struct BufferImageCopy2KHR;
+struct CopyBufferToImageInfo2KHR;
+struct CopyImageToBufferInfo2KHR;
+struct ImageBlit2KHR;
+struct BlitImageInfo2KHR;
+struct ImageResolve2KHR;
+struct ResolveImageInfo2KHR;
+
+struct PhysicalDevice4444FormatsFeaturesEXT;
+
+
+#ifdef VK_USE_PLATFORM_DIRECTFB_EXT
+using DirectFBSurfaceCreateFlagsEXT = Flags<DummyEnum>;
+
+struct DirectFBSurfaceCreateInfoEXT;
+
+#endif //VK_USE_PLATFORM_DIRECTFB_EXT
+
+struct PhysicalDeviceMutableDescriptorTypeFeaturesVALVE;
+struct MutableDescriptorTypeListVALVE;
+struct MutableDescriptorTypeCreateInfoVALVE;
 
 
 } // namespace vk
 
 // The specification (vk.xml) itself is published under the following license:
 
-// Copyright (c) 2015-2019 The Khronos Group Inc.
+// Copyright (c) 2015-2020 The Khronos Group Inc.
 // 
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// 
-//     http://www.apache.org/licenses/LICENSE-2.0
-// 
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-// 
-// ---- Exceptions to the Apache 2.0 License: ----
-// 
-// As an exception, if you use this Software to generate code and portions of
-// this Software are embedded into the generated code as a result, you may
-// redistribute such product without providing attribution as would otherwise
-// be required by Sections 4(a), 4(b) and 4(d) of the License.
-// 
-// In addition, if you combine or link code generated by this Software with
-// software that is licensed under the GPLv2 or the LGPL v2.0 or 2.1
-// ("`Combined Software`") and if a court of competent jurisdiction determines
-// that the patent provision (Section 3), the indemnity provision (Section 9)
-// or other Section of the License conflicts with the conditions of the
-// applicable GPL or LGPL license, you may retroactively and prospectively
-// choose to deem waived or otherwise exclude such Section(s) of the License,
-// but only in their entirety and only with respect to the Combined Software.
+// SPDX-License-Identifier: Apache-2.0 OR MIT
     
 

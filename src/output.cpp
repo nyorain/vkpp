@@ -1102,11 +1102,19 @@ void CCOutputGenerator::printCmdRaw(const Command& cmd, std::string alias,
 				category == Type::Category::handle ||
 				category == Type::Category::enumeration ||
 				category == Type::Category::bitmask) {
-			args += "(";
-			args += typeName(param.type, false);
-			args += ")(";
-			args += param.name;
-			args += ")";
+			if(param.type.array) {
+				args += "(";
+				args += typeName(param.type, false);
+				args += "*)(";
+				args += param.name;
+				args += ")";
+			} else {
+				args += "(";
+				args += typeName(param.type, false);
+				args += ")(";
+				args += param.name;
+				args += ")";
+			}
 		} else {
 			args += param.name;
 		}

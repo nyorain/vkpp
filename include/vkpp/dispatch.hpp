@@ -12,7 +12,7 @@
 #include <vkpp/structs.hpp>
 #include <vkpp/flags.hpp>
 
-// Generated for vulkan version: 1.1.108
+// Generated for vulkan version: 1.1.168
 
 namespace vk {
 
@@ -21,7 +21,7 @@ public:
 	// Initializes the functions that can be called without instance.
 	// If you link to libvulkan, just pass vkGetInstanceProcAddr as the
 	// loader function.
-	// - vkEnumerateInstanceVersion
+	// - vkEnumerateInstanceVersion (if available)
 	// - vkEnumerateInstanceExtensionProperties
 	// - vkEnumerateInstanceLayerProperties
 	// - vkCreateInstance
@@ -44,6 +44,35 @@ public:
 	void init(Device);
 
 public:
+	PFN_vkCmdDrawIndirectCount vkCmdDrawIndirectCount {};
+	PFN_vkCmdDrawIndirectCountKHR vkCmdDrawIndirectCountKHR {};
+	PFN_vkCmdDrawIndirectCountAMD vkCmdDrawIndirectCountAMD {};
+	PFN_vkCmdDrawIndexedIndirectCount vkCmdDrawIndexedIndirectCount {};
+	PFN_vkCmdDrawIndexedIndirectCountKHR vkCmdDrawIndexedIndirectCountKHR {};
+	PFN_vkCmdDrawIndexedIndirectCountAMD vkCmdDrawIndexedIndirectCountAMD {};
+	PFN_vkCreateRenderPass2 vkCreateRenderPass2 {};
+	PFN_vkCreateRenderPass2KHR vkCreateRenderPass2KHR {};
+	PFN_vkCmdBeginRenderPass2 vkCmdBeginRenderPass2 {};
+	PFN_vkCmdBeginRenderPass2KHR vkCmdBeginRenderPass2KHR {};
+	PFN_vkCmdNextSubpass2 vkCmdNextSubpass2 {};
+	PFN_vkCmdNextSubpass2KHR vkCmdNextSubpass2KHR {};
+	PFN_vkCmdEndRenderPass2 vkCmdEndRenderPass2 {};
+	PFN_vkCmdEndRenderPass2KHR vkCmdEndRenderPass2KHR {};
+	PFN_vkResetQueryPool vkResetQueryPool {};
+	PFN_vkResetQueryPoolEXT vkResetQueryPoolEXT {};
+	PFN_vkGetSemaphoreCounterValue vkGetSemaphoreCounterValue {};
+	PFN_vkGetSemaphoreCounterValueKHR vkGetSemaphoreCounterValueKHR {};
+	PFN_vkWaitSemaphores vkWaitSemaphores {};
+	PFN_vkWaitSemaphoresKHR vkWaitSemaphoresKHR {};
+	PFN_vkSignalSemaphore vkSignalSemaphore {};
+	PFN_vkSignalSemaphoreKHR vkSignalSemaphoreKHR {};
+	PFN_vkGetBufferDeviceAddress vkGetBufferDeviceAddress {};
+	PFN_vkGetBufferDeviceAddressKHR vkGetBufferDeviceAddressKHR {};
+	PFN_vkGetBufferDeviceAddressEXT vkGetBufferDeviceAddressEXT {};
+	PFN_vkGetBufferOpaqueCaptureAddress vkGetBufferOpaqueCaptureAddress {};
+	PFN_vkGetBufferOpaqueCaptureAddressKHR vkGetBufferOpaqueCaptureAddressKHR {};
+	PFN_vkGetDeviceMemoryOpaqueCaptureAddress vkGetDeviceMemoryOpaqueCaptureAddress {};
+	PFN_vkGetDeviceMemoryOpaqueCaptureAddressKHR vkGetDeviceMemoryOpaqueCaptureAddressKHR {};
 	PFN_vkEnumerateInstanceVersion vkEnumerateInstanceVersion {};
 	PFN_vkBindBufferMemory2 vkBindBufferMemory2 {};
 	PFN_vkBindBufferMemory2KHR vkBindBufferMemory2KHR {};
@@ -271,10 +300,6 @@ public:
 	PFN_vkCmdBeginQueryIndexedEXT vkCmdBeginQueryIndexedEXT {};
 	PFN_vkCmdEndQueryIndexedEXT vkCmdEndQueryIndexedEXT {};
 	PFN_vkCmdDrawIndirectByteCountEXT vkCmdDrawIndirectByteCountEXT {};
-	PFN_vkCmdDrawIndirectCountKHR vkCmdDrawIndirectCountKHR {};
-	PFN_vkCmdDrawIndirectCountAMD vkCmdDrawIndirectCountAMD {};
-	PFN_vkCmdDrawIndexedIndirectCountKHR vkCmdDrawIndexedIndirectCountKHR {};
-	PFN_vkCmdDrawIndexedIndirectCountAMD vkCmdDrawIndexedIndirectCountAMD {};
 	PFN_vkGetShaderInfoAMD vkGetShaderInfoAMD {};
 	PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV vkGetPhysicalDeviceExternalImageFormatPropertiesNV {};
 	PFN_vkGetMemoryFdKHR vkGetMemoryFdKHR {};
@@ -296,13 +321,13 @@ public:
 	PFN_vkGetPastPresentationTimingGOOGLE vkGetPastPresentationTimingGOOGLE {};
 	PFN_vkCmdSetDiscardRectangleEXT vkCmdSetDiscardRectangleEXT {};
 	PFN_vkSetHdrMetadataEXT vkSetHdrMetadataEXT {};
-	PFN_vkCreateRenderPass2KHR vkCreateRenderPass2KHR {};
-	PFN_vkCmdBeginRenderPass2KHR vkCmdBeginRenderPass2KHR {};
-	PFN_vkCmdNextSubpass2KHR vkCmdNextSubpass2KHR {};
-	PFN_vkCmdEndRenderPass2KHR vkCmdEndRenderPass2KHR {};
 	PFN_vkGetSwapchainStatusKHR vkGetSwapchainStatusKHR {};
 	PFN_vkImportFenceFdKHR vkImportFenceFdKHR {};
 	PFN_vkGetFenceFdKHR vkGetFenceFdKHR {};
+	PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR {};
+	PFN_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR {};
+	PFN_vkAcquireProfilingLockKHR vkAcquireProfilingLockKHR {};
+	PFN_vkReleaseProfilingLockKHR vkReleaseProfilingLockKHR {};
 	PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR vkGetPhysicalDeviceSurfaceCapabilities2KHR {};
 	PFN_vkGetPhysicalDeviceSurfaceFormats2KHR vkGetPhysicalDeviceSurfaceFormats2KHR {};
 	PFN_vkGetPhysicalDeviceDisplayProperties2KHR vkGetPhysicalDeviceDisplayProperties2KHR {};
@@ -322,6 +347,30 @@ public:
 	PFN_vkSubmitDebugUtilsMessageEXT vkSubmitDebugUtilsMessageEXT {};
 	PFN_vkCmdSetSampleLocationsEXT vkCmdSetSampleLocationsEXT {};
 	PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT vkGetPhysicalDeviceMultisamplePropertiesEXT {};
+	PFN_vkCreateAccelerationStructureKHR vkCreateAccelerationStructureKHR {};
+	PFN_vkDestroyAccelerationStructureKHR vkDestroyAccelerationStructureKHR {};
+	PFN_vkCmdBuildAccelerationStructuresKHR vkCmdBuildAccelerationStructuresKHR {};
+	PFN_vkCmdBuildAccelerationStructuresIndirectKHR vkCmdBuildAccelerationStructuresIndirectKHR {};
+	PFN_vkBuildAccelerationStructuresKHR vkBuildAccelerationStructuresKHR {};
+	PFN_vkCopyAccelerationStructureKHR vkCopyAccelerationStructureKHR {};
+	PFN_vkCopyAccelerationStructureToMemoryKHR vkCopyAccelerationStructureToMemoryKHR {};
+	PFN_vkCopyMemoryToAccelerationStructureKHR vkCopyMemoryToAccelerationStructureKHR {};
+	PFN_vkWriteAccelerationStructuresPropertiesKHR vkWriteAccelerationStructuresPropertiesKHR {};
+	PFN_vkCmdCopyAccelerationStructureKHR vkCmdCopyAccelerationStructureKHR {};
+	PFN_vkCmdCopyAccelerationStructureToMemoryKHR vkCmdCopyAccelerationStructureToMemoryKHR {};
+	PFN_vkCmdCopyMemoryToAccelerationStructureKHR vkCmdCopyMemoryToAccelerationStructureKHR {};
+	PFN_vkGetAccelerationStructureDeviceAddressKHR vkGetAccelerationStructureDeviceAddressKHR {};
+	PFN_vkCmdWriteAccelerationStructuresPropertiesKHR vkCmdWriteAccelerationStructuresPropertiesKHR {};
+	PFN_vkGetDeviceAccelerationStructureCompatibilityKHR vkGetDeviceAccelerationStructureCompatibilityKHR {};
+	PFN_vkGetAccelerationStructureBuildSizesKHR vkGetAccelerationStructureBuildSizesKHR {};
+	PFN_vkCmdTraceRaysKHR vkCmdTraceRaysKHR {};
+	PFN_vkCreateRayTracingPipelinesKHR vkCreateRayTracingPipelinesKHR {};
+	PFN_vkGetRayTracingShaderGroupHandlesKHR vkGetRayTracingShaderGroupHandlesKHR {};
+	PFN_vkGetRayTracingShaderGroupHandlesNV vkGetRayTracingShaderGroupHandlesNV {};
+	PFN_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR vkGetRayTracingCaptureReplayShaderGroupHandlesKHR {};
+	PFN_vkCmdTraceRaysIndirectKHR vkCmdTraceRaysIndirectKHR {};
+	PFN_vkGetRayTracingShaderGroupStackSizeKHR vkGetRayTracingShaderGroupStackSizeKHR {};
+	PFN_vkCmdSetRayTracingPipelineStackSizeKHR vkCmdSetRayTracingPipelineStackSizeKHR {};
 	PFN_vkGetImageDrmFormatModifierPropertiesEXT vkGetImageDrmFormatModifierPropertiesEXT {};
 	PFN_vkCreateValidationCacheEXT vkCreateValidationCacheEXT {};
 	PFN_vkDestroyValidationCacheEXT vkDestroyValidationCacheEXT {};
@@ -338,7 +387,6 @@ public:
 	PFN_vkCmdCopyAccelerationStructureNV vkCmdCopyAccelerationStructureNV {};
 	PFN_vkCmdTraceRaysNV vkCmdTraceRaysNV {};
 	PFN_vkCreateRayTracingPipelinesNV vkCreateRayTracingPipelinesNV {};
-	PFN_vkGetRayTracingShaderGroupHandlesNV vkGetRayTracingShaderGroupHandlesNV {};
 	PFN_vkGetAccelerationStructureHandleNV vkGetAccelerationStructureHandleNV {};
 	PFN_vkCmdWriteAccelerationStructuresPropertiesNV vkCmdWriteAccelerationStructuresPropertiesNV {};
 	PFN_vkCompileDeferredNV vkCompileDeferredNV {};
@@ -352,12 +400,60 @@ public:
 	PFN_vkCmdSetExclusiveScissorNV vkCmdSetExclusiveScissorNV {};
 	PFN_vkCmdSetCheckpointNV vkCmdSetCheckpointNV {};
 	PFN_vkGetQueueCheckpointDataNV vkGetQueueCheckpointDataNV {};
+	PFN_vkInitializePerformanceApiINTEL vkInitializePerformanceApiINTEL {};
+	PFN_vkUninitializePerformanceApiINTEL vkUninitializePerformanceApiINTEL {};
+	PFN_vkCmdSetPerformanceMarkerINTEL vkCmdSetPerformanceMarkerINTEL {};
+	PFN_vkCmdSetPerformanceStreamMarkerINTEL vkCmdSetPerformanceStreamMarkerINTEL {};
+	PFN_vkCmdSetPerformanceOverrideINTEL vkCmdSetPerformanceOverrideINTEL {};
+	PFN_vkAcquirePerformanceConfigurationINTEL vkAcquirePerformanceConfigurationINTEL {};
+	PFN_vkReleasePerformanceConfigurationINTEL vkReleasePerformanceConfigurationINTEL {};
+	PFN_vkQueueSetPerformanceConfigurationINTEL vkQueueSetPerformanceConfigurationINTEL {};
+	PFN_vkGetPerformanceParameterINTEL vkGetPerformanceParameterINTEL {};
 	PFN_vkSetLocalDimmingAMD vkSetLocalDimmingAMD {};
-	PFN_vkGetBufferDeviceAddressEXT vkGetBufferDeviceAddressEXT {};
+	PFN_vkGetPhysicalDeviceFragmentShadingRatesKHR vkGetPhysicalDeviceFragmentShadingRatesKHR {};
+	PFN_vkCmdSetFragmentShadingRateKHR vkCmdSetFragmentShadingRateKHR {};
+	PFN_vkGetPhysicalDeviceToolPropertiesEXT vkGetPhysicalDeviceToolPropertiesEXT {};
 	PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV vkGetPhysicalDeviceCooperativeMatrixPropertiesNV {};
 	PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV {};
 	PFN_vkCreateHeadlessSurfaceEXT vkCreateHeadlessSurfaceEXT {};
-	PFN_vkResetQueryPoolEXT vkResetQueryPoolEXT {};
+	PFN_vkCmdSetLineStippleEXT vkCmdSetLineStippleEXT {};
+	PFN_vkCmdSetCullModeEXT vkCmdSetCullModeEXT {};
+	PFN_vkCmdSetFrontFaceEXT vkCmdSetFrontFaceEXT {};
+	PFN_vkCmdSetPrimitiveTopologyEXT vkCmdSetPrimitiveTopologyEXT {};
+	PFN_vkCmdSetViewportWithCountEXT vkCmdSetViewportWithCountEXT {};
+	PFN_vkCmdSetScissorWithCountEXT vkCmdSetScissorWithCountEXT {};
+	PFN_vkCmdBindVertexBuffers2EXT vkCmdBindVertexBuffers2EXT {};
+	PFN_vkCmdSetDepthTestEnableEXT vkCmdSetDepthTestEnableEXT {};
+	PFN_vkCmdSetDepthWriteEnableEXT vkCmdSetDepthWriteEnableEXT {};
+	PFN_vkCmdSetDepthCompareOpEXT vkCmdSetDepthCompareOpEXT {};
+	PFN_vkCmdSetDepthBoundsTestEnableEXT vkCmdSetDepthBoundsTestEnableEXT {};
+	PFN_vkCmdSetStencilTestEnableEXT vkCmdSetStencilTestEnableEXT {};
+	PFN_vkCmdSetStencilOpEXT vkCmdSetStencilOpEXT {};
+	PFN_vkCreateDeferredOperationKHR vkCreateDeferredOperationKHR {};
+	PFN_vkDestroyDeferredOperationKHR vkDestroyDeferredOperationKHR {};
+	PFN_vkGetDeferredOperationMaxConcurrencyKHR vkGetDeferredOperationMaxConcurrencyKHR {};
+	PFN_vkGetDeferredOperationResultKHR vkGetDeferredOperationResultKHR {};
+	PFN_vkDeferredOperationJoinKHR vkDeferredOperationJoinKHR {};
+	PFN_vkGetPipelineExecutablePropertiesKHR vkGetPipelineExecutablePropertiesKHR {};
+	PFN_vkGetPipelineExecutableStatisticsKHR vkGetPipelineExecutableStatisticsKHR {};
+	PFN_vkGetPipelineExecutableInternalRepresentationsKHR vkGetPipelineExecutableInternalRepresentationsKHR {};
+	PFN_vkGetGeneratedCommandsMemoryRequirementsNV vkGetGeneratedCommandsMemoryRequirementsNV {};
+	PFN_vkCmdPreprocessGeneratedCommandsNV vkCmdPreprocessGeneratedCommandsNV {};
+	PFN_vkCmdExecuteGeneratedCommandsNV vkCmdExecuteGeneratedCommandsNV {};
+	PFN_vkCmdBindPipelineShaderGroupNV vkCmdBindPipelineShaderGroupNV {};
+	PFN_vkCreateIndirectCommandsLayoutNV vkCreateIndirectCommandsLayoutNV {};
+	PFN_vkDestroyIndirectCommandsLayoutNV vkDestroyIndirectCommandsLayoutNV {};
+	PFN_vkCreatePrivateDataSlotEXT vkCreatePrivateDataSlotEXT {};
+	PFN_vkDestroyPrivateDataSlotEXT vkDestroyPrivateDataSlotEXT {};
+	PFN_vkSetPrivateDataEXT vkSetPrivateDataEXT {};
+	PFN_vkGetPrivateDataEXT vkGetPrivateDataEXT {};
+	PFN_vkCmdSetFragmentShadingRateEnumNV vkCmdSetFragmentShadingRateEnumNV {};
+	PFN_vkCmdCopyBuffer2KHR vkCmdCopyBuffer2KHR {};
+	PFN_vkCmdCopyImage2KHR vkCmdCopyImage2KHR {};
+	PFN_vkCmdCopyBufferToImage2KHR vkCmdCopyBufferToImage2KHR {};
+	PFN_vkCmdCopyImageToBuffer2KHR vkCmdCopyImageToBuffer2KHR {};
+	PFN_vkCmdBlitImage2KHR vkCmdBlitImage2KHR {};
+	PFN_vkCmdResolveImage2KHR vkCmdResolveImage2KHR {};
 
 
 
@@ -444,8 +540,19 @@ public:
 	PFN_vkAcquireFullScreenExclusiveModeEXT vkAcquireFullScreenExclusiveModeEXT {};
 	PFN_vkReleaseFullScreenExclusiveModeEXT vkReleaseFullScreenExclusiveModeEXT {};
 	PFN_vkGetDeviceGroupSurfacePresentModes2EXT vkGetDeviceGroupSurfacePresentModes2EXT {};
-	PFN_vkGetDeviceGroupSurfacePresentModes2EXT vkGetDeviceGroupSurfacePresentModes2EXT {};
 #endif //VK_USE_PLATFORM_WIN32_KHR
+
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+	PFN_vkAcquireWinrtDisplayNV vkAcquireWinrtDisplayNV {};
+	PFN_vkGetWinrtDisplayNV vkGetWinrtDisplayNV {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+
+#ifdef VK_USE_PLATFORM_DIRECTFB_EXT
+	PFN_vkCreateDirectFBSurfaceEXT vkCreateDirectFBSurfaceEXT {};
+	PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT vkGetPhysicalDeviceDirectFBPresentationSupportEXT {};
+#endif //VK_USE_PLATFORM_DIRECTFB_EXT
 
 
 };
@@ -453,33 +560,7 @@ public:
 } // namespace vk
 // The specification (vk.xml) itself is published under the following license:
 
-// Copyright (c) 2015-2019 The Khronos Group Inc.
+// Copyright (c) 2015-2020 The Khronos Group Inc.
 // 
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// 
-//     http://www.apache.org/licenses/LICENSE-2.0
-// 
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-// 
-// ---- Exceptions to the Apache 2.0 License: ----
-// 
-// As an exception, if you use this Software to generate code and portions of
-// this Software are embedded into the generated code as a result, you may
-// redistribute such product without providing attribution as would otherwise
-// be required by Sections 4(a), 4(b) and 4(d) of the License.
-// 
-// In addition, if you combine or link code generated by this Software with
-// software that is licensed under the GPLv2 or the LGPL v2.0 or 2.1
-// ("`Combined Software`") and if a court of competent jurisdiction determines
-// that the patent provision (Section 3), the indemnity provision (Section 9)
-// or other Section of the License conflicts with the conditions of the
-// applicable GPL or LGPL license, you may retroactively and prospectively
-// choose to deem waived or otherwise exclude such Section(s) of the License,
-// but only in their entirety and only with respect to the Combined Software.
+// SPDX-License-Identifier: Apache-2.0 OR MIT
     
