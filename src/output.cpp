@@ -1142,7 +1142,7 @@ void CCOutputGenerator::printVecCmd(const ParsedCommand& pcmd,
 		auto typeCpy = *vecRet->first->param->type.pointer;
 		typeCpy.constant = false;
 		if(typeCpy.type->name != "void") retType = "std::vector<" + typeName(typeCpy) + ">";
-		else retType = "std::vector<uint8_t>";
+		else retType = "std::vector<std::byte>";
 	} else if(pcmd.returnParam) {
 		auto derefType = pcmd.returnParam->param->type.pointer;
 		retType = typeName(*derefType);
@@ -1210,7 +1210,7 @@ void CCOutputGenerator::printVecCmd(const ParsedCommand& pcmd,
 		if(typeCpy.type->name != "void") {
 			code = std::regex_replace(code, std::regex("%t"), typeName(typeCpy));
 		} else {
-			code = std::regex_replace(code, std::regex("%t"), "uint8_t");
+			code = std::regex_replace(code, std::regex("%t"), "std::byte");
 		}
 
 		code = std::regex_replace(code, std::regex("%a"), args);
@@ -1283,7 +1283,7 @@ std::string CCOutputGenerator::paramDecl(const ParsedParam& param, bool rangeify
 				localqt = *type;
 				localqt.type = &localt;
 				localt = *type->type;
-				localt.name = "uint8_t";
+				localt.name = "std::byte";
 				type = &localqt;
 			}
 
