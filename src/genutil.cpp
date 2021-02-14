@@ -1,4 +1,5 @@
 #include "registry.hpp"
+#include "string.hpp"
 #include <regex>
 #include <iostream>
 #include <unordered_set>
@@ -33,12 +34,52 @@ void ensureGuard(std::ofstream& of, bool& guardVar, const std::string& guard) {
 	}
 }
 
-void endGuard(std::ofstream& of, bool guardVar, const std::string& guard)
-{
-	if(guardVar && !guard.empty())of << "#endif //" << guard << "\n\n";
+void endGuard(std::ofstream& of, bool guardVar, const std::string& guard) {
+	if(guardVar && !guard.empty()) {
+		of << "#endif //" << guard << "\n\n";
+	}
 }
 
-void printReqs(std::ofstream& of, const Requirements& reqs,
+std::string processName(const Registry& reg, const Enum& e, std::string ret) {
+	camelCaseInPlace(ret, true);
+
+	auto enumName = e.name;
+	auto bpos = enumName.rfind("FlagBits");
+	if(bpos != std::string::npos) {
+		enumName = enumName.substr(0, bpos);
+	}
+
+	// TODO: better check for common prefix: don't compare char for char but
+	// rather word for word (words are seperated by an underscore) (?)
+	auto s = 0u;
+	while(enumName.size() > s && ret.size() > s && enumName[s] == ret[s]) {
+		++s;
+	}
+
+	ret = ret.substr(s);
+
+	// for special cases (e.g. VkResult: remove vk prefix)
+	if(s == 0u) {
+		removeVkPrefixInPlace(ret);
+	}
+
+	// remove "Bit" from bitmask enums
+	bpos = ret.rfind("Bit");
+	if(e.bitmask && bpos != std::string::npos) {
+		ret = ret.erase(bpos, 3);
+	}
+
+	// capitalize extension prefixes
+	std::string ext;
+	removeExtSuffix(reg, ret, &ext);
+	if(!ret.empty())
+		for(auto i = 0u; i < ext.size(); ++i)
+			ret[ret.size() - i] = std::toupper(ret[ret.size() - i], std::locale());
+
+	return ret;
+}
+
+void printReqs(const Registry& reg, std::ofstream& of, const Requirements& reqs,
 		const Requirements& fulfilled, const std::string& guard) {
 	bool guardVar = false;
 
@@ -81,10 +122,10 @@ void printReqs(std::ofstream& of, const Requirements& reqs,
 				continue;
 			}
 
-			of << "\t\tcase " << n << ": return \"" << n << "\";\n";
+			of << "\t\tcase " << n << ": return \"" << processName(reg, enumeration, n) << "\";\n";
 		}
 
-		of << "\t\tdefault: return nullptr;\n";
+		of << "\t\tdefault: return \"\";\n";
 		of << "\t}\n}\n";
 	}
 
@@ -132,7 +173,8 @@ void printReqs(std::ofstream& of, const Requirements& reqs,
 				continue;
 			}
 
-			of << "\tif((val & " << n << ") == " << n << ") ret += \"" << n << " | \";\n";
+			auto pn = processName(reg, enumeration, n);
+			of << "\tif((val & " << n << ") == " << n << ") ret += \"" << pn << " | \";\n";
 		}
 
 		of << "\tif(!ret.empty()) ret.erase(ret.size() - 2, 2);\n";
@@ -177,13 +219,13 @@ int main(int argc, const char** argv) {
 		auto& feature = *pf;
 		auto& reqs = feature.reqs;
 
-		printReqs(of, reqs, fulfilled, "");
+		printReqs(registry, of, reqs, fulfilled, "");
 		fulfilled.add(reqs);
 
 		// output extensions
 		for(auto& ext : feature.extensions) {
 			auto guard = ext->platform ? ext->platform->protect : "";
-			printReqs(of, ext->reqs, fulfilled, guard);
+			printReqs(registry, of, ext->reqs, fulfilled, guard);
 			fulfilled.add(ext->reqs);
 		}
 	}
@@ -192,7 +234,7 @@ int main(int argc, const char** argv) {
 	for(auto& ext : registry.extensions) {
 		auto& reqs = ext.reqs;
 		auto guard = ext.platform ? ext.platform->protect : "";
-		printReqs(of, reqs, fulfilled, guard);
+		printReqs(registry, of, reqs, fulfilled, guard);
 		fulfilled.add(reqs);
 	}
 

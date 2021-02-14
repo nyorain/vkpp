@@ -3,3 +3,4 @@ build/
 *.sublime*
 compile_commands.json
 .clangd/
+.cache/

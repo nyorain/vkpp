@@ -5,6 +5,7 @@
 #include "output.hpp"
 #include "registry.hpp"
 #include "header.hpp"
+#include "string.hpp"
 
 #include <iostream>
 #include <algorithm>
@@ -27,21 +28,6 @@ void log(Args... args) {
 	}
 }
 
-/// string to lower in place
-void tolowerip(std::string& str) {
-	if (str.length()==0)
-		return;
-	static const auto& f = std::use_facet<std::ctype<char>>(std::locale());
-	f.tolower(&str.front(), &str.back() + 1);
-}
-
-/// string to lower in copy
-std::string tolower(const std::string& str) {
-	auto ret = str;
-	tolowerip(ret);
-	return ret;
-}
-
 /// string to upper in place
 void toupperip(std::string& str) {
 	if (str.length()==0)
@@ -58,37 +44,6 @@ std::string toupper(const std::string& str) {
 }
 
 // generator
-std::string OutputGenerator::removeVkPrefix(const std::string& string, bool* found) const {
-	auto ret = string;
-	if(found) {
-		*found = removeVkPrefix(ret);
-	} else {
-		removeVkPrefix(ret);
-	}
-
-	return ret;
-}
-
-bool OutputGenerator::removeVkPrefix(std::string& string) const {
-	if(string.size() < 2) {
-		return false;
-	}
-
-	auto sub = string.substr(0, 2);
-	tolowerip(sub);
-
-	if(sub == "vk") {
-		if(string[2] == '_') {
-			string = string.substr(3);
-		} else {
-			string = string.substr(2);
-		}
-		return true;
-	}
-
-	return false;
-}
-
 std::string OutputGenerator::strip(const std::string& string) const {
 	auto ret = string;
 	stripip(ret);
@@ -97,85 +52,8 @@ std::string OutputGenerator::strip(const std::string& string) const {
 
 void OutputGenerator::stripip(std::string& string) const {
 	camelCase(string);
-	removeVkPrefix(string);
-	removeExtSuffix(string);
-}
-
-std::string OutputGenerator::removeExtSuffix(const std::string& string,
-		std::string* extension) const {
-	auto ret = string;
-	if(extension) {
-		*extension = removeExtSuffix(ret);
-	} else {
-		removeExtSuffix(ret);
-	}
-	return ret;
-}
-
-std::string OutputGenerator::removeExtSuffix(std::string& string) const {
-	for(auto& ext : registry().vendors) {
-		if(string.size() < ext.size()) {
-			continue;
-		}
-
-		ext = tolower(ext);
-		if(tolower(string.substr(string.size() - ext.size())) == ext) {
-			string = string.substr(0, string.size() - ext.size());
-			return ext;
-		}
-	}
-
-	for(auto& ext : registry().tags) {
-		if(string.size() < ext.size()) {
-			continue;
-		}
-
-		ext = tolower(ext);
-		if(tolower(string.substr(string.size() - ext.size())) == ext) {
-			string = string.substr(0, string.size() - ext.size());
-			return ext;
-		}
-	}
-
-	std::string ext = "ext";
-	if(string.size() < ext.size()) {
-		return "";
-	}
-
-	if(tolower(string.substr(string.size() - ext.size())) == ext){
-		string = string.substr(0, string.size() - ext.size());
-		return ext;
-	}
-
-	return "";
-}
-
-std::string OutputGenerator::camelCase(const std::string& string, bool firstupper) const {
-	auto ret = string;
-	camelCaseip(ret, firstupper);
-	return ret;
-}
-
-// automatically detect EXT suffixes here and don't camel case them?
-void OutputGenerator::camelCaseip(std::string& string, bool firstupper) const {
-	if(string.empty()) {
-		return;
-	}
-
-	std::size_t pos = 0u;
-	tolowerip(string);
-	while((pos = string.find('_')) != std::string::npos) {
-		string.erase(pos, 1);
-		if(pos < string.size()) {
-			string[pos] = std::toupper(string[pos], std::locale());
-		}
-	}
-
-	if(firstupper) {
-		string[0] = std::toupper(string[0], std::locale());
-	} else {
-		string[0] = std::tolower(string[0], std::locale());
-	}
+	removeVkPrefixInPlace(string);
+	removeExtSuffixInPlace(registry(), string);
 }
 
 void OutputGenerator::macroCaseip(std::string& string) const {
@@ -653,12 +531,16 @@ void CCOutputGenerator::ensureGuard(std::ofstream& of, bool& guardVar, const std
 
 void CCOutputGenerator::endGuard(std::ofstream& of, bool guardVar, const std::string& guard)
 {
-	if(guardVar && !guard.empty())of << "#endif //" << guard << "\n\n";
+	if(guardVar && !guard.empty()) {
+		of << "#endif //" << guard << "\n\n";
+	}
 }
 
 void CCOutputGenerator::endGuard(std::string& of, bool guardVar, const std::string& guard)
 {
-	if(guardVar && !guard.empty())of += "#endif //" + guard + "\n\n";
+	if(guardVar && !guard.empty()) {
+		of += "#endif //" + guard + "\n\n";
+	}
 }
 
 std::string CCOutputGenerator::enumName(const Enum& e, const std::string& name, bool* bit) const
@@ -666,7 +548,7 @@ std::string CCOutputGenerator::enumName(const Enum& e, const std::string& name, 
 	if(bit) *bit = false;
 
 	auto ret = removeVkPrefix(name, nullptr);
-	camelCaseip(ret);
+	camelCaseInPlace(ret);
 
 	// prefixes and suffixes
 	auto removePrefix = 0u;
@@ -674,15 +556,15 @@ std::string CCOutputGenerator::enumName(const Enum& e, const std::string& name, 
 
 	{
 		std::string ext;
-		removeExtSuffix(e.name, &ext);
+		removeExtSuffix(registry(), e.name, &ext);
 
-		auto fename = tolower(typeName(e)); // fixed enum name
+		auto fename = toLower(typeName(e)); // fixed enum name
 		auto bpos = fename.rfind("bit");
 		if(bpos != std::string::npos) fename = fename.substr(0, bpos);
 		else fename = fename.substr(0, fename.size() - ext.size());
 
 		// if(fename.substr(fename.size() - 4) == "bits") fename = fename.substr(0, fename.size() - 4);
-		auto fname = tolower(ret); // fixed name
+		auto fname = toLower(ret); // fixed name
 
 		// TODO: better check for common prefix: don't compare char for char but
 		// rather word for word (words are seperated by an underscore) (?)
@@ -692,14 +574,14 @@ std::string CCOutputGenerator::enumName(const Enum& e, const std::string& name, 
 
 		removePrefix = s;
 
-		if(tolower(ret).find(tolower(ext)) != std::string::npos) {
+		if(toLower(ret).find(toLower(ext)) != std::string::npos) {
 			removeSuffix = ext.size();
 		}
 
 		// actuallly remove prefix and suffix, lower first char
 		ret = ret.substr(removePrefix);
 		ret = ret.substr(0, ret.size() - removeSuffix);
-		ret[0] = tolower(ret[0], std::locale());
+		ret[0] = std::tolower(ret[0], std::locale());
 
 		// remove "Bit" from bitmask enums
 		bpos = ret.rfind("Bit");
@@ -733,7 +615,7 @@ std::string CCOutputGenerator::enumName(const Enum& e, const std::string& name, 
 
 	// capitalize extension prefixes
 	std::string ext;
-	removeExtSuffix(ret, &ext);
+	removeExtSuffix(registry(), ret, &ext);
 	if(!ret.empty())
 		for(auto i = 0u; i < ext.size(); ++i)
 			ret[ret.size() - i] = std::toupper(ret[ret.size() - i], std::locale());
@@ -808,11 +690,11 @@ std::string CCOutputGenerator::typeName(const QualifiedType& type, bool change) 
 std::string CCOutputGenerator::constantName(const Constant& c) const
 {
 	auto ret = removeVkPrefix(c.name, nullptr);
-	camelCaseip(ret);
+	camelCaseInPlace(ret);
 
 	// capitalize suffix
 	std::string ext;
-	removeExtSuffix(ret, &ext);
+	removeExtSuffix(registry(), ret, &ext);
 	if(!ret.empty())
 		for(auto i = 0u; i < ext.size(); ++i)
 			ret[ret.size() - i] = std::toupper(ret[ret.size() - i], std::locale());
@@ -840,12 +722,12 @@ std::string CCOutputGenerator::paramName(const Param& param, const std::string& 
 		std::string sizeName = it->arraySize;
 		auto pos = sizeName.find("VK");
 		if(pos != std::string::npos) {
-			removeVkPrefix(sizeName);
-			camelCaseip(sizeName);
+			removeVkPrefixInPlace(sizeName);
+			camelCaseInPlace(sizeName);
 
 			// capitalize extension prefixes
 			std::string ext;
-			removeExtSuffix(sizeName, &ext);
+			removeExtSuffix(registry(), sizeName, &ext);
 			for(auto i = 0u; i < ext.size(); ++i)
 				sizeName[sizeName.size() - i] =
 					std::toupper(sizeName[sizeName.size() - i], std::locale());

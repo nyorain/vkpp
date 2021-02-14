@@ -23,24 +23,6 @@ class Struct;
 /// or format. Implements various utility functions.
 class OutputGenerator {
 public:
-	// removes a vk or VK prefix (case does not matter)
-	// if the string startes with VK_ also removes the first underscore.
-	std::string removeVkPrefix(const std::string& string, bool* found) const;
-	bool removeVkPrefix(std::string& string) const;
-
-	// removes the extension or tag suffix from a string.
-	// Uses the stored registry to query valid extensions (vendor) suffixes.
-	// Will also remove tag suffixes (such as KHR or EXT)
-	// The second (in-place) overload returns the found extension/tag.
-	std::string removeExtSuffix(const std::string& string, std::string* extension) const;
-	std::string removeExtSuffix(std::string& string) const;
-
-	// brings the given string into camelCase.
-	// If firstupper is true, also capitalizes the first char.
-	// Example: camelCase(TEST_CASE_ABC_de, true) -> TestCaseAbcDe
-	std::string camelCase(const std::string& string, bool firstupper = false) const;
-	void camelCaseip(std::string& string, bool firstupper = false) const;
-
 	// brings the given string from camel case from into macro caes, i.e. all chars
 	// to uppercase and seperates words (previously seperated by a uppercase char)
 	// with an underscore.
