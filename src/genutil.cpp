@@ -177,7 +177,7 @@ void printReqs(const Registry& reg, std::ofstream& of, const Requirements& reqs,
 			of << "\tif((val & " << n << ") == " << n << ") ret += \"" << pn << " | \";\n";
 		}
 
-		of << "\tif(!ret.empty()) ret.erase(ret.size() - 2, 2);\n";
+		of << "\tif(!ret.empty()) ret.erase(ret.size() - 3, 3);\n";
 		of << "\treturn ret;\n";
 		of << "\n}\n";
 	}
@@ -205,6 +205,7 @@ int main(int argc, const char** argv) {
 		const char* name;
 		bool forceDispatch;
 	} features[] = {
+		{"VK_VERSION_1_2", true},
 		{"VK_VERSION_1_1", true},
 		{"VK_VERSION_1_0", false},
 	};
