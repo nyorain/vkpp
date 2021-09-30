@@ -6012,7 +6012,7 @@ struct AccelerationStructureGeometryTrianglesDataKHR {
 };
 
 struct TransformMatrixKHR {
-	std::array<std::array<float, 3>, 4> matrix {};
+	std::array<std::array<float, 4>, 3> matrix {};
 
 	const VkTransformMatrixKHR& vkHandle() const { return reinterpret_cast<const VkTransformMatrixKHR&>(*this); }
 	VkTransformMatrixKHR& vkHandle() { return reinterpret_cast<VkTransformMatrixKHR&>(*this); }

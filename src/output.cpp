@@ -8,6 +8,7 @@
 #include "string.hpp"
 
 #include <iostream>
+#include <deque>
 #include <algorithm>
 #include <sstream>
 #include <cstring>
@@ -715,7 +716,7 @@ std::string CCOutputGenerator::paramName(const Param& param, const std::string& 
 
 	ret += typeName(param.type);
 
-	std::stack<std::string> ranges;
+	std::deque<std::string> ranges;
 	it = &param.type;
 
 	while(it->array) {
@@ -733,14 +734,14 @@ std::string CCOutputGenerator::paramName(const Param& param, const std::string& 
 					std::toupper(sizeName[sizeName.size() - i], std::locale());
 		}
 
-		ranges.push(sizeName);
+		ranges.push_back(sizeName);
 		it = it->array;
 	}
 
 	while(!ranges.empty()) {
-		if(plainArray) ret += "[" + ranges.top() + "]";
-		else ret += ", " + ranges.top() + ">";
-		ranges.pop();
+		if(plainArray) ret += "[" + ranges.front() + "]";
+		else ret += ", " + ranges.front() + ">";
+		ranges.pop_front();
 	}
 
 	ret += " " + namePrefix + param.name;
