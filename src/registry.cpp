@@ -174,6 +174,11 @@ void RegistryLoader::loadTypes(const pugi::xml_node& node) {
 		std::string category = typeit.attribute("category").as_string();
 		if(category == "bitmask") {
 			auto en = typeit.attribute("requires");
+			if(!en) {
+				// used in ssome cases
+				en = typeit.attribute("bitvalues");
+			}
+
 			auto name = typeit.child_value("name");
 			auto alias = typeit.attribute("alias");
 			if(alias) {
@@ -402,6 +407,12 @@ void RegistryLoader::loadEnums(const pugi::xml_node& node)
 		auto& ret = *retp;
 
 		if(type == "bitmask") ret.bitmask = true;
+
+		auto bitwidth = node.attribute("bitwidth");
+		if(bitwidth) {
+			ret.bitwidth = bitwidth.as_uint();
+		}
+
 		for(auto enumit : node.children("enum")) {
 			std::pair<std::string, std::int64_t> value;
 
@@ -594,6 +605,11 @@ void RegistryLoader::loadExtension(const pugi::xml_node& node) {
 	// NOTE: completely ignore all experimental extensions
 	// for backwards compatibility
 	if(author == "NVX" || author == "KHX" || author == "AMDX") {
+		return;
+	}
+
+	// TODO: fix
+	if(node.attribute("provisional").as_bool()) {
 		return;
 	}
 

@@ -12,7 +12,7 @@ auto templateStart = &R"SRC(
 
 // Automatically generated header, don't edit.
 // See github.com/nyorain/vkpp.
-// Generated for vulkan version: 1.1.%vp
+// Generated for vulkan version: 1.3.%vp
 
 namespace vk {
 )SRC"[1];
@@ -46,7 +46,9 @@ std::string processName(const Registry& reg, const Enum& e, std::string ret) {
 	auto enumName = e.name;
 	auto bpos = enumName.rfind("FlagBits");
 	if(bpos != std::string::npos) {
-		enumName = enumName.substr(0, bpos);
+		// Preserve FlagBits suffixes, such as in FlagBits2
+		// enumName = enumName.substr(0, bpos);
+		enumName.erase(bpos, 8);
 	}
 
 	// TODO: better check for common prefix: don't compare char for char but
@@ -66,7 +68,7 @@ std::string processName(const Registry& reg, const Enum& e, std::string ret) {
 	// remove "Bit" from bitmask enums
 	bpos = ret.rfind("Bit");
 	if(e.bitmask && bpos != std::string::npos) {
-		ret = ret.erase(bpos, 3);
+		ret.erase(bpos, 3);
 	}
 
 	// capitalize extension prefixes
@@ -97,9 +99,21 @@ void printReqs(const Registry& reg, std::ofstream& of, const Requirements& reqs,
 		auto it = std::find(fulfilled.types.cbegin(), fulfilled.types.cend(), &enumeration);
 		if(it != fulfilled.types.cend()) continue;
 
+		if(enumeration.values.empty()) {
+			continue;
+		}
+
 		ensureGuard(of, guardVar, guard);
 
-		of << "inline const char* name(" << enumeration.name << " val) {\n";
+		std::string funcName = "name";
+
+		if(enumeration.bitwidth == 64) {
+			auto n = enumeration.name;
+			removeVkPrefixInPlace(n);
+			funcName += n;
+		}
+
+		of << "inline const char* " << funcName << "(" << enumeration.name << " val) {\n";
 		of << "\tswitch(val) {\n";
 		std::unordered_set<std::int32_t> alreadyVals {};
 		for(auto& value : enumeration.values) {
@@ -141,9 +155,32 @@ void printReqs(const Registry& reg, std::ofstream& of, const Requirements& reqs,
 			continue;
 		}
 
+		if(bitmask.bits->values.empty()) {
+			continue;
+		}
+
 		ensureGuard(of, guardVar, guard);
 
-		of << "inline std::string flagNames(" << bitmask.bits->name;
+		// overloading doesn't work here
+
+#if 0
+		std::string funcName = "flagNames";
+
+		if(bitmask.bits->bitwidth == 64) {
+			auto n = bitmask.name;
+			removeVkPrefixInPlace(n);
+			funcName += n;
+		}
+
+		of << "inline std::string " << funcName << "(" << bitmask.bits->name;
+#else
+		std::string funcName = "name";
+		auto n = bitmask.name;
+		removeVkPrefixInPlace(n);
+		funcName += n;
+
+		of << "inline std::string " << funcName << "(" << bitmask.name;
+#endif
 
 		auto& enumeration = *bitmask.bits;
 		if(!enumeration.values.empty()) {
@@ -205,6 +242,7 @@ int main(int argc, const char** argv) {
 		const char* name;
 		bool forceDispatch;
 	} features[] = {
+		{"VK_VERSION_1_3", true},
 		{"VK_VERSION_1_2", true},
 		{"VK_VERSION_1_1", true},
 		{"VK_VERSION_1_0", false},

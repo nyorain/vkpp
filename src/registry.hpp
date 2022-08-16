@@ -60,6 +60,7 @@ class Enum : public Type {
 public:
 	std::vector<std::pair<std::string, std::int64_t>> values;
 	bool bitmask {}; /// Whether the enum is a bitmask type.
+	unsigned bitwidth {32};
 
 public:
 	Enum() = default;
