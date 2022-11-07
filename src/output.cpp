@@ -127,9 +127,16 @@ void CCOutputGenerator::generate() {
 		const char* name;
 		bool forceDispatch;
 	} features[] = {
+		{"VK_VERSION_1_3", true},
 		{"VK_VERSION_1_2", true},
 		{"VK_VERSION_1_1", true},
 		{"VK_VERSION_1_0", false},
+	};
+
+	std::unordered_set<std::string> avoidExts = {
+		"VK_NV_external_memory_rdma",
+		"VK_EXT_global_priority_query",
+		"VK_EXT_global_priority",
 	};
 
 	for(auto f : features) {
@@ -147,6 +154,8 @@ void CCOutputGenerator::generate() {
 
 		// output extensions
 		for(auto& ext : feature.extensions) {
+			if(avoidExts.count(ext->name)) continue;
+
 			auto guard = ext->platform ? ext->platform->protect : "";
 			printReqs(ext->reqs, fulfilled, guard, true);
 			fulfilled.add(ext->reqs);
@@ -155,6 +164,8 @@ void CCOutputGenerator::generate() {
 
 	// TODO: other extensions
 	for(auto& ext : registry().extensions) {
+		if(avoidExts.count(ext.name)) continue;
+
 		auto& reqs = ext.reqs;
 		auto guard = ext.platform ? ext.platform->protect : "";
 		printReqs(reqs, fulfilled, guard, true);
@@ -325,10 +336,18 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 		ensureGuard(enums_, enumGuard, guard);
 		ensureGuard(enumNames_, nameGuard, guard);
 
-		fwd_ << "enum class " << name << " : int32_t;\n";
+		auto type = "int32_t";
+		auto shiftBase = "1";
+
+		if(enumeration.bitwidth == 64) {
+			type = "int64_t";
+			shiftBase = "int64_t(1)";
+		}
+
+		fwd_ << "enum class " << name << " : " << type << ";\n";
 
 		// output enum values
-		enums_ << "enum class " << name << " : int32_t {\n";
+		enums_ << "enum class " << name << " : " << type << " {\n";
 		std::unordered_set<std::string> already {};
 		auto sepr = "";
 		for(auto& value : enumeration.values) {
@@ -340,7 +359,7 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 			}
 
 			enums_ << sepr << "\t" << n << " = ";
-			if(bit) enums_ << "(1 << " << value.second << ")";
+			if(bit) enums_ << "(" << shiftBase << " << " << value.second << ")";
 			else enums_ << value.second;
 			sepr = ",\n";
 		}

@@ -12,7 +12,7 @@
 #include <vkpp/structs.hpp>
 #include <vkpp/flags.hpp>
 
-// Generated for vulkan version: 1.1.168
+// Generated for vulkan version: 1.1.204
 
 namespace vk {
 
@@ -44,6 +44,80 @@ public:
 	void init(Device);
 
 public:
+	PFN_vkGetPhysicalDeviceToolProperties vkGetPhysicalDeviceToolProperties {};
+	PFN_vkGetPhysicalDeviceToolPropertiesEXT vkGetPhysicalDeviceToolPropertiesEXT {};
+	PFN_vkCreatePrivateDataSlot vkCreatePrivateDataSlot {};
+	PFN_vkCreatePrivateDataSlotEXT vkCreatePrivateDataSlotEXT {};
+	PFN_vkDestroyPrivateDataSlot vkDestroyPrivateDataSlot {};
+	PFN_vkDestroyPrivateDataSlotEXT vkDestroyPrivateDataSlotEXT {};
+	PFN_vkSetPrivateData vkSetPrivateData {};
+	PFN_vkSetPrivateDataEXT vkSetPrivateDataEXT {};
+	PFN_vkGetPrivateData vkGetPrivateData {};
+	PFN_vkGetPrivateDataEXT vkGetPrivateDataEXT {};
+	PFN_vkCmdSetEvent2 vkCmdSetEvent2 {};
+	PFN_vkCmdSetEvent2KHR vkCmdSetEvent2KHR {};
+	PFN_vkCmdResetEvent2 vkCmdResetEvent2 {};
+	PFN_vkCmdResetEvent2KHR vkCmdResetEvent2KHR {};
+	PFN_vkCmdWaitEvents2 vkCmdWaitEvents2 {};
+	PFN_vkCmdWaitEvents2KHR vkCmdWaitEvents2KHR {};
+	PFN_vkCmdPipelineBarrier2 vkCmdPipelineBarrier2 {};
+	PFN_vkCmdPipelineBarrier2KHR vkCmdPipelineBarrier2KHR {};
+	PFN_vkCmdWriteTimestamp2 vkCmdWriteTimestamp2 {};
+	PFN_vkCmdWriteTimestamp2KHR vkCmdWriteTimestamp2KHR {};
+	PFN_vkQueueSubmit2 vkQueueSubmit2 {};
+	PFN_vkQueueSubmit2KHR vkQueueSubmit2KHR {};
+	PFN_vkCmdCopyBuffer2 vkCmdCopyBuffer2 {};
+	PFN_vkCmdCopyBuffer2KHR vkCmdCopyBuffer2KHR {};
+	PFN_vkCmdCopyImage2 vkCmdCopyImage2 {};
+	PFN_vkCmdCopyImage2KHR vkCmdCopyImage2KHR {};
+	PFN_vkCmdCopyBufferToImage2 vkCmdCopyBufferToImage2 {};
+	PFN_vkCmdCopyBufferToImage2KHR vkCmdCopyBufferToImage2KHR {};
+	PFN_vkCmdCopyImageToBuffer2 vkCmdCopyImageToBuffer2 {};
+	PFN_vkCmdCopyImageToBuffer2KHR vkCmdCopyImageToBuffer2KHR {};
+	PFN_vkCmdBlitImage2 vkCmdBlitImage2 {};
+	PFN_vkCmdBlitImage2KHR vkCmdBlitImage2KHR {};
+	PFN_vkCmdResolveImage2 vkCmdResolveImage2 {};
+	PFN_vkCmdResolveImage2KHR vkCmdResolveImage2KHR {};
+	PFN_vkCmdBeginRendering vkCmdBeginRendering {};
+	PFN_vkCmdBeginRenderingKHR vkCmdBeginRenderingKHR {};
+	PFN_vkCmdEndRendering vkCmdEndRendering {};
+	PFN_vkCmdEndRenderingKHR vkCmdEndRenderingKHR {};
+	PFN_vkCmdSetCullMode vkCmdSetCullMode {};
+	PFN_vkCmdSetCullModeEXT vkCmdSetCullModeEXT {};
+	PFN_vkCmdSetFrontFace vkCmdSetFrontFace {};
+	PFN_vkCmdSetFrontFaceEXT vkCmdSetFrontFaceEXT {};
+	PFN_vkCmdSetPrimitiveTopology vkCmdSetPrimitiveTopology {};
+	PFN_vkCmdSetPrimitiveTopologyEXT vkCmdSetPrimitiveTopologyEXT {};
+	PFN_vkCmdSetViewportWithCount vkCmdSetViewportWithCount {};
+	PFN_vkCmdSetViewportWithCountEXT vkCmdSetViewportWithCountEXT {};
+	PFN_vkCmdSetScissorWithCount vkCmdSetScissorWithCount {};
+	PFN_vkCmdSetScissorWithCountEXT vkCmdSetScissorWithCountEXT {};
+	PFN_vkCmdBindVertexBuffers2 vkCmdBindVertexBuffers2 {};
+	PFN_vkCmdBindVertexBuffers2EXT vkCmdBindVertexBuffers2EXT {};
+	PFN_vkCmdSetDepthTestEnable vkCmdSetDepthTestEnable {};
+	PFN_vkCmdSetDepthTestEnableEXT vkCmdSetDepthTestEnableEXT {};
+	PFN_vkCmdSetDepthWriteEnable vkCmdSetDepthWriteEnable {};
+	PFN_vkCmdSetDepthWriteEnableEXT vkCmdSetDepthWriteEnableEXT {};
+	PFN_vkCmdSetDepthCompareOp vkCmdSetDepthCompareOp {};
+	PFN_vkCmdSetDepthCompareOpEXT vkCmdSetDepthCompareOpEXT {};
+	PFN_vkCmdSetDepthBoundsTestEnable vkCmdSetDepthBoundsTestEnable {};
+	PFN_vkCmdSetDepthBoundsTestEnableEXT vkCmdSetDepthBoundsTestEnableEXT {};
+	PFN_vkCmdSetStencilTestEnable vkCmdSetStencilTestEnable {};
+	PFN_vkCmdSetStencilTestEnableEXT vkCmdSetStencilTestEnableEXT {};
+	PFN_vkCmdSetStencilOp vkCmdSetStencilOp {};
+	PFN_vkCmdSetStencilOpEXT vkCmdSetStencilOpEXT {};
+	PFN_vkCmdSetRasterizerDiscardEnable vkCmdSetRasterizerDiscardEnable {};
+	PFN_vkCmdSetRasterizerDiscardEnableEXT vkCmdSetRasterizerDiscardEnableEXT {};
+	PFN_vkCmdSetDepthBiasEnable vkCmdSetDepthBiasEnable {};
+	PFN_vkCmdSetDepthBiasEnableEXT vkCmdSetDepthBiasEnableEXT {};
+	PFN_vkCmdSetPrimitiveRestartEnable vkCmdSetPrimitiveRestartEnable {};
+	PFN_vkCmdSetPrimitiveRestartEnableEXT vkCmdSetPrimitiveRestartEnableEXT {};
+	PFN_vkGetDeviceBufferMemoryRequirements vkGetDeviceBufferMemoryRequirements {};
+	PFN_vkGetDeviceBufferMemoryRequirementsKHR vkGetDeviceBufferMemoryRequirementsKHR {};
+	PFN_vkGetDeviceImageMemoryRequirements vkGetDeviceImageMemoryRequirements {};
+	PFN_vkGetDeviceImageMemoryRequirementsKHR vkGetDeviceImageMemoryRequirementsKHR {};
+	PFN_vkGetDeviceImageSparseMemoryRequirements vkGetDeviceImageSparseMemoryRequirements {};
+	PFN_vkGetDeviceImageSparseMemoryRequirementsKHR vkGetDeviceImageSparseMemoryRequirementsKHR {};
 	PFN_vkCmdDrawIndirectCount vkCmdDrawIndirectCount {};
 	PFN_vkCmdDrawIndirectCountKHR vkCmdDrawIndirectCountKHR {};
 	PFN_vkCmdDrawIndirectCountAMD vkCmdDrawIndirectCountAMD {};
@@ -412,23 +486,11 @@ public:
 	PFN_vkSetLocalDimmingAMD vkSetLocalDimmingAMD {};
 	PFN_vkGetPhysicalDeviceFragmentShadingRatesKHR vkGetPhysicalDeviceFragmentShadingRatesKHR {};
 	PFN_vkCmdSetFragmentShadingRateKHR vkCmdSetFragmentShadingRateKHR {};
-	PFN_vkGetPhysicalDeviceToolPropertiesEXT vkGetPhysicalDeviceToolPropertiesEXT {};
+	PFN_vkWaitForPresentKHR vkWaitForPresentKHR {};
 	PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV vkGetPhysicalDeviceCooperativeMatrixPropertiesNV {};
 	PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV {};
 	PFN_vkCreateHeadlessSurfaceEXT vkCreateHeadlessSurfaceEXT {};
 	PFN_vkCmdSetLineStippleEXT vkCmdSetLineStippleEXT {};
-	PFN_vkCmdSetCullModeEXT vkCmdSetCullModeEXT {};
-	PFN_vkCmdSetFrontFaceEXT vkCmdSetFrontFaceEXT {};
-	PFN_vkCmdSetPrimitiveTopologyEXT vkCmdSetPrimitiveTopologyEXT {};
-	PFN_vkCmdSetViewportWithCountEXT vkCmdSetViewportWithCountEXT {};
-	PFN_vkCmdSetScissorWithCountEXT vkCmdSetScissorWithCountEXT {};
-	PFN_vkCmdBindVertexBuffers2EXT vkCmdBindVertexBuffers2EXT {};
-	PFN_vkCmdSetDepthTestEnableEXT vkCmdSetDepthTestEnableEXT {};
-	PFN_vkCmdSetDepthWriteEnableEXT vkCmdSetDepthWriteEnableEXT {};
-	PFN_vkCmdSetDepthCompareOpEXT vkCmdSetDepthCompareOpEXT {};
-	PFN_vkCmdSetDepthBoundsTestEnableEXT vkCmdSetDepthBoundsTestEnableEXT {};
-	PFN_vkCmdSetStencilTestEnableEXT vkCmdSetStencilTestEnableEXT {};
-	PFN_vkCmdSetStencilOpEXT vkCmdSetStencilOpEXT {};
 	PFN_vkCreateDeferredOperationKHR vkCreateDeferredOperationKHR {};
 	PFN_vkDestroyDeferredOperationKHR vkDestroyDeferredOperationKHR {};
 	PFN_vkGetDeferredOperationMaxConcurrencyKHR vkGetDeferredOperationMaxConcurrencyKHR {};
@@ -443,17 +505,21 @@ public:
 	PFN_vkCmdBindPipelineShaderGroupNV vkCmdBindPipelineShaderGroupNV {};
 	PFN_vkCreateIndirectCommandsLayoutNV vkCreateIndirectCommandsLayoutNV {};
 	PFN_vkDestroyIndirectCommandsLayoutNV vkDestroyIndirectCommandsLayoutNV {};
-	PFN_vkCreatePrivateDataSlotEXT vkCreatePrivateDataSlotEXT {};
-	PFN_vkDestroyPrivateDataSlotEXT vkDestroyPrivateDataSlotEXT {};
-	PFN_vkSetPrivateDataEXT vkSetPrivateDataEXT {};
-	PFN_vkGetPrivateDataEXT vkGetPrivateDataEXT {};
+	PFN_vkAcquireDrmDisplayEXT vkAcquireDrmDisplayEXT {};
+	PFN_vkGetDrmDisplayEXT vkGetDrmDisplayEXT {};
+	PFN_vkCmdWriteBufferMarker2AMD vkCmdWriteBufferMarker2AMD {};
+	PFN_vkGetQueueCheckpointData2NV vkGetQueueCheckpointData2NV {};
 	PFN_vkCmdSetFragmentShadingRateEnumNV vkCmdSetFragmentShadingRateEnumNV {};
-	PFN_vkCmdCopyBuffer2KHR vkCmdCopyBuffer2KHR {};
-	PFN_vkCmdCopyImage2KHR vkCmdCopyImage2KHR {};
-	PFN_vkCmdCopyBufferToImage2KHR vkCmdCopyBufferToImage2KHR {};
-	PFN_vkCmdCopyImageToBuffer2KHR vkCmdCopyImageToBuffer2KHR {};
-	PFN_vkCmdBlitImage2KHR vkCmdBlitImage2KHR {};
-	PFN_vkCmdResolveImage2KHR vkCmdResolveImage2KHR {};
+	PFN_vkCmdSetVertexInputEXT vkCmdSetVertexInputEXT {};
+	PFN_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI {};
+	PFN_vkCmdSubpassShadingHUAWEI vkCmdSubpassShadingHUAWEI {};
+	PFN_vkCmdBindInvocationMaskHUAWEI vkCmdBindInvocationMaskHUAWEI {};
+	PFN_vkCmdSetPatchControlPointsEXT vkCmdSetPatchControlPointsEXT {};
+	PFN_vkCmdSetLogicOpEXT vkCmdSetLogicOpEXT {};
+	PFN_vkCmdSetColorWriteEnableEXT vkCmdSetColorWriteEnableEXT {};
+	PFN_vkCmdDrawMultiEXT vkCmdDrawMultiEXT {};
+	PFN_vkCmdDrawMultiIndexedEXT vkCmdDrawMultiIndexedEXT {};
+	PFN_vkSetDeviceMemoryPriorityEXT vkSetDeviceMemoryPriorityEXT {};
 
 
 
@@ -555,12 +621,38 @@ public:
 #endif //VK_USE_PLATFORM_DIRECTFB_EXT
 
 
+#ifdef VK_USE_PLATFORM_FUCHSIA
+	PFN_vkGetMemoryZirconHandleFUCHSIA vkGetMemoryZirconHandleFUCHSIA {};
+	PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA vkGetMemoryZirconHandlePropertiesFUCHSIA {};
+#endif //VK_USE_PLATFORM_FUCHSIA
+
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+	PFN_vkImportSemaphoreZirconHandleFUCHSIA vkImportSemaphoreZirconHandleFUCHSIA {};
+	PFN_vkGetSemaphoreZirconHandleFUCHSIA vkGetSemaphoreZirconHandleFUCHSIA {};
+#endif //VK_USE_PLATFORM_FUCHSIA
+
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+	PFN_vkCreateBufferCollectionFUCHSIA vkCreateBufferCollectionFUCHSIA {};
+	PFN_vkSetBufferCollectionImageConstraintsFUCHSIA vkSetBufferCollectionImageConstraintsFUCHSIA {};
+	PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA vkSetBufferCollectionBufferConstraintsFUCHSIA {};
+	PFN_vkDestroyBufferCollectionFUCHSIA vkDestroyBufferCollectionFUCHSIA {};
+	PFN_vkGetBufferCollectionPropertiesFUCHSIA vkGetBufferCollectionPropertiesFUCHSIA {};
+#endif //VK_USE_PLATFORM_FUCHSIA
+
+
+#ifdef VK_USE_PLATFORM_SCREEN_QNX
+	PFN_vkCreateScreenSurfaceQNX vkCreateScreenSurfaceQNX {};
+	PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX vkGetPhysicalDeviceScreenPresentationSupportQNX {};
+#endif //VK_USE_PLATFORM_SCREEN_QNX
+
+
 };
 
 } // namespace vk
 // The specification (vk.xml) itself is published under the following license:
 
-// Copyright (c) 2015-2020 The Khronos Group Inc.
-// 
+// Copyright 2015-2022 The Khronos Group Inc.
 // SPDX-License-Identifier: Apache-2.0 OR MIT
     

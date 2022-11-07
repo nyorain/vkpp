@@ -11,7 +11,7 @@
 #include <vkpp/enums.hpp>
 #include <string>
 
-// Generated for vulkan version: 1.1.168
+// Generated for vulkan version: 1.1.204
 
 namespace vk {
 
@@ -183,6 +183,58 @@ inline const char* name(StructureType val) {
 		case StructureType::bufferOpaqueCaptureAddressCreateInfo: return "bufferOpaqueCaptureAddressCreateInfo";
 		case StructureType::memoryOpaqueCaptureAddressAllocateInfo: return "memoryOpaqueCaptureAddressAllocateInfo";
 		case StructureType::deviceMemoryOpaqueCaptureAddressInfo: return "deviceMemoryOpaqueCaptureAddressInfo";
+		case StructureType::physicalDeviceVulkan13Features: return "physicalDeviceVulkan13Features";
+		case StructureType::physicalDeviceVulkan13Properties: return "physicalDeviceVulkan13Properties";
+		case StructureType::pipelineCreationFeedbackCreateInfo: return "pipelineCreationFeedbackCreateInfo";
+		case StructureType::physicalDeviceShaderTerminateInvocationFeatures: return "physicalDeviceShaderTerminateInvocationFeatures";
+		case StructureType::physicalDeviceToolProperties: return "physicalDeviceToolProperties";
+		case StructureType::physicalDeviceShaderDemoteToHelperInvocationFeatures: return "physicalDeviceShaderDemoteToHelperInvocationFeatures";
+		case StructureType::physicalDevicePrivateDataFeatures: return "physicalDevicePrivateDataFeatures";
+		case StructureType::devicePrivateDataCreateInfo: return "devicePrivateDataCreateInfo";
+		case StructureType::privateDataSlotCreateInfo: return "privateDataSlotCreateInfo";
+		case StructureType::physicalDevicePipelineCreationCacheControlFeatures: return "physicalDevicePipelineCreationCacheControlFeatures";
+		case StructureType::memoryBarrier2: return "memoryBarrier2";
+		case StructureType::bufferMemoryBarrier2: return "bufferMemoryBarrier2";
+		case StructureType::imageMemoryBarrier2: return "imageMemoryBarrier2";
+		case StructureType::dependencyInfo: return "dependencyInfo";
+		case StructureType::submitInfo2: return "submitInfo2";
+		case StructureType::semaphoreSubmitInfo: return "semaphoreSubmitInfo";
+		case StructureType::commandBufferSubmitInfo: return "commandBufferSubmitInfo";
+		case StructureType::physicalDeviceSynchronization2Features: return "physicalDeviceSynchronization2Features";
+		case StructureType::physicalDeviceZeroInitializeWorkgroupMemoryFeatures: return "physicalDeviceZeroInitializeWorkgroupMemoryFeatures";
+		case StructureType::physicalDeviceImageRobustnessFeatures: return "physicalDeviceImageRobustnessFeatures";
+		case StructureType::copyBufferInfo2: return "copyBufferInfo2";
+		case StructureType::copyImageInfo2: return "copyImageInfo2";
+		case StructureType::copyBufferToImageInfo2: return "copyBufferToImageInfo2";
+		case StructureType::copyImageToBufferInfo2: return "copyImageToBufferInfo2";
+		case StructureType::blitImageInfo2: return "blitImageInfo2";
+		case StructureType::resolveImageInfo2: return "resolveImageInfo2";
+		case StructureType::bufferCopy2: return "bufferCopy2";
+		case StructureType::imageCopy2: return "imageCopy2";
+		case StructureType::imageBlit2: return "imageBlit2";
+		case StructureType::bufferImageCopy2: return "bufferImageCopy2";
+		case StructureType::imageResolve2: return "imageResolve2";
+		case StructureType::physicalDeviceSubgroupSizeControlProperties: return "physicalDeviceSubgroupSizeControlProperties";
+		case StructureType::pipelineShaderStageRequiredSubgroupSizeCreateInfo: return "pipelineShaderStageRequiredSubgroupSizeCreateInfo";
+		case StructureType::physicalDeviceSubgroupSizeControlFeatures: return "physicalDeviceSubgroupSizeControlFeatures";
+		case StructureType::physicalDeviceInlineUniformBlockFeatures: return "physicalDeviceInlineUniformBlockFeatures";
+		case StructureType::physicalDeviceInlineUniformBlockProperties: return "physicalDeviceInlineUniformBlockProperties";
+		case StructureType::writeDescriptorSetInlineUniformBlock: return "writeDescriptorSetInlineUniformBlock";
+		case StructureType::descriptorPoolInlineUniformBlockCreateInfo: return "descriptorPoolInlineUniformBlockCreateInfo";
+		case StructureType::physicalDeviceTextureCompressionAstcHdrFeatures: return "physicalDeviceTextureCompressionAstcHdrFeatures";
+		case StructureType::renderingInfo: return "renderingInfo";
+		case StructureType::renderingAttachmentInfo: return "renderingAttachmentInfo";
+		case StructureType::pipelineRenderingCreateInfo: return "pipelineRenderingCreateInfo";
+		case StructureType::physicalDeviceDynamicRenderingFeatures: return "physicalDeviceDynamicRenderingFeatures";
+		case StructureType::commandBufferInheritanceRenderingInfo: return "commandBufferInheritanceRenderingInfo";
+		case StructureType::physicalDeviceShaderIntegerDotProductFeatures: return "physicalDeviceShaderIntegerDotProductFeatures";
+		case StructureType::physicalDeviceShaderIntegerDotProductProperties: return "physicalDeviceShaderIntegerDotProductProperties";
+		case StructureType::physicalDeviceTexelBufferAlignmentProperties: return "physicalDeviceTexelBufferAlignmentProperties";
+		case StructureType::formatProperties3: return "formatProperties3";
+		case StructureType::physicalDeviceMaintenance4Features: return "physicalDeviceMaintenance4Features";
+		case StructureType::physicalDeviceMaintenance4Properties: return "physicalDeviceMaintenance4Properties";
+		case StructureType::deviceBufferMemoryRequirements: return "deviceBufferMemoryRequirements";
+		case StructureType::deviceImageMemoryRequirements: return "deviceImageMemoryRequirements";
 		case StructureType::swapchainCreateInfoKHR: return "swapchainCreateInfoKHR";
 		case StructureType::presentInfoKHR: return "presentInfoKHR";
 		case StructureType::deviceGroupPresentCapabilitiesKHR: return "deviceGroupPresentCapabilitiesKHR";
@@ -210,6 +262,10 @@ inline const char* name(StructureType val) {
 		case StructureType::physicalDeviceTransformFeedbackPropertiesEXT: return "physicalDeviceTransformFeedbackPropertiesEXT";
 		case StructureType::pipelineRasterizationStateStreamCreateInfoEXT: return "pipelineRasterizationStateStreamCreateInfoEXT";
 		case StructureType::textureLodGatherFormatPropertiesAMD: return "textureLodGatherFormatPropertiesAMD";
+		case StructureType::renderingFragmentShadingRateAttachmentInfoKHR: return "renderingFragmentShadingRateAttachmentInfoKHR";
+		case StructureType::renderingFragmentDensityMapAttachmentInfoEXT: return "renderingFragmentDensityMapAttachmentInfoEXT";
+		case StructureType::attachmentSampleCountInfoAMD: return "attachmentSampleCountInfoAMD";
+		case StructureType::multiviewPerViewAttributesInfoNVX: return "multiviewPerViewAttributesInfoNVX";
 		case StructureType::streamDescriptorSurfaceCreateInfoGGP: return "streamDescriptorSurfaceCreateInfoGGP";
 		case StructureType::physicalDeviceCornerSampledImageFeaturesNV: return "physicalDeviceCornerSampledImageFeaturesNV";
 		case StructureType::externalMemoryImageCreateInfoNV: return "externalMemoryImageCreateInfoNV";
@@ -219,7 +275,6 @@ inline const char* name(StructureType val) {
 		case StructureType::win32KeyedMutexAcquireReleaseInfoNV: return "win32KeyedMutexAcquireReleaseInfoNV";
 		case StructureType::validationFlagsEXT: return "validationFlagsEXT";
 		case StructureType::viSurfaceCreateInfoNN: return "viSurfaceCreateInfoNN";
-		case StructureType::physicalDeviceTextureCompressionAstcHdrFeaturesEXT: return "physicalDeviceTextureCompressionAstcHdrFeaturesEXT";
 		case StructureType::imageViewAstcDecodeModeEXT: return "imageViewAstcDecodeModeEXT";
 		case StructureType::physicalDeviceAstcDecodeFeaturesEXT: return "physicalDeviceAstcDecodeFeaturesEXT";
 		case StructureType::importMemoryWin32HandleInfoKHR: return "importMemoryWin32HandleInfoKHR";
@@ -284,10 +339,6 @@ inline const char* name(StructureType val) {
 		case StructureType::debugUtilsLabelEXT: return "debugUtilsLabelEXT";
 		case StructureType::debugUtilsMessengerCallbackDataEXT: return "debugUtilsMessengerCallbackDataEXT";
 		case StructureType::debugUtilsMessengerCreateInfoEXT: return "debugUtilsMessengerCreateInfoEXT";
-		case StructureType::physicalDeviceInlineUniformBlockFeaturesEXT: return "physicalDeviceInlineUniformBlockFeaturesEXT";
-		case StructureType::physicalDeviceInlineUniformBlockPropertiesEXT: return "physicalDeviceInlineUniformBlockPropertiesEXT";
-		case StructureType::writeDescriptorSetInlineUniformBlockEXT: return "writeDescriptorSetInlineUniformBlockEXT";
-		case StructureType::descriptorPoolInlineUniformBlockCreateInfoEXT: return "descriptorPoolInlineUniformBlockCreateInfoEXT";
 		case StructureType::sampleLocationsInfoEXT: return "sampleLocationsInfoEXT";
 		case StructureType::renderPassSampleLocationsBeginInfoEXT: return "renderPassSampleLocationsBeginInfoEXT";
 		case StructureType::pipelineSampleLocationsStateCreateInfoEXT: return "pipelineSampleLocationsStateCreateInfoEXT";
@@ -326,10 +377,9 @@ inline const char* name(StructureType val) {
 		case StructureType::imageDrmFormatModifierListCreateInfoEXT: return "imageDrmFormatModifierListCreateInfoEXT";
 		case StructureType::imageDrmFormatModifierExplicitCreateInfoEXT: return "imageDrmFormatModifierExplicitCreateInfoEXT";
 		case StructureType::imageDrmFormatModifierPropertiesEXT: return "imageDrmFormatModifierPropertiesEXT";
+		case StructureType::drmFormatModifierPropertiesList2EXT: return "drmFormatModifierPropertiesList2EXT";
 		case StructureType::validationCacheCreateInfoEXT: return "validationCacheCreateInfoEXT";
 		case StructureType::shaderModuleValidationCacheCreateInfoEXT: return "shaderModuleValidationCacheCreateInfoEXT";
-		case StructureType::physicalDevicePortabilitySubsetFeaturesKHR: return "physicalDevicePortabilitySubsetFeaturesKHR";
-		case StructureType::physicalDevicePortabilitySubsetPropertiesKHR: return "physicalDevicePortabilitySubsetPropertiesKHR";
 		case StructureType::pipelineViewportShadingRateImageStateCreateInfoNV: return "pipelineViewportShadingRateImageStateCreateInfoNV";
 		case StructureType::physicalDeviceShadingRateImageFeaturesNV: return "physicalDeviceShadingRateImageFeaturesNV";
 		case StructureType::physicalDeviceShadingRateImagePropertiesNV: return "physicalDeviceShadingRateImagePropertiesNV";
@@ -349,7 +399,6 @@ inline const char* name(StructureType val) {
 		case StructureType::pipelineRepresentativeFragmentTestStateCreateInfoNV: return "pipelineRepresentativeFragmentTestStateCreateInfoNV";
 		case StructureType::physicalDeviceImageViewImageFormatInfoEXT: return "physicalDeviceImageViewImageFormatInfoEXT";
 		case StructureType::filterCubicImageViewImageFormatPropertiesEXT: return "filterCubicImageViewImageFormatPropertiesEXT";
-		case StructureType::deviceQueueGlobalPriorityCreateInfoEXT: return "deviceQueueGlobalPriorityCreateInfoEXT";
 		case StructureType::importMemoryHostPointerInfoEXT: return "importMemoryHostPointerInfoEXT";
 		case StructureType::memoryHostPointerPropertiesEXT: return "memoryHostPointerPropertiesEXT";
 		case StructureType::physicalDeviceExternalMemoryHostPropertiesEXT: return "physicalDeviceExternalMemoryHostPropertiesEXT";
@@ -357,12 +406,14 @@ inline const char* name(StructureType val) {
 		case StructureType::pipelineCompilerControlCreateInfoAMD: return "pipelineCompilerControlCreateInfoAMD";
 		case StructureType::calibratedTimestampInfoEXT: return "calibratedTimestampInfoEXT";
 		case StructureType::physicalDeviceShaderCorePropertiesAMD: return "physicalDeviceShaderCorePropertiesAMD";
+		case StructureType::deviceQueueGlobalPriorityCreateInfoKHR: return "deviceQueueGlobalPriorityCreateInfoKHR";
+		case StructureType::physicalDeviceGlobalPriorityQueryFeaturesKHR: return "physicalDeviceGlobalPriorityQueryFeaturesKHR";
+		case StructureType::queueFamilyGlobalPriorityPropertiesKHR: return "queueFamilyGlobalPriorityPropertiesKHR";
 		case StructureType::deviceMemoryOverallocationCreateInfoAMD: return "deviceMemoryOverallocationCreateInfoAMD";
 		case StructureType::physicalDeviceVertexAttributeDivisorPropertiesEXT: return "physicalDeviceVertexAttributeDivisorPropertiesEXT";
 		case StructureType::pipelineVertexInputDivisorStateCreateInfoEXT: return "pipelineVertexInputDivisorStateCreateInfoEXT";
 		case StructureType::physicalDeviceVertexAttributeDivisorFeaturesEXT: return "physicalDeviceVertexAttributeDivisorFeaturesEXT";
 		case StructureType::presentFrameTokenGGP: return "presentFrameTokenGGP";
-		case StructureType::pipelineCreationFeedbackCreateInfoEXT: return "pipelineCreationFeedbackCreateInfoEXT";
 		case StructureType::physicalDeviceComputeShaderDerivativesFeaturesNV: return "physicalDeviceComputeShaderDerivativesFeaturesNV";
 		case StructureType::physicalDeviceMeshShaderFeaturesNV: return "physicalDeviceMeshShaderFeaturesNV";
 		case StructureType::physicalDeviceMeshShaderPropertiesNV: return "physicalDeviceMeshShaderPropertiesNV";
@@ -383,13 +434,9 @@ inline const char* name(StructureType val) {
 		case StructureType::displayNativeHdrSurfaceCapabilitiesAMD: return "displayNativeHdrSurfaceCapabilitiesAMD";
 		case StructureType::swapchainDisplayNativeHdrCreateInfoAMD: return "swapchainDisplayNativeHdrCreateInfoAMD";
 		case StructureType::imagepipeSurfaceCreateInfoFUCHSIA: return "imagepipeSurfaceCreateInfoFUCHSIA";
-		case StructureType::physicalDeviceShaderTerminateInvocationFeaturesKHR: return "physicalDeviceShaderTerminateInvocationFeaturesKHR";
 		case StructureType::physicalDeviceFragmentDensityMapFeaturesEXT: return "physicalDeviceFragmentDensityMapFeaturesEXT";
 		case StructureType::physicalDeviceFragmentDensityMapPropertiesEXT: return "physicalDeviceFragmentDensityMapPropertiesEXT";
 		case StructureType::renderPassFragmentDensityMapCreateInfoEXT: return "renderPassFragmentDensityMapCreateInfoEXT";
-		case StructureType::physicalDeviceSubgroupSizeControlPropertiesEXT: return "physicalDeviceSubgroupSizeControlPropertiesEXT";
-		case StructureType::pipelineShaderStageRequiredSubgroupSizeCreateInfoEXT: return "pipelineShaderStageRequiredSubgroupSizeCreateInfoEXT";
-		case StructureType::physicalDeviceSubgroupSizeControlFeaturesEXT: return "physicalDeviceSubgroupSizeControlFeaturesEXT";
 		case StructureType::fragmentShadingRateAttachmentInfoKHR: return "fragmentShadingRateAttachmentInfoKHR";
 		case StructureType::pipelineFragmentShadingRateStateCreateInfoKHR: return "pipelineFragmentShadingRateStateCreateInfoKHR";
 		case StructureType::physicalDeviceFragmentShadingRatePropertiesKHR: return "physicalDeviceFragmentShadingRatePropertiesKHR";
@@ -405,8 +452,8 @@ inline const char* name(StructureType val) {
 		case StructureType::physicalDeviceDedicatedAllocationImageAliasingFeaturesNV: return "physicalDeviceDedicatedAllocationImageAliasingFeaturesNV";
 		case StructureType::physicalDeviceBufferDeviceAddressFeaturesEXT: return "physicalDeviceBufferDeviceAddressFeaturesEXT";
 		case StructureType::bufferDeviceAddressCreateInfoEXT: return "bufferDeviceAddressCreateInfoEXT";
-		case StructureType::physicalDeviceToolPropertiesEXT: return "physicalDeviceToolPropertiesEXT";
 		case StructureType::validationFeaturesEXT: return "validationFeaturesEXT";
+		case StructureType::physicalDevicePresentWaitFeaturesKHR: return "physicalDevicePresentWaitFeaturesKHR";
 		case StructureType::physicalDeviceCooperativeMatrixFeaturesNV: return "physicalDeviceCooperativeMatrixFeaturesNV";
 		case StructureType::cooperativeMatrixPropertiesNV: return "cooperativeMatrixPropertiesNV";
 		case StructureType::physicalDeviceCooperativeMatrixPropertiesNV: return "physicalDeviceCooperativeMatrixPropertiesNV";
@@ -415,6 +462,9 @@ inline const char* name(StructureType val) {
 		case StructureType::framebufferMixedSamplesCombinationNV: return "framebufferMixedSamplesCombinationNV";
 		case StructureType::physicalDeviceFragmentShaderInterlockFeaturesEXT: return "physicalDeviceFragmentShaderInterlockFeaturesEXT";
 		case StructureType::physicalDeviceYcbcrImageArraysFeaturesEXT: return "physicalDeviceYcbcrImageArraysFeaturesEXT";
+		case StructureType::physicalDeviceProvokingVertexFeaturesEXT: return "physicalDeviceProvokingVertexFeaturesEXT";
+		case StructureType::pipelineRasterizationProvokingVertexStateCreateInfoEXT: return "pipelineRasterizationProvokingVertexStateCreateInfoEXT";
+		case StructureType::physicalDeviceProvokingVertexPropertiesEXT: return "physicalDeviceProvokingVertexPropertiesEXT";
 		case StructureType::surfaceFullScreenExclusiveInfoEXT: return "surfaceFullScreenExclusiveInfoEXT";
 		case StructureType::surfaceCapabilitiesFullScreenExclusiveEXT: return "surfaceCapabilitiesFullScreenExclusiveEXT";
 		case StructureType::surfaceFullScreenExclusiveWin32InfoEXT: return "surfaceFullScreenExclusiveWin32InfoEXT";
@@ -431,7 +481,7 @@ inline const char* name(StructureType val) {
 		case StructureType::pipelineExecutableInfoKHR: return "pipelineExecutableInfoKHR";
 		case StructureType::pipelineExecutableStatisticKHR: return "pipelineExecutableStatisticKHR";
 		case StructureType::pipelineExecutableInternalRepresentationKHR: return "pipelineExecutableInternalRepresentationKHR";
-		case StructureType::physicalDeviceShaderDemoteToHelperInvocationFeaturesEXT: return "physicalDeviceShaderDemoteToHelperInvocationFeaturesEXT";
+		case StructureType::physicalDeviceShaderAtomicFloat2FeaturesEXT: return "physicalDeviceShaderAtomicFloat2FeaturesEXT";
 		case StructureType::physicalDeviceDeviceGeneratedCommandsPropertiesNV: return "physicalDeviceDeviceGeneratedCommandsPropertiesNV";
 		case StructureType::graphicsShaderGroupCreateInfoNV: return "graphicsShaderGroupCreateInfoNV";
 		case StructureType::graphicsPipelineShaderGroupsCreateInfoNV: return "graphicsPipelineShaderGroupsCreateInfoNV";
@@ -440,8 +490,9 @@ inline const char* name(StructureType val) {
 		case StructureType::generatedCommandsInfoNV: return "generatedCommandsInfoNV";
 		case StructureType::generatedCommandsMemoryRequirementsInfoNV: return "generatedCommandsMemoryRequirementsInfoNV";
 		case StructureType::physicalDeviceDeviceGeneratedCommandsFeaturesNV: return "physicalDeviceDeviceGeneratedCommandsFeaturesNV";
+		case StructureType::physicalDeviceInheritedViewportScissorFeaturesNV: return "physicalDeviceInheritedViewportScissorFeaturesNV";
+		case StructureType::commandBufferInheritanceViewportScissorInfoNV: return "commandBufferInheritanceViewportScissorInfoNV";
 		case StructureType::physicalDeviceTexelBufferAlignmentFeaturesEXT: return "physicalDeviceTexelBufferAlignmentFeaturesEXT";
-		case StructureType::physicalDeviceTexelBufferAlignmentPropertiesEXT: return "physicalDeviceTexelBufferAlignmentPropertiesEXT";
 		case StructureType::commandBufferInheritanceRenderPassTransformInfoQCOM: return "commandBufferInheritanceRenderPassTransformInfoQCOM";
 		case StructureType::renderPassTransformBeginInfoQCOM: return "renderPassTransformBeginInfoQCOM";
 		case StructureType::physicalDeviceDeviceMemoryReportFeaturesEXT: return "physicalDeviceDeviceMemoryReportFeaturesEXT";
@@ -453,36 +504,73 @@ inline const char* name(StructureType val) {
 		case StructureType::physicalDeviceCustomBorderColorPropertiesEXT: return "physicalDeviceCustomBorderColorPropertiesEXT";
 		case StructureType::physicalDeviceCustomBorderColorFeaturesEXT: return "physicalDeviceCustomBorderColorFeaturesEXT";
 		case StructureType::pipelineLibraryCreateInfoKHR: return "pipelineLibraryCreateInfoKHR";
-		case StructureType::physicalDevicePrivateDataFeaturesEXT: return "physicalDevicePrivateDataFeaturesEXT";
-		case StructureType::devicePrivateDataCreateInfoEXT: return "devicePrivateDataCreateInfoEXT";
-		case StructureType::privateDataSlotCreateInfoEXT: return "privateDataSlotCreateInfoEXT";
-		case StructureType::physicalDevicePipelineCreationCacheControlFeaturesEXT: return "physicalDevicePipelineCreationCacheControlFeaturesEXT";
+		case StructureType::presentIDKHR: return "presentIDKHR";
+		case StructureType::physicalDevicePresentIDFeaturesKHR: return "physicalDevicePresentIDFeaturesKHR";
 		case StructureType::physicalDeviceDiagnosticsConfigFeaturesNV: return "physicalDeviceDiagnosticsConfigFeaturesNV";
 		case StructureType::deviceDiagnosticsConfigCreateInfoNV: return "deviceDiagnosticsConfigCreateInfoNV";
-		case StructureType::physicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR: return "physicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR";
+		case StructureType::queueFamilyCheckpointProperties2NV: return "queueFamilyCheckpointProperties2NV";
+		case StructureType::checkpointData2NV: return "checkpointData2NV";
+		case StructureType::physicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR: return "physicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR";
 		case StructureType::physicalDeviceFragmentShadingRateEnumsPropertiesNV: return "physicalDeviceFragmentShadingRateEnumsPropertiesNV";
 		case StructureType::physicalDeviceFragmentShadingRateEnumsFeaturesNV: return "physicalDeviceFragmentShadingRateEnumsFeaturesNV";
 		case StructureType::pipelineFragmentShadingRateEnumStateCreateInfoNV: return "pipelineFragmentShadingRateEnumStateCreateInfoNV";
+		case StructureType::accelerationStructureGeometryMotionTrianglesDataNV: return "accelerationStructureGeometryMotionTrianglesDataNV";
+		case StructureType::physicalDeviceRayTracingMotionBlurFeaturesNV: return "physicalDeviceRayTracingMotionBlurFeaturesNV";
+		case StructureType::accelerationStructureMotionInfoNV: return "accelerationStructureMotionInfoNV";
+		case StructureType::physicalDeviceYcbcr2Plane444FormatsFeaturesEXT: return "physicalDeviceYcbcr2Plane444FormatsFeaturesEXT";
 		case StructureType::physicalDeviceFragmentDensityMap2FeaturesEXT: return "physicalDeviceFragmentDensityMap2FeaturesEXT";
 		case StructureType::physicalDeviceFragmentDensityMap2PropertiesEXT: return "physicalDeviceFragmentDensityMap2PropertiesEXT";
 		case StructureType::copyCommandTransformInfoQCOM: return "copyCommandTransformInfoQCOM";
-		case StructureType::physicalDeviceImageRobustnessFeaturesEXT: return "physicalDeviceImageRobustnessFeaturesEXT";
 		case StructureType::physicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR: return "physicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR";
-		case StructureType::copyBufferInfo2KHR: return "copyBufferInfo2KHR";
-		case StructureType::copyImageInfo2KHR: return "copyImageInfo2KHR";
-		case StructureType::copyBufferToImageInfo2KHR: return "copyBufferToImageInfo2KHR";
-		case StructureType::copyImageToBufferInfo2KHR: return "copyImageToBufferInfo2KHR";
-		case StructureType::blitImageInfo2KHR: return "blitImageInfo2KHR";
-		case StructureType::resolveImageInfo2KHR: return "resolveImageInfo2KHR";
-		case StructureType::bufferCopy2KHR: return "bufferCopy2KHR";
-		case StructureType::imageCopy2KHR: return "imageCopy2KHR";
-		case StructureType::imageBlit2KHR: return "imageBlit2KHR";
-		case StructureType::bufferImageCopy2KHR: return "bufferImageCopy2KHR";
-		case StructureType::imageResolve2KHR: return "imageResolve2KHR";
 		case StructureType::physicalDevice4444FormatsFeaturesEXT: return "physicalDevice4444FormatsFeaturesEXT";
+		case StructureType::physicalDeviceRasterizationOrderAttachmentAccessFeaturesARM: return "physicalDeviceRasterizationOrderAttachmentAccessFeaturesARM";
+		case StructureType::physicalDeviceRgba10x6FormatsFeaturesEXT: return "physicalDeviceRgba10x6FormatsFeaturesEXT";
 		case StructureType::directfbSurfaceCreateInfoEXT: return "directfbSurfaceCreateInfoEXT";
 		case StructureType::physicalDeviceMutableDescriptorTypeFeaturesVALVE: return "physicalDeviceMutableDescriptorTypeFeaturesVALVE";
 		case StructureType::mutableDescriptorTypeCreateInfoVALVE: return "mutableDescriptorTypeCreateInfoVALVE";
+		case StructureType::physicalDeviceVertexInputDynamicStateFeaturesEXT: return "physicalDeviceVertexInputDynamicStateFeaturesEXT";
+		case StructureType::vertexInputBindingDescription2EXT: return "vertexInputBindingDescription2EXT";
+		case StructureType::vertexInputAttributeDescription2EXT: return "vertexInputAttributeDescription2EXT";
+		case StructureType::physicalDeviceDrmPropertiesEXT: return "physicalDeviceDrmPropertiesEXT";
+		case StructureType::physicalDeviceDepthClipControlFeaturesEXT: return "physicalDeviceDepthClipControlFeaturesEXT";
+		case StructureType::pipelineViewportDepthClipControlCreateInfoEXT: return "pipelineViewportDepthClipControlCreateInfoEXT";
+		case StructureType::physicalDevicePrimitiveTopologyListRestartFeaturesEXT: return "physicalDevicePrimitiveTopologyListRestartFeaturesEXT";
+		case StructureType::importMemoryZirconHandleInfoFUCHSIA: return "importMemoryZirconHandleInfoFUCHSIA";
+		case StructureType::memoryZirconHandlePropertiesFUCHSIA: return "memoryZirconHandlePropertiesFUCHSIA";
+		case StructureType::memoryGetZirconHandleInfoFUCHSIA: return "memoryGetZirconHandleInfoFUCHSIA";
+		case StructureType::importSemaphoreZirconHandleInfoFUCHSIA: return "importSemaphoreZirconHandleInfoFUCHSIA";
+		case StructureType::semaphoreGetZirconHandleInfoFUCHSIA: return "semaphoreGetZirconHandleInfoFUCHSIA";
+		case StructureType::bufferCollectionCreateInfoFUCHSIA: return "bufferCollectionCreateInfoFUCHSIA";
+		case StructureType::importMemoryBufferCollectionFUCHSIA: return "importMemoryBufferCollectionFUCHSIA";
+		case StructureType::bufferCollectionImageCreateInfoFUCHSIA: return "bufferCollectionImageCreateInfoFUCHSIA";
+		case StructureType::bufferCollectionPropertiesFUCHSIA: return "bufferCollectionPropertiesFUCHSIA";
+		case StructureType::bufferConstraintsInfoFUCHSIA: return "bufferConstraintsInfoFUCHSIA";
+		case StructureType::bufferCollectionBufferCreateInfoFUCHSIA: return "bufferCollectionBufferCreateInfoFUCHSIA";
+		case StructureType::imageConstraintsInfoFUCHSIA: return "imageConstraintsInfoFUCHSIA";
+		case StructureType::imageFormatConstraintsInfoFUCHSIA: return "imageFormatConstraintsInfoFUCHSIA";
+		case StructureType::sysmemColorSpaceFUCHSIA: return "sysmemColorSpaceFUCHSIA";
+		case StructureType::bufferCollectionConstraintsInfoFUCHSIA: return "bufferCollectionConstraintsInfoFUCHSIA";
+		case StructureType::subpassShadingPipelineCreateInfoHUAWEI: return "subpassShadingPipelineCreateInfoHUAWEI";
+		case StructureType::physicalDeviceSubpassShadingFeaturesHUAWEI: return "physicalDeviceSubpassShadingFeaturesHUAWEI";
+		case StructureType::physicalDeviceSubpassShadingPropertiesHUAWEI: return "physicalDeviceSubpassShadingPropertiesHUAWEI";
+		case StructureType::physicalDeviceInvocationMaskFeaturesHUAWEI: return "physicalDeviceInvocationMaskFeaturesHUAWEI";
+		case StructureType::memoryGetRemoteAddressInfoNV: return "memoryGetRemoteAddressInfoNV";
+		case StructureType::physicalDeviceExternalMemoryRdmaFeaturesNV: return "physicalDeviceExternalMemoryRdmaFeaturesNV";
+		case StructureType::physicalDeviceExtendedDynamicState2FeaturesEXT: return "physicalDeviceExtendedDynamicState2FeaturesEXT";
+		case StructureType::screenSurfaceCreateInfoQNX: return "screenSurfaceCreateInfoQNX";
+		case StructureType::physicalDeviceColorWriteEnableFeaturesEXT: return "physicalDeviceColorWriteEnableFeaturesEXT";
+		case StructureType::pipelineColorWriteCreateInfoEXT: return "pipelineColorWriteCreateInfoEXT";
+		case StructureType::physicalDeviceImageViewMinLodFeaturesEXT: return "physicalDeviceImageViewMinLodFeaturesEXT";
+		case StructureType::imageViewMinLodCreateInfoEXT: return "imageViewMinLodCreateInfoEXT";
+		case StructureType::physicalDeviceMultiDrawFeaturesEXT: return "physicalDeviceMultiDrawFeaturesEXT";
+		case StructureType::physicalDeviceMultiDrawPropertiesEXT: return "physicalDeviceMultiDrawPropertiesEXT";
+		case StructureType::physicalDeviceBorderColorSwizzleFeaturesEXT: return "physicalDeviceBorderColorSwizzleFeaturesEXT";
+		case StructureType::samplerBorderColorComponentMappingCreateInfoEXT: return "samplerBorderColorComponentMappingCreateInfoEXT";
+		case StructureType::physicalDevicePageableDeviceLocalMemoryFeaturesEXT: return "physicalDevicePageableDeviceLocalMemoryFeaturesEXT";
+		case StructureType::physicalDeviceFragmentDensityMapOffsetFeaturesQCOM: return "physicalDeviceFragmentDensityMapOffsetFeaturesQCOM";
+		case StructureType::physicalDeviceFragmentDensityMapOffsetPropertiesQCOM: return "physicalDeviceFragmentDensityMapOffsetPropertiesQCOM";
+		case StructureType::subpassFragmentDensityMapOffsetEndInfoQCOM: return "subpassFragmentDensityMapOffsetEndInfoQCOM";
+		case StructureType::physicalDeviceLinearColorAttachmentFeaturesNV: return "physicalDeviceLinearColorAttachmentFeaturesNV";
 		default: return nullptr;
 	}
 }
@@ -504,54 +592,287 @@ inline const char* name(ShaderStageBits val) {
 		case ShaderStageBits::callableKHR: return "callableKHR";
 		case ShaderStageBits::taskNV: return "taskNV";
 		case ShaderStageBits::meshNV: return "meshNV";
+		case ShaderStageBits::subpassShadingHUAWEI: return "subpassShadingHUAWEI";
 		default: return nullptr;
 	}
 }
-inline const char* name(SubgroupFeatureBits val) {
+inline const char* name(PipelineCreationFeedbackBits val) {
 	switch(val) {
-		case SubgroupFeatureBits::basic: return "basic";
-		case SubgroupFeatureBits::vote: return "vote";
-		case SubgroupFeatureBits::arithmetic: return "arithmetic";
-		case SubgroupFeatureBits::ballot: return "ballot";
-		case SubgroupFeatureBits::shuffle: return "shuffle";
-		case SubgroupFeatureBits::shuffleRelative: return "shuffleRelative";
-		case SubgroupFeatureBits::clustered: return "clustered";
-		case SubgroupFeatureBits::quad: return "quad";
-		case SubgroupFeatureBits::partitionedNV: return "partitionedNV";
+		case PipelineCreationFeedbackBits::valid: return "valid";
+		case PipelineCreationFeedbackBits::applicationPipelineCacheHit: return "applicationPipelineCacheHit";
+		case PipelineCreationFeedbackBits::basePipelineAcceleration: return "basePipelineAcceleration";
 		default: return nullptr;
 	}
 }
-inline const char* name(PointClippingBehavior val) {
+inline const char* name(ToolPurposeBits val) {
 	switch(val) {
-		case PointClippingBehavior::allClipPlanes: return "allClipPlanes";
-		case PointClippingBehavior::userClipPlanesOnly: return "userClipPlanesOnly";
+		case ToolPurposeBits::validation: return "validation";
+		case ToolPurposeBits::profiling: return "profiling";
+		case ToolPurposeBits::tracing: return "tracing";
+		case ToolPurposeBits::additionalFeatures: return "additionalFeatures";
+		case ToolPurposeBits::modifyingFeatures: return "modifyingFeatures";
+		case ToolPurposeBits::debugReportingEXT: return "debugReportingEXT";
+		case ToolPurposeBits::debugMarkersEXT: return "debugMarkersEXT";
 		default: return nullptr;
 	}
 }
-inline const char* name(DriverId val) {
+inline const char* name(Result val) {
 	switch(val) {
-		case DriverId::amdProprietary: return "amdProprietary";
-		case DriverId::amdOpenSource: return "amdOpenSource";
-		case DriverId::mesaRadv: return "mesaRadv";
-		case DriverId::nvidiaProprietary: return "nvidiaProprietary";
-		case DriverId::intelProprietaryWindows: return "intelProprietaryWindows";
-		case DriverId::intelOpenSourceMESA: return "intelOpenSourceMESA";
-		case DriverId::imaginationProprietary: return "imaginationProprietary";
-		case DriverId::qualcommProprietary: return "qualcommProprietary";
-		case DriverId::armProprietary: return "armProprietary";
-		case DriverId::googleSwiftshader: return "googleSwiftshader";
-		case DriverId::ggpProprietary: return "ggpProprietary";
-		case DriverId::broadcomProprietary: return "broadcomProprietary";
-		case DriverId::mesaLlvmpipe: return "mesaLlvmpipe";
-		case DriverId::moltenvk: return "moltenvk";
+		case Result::success: return "success";
+		case Result::notReady: return "notReady";
+		case Result::timeout: return "timeout";
+		case Result::eventSet: return "eventSet";
+		case Result::eventReset: return "eventReset";
+		case Result::incomplete: return "incomplete";
+		case Result::errorOutOfHostMemory: return "errorOutOfHostMemory";
+		case Result::errorOutOfDeviceMemory: return "errorOutOfDeviceMemory";
+		case Result::errorInitializationFailed: return "errorInitializationFailed";
+		case Result::errorDeviceLost: return "errorDeviceLost";
+		case Result::errorMemoryMapFailed: return "errorMemoryMapFailed";
+		case Result::errorLayerNotPresent: return "errorLayerNotPresent";
+		case Result::errorExtensionNotPresent: return "errorExtensionNotPresent";
+		case Result::errorFeatureNotPresent: return "errorFeatureNotPresent";
+		case Result::errorIncompatibleDriver: return "errorIncompatibleDriver";
+		case Result::errorTooManyObjects: return "errorTooManyObjects";
+		case Result::errorFormatNotSupported: return "errorFormatNotSupported";
+		case Result::errorFragmentedPool: return "errorFragmentedPool";
+		case Result::errorUnknown: return "errorUnknown";
+		case Result::errorOutOfPoolMemory: return "errorOutOfPoolMemory";
+		case Result::errorInvalidExternalHandle: return "errorInvalidExternalHandle";
+		case Result::errorFragmentation: return "errorFragmentation";
+		case Result::errorInvalidOpaqueCaptureAddress: return "errorInvalidOpaqueCaptureAddress";
+		case Result::pipelineCompileRequired: return "pipelineCompileRequired";
+		case Result::errorSurfaceLostKHR: return "errorSurfaceLostKHR";
+		case Result::errorNativeWindowInUseKHR: return "errorNativeWindowInUseKHR";
+		case Result::suboptimalKHR: return "suboptimalKHR";
+		case Result::errorOutOfDateKHR: return "errorOutOfDateKHR";
+		case Result::errorIncompatibleDisplayKHR: return "errorIncompatibleDisplayKHR";
+		case Result::errorValidationFailedEXT: return "errorValidationFailedEXT";
+		case Result::errorInvalidShaderNV: return "errorInvalidShaderNV";
+		case Result::errorInvalidDrmFormatModifierPlaneLayoutEXT: return "errorInvalidDrmFormatModifierPlaneLayoutEXT";
+		case Result::errorNotPermittedKHR: return "errorNotPermittedKHR";
+		case Result::errorFullScreenExclusiveModeLostEXT: return "errorFullScreenExclusiveModeLostEXT";
+		case Result::threadIDleKHR: return "threadIDleKHR";
+		case Result::threadDoneKHR: return "threadDoneKHR";
+		case Result::operationDeferredKHR: return "operationDeferredKHR";
+		case Result::operationNotDeferredKHR: return "operationNotDeferredKHR";
 		default: return nullptr;
 	}
 }
-inline const char* name(ShaderFloatControlsIndependence val) {
+inline const char* name(PrivateDataSlotCreateBits val) {
 	switch(val) {
-		case ShaderFloatControlsIndependence::e32BitOnly: return "e32BitOnly";
-		case ShaderFloatControlsIndependence::all: return "all";
-		case ShaderFloatControlsIndependence::none: return "none";
+		default: return nullptr;
+	}
+}
+inline const char* name(SystemAllocationScope val) {
+	switch(val) {
+		case SystemAllocationScope::command: return "command";
+		case SystemAllocationScope::object: return "object";
+		case SystemAllocationScope::cache: return "cache";
+		case SystemAllocationScope::device: return "device";
+		case SystemAllocationScope::instance: return "instance";
+		default: return nullptr;
+	}
+}
+inline const char* name(InternalAllocationType val) {
+	switch(val) {
+		case InternalAllocationType::executable: return "executable";
+		default: return nullptr;
+	}
+}
+inline const char* name(ObjectType val) {
+	switch(val) {
+		case ObjectType::unknown: return "unknown";
+		case ObjectType::instance: return "instance";
+		case ObjectType::physicalDevice: return "physicalDevice";
+		case ObjectType::device: return "device";
+		case ObjectType::queue: return "queue";
+		case ObjectType::semaphore: return "semaphore";
+		case ObjectType::commandBuffer: return "commandBuffer";
+		case ObjectType::fence: return "fence";
+		case ObjectType::deviceMemory: return "deviceMemory";
+		case ObjectType::buffer: return "buffer";
+		case ObjectType::image: return "image";
+		case ObjectType::event: return "event";
+		case ObjectType::queryPool: return "queryPool";
+		case ObjectType::bufferView: return "bufferView";
+		case ObjectType::imageView: return "imageView";
+		case ObjectType::shaderModule: return "shaderModule";
+		case ObjectType::pipelineCache: return "pipelineCache";
+		case ObjectType::pipelineLayout: return "pipelineLayout";
+		case ObjectType::renderPass: return "renderPass";
+		case ObjectType::pipeline: return "pipeline";
+		case ObjectType::descriptorSetLayout: return "descriptorSetLayout";
+		case ObjectType::sampler: return "sampler";
+		case ObjectType::descriptorPool: return "descriptorPool";
+		case ObjectType::descriptorSet: return "descriptorSet";
+		case ObjectType::framebuffer: return "framebuffer";
+		case ObjectType::commandPool: return "commandPool";
+		case ObjectType::samplerYcbcrConversion: return "samplerYcbcrConversion";
+		case ObjectType::descriptorUpdateTemplate: return "descriptorUpdateTemplate";
+		case ObjectType::privateDataSlot: return "privateDataSlot";
+		case ObjectType::surfaceKHR: return "surfaceKHR";
+		case ObjectType::swapchainKHR: return "swapchainKHR";
+		case ObjectType::displayKHR: return "displayKHR";
+		case ObjectType::displayModeKHR: return "displayModeKHR";
+		case ObjectType::debugReportCallbackEXT: return "debugReportCallbackEXT";
+		case ObjectType::debugUtilsMessengerEXT: return "debugUtilsMessengerEXT";
+		case ObjectType::accelerationStructureKHR: return "accelerationStructureKHR";
+		case ObjectType::validationCacheEXT: return "validationCacheEXT";
+		case ObjectType::accelerationStructureNV: return "accelerationStructureNV";
+		case ObjectType::performanceConfigurationINTEL: return "performanceConfigurationINTEL";
+		case ObjectType::deferredOperationKHR: return "deferredOperationKHR";
+		case ObjectType::indirectCommandsLayoutNV: return "indirectCommandsLayoutNV";
+		case ObjectType::bufferCollectionFUCHSIA: return "bufferCollectionFUCHSIA";
+		default: return nullptr;
+	}
+}
+inline const char* name(PipelineStageBits2 val) {
+	switch(val) {
+		case PipelineStageBits2::e2None: return "e2None";
+		case PipelineStageBits2::e2DrawIndirect: return "e2DrawIndirect";
+		case PipelineStageBits2::e2VertexInput: return "e2VertexInput";
+		case PipelineStageBits2::e2VertexShader: return "e2VertexShader";
+		case PipelineStageBits2::e2TessellationControlShader: return "e2TessellationControlShader";
+		case PipelineStageBits2::e2TessellationEvaluationShader: return "e2TessellationEvaluationShader";
+		case PipelineStageBits2::e2GeometryShader: return "e2GeometryShader";
+		case PipelineStageBits2::e2FragmentShader: return "e2FragmentShader";
+		case PipelineStageBits2::e2EarlyFragmentTests: return "e2EarlyFragmentTests";
+		case PipelineStageBits2::e2LateFragmentTests: return "e2LateFragmentTests";
+		case PipelineStageBits2::e2ColorAttachmentOutput: return "e2ColorAttachmentOutput";
+		case PipelineStageBits2::e2ComputeShader: return "e2ComputeShader";
+		case PipelineStageBits2::e2AllTransfer: return "e2AllTransfer";
+		case PipelineStageBits2::e2BottomOfPipe: return "e2BottomOfPipe";
+		case PipelineStageBits2::e2Host: return "e2Host";
+		case PipelineStageBits2::e2AllGraphics: return "e2AllGraphics";
+		case PipelineStageBits2::e2AllCommands: return "e2AllCommands";
+		case PipelineStageBits2::e2Copy: return "e2Copy";
+		case PipelineStageBits2::e2Resolve: return "e2Resolve";
+		case PipelineStageBits2::e2Blit: return "e2Blit";
+		case PipelineStageBits2::e2Clear: return "e2Clear";
+		case PipelineStageBits2::e2IndexInput: return "e2IndexInput";
+		case PipelineStageBits2::e2VertexAttributeInput: return "e2VertexAttributeInput";
+		case PipelineStageBits2::e2PreRasterizationShaders: return "e2PreRasterizationShaders";
+		case PipelineStageBits2::e2TransformFeedbackEXT: return "e2TransformFeedbackEXT";
+		case PipelineStageBits2::e2ConditionalRenderingEXT: return "e2ConditionalRenderingEXT";
+		case PipelineStageBits2::e2CommandPreprocessNV: return "e2CommandPreprocessNV";
+		case PipelineStageBits2::e2FragmentShadingRateAttachmentKHR: return "e2FragmentShadingRateAttachmentKHR";
+		case PipelineStageBits2::e2AccelerationStructureBuildKHR: return "e2AccelerationStructureBuildKHR";
+		case PipelineStageBits2::e2RayTracingShaderKHR: return "e2RayTracingShaderKHR";
+		case PipelineStageBits2::e2FragmentDensityProcessEXT: return "e2FragmentDensityProcessEXT";
+		case PipelineStageBits2::e2TaskShaderNV: return "e2TaskShaderNV";
+		case PipelineStageBits2::e2MeshShaderNV: return "e2MeshShaderNV";
+		case PipelineStageBits2::e2SubpassShadingHUAWEI: return "e2SubpassShadingHUAWEI";
+		case PipelineStageBits2::e2InvocationMaskHUAWEI: return "e2InvocationMaskHUAWEI";
+		default: return nullptr;
+	}
+}
+inline const char* name(AccessBits2 val) {
+	switch(val) {
+		case AccessBits2::e2None: return "e2None";
+		case AccessBits2::e2IndexRead: return "e2IndexRead";
+		case AccessBits2::e2VertexAttributeRead: return "e2VertexAttributeRead";
+		case AccessBits2::e2UniformRead: return "e2UniformRead";
+		case AccessBits2::e2InputAttachmentRead: return "e2InputAttachmentRead";
+		case AccessBits2::e2ShaderRead: return "e2ShaderRead";
+		case AccessBits2::e2ShaderWrite: return "e2ShaderWrite";
+		case AccessBits2::e2ColorAttachmentRead: return "e2ColorAttachmentRead";
+		case AccessBits2::e2ColorAttachmentWrite: return "e2ColorAttachmentWrite";
+		case AccessBits2::e2DepthStencilAttachmentRead: return "e2DepthStencilAttachmentRead";
+		case AccessBits2::e2DepthStencilAttachmentWrite: return "e2DepthStencilAttachmentWrite";
+		case AccessBits2::e2TransferRead: return "e2TransferRead";
+		case AccessBits2::e2TransferWrite: return "e2TransferWrite";
+		case AccessBits2::e2HostRead: return "e2HostRead";
+		case AccessBits2::e2HostWrite: return "e2HostWrite";
+		case AccessBits2::e2MemoryRead: return "e2MemoryRead";
+		case AccessBits2::e2MemoryWrite: return "e2MemoryWrite";
+		case AccessBits2::e2ShaderSampledRead: return "e2ShaderSampledRead";
+		case AccessBits2::e2ShaderStorageRead: return "e2ShaderStorageRead";
+		case AccessBits2::e2ShaderStorageWrite: return "e2ShaderStorageWrite";
+		case AccessBits2::e2TransformFeedbackWriteEXT: return "e2TransformFeedbackWriteEXT";
+		case AccessBits2::e2TransformFeedbackCounterReadEXT: return "e2TransformFeedbackCounterReadEXT";
+		case AccessBits2::e2TransformFeedbackCounterWriteEXT: return "e2TransformFeedbackCounterWriteEXT";
+		case AccessBits2::e2ConditionalRenderingReadEXT: return "e2ConditionalRenderingReadEXT";
+		case AccessBits2::e2CommandPreprocessReadNV: return "e2CommandPreprocessReadNV";
+		case AccessBits2::e2CommandPreprocessWriteNV: return "e2CommandPreprocessWriteNV";
+		case AccessBits2::e2FragmentShadingRateAttachmentReadKHR: return "e2FragmentShadingRateAttachmentReadKHR";
+		case AccessBits2::e2AccelerationStructureReadKHR: return "e2AccelerationStructureReadKHR";
+		case AccessBits2::e2AccelerationStructureWriteKHR: return "e2AccelerationStructureWriteKHR";
+		case AccessBits2::e2FragmentDensityMapReadEXT: return "e2FragmentDensityMapReadEXT";
+		case AccessBits2::e2ColorAttachmentReadNoncoherentEXT: return "e2ColorAttachmentReadNoncoherentEXT";
+		case AccessBits2::e2InvocationMaskReadHUAWEI: return "e2InvocationMaskReadHUAWEI";
+		default: return nullptr;
+	}
+}
+inline const char* name(ImageLayout val) {
+	switch(val) {
+		case ImageLayout::undefined: return "undefined";
+		case ImageLayout::general: return "general";
+		case ImageLayout::colorAttachmentOptimal: return "colorAttachmentOptimal";
+		case ImageLayout::depthStencilAttachmentOptimal: return "depthStencilAttachmentOptimal";
+		case ImageLayout::depthStencilReadOnlyOptimal: return "depthStencilReadOnlyOptimal";
+		case ImageLayout::shaderReadOnlyOptimal: return "shaderReadOnlyOptimal";
+		case ImageLayout::transferSrcOptimal: return "transferSrcOptimal";
+		case ImageLayout::transferDstOptimal: return "transferDstOptimal";
+		case ImageLayout::preinitialized: return "preinitialized";
+		case ImageLayout::depthReadOnlyStencilAttachmentOptimal: return "depthReadOnlyStencilAttachmentOptimal";
+		case ImageLayout::depthAttachmentStencilReadOnlyOptimal: return "depthAttachmentStencilReadOnlyOptimal";
+		case ImageLayout::depthAttachmentOptimal: return "depthAttachmentOptimal";
+		case ImageLayout::depthReadOnlyOptimal: return "depthReadOnlyOptimal";
+		case ImageLayout::stencilAttachmentOptimal: return "stencilAttachmentOptimal";
+		case ImageLayout::stencilReadOnlyOptimal: return "stencilReadOnlyOptimal";
+		case ImageLayout::readOnlyOptimal: return "readOnlyOptimal";
+		case ImageLayout::attachmentOptimal: return "attachmentOptimal";
+		case ImageLayout::presentSrcKHR: return "presentSrcKHR";
+		case ImageLayout::sharedPresentKHR: return "sharedPresentKHR";
+		case ImageLayout::fragmentDensityMapOptimalEXT: return "fragmentDensityMapOptimalEXT";
+		case ImageLayout::fragmentShadingRateAttachmentOptimalKHR: return "fragmentShadingRateAttachmentOptimalKHR";
+		default: return nullptr;
+	}
+}
+inline const char* name(ImageAspectBits val) {
+	switch(val) {
+		case ImageAspectBits::color: return "color";
+		case ImageAspectBits::depth: return "depth";
+		case ImageAspectBits::stencil: return "stencil";
+		case ImageAspectBits::metadata: return "metadata";
+		case ImageAspectBits::plane0: return "plane0";
+		case ImageAspectBits::plane1: return "plane1";
+		case ImageAspectBits::plane2: return "plane2";
+		case ImageAspectBits::memoryPlane0EXT: return "memoryPlane0EXT";
+		case ImageAspectBits::memoryPlane1EXT: return "memoryPlane1EXT";
+		case ImageAspectBits::memoryPlane2EXT: return "memoryPlane2EXT";
+		case ImageAspectBits::memoryPlane3EXT: return "memoryPlane3EXT";
+		default: return nullptr;
+	}
+}
+inline const char* name(DependencyBits val) {
+	switch(val) {
+		case DependencyBits::byRegion: return "byRegion";
+		case DependencyBits::deviceGroup: return "deviceGroup";
+		case DependencyBits::viewLocal: return "viewLocal";
+		default: return nullptr;
+	}
+}
+inline const char* name(SubmitBits val) {
+	switch(val) {
+		case SubmitBits::eProtected: return "eProtected";
+		default: return nullptr;
+	}
+}
+inline const char* name(Filter val) {
+	switch(val) {
+		case Filter::nearest: return "nearest";
+		case Filter::linear: return "linear";
+		case Filter::cubicIMG: return "cubicIMG";
+		default: return nullptr;
+	}
+}
+inline const char* name(RenderingBits val) {
+	switch(val) {
+		case RenderingBits::contentsSecondaryCommandBuffers: return "contentsSecondaryCommandBuffers";
+		case RenderingBits::suspending: return "suspending";
+		case RenderingBits::resuming: return "resuming";
 		default: return nullptr;
 	}
 }
@@ -564,15 +885,20 @@ inline const char* name(ResolveModeBits val) {
 		default: return nullptr;
 	}
 }
-inline const char* name(SampleCountBits val) {
+inline const char* name(AttachmentLoadOp val) {
 	switch(val) {
-		case SampleCountBits::e1: return "e1";
-		case SampleCountBits::e2: return "e2";
-		case SampleCountBits::e4: return "e4";
-		case SampleCountBits::e8: return "e8";
-		case SampleCountBits::e16: return "e16";
-		case SampleCountBits::e32: return "e32";
-		case SampleCountBits::e64: return "e64";
+		case AttachmentLoadOp::load: return "load";
+		case AttachmentLoadOp::clear: return "clear";
+		case AttachmentLoadOp::dontCare: return "dontCare";
+		case AttachmentLoadOp::noneEXT: return "noneEXT";
+		default: return nullptr;
+	}
+}
+inline const char* name(AttachmentStoreOp val) {
+	switch(val) {
+		case AttachmentStoreOp::store: return "store";
+		case AttachmentStoreOp::dontCare: return "dontCare";
+		case AttachmentStoreOp::none: return "none";
 		default: return nullptr;
 	}
 }
@@ -797,6 +1123,26 @@ inline const char* name(Format val) {
 		case Format::g16B16R163plane422Unorm: return "g16B16R163plane422Unorm";
 		case Format::g16B16r162plane422Unorm: return "g16B16r162plane422Unorm";
 		case Format::g16B16R163plane444Unorm: return "g16B16R163plane444Unorm";
+		case Format::g8B8r82plane444Unorm: return "g8B8r82plane444Unorm";
+		case Format::g10x6B10x6r10x62plane444Unorm3pack16: return "g10x6B10x6r10x62plane444Unorm3pack16";
+		case Format::g12x4B12x4r12x42plane444Unorm3pack16: return "g12x4B12x4r12x42plane444Unorm3pack16";
+		case Format::g16B16r162plane444Unorm: return "g16B16r162plane444Unorm";
+		case Format::a4r4g4b4UnormPack16: return "a4r4g4b4UnormPack16";
+		case Format::a4b4g4r4UnormPack16: return "a4b4g4r4UnormPack16";
+		case Format::astc4x4SfloatBlock: return "astc4x4SfloatBlock";
+		case Format::astc5x4SfloatBlock: return "astc5x4SfloatBlock";
+		case Format::astc5x5SfloatBlock: return "astc5x5SfloatBlock";
+		case Format::astc6x5SfloatBlock: return "astc6x5SfloatBlock";
+		case Format::astc6x6SfloatBlock: return "astc6x6SfloatBlock";
+		case Format::astc8x5SfloatBlock: return "astc8x5SfloatBlock";
+		case Format::astc8x6SfloatBlock: return "astc8x6SfloatBlock";
+		case Format::astc8x8SfloatBlock: return "astc8x8SfloatBlock";
+		case Format::astc10x5SfloatBlock: return "astc10x5SfloatBlock";
+		case Format::astc10x6SfloatBlock: return "astc10x6SfloatBlock";
+		case Format::astc10x8SfloatBlock: return "astc10x8SfloatBlock";
+		case Format::astc10x10SfloatBlock: return "astc10x10SfloatBlock";
+		case Format::astc12x10SfloatBlock: return "astc12x10SfloatBlock";
+		case Format::astc12x12SfloatBlock: return "astc12x12SfloatBlock";
 		case Format::pvrtc12bppUnormBlockIMG: return "pvrtc12bppUnormBlockIMG";
 		case Format::pvrtc14bppUnormBlockIMG: return "pvrtc14bppUnormBlockIMG";
 		case Format::pvrtc22bppUnormBlockIMG: return "pvrtc22bppUnormBlockIMG";
@@ -805,22 +1151,582 @@ inline const char* name(Format val) {
 		case Format::pvrtc14bppSrgbBlockIMG: return "pvrtc14bppSrgbBlockIMG";
 		case Format::pvrtc22bppSrgbBlockIMG: return "pvrtc22bppSrgbBlockIMG";
 		case Format::pvrtc24bppSrgbBlockIMG: return "pvrtc24bppSrgbBlockIMG";
-		case Format::astc4x4SfloatBlockEXT: return "astc4x4SfloatBlockEXT";
-		case Format::astc5x4SfloatBlockEXT: return "astc5x4SfloatBlockEXT";
-		case Format::astc5x5SfloatBlockEXT: return "astc5x5SfloatBlockEXT";
-		case Format::astc6x5SfloatBlockEXT: return "astc6x5SfloatBlockEXT";
-		case Format::astc6x6SfloatBlockEXT: return "astc6x6SfloatBlockEXT";
-		case Format::astc8x5SfloatBlockEXT: return "astc8x5SfloatBlockEXT";
-		case Format::astc8x6SfloatBlockEXT: return "astc8x6SfloatBlockEXT";
-		case Format::astc8x8SfloatBlockEXT: return "astc8x8SfloatBlockEXT";
-		case Format::astc10x5SfloatBlockEXT: return "astc10x5SfloatBlockEXT";
-		case Format::astc10x6SfloatBlockEXT: return "astc10x6SfloatBlockEXT";
-		case Format::astc10x8SfloatBlockEXT: return "astc10x8SfloatBlockEXT";
-		case Format::astc10x10SfloatBlockEXT: return "astc10x10SfloatBlockEXT";
-		case Format::astc12x10SfloatBlockEXT: return "astc12x10SfloatBlockEXT";
-		case Format::astc12x12SfloatBlockEXT: return "astc12x12SfloatBlockEXT";
-		case Format::a4r4g4b4UnormPack16EXT: return "a4r4g4b4UnormPack16EXT";
-		case Format::a4b4g4r4UnormPack16EXT: return "a4b4g4r4UnormPack16EXT";
+		default: return nullptr;
+	}
+}
+inline const char* name(SampleCountBits val) {
+	switch(val) {
+		case SampleCountBits::e1: return "e1";
+		case SampleCountBits::e2: return "e2";
+		case SampleCountBits::e4: return "e4";
+		case SampleCountBits::e8: return "e8";
+		case SampleCountBits::e16: return "e16";
+		case SampleCountBits::e32: return "e32";
+		case SampleCountBits::e64: return "e64";
+		default: return nullptr;
+	}
+}
+inline const char* name(CullModeBits val) {
+	switch(val) {
+		case CullModeBits::none: return "none";
+		case CullModeBits::back: return "back";
+		case CullModeBits::frontAndBack: return "frontAndBack";
+		default: return nullptr;
+	}
+}
+inline const char* name(FrontFace val) {
+	switch(val) {
+		case FrontFace::counterClockwise: return "counterClockwise";
+		case FrontFace::clockwise: return "clockwise";
+		default: return nullptr;
+	}
+}
+inline const char* name(PrimitiveTopology val) {
+	switch(val) {
+		case PrimitiveTopology::pointList: return "pointList";
+		case PrimitiveTopology::lineList: return "lineList";
+		case PrimitiveTopology::lineStrip: return "lineStrip";
+		case PrimitiveTopology::triangleList: return "triangleList";
+		case PrimitiveTopology::triangleStrip: return "triangleStrip";
+		case PrimitiveTopology::triangleFan: return "triangleFan";
+		case PrimitiveTopology::lineListWithAdjacency: return "lineListWithAdjacency";
+		case PrimitiveTopology::lineStripWithAdjacency: return "lineStripWithAdjacency";
+		case PrimitiveTopology::triangleListWithAdjacency: return "triangleListWithAdjacency";
+		case PrimitiveTopology::triangleStripWithAdjacency: return "triangleStripWithAdjacency";
+		case PrimitiveTopology::patchList: return "patchList";
+		default: return nullptr;
+	}
+}
+inline const char* name(CompareOp val) {
+	switch(val) {
+		case CompareOp::never: return "never";
+		case CompareOp::less: return "less";
+		case CompareOp::equal: return "equal";
+		case CompareOp::lessOrEqual: return "lessOrEqual";
+		case CompareOp::greater: return "greater";
+		case CompareOp::notEqual: return "notEqual";
+		case CompareOp::greaterOrEqual: return "greaterOrEqual";
+		case CompareOp::always: return "always";
+		default: return nullptr;
+	}
+}
+inline const char* name(StencilFaceBits val) {
+	switch(val) {
+		case StencilFaceBits::front: return "front";
+		case StencilFaceBits::back: return "back";
+		case StencilFaceBits::frontAndBack: return "frontAndBack";
+		default: return nullptr;
+	}
+}
+inline const char* name(StencilOp val) {
+	switch(val) {
+		case StencilOp::keep: return "keep";
+		case StencilOp::zero: return "zero";
+		case StencilOp::replace: return "replace";
+		case StencilOp::incrementAndClamp: return "incrementAndClamp";
+		case StencilOp::decrementAndClamp: return "decrementAndClamp";
+		case StencilOp::invert: return "invert";
+		case StencilOp::incrementAndWrap: return "incrementAndWrap";
+		case StencilOp::decrementAndWrap: return "decrementAndWrap";
+		default: return nullptr;
+	}
+}
+inline const char* name(FormatFeatureBits2 val) {
+	switch(val) {
+		case FormatFeatureBits2::e2SampledImage: return "e2SampledImage";
+		case FormatFeatureBits2::e2StorageImage: return "e2StorageImage";
+		case FormatFeatureBits2::e2StorageImageAtomic: return "e2StorageImageAtomic";
+		case FormatFeatureBits2::e2UniformTexelBuffer: return "e2UniformTexelBuffer";
+		case FormatFeatureBits2::e2StorageTexelBuffer: return "e2StorageTexelBuffer";
+		case FormatFeatureBits2::e2StorageTexelBufferAtomic: return "e2StorageTexelBufferAtomic";
+		case FormatFeatureBits2::e2VertexBuffer: return "e2VertexBuffer";
+		case FormatFeatureBits2::e2ColorAttachment: return "e2ColorAttachment";
+		case FormatFeatureBits2::e2ColorAttachmentBlend: return "e2ColorAttachmentBlend";
+		case FormatFeatureBits2::e2DepthStencilAttachment: return "e2DepthStencilAttachment";
+		case FormatFeatureBits2::e2BlitSrc: return "e2BlitSrc";
+		case FormatFeatureBits2::e2BlitDst: return "e2BlitDst";
+		case FormatFeatureBits2::e2SampledImageFilterLinear: return "e2SampledImageFilterLinear";
+		case FormatFeatureBits2::e2SampledImageFilterCubic: return "e2SampledImageFilterCubic";
+		case FormatFeatureBits2::e2TransferSrc: return "e2TransferSrc";
+		case FormatFeatureBits2::e2TransferDst: return "e2TransferDst";
+		case FormatFeatureBits2::e2SampledImageFilterMinmax: return "e2SampledImageFilterMinmax";
+		case FormatFeatureBits2::e2MidpointChromaSamples: return "e2MidpointChromaSamples";
+		case FormatFeatureBits2::e2SampledImageYcbcrConversionLinearFilter: return "e2SampledImageYcbcrConversionLinearFilter";
+		case FormatFeatureBits2::e2SampledImageYcbcrConversionSeparateReconstructionFilter: return "e2SampledImageYcbcrConversionSeparateReconstructionFilter";
+		case FormatFeatureBits2::e2SampledImageYcbcrConversionChromaReconstructionExplicit: return "e2SampledImageYcbcrConversionChromaReconstructionExplicit";
+		case FormatFeatureBits2::e2SampledImageYcbcrConversionChromaReconstructionExplicitForceable: return "e2SampledImageYcbcrConversionChromaReconstructionExplicitForceable";
+		case FormatFeatureBits2::e2Disjoint: return "e2Disjoint";
+		case FormatFeatureBits2::e2CositedChromaSamples: return "e2CositedChromaSamples";
+		case FormatFeatureBits2::e2StorageReadWithoutFormat: return "e2StorageReadWithoutFormat";
+		case FormatFeatureBits2::e2StorageWriteWithoutFormat: return "e2StorageWriteWithoutFormat";
+		case FormatFeatureBits2::e2SampledImageDepthComparison: return "e2SampledImageDepthComparison";
+		case FormatFeatureBits2::e2AccelerationStructureVertexBufferKHR: return "e2AccelerationStructureVertexBufferKHR";
+		case FormatFeatureBits2::e2FragmentDensityMapEXT: return "e2FragmentDensityMapEXT";
+		case FormatFeatureBits2::e2FragmentShadingRateAttachmentKHR: return "e2FragmentShadingRateAttachmentKHR";
+		case FormatFeatureBits2::e2LinearColorAttachmentNV: return "e2LinearColorAttachmentNV";
+		default: return nullptr;
+	}
+}
+inline const char* name(BufferCreateBits val) {
+	switch(val) {
+		case BufferCreateBits::sparseBinding: return "sparseBinding";
+		case BufferCreateBits::sparseResidency: return "sparseResidency";
+		case BufferCreateBits::sparseAliased: return "sparseAliased";
+		case BufferCreateBits::eProtected: return "eProtected";
+		case BufferCreateBits::deviceAddressCaptureReplay: return "deviceAddressCaptureReplay";
+		default: return nullptr;
+	}
+}
+inline const char* name(BufferUsageBits val) {
+	switch(val) {
+		case BufferUsageBits::transferSrc: return "transferSrc";
+		case BufferUsageBits::transferDst: return "transferDst";
+		case BufferUsageBits::uniformTexelBuffer: return "uniformTexelBuffer";
+		case BufferUsageBits::storageTexelBuffer: return "storageTexelBuffer";
+		case BufferUsageBits::uniformBuffer: return "uniformBuffer";
+		case BufferUsageBits::storageBuffer: return "storageBuffer";
+		case BufferUsageBits::indexBuffer: return "indexBuffer";
+		case BufferUsageBits::vertexBuffer: return "vertexBuffer";
+		case BufferUsageBits::indirectBuffer: return "indirectBuffer";
+		case BufferUsageBits::shaderDeviceAddress: return "shaderDeviceAddress";
+		case BufferUsageBits::transformFeedbackBufferEXT: return "transformFeedbackBufferEXT";
+		case BufferUsageBits::transformFeedbackCounterBufferEXT: return "transformFeedbackCounterBufferEXT";
+		case BufferUsageBits::conditionalRenderingEXT: return "conditionalRenderingEXT";
+		case BufferUsageBits::accelerationStructureBuildInputReadOnlyKHR: return "accelerationStructureBuildInputReadOnlyKHR";
+		case BufferUsageBits::accelerationStructureStorageKHR: return "accelerationStructureStorageKHR";
+		case BufferUsageBits::shaderBindingTableKHR: return "shaderBindingTableKHR";
+		default: return nullptr;
+	}
+}
+inline const char* name(SharingMode val) {
+	switch(val) {
+		case SharingMode::exclusive: return "exclusive";
+		case SharingMode::concurrent: return "concurrent";
+		default: return nullptr;
+	}
+}
+inline const char* name(ImageCreateBits val) {
+	switch(val) {
+		case ImageCreateBits::sparseBinding: return "sparseBinding";
+		case ImageCreateBits::sparseResidency: return "sparseResidency";
+		case ImageCreateBits::sparseAliased: return "sparseAliased";
+		case ImageCreateBits::mutableFormat: return "mutableFormat";
+		case ImageCreateBits::cubeCompatible: return "cubeCompatible";
+		case ImageCreateBits::alias: return "alias";
+		case ImageCreateBits::splitInstanceBindRegions: return "splitInstanceBindRegions";
+		case ImageCreateBits::e2dArrayCompatible: return "e2dArrayCompatible";
+		case ImageCreateBits::blockTexelViewCompatible: return "blockTexelViewCompatible";
+		case ImageCreateBits::extendedUsage: return "extendedUsage";
+		case ImageCreateBits::eProtected: return "eProtected";
+		case ImageCreateBits::disjoint: return "disjoint";
+		case ImageCreateBits::cornerSampledNV: return "cornerSampledNV";
+		case ImageCreateBits::sampleLocationsCompatibleDepthEXT: return "sampleLocationsCompatibleDepthEXT";
+		case ImageCreateBits::subsampledEXT: return "subsampledEXT";
+		case ImageCreateBits::fragmentDensityMapOffsetQCOM: return "fragmentDensityMapOffsetQCOM";
+		default: return nullptr;
+	}
+}
+inline const char* name(ImageType val) {
+	switch(val) {
+		case ImageType::e1d: return "e1d";
+		case ImageType::e2d: return "e2d";
+		case ImageType::e3d: return "e3d";
+		default: return nullptr;
+	}
+}
+inline const char* name(ImageTiling val) {
+	switch(val) {
+		case ImageTiling::optimal: return "optimal";
+		case ImageTiling::linear: return "linear";
+		case ImageTiling::drmFormatModifierEXT: return "drmFormatModifierEXT";
+		default: return nullptr;
+	}
+}
+inline const char* name(ImageUsageBits val) {
+	switch(val) {
+		case ImageUsageBits::transferSrc: return "transferSrc";
+		case ImageUsageBits::transferDst: return "transferDst";
+		case ImageUsageBits::sampled: return "sampled";
+		case ImageUsageBits::storage: return "storage";
+		case ImageUsageBits::colorAttachment: return "colorAttachment";
+		case ImageUsageBits::depthStencilAttachment: return "depthStencilAttachment";
+		case ImageUsageBits::transientAttachment: return "transientAttachment";
+		case ImageUsageBits::inputAttachment: return "inputAttachment";
+		case ImageUsageBits::fragmentDensityMapEXT: return "fragmentDensityMapEXT";
+		case ImageUsageBits::fragmentShadingRateAttachmentKHR: return "fragmentShadingRateAttachmentKHR";
+		case ImageUsageBits::invocationMaskHUAWEI: return "invocationMaskHUAWEI";
+		default: return nullptr;
+	}
+}
+inline const char* name(SparseImageFormatBits val) {
+	switch(val) {
+		case SparseImageFormatBits::singleMiptail: return "singleMiptail";
+		case SparseImageFormatBits::alignedMipSize: return "alignedMipSize";
+		case SparseImageFormatBits::nonstandardBlockSize: return "nonstandardBlockSize";
+		default: return nullptr;
+	}
+}
+inline std::string name(ShaderStageFlags val) {
+	std::string ret;
+	if((val & ShaderStageBits::vertex) == ShaderStageBits::vertex) ret += "vertex | ";
+	if((val & ShaderStageBits::tessellationControl) == ShaderStageBits::tessellationControl) ret += "tessellationControl | ";
+	if((val & ShaderStageBits::tessellationEvaluation) == ShaderStageBits::tessellationEvaluation) ret += "tessellationEvaluation | ";
+	if((val & ShaderStageBits::geometry) == ShaderStageBits::geometry) ret += "geometry | ";
+	if((val & ShaderStageBits::fragment) == ShaderStageBits::fragment) ret += "fragment | ";
+	if((val & ShaderStageBits::compute) == ShaderStageBits::compute) ret += "compute | ";
+	if((val & ShaderStageBits::allGraphics) == ShaderStageBits::allGraphics) ret += "allGraphics | ";
+	if((val & ShaderStageBits::all) == ShaderStageBits::all) ret += "all | ";
+	if((val & ShaderStageBits::raygenKHR) == ShaderStageBits::raygenKHR) ret += "raygenKHR | ";
+	if((val & ShaderStageBits::anyHitKHR) == ShaderStageBits::anyHitKHR) ret += "anyHitKHR | ";
+	if((val & ShaderStageBits::closestHitKHR) == ShaderStageBits::closestHitKHR) ret += "closestHitKHR | ";
+	if((val & ShaderStageBits::missKHR) == ShaderStageBits::missKHR) ret += "missKHR | ";
+	if((val & ShaderStageBits::intersectionKHR) == ShaderStageBits::intersectionKHR) ret += "intersectionKHR | ";
+	if((val & ShaderStageBits::callableKHR) == ShaderStageBits::callableKHR) ret += "callableKHR | ";
+	if((val & ShaderStageBits::taskNV) == ShaderStageBits::taskNV) ret += "taskNV | ";
+	if((val & ShaderStageBits::meshNV) == ShaderStageBits::meshNV) ret += "meshNV | ";
+	if((val & ShaderStageBits::subpassShadingHUAWEI) == ShaderStageBits::subpassShadingHUAWEI) ret += "subpassShadingHUAWEI | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(PipelineCreationFeedbackFlags val) {
+	std::string ret;
+	if((val & PipelineCreationFeedbackBits::valid) == PipelineCreationFeedbackBits::valid) ret += "valid | ";
+	if((val & PipelineCreationFeedbackBits::applicationPipelineCacheHit) == PipelineCreationFeedbackBits::applicationPipelineCacheHit) ret += "applicationPipelineCacheHit | ";
+	if((val & PipelineCreationFeedbackBits::basePipelineAcceleration) == PipelineCreationFeedbackBits::basePipelineAcceleration) ret += "basePipelineAcceleration | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(ToolPurposeFlags val) {
+	std::string ret;
+	if((val & ToolPurposeBits::validation) == ToolPurposeBits::validation) ret += "validation | ";
+	if((val & ToolPurposeBits::profiling) == ToolPurposeBits::profiling) ret += "profiling | ";
+	if((val & ToolPurposeBits::tracing) == ToolPurposeBits::tracing) ret += "tracing | ";
+	if((val & ToolPurposeBits::additionalFeatures) == ToolPurposeBits::additionalFeatures) ret += "additionalFeatures | ";
+	if((val & ToolPurposeBits::modifyingFeatures) == ToolPurposeBits::modifyingFeatures) ret += "modifyingFeatures | ";
+	if((val & ToolPurposeBits::debugReportingEXT) == ToolPurposeBits::debugReportingEXT) ret += "debugReportingEXT | ";
+	if((val & ToolPurposeBits::debugMarkersEXT) == ToolPurposeBits::debugMarkersEXT) ret += "debugMarkersEXT | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(PrivateDataSlotCreateFlags) {
+	std::string ret;
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(PipelineStageFlags2 val) {
+	std::string ret;
+	if((val & PipelineStageBits2::e2None) == PipelineStageBits2::e2None) ret += "e2None | ";
+	if((val & PipelineStageBits2::e2DrawIndirect) == PipelineStageBits2::e2DrawIndirect) ret += "e2DrawIndirect | ";
+	if((val & PipelineStageBits2::e2VertexInput) == PipelineStageBits2::e2VertexInput) ret += "e2VertexInput | ";
+	if((val & PipelineStageBits2::e2VertexShader) == PipelineStageBits2::e2VertexShader) ret += "e2VertexShader | ";
+	if((val & PipelineStageBits2::e2TessellationControlShader) == PipelineStageBits2::e2TessellationControlShader) ret += "e2TessellationControlShader | ";
+	if((val & PipelineStageBits2::e2TessellationEvaluationShader) == PipelineStageBits2::e2TessellationEvaluationShader) ret += "e2TessellationEvaluationShader | ";
+	if((val & PipelineStageBits2::e2GeometryShader) == PipelineStageBits2::e2GeometryShader) ret += "e2GeometryShader | ";
+	if((val & PipelineStageBits2::e2FragmentShader) == PipelineStageBits2::e2FragmentShader) ret += "e2FragmentShader | ";
+	if((val & PipelineStageBits2::e2EarlyFragmentTests) == PipelineStageBits2::e2EarlyFragmentTests) ret += "e2EarlyFragmentTests | ";
+	if((val & PipelineStageBits2::e2LateFragmentTests) == PipelineStageBits2::e2LateFragmentTests) ret += "e2LateFragmentTests | ";
+	if((val & PipelineStageBits2::e2ColorAttachmentOutput) == PipelineStageBits2::e2ColorAttachmentOutput) ret += "e2ColorAttachmentOutput | ";
+	if((val & PipelineStageBits2::e2ComputeShader) == PipelineStageBits2::e2ComputeShader) ret += "e2ComputeShader | ";
+	if((val & PipelineStageBits2::e2AllTransfer) == PipelineStageBits2::e2AllTransfer) ret += "e2AllTransfer | ";
+	if((val & PipelineStageBits2::e2BottomOfPipe) == PipelineStageBits2::e2BottomOfPipe) ret += "e2BottomOfPipe | ";
+	if((val & PipelineStageBits2::e2Host) == PipelineStageBits2::e2Host) ret += "e2Host | ";
+	if((val & PipelineStageBits2::e2AllGraphics) == PipelineStageBits2::e2AllGraphics) ret += "e2AllGraphics | ";
+	if((val & PipelineStageBits2::e2AllCommands) == PipelineStageBits2::e2AllCommands) ret += "e2AllCommands | ";
+	if((val & PipelineStageBits2::e2Copy) == PipelineStageBits2::e2Copy) ret += "e2Copy | ";
+	if((val & PipelineStageBits2::e2Resolve) == PipelineStageBits2::e2Resolve) ret += "e2Resolve | ";
+	if((val & PipelineStageBits2::e2Blit) == PipelineStageBits2::e2Blit) ret += "e2Blit | ";
+	if((val & PipelineStageBits2::e2Clear) == PipelineStageBits2::e2Clear) ret += "e2Clear | ";
+	if((val & PipelineStageBits2::e2IndexInput) == PipelineStageBits2::e2IndexInput) ret += "e2IndexInput | ";
+	if((val & PipelineStageBits2::e2VertexAttributeInput) == PipelineStageBits2::e2VertexAttributeInput) ret += "e2VertexAttributeInput | ";
+	if((val & PipelineStageBits2::e2PreRasterizationShaders) == PipelineStageBits2::e2PreRasterizationShaders) ret += "e2PreRasterizationShaders | ";
+	if((val & PipelineStageBits2::e2TransformFeedbackEXT) == PipelineStageBits2::e2TransformFeedbackEXT) ret += "e2TransformFeedbackEXT | ";
+	if((val & PipelineStageBits2::e2ConditionalRenderingEXT) == PipelineStageBits2::e2ConditionalRenderingEXT) ret += "e2ConditionalRenderingEXT | ";
+	if((val & PipelineStageBits2::e2CommandPreprocessNV) == PipelineStageBits2::e2CommandPreprocessNV) ret += "e2CommandPreprocessNV | ";
+	if((val & PipelineStageBits2::e2FragmentShadingRateAttachmentKHR) == PipelineStageBits2::e2FragmentShadingRateAttachmentKHR) ret += "e2FragmentShadingRateAttachmentKHR | ";
+	if((val & PipelineStageBits2::e2AccelerationStructureBuildKHR) == PipelineStageBits2::e2AccelerationStructureBuildKHR) ret += "e2AccelerationStructureBuildKHR | ";
+	if((val & PipelineStageBits2::e2RayTracingShaderKHR) == PipelineStageBits2::e2RayTracingShaderKHR) ret += "e2RayTracingShaderKHR | ";
+	if((val & PipelineStageBits2::e2FragmentDensityProcessEXT) == PipelineStageBits2::e2FragmentDensityProcessEXT) ret += "e2FragmentDensityProcessEXT | ";
+	if((val & PipelineStageBits2::e2TaskShaderNV) == PipelineStageBits2::e2TaskShaderNV) ret += "e2TaskShaderNV | ";
+	if((val & PipelineStageBits2::e2MeshShaderNV) == PipelineStageBits2::e2MeshShaderNV) ret += "e2MeshShaderNV | ";
+	if((val & PipelineStageBits2::e2SubpassShadingHUAWEI) == PipelineStageBits2::e2SubpassShadingHUAWEI) ret += "e2SubpassShadingHUAWEI | ";
+	if((val & PipelineStageBits2::e2InvocationMaskHUAWEI) == PipelineStageBits2::e2InvocationMaskHUAWEI) ret += "e2InvocationMaskHUAWEI | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(AccessFlags2 val) {
+	std::string ret;
+	if((val & AccessBits2::e2None) == AccessBits2::e2None) ret += "e2None | ";
+	if((val & AccessBits2::e2IndexRead) == AccessBits2::e2IndexRead) ret += "e2IndexRead | ";
+	if((val & AccessBits2::e2VertexAttributeRead) == AccessBits2::e2VertexAttributeRead) ret += "e2VertexAttributeRead | ";
+	if((val & AccessBits2::e2UniformRead) == AccessBits2::e2UniformRead) ret += "e2UniformRead | ";
+	if((val & AccessBits2::e2InputAttachmentRead) == AccessBits2::e2InputAttachmentRead) ret += "e2InputAttachmentRead | ";
+	if((val & AccessBits2::e2ShaderRead) == AccessBits2::e2ShaderRead) ret += "e2ShaderRead | ";
+	if((val & AccessBits2::e2ShaderWrite) == AccessBits2::e2ShaderWrite) ret += "e2ShaderWrite | ";
+	if((val & AccessBits2::e2ColorAttachmentRead) == AccessBits2::e2ColorAttachmentRead) ret += "e2ColorAttachmentRead | ";
+	if((val & AccessBits2::e2ColorAttachmentWrite) == AccessBits2::e2ColorAttachmentWrite) ret += "e2ColorAttachmentWrite | ";
+	if((val & AccessBits2::e2DepthStencilAttachmentRead) == AccessBits2::e2DepthStencilAttachmentRead) ret += "e2DepthStencilAttachmentRead | ";
+	if((val & AccessBits2::e2DepthStencilAttachmentWrite) == AccessBits2::e2DepthStencilAttachmentWrite) ret += "e2DepthStencilAttachmentWrite | ";
+	if((val & AccessBits2::e2TransferRead) == AccessBits2::e2TransferRead) ret += "e2TransferRead | ";
+	if((val & AccessBits2::e2TransferWrite) == AccessBits2::e2TransferWrite) ret += "e2TransferWrite | ";
+	if((val & AccessBits2::e2HostRead) == AccessBits2::e2HostRead) ret += "e2HostRead | ";
+	if((val & AccessBits2::e2HostWrite) == AccessBits2::e2HostWrite) ret += "e2HostWrite | ";
+	if((val & AccessBits2::e2MemoryRead) == AccessBits2::e2MemoryRead) ret += "e2MemoryRead | ";
+	if((val & AccessBits2::e2MemoryWrite) == AccessBits2::e2MemoryWrite) ret += "e2MemoryWrite | ";
+	if((val & AccessBits2::e2ShaderSampledRead) == AccessBits2::e2ShaderSampledRead) ret += "e2ShaderSampledRead | ";
+	if((val & AccessBits2::e2ShaderStorageRead) == AccessBits2::e2ShaderStorageRead) ret += "e2ShaderStorageRead | ";
+	if((val & AccessBits2::e2ShaderStorageWrite) == AccessBits2::e2ShaderStorageWrite) ret += "e2ShaderStorageWrite | ";
+	if((val & AccessBits2::e2TransformFeedbackWriteEXT) == AccessBits2::e2TransformFeedbackWriteEXT) ret += "e2TransformFeedbackWriteEXT | ";
+	if((val & AccessBits2::e2TransformFeedbackCounterReadEXT) == AccessBits2::e2TransformFeedbackCounterReadEXT) ret += "e2TransformFeedbackCounterReadEXT | ";
+	if((val & AccessBits2::e2TransformFeedbackCounterWriteEXT) == AccessBits2::e2TransformFeedbackCounterWriteEXT) ret += "e2TransformFeedbackCounterWriteEXT | ";
+	if((val & AccessBits2::e2ConditionalRenderingReadEXT) == AccessBits2::e2ConditionalRenderingReadEXT) ret += "e2ConditionalRenderingReadEXT | ";
+	if((val & AccessBits2::e2CommandPreprocessReadNV) == AccessBits2::e2CommandPreprocessReadNV) ret += "e2CommandPreprocessReadNV | ";
+	if((val & AccessBits2::e2CommandPreprocessWriteNV) == AccessBits2::e2CommandPreprocessWriteNV) ret += "e2CommandPreprocessWriteNV | ";
+	if((val & AccessBits2::e2FragmentShadingRateAttachmentReadKHR) == AccessBits2::e2FragmentShadingRateAttachmentReadKHR) ret += "e2FragmentShadingRateAttachmentReadKHR | ";
+	if((val & AccessBits2::e2AccelerationStructureReadKHR) == AccessBits2::e2AccelerationStructureReadKHR) ret += "e2AccelerationStructureReadKHR | ";
+	if((val & AccessBits2::e2AccelerationStructureWriteKHR) == AccessBits2::e2AccelerationStructureWriteKHR) ret += "e2AccelerationStructureWriteKHR | ";
+	if((val & AccessBits2::e2FragmentDensityMapReadEXT) == AccessBits2::e2FragmentDensityMapReadEXT) ret += "e2FragmentDensityMapReadEXT | ";
+	if((val & AccessBits2::e2ColorAttachmentReadNoncoherentEXT) == AccessBits2::e2ColorAttachmentReadNoncoherentEXT) ret += "e2ColorAttachmentReadNoncoherentEXT | ";
+	if((val & AccessBits2::e2InvocationMaskReadHUAWEI) == AccessBits2::e2InvocationMaskReadHUAWEI) ret += "e2InvocationMaskReadHUAWEI | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(ImageAspectFlags val) {
+	std::string ret;
+	if((val & ImageAspectBits::color) == ImageAspectBits::color) ret += "color | ";
+	if((val & ImageAspectBits::depth) == ImageAspectBits::depth) ret += "depth | ";
+	if((val & ImageAspectBits::stencil) == ImageAspectBits::stencil) ret += "stencil | ";
+	if((val & ImageAspectBits::metadata) == ImageAspectBits::metadata) ret += "metadata | ";
+	if((val & ImageAspectBits::plane0) == ImageAspectBits::plane0) ret += "plane0 | ";
+	if((val & ImageAspectBits::plane1) == ImageAspectBits::plane1) ret += "plane1 | ";
+	if((val & ImageAspectBits::plane2) == ImageAspectBits::plane2) ret += "plane2 | ";
+	if((val & ImageAspectBits::memoryPlane0EXT) == ImageAspectBits::memoryPlane0EXT) ret += "memoryPlane0EXT | ";
+	if((val & ImageAspectBits::memoryPlane1EXT) == ImageAspectBits::memoryPlane1EXT) ret += "memoryPlane1EXT | ";
+	if((val & ImageAspectBits::memoryPlane2EXT) == ImageAspectBits::memoryPlane2EXT) ret += "memoryPlane2EXT | ";
+	if((val & ImageAspectBits::memoryPlane3EXT) == ImageAspectBits::memoryPlane3EXT) ret += "memoryPlane3EXT | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(DependencyFlags val) {
+	std::string ret;
+	if((val & DependencyBits::byRegion) == DependencyBits::byRegion) ret += "byRegion | ";
+	if((val & DependencyBits::deviceGroup) == DependencyBits::deviceGroup) ret += "deviceGroup | ";
+	if((val & DependencyBits::viewLocal) == DependencyBits::viewLocal) ret += "viewLocal | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(SubmitFlags val) {
+	std::string ret;
+	if((val & SubmitBits::eProtected) == SubmitBits::eProtected) ret += "eProtected | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(RenderingFlags val) {
+	std::string ret;
+	if((val & RenderingBits::contentsSecondaryCommandBuffers) == RenderingBits::contentsSecondaryCommandBuffers) ret += "contentsSecondaryCommandBuffers | ";
+	if((val & RenderingBits::suspending) == RenderingBits::suspending) ret += "suspending | ";
+	if((val & RenderingBits::resuming) == RenderingBits::resuming) ret += "resuming | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(CullModeFlags val) {
+	std::string ret;
+	if((val & CullModeBits::none) == CullModeBits::none) ret += "none | ";
+	if((val & CullModeBits::back) == CullModeBits::back) ret += "back | ";
+	if((val & CullModeBits::frontAndBack) == CullModeBits::frontAndBack) ret += "frontAndBack | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(StencilFaceFlags val) {
+	std::string ret;
+	if((val & StencilFaceBits::front) == StencilFaceBits::front) ret += "front | ";
+	if((val & StencilFaceBits::back) == StencilFaceBits::back) ret += "back | ";
+	if((val & StencilFaceBits::frontAndBack) == StencilFaceBits::frontAndBack) ret += "frontAndBack | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(FormatFeatureFlags2 val) {
+	std::string ret;
+	if((val & FormatFeatureBits2::e2SampledImage) == FormatFeatureBits2::e2SampledImage) ret += "e2SampledImage | ";
+	if((val & FormatFeatureBits2::e2StorageImage) == FormatFeatureBits2::e2StorageImage) ret += "e2StorageImage | ";
+	if((val & FormatFeatureBits2::e2StorageImageAtomic) == FormatFeatureBits2::e2StorageImageAtomic) ret += "e2StorageImageAtomic | ";
+	if((val & FormatFeatureBits2::e2UniformTexelBuffer) == FormatFeatureBits2::e2UniformTexelBuffer) ret += "e2UniformTexelBuffer | ";
+	if((val & FormatFeatureBits2::e2StorageTexelBuffer) == FormatFeatureBits2::e2StorageTexelBuffer) ret += "e2StorageTexelBuffer | ";
+	if((val & FormatFeatureBits2::e2StorageTexelBufferAtomic) == FormatFeatureBits2::e2StorageTexelBufferAtomic) ret += "e2StorageTexelBufferAtomic | ";
+	if((val & FormatFeatureBits2::e2VertexBuffer) == FormatFeatureBits2::e2VertexBuffer) ret += "e2VertexBuffer | ";
+	if((val & FormatFeatureBits2::e2ColorAttachment) == FormatFeatureBits2::e2ColorAttachment) ret += "e2ColorAttachment | ";
+	if((val & FormatFeatureBits2::e2ColorAttachmentBlend) == FormatFeatureBits2::e2ColorAttachmentBlend) ret += "e2ColorAttachmentBlend | ";
+	if((val & FormatFeatureBits2::e2DepthStencilAttachment) == FormatFeatureBits2::e2DepthStencilAttachment) ret += "e2DepthStencilAttachment | ";
+	if((val & FormatFeatureBits2::e2BlitSrc) == FormatFeatureBits2::e2BlitSrc) ret += "e2BlitSrc | ";
+	if((val & FormatFeatureBits2::e2BlitDst) == FormatFeatureBits2::e2BlitDst) ret += "e2BlitDst | ";
+	if((val & FormatFeatureBits2::e2SampledImageFilterLinear) == FormatFeatureBits2::e2SampledImageFilterLinear) ret += "e2SampledImageFilterLinear | ";
+	if((val & FormatFeatureBits2::e2SampledImageFilterCubic) == FormatFeatureBits2::e2SampledImageFilterCubic) ret += "e2SampledImageFilterCubic | ";
+	if((val & FormatFeatureBits2::e2TransferSrc) == FormatFeatureBits2::e2TransferSrc) ret += "e2TransferSrc | ";
+	if((val & FormatFeatureBits2::e2TransferDst) == FormatFeatureBits2::e2TransferDst) ret += "e2TransferDst | ";
+	if((val & FormatFeatureBits2::e2SampledImageFilterMinmax) == FormatFeatureBits2::e2SampledImageFilterMinmax) ret += "e2SampledImageFilterMinmax | ";
+	if((val & FormatFeatureBits2::e2MidpointChromaSamples) == FormatFeatureBits2::e2MidpointChromaSamples) ret += "e2MidpointChromaSamples | ";
+	if((val & FormatFeatureBits2::e2SampledImageYcbcrConversionLinearFilter) == FormatFeatureBits2::e2SampledImageYcbcrConversionLinearFilter) ret += "e2SampledImageYcbcrConversionLinearFilter | ";
+	if((val & FormatFeatureBits2::e2SampledImageYcbcrConversionSeparateReconstructionFilter) == FormatFeatureBits2::e2SampledImageYcbcrConversionSeparateReconstructionFilter) ret += "e2SampledImageYcbcrConversionSeparateReconstructionFilter | ";
+	if((val & FormatFeatureBits2::e2SampledImageYcbcrConversionChromaReconstructionExplicit) == FormatFeatureBits2::e2SampledImageYcbcrConversionChromaReconstructionExplicit) ret += "e2SampledImageYcbcrConversionChromaReconstructionExplicit | ";
+	if((val & FormatFeatureBits2::e2SampledImageYcbcrConversionChromaReconstructionExplicitForceable) == FormatFeatureBits2::e2SampledImageYcbcrConversionChromaReconstructionExplicitForceable) ret += "e2SampledImageYcbcrConversionChromaReconstructionExplicitForceable | ";
+	if((val & FormatFeatureBits2::e2Disjoint) == FormatFeatureBits2::e2Disjoint) ret += "e2Disjoint | ";
+	if((val & FormatFeatureBits2::e2CositedChromaSamples) == FormatFeatureBits2::e2CositedChromaSamples) ret += "e2CositedChromaSamples | ";
+	if((val & FormatFeatureBits2::e2StorageReadWithoutFormat) == FormatFeatureBits2::e2StorageReadWithoutFormat) ret += "e2StorageReadWithoutFormat | ";
+	if((val & FormatFeatureBits2::e2StorageWriteWithoutFormat) == FormatFeatureBits2::e2StorageWriteWithoutFormat) ret += "e2StorageWriteWithoutFormat | ";
+	if((val & FormatFeatureBits2::e2SampledImageDepthComparison) == FormatFeatureBits2::e2SampledImageDepthComparison) ret += "e2SampledImageDepthComparison | ";
+	if((val & FormatFeatureBits2::e2AccelerationStructureVertexBufferKHR) == FormatFeatureBits2::e2AccelerationStructureVertexBufferKHR) ret += "e2AccelerationStructureVertexBufferKHR | ";
+	if((val & FormatFeatureBits2::e2FragmentDensityMapEXT) == FormatFeatureBits2::e2FragmentDensityMapEXT) ret += "e2FragmentDensityMapEXT | ";
+	if((val & FormatFeatureBits2::e2FragmentShadingRateAttachmentKHR) == FormatFeatureBits2::e2FragmentShadingRateAttachmentKHR) ret += "e2FragmentShadingRateAttachmentKHR | ";
+	if((val & FormatFeatureBits2::e2LinearColorAttachmentNV) == FormatFeatureBits2::e2LinearColorAttachmentNV) ret += "e2LinearColorAttachmentNV | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(BufferCreateFlags val) {
+	std::string ret;
+	if((val & BufferCreateBits::sparseBinding) == BufferCreateBits::sparseBinding) ret += "sparseBinding | ";
+	if((val & BufferCreateBits::sparseResidency) == BufferCreateBits::sparseResidency) ret += "sparseResidency | ";
+	if((val & BufferCreateBits::sparseAliased) == BufferCreateBits::sparseAliased) ret += "sparseAliased | ";
+	if((val & BufferCreateBits::eProtected) == BufferCreateBits::eProtected) ret += "eProtected | ";
+	if((val & BufferCreateBits::deviceAddressCaptureReplay) == BufferCreateBits::deviceAddressCaptureReplay) ret += "deviceAddressCaptureReplay | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(BufferUsageFlags val) {
+	std::string ret;
+	if((val & BufferUsageBits::transferSrc) == BufferUsageBits::transferSrc) ret += "transferSrc | ";
+	if((val & BufferUsageBits::transferDst) == BufferUsageBits::transferDst) ret += "transferDst | ";
+	if((val & BufferUsageBits::uniformTexelBuffer) == BufferUsageBits::uniformTexelBuffer) ret += "uniformTexelBuffer | ";
+	if((val & BufferUsageBits::storageTexelBuffer) == BufferUsageBits::storageTexelBuffer) ret += "storageTexelBuffer | ";
+	if((val & BufferUsageBits::uniformBuffer) == BufferUsageBits::uniformBuffer) ret += "uniformBuffer | ";
+	if((val & BufferUsageBits::storageBuffer) == BufferUsageBits::storageBuffer) ret += "storageBuffer | ";
+	if((val & BufferUsageBits::indexBuffer) == BufferUsageBits::indexBuffer) ret += "indexBuffer | ";
+	if((val & BufferUsageBits::vertexBuffer) == BufferUsageBits::vertexBuffer) ret += "vertexBuffer | ";
+	if((val & BufferUsageBits::indirectBuffer) == BufferUsageBits::indirectBuffer) ret += "indirectBuffer | ";
+	if((val & BufferUsageBits::shaderDeviceAddress) == BufferUsageBits::shaderDeviceAddress) ret += "shaderDeviceAddress | ";
+	if((val & BufferUsageBits::transformFeedbackBufferEXT) == BufferUsageBits::transformFeedbackBufferEXT) ret += "transformFeedbackBufferEXT | ";
+	if((val & BufferUsageBits::transformFeedbackCounterBufferEXT) == BufferUsageBits::transformFeedbackCounterBufferEXT) ret += "transformFeedbackCounterBufferEXT | ";
+	if((val & BufferUsageBits::conditionalRenderingEXT) == BufferUsageBits::conditionalRenderingEXT) ret += "conditionalRenderingEXT | ";
+	if((val & BufferUsageBits::accelerationStructureBuildInputReadOnlyKHR) == BufferUsageBits::accelerationStructureBuildInputReadOnlyKHR) ret += "accelerationStructureBuildInputReadOnlyKHR | ";
+	if((val & BufferUsageBits::accelerationStructureStorageKHR) == BufferUsageBits::accelerationStructureStorageKHR) ret += "accelerationStructureStorageKHR | ";
+	if((val & BufferUsageBits::shaderBindingTableKHR) == BufferUsageBits::shaderBindingTableKHR) ret += "shaderBindingTableKHR | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(ImageCreateFlags val) {
+	std::string ret;
+	if((val & ImageCreateBits::sparseBinding) == ImageCreateBits::sparseBinding) ret += "sparseBinding | ";
+	if((val & ImageCreateBits::sparseResidency) == ImageCreateBits::sparseResidency) ret += "sparseResidency | ";
+	if((val & ImageCreateBits::sparseAliased) == ImageCreateBits::sparseAliased) ret += "sparseAliased | ";
+	if((val & ImageCreateBits::mutableFormat) == ImageCreateBits::mutableFormat) ret += "mutableFormat | ";
+	if((val & ImageCreateBits::cubeCompatible) == ImageCreateBits::cubeCompatible) ret += "cubeCompatible | ";
+	if((val & ImageCreateBits::alias) == ImageCreateBits::alias) ret += "alias | ";
+	if((val & ImageCreateBits::splitInstanceBindRegions) == ImageCreateBits::splitInstanceBindRegions) ret += "splitInstanceBindRegions | ";
+	if((val & ImageCreateBits::e2dArrayCompatible) == ImageCreateBits::e2dArrayCompatible) ret += "e2dArrayCompatible | ";
+	if((val & ImageCreateBits::blockTexelViewCompatible) == ImageCreateBits::blockTexelViewCompatible) ret += "blockTexelViewCompatible | ";
+	if((val & ImageCreateBits::extendedUsage) == ImageCreateBits::extendedUsage) ret += "extendedUsage | ";
+	if((val & ImageCreateBits::eProtected) == ImageCreateBits::eProtected) ret += "eProtected | ";
+	if((val & ImageCreateBits::disjoint) == ImageCreateBits::disjoint) ret += "disjoint | ";
+	if((val & ImageCreateBits::cornerSampledNV) == ImageCreateBits::cornerSampledNV) ret += "cornerSampledNV | ";
+	if((val & ImageCreateBits::sampleLocationsCompatibleDepthEXT) == ImageCreateBits::sampleLocationsCompatibleDepthEXT) ret += "sampleLocationsCompatibleDepthEXT | ";
+	if((val & ImageCreateBits::subsampledEXT) == ImageCreateBits::subsampledEXT) ret += "subsampledEXT | ";
+	if((val & ImageCreateBits::fragmentDensityMapOffsetQCOM) == ImageCreateBits::fragmentDensityMapOffsetQCOM) ret += "fragmentDensityMapOffsetQCOM | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(ImageUsageFlags val) {
+	std::string ret;
+	if((val & ImageUsageBits::transferSrc) == ImageUsageBits::transferSrc) ret += "transferSrc | ";
+	if((val & ImageUsageBits::transferDst) == ImageUsageBits::transferDst) ret += "transferDst | ";
+	if((val & ImageUsageBits::sampled) == ImageUsageBits::sampled) ret += "sampled | ";
+	if((val & ImageUsageBits::storage) == ImageUsageBits::storage) ret += "storage | ";
+	if((val & ImageUsageBits::colorAttachment) == ImageUsageBits::colorAttachment) ret += "colorAttachment | ";
+	if((val & ImageUsageBits::depthStencilAttachment) == ImageUsageBits::depthStencilAttachment) ret += "depthStencilAttachment | ";
+	if((val & ImageUsageBits::transientAttachment) == ImageUsageBits::transientAttachment) ret += "transientAttachment | ";
+	if((val & ImageUsageBits::inputAttachment) == ImageUsageBits::inputAttachment) ret += "inputAttachment | ";
+	if((val & ImageUsageBits::fragmentDensityMapEXT) == ImageUsageBits::fragmentDensityMapEXT) ret += "fragmentDensityMapEXT | ";
+	if((val & ImageUsageBits::fragmentShadingRateAttachmentKHR) == ImageUsageBits::fragmentShadingRateAttachmentKHR) ret += "fragmentShadingRateAttachmentKHR | ";
+	if((val & ImageUsageBits::invocationMaskHUAWEI) == ImageUsageBits::invocationMaskHUAWEI) ret += "invocationMaskHUAWEI | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(SparseImageFormatFlags val) {
+	std::string ret;
+	if((val & SparseImageFormatBits::singleMiptail) == SparseImageFormatBits::singleMiptail) ret += "singleMiptail | ";
+	if((val & SparseImageFormatBits::alignedMipSize) == SparseImageFormatBits::alignedMipSize) ret += "alignedMipSize | ";
+	if((val & SparseImageFormatBits::nonstandardBlockSize) == SparseImageFormatBits::nonstandardBlockSize) ret += "nonstandardBlockSize | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline const char* name(SubgroupFeatureBits val) {
+	switch(val) {
+		case SubgroupFeatureBits::basic: return "basic";
+		case SubgroupFeatureBits::vote: return "vote";
+		case SubgroupFeatureBits::arithmetic: return "arithmetic";
+		case SubgroupFeatureBits::ballot: return "ballot";
+		case SubgroupFeatureBits::shuffle: return "shuffle";
+		case SubgroupFeatureBits::shuffleRelative: return "shuffleRelative";
+		case SubgroupFeatureBits::clustered: return "clustered";
+		case SubgroupFeatureBits::quad: return "quad";
+		case SubgroupFeatureBits::partitionedNV: return "partitionedNV";
+		default: return nullptr;
+	}
+}
+inline const char* name(PointClippingBehavior val) {
+	switch(val) {
+		case PointClippingBehavior::allClipPlanes: return "allClipPlanes";
+		case PointClippingBehavior::userClipPlanesOnly: return "userClipPlanesOnly";
+		default: return nullptr;
+	}
+}
+inline const char* name(DriverId val) {
+	switch(val) {
+		case DriverId::amdProprietary: return "amdProprietary";
+		case DriverId::amdOpenSource: return "amdOpenSource";
+		case DriverId::mesaRadv: return "mesaRadv";
+		case DriverId::nvidiaProprietary: return "nvidiaProprietary";
+		case DriverId::intelProprietaryWindows: return "intelProprietaryWindows";
+		case DriverId::intelOpenSourceMESA: return "intelOpenSourceMESA";
+		case DriverId::imaginationProprietary: return "imaginationProprietary";
+		case DriverId::qualcommProprietary: return "qualcommProprietary";
+		case DriverId::armProprietary: return "armProprietary";
+		case DriverId::googleSwiftshader: return "googleSwiftshader";
+		case DriverId::ggpProprietary: return "ggpProprietary";
+		case DriverId::broadcomProprietary: return "broadcomProprietary";
+		case DriverId::mesaLlvmpipe: return "mesaLlvmpipe";
+		case DriverId::moltenvk: return "moltenvk";
+		case DriverId::coreaviProprietary: return "coreaviProprietary";
+		case DriverId::juiceProprietary: return "juiceProprietary";
+		case DriverId::verisiliconProprietary: return "verisiliconProprietary";
+		case DriverId::mesaTurnip: return "mesaTurnip";
+		case DriverId::mesaV3dv: return "mesaV3dv";
+		case DriverId::mesaPanvk: return "mesaPanvk";
+		case DriverId::samsungProprietary: return "samsungProprietary";
+		case DriverId::mesaVenus: return "mesaVenus";
+		default: return nullptr;
+	}
+}
+inline const char* name(ShaderFloatControlsIndependence val) {
+	switch(val) {
+		case ShaderFloatControlsIndependence::e32BitOnly: return "e32BitOnly";
+		case ShaderFloatControlsIndependence::all: return "all";
+		case ShaderFloatControlsIndependence::none: return "none";
 		default: return nullptr;
 	}
 }
@@ -836,50 +1742,13 @@ inline const char* name(AttachmentDescriptionBits val) {
 		default: return nullptr;
 	}
 }
-inline const char* name(AttachmentLoadOp val) {
-	switch(val) {
-		case AttachmentLoadOp::load: return "load";
-		case AttachmentLoadOp::clear: return "clear";
-		case AttachmentLoadOp::dontCare: return "dontCare";
-		default: return nullptr;
-	}
-}
-inline const char* name(AttachmentStoreOp val) {
-	switch(val) {
-		case AttachmentStoreOp::store: return "store";
-		case AttachmentStoreOp::dontCare: return "dontCare";
-		case AttachmentStoreOp::noneQCOM: return "noneQCOM";
-		default: return nullptr;
-	}
-}
-inline const char* name(ImageLayout val) {
-	switch(val) {
-		case ImageLayout::undefined: return "undefined";
-		case ImageLayout::general: return "general";
-		case ImageLayout::colorAttachmentOptimal: return "colorAttachmentOptimal";
-		case ImageLayout::depthStencilAttachmentOptimal: return "depthStencilAttachmentOptimal";
-		case ImageLayout::depthStencilReadOnlyOptimal: return "depthStencilReadOnlyOptimal";
-		case ImageLayout::shaderReadOnlyOptimal: return "shaderReadOnlyOptimal";
-		case ImageLayout::transferSrcOptimal: return "transferSrcOptimal";
-		case ImageLayout::transferDstOptimal: return "transferDstOptimal";
-		case ImageLayout::preinitialized: return "preinitialized";
-		case ImageLayout::depthReadOnlyStencilAttachmentOptimal: return "depthReadOnlyStencilAttachmentOptimal";
-		case ImageLayout::depthAttachmentStencilReadOnlyOptimal: return "depthAttachmentStencilReadOnlyOptimal";
-		case ImageLayout::depthAttachmentOptimal: return "depthAttachmentOptimal";
-		case ImageLayout::depthReadOnlyOptimal: return "depthReadOnlyOptimal";
-		case ImageLayout::stencilAttachmentOptimal: return "stencilAttachmentOptimal";
-		case ImageLayout::stencilReadOnlyOptimal: return "stencilReadOnlyOptimal";
-		case ImageLayout::presentSrcKHR: return "presentSrcKHR";
-		case ImageLayout::sharedPresentKHR: return "sharedPresentKHR";
-		case ImageLayout::shadingRateOptimalNV: return "shadingRateOptimalNV";
-		case ImageLayout::fragmentDensityMapOptimalEXT: return "fragmentDensityMapOptimalEXT";
-		default: return nullptr;
-	}
-}
 inline const char* name(SubpassDescriptionBits val) {
 	switch(val) {
 		case SubpassDescriptionBits::fragmentRegionQCOM: return "fragmentRegionQCOM";
 		case SubpassDescriptionBits::shaderResolveQCOM: return "shaderResolveQCOM";
+		case SubpassDescriptionBits::rasterizationOrderAttachmentColorAccessARM: return "rasterizationOrderAttachmentColorAccessARM";
+		case SubpassDescriptionBits::rasterizationOrderAttachmentDepthAccessARM: return "rasterizationOrderAttachmentDepthAccessARM";
+		case SubpassDescriptionBits::rasterizationOrderAttachmentStencilAccessARM: return "rasterizationOrderAttachmentStencilAccessARM";
 		default: return nullptr;
 	}
 }
@@ -888,22 +1757,7 @@ inline const char* name(PipelineBindPoint val) {
 		case PipelineBindPoint::graphics: return "graphics";
 		case PipelineBindPoint::compute: return "compute";
 		case PipelineBindPoint::rayTracingKHR: return "rayTracingKHR";
-		default: return nullptr;
-	}
-}
-inline const char* name(ImageAspectBits val) {
-	switch(val) {
-		case ImageAspectBits::color: return "color";
-		case ImageAspectBits::depth: return "depth";
-		case ImageAspectBits::stencil: return "stencil";
-		case ImageAspectBits::metadata: return "metadata";
-		case ImageAspectBits::plane0: return "plane0";
-		case ImageAspectBits::plane1: return "plane1";
-		case ImageAspectBits::plane2: return "plane2";
-		case ImageAspectBits::memoryPlane0EXT: return "memoryPlane0EXT";
-		case ImageAspectBits::memoryPlane1EXT: return "memoryPlane1EXT";
-		case ImageAspectBits::memoryPlane2EXT: return "memoryPlane2EXT";
-		case ImageAspectBits::memoryPlane3EXT: return "memoryPlane3EXT";
+		case PipelineBindPoint::subpassShadingHUAWEI: return "subpassShadingHUAWEI";
 		default: return nullptr;
 	}
 }
@@ -930,10 +1784,10 @@ inline const char* name(PipelineStageBits val) {
 		case PipelineStageBits::conditionalRenderingEXT: return "conditionalRenderingEXT";
 		case PipelineStageBits::accelerationStructureBuildKHR: return "accelerationStructureBuildKHR";
 		case PipelineStageBits::rayTracingShaderKHR: return "rayTracingShaderKHR";
-		case PipelineStageBits::shadingRateImageNV: return "shadingRateImageNV";
 		case PipelineStageBits::taskShaderNV: return "taskShaderNV";
 		case PipelineStageBits::meshShaderNV: return "meshShaderNV";
 		case PipelineStageBits::fragmentDensityProcessEXT: return "fragmentDensityProcessEXT";
+		case PipelineStageBits::fragmentShadingRateAttachmentKHR: return "fragmentShadingRateAttachmentKHR";
 		case PipelineStageBits::commandPreprocessNV: return "commandPreprocessNV";
 		default: return nullptr;
 	}
@@ -964,18 +1818,10 @@ inline const char* name(AccessBits val) {
 		case AccessBits::colorAttachmentReadNoncoherentEXT: return "colorAttachmentReadNoncoherentEXT";
 		case AccessBits::accelerationStructureReadKHR: return "accelerationStructureReadKHR";
 		case AccessBits::accelerationStructureWriteKHR: return "accelerationStructureWriteKHR";
-		case AccessBits::shadingRateImageReadNV: return "shadingRateImageReadNV";
 		case AccessBits::fragmentDensityMapReadEXT: return "fragmentDensityMapReadEXT";
+		case AccessBits::fragmentShadingRateAttachmentReadKHR: return "fragmentShadingRateAttachmentReadKHR";
 		case AccessBits::commandPreprocessReadNV: return "commandPreprocessReadNV";
 		case AccessBits::commandPreprocessWriteNV: return "commandPreprocessWriteNV";
-		default: return nullptr;
-	}
-}
-inline const char* name(DependencyBits val) {
-	switch(val) {
-		case DependencyBits::byRegion: return "byRegion";
-		case DependencyBits::deviceGroup: return "deviceGroup";
-		case DependencyBits::viewLocal: return "viewLocal";
 		default: return nullptr;
 	}
 }
@@ -983,65 +1829,6 @@ inline const char* name(SubpassContents val) {
 	switch(val) {
 		case SubpassContents::eInline: return "eInline";
 		case SubpassContents::secondaryCommandBuffers: return "secondaryCommandBuffers";
-		default: return nullptr;
-	}
-}
-inline const char* name(SystemAllocationScope val) {
-	switch(val) {
-		case SystemAllocationScope::command: return "command";
-		case SystemAllocationScope::object: return "object";
-		case SystemAllocationScope::cache: return "cache";
-		case SystemAllocationScope::device: return "device";
-		case SystemAllocationScope::instance: return "instance";
-		default: return nullptr;
-	}
-}
-inline const char* name(InternalAllocationType val) {
-	switch(val) {
-		case InternalAllocationType::executable: return "executable";
-		default: return nullptr;
-	}
-}
-inline const char* name(Result val) {
-	switch(val) {
-		case Result::success: return "success";
-		case Result::notReady: return "notReady";
-		case Result::timeout: return "timeout";
-		case Result::eventSet: return "eventSet";
-		case Result::eventReset: return "eventReset";
-		case Result::incomplete: return "incomplete";
-		case Result::errorOutOfHostMemory: return "errorOutOfHostMemory";
-		case Result::errorOutOfDeviceMemory: return "errorOutOfDeviceMemory";
-		case Result::errorInitializationFailed: return "errorInitializationFailed";
-		case Result::errorDeviceLost: return "errorDeviceLost";
-		case Result::errorMemoryMapFailed: return "errorMemoryMapFailed";
-		case Result::errorLayerNotPresent: return "errorLayerNotPresent";
-		case Result::errorExtensionNotPresent: return "errorExtensionNotPresent";
-		case Result::errorFeatureNotPresent: return "errorFeatureNotPresent";
-		case Result::errorIncompatibleDriver: return "errorIncompatibleDriver";
-		case Result::errorTooManyObjects: return "errorTooManyObjects";
-		case Result::errorFormatNotSupported: return "errorFormatNotSupported";
-		case Result::errorFragmentedPool: return "errorFragmentedPool";
-		case Result::errorUnknown: return "errorUnknown";
-		case Result::errorOutOfPoolMemory: return "errorOutOfPoolMemory";
-		case Result::errorInvalidExternalHandle: return "errorInvalidExternalHandle";
-		case Result::errorFragmentation: return "errorFragmentation";
-		case Result::errorInvalidOpaqueCaptureAddress: return "errorInvalidOpaqueCaptureAddress";
-		case Result::errorSurfaceLostKHR: return "errorSurfaceLostKHR";
-		case Result::errorNativeWindowInUseKHR: return "errorNativeWindowInUseKHR";
-		case Result::suboptimalKHR: return "suboptimalKHR";
-		case Result::errorOutOfDateKHR: return "errorOutOfDateKHR";
-		case Result::errorIncompatibleDisplayKHR: return "errorIncompatibleDisplayKHR";
-		case Result::errorValidationFailedEXT: return "errorValidationFailedEXT";
-		case Result::errorInvalidShaderNV: return "errorInvalidShaderNV";
-		case Result::errorInvalidDrmFormatModifierPlaneLayoutEXT: return "errorInvalidDrmFormatModifierPlaneLayoutEXT";
-		case Result::errorNotPermittedEXT: return "errorNotPermittedEXT";
-		case Result::errorFullScreenExclusiveModeLostEXT: return "errorFullScreenExclusiveModeLostEXT";
-		case Result::threadIDleKHR: return "threadIDleKHR";
-		case Result::threadDoneKHR: return "threadDoneKHR";
-		case Result::operationDeferredKHR: return "operationDeferredKHR";
-		case Result::operationNotDeferredKHR: return "operationNotDeferredKHR";
-		case Result::pipelineCompileRequiredEXT: return "pipelineCompileRequiredEXT";
 		default: return nullptr;
 	}
 }
@@ -1054,46 +1841,11 @@ inline const char* name(DescriptorBindingBits val) {
 		default: return nullptr;
 	}
 }
-inline const char* name(ImageUsageBits val) {
-	switch(val) {
-		case ImageUsageBits::transferSrc: return "transferSrc";
-		case ImageUsageBits::transferDst: return "transferDst";
-		case ImageUsageBits::sampled: return "sampled";
-		case ImageUsageBits::storage: return "storage";
-		case ImageUsageBits::colorAttachment: return "colorAttachment";
-		case ImageUsageBits::depthStencilAttachment: return "depthStencilAttachment";
-		case ImageUsageBits::transientAttachment: return "transientAttachment";
-		case ImageUsageBits::inputAttachment: return "inputAttachment";
-		case ImageUsageBits::shadingRateImageNV: return "shadingRateImageNV";
-		case ImageUsageBits::fragmentDensityMapEXT: return "fragmentDensityMapEXT";
-		default: return nullptr;
-	}
-}
 inline const char* name(SamplerReductionMode val) {
 	switch(val) {
 		case SamplerReductionMode::weightedAverage: return "weightedAverage";
 		case SamplerReductionMode::min: return "min";
 		case SamplerReductionMode::max: return "max";
-		default: return nullptr;
-	}
-}
-inline const char* name(ImageCreateBits val) {
-	switch(val) {
-		case ImageCreateBits::sparseBinding: return "sparseBinding";
-		case ImageCreateBits::sparseResidency: return "sparseResidency";
-		case ImageCreateBits::sparseAliased: return "sparseAliased";
-		case ImageCreateBits::mutableFormat: return "mutableFormat";
-		case ImageCreateBits::cubeCompatible: return "cubeCompatible";
-		case ImageCreateBits::alias: return "alias";
-		case ImageCreateBits::splitInstanceBindRegions: return "splitInstanceBindRegions";
-		case ImageCreateBits::e2dArrayCompatible: return "e2dArrayCompatible";
-		case ImageCreateBits::blockTexelViewCompatible: return "blockTexelViewCompatible";
-		case ImageCreateBits::extendedUsage: return "extendedUsage";
-		case ImageCreateBits::eProtected: return "eProtected";
-		case ImageCreateBits::disjoint: return "disjoint";
-		case ImageCreateBits::cornerSampledNV: return "cornerSampledNV";
-		case ImageCreateBits::sampleLocationsCompatibleDepthEXT: return "sampleLocationsCompatibleDepthEXT";
-		case ImageCreateBits::subsampledEXT: return "subsampledEXT";
 		default: return nullptr;
 	}
 }
@@ -1109,28 +1861,6 @@ inline const char* name(SemaphoreWaitBits val) {
 		case SemaphoreWaitBits::any: return "any";
 		default: return nullptr;
 	}
-}
-inline std::string name(ShaderStageFlags val) {
-	std::string ret;
-	if((val & ShaderStageBits::vertex) == ShaderStageBits::vertex) ret += "vertex | ";
-	if((val & ShaderStageBits::tessellationControl) == ShaderStageBits::tessellationControl) ret += "tessellationControl | ";
-	if((val & ShaderStageBits::tessellationEvaluation) == ShaderStageBits::tessellationEvaluation) ret += "tessellationEvaluation | ";
-	if((val & ShaderStageBits::geometry) == ShaderStageBits::geometry) ret += "geometry | ";
-	if((val & ShaderStageBits::fragment) == ShaderStageBits::fragment) ret += "fragment | ";
-	if((val & ShaderStageBits::compute) == ShaderStageBits::compute) ret += "compute | ";
-	if((val & ShaderStageBits::allGraphics) == ShaderStageBits::allGraphics) ret += "allGraphics | ";
-	if((val & ShaderStageBits::all) == ShaderStageBits::all) ret += "all | ";
-	if((val & ShaderStageBits::raygenKHR) == ShaderStageBits::raygenKHR) ret += "raygenKHR | ";
-	if((val & ShaderStageBits::anyHitKHR) == ShaderStageBits::anyHitKHR) ret += "anyHitKHR | ";
-	if((val & ShaderStageBits::closestHitKHR) == ShaderStageBits::closestHitKHR) ret += "closestHitKHR | ";
-	if((val & ShaderStageBits::missKHR) == ShaderStageBits::missKHR) ret += "missKHR | ";
-	if((val & ShaderStageBits::intersectionKHR) == ShaderStageBits::intersectionKHR) ret += "intersectionKHR | ";
-	if((val & ShaderStageBits::callableKHR) == ShaderStageBits::callableKHR) ret += "callableKHR | ";
-	if((val & ShaderStageBits::taskNV) == ShaderStageBits::taskNV) ret += "taskNV | ";
-	if((val & ShaderStageBits::meshNV) == ShaderStageBits::meshNV) ret += "meshNV | ";
-	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
-	return ret;
-
 }
 inline std::string name(SubgroupFeatureFlags val) {
 	std::string ret;
@@ -1188,23 +1918,9 @@ inline std::string name(SubpassDescriptionFlags val) {
 	std::string ret;
 	if((val & SubpassDescriptionBits::fragmentRegionQCOM) == SubpassDescriptionBits::fragmentRegionQCOM) ret += "fragmentRegionQCOM | ";
 	if((val & SubpassDescriptionBits::shaderResolveQCOM) == SubpassDescriptionBits::shaderResolveQCOM) ret += "shaderResolveQCOM | ";
-	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
-	return ret;
-
-}
-inline std::string name(ImageAspectFlags val) {
-	std::string ret;
-	if((val & ImageAspectBits::color) == ImageAspectBits::color) ret += "color | ";
-	if((val & ImageAspectBits::depth) == ImageAspectBits::depth) ret += "depth | ";
-	if((val & ImageAspectBits::stencil) == ImageAspectBits::stencil) ret += "stencil | ";
-	if((val & ImageAspectBits::metadata) == ImageAspectBits::metadata) ret += "metadata | ";
-	if((val & ImageAspectBits::plane0) == ImageAspectBits::plane0) ret += "plane0 | ";
-	if((val & ImageAspectBits::plane1) == ImageAspectBits::plane1) ret += "plane1 | ";
-	if((val & ImageAspectBits::plane2) == ImageAspectBits::plane2) ret += "plane2 | ";
-	if((val & ImageAspectBits::memoryPlane0EXT) == ImageAspectBits::memoryPlane0EXT) ret += "memoryPlane0EXT | ";
-	if((val & ImageAspectBits::memoryPlane1EXT) == ImageAspectBits::memoryPlane1EXT) ret += "memoryPlane1EXT | ";
-	if((val & ImageAspectBits::memoryPlane2EXT) == ImageAspectBits::memoryPlane2EXT) ret += "memoryPlane2EXT | ";
-	if((val & ImageAspectBits::memoryPlane3EXT) == ImageAspectBits::memoryPlane3EXT) ret += "memoryPlane3EXT | ";
+	if((val & SubpassDescriptionBits::rasterizationOrderAttachmentColorAccessARM) == SubpassDescriptionBits::rasterizationOrderAttachmentColorAccessARM) ret += "rasterizationOrderAttachmentColorAccessARM | ";
+	if((val & SubpassDescriptionBits::rasterizationOrderAttachmentDepthAccessARM) == SubpassDescriptionBits::rasterizationOrderAttachmentDepthAccessARM) ret += "rasterizationOrderAttachmentDepthAccessARM | ";
+	if((val & SubpassDescriptionBits::rasterizationOrderAttachmentStencilAccessARM) == SubpassDescriptionBits::rasterizationOrderAttachmentStencilAccessARM) ret += "rasterizationOrderAttachmentStencilAccessARM | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
@@ -1232,10 +1948,10 @@ inline std::string name(PipelineStageFlags val) {
 	if((val & PipelineStageBits::conditionalRenderingEXT) == PipelineStageBits::conditionalRenderingEXT) ret += "conditionalRenderingEXT | ";
 	if((val & PipelineStageBits::accelerationStructureBuildKHR) == PipelineStageBits::accelerationStructureBuildKHR) ret += "accelerationStructureBuildKHR | ";
 	if((val & PipelineStageBits::rayTracingShaderKHR) == PipelineStageBits::rayTracingShaderKHR) ret += "rayTracingShaderKHR | ";
-	if((val & PipelineStageBits::shadingRateImageNV) == PipelineStageBits::shadingRateImageNV) ret += "shadingRateImageNV | ";
 	if((val & PipelineStageBits::taskShaderNV) == PipelineStageBits::taskShaderNV) ret += "taskShaderNV | ";
 	if((val & PipelineStageBits::meshShaderNV) == PipelineStageBits::meshShaderNV) ret += "meshShaderNV | ";
 	if((val & PipelineStageBits::fragmentDensityProcessEXT) == PipelineStageBits::fragmentDensityProcessEXT) ret += "fragmentDensityProcessEXT | ";
+	if((val & PipelineStageBits::fragmentShadingRateAttachmentKHR) == PipelineStageBits::fragmentShadingRateAttachmentKHR) ret += "fragmentShadingRateAttachmentKHR | ";
 	if((val & PipelineStageBits::commandPreprocessNV) == PipelineStageBits::commandPreprocessNV) ret += "commandPreprocessNV | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
@@ -1267,19 +1983,10 @@ inline std::string name(AccessFlags val) {
 	if((val & AccessBits::colorAttachmentReadNoncoherentEXT) == AccessBits::colorAttachmentReadNoncoherentEXT) ret += "colorAttachmentReadNoncoherentEXT | ";
 	if((val & AccessBits::accelerationStructureReadKHR) == AccessBits::accelerationStructureReadKHR) ret += "accelerationStructureReadKHR | ";
 	if((val & AccessBits::accelerationStructureWriteKHR) == AccessBits::accelerationStructureWriteKHR) ret += "accelerationStructureWriteKHR | ";
-	if((val & AccessBits::shadingRateImageReadNV) == AccessBits::shadingRateImageReadNV) ret += "shadingRateImageReadNV | ";
 	if((val & AccessBits::fragmentDensityMapReadEXT) == AccessBits::fragmentDensityMapReadEXT) ret += "fragmentDensityMapReadEXT | ";
+	if((val & AccessBits::fragmentShadingRateAttachmentReadKHR) == AccessBits::fragmentShadingRateAttachmentReadKHR) ret += "fragmentShadingRateAttachmentReadKHR | ";
 	if((val & AccessBits::commandPreprocessReadNV) == AccessBits::commandPreprocessReadNV) ret += "commandPreprocessReadNV | ";
 	if((val & AccessBits::commandPreprocessWriteNV) == AccessBits::commandPreprocessWriteNV) ret += "commandPreprocessWriteNV | ";
-	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
-	return ret;
-
-}
-inline std::string name(DependencyFlags val) {
-	std::string ret;
-	if((val & DependencyBits::byRegion) == DependencyBits::byRegion) ret += "byRegion | ";
-	if((val & DependencyBits::deviceGroup) == DependencyBits::deviceGroup) ret += "deviceGroup | ";
-	if((val & DependencyBits::viewLocal) == DependencyBits::viewLocal) ret += "viewLocal | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
@@ -1290,43 +1997,6 @@ inline std::string name(DescriptorBindingFlags val) {
 	if((val & DescriptorBindingBits::updateUnusedWhilePending) == DescriptorBindingBits::updateUnusedWhilePending) ret += "updateUnusedWhilePending | ";
 	if((val & DescriptorBindingBits::partiallyBound) == DescriptorBindingBits::partiallyBound) ret += "partiallyBound | ";
 	if((val & DescriptorBindingBits::variableDescriptorCount) == DescriptorBindingBits::variableDescriptorCount) ret += "variableDescriptorCount | ";
-	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
-	return ret;
-
-}
-inline std::string name(ImageUsageFlags val) {
-	std::string ret;
-	if((val & ImageUsageBits::transferSrc) == ImageUsageBits::transferSrc) ret += "transferSrc | ";
-	if((val & ImageUsageBits::transferDst) == ImageUsageBits::transferDst) ret += "transferDst | ";
-	if((val & ImageUsageBits::sampled) == ImageUsageBits::sampled) ret += "sampled | ";
-	if((val & ImageUsageBits::storage) == ImageUsageBits::storage) ret += "storage | ";
-	if((val & ImageUsageBits::colorAttachment) == ImageUsageBits::colorAttachment) ret += "colorAttachment | ";
-	if((val & ImageUsageBits::depthStencilAttachment) == ImageUsageBits::depthStencilAttachment) ret += "depthStencilAttachment | ";
-	if((val & ImageUsageBits::transientAttachment) == ImageUsageBits::transientAttachment) ret += "transientAttachment | ";
-	if((val & ImageUsageBits::inputAttachment) == ImageUsageBits::inputAttachment) ret += "inputAttachment | ";
-	if((val & ImageUsageBits::shadingRateImageNV) == ImageUsageBits::shadingRateImageNV) ret += "shadingRateImageNV | ";
-	if((val & ImageUsageBits::fragmentDensityMapEXT) == ImageUsageBits::fragmentDensityMapEXT) ret += "fragmentDensityMapEXT | ";
-	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
-	return ret;
-
-}
-inline std::string name(ImageCreateFlags val) {
-	std::string ret;
-	if((val & ImageCreateBits::sparseBinding) == ImageCreateBits::sparseBinding) ret += "sparseBinding | ";
-	if((val & ImageCreateBits::sparseResidency) == ImageCreateBits::sparseResidency) ret += "sparseResidency | ";
-	if((val & ImageCreateBits::sparseAliased) == ImageCreateBits::sparseAliased) ret += "sparseAliased | ";
-	if((val & ImageCreateBits::mutableFormat) == ImageCreateBits::mutableFormat) ret += "mutableFormat | ";
-	if((val & ImageCreateBits::cubeCompatible) == ImageCreateBits::cubeCompatible) ret += "cubeCompatible | ";
-	if((val & ImageCreateBits::alias) == ImageCreateBits::alias) ret += "alias | ";
-	if((val & ImageCreateBits::splitInstanceBindRegions) == ImageCreateBits::splitInstanceBindRegions) ret += "splitInstanceBindRegions | ";
-	if((val & ImageCreateBits::e2dArrayCompatible) == ImageCreateBits::e2dArrayCompatible) ret += "e2dArrayCompatible | ";
-	if((val & ImageCreateBits::blockTexelViewCompatible) == ImageCreateBits::blockTexelViewCompatible) ret += "blockTexelViewCompatible | ";
-	if((val & ImageCreateBits::extendedUsage) == ImageCreateBits::extendedUsage) ret += "extendedUsage | ";
-	if((val & ImageCreateBits::eProtected) == ImageCreateBits::eProtected) ret += "eProtected | ";
-	if((val & ImageCreateBits::disjoint) == ImageCreateBits::disjoint) ret += "disjoint | ";
-	if((val & ImageCreateBits::cornerSampledNV) == ImageCreateBits::cornerSampledNV) ret += "cornerSampledNV | ";
-	if((val & ImageCreateBits::sampleLocationsCompatibleDepthEXT) == ImageCreateBits::sampleLocationsCompatibleDepthEXT) ret += "sampleLocationsCompatibleDepthEXT | ";
-	if((val & ImageCreateBits::subsampledEXT) == ImageCreateBits::subsampledEXT) ret += "subsampledEXT | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
@@ -1352,14 +2022,6 @@ inline const char* name(MemoryAllocateBits val) {
 		case MemoryAllocateBits::deviceMask: return "deviceMask";
 		case MemoryAllocateBits::deviceAddress: return "deviceAddress";
 		case MemoryAllocateBits::deviceAddressCaptureReplay: return "deviceAddressCaptureReplay";
-		default: return nullptr;
-	}
-}
-inline const char* name(SparseImageFormatBits val) {
-	switch(val) {
-		case SparseImageFormatBits::singleMiptail: return "singleMiptail";
-		case SparseImageFormatBits::alignedMipSize: return "alignedMipSize";
-		case SparseImageFormatBits::nonstandardBlockSize: return "nonstandardBlockSize";
 		default: return nullptr;
 	}
 }
@@ -1405,22 +2067,6 @@ inline const char* name(FormatFeatureBits val) {
 		default: return nullptr;
 	}
 }
-inline const char* name(ImageType val) {
-	switch(val) {
-		case ImageType::e1d: return "e1d";
-		case ImageType::e2d: return "e2d";
-		case ImageType::e3d: return "e3d";
-		default: return nullptr;
-	}
-}
-inline const char* name(ImageTiling val) {
-	switch(val) {
-		case ImageTiling::optimal: return "optimal";
-		case ImageTiling::linear: return "linear";
-		case ImageTiling::drmFormatModifierEXT: return "drmFormatModifierEXT";
-		default: return nullptr;
-	}
-}
 inline const char* name(QueueBits val) {
 	switch(val) {
 		case QueueBits::graphics: return "graphics";
@@ -1441,6 +2087,7 @@ inline const char* name(MemoryPropertyBits val) {
 		case MemoryPropertyBits::eProtected: return "eProtected";
 		case MemoryPropertyBits::deviceCoherentAMD: return "deviceCoherentAMD";
 		case MemoryPropertyBits::deviceUncachedAMD: return "deviceUncachedAMD";
+		case MemoryPropertyBits::rdmaCapableNV: return "rdmaCapableNV";
 		default: return nullptr;
 	}
 }
@@ -1500,14 +2147,6 @@ inline const char* name(ChromaLocation val) {
 		default: return nullptr;
 	}
 }
-inline const char* name(Filter val) {
-	switch(val) {
-		case Filter::nearest: return "nearest";
-		case Filter::linear: return "linear";
-		case Filter::cubicIMG: return "cubicIMG";
-		default: return nullptr;
-	}
-}
 inline const char* name(DescriptorUpdateTemplateType val) {
 	switch(val) {
 		case DescriptorUpdateTemplateType::descriptorSet: return "descriptorSet";
@@ -1528,7 +2167,7 @@ inline const char* name(DescriptorType val) {
 		case DescriptorType::uniformBufferDynamic: return "uniformBufferDynamic";
 		case DescriptorType::storageBufferDynamic: return "storageBufferDynamic";
 		case DescriptorType::inputAttachment: return "inputAttachment";
-		case DescriptorType::inlineUniformBlockEXT: return "inlineUniformBlockEXT";
+		case DescriptorType::inlineUniformBlock: return "inlineUniformBlock";
 		case DescriptorType::accelerationStructureKHR: return "accelerationStructureKHR";
 		case DescriptorType::accelerationStructureNV: return "accelerationStructureNV";
 		case DescriptorType::mutableVALVE: return "mutableVALVE";
@@ -1547,6 +2186,8 @@ inline const char* name(ExternalMemoryHandleTypeBits val) {
 		case ExternalMemoryHandleTypeBits::dmaBufEXT: return "dmaBufEXT";
 		case ExternalMemoryHandleTypeBits::hostAllocationEXT: return "hostAllocationEXT";
 		case ExternalMemoryHandleTypeBits::hostMappedForeignMemoryEXT: return "hostMappedForeignMemoryEXT";
+		case ExternalMemoryHandleTypeBits::zirconVmoFUCHSIA: return "zirconVmoFUCHSIA";
+		case ExternalMemoryHandleTypeBits::rdmaAddressNV: return "rdmaAddressNV";
 		default: return nullptr;
 	}
 }
@@ -1555,37 +2196,6 @@ inline const char* name(ExternalMemoryFeatureBits val) {
 		case ExternalMemoryFeatureBits::dedicatedOnly: return "dedicatedOnly";
 		case ExternalMemoryFeatureBits::exportable: return "exportable";
 		case ExternalMemoryFeatureBits::importable: return "importable";
-		default: return nullptr;
-	}
-}
-inline const char* name(BufferCreateBits val) {
-	switch(val) {
-		case BufferCreateBits::sparseBinding: return "sparseBinding";
-		case BufferCreateBits::sparseResidency: return "sparseResidency";
-		case BufferCreateBits::sparseAliased: return "sparseAliased";
-		case BufferCreateBits::eProtected: return "eProtected";
-		case BufferCreateBits::deviceAddressCaptureReplay: return "deviceAddressCaptureReplay";
-		default: return nullptr;
-	}
-}
-inline const char* name(BufferUsageBits val) {
-	switch(val) {
-		case BufferUsageBits::transferSrc: return "transferSrc";
-		case BufferUsageBits::transferDst: return "transferDst";
-		case BufferUsageBits::uniformTexelBuffer: return "uniformTexelBuffer";
-		case BufferUsageBits::storageTexelBuffer: return "storageTexelBuffer";
-		case BufferUsageBits::uniformBuffer: return "uniformBuffer";
-		case BufferUsageBits::storageBuffer: return "storageBuffer";
-		case BufferUsageBits::indexBuffer: return "indexBuffer";
-		case BufferUsageBits::vertexBuffer: return "vertexBuffer";
-		case BufferUsageBits::indirectBuffer: return "indirectBuffer";
-		case BufferUsageBits::shaderDeviceAddress: return "shaderDeviceAddress";
-		case BufferUsageBits::transformFeedbackBufferEXT: return "transformFeedbackBufferEXT";
-		case BufferUsageBits::transformFeedbackCounterBufferEXT: return "transformFeedbackCounterBufferEXT";
-		case BufferUsageBits::conditionalRenderingEXT: return "conditionalRenderingEXT";
-		case BufferUsageBits::accelerationStructureBuildInputReadOnlyKHR: return "accelerationStructureBuildInputReadOnlyKHR";
-		case BufferUsageBits::accelerationStructureStorageKHR: return "accelerationStructureStorageKHR";
-		case BufferUsageBits::shaderBindingTableKHR: return "shaderBindingTableKHR";
 		default: return nullptr;
 	}
 }
@@ -1624,6 +2234,7 @@ inline const char* name(ExternalSemaphoreHandleTypeBits val) {
 		case ExternalSemaphoreHandleTypeBits::opaqueWin32Kmt: return "opaqueWin32Kmt";
 		case ExternalSemaphoreHandleTypeBits::d3d12Fence: return "d3d12Fence";
 		case ExternalSemaphoreHandleTypeBits::syncFd: return "syncFd";
+		case ExternalSemaphoreHandleTypeBits::zirconEventFUCHSIA: return "zirconEventFUCHSIA";
 		default: return nullptr;
 	}
 }
@@ -1657,15 +2268,6 @@ inline std::string name(MemoryAllocateFlags val) {
 	if((val & MemoryAllocateBits::deviceMask) == MemoryAllocateBits::deviceMask) ret += "deviceMask | ";
 	if((val & MemoryAllocateBits::deviceAddress) == MemoryAllocateBits::deviceAddress) ret += "deviceAddress | ";
 	if((val & MemoryAllocateBits::deviceAddressCaptureReplay) == MemoryAllocateBits::deviceAddressCaptureReplay) ret += "deviceAddressCaptureReplay | ";
-	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
-	return ret;
-
-}
-inline std::string name(SparseImageFormatFlags val) {
-	std::string ret;
-	if((val & SparseImageFormatBits::singleMiptail) == SparseImageFormatBits::singleMiptail) ret += "singleMiptail | ";
-	if((val & SparseImageFormatBits::alignedMipSize) == SparseImageFormatBits::alignedMipSize) ret += "alignedMipSize | ";
-	if((val & SparseImageFormatBits::nonstandardBlockSize) == SparseImageFormatBits::nonstandardBlockSize) ret += "nonstandardBlockSize | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
@@ -1724,6 +2326,7 @@ inline std::string name(MemoryPropertyFlags val) {
 	if((val & MemoryPropertyBits::eProtected) == MemoryPropertyBits::eProtected) ret += "eProtected | ";
 	if((val & MemoryPropertyBits::deviceCoherentAMD) == MemoryPropertyBits::deviceCoherentAMD) ret += "deviceCoherentAMD | ";
 	if((val & MemoryPropertyBits::deviceUncachedAMD) == MemoryPropertyBits::deviceUncachedAMD) ret += "deviceUncachedAMD | ";
+	if((val & MemoryPropertyBits::rdmaCapableNV) == MemoryPropertyBits::rdmaCapableNV) ret += "rdmaCapableNV | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
@@ -1755,6 +2358,8 @@ inline std::string name(ExternalMemoryHandleTypeFlags val) {
 	if((val & ExternalMemoryHandleTypeBits::dmaBufEXT) == ExternalMemoryHandleTypeBits::dmaBufEXT) ret += "dmaBufEXT | ";
 	if((val & ExternalMemoryHandleTypeBits::hostAllocationEXT) == ExternalMemoryHandleTypeBits::hostAllocationEXT) ret += "hostAllocationEXT | ";
 	if((val & ExternalMemoryHandleTypeBits::hostMappedForeignMemoryEXT) == ExternalMemoryHandleTypeBits::hostMappedForeignMemoryEXT) ret += "hostMappedForeignMemoryEXT | ";
+	if((val & ExternalMemoryHandleTypeBits::zirconVmoFUCHSIA) == ExternalMemoryHandleTypeBits::zirconVmoFUCHSIA) ret += "zirconVmoFUCHSIA | ";
+	if((val & ExternalMemoryHandleTypeBits::rdmaAddressNV) == ExternalMemoryHandleTypeBits::rdmaAddressNV) ret += "rdmaAddressNV | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
@@ -1764,39 +2369,6 @@ inline std::string name(ExternalMemoryFeatureFlags val) {
 	if((val & ExternalMemoryFeatureBits::dedicatedOnly) == ExternalMemoryFeatureBits::dedicatedOnly) ret += "dedicatedOnly | ";
 	if((val & ExternalMemoryFeatureBits::exportable) == ExternalMemoryFeatureBits::exportable) ret += "exportable | ";
 	if((val & ExternalMemoryFeatureBits::importable) == ExternalMemoryFeatureBits::importable) ret += "importable | ";
-	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
-	return ret;
-
-}
-inline std::string name(BufferCreateFlags val) {
-	std::string ret;
-	if((val & BufferCreateBits::sparseBinding) == BufferCreateBits::sparseBinding) ret += "sparseBinding | ";
-	if((val & BufferCreateBits::sparseResidency) == BufferCreateBits::sparseResidency) ret += "sparseResidency | ";
-	if((val & BufferCreateBits::sparseAliased) == BufferCreateBits::sparseAliased) ret += "sparseAliased | ";
-	if((val & BufferCreateBits::eProtected) == BufferCreateBits::eProtected) ret += "eProtected | ";
-	if((val & BufferCreateBits::deviceAddressCaptureReplay) == BufferCreateBits::deviceAddressCaptureReplay) ret += "deviceAddressCaptureReplay | ";
-	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
-	return ret;
-
-}
-inline std::string name(BufferUsageFlags val) {
-	std::string ret;
-	if((val & BufferUsageBits::transferSrc) == BufferUsageBits::transferSrc) ret += "transferSrc | ";
-	if((val & BufferUsageBits::transferDst) == BufferUsageBits::transferDst) ret += "transferDst | ";
-	if((val & BufferUsageBits::uniformTexelBuffer) == BufferUsageBits::uniformTexelBuffer) ret += "uniformTexelBuffer | ";
-	if((val & BufferUsageBits::storageTexelBuffer) == BufferUsageBits::storageTexelBuffer) ret += "storageTexelBuffer | ";
-	if((val & BufferUsageBits::uniformBuffer) == BufferUsageBits::uniformBuffer) ret += "uniformBuffer | ";
-	if((val & BufferUsageBits::storageBuffer) == BufferUsageBits::storageBuffer) ret += "storageBuffer | ";
-	if((val & BufferUsageBits::indexBuffer) == BufferUsageBits::indexBuffer) ret += "indexBuffer | ";
-	if((val & BufferUsageBits::vertexBuffer) == BufferUsageBits::vertexBuffer) ret += "vertexBuffer | ";
-	if((val & BufferUsageBits::indirectBuffer) == BufferUsageBits::indirectBuffer) ret += "indirectBuffer | ";
-	if((val & BufferUsageBits::shaderDeviceAddress) == BufferUsageBits::shaderDeviceAddress) ret += "shaderDeviceAddress | ";
-	if((val & BufferUsageBits::transformFeedbackBufferEXT) == BufferUsageBits::transformFeedbackBufferEXT) ret += "transformFeedbackBufferEXT | ";
-	if((val & BufferUsageBits::transformFeedbackCounterBufferEXT) == BufferUsageBits::transformFeedbackCounterBufferEXT) ret += "transformFeedbackCounterBufferEXT | ";
-	if((val & BufferUsageBits::conditionalRenderingEXT) == BufferUsageBits::conditionalRenderingEXT) ret += "conditionalRenderingEXT | ";
-	if((val & BufferUsageBits::accelerationStructureBuildInputReadOnlyKHR) == BufferUsageBits::accelerationStructureBuildInputReadOnlyKHR) ret += "accelerationStructureBuildInputReadOnlyKHR | ";
-	if((val & BufferUsageBits::accelerationStructureStorageKHR) == BufferUsageBits::accelerationStructureStorageKHR) ret += "accelerationStructureStorageKHR | ";
-	if((val & BufferUsageBits::shaderBindingTableKHR) == BufferUsageBits::shaderBindingTableKHR) ret += "shaderBindingTableKHR | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
@@ -1840,6 +2412,7 @@ inline std::string name(ExternalSemaphoreHandleTypeFlags val) {
 	if((val & ExternalSemaphoreHandleTypeBits::opaqueWin32Kmt) == ExternalSemaphoreHandleTypeBits::opaqueWin32Kmt) ret += "opaqueWin32Kmt | ";
 	if((val & ExternalSemaphoreHandleTypeBits::d3d12Fence) == ExternalSemaphoreHandleTypeBits::d3d12Fence) ret += "d3d12Fence | ";
 	if((val & ExternalSemaphoreHandleTypeBits::syncFd) == ExternalSemaphoreHandleTypeBits::syncFd) ret += "syncFd | ";
+	if((val & ExternalSemaphoreHandleTypeBits::zirconEventFUCHSIA) == ExternalSemaphoreHandleTypeBits::zirconEventFUCHSIA) ret += "zirconEventFUCHSIA | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
@@ -1861,49 +2434,9 @@ inline std::string name(DescriptorSetLayoutCreateFlags val) {
 	return ret;
 
 }
-inline const char* name(ObjectType val) {
+inline const char* name(PipelineCacheHeaderVersion val) {
 	switch(val) {
-		case ObjectType::unknown: return "unknown";
-		case ObjectType::instance: return "instance";
-		case ObjectType::physicalDevice: return "physicalDevice";
-		case ObjectType::device: return "device";
-		case ObjectType::queue: return "queue";
-		case ObjectType::semaphore: return "semaphore";
-		case ObjectType::commandBuffer: return "commandBuffer";
-		case ObjectType::fence: return "fence";
-		case ObjectType::deviceMemory: return "deviceMemory";
-		case ObjectType::buffer: return "buffer";
-		case ObjectType::image: return "image";
-		case ObjectType::event: return "event";
-		case ObjectType::queryPool: return "queryPool";
-		case ObjectType::bufferView: return "bufferView";
-		case ObjectType::imageView: return "imageView";
-		case ObjectType::shaderModule: return "shaderModule";
-		case ObjectType::pipelineCache: return "pipelineCache";
-		case ObjectType::pipelineLayout: return "pipelineLayout";
-		case ObjectType::renderPass: return "renderPass";
-		case ObjectType::pipeline: return "pipeline";
-		case ObjectType::descriptorSetLayout: return "descriptorSetLayout";
-		case ObjectType::sampler: return "sampler";
-		case ObjectType::descriptorPool: return "descriptorPool";
-		case ObjectType::descriptorSet: return "descriptorSet";
-		case ObjectType::framebuffer: return "framebuffer";
-		case ObjectType::commandPool: return "commandPool";
-		case ObjectType::samplerYcbcrConversion: return "samplerYcbcrConversion";
-		case ObjectType::descriptorUpdateTemplate: return "descriptorUpdateTemplate";
-		case ObjectType::surfaceKHR: return "surfaceKHR";
-		case ObjectType::swapchainKHR: return "swapchainKHR";
-		case ObjectType::displayKHR: return "displayKHR";
-		case ObjectType::displayModeKHR: return "displayModeKHR";
-		case ObjectType::debugReportCallbackEXT: return "debugReportCallbackEXT";
-		case ObjectType::debugUtilsMessengerEXT: return "debugUtilsMessengerEXT";
-		case ObjectType::accelerationStructureKHR: return "accelerationStructureKHR";
-		case ObjectType::validationCacheEXT: return "validationCacheEXT";
-		case ObjectType::accelerationStructureNV: return "accelerationStructureNV";
-		case ObjectType::performanceConfigurationINTEL: return "performanceConfigurationINTEL";
-		case ObjectType::deferredOperationKHR: return "deferredOperationKHR";
-		case ObjectType::indirectCommandsLayoutNV: return "indirectCommandsLayoutNV";
-		case ObjectType::privateDataSlotEXT: return "privateDataSlotEXT";
+		case PipelineCacheHeaderVersion::one: return "one";
 		default: return nullptr;
 	}
 }
@@ -1918,12 +2451,6 @@ inline const char* name(VendorId val) {
 		default: return nullptr;
 	}
 }
-inline const char* name(PipelineCacheHeaderVersion val) {
-	switch(val) {
-		case PipelineCacheHeaderVersion::one: return "one";
-		default: return nullptr;
-	}
-}
 inline const char* name(SparseMemoryBindBits val) {
 	switch(val) {
 		case SparseMemoryBindBits::metadata: return "metadata";
@@ -1933,6 +2460,12 @@ inline const char* name(SparseMemoryBindBits val) {
 inline const char* name(FenceCreateBits val) {
 	switch(val) {
 		case FenceCreateBits::signaled: return "signaled";
+		default: return nullptr;
+	}
+}
+inline const char* name(EventCreateBits val) {
+	switch(val) {
+		case EventCreateBits::deviceOnly: return "deviceOnly";
 		default: return nullptr;
 	}
 }
@@ -1975,13 +2508,6 @@ inline const char* name(QueryResultBits val) {
 		default: return nullptr;
 	}
 }
-inline const char* name(SharingMode val) {
-	switch(val) {
-		case SharingMode::exclusive: return "exclusive";
-		case SharingMode::concurrent: return "concurrent";
-		default: return nullptr;
-	}
-}
 inline const char* name(ImageViewCreateBits val) {
 	switch(val) {
 		case ImageViewCreateBits::fragmentDensityMapDynamicEXT: return "fragmentDensityMapDynamicEXT";
@@ -2001,14 +2527,9 @@ inline const char* name(ImageViewType val) {
 		default: return nullptr;
 	}
 }
-inline const char* name(ShaderModuleCreateBits val) {
-	switch(val) {
-		default: return nullptr;
-	}
-}
 inline const char* name(PipelineCacheCreateBits val) {
 	switch(val) {
-		case PipelineCacheCreateBits::externallySynchronizedEXT: return "externallySynchronizedEXT";
+		case PipelineCacheCreateBits::externallySynchronized: return "externallySynchronized";
 		default: return nullptr;
 	}
 }
@@ -2101,19 +2622,6 @@ inline const char* name(ColorComponentBits val) {
 		default: return nullptr;
 	}
 }
-inline const char* name(CompareOp val) {
-	switch(val) {
-		case CompareOp::never: return "never";
-		case CompareOp::less: return "less";
-		case CompareOp::equal: return "equal";
-		case CompareOp::lessOrEqual: return "lessOrEqual";
-		case CompareOp::greater: return "greater";
-		case CompareOp::notEqual: return "notEqual";
-		case CompareOp::greaterOrEqual: return "greaterOrEqual";
-		case CompareOp::always: return "always";
-		default: return nullptr;
-	}
-}
 inline const char* name(PipelineCreateBits val) {
 	switch(val) {
 		case PipelineCreateBits::disableOptimization: return "disableOptimization";
@@ -2121,6 +2629,10 @@ inline const char* name(PipelineCreateBits val) {
 		case PipelineCreateBits::derivative: return "derivative";
 		case PipelineCreateBits::viewIndexFromDeviceIndex: return "viewIndexFromDeviceIndex";
 		case PipelineCreateBits::dispatchBase: return "dispatchBase";
+		case PipelineCreateBits::failOnPipelineCompileRequired: return "failOnPipelineCompileRequired";
+		case PipelineCreateBits::earlyReturnOnFailure: return "earlyReturnOnFailure";
+		case PipelineCreateBits::renderingFragmentShadingRateAttachmentKHR: return "renderingFragmentShadingRateAttachmentKHR";
+		case PipelineCreateBits::renderingFragmentDensityMapAttachmentEXT: return "renderingFragmentDensityMapAttachmentEXT";
 		case PipelineCreateBits::rayTracingNoNullAnyHitShadersKHR: return "rayTracingNoNullAnyHitShadersKHR";
 		case PipelineCreateBits::rayTracingNoNullClosestHitShadersKHR: return "rayTracingNoNullClosestHitShadersKHR";
 		case PipelineCreateBits::rayTracingNoNullMissShadersKHR: return "rayTracingNoNullMissShadersKHR";
@@ -2133,23 +2645,14 @@ inline const char* name(PipelineCreateBits val) {
 		case PipelineCreateBits::captureInternalRepresentationsKHR: return "captureInternalRepresentationsKHR";
 		case PipelineCreateBits::indirectBindableNV: return "indirectBindableNV";
 		case PipelineCreateBits::libraryKHR: return "libraryKHR";
-		case PipelineCreateBits::failOnPipelineCompileRequiredEXT: return "failOnPipelineCompileRequiredEXT";
-		case PipelineCreateBits::earlyReturnOnFailureEXT: return "earlyReturnOnFailureEXT";
+		case PipelineCreateBits::rayTracingAllowMotionNV: return "rayTracingAllowMotionNV";
 		default: return nullptr;
 	}
 }
 inline const char* name(PipelineShaderStageCreateBits val) {
 	switch(val) {
-		case PipelineShaderStageCreateBits::allowVaryingSubgroupSizeEXT: return "allowVaryingSubgroupSizeEXT";
-		case PipelineShaderStageCreateBits::requireFullSubgroupsEXT: return "requireFullSubgroupsEXT";
-		default: return nullptr;
-	}
-}
-inline const char* name(CullModeBits val) {
-	switch(val) {
-		case CullModeBits::none: return "none";
-		case CullModeBits::back: return "back";
-		case CullModeBits::frontAndBack: return "frontAndBack";
+		case PipelineShaderStageCreateBits::allowVaryingSubgroupSize: return "allowVaryingSubgroupSize";
+		case PipelineShaderStageCreateBits::requireFullSubgroups: return "requireFullSubgroups";
 		default: return nullptr;
 	}
 }
@@ -2164,6 +2667,21 @@ inline const char* name(DynamicState val) {
 		case DynamicState::stencilCompareMask: return "stencilCompareMask";
 		case DynamicState::stencilWriteMask: return "stencilWriteMask";
 		case DynamicState::stencilReference: return "stencilReference";
+		case DynamicState::cullMode: return "cullMode";
+		case DynamicState::frontFace: return "frontFace";
+		case DynamicState::primitiveTopology: return "primitiveTopology";
+		case DynamicState::viewportWithCount: return "viewportWithCount";
+		case DynamicState::scissorWithCount: return "scissorWithCount";
+		case DynamicState::vertexInputBindingStride: return "vertexInputBindingStride";
+		case DynamicState::depthTestEnable: return "depthTestEnable";
+		case DynamicState::depthWriteEnable: return "depthWriteEnable";
+		case DynamicState::depthCompareOp: return "depthCompareOp";
+		case DynamicState::depthBoundsTestEnable: return "depthBoundsTestEnable";
+		case DynamicState::stencilTestEnable: return "stencilTestEnable";
+		case DynamicState::stencilOp: return "stencilOp";
+		case DynamicState::rasterizerDiscardEnable: return "rasterizerDiscardEnable";
+		case DynamicState::depthBiasEnable: return "depthBiasEnable";
+		case DynamicState::primitiveRestartEnable: return "primitiveRestartEnable";
 		case DynamicState::viewportWScalingNV: return "viewportWScalingNV";
 		case DynamicState::discardRectangleEXT: return "discardRectangleEXT";
 		case DynamicState::sampleLocationsEXT: return "sampleLocationsEXT";
@@ -2173,25 +2691,10 @@ inline const char* name(DynamicState val) {
 		case DynamicState::exclusiveScissorNV: return "exclusiveScissorNV";
 		case DynamicState::fragmentShadingRateKHR: return "fragmentShadingRateKHR";
 		case DynamicState::lineStippleEXT: return "lineStippleEXT";
-		case DynamicState::cullModeEXT: return "cullModeEXT";
-		case DynamicState::frontFaceEXT: return "frontFaceEXT";
-		case DynamicState::primitiveTopologyEXT: return "primitiveTopologyEXT";
-		case DynamicState::viewportWithCountEXT: return "viewportWithCountEXT";
-		case DynamicState::scissorWithCountEXT: return "scissorWithCountEXT";
-		case DynamicState::vertexInputBindingStrideEXT: return "vertexInputBindingStrideEXT";
-		case DynamicState::depthTestEnableEXT: return "depthTestEnableEXT";
-		case DynamicState::depthWriteEnableEXT: return "depthWriteEnableEXT";
-		case DynamicState::depthCompareOpEXT: return "depthCompareOpEXT";
-		case DynamicState::depthBoundsTestEnableEXT: return "depthBoundsTestEnableEXT";
-		case DynamicState::stencilTestEnableEXT: return "stencilTestEnableEXT";
-		case DynamicState::stencilOpEXT: return "stencilOpEXT";
-		default: return nullptr;
-	}
-}
-inline const char* name(FrontFace val) {
-	switch(val) {
-		case FrontFace::counterClockwise: return "counterClockwise";
-		case FrontFace::clockwise: return "clockwise";
+		case DynamicState::vertexInputEXT: return "vertexInputEXT";
+		case DynamicState::patchControlPointsEXT: return "patchControlPointsEXT";
+		case DynamicState::logicOpEXT: return "logicOpEXT";
+		case DynamicState::colorWriteEnableEXT: return "colorWriteEnableEXT";
 		default: return nullptr;
 	}
 }
@@ -2199,22 +2702,6 @@ inline const char* name(VertexInputRate val) {
 	switch(val) {
 		case VertexInputRate::vertex: return "vertex";
 		case VertexInputRate::instance: return "instance";
-		default: return nullptr;
-	}
-}
-inline const char* name(PrimitiveTopology val) {
-	switch(val) {
-		case PrimitiveTopology::pointList: return "pointList";
-		case PrimitiveTopology::lineList: return "lineList";
-		case PrimitiveTopology::lineStrip: return "lineStrip";
-		case PrimitiveTopology::triangleList: return "triangleList";
-		case PrimitiveTopology::triangleStrip: return "triangleStrip";
-		case PrimitiveTopology::triangleFan: return "triangleFan";
-		case PrimitiveTopology::lineListWithAdjacency: return "lineListWithAdjacency";
-		case PrimitiveTopology::lineStripWithAdjacency: return "lineStripWithAdjacency";
-		case PrimitiveTopology::triangleListWithAdjacency: return "triangleListWithAdjacency";
-		case PrimitiveTopology::triangleStripWithAdjacency: return "triangleStripWithAdjacency";
-		case PrimitiveTopology::patchList: return "patchList";
 		default: return nullptr;
 	}
 }
@@ -2227,16 +2714,16 @@ inline const char* name(PolygonMode val) {
 		default: return nullptr;
 	}
 }
-inline const char* name(StencilOp val) {
+inline const char* name(PipelineDepthStencilStateCreateBits val) {
 	switch(val) {
-		case StencilOp::keep: return "keep";
-		case StencilOp::zero: return "zero";
-		case StencilOp::replace: return "replace";
-		case StencilOp::incrementAndClamp: return "incrementAndClamp";
-		case StencilOp::decrementAndClamp: return "decrementAndClamp";
-		case StencilOp::invert: return "invert";
-		case StencilOp::incrementAndWrap: return "incrementAndWrap";
-		case StencilOp::decrementAndWrap: return "decrementAndWrap";
+		case PipelineDepthStencilStateCreateBits::rasterizationOrderAttachmentDepthAccessARM: return "rasterizationOrderAttachmentDepthAccessARM";
+		case PipelineDepthStencilStateCreateBits::rasterizationOrderAttachmentStencilAccessARM: return "rasterizationOrderAttachmentStencilAccessARM";
+		default: return nullptr;
+	}
+}
+inline const char* name(PipelineColorBlendStateCreateBits val) {
+	switch(val) {
+		case PipelineColorBlendStateCreateBits::rasterizationOrderAttachmentAccessARM: return "rasterizationOrderAttachmentAccessARM";
 		default: return nullptr;
 	}
 }
@@ -2362,14 +2849,6 @@ inline const char* name(IndexType val) {
 		default: return nullptr;
 	}
 }
-inline const char* name(StencilFaceBits val) {
-	switch(val) {
-		case StencilFaceBits::front: return "front";
-		case StencilFaceBits::back: return "back";
-		case StencilFaceBits::frontAndBack: return "frontAndBack";
-		default: return nullptr;
-	}
-}
 inline std::string name(SparseMemoryBindFlags val) {
 	std::string ret;
 	if((val & SparseMemoryBindBits::metadata) == SparseMemoryBindBits::metadata) ret += "metadata | ";
@@ -2380,6 +2859,13 @@ inline std::string name(SparseMemoryBindFlags val) {
 inline std::string name(FenceCreateFlags val) {
 	std::string ret;
 	if((val & FenceCreateBits::signaled) == FenceCreateBits::signaled) ret += "signaled | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(EventCreateFlags val) {
+	std::string ret;
+	if((val & EventCreateBits::deviceOnly) == EventCreateBits::deviceOnly) ret += "deviceOnly | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
@@ -2419,15 +2905,9 @@ inline std::string name(ImageViewCreateFlags val) {
 	return ret;
 
 }
-inline std::string name(ShaderModuleCreateFlags) {
-	std::string ret;
-	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
-	return ret;
-
-}
 inline std::string name(PipelineCacheCreateFlags val) {
 	std::string ret;
-	if((val & PipelineCacheCreateBits::externallySynchronizedEXT) == PipelineCacheCreateBits::externallySynchronizedEXT) ret += "externallySynchronizedEXT | ";
+	if((val & PipelineCacheCreateBits::externallySynchronized) == PipelineCacheCreateBits::externallySynchronized) ret += "externallySynchronized | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
@@ -2449,6 +2929,10 @@ inline std::string name(PipelineCreateFlags val) {
 	if((val & PipelineCreateBits::derivative) == PipelineCreateBits::derivative) ret += "derivative | ";
 	if((val & PipelineCreateBits::viewIndexFromDeviceIndex) == PipelineCreateBits::viewIndexFromDeviceIndex) ret += "viewIndexFromDeviceIndex | ";
 	if((val & PipelineCreateBits::dispatchBase) == PipelineCreateBits::dispatchBase) ret += "dispatchBase | ";
+	if((val & PipelineCreateBits::failOnPipelineCompileRequired) == PipelineCreateBits::failOnPipelineCompileRequired) ret += "failOnPipelineCompileRequired | ";
+	if((val & PipelineCreateBits::earlyReturnOnFailure) == PipelineCreateBits::earlyReturnOnFailure) ret += "earlyReturnOnFailure | ";
+	if((val & PipelineCreateBits::renderingFragmentShadingRateAttachmentKHR) == PipelineCreateBits::renderingFragmentShadingRateAttachmentKHR) ret += "renderingFragmentShadingRateAttachmentKHR | ";
+	if((val & PipelineCreateBits::renderingFragmentDensityMapAttachmentEXT) == PipelineCreateBits::renderingFragmentDensityMapAttachmentEXT) ret += "renderingFragmentDensityMapAttachmentEXT | ";
 	if((val & PipelineCreateBits::rayTracingNoNullAnyHitShadersKHR) == PipelineCreateBits::rayTracingNoNullAnyHitShadersKHR) ret += "rayTracingNoNullAnyHitShadersKHR | ";
 	if((val & PipelineCreateBits::rayTracingNoNullClosestHitShadersKHR) == PipelineCreateBits::rayTracingNoNullClosestHitShadersKHR) ret += "rayTracingNoNullClosestHitShadersKHR | ";
 	if((val & PipelineCreateBits::rayTracingNoNullMissShadersKHR) == PipelineCreateBits::rayTracingNoNullMissShadersKHR) ret += "rayTracingNoNullMissShadersKHR | ";
@@ -2461,25 +2945,30 @@ inline std::string name(PipelineCreateFlags val) {
 	if((val & PipelineCreateBits::captureInternalRepresentationsKHR) == PipelineCreateBits::captureInternalRepresentationsKHR) ret += "captureInternalRepresentationsKHR | ";
 	if((val & PipelineCreateBits::indirectBindableNV) == PipelineCreateBits::indirectBindableNV) ret += "indirectBindableNV | ";
 	if((val & PipelineCreateBits::libraryKHR) == PipelineCreateBits::libraryKHR) ret += "libraryKHR | ";
-	if((val & PipelineCreateBits::failOnPipelineCompileRequiredEXT) == PipelineCreateBits::failOnPipelineCompileRequiredEXT) ret += "failOnPipelineCompileRequiredEXT | ";
-	if((val & PipelineCreateBits::earlyReturnOnFailureEXT) == PipelineCreateBits::earlyReturnOnFailureEXT) ret += "earlyReturnOnFailureEXT | ";
+	if((val & PipelineCreateBits::rayTracingAllowMotionNV) == PipelineCreateBits::rayTracingAllowMotionNV) ret += "rayTracingAllowMotionNV | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
 inline std::string name(PipelineShaderStageCreateFlags val) {
 	std::string ret;
-	if((val & PipelineShaderStageCreateBits::allowVaryingSubgroupSizeEXT) == PipelineShaderStageCreateBits::allowVaryingSubgroupSizeEXT) ret += "allowVaryingSubgroupSizeEXT | ";
-	if((val & PipelineShaderStageCreateBits::requireFullSubgroupsEXT) == PipelineShaderStageCreateBits::requireFullSubgroupsEXT) ret += "requireFullSubgroupsEXT | ";
+	if((val & PipelineShaderStageCreateBits::allowVaryingSubgroupSize) == PipelineShaderStageCreateBits::allowVaryingSubgroupSize) ret += "allowVaryingSubgroupSize | ";
+	if((val & PipelineShaderStageCreateBits::requireFullSubgroups) == PipelineShaderStageCreateBits::requireFullSubgroups) ret += "requireFullSubgroups | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
 }
-inline std::string name(CullModeFlags val) {
+inline std::string name(PipelineDepthStencilStateCreateFlags val) {
 	std::string ret;
-	if((val & CullModeBits::none) == CullModeBits::none) ret += "none | ";
-	if((val & CullModeBits::back) == CullModeBits::back) ret += "back | ";
-	if((val & CullModeBits::frontAndBack) == CullModeBits::frontAndBack) ret += "frontAndBack | ";
+	if((val & PipelineDepthStencilStateCreateBits::rasterizationOrderAttachmentDepthAccessARM) == PipelineDepthStencilStateCreateBits::rasterizationOrderAttachmentDepthAccessARM) ret += "rasterizationOrderAttachmentDepthAccessARM | ";
+	if((val & PipelineDepthStencilStateCreateBits::rasterizationOrderAttachmentStencilAccessARM) == PipelineDepthStencilStateCreateBits::rasterizationOrderAttachmentStencilAccessARM) ret += "rasterizationOrderAttachmentStencilAccessARM | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+inline std::string name(PipelineColorBlendStateCreateFlags val) {
+	std::string ret;
+	if((val & PipelineColorBlendStateCreateBits::rasterizationOrderAttachmentAccessARM) == PipelineColorBlendStateCreateBits::rasterizationOrderAttachmentAccessARM) ret += "rasterizationOrderAttachmentAccessARM | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
@@ -2543,15 +3032,6 @@ inline std::string name(QueryControlFlags val) {
 inline std::string name(CommandBufferResetFlags val) {
 	std::string ret;
 	if((val & CommandBufferResetBits::releaseResources) == CommandBufferResetBits::releaseResources) ret += "releaseResources | ";
-	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
-	return ret;
-
-}
-inline std::string name(StencilFaceFlags val) {
-	std::string ret;
-	if((val & StencilFaceBits::front) == StencilFaceBits::front) ret += "front | ";
-	if((val & StencilFaceBits::back) == StencilFaceBits::back) ret += "back | ";
-	if((val & StencilFaceBits::frontAndBack) == StencilFaceBits::frontAndBack) ret += "frontAndBack | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
@@ -2755,6 +3235,7 @@ inline const char* name(DebugReportObjectTypeEXT val) {
 		case DebugReportObjectTypeEXT::descriptorUpdateTemplate: return "descriptorUpdateTemplate";
 		case DebugReportObjectTypeEXT::accelerationStructureKHR: return "accelerationStructureKHR";
 		case DebugReportObjectTypeEXT::accelerationStructureNV: return "accelerationStructureNV";
+		case DebugReportObjectTypeEXT::bufferCollectionFUCHSIA: return "bufferCollectionFUCHSIA";
 		default: return nullptr;
 	}
 }
@@ -3037,6 +3518,7 @@ inline const char* name(BuildAccelerationStructureBitsKHR val) {
 		case BuildAccelerationStructureBitsKHR::preferFastTrace: return "preferFastTrace";
 		case BuildAccelerationStructureBitsKHR::preferFastBuild: return "preferFastBuild";
 		case BuildAccelerationStructureBitsKHR::lowMemory: return "lowMemory";
+		case BuildAccelerationStructureBitsKHR::motionNV: return "motionNV";
 		default: return nullptr;
 	}
 }
@@ -3073,7 +3555,7 @@ inline const char* name(AccelerationStructureBuildTypeKHR val) {
 inline const char* name(GeometryInstanceBitsKHR val) {
 	switch(val) {
 		case GeometryInstanceBitsKHR::triangleFacingCullDisable: return "triangleFacingCullDisable";
-		case GeometryInstanceBitsKHR::triangleFrontCounterclockwise: return "triangleFrontCounterclockwise";
+		case GeometryInstanceBitsKHR::triangleFlipFacing: return "triangleFlipFacing";
 		case GeometryInstanceBitsKHR::forceOpaque: return "forceOpaque";
 		case GeometryInstanceBitsKHR::forceNoOpaque: return "forceNoOpaque";
 		default: return nullptr;
@@ -3082,6 +3564,7 @@ inline const char* name(GeometryInstanceBitsKHR val) {
 inline const char* name(AccelerationStructureCreateBitsKHR val) {
 	switch(val) {
 		case AccelerationStructureCreateBitsKHR::deviceAddressCaptureReplay: return "deviceAddressCaptureReplay";
+		case AccelerationStructureCreateBitsKHR::motionNV: return "motionNV";
 		default: return nullptr;
 	}
 }
@@ -3108,6 +3591,7 @@ inline std::string name(BuildAccelerationStructureFlagsKHR val) {
 	if((val & BuildAccelerationStructureBitsKHR::preferFastTrace) == BuildAccelerationStructureBitsKHR::preferFastTrace) ret += "preferFastTrace | ";
 	if((val & BuildAccelerationStructureBitsKHR::preferFastBuild) == BuildAccelerationStructureBitsKHR::preferFastBuild) ret += "preferFastBuild | ";
 	if((val & BuildAccelerationStructureBitsKHR::lowMemory) == BuildAccelerationStructureBitsKHR::lowMemory) ret += "lowMemory | ";
+	if((val & BuildAccelerationStructureBitsKHR::motionNV) == BuildAccelerationStructureBitsKHR::motionNV) ret += "motionNV | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
@@ -3123,7 +3607,7 @@ inline std::string name(GeometryFlagsKHR val) {
 inline std::string name(GeometryInstanceFlagsKHR val) {
 	std::string ret;
 	if((val & GeometryInstanceBitsKHR::triangleFacingCullDisable) == GeometryInstanceBitsKHR::triangleFacingCullDisable) ret += "triangleFacingCullDisable | ";
-	if((val & GeometryInstanceBitsKHR::triangleFrontCounterclockwise) == GeometryInstanceBitsKHR::triangleFrontCounterclockwise) ret += "triangleFrontCounterclockwise | ";
+	if((val & GeometryInstanceBitsKHR::triangleFlipFacing) == GeometryInstanceBitsKHR::triangleFlipFacing) ret += "triangleFlipFacing | ";
 	if((val & GeometryInstanceBitsKHR::forceOpaque) == GeometryInstanceBitsKHR::forceOpaque) ret += "forceOpaque | ";
 	if((val & GeometryInstanceBitsKHR::forceNoOpaque) == GeometryInstanceBitsKHR::forceNoOpaque) ret += "forceNoOpaque | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
@@ -3133,6 +3617,7 @@ inline std::string name(GeometryInstanceFlagsKHR val) {
 inline std::string name(AccelerationStructureCreateFlagsKHR val) {
 	std::string ret;
 	if((val & AccelerationStructureCreateBitsKHR::deviceAddressCaptureReplay) == AccelerationStructureCreateBitsKHR::deviceAddressCaptureReplay) ret += "deviceAddressCaptureReplay | ";
+	if((val & AccelerationStructureCreateBitsKHR::motionNV) == AccelerationStructureCreateBitsKHR::motionNV) ret += "motionNV | ";
 	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
 	return ret;
 
@@ -3203,15 +3688,6 @@ inline const char* name(AccelerationStructureMemoryRequirementsTypeNV val) {
 		default: return nullptr;
 	}
 }
-inline const char* name(QueueGlobalPriorityEXT val) {
-	switch(val) {
-		case QueueGlobalPriorityEXT::low: return "low";
-		case QueueGlobalPriorityEXT::medium: return "medium";
-		case QueueGlobalPriorityEXT::high: return "high";
-		case QueueGlobalPriorityEXT::realtime: return "realtime";
-		default: return nullptr;
-	}
-}
 inline const char* name(PipelineCompilerControlBitsAMD val) {
 	switch(val) {
 		default: return nullptr;
@@ -3232,6 +3708,15 @@ inline const char* name(TimeDomainEXT val) {
 		default: return nullptr;
 	}
 }
+inline const char* name(QueueGlobalPriorityKHR val) {
+	switch(val) {
+		case QueueGlobalPriorityKHR::low: return "low";
+		case QueueGlobalPriorityKHR::medium: return "medium";
+		case QueueGlobalPriorityKHR::high: return "high";
+		case QueueGlobalPriorityKHR::realtime: return "realtime";
+		default: return nullptr;
+	}
+}
 inline const char* name(MemoryOverallocationBehaviorAMD val) {
 	switch(val) {
 		case MemoryOverallocationBehaviorAMD::eDefault: return "eDefault";
@@ -3239,23 +3724,6 @@ inline const char* name(MemoryOverallocationBehaviorAMD val) {
 		case MemoryOverallocationBehaviorAMD::disallowed: return "disallowed";
 		default: return nullptr;
 	}
-}
-inline const char* name(PipelineCreationFeedbackBitsEXT val) {
-	switch(val) {
-		case PipelineCreationFeedbackBitsEXT::valid: return "valid";
-		case PipelineCreationFeedbackBitsEXT::applicationPipelineCacheHit: return "applicationPipelineCacheHit";
-		case PipelineCreationFeedbackBitsEXT::basePipelineAcceleration: return "basePipelineAcceleration";
-		default: return nullptr;
-	}
-}
-inline std::string name(PipelineCreationFeedbackFlagsEXT val) {
-	std::string ret;
-	if((val & PipelineCreationFeedbackBitsEXT::valid) == PipelineCreationFeedbackBitsEXT::valid) ret += "valid | ";
-	if((val & PipelineCreationFeedbackBitsEXT::applicationPipelineCacheHit) == PipelineCreationFeedbackBitsEXT::applicationPipelineCacheHit) ret += "applicationPipelineCacheHit | ";
-	if((val & PipelineCreationFeedbackBitsEXT::basePipelineAcceleration) == PipelineCreationFeedbackBitsEXT::basePipelineAcceleration) ret += "basePipelineAcceleration | ";
-	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
-	return ret;
-
 }
 inline const char* name(PerformanceConfigurationTypeINTEL val) {
 	switch(val) {
@@ -3318,31 +3786,6 @@ inline std::string name(ShaderCorePropertiesFlagsAMD) {
 	return ret;
 
 }
-inline const char* name(ToolPurposeBitsEXT val) {
-	switch(val) {
-		case ToolPurposeBitsEXT::validation: return "validation";
-		case ToolPurposeBitsEXT::profiling: return "profiling";
-		case ToolPurposeBitsEXT::tracing: return "tracing";
-		case ToolPurposeBitsEXT::additionalFeatures: return "additionalFeatures";
-		case ToolPurposeBitsEXT::modifyingFeatures: return "modifyingFeatures";
-		case ToolPurposeBitsEXT::debugReporting: return "debugReporting";
-		case ToolPurposeBitsEXT::debugMarkers: return "debugMarkers";
-		default: return nullptr;
-	}
-}
-inline std::string name(ToolPurposeFlagsEXT val) {
-	std::string ret;
-	if((val & ToolPurposeBitsEXT::validation) == ToolPurposeBitsEXT::validation) ret += "validation | ";
-	if((val & ToolPurposeBitsEXT::profiling) == ToolPurposeBitsEXT::profiling) ret += "profiling | ";
-	if((val & ToolPurposeBitsEXT::tracing) == ToolPurposeBitsEXT::tracing) ret += "tracing | ";
-	if((val & ToolPurposeBitsEXT::additionalFeatures) == ToolPurposeBitsEXT::additionalFeatures) ret += "additionalFeatures | ";
-	if((val & ToolPurposeBitsEXT::modifyingFeatures) == ToolPurposeBitsEXT::modifyingFeatures) ret += "modifyingFeatures | ";
-	if((val & ToolPurposeBitsEXT::debugReporting) == ToolPurposeBitsEXT::debugReporting) ret += "debugReporting | ";
-	if((val & ToolPurposeBitsEXT::debugMarkers) == ToolPurposeBitsEXT::debugMarkers) ret += "debugMarkers | ";
-	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
-	return ret;
-
-}
 inline const char* name(ValidationFeatureEnableEXT val) {
 	switch(val) {
 		case ValidationFeatureEnableEXT::gpuAssisted: return "gpuAssisted";
@@ -3362,6 +3805,7 @@ inline const char* name(ValidationFeatureDisableEXT val) {
 		case ValidationFeatureDisableEXT::objectLifetimes: return "objectLifetimes";
 		case ValidationFeatureDisableEXT::coreChecks: return "coreChecks";
 		case ValidationFeatureDisableEXT::uniqueHandles: return "uniqueHandles";
+		case ValidationFeatureDisableEXT::shaderValidationCache: return "shaderValidationCache";
 		default: return nullptr;
 	}
 }
@@ -3394,6 +3838,13 @@ inline const char* name(CoverageReductionModeNV val) {
 	switch(val) {
 		case CoverageReductionModeNV::merge: return "merge";
 		case CoverageReductionModeNV::truncate: return "truncate";
+		default: return nullptr;
+	}
+}
+inline const char* name(ProvokingVertexModeEXT val) {
+	switch(val) {
+		case ProvokingVertexModeEXT::firstVertex: return "firstVertex";
+		case ProvokingVertexModeEXT::lastVertex: return "lastVertex";
 		default: return nullptr;
 	}
 }
@@ -3481,17 +3932,6 @@ inline const char* name(DeviceMemoryReportEventTypeEXT val) {
 		default: return nullptr;
 	}
 }
-inline const char* name(PrivateDataSlotCreateBitsEXT val) {
-	switch(val) {
-		default: return nullptr;
-	}
-}
-inline std::string name(PrivateDataSlotCreateFlagsEXT) {
-	std::string ret;
-	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
-	return ret;
-
-}
 inline const char* name(DeviceDiagnosticsConfigBitsNV val) {
 	switch(val) {
 		case DeviceDiagnosticsConfigBitsNV::enableShaderDebugInfo: return "enableShaderDebugInfo";
@@ -3533,16 +3973,52 @@ inline const char* name(FragmentShadingRateNV val) {
 		default: return nullptr;
 	}
 }
+inline const char* name(AccelerationStructureMotionInstanceTypeNV val) {
+	switch(val) {
+		case AccelerationStructureMotionInstanceTypeNV::eStatic: return "eStatic";
+		case AccelerationStructureMotionInstanceTypeNV::matrixMotion: return "matrixMotion";
+		case AccelerationStructureMotionInstanceTypeNV::srtMotion: return "srtMotion";
+		default: return nullptr;
+	}
+}
 
 #ifdef VK_USE_PLATFORM_DIRECTFB_EXT
 #endif //VK_USE_PLATFORM_DIRECTFB_EXT
+
+
+#ifdef VK_USE_PLATFORM_FUCHSIA
+inline const char* name(ImageConstraintsInfoBitsFUCHSIA val) {
+	switch(val) {
+		case ImageConstraintsInfoBitsFUCHSIA::cpuReadRarely: return "cpuReadRarely";
+		case ImageConstraintsInfoBitsFUCHSIA::cpuReadOften: return "cpuReadOften";
+		case ImageConstraintsInfoBitsFUCHSIA::cpuWriteRarely: return "cpuWriteRarely";
+		case ImageConstraintsInfoBitsFUCHSIA::cpuWriteOften: return "cpuWriteOften";
+		case ImageConstraintsInfoBitsFUCHSIA::protectedOptional: return "protectedOptional";
+		default: return nullptr;
+	}
+}
+inline std::string name(ImageConstraintsInfoFlagsFUCHSIA val) {
+	std::string ret;
+	if((val & ImageConstraintsInfoBitsFUCHSIA::cpuReadRarely) == ImageConstraintsInfoBitsFUCHSIA::cpuReadRarely) ret += "cpuReadRarely | ";
+	if((val & ImageConstraintsInfoBitsFUCHSIA::cpuReadOften) == ImageConstraintsInfoBitsFUCHSIA::cpuReadOften) ret += "cpuReadOften | ";
+	if((val & ImageConstraintsInfoBitsFUCHSIA::cpuWriteRarely) == ImageConstraintsInfoBitsFUCHSIA::cpuWriteRarely) ret += "cpuWriteRarely | ";
+	if((val & ImageConstraintsInfoBitsFUCHSIA::cpuWriteOften) == ImageConstraintsInfoBitsFUCHSIA::cpuWriteOften) ret += "cpuWriteOften | ";
+	if((val & ImageConstraintsInfoBitsFUCHSIA::protectedOptional) == ImageConstraintsInfoBitsFUCHSIA::protectedOptional) ret += "protectedOptional | ";
+	if(!ret.empty()) ret.erase(ret.size() - 2, 2);
+	return ret;
+
+}
+#endif //VK_USE_PLATFORM_FUCHSIA
+
+
+#ifdef VK_USE_PLATFORM_SCREEN_QNX
+#endif //VK_USE_PLATFORM_SCREEN_QNX
 
 
 } // namespace vk
 
 // The specification (vk.xml) itself is published under the following license:
 
-// Copyright (c) 2015-2020 The Khronos Group Inc.
-// 
+// Copyright 2015-2022 The Khronos Group Inc.
 // SPDX-License-Identifier: Apache-2.0 OR MIT
     
