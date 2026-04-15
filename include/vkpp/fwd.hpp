@@ -20,7 +20,7 @@ namespace nytl {
 
 #ifndef NYTL_INCLUDE_FWD_SPAN
 #define NYTL_INCLUDE_FWD_SPAN
-	constexpr const std::size_t dynamic_extent = -1;
+	constexpr const std::size_t dynamic_extent = std::size_t(-1);
 	template<typename T, std::size_t N = dynamic_extent> class span;
 	template<typename T, std::size_t N = dynamic_extent>
 	using Span = span<T, N>;

@@ -72,6 +72,10 @@ template<typename T> constexpr
 Flags<T> operator^(T bit, const Flags<T>& flags) noexcept
 	{ return flags ^ bit; }
 
+template<typename T> constexpr
+Flags<T> operator~(const Flags<T>& flags) noexcept
+	{ return Flags<T>(nytl::invertFlags, static_cast<T>(flags.value())); }
+
 } // namespace nytl
 
 /// \brief Can be used for an enum to generate binary operations resulting in nytl::Flags.

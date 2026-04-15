@@ -2,7 +2,7 @@ project('vkpp', ['c', 'cpp'],
 	license: 'BSL',
 	version: '1.1.108',
 	meson_version: '>=0.46',
-	default_options: ['cpp_std=c++1z'])
+	default_options: ['cpp_std=c++17'])
 
 test = get_option('tests')
 gen = get_option('regen')

@@ -3225,4 +3225,4 @@ NYTL_FLAG_OPS(ImageConstraintsInfoBitsFUCHSIA)
 
 // Copyright 2015-2022 The Khronos Group Inc.
 // SPDX-License-Identifier: Apache-2.0 OR MIT
-    
+
