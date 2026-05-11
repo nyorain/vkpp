@@ -10,27 +10,15 @@
 #include <vkpp/handle.hpp> // VK_DEFINE_HANDLE
 #include <vkpp/flags.hpp>
 #include <cstddef>
+#include <span>
 
 #include <vulkan/vk_platform.h>
 
 // Generated for vulkan version: 1.1.204
 
-// Utility forward declarations
-namespace nytl {
-
-#ifndef NYTL_INCLUDE_FWD_SPAN
-#define NYTL_INCLUDE_FWD_SPAN
-	constexpr const std::size_t dynamic_extent = std::size_t(-1);
-	template<typename T, std::size_t N = dynamic_extent> class span;
-	template<typename T, std::size_t N = dynamic_extent>
-	using Span = span<T, N>;
-#endif // fwd guard
-
-} // namespace nytl
-
 namespace vk {
 
-using nytl::Span; // span.hpp
+template<typename T> using Span = std::span<T>;
 using nytl::Flags; // flags.hpp
 
 enum class DummyEnum : int32_t {};
@@ -1708,5 +1696,5 @@ struct PhysicalDeviceLinearColorAttachmentFeaturesNV;
 
 // Copyright 2015-2022 The Khronos Group Inc.
 // SPDX-License-Identifier: Apache-2.0 OR MIT
-    
+
 
