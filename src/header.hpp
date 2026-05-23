@@ -18,20 +18,7 @@ auto constexpr fwdHeader = R"SRC(
 
 #include <vulkan/vk_platform.h>
 
-// Generated for vulkan version: 1.1.%vp
-
-// Utility forward declarations
-namespace nytl {
-
-#ifndef NYTL_INCLUDE_FWD_SPAN
-#define NYTL_INCLUDE_FWD_SPAN
-	constexpr const std::size_t dynamic_extent = -1;
-	template<typename T, std::size_t N = dynamic_extent> class span;
-	template<typename T, std::size_t N = dynamic_extent>
-	using Span = span<T, N>;
-#endif // fwd guard
-
-} // namespace nytl
+// Generated for vulkan version: 1.4.%vp
 
 )SRC";
 
@@ -44,7 +31,7 @@ auto constexpr structsHeader = R"SRC(
 #include <array>
 #include <vulkan/vulkan.h>
 
-// Generated for vulkan version: 1.1.%vp
+// Generated for vulkan version: 1.4.%vp
 #if !defined(VK_VERSION_1_1) || %vp > VK_HEADER_VERSION
 	#error "vulkan.h version too old, does not match generated version"
 #endif
@@ -56,7 +43,7 @@ auto constexpr enumsHeader = R"SRC(
 #include <vkpp/fwd.hpp>
 #include <vkpp/flags.hpp>
 
-// Generated for vulkan version: 1.1.%vp
+// Generated for vulkan version: 1.4.%vp
 
 )SRC";
 
@@ -66,7 +53,7 @@ auto constexpr namesHeader = R"SRC(
 #include <vkpp/enums.hpp>
 #include <string>
 
-// Generated for vulkan version: 1.1.%vp
+// Generated for vulkan version: 1.4.%vp
 
 )SRC";
 
@@ -75,95 +62,15 @@ auto constexpr rawFunctionsHeader = R"SRC(
 #include <vkpp/fwd.hpp>
 #include <vkpp/enums.hpp>
 #include <vkpp/structs.hpp>
-#include <vkpp/span.hpp>
 #include <vkpp/flags.hpp>
 #include <vkpp/call.hpp>
 
 #include <vulkan/vulkan.h>
 
-// Generated for vulkan version: 1.1.%vp
+// Generated for vulkan version: 1.4.%vp
 #if !defined(VK_VERSION_1_1) || %vp > VK_HEADER_VERSION
 	#error "vulkan.h version too old, does not match generated version"
 #endif
-
-)SRC";
-
-// functions.hpp header
-auto constexpr functionsHeader = R"SRC(
-#include <vkpp/fwd.hpp>
-#include <vkpp/enums.hpp>
-#include <vkpp/structs.hpp>
-#include <vkpp/call.hpp>
-#include <vkpp/span.hpp>
-#include <vkpp/flags.hpp>
-
-#include <vector>
-#include <vulkan/vulkan.h>
-
-// Generated for vulkan version: 1.1.%vp
-#if !defined(VK_VERSION_1_1) || %vp > VK_HEADER_VERSION
-	#error "vulkan.h version too old, does not match generated version"
-#endif
-
-// normal dispatch versions
-#define VEC_FUNC(D, T, CT, F, ...) \
-	std::vector<T> ret; \
-	CT count = 0u; \
-	auto res = VKPP_CHECK(VKPP_DISPATCH(D, F, __VA_ARGS__)); \
-	if(!error::success(res)) return ret; \
-	ret.resize(count); \
-	VKPP_CALL(D, F, __VA_ARGS__); \
-	return ret;
-
-#define VEC_FUNC_VOID(D, T, CT, F, ...) \
-	std::vector<T> ret; \
-	CT count = 0u; \
-	VKPP_DISPATCH(D, F, __VA_ARGS__); \
-	ret.resize(count); \
-	VKPP_DISPATCH(D, F, __VA_ARGS__); \
-	return ret;
-
-#define VEC_FUNC_RET(D, T, C, F, ...) \
-	std::vector<T> ret; \
-	ret.resize(C); \
-	VKPP_CALL(D, F, __VA_ARGS__); \
-	return ret;
-
-#define VEC_FUNC_RET_VOID(D, T, C, F, ...) \
-	std::vector<T> ret; \
-	ret.resize(C); \
-	VKPP_DISPATCH(D, F, __VA_ARGS__); \
-	return ret;
-
-// global dispatch versions
-#define VEC_FUNC_G(D, T, CT, F, ...) \
-	std::vector<T> ret; \
-	CT count = 0u; \
-	auto res = VKPP_CHECK(VKPP_DISPATCH_GLOBAL(D, F, __VA_ARGS__)); \
-	if(!error::success(res)) return ret; \
-	ret.resize(count); \
-	VKPP_CHECK(VKPP_DISPATCH_GLOBAL(D, F, __VA_ARGS__)); \
-	return ret;
-
-#define VEC_FUNC_VOID_G(D, T, CT, F, ...) \
-	std::vector<T> ret; \
-	CT count = 0u; \
-	VKPP_DISPATCH_GLOBAL(D, F, __VA_ARGS__); \
-	ret.resize(count); \
-	VKPP_DISPATCH_GLOBAL(D, F, __VA_ARGS__); \
-	return ret;
-
-#define VEC_FUNC_RET_G(D, T, C, F, ...) \
-	std::vector<T> ret; \
-	ret.resize(C); \
-	VKPP_CHECK(VKPP_DISPATCH_GLOBAL(D, F, __VA_ARGS__)); \
-	return ret;
-
-#define VEC_FUNC_RET_VOID_G(D, T, C, F, ...) \
-	std::vector<T> ret; \
-	ret.resize(C); \
-	VKPP_DISPATCH_GLOBAL(D, F, __VA_ARGS__); \
-	return ret;
 
 )SRC";
 
@@ -174,7 +81,7 @@ auto constexpr dispatchHeader = R"SRC(
 #include <vkpp/structs.hpp>
 #include <vkpp/flags.hpp>
 
-// Generated for vulkan version: 1.1.%vp
+// Generated for vulkan version: 1.4.%vp
 
 namespace vk {
 

@@ -32,7 +32,7 @@ if gen
 	  include_directories: codegen_inc)
 endif
 
-spec = files('vk.xml')
+spec = files('vk1.4.350.xml')
 subdir('include/vkpp')
 
 vkpp_lib = []

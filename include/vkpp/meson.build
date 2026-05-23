@@ -1,12 +1,11 @@
 outputs = [
 	'dispatch.cpp',
-	'functions.hpp',
 	'fwd.hpp',
 	'structs.hpp',
 	'enums.hpp',
 	'dispatch.hpp',
 	'names.hpp',
-	'rawf.hpp',
+	'functions.hpp',
 ]
 
 iheaders = [

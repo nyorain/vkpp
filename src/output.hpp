@@ -90,19 +90,6 @@ public:
 	void printCmd(const Command& command, std::string alias,
 		bool forceDispatch, bool guarded);
 	void printCmdRaw(const Command& command, std::string alias, bool forceDispatch);
-	void printVecCmd(const ParsedCommand& command, const std::string& name,
-		bool forceDispatch);
-
-	// parses the command, i.e. tries to vectorize and analyze it.
-	ParsedCommand parseCommand(const Command& cmd) const;
-
-	// outputs the param declaration for the given parsed parameter.
-	// if rangify is true will try to convert it into a span
-	// sepr is the seperator to put in front of the parameter
-	std::string paramDecl(const ParsedParam& param, bool rangeify, const char* sepr,
-		const ParsedParam* retParam) const;
-	std::string paramCall(const ParsedParam& param, bool rangeify, const char* sepr,
-		const ParsedParam* retParam) const;
 
 	/// returns the names of the given entities for c++
 	std::string enumName(const Enum& e, const std::string& name, bool* bit = nullptr) const;
@@ -122,14 +109,13 @@ public:
 	void endGuard(std::string& of, bool guardVar, const std::string& guard);
 
 protected:
-	std::ofstream functions_; // functions.hpp
 	std::ofstream enums_; // enums.hpp
 	std::ofstream structs_; // structs.hpp
 	std::ofstream fwd_; // fwd.hpp
 	std::ofstream dispatch_; // dispatch.hpp
 	std::ofstream dispatchSrc_; // dispatch.cpp
 	std::ofstream enumNames_; // names.hpp
-	std::ofstream rawf_; // rawFunctions.hpp
+	std::ofstream rawf_; // rawf.hpp
 
 	std::string dispatchDecl_;
 	std::string dispatchDeclGuarded_;

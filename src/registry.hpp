@@ -56,9 +56,15 @@ public:
 
 /// Enumeration type.
 /// Stores all enumeration values.
+struct EnumValue {
+	std::string name;
+	bool bit;
+	std::int64_t value;
+};
+
 class Enum : public Type {
 public:
-	std::vector<std::pair<std::string, std::int64_t>> values;
+	std::vector<EnumValue> values;
 	bool bitmask {}; /// Whether the enum is a bitmask type.
 	unsigned bitwidth {32};
 
@@ -241,6 +247,7 @@ public:
 	std::string number;
 	std::string api;
 	std::vector<Extension*> extensions;
+	std::vector<std::string> depends;
 };
 
 /// The registry class holding the whole vulkan registry.

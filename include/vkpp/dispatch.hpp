@@ -12,7 +12,7 @@
 #include <vkpp/structs.hpp>
 #include <vkpp/flags.hpp>
 
-// Generated for vulkan version: 1.1.204
+// Generated for vulkan version: 1.4.350
 
 namespace vk {
 
@@ -44,163 +44,6 @@ public:
 	void init(Device);
 
 public:
-	PFN_vkGetPhysicalDeviceToolProperties vkGetPhysicalDeviceToolProperties {};
-	PFN_vkGetPhysicalDeviceToolPropertiesEXT vkGetPhysicalDeviceToolPropertiesEXT {};
-	PFN_vkCreatePrivateDataSlot vkCreatePrivateDataSlot {};
-	PFN_vkCreatePrivateDataSlotEXT vkCreatePrivateDataSlotEXT {};
-	PFN_vkDestroyPrivateDataSlot vkDestroyPrivateDataSlot {};
-	PFN_vkDestroyPrivateDataSlotEXT vkDestroyPrivateDataSlotEXT {};
-	PFN_vkSetPrivateData vkSetPrivateData {};
-	PFN_vkSetPrivateDataEXT vkSetPrivateDataEXT {};
-	PFN_vkGetPrivateData vkGetPrivateData {};
-	PFN_vkGetPrivateDataEXT vkGetPrivateDataEXT {};
-	PFN_vkCmdSetEvent2 vkCmdSetEvent2 {};
-	PFN_vkCmdSetEvent2KHR vkCmdSetEvent2KHR {};
-	PFN_vkCmdResetEvent2 vkCmdResetEvent2 {};
-	PFN_vkCmdResetEvent2KHR vkCmdResetEvent2KHR {};
-	PFN_vkCmdWaitEvents2 vkCmdWaitEvents2 {};
-	PFN_vkCmdWaitEvents2KHR vkCmdWaitEvents2KHR {};
-	PFN_vkCmdPipelineBarrier2 vkCmdPipelineBarrier2 {};
-	PFN_vkCmdPipelineBarrier2KHR vkCmdPipelineBarrier2KHR {};
-	PFN_vkCmdWriteTimestamp2 vkCmdWriteTimestamp2 {};
-	PFN_vkCmdWriteTimestamp2KHR vkCmdWriteTimestamp2KHR {};
-	PFN_vkQueueSubmit2 vkQueueSubmit2 {};
-	PFN_vkQueueSubmit2KHR vkQueueSubmit2KHR {};
-	PFN_vkCmdCopyBuffer2 vkCmdCopyBuffer2 {};
-	PFN_vkCmdCopyBuffer2KHR vkCmdCopyBuffer2KHR {};
-	PFN_vkCmdCopyImage2 vkCmdCopyImage2 {};
-	PFN_vkCmdCopyImage2KHR vkCmdCopyImage2KHR {};
-	PFN_vkCmdCopyBufferToImage2 vkCmdCopyBufferToImage2 {};
-	PFN_vkCmdCopyBufferToImage2KHR vkCmdCopyBufferToImage2KHR {};
-	PFN_vkCmdCopyImageToBuffer2 vkCmdCopyImageToBuffer2 {};
-	PFN_vkCmdCopyImageToBuffer2KHR vkCmdCopyImageToBuffer2KHR {};
-	PFN_vkCmdBlitImage2 vkCmdBlitImage2 {};
-	PFN_vkCmdBlitImage2KHR vkCmdBlitImage2KHR {};
-	PFN_vkCmdResolveImage2 vkCmdResolveImage2 {};
-	PFN_vkCmdResolveImage2KHR vkCmdResolveImage2KHR {};
-	PFN_vkCmdBeginRendering vkCmdBeginRendering {};
-	PFN_vkCmdBeginRenderingKHR vkCmdBeginRenderingKHR {};
-	PFN_vkCmdEndRendering vkCmdEndRendering {};
-	PFN_vkCmdEndRenderingKHR vkCmdEndRenderingKHR {};
-	PFN_vkCmdSetCullMode vkCmdSetCullMode {};
-	PFN_vkCmdSetCullModeEXT vkCmdSetCullModeEXT {};
-	PFN_vkCmdSetFrontFace vkCmdSetFrontFace {};
-	PFN_vkCmdSetFrontFaceEXT vkCmdSetFrontFaceEXT {};
-	PFN_vkCmdSetPrimitiveTopology vkCmdSetPrimitiveTopology {};
-	PFN_vkCmdSetPrimitiveTopologyEXT vkCmdSetPrimitiveTopologyEXT {};
-	PFN_vkCmdSetViewportWithCount vkCmdSetViewportWithCount {};
-	PFN_vkCmdSetViewportWithCountEXT vkCmdSetViewportWithCountEXT {};
-	PFN_vkCmdSetScissorWithCount vkCmdSetScissorWithCount {};
-	PFN_vkCmdSetScissorWithCountEXT vkCmdSetScissorWithCountEXT {};
-	PFN_vkCmdBindVertexBuffers2 vkCmdBindVertexBuffers2 {};
-	PFN_vkCmdBindVertexBuffers2EXT vkCmdBindVertexBuffers2EXT {};
-	PFN_vkCmdSetDepthTestEnable vkCmdSetDepthTestEnable {};
-	PFN_vkCmdSetDepthTestEnableEXT vkCmdSetDepthTestEnableEXT {};
-	PFN_vkCmdSetDepthWriteEnable vkCmdSetDepthWriteEnable {};
-	PFN_vkCmdSetDepthWriteEnableEXT vkCmdSetDepthWriteEnableEXT {};
-	PFN_vkCmdSetDepthCompareOp vkCmdSetDepthCompareOp {};
-	PFN_vkCmdSetDepthCompareOpEXT vkCmdSetDepthCompareOpEXT {};
-	PFN_vkCmdSetDepthBoundsTestEnable vkCmdSetDepthBoundsTestEnable {};
-	PFN_vkCmdSetDepthBoundsTestEnableEXT vkCmdSetDepthBoundsTestEnableEXT {};
-	PFN_vkCmdSetStencilTestEnable vkCmdSetStencilTestEnable {};
-	PFN_vkCmdSetStencilTestEnableEXT vkCmdSetStencilTestEnableEXT {};
-	PFN_vkCmdSetStencilOp vkCmdSetStencilOp {};
-	PFN_vkCmdSetStencilOpEXT vkCmdSetStencilOpEXT {};
-	PFN_vkCmdSetRasterizerDiscardEnable vkCmdSetRasterizerDiscardEnable {};
-	PFN_vkCmdSetRasterizerDiscardEnableEXT vkCmdSetRasterizerDiscardEnableEXT {};
-	PFN_vkCmdSetDepthBiasEnable vkCmdSetDepthBiasEnable {};
-	PFN_vkCmdSetDepthBiasEnableEXT vkCmdSetDepthBiasEnableEXT {};
-	PFN_vkCmdSetPrimitiveRestartEnable vkCmdSetPrimitiveRestartEnable {};
-	PFN_vkCmdSetPrimitiveRestartEnableEXT vkCmdSetPrimitiveRestartEnableEXT {};
-	PFN_vkGetDeviceBufferMemoryRequirements vkGetDeviceBufferMemoryRequirements {};
-	PFN_vkGetDeviceBufferMemoryRequirementsKHR vkGetDeviceBufferMemoryRequirementsKHR {};
-	PFN_vkGetDeviceImageMemoryRequirements vkGetDeviceImageMemoryRequirements {};
-	PFN_vkGetDeviceImageMemoryRequirementsKHR vkGetDeviceImageMemoryRequirementsKHR {};
-	PFN_vkGetDeviceImageSparseMemoryRequirements vkGetDeviceImageSparseMemoryRequirements {};
-	PFN_vkGetDeviceImageSparseMemoryRequirementsKHR vkGetDeviceImageSparseMemoryRequirementsKHR {};
-	PFN_vkCmdDrawIndirectCount vkCmdDrawIndirectCount {};
-	PFN_vkCmdDrawIndirectCountKHR vkCmdDrawIndirectCountKHR {};
-	PFN_vkCmdDrawIndirectCountAMD vkCmdDrawIndirectCountAMD {};
-	PFN_vkCmdDrawIndexedIndirectCount vkCmdDrawIndexedIndirectCount {};
-	PFN_vkCmdDrawIndexedIndirectCountKHR vkCmdDrawIndexedIndirectCountKHR {};
-	PFN_vkCmdDrawIndexedIndirectCountAMD vkCmdDrawIndexedIndirectCountAMD {};
-	PFN_vkCreateRenderPass2 vkCreateRenderPass2 {};
-	PFN_vkCreateRenderPass2KHR vkCreateRenderPass2KHR {};
-	PFN_vkCmdBeginRenderPass2 vkCmdBeginRenderPass2 {};
-	PFN_vkCmdBeginRenderPass2KHR vkCmdBeginRenderPass2KHR {};
-	PFN_vkCmdNextSubpass2 vkCmdNextSubpass2 {};
-	PFN_vkCmdNextSubpass2KHR vkCmdNextSubpass2KHR {};
-	PFN_vkCmdEndRenderPass2 vkCmdEndRenderPass2 {};
-	PFN_vkCmdEndRenderPass2KHR vkCmdEndRenderPass2KHR {};
-	PFN_vkResetQueryPool vkResetQueryPool {};
-	PFN_vkResetQueryPoolEXT vkResetQueryPoolEXT {};
-	PFN_vkGetSemaphoreCounterValue vkGetSemaphoreCounterValue {};
-	PFN_vkGetSemaphoreCounterValueKHR vkGetSemaphoreCounterValueKHR {};
-	PFN_vkWaitSemaphores vkWaitSemaphores {};
-	PFN_vkWaitSemaphoresKHR vkWaitSemaphoresKHR {};
-	PFN_vkSignalSemaphore vkSignalSemaphore {};
-	PFN_vkSignalSemaphoreKHR vkSignalSemaphoreKHR {};
-	PFN_vkGetBufferDeviceAddress vkGetBufferDeviceAddress {};
-	PFN_vkGetBufferDeviceAddressKHR vkGetBufferDeviceAddressKHR {};
-	PFN_vkGetBufferDeviceAddressEXT vkGetBufferDeviceAddressEXT {};
-	PFN_vkGetBufferOpaqueCaptureAddress vkGetBufferOpaqueCaptureAddress {};
-	PFN_vkGetBufferOpaqueCaptureAddressKHR vkGetBufferOpaqueCaptureAddressKHR {};
-	PFN_vkGetDeviceMemoryOpaqueCaptureAddress vkGetDeviceMemoryOpaqueCaptureAddress {};
-	PFN_vkGetDeviceMemoryOpaqueCaptureAddressKHR vkGetDeviceMemoryOpaqueCaptureAddressKHR {};
-	PFN_vkEnumerateInstanceVersion vkEnumerateInstanceVersion {};
-	PFN_vkBindBufferMemory2 vkBindBufferMemory2 {};
-	PFN_vkBindBufferMemory2KHR vkBindBufferMemory2KHR {};
-	PFN_vkBindImageMemory2 vkBindImageMemory2 {};
-	PFN_vkBindImageMemory2KHR vkBindImageMemory2KHR {};
-	PFN_vkGetDeviceGroupPeerMemoryFeatures vkGetDeviceGroupPeerMemoryFeatures {};
-	PFN_vkGetDeviceGroupPeerMemoryFeaturesKHR vkGetDeviceGroupPeerMemoryFeaturesKHR {};
-	PFN_vkCmdSetDeviceMask vkCmdSetDeviceMask {};
-	PFN_vkCmdSetDeviceMaskKHR vkCmdSetDeviceMaskKHR {};
-	PFN_vkCmdDispatchBase vkCmdDispatchBase {};
-	PFN_vkCmdDispatchBaseKHR vkCmdDispatchBaseKHR {};
-	PFN_vkEnumeratePhysicalDeviceGroups vkEnumeratePhysicalDeviceGroups {};
-	PFN_vkEnumeratePhysicalDeviceGroupsKHR vkEnumeratePhysicalDeviceGroupsKHR {};
-	PFN_vkGetImageMemoryRequirements2 vkGetImageMemoryRequirements2 {};
-	PFN_vkGetImageMemoryRequirements2KHR vkGetImageMemoryRequirements2KHR {};
-	PFN_vkGetBufferMemoryRequirements2 vkGetBufferMemoryRequirements2 {};
-	PFN_vkGetBufferMemoryRequirements2KHR vkGetBufferMemoryRequirements2KHR {};
-	PFN_vkGetImageSparseMemoryRequirements2 vkGetImageSparseMemoryRequirements2 {};
-	PFN_vkGetImageSparseMemoryRequirements2KHR vkGetImageSparseMemoryRequirements2KHR {};
-	PFN_vkGetPhysicalDeviceFeatures2 vkGetPhysicalDeviceFeatures2 {};
-	PFN_vkGetPhysicalDeviceFeatures2KHR vkGetPhysicalDeviceFeatures2KHR {};
-	PFN_vkGetPhysicalDeviceProperties2 vkGetPhysicalDeviceProperties2 {};
-	PFN_vkGetPhysicalDeviceProperties2KHR vkGetPhysicalDeviceProperties2KHR {};
-	PFN_vkGetPhysicalDeviceFormatProperties2 vkGetPhysicalDeviceFormatProperties2 {};
-	PFN_vkGetPhysicalDeviceFormatProperties2KHR vkGetPhysicalDeviceFormatProperties2KHR {};
-	PFN_vkGetPhysicalDeviceImageFormatProperties2 vkGetPhysicalDeviceImageFormatProperties2 {};
-	PFN_vkGetPhysicalDeviceImageFormatProperties2KHR vkGetPhysicalDeviceImageFormatProperties2KHR {};
-	PFN_vkGetPhysicalDeviceQueueFamilyProperties2 vkGetPhysicalDeviceQueueFamilyProperties2 {};
-	PFN_vkGetPhysicalDeviceQueueFamilyProperties2KHR vkGetPhysicalDeviceQueueFamilyProperties2KHR {};
-	PFN_vkGetPhysicalDeviceMemoryProperties2 vkGetPhysicalDeviceMemoryProperties2 {};
-	PFN_vkGetPhysicalDeviceMemoryProperties2KHR vkGetPhysicalDeviceMemoryProperties2KHR {};
-	PFN_vkGetPhysicalDeviceSparseImageFormatProperties2 vkGetPhysicalDeviceSparseImageFormatProperties2 {};
-	PFN_vkGetPhysicalDeviceSparseImageFormatProperties2KHR vkGetPhysicalDeviceSparseImageFormatProperties2KHR {};
-	PFN_vkTrimCommandPool vkTrimCommandPool {};
-	PFN_vkTrimCommandPoolKHR vkTrimCommandPoolKHR {};
-	PFN_vkGetDeviceQueue2 vkGetDeviceQueue2 {};
-	PFN_vkCreateSamplerYcbcrConversion vkCreateSamplerYcbcrConversion {};
-	PFN_vkCreateSamplerYcbcrConversionKHR vkCreateSamplerYcbcrConversionKHR {};
-	PFN_vkDestroySamplerYcbcrConversion vkDestroySamplerYcbcrConversion {};
-	PFN_vkDestroySamplerYcbcrConversionKHR vkDestroySamplerYcbcrConversionKHR {};
-	PFN_vkCreateDescriptorUpdateTemplate vkCreateDescriptorUpdateTemplate {};
-	PFN_vkCreateDescriptorUpdateTemplateKHR vkCreateDescriptorUpdateTemplateKHR {};
-	PFN_vkDestroyDescriptorUpdateTemplate vkDestroyDescriptorUpdateTemplate {};
-	PFN_vkDestroyDescriptorUpdateTemplateKHR vkDestroyDescriptorUpdateTemplateKHR {};
-	PFN_vkUpdateDescriptorSetWithTemplate vkUpdateDescriptorSetWithTemplate {};
-	PFN_vkUpdateDescriptorSetWithTemplateKHR vkUpdateDescriptorSetWithTemplateKHR {};
-	PFN_vkGetPhysicalDeviceExternalBufferProperties vkGetPhysicalDeviceExternalBufferProperties {};
-	PFN_vkGetPhysicalDeviceExternalBufferPropertiesKHR vkGetPhysicalDeviceExternalBufferPropertiesKHR {};
-	PFN_vkGetPhysicalDeviceExternalFenceProperties vkGetPhysicalDeviceExternalFenceProperties {};
-	PFN_vkGetPhysicalDeviceExternalFencePropertiesKHR vkGetPhysicalDeviceExternalFencePropertiesKHR {};
-	PFN_vkGetPhysicalDeviceExternalSemaphoreProperties vkGetPhysicalDeviceExternalSemaphoreProperties {};
-	PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR vkGetPhysicalDeviceExternalSemaphorePropertiesKHR {};
-	PFN_vkGetDescriptorSetLayoutSupport vkGetDescriptorSetLayoutSupport {};
-	PFN_vkGetDescriptorSetLayoutSupportKHR vkGetDescriptorSetLayoutSupportKHR {};
 	PFN_vkCreateInstance vkCreateInstance {};
 	PFN_vkDestroyInstance vkDestroyInstance {};
 	PFN_vkEnumeratePhysicalDevices vkEnumeratePhysicalDevices {};
@@ -243,30 +86,152 @@ public:
 	PFN_vkWaitForFences vkWaitForFences {};
 	PFN_vkCreateSemaphore vkCreateSemaphore {};
 	PFN_vkDestroySemaphore vkDestroySemaphore {};
-	PFN_vkCreateEvent vkCreateEvent {};
-	PFN_vkDestroyEvent vkDestroyEvent {};
-	PFN_vkGetEventStatus vkGetEventStatus {};
-	PFN_vkSetEvent vkSetEvent {};
-	PFN_vkResetEvent vkResetEvent {};
 	PFN_vkCreateQueryPool vkCreateQueryPool {};
 	PFN_vkDestroyQueryPool vkDestroyQueryPool {};
 	PFN_vkGetQueryPoolResults vkGetQueryPoolResults {};
 	PFN_vkCreateBuffer vkCreateBuffer {};
 	PFN_vkDestroyBuffer vkDestroyBuffer {};
-	PFN_vkCreateBufferView vkCreateBufferView {};
-	PFN_vkDestroyBufferView vkDestroyBufferView {};
 	PFN_vkCreateImage vkCreateImage {};
 	PFN_vkDestroyImage vkDestroyImage {};
 	PFN_vkGetImageSubresourceLayout vkGetImageSubresourceLayout {};
 	PFN_vkCreateImageView vkCreateImageView {};
 	PFN_vkDestroyImageView vkDestroyImageView {};
+	PFN_vkCreateCommandPool vkCreateCommandPool {};
+	PFN_vkDestroyCommandPool vkDestroyCommandPool {};
+	PFN_vkResetCommandPool vkResetCommandPool {};
+	PFN_vkAllocateCommandBuffers vkAllocateCommandBuffers {};
+	PFN_vkFreeCommandBuffers vkFreeCommandBuffers {};
+	PFN_vkBeginCommandBuffer vkBeginCommandBuffer {};
+	PFN_vkEndCommandBuffer vkEndCommandBuffer {};
+	PFN_vkResetCommandBuffer vkResetCommandBuffer {};
+	PFN_vkCmdCopyBuffer vkCmdCopyBuffer {};
+	PFN_vkCmdCopyImage vkCmdCopyImage {};
+	PFN_vkCmdCopyBufferToImage vkCmdCopyBufferToImage {};
+	PFN_vkCmdCopyImageToBuffer vkCmdCopyImageToBuffer {};
+	PFN_vkCmdUpdateBuffer vkCmdUpdateBuffer {};
+	PFN_vkCmdFillBuffer vkCmdFillBuffer {};
+	PFN_vkCmdPipelineBarrier vkCmdPipelineBarrier {};
+	PFN_vkCmdBeginQuery vkCmdBeginQuery {};
+	PFN_vkCmdEndQuery vkCmdEndQuery {};
+	PFN_vkCmdResetQueryPool vkCmdResetQueryPool {};
+	PFN_vkCmdWriteTimestamp vkCmdWriteTimestamp {};
+	PFN_vkCmdCopyQueryPoolResults vkCmdCopyQueryPoolResults {};
+	PFN_vkCmdExecuteCommands vkCmdExecuteCommands {};
+	PFN_vkEnumerateInstanceVersion vkEnumerateInstanceVersion {};
+	PFN_vkBindBufferMemory2 vkBindBufferMemory2 {};
+	PFN_vkBindBufferMemory2KHR vkBindBufferMemory2KHR {};
+	PFN_vkBindImageMemory2 vkBindImageMemory2 {};
+	PFN_vkBindImageMemory2KHR vkBindImageMemory2KHR {};
+	PFN_vkGetDeviceGroupPeerMemoryFeatures vkGetDeviceGroupPeerMemoryFeatures {};
+	PFN_vkGetDeviceGroupPeerMemoryFeaturesKHR vkGetDeviceGroupPeerMemoryFeaturesKHR {};
+	PFN_vkCmdSetDeviceMask vkCmdSetDeviceMask {};
+	PFN_vkCmdSetDeviceMaskKHR vkCmdSetDeviceMaskKHR {};
+	PFN_vkEnumeratePhysicalDeviceGroups vkEnumeratePhysicalDeviceGroups {};
+	PFN_vkEnumeratePhysicalDeviceGroupsKHR vkEnumeratePhysicalDeviceGroupsKHR {};
+	PFN_vkGetImageMemoryRequirements2 vkGetImageMemoryRequirements2 {};
+	PFN_vkGetImageMemoryRequirements2KHR vkGetImageMemoryRequirements2KHR {};
+	PFN_vkGetBufferMemoryRequirements2 vkGetBufferMemoryRequirements2 {};
+	PFN_vkGetBufferMemoryRequirements2KHR vkGetBufferMemoryRequirements2KHR {};
+	PFN_vkGetImageSparseMemoryRequirements2 vkGetImageSparseMemoryRequirements2 {};
+	PFN_vkGetImageSparseMemoryRequirements2KHR vkGetImageSparseMemoryRequirements2KHR {};
+	PFN_vkGetPhysicalDeviceFeatures2 vkGetPhysicalDeviceFeatures2 {};
+	PFN_vkGetPhysicalDeviceFeatures2KHR vkGetPhysicalDeviceFeatures2KHR {};
+	PFN_vkGetPhysicalDeviceProperties2 vkGetPhysicalDeviceProperties2 {};
+	PFN_vkGetPhysicalDeviceProperties2KHR vkGetPhysicalDeviceProperties2KHR {};
+	PFN_vkGetPhysicalDeviceFormatProperties2 vkGetPhysicalDeviceFormatProperties2 {};
+	PFN_vkGetPhysicalDeviceFormatProperties2KHR vkGetPhysicalDeviceFormatProperties2KHR {};
+	PFN_vkGetPhysicalDeviceImageFormatProperties2 vkGetPhysicalDeviceImageFormatProperties2 {};
+	PFN_vkGetPhysicalDeviceImageFormatProperties2KHR vkGetPhysicalDeviceImageFormatProperties2KHR {};
+	PFN_vkGetPhysicalDeviceQueueFamilyProperties2 vkGetPhysicalDeviceQueueFamilyProperties2 {};
+	PFN_vkGetPhysicalDeviceQueueFamilyProperties2KHR vkGetPhysicalDeviceQueueFamilyProperties2KHR {};
+	PFN_vkGetPhysicalDeviceMemoryProperties2 vkGetPhysicalDeviceMemoryProperties2 {};
+	PFN_vkGetPhysicalDeviceMemoryProperties2KHR vkGetPhysicalDeviceMemoryProperties2KHR {};
+	PFN_vkGetPhysicalDeviceSparseImageFormatProperties2 vkGetPhysicalDeviceSparseImageFormatProperties2 {};
+	PFN_vkGetPhysicalDeviceSparseImageFormatProperties2KHR vkGetPhysicalDeviceSparseImageFormatProperties2KHR {};
+	PFN_vkTrimCommandPool vkTrimCommandPool {};
+	PFN_vkTrimCommandPoolKHR vkTrimCommandPoolKHR {};
+	PFN_vkGetDeviceQueue2 vkGetDeviceQueue2 {};
+	PFN_vkGetPhysicalDeviceExternalBufferProperties vkGetPhysicalDeviceExternalBufferProperties {};
+	PFN_vkGetPhysicalDeviceExternalBufferPropertiesKHR vkGetPhysicalDeviceExternalBufferPropertiesKHR {};
+	PFN_vkGetPhysicalDeviceExternalFenceProperties vkGetPhysicalDeviceExternalFenceProperties {};
+	PFN_vkGetPhysicalDeviceExternalFencePropertiesKHR vkGetPhysicalDeviceExternalFencePropertiesKHR {};
+	PFN_vkGetPhysicalDeviceExternalSemaphoreProperties vkGetPhysicalDeviceExternalSemaphoreProperties {};
+	PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR vkGetPhysicalDeviceExternalSemaphorePropertiesKHR {};
+	PFN_vkResetQueryPool vkResetQueryPool {};
+	PFN_vkResetQueryPoolEXT vkResetQueryPoolEXT {};
+	PFN_vkGetSemaphoreCounterValue vkGetSemaphoreCounterValue {};
+	PFN_vkGetSemaphoreCounterValueKHR vkGetSemaphoreCounterValueKHR {};
+	PFN_vkWaitSemaphores vkWaitSemaphores {};
+	PFN_vkWaitSemaphoresKHR vkWaitSemaphoresKHR {};
+	PFN_vkSignalSemaphore vkSignalSemaphore {};
+	PFN_vkSignalSemaphoreKHR vkSignalSemaphoreKHR {};
+	PFN_vkGetBufferDeviceAddress vkGetBufferDeviceAddress {};
+	PFN_vkGetBufferDeviceAddressKHR vkGetBufferDeviceAddressKHR {};
+	PFN_vkGetBufferDeviceAddressEXT vkGetBufferDeviceAddressEXT {};
+	PFN_vkGetBufferOpaqueCaptureAddress vkGetBufferOpaqueCaptureAddress {};
+	PFN_vkGetBufferOpaqueCaptureAddressKHR vkGetBufferOpaqueCaptureAddressKHR {};
+	PFN_vkGetDeviceMemoryOpaqueCaptureAddress vkGetDeviceMemoryOpaqueCaptureAddress {};
+	PFN_vkGetDeviceMemoryOpaqueCaptureAddressKHR vkGetDeviceMemoryOpaqueCaptureAddressKHR {};
+	PFN_vkGetPhysicalDeviceToolProperties vkGetPhysicalDeviceToolProperties {};
+	PFN_vkGetPhysicalDeviceToolPropertiesEXT vkGetPhysicalDeviceToolPropertiesEXT {};
+	PFN_vkCreatePrivateDataSlot vkCreatePrivateDataSlot {};
+	PFN_vkCreatePrivateDataSlotEXT vkCreatePrivateDataSlotEXT {};
+	PFN_vkDestroyPrivateDataSlot vkDestroyPrivateDataSlot {};
+	PFN_vkDestroyPrivateDataSlotEXT vkDestroyPrivateDataSlotEXT {};
+	PFN_vkSetPrivateData vkSetPrivateData {};
+	PFN_vkSetPrivateDataEXT vkSetPrivateDataEXT {};
+	PFN_vkGetPrivateData vkGetPrivateData {};
+	PFN_vkGetPrivateDataEXT vkGetPrivateDataEXT {};
+	PFN_vkCmdPipelineBarrier2 vkCmdPipelineBarrier2 {};
+	PFN_vkCmdPipelineBarrier2KHR vkCmdPipelineBarrier2KHR {};
+	PFN_vkCmdWriteTimestamp2 vkCmdWriteTimestamp2 {};
+	PFN_vkCmdWriteTimestamp2KHR vkCmdWriteTimestamp2KHR {};
+	PFN_vkQueueSubmit2 vkQueueSubmit2 {};
+	PFN_vkQueueSubmit2KHR vkQueueSubmit2KHR {};
+	PFN_vkCmdCopyBuffer2 vkCmdCopyBuffer2 {};
+	PFN_vkCmdCopyBuffer2KHR vkCmdCopyBuffer2KHR {};
+	PFN_vkCmdCopyImage2 vkCmdCopyImage2 {};
+	PFN_vkCmdCopyImage2KHR vkCmdCopyImage2KHR {};
+	PFN_vkCmdCopyBufferToImage2 vkCmdCopyBufferToImage2 {};
+	PFN_vkCmdCopyBufferToImage2KHR vkCmdCopyBufferToImage2KHR {};
+	PFN_vkCmdCopyImageToBuffer2 vkCmdCopyImageToBuffer2 {};
+	PFN_vkCmdCopyImageToBuffer2KHR vkCmdCopyImageToBuffer2KHR {};
+	PFN_vkGetDeviceBufferMemoryRequirements vkGetDeviceBufferMemoryRequirements {};
+	PFN_vkGetDeviceBufferMemoryRequirementsKHR vkGetDeviceBufferMemoryRequirementsKHR {};
+	PFN_vkGetDeviceImageMemoryRequirements vkGetDeviceImageMemoryRequirements {};
+	PFN_vkGetDeviceImageMemoryRequirementsKHR vkGetDeviceImageMemoryRequirementsKHR {};
+	PFN_vkGetDeviceImageSparseMemoryRequirements vkGetDeviceImageSparseMemoryRequirements {};
+	PFN_vkGetDeviceImageSparseMemoryRequirementsKHR vkGetDeviceImageSparseMemoryRequirementsKHR {};
+	PFN_vkMapMemory2 vkMapMemory2 {};
+	PFN_vkMapMemory2KHR vkMapMemory2KHR {};
+	PFN_vkUnmapMemory2 vkUnmapMemory2 {};
+	PFN_vkUnmapMemory2KHR vkUnmapMemory2KHR {};
+	PFN_vkGetDeviceImageSubresourceLayout vkGetDeviceImageSubresourceLayout {};
+	PFN_vkGetDeviceImageSubresourceLayoutKHR vkGetDeviceImageSubresourceLayoutKHR {};
+	PFN_vkGetImageSubresourceLayout2 vkGetImageSubresourceLayout2 {};
+	PFN_vkGetImageSubresourceLayout2KHR vkGetImageSubresourceLayout2KHR {};
+	PFN_vkGetImageSubresourceLayout2EXT vkGetImageSubresourceLayout2EXT {};
+	PFN_vkCopyMemoryToImage vkCopyMemoryToImage {};
+	PFN_vkCopyMemoryToImageEXT vkCopyMemoryToImageEXT {};
+	PFN_vkCopyImageToMemory vkCopyImageToMemory {};
+	PFN_vkCopyImageToMemoryEXT vkCopyImageToMemoryEXT {};
+	PFN_vkCopyImageToImage vkCopyImageToImage {};
+	PFN_vkCopyImageToImageEXT vkCopyImageToImageEXT {};
+	PFN_vkTransitionImageLayout vkTransitionImageLayout {};
+	PFN_vkTransitionImageLayoutEXT vkTransitionImageLayoutEXT {};
+	PFN_vkCreateEvent vkCreateEvent {};
+	PFN_vkDestroyEvent vkDestroyEvent {};
+	PFN_vkGetEventStatus vkGetEventStatus {};
+	PFN_vkSetEvent vkSetEvent {};
+	PFN_vkResetEvent vkResetEvent {};
+	PFN_vkCreateBufferView vkCreateBufferView {};
+	PFN_vkDestroyBufferView vkDestroyBufferView {};
 	PFN_vkCreateShaderModule vkCreateShaderModule {};
 	PFN_vkDestroyShaderModule vkDestroyShaderModule {};
 	PFN_vkCreatePipelineCache vkCreatePipelineCache {};
 	PFN_vkDestroyPipelineCache vkDestroyPipelineCache {};
 	PFN_vkGetPipelineCacheData vkGetPipelineCacheData {};
 	PFN_vkMergePipelineCaches vkMergePipelineCaches {};
-	PFN_vkCreateGraphicsPipelines vkCreateGraphicsPipelines {};
 	PFN_vkCreateComputePipelines vkCreateComputePipelines {};
 	PFN_vkDestroyPipeline vkDestroyPipeline {};
 	PFN_vkCreatePipelineLayout vkCreatePipelineLayout {};
@@ -281,20 +246,53 @@ public:
 	PFN_vkAllocateDescriptorSets vkAllocateDescriptorSets {};
 	PFN_vkFreeDescriptorSets vkFreeDescriptorSets {};
 	PFN_vkUpdateDescriptorSets vkUpdateDescriptorSets {};
+	PFN_vkCmdBindPipeline vkCmdBindPipeline {};
+	PFN_vkCmdBindDescriptorSets vkCmdBindDescriptorSets {};
+	PFN_vkCmdClearColorImage vkCmdClearColorImage {};
+	PFN_vkCmdDispatch vkCmdDispatch {};
+	PFN_vkCmdDispatchIndirect vkCmdDispatchIndirect {};
+	PFN_vkCmdSetEvent vkCmdSetEvent {};
+	PFN_vkCmdResetEvent vkCmdResetEvent {};
+	PFN_vkCmdWaitEvents vkCmdWaitEvents {};
+	PFN_vkCmdPushConstants vkCmdPushConstants {};
+	PFN_vkCmdDispatchBase vkCmdDispatchBase {};
+	PFN_vkCmdDispatchBaseKHR vkCmdDispatchBaseKHR {};
+	PFN_vkCreateDescriptorUpdateTemplate vkCreateDescriptorUpdateTemplate {};
+	PFN_vkCreateDescriptorUpdateTemplateKHR vkCreateDescriptorUpdateTemplateKHR {};
+	PFN_vkDestroyDescriptorUpdateTemplate vkDestroyDescriptorUpdateTemplate {};
+	PFN_vkDestroyDescriptorUpdateTemplateKHR vkDestroyDescriptorUpdateTemplateKHR {};
+	PFN_vkUpdateDescriptorSetWithTemplate vkUpdateDescriptorSetWithTemplate {};
+	PFN_vkUpdateDescriptorSetWithTemplateKHR vkUpdateDescriptorSetWithTemplateKHR {};
+	PFN_vkGetDescriptorSetLayoutSupport vkGetDescriptorSetLayoutSupport {};
+	PFN_vkGetDescriptorSetLayoutSupportKHR vkGetDescriptorSetLayoutSupportKHR {};
+	PFN_vkCreateSamplerYcbcrConversion vkCreateSamplerYcbcrConversion {};
+	PFN_vkCreateSamplerYcbcrConversionKHR vkCreateSamplerYcbcrConversionKHR {};
+	PFN_vkDestroySamplerYcbcrConversion vkDestroySamplerYcbcrConversion {};
+	PFN_vkDestroySamplerYcbcrConversionKHR vkDestroySamplerYcbcrConversionKHR {};
+	PFN_vkCmdSetEvent2 vkCmdSetEvent2 {};
+	PFN_vkCmdSetEvent2KHR vkCmdSetEvent2KHR {};
+	PFN_vkCmdResetEvent2 vkCmdResetEvent2 {};
+	PFN_vkCmdResetEvent2KHR vkCmdResetEvent2KHR {};
+	PFN_vkCmdWaitEvents2 vkCmdWaitEvents2 {};
+	PFN_vkCmdWaitEvents2KHR vkCmdWaitEvents2KHR {};
+	PFN_vkCmdPushDescriptorSet vkCmdPushDescriptorSet {};
+	PFN_vkCmdPushDescriptorSetKHR vkCmdPushDescriptorSetKHR {};
+	PFN_vkCmdPushDescriptorSetWithTemplate vkCmdPushDescriptorSetWithTemplate {};
+	PFN_vkCmdPushDescriptorSetWithTemplateKHR vkCmdPushDescriptorSetWithTemplateKHR {};
+	PFN_vkCmdBindDescriptorSets2 vkCmdBindDescriptorSets2 {};
+	PFN_vkCmdBindDescriptorSets2KHR vkCmdBindDescriptorSets2KHR {};
+	PFN_vkCmdPushConstants2 vkCmdPushConstants2 {};
+	PFN_vkCmdPushConstants2KHR vkCmdPushConstants2KHR {};
+	PFN_vkCmdPushDescriptorSet2 vkCmdPushDescriptorSet2 {};
+	PFN_vkCmdPushDescriptorSet2KHR vkCmdPushDescriptorSet2KHR {};
+	PFN_vkCmdPushDescriptorSetWithTemplate2 vkCmdPushDescriptorSetWithTemplate2 {};
+	PFN_vkCmdPushDescriptorSetWithTemplate2KHR vkCmdPushDescriptorSetWithTemplate2KHR {};
+	PFN_vkCreateGraphicsPipelines vkCreateGraphicsPipelines {};
 	PFN_vkCreateFramebuffer vkCreateFramebuffer {};
 	PFN_vkDestroyFramebuffer vkDestroyFramebuffer {};
 	PFN_vkCreateRenderPass vkCreateRenderPass {};
 	PFN_vkDestroyRenderPass vkDestroyRenderPass {};
 	PFN_vkGetRenderAreaGranularity vkGetRenderAreaGranularity {};
-	PFN_vkCreateCommandPool vkCreateCommandPool {};
-	PFN_vkDestroyCommandPool vkDestroyCommandPool {};
-	PFN_vkResetCommandPool vkResetCommandPool {};
-	PFN_vkAllocateCommandBuffers vkAllocateCommandBuffers {};
-	PFN_vkFreeCommandBuffers vkFreeCommandBuffers {};
-	PFN_vkBeginCommandBuffer vkBeginCommandBuffer {};
-	PFN_vkEndCommandBuffer vkEndCommandBuffer {};
-	PFN_vkResetCommandBuffer vkResetCommandBuffer {};
-	PFN_vkCmdBindPipeline vkCmdBindPipeline {};
 	PFN_vkCmdSetViewport vkCmdSetViewport {};
 	PFN_vkCmdSetScissor vkCmdSetScissor {};
 	PFN_vkCmdSetLineWidth vkCmdSetLineWidth {};
@@ -304,40 +302,82 @@ public:
 	PFN_vkCmdSetStencilCompareMask vkCmdSetStencilCompareMask {};
 	PFN_vkCmdSetStencilWriteMask vkCmdSetStencilWriteMask {};
 	PFN_vkCmdSetStencilReference vkCmdSetStencilReference {};
-	PFN_vkCmdBindDescriptorSets vkCmdBindDescriptorSets {};
 	PFN_vkCmdBindIndexBuffer vkCmdBindIndexBuffer {};
 	PFN_vkCmdBindVertexBuffers vkCmdBindVertexBuffers {};
 	PFN_vkCmdDraw vkCmdDraw {};
 	PFN_vkCmdDrawIndexed vkCmdDrawIndexed {};
 	PFN_vkCmdDrawIndirect vkCmdDrawIndirect {};
 	PFN_vkCmdDrawIndexedIndirect vkCmdDrawIndexedIndirect {};
-	PFN_vkCmdDispatch vkCmdDispatch {};
-	PFN_vkCmdDispatchIndirect vkCmdDispatchIndirect {};
-	PFN_vkCmdCopyBuffer vkCmdCopyBuffer {};
-	PFN_vkCmdCopyImage vkCmdCopyImage {};
 	PFN_vkCmdBlitImage vkCmdBlitImage {};
-	PFN_vkCmdCopyBufferToImage vkCmdCopyBufferToImage {};
-	PFN_vkCmdCopyImageToBuffer vkCmdCopyImageToBuffer {};
-	PFN_vkCmdUpdateBuffer vkCmdUpdateBuffer {};
-	PFN_vkCmdFillBuffer vkCmdFillBuffer {};
-	PFN_vkCmdClearColorImage vkCmdClearColorImage {};
 	PFN_vkCmdClearDepthStencilImage vkCmdClearDepthStencilImage {};
 	PFN_vkCmdClearAttachments vkCmdClearAttachments {};
 	PFN_vkCmdResolveImage vkCmdResolveImage {};
-	PFN_vkCmdSetEvent vkCmdSetEvent {};
-	PFN_vkCmdResetEvent vkCmdResetEvent {};
-	PFN_vkCmdWaitEvents vkCmdWaitEvents {};
-	PFN_vkCmdPipelineBarrier vkCmdPipelineBarrier {};
-	PFN_vkCmdBeginQuery vkCmdBeginQuery {};
-	PFN_vkCmdEndQuery vkCmdEndQuery {};
-	PFN_vkCmdResetQueryPool vkCmdResetQueryPool {};
-	PFN_vkCmdWriteTimestamp vkCmdWriteTimestamp {};
-	PFN_vkCmdCopyQueryPoolResults vkCmdCopyQueryPoolResults {};
-	PFN_vkCmdPushConstants vkCmdPushConstants {};
 	PFN_vkCmdBeginRenderPass vkCmdBeginRenderPass {};
 	PFN_vkCmdNextSubpass vkCmdNextSubpass {};
 	PFN_vkCmdEndRenderPass vkCmdEndRenderPass {};
-	PFN_vkCmdExecuteCommands vkCmdExecuteCommands {};
+	PFN_vkCmdDrawIndirectCount vkCmdDrawIndirectCount {};
+	PFN_vkCmdDrawIndirectCountKHR vkCmdDrawIndirectCountKHR {};
+	PFN_vkCmdDrawIndirectCountAMD vkCmdDrawIndirectCountAMD {};
+	PFN_vkCmdDrawIndexedIndirectCount vkCmdDrawIndexedIndirectCount {};
+	PFN_vkCmdDrawIndexedIndirectCountKHR vkCmdDrawIndexedIndirectCountKHR {};
+	PFN_vkCmdDrawIndexedIndirectCountAMD vkCmdDrawIndexedIndirectCountAMD {};
+	PFN_vkCreateRenderPass2 vkCreateRenderPass2 {};
+	PFN_vkCreateRenderPass2KHR vkCreateRenderPass2KHR {};
+	PFN_vkCmdBeginRenderPass2 vkCmdBeginRenderPass2 {};
+	PFN_vkCmdBeginRenderPass2KHR vkCmdBeginRenderPass2KHR {};
+	PFN_vkCmdNextSubpass2 vkCmdNextSubpass2 {};
+	PFN_vkCmdNextSubpass2KHR vkCmdNextSubpass2KHR {};
+	PFN_vkCmdEndRenderPass2 vkCmdEndRenderPass2 {};
+	PFN_vkCmdEndRenderPass2KHR vkCmdEndRenderPass2KHR {};
+	PFN_vkCmdBlitImage2 vkCmdBlitImage2 {};
+	PFN_vkCmdBlitImage2KHR vkCmdBlitImage2KHR {};
+	PFN_vkCmdResolveImage2 vkCmdResolveImage2 {};
+	PFN_vkCmdResolveImage2KHR vkCmdResolveImage2KHR {};
+	PFN_vkCmdBeginRendering vkCmdBeginRendering {};
+	PFN_vkCmdBeginRenderingKHR vkCmdBeginRenderingKHR {};
+	PFN_vkCmdEndRendering vkCmdEndRendering {};
+	PFN_vkCmdEndRenderingKHR vkCmdEndRenderingKHR {};
+	PFN_vkCmdSetCullMode vkCmdSetCullMode {};
+	PFN_vkCmdSetCullModeEXT vkCmdSetCullModeEXT {};
+	PFN_vkCmdSetFrontFace vkCmdSetFrontFace {};
+	PFN_vkCmdSetFrontFaceEXT vkCmdSetFrontFaceEXT {};
+	PFN_vkCmdSetPrimitiveTopology vkCmdSetPrimitiveTopology {};
+	PFN_vkCmdSetPrimitiveTopologyEXT vkCmdSetPrimitiveTopologyEXT {};
+	PFN_vkCmdSetViewportWithCount vkCmdSetViewportWithCount {};
+	PFN_vkCmdSetViewportWithCountEXT vkCmdSetViewportWithCountEXT {};
+	PFN_vkCmdSetScissorWithCount vkCmdSetScissorWithCount {};
+	PFN_vkCmdSetScissorWithCountEXT vkCmdSetScissorWithCountEXT {};
+	PFN_vkCmdBindVertexBuffers2 vkCmdBindVertexBuffers2 {};
+	PFN_vkCmdBindVertexBuffers2EXT vkCmdBindVertexBuffers2EXT {};
+	PFN_vkCmdSetDepthTestEnable vkCmdSetDepthTestEnable {};
+	PFN_vkCmdSetDepthTestEnableEXT vkCmdSetDepthTestEnableEXT {};
+	PFN_vkCmdSetDepthWriteEnable vkCmdSetDepthWriteEnable {};
+	PFN_vkCmdSetDepthWriteEnableEXT vkCmdSetDepthWriteEnableEXT {};
+	PFN_vkCmdSetDepthCompareOp vkCmdSetDepthCompareOp {};
+	PFN_vkCmdSetDepthCompareOpEXT vkCmdSetDepthCompareOpEXT {};
+	PFN_vkCmdSetDepthBoundsTestEnable vkCmdSetDepthBoundsTestEnable {};
+	PFN_vkCmdSetDepthBoundsTestEnableEXT vkCmdSetDepthBoundsTestEnableEXT {};
+	PFN_vkCmdSetStencilTestEnable vkCmdSetStencilTestEnable {};
+	PFN_vkCmdSetStencilTestEnableEXT vkCmdSetStencilTestEnableEXT {};
+	PFN_vkCmdSetStencilOp vkCmdSetStencilOp {};
+	PFN_vkCmdSetStencilOpEXT vkCmdSetStencilOpEXT {};
+	PFN_vkCmdSetRasterizerDiscardEnable vkCmdSetRasterizerDiscardEnable {};
+	PFN_vkCmdSetRasterizerDiscardEnableEXT vkCmdSetRasterizerDiscardEnableEXT {};
+	PFN_vkCmdSetDepthBiasEnable vkCmdSetDepthBiasEnable {};
+	PFN_vkCmdSetDepthBiasEnableEXT vkCmdSetDepthBiasEnableEXT {};
+	PFN_vkCmdSetPrimitiveRestartEnable vkCmdSetPrimitiveRestartEnable {};
+	PFN_vkCmdSetPrimitiveRestartEnableEXT vkCmdSetPrimitiveRestartEnableEXT {};
+	PFN_vkCmdSetLineStipple vkCmdSetLineStipple {};
+	PFN_vkCmdSetLineStippleKHR vkCmdSetLineStippleKHR {};
+	PFN_vkCmdSetLineStippleEXT vkCmdSetLineStippleEXT {};
+	PFN_vkCmdBindIndexBuffer2 vkCmdBindIndexBuffer2 {};
+	PFN_vkCmdBindIndexBuffer2KHR vkCmdBindIndexBuffer2KHR {};
+	PFN_vkGetRenderingAreaGranularity vkGetRenderingAreaGranularity {};
+	PFN_vkGetRenderingAreaGranularityKHR vkGetRenderingAreaGranularityKHR {};
+	PFN_vkCmdSetRenderingAttachmentLocations vkCmdSetRenderingAttachmentLocations {};
+	PFN_vkCmdSetRenderingAttachmentLocationsKHR vkCmdSetRenderingAttachmentLocationsKHR {};
+	PFN_vkCmdSetRenderingInputAttachmentIndices vkCmdSetRenderingInputAttachmentIndices {};
+	PFN_vkCmdSetRenderingInputAttachmentIndicesKHR vkCmdSetRenderingInputAttachmentIndicesKHR {};
 	PFN_vkDestroySurfaceKHR vkDestroySurfaceKHR {};
 	PFN_vkGetPhysicalDeviceSurfaceSupportKHR vkGetPhysicalDeviceSurfaceSupportKHR {};
 	PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR vkGetPhysicalDeviceSurfaceCapabilitiesKHR {};
@@ -360,41 +400,23 @@ public:
 	PFN_vkGetDisplayPlaneCapabilitiesKHR vkGetDisplayPlaneCapabilitiesKHR {};
 	PFN_vkCreateDisplayPlaneSurfaceKHR vkCreateDisplayPlaneSurfaceKHR {};
 	PFN_vkCreateSharedSwapchainsKHR vkCreateSharedSwapchainsKHR {};
-	PFN_vkCreateDebugReportCallbackEXT vkCreateDebugReportCallbackEXT {};
-	PFN_vkDestroyDebugReportCallbackEXT vkDestroyDebugReportCallbackEXT {};
-	PFN_vkDebugReportMessageEXT vkDebugReportMessageEXT {};
-	PFN_vkDebugMarkerSetObjectTagEXT vkDebugMarkerSetObjectTagEXT {};
-	PFN_vkDebugMarkerSetObjectNameEXT vkDebugMarkerSetObjectNameEXT {};
-	PFN_vkCmdDebugMarkerBeginEXT vkCmdDebugMarkerBeginEXT {};
-	PFN_vkCmdDebugMarkerEndEXT vkCmdDebugMarkerEndEXT {};
-	PFN_vkCmdDebugMarkerInsertEXT vkCmdDebugMarkerInsertEXT {};
-	PFN_vkCmdBindTransformFeedbackBuffersEXT vkCmdBindTransformFeedbackBuffersEXT {};
-	PFN_vkCmdBeginTransformFeedbackEXT vkCmdBeginTransformFeedbackEXT {};
-	PFN_vkCmdEndTransformFeedbackEXT vkCmdEndTransformFeedbackEXT {};
-	PFN_vkCmdBeginQueryIndexedEXT vkCmdBeginQueryIndexedEXT {};
-	PFN_vkCmdEndQueryIndexedEXT vkCmdEndQueryIndexedEXT {};
-	PFN_vkCmdDrawIndirectByteCountEXT vkCmdDrawIndirectByteCountEXT {};
-	PFN_vkGetShaderInfoAMD vkGetShaderInfoAMD {};
-	PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV vkGetPhysicalDeviceExternalImageFormatPropertiesNV {};
+	PFN_vkGetPhysicalDeviceVideoCapabilitiesKHR vkGetPhysicalDeviceVideoCapabilitiesKHR {};
+	PFN_vkGetPhysicalDeviceVideoFormatPropertiesKHR vkGetPhysicalDeviceVideoFormatPropertiesKHR {};
+	PFN_vkCreateVideoSessionKHR vkCreateVideoSessionKHR {};
+	PFN_vkDestroyVideoSessionKHR vkDestroyVideoSessionKHR {};
+	PFN_vkGetVideoSessionMemoryRequirementsKHR vkGetVideoSessionMemoryRequirementsKHR {};
+	PFN_vkBindVideoSessionMemoryKHR vkBindVideoSessionMemoryKHR {};
+	PFN_vkCreateVideoSessionParametersKHR vkCreateVideoSessionParametersKHR {};
+	PFN_vkUpdateVideoSessionParametersKHR vkUpdateVideoSessionParametersKHR {};
+	PFN_vkDestroyVideoSessionParametersKHR vkDestroyVideoSessionParametersKHR {};
+	PFN_vkCmdBeginVideoCodingKHR vkCmdBeginVideoCodingKHR {};
+	PFN_vkCmdEndVideoCodingKHR vkCmdEndVideoCodingKHR {};
+	PFN_vkCmdControlVideoCodingKHR vkCmdControlVideoCodingKHR {};
+	PFN_vkCmdDecodeVideoKHR vkCmdDecodeVideoKHR {};
 	PFN_vkGetMemoryFdKHR vkGetMemoryFdKHR {};
 	PFN_vkGetMemoryFdPropertiesKHR vkGetMemoryFdPropertiesKHR {};
 	PFN_vkImportSemaphoreFdKHR vkImportSemaphoreFdKHR {};
 	PFN_vkGetSemaphoreFdKHR vkGetSemaphoreFdKHR {};
-	PFN_vkCmdPushDescriptorSetKHR vkCmdPushDescriptorSetKHR {};
-	PFN_vkCmdPushDescriptorSetWithTemplateKHR vkCmdPushDescriptorSetWithTemplateKHR {};
-	PFN_vkCmdBeginConditionalRenderingEXT vkCmdBeginConditionalRenderingEXT {};
-	PFN_vkCmdEndConditionalRenderingEXT vkCmdEndConditionalRenderingEXT {};
-	PFN_vkCmdSetViewportWScalingNV vkCmdSetViewportWScalingNV {};
-	PFN_vkReleaseDisplayEXT vkReleaseDisplayEXT {};
-	PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT vkGetPhysicalDeviceSurfaceCapabilities2EXT {};
-	PFN_vkDisplayPowerControlEXT vkDisplayPowerControlEXT {};
-	PFN_vkRegisterDeviceEventEXT vkRegisterDeviceEventEXT {};
-	PFN_vkRegisterDisplayEventEXT vkRegisterDisplayEventEXT {};
-	PFN_vkGetSwapchainCounterEXT vkGetSwapchainCounterEXT {};
-	PFN_vkGetRefreshCycleDurationGOOGLE vkGetRefreshCycleDurationGOOGLE {};
-	PFN_vkGetPastPresentationTimingGOOGLE vkGetPastPresentationTimingGOOGLE {};
-	PFN_vkCmdSetDiscardRectangleEXT vkCmdSetDiscardRectangleEXT {};
-	PFN_vkSetHdrMetadataEXT vkSetHdrMetadataEXT {};
 	PFN_vkGetSwapchainStatusKHR vkGetSwapchainStatusKHR {};
 	PFN_vkImportFenceFdKHR vkImportFenceFdKHR {};
 	PFN_vkGetFenceFdKHR vkGetFenceFdKHR {};
@@ -408,19 +430,6 @@ public:
 	PFN_vkGetPhysicalDeviceDisplayPlaneProperties2KHR vkGetPhysicalDeviceDisplayPlaneProperties2KHR {};
 	PFN_vkGetDisplayModeProperties2KHR vkGetDisplayModeProperties2KHR {};
 	PFN_vkGetDisplayPlaneCapabilities2KHR vkGetDisplayPlaneCapabilities2KHR {};
-	PFN_vkSetDebugUtilsObjectNameEXT vkSetDebugUtilsObjectNameEXT {};
-	PFN_vkSetDebugUtilsObjectTagEXT vkSetDebugUtilsObjectTagEXT {};
-	PFN_vkQueueBeginDebugUtilsLabelEXT vkQueueBeginDebugUtilsLabelEXT {};
-	PFN_vkQueueEndDebugUtilsLabelEXT vkQueueEndDebugUtilsLabelEXT {};
-	PFN_vkQueueInsertDebugUtilsLabelEXT vkQueueInsertDebugUtilsLabelEXT {};
-	PFN_vkCmdBeginDebugUtilsLabelEXT vkCmdBeginDebugUtilsLabelEXT {};
-	PFN_vkCmdEndDebugUtilsLabelEXT vkCmdEndDebugUtilsLabelEXT {};
-	PFN_vkCmdInsertDebugUtilsLabelEXT vkCmdInsertDebugUtilsLabelEXT {};
-	PFN_vkCreateDebugUtilsMessengerEXT vkCreateDebugUtilsMessengerEXT {};
-	PFN_vkDestroyDebugUtilsMessengerEXT vkDestroyDebugUtilsMessengerEXT {};
-	PFN_vkSubmitDebugUtilsMessageEXT vkSubmitDebugUtilsMessageEXT {};
-	PFN_vkCmdSetSampleLocationsEXT vkCmdSetSampleLocationsEXT {};
-	PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT vkGetPhysicalDeviceMultisamplePropertiesEXT {};
 	PFN_vkCreateAccelerationStructureKHR vkCreateAccelerationStructureKHR {};
 	PFN_vkDestroyAccelerationStructureKHR vkDestroyAccelerationStructureKHR {};
 	PFN_vkCmdBuildAccelerationStructuresKHR vkCmdBuildAccelerationStructuresKHR {};
@@ -445,11 +454,221 @@ public:
 	PFN_vkCmdTraceRaysIndirectKHR vkCmdTraceRaysIndirectKHR {};
 	PFN_vkGetRayTracingShaderGroupStackSizeKHR vkGetRayTracingShaderGroupStackSizeKHR {};
 	PFN_vkCmdSetRayTracingPipelineStackSizeKHR vkCmdSetRayTracingPipelineStackSizeKHR {};
+	PFN_vkGetPhysicalDeviceFragmentShadingRatesKHR vkGetPhysicalDeviceFragmentShadingRatesKHR {};
+	PFN_vkCmdSetFragmentShadingRateKHR vkCmdSetFragmentShadingRateKHR {};
+	PFN_vkWaitForPresentKHR vkWaitForPresentKHR {};
+	PFN_vkCreateDeferredOperationKHR vkCreateDeferredOperationKHR {};
+	PFN_vkDestroyDeferredOperationKHR vkDestroyDeferredOperationKHR {};
+	PFN_vkGetDeferredOperationMaxConcurrencyKHR vkGetDeferredOperationMaxConcurrencyKHR {};
+	PFN_vkGetDeferredOperationResultKHR vkGetDeferredOperationResultKHR {};
+	PFN_vkDeferredOperationJoinKHR vkDeferredOperationJoinKHR {};
+	PFN_vkGetPipelineExecutablePropertiesKHR vkGetPipelineExecutablePropertiesKHR {};
+	PFN_vkGetPipelineExecutableStatisticsKHR vkGetPipelineExecutableStatisticsKHR {};
+	PFN_vkGetPipelineExecutableInternalRepresentationsKHR vkGetPipelineExecutableInternalRepresentationsKHR {};
+	PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR {};
+	PFN_vkGetEncodedVideoSessionParametersKHR vkGetEncodedVideoSessionParametersKHR {};
+	PFN_vkCmdEncodeVideoKHR vkCmdEncodeVideoKHR {};
+	PFN_vkCmdBindIndexBuffer3KHR vkCmdBindIndexBuffer3KHR {};
+	PFN_vkCmdBindVertexBuffers3KHR vkCmdBindVertexBuffers3KHR {};
+	PFN_vkCmdDrawIndirect2KHR vkCmdDrawIndirect2KHR {};
+	PFN_vkCmdDrawIndexedIndirect2KHR vkCmdDrawIndexedIndirect2KHR {};
+	PFN_vkCmdDispatchIndirect2KHR vkCmdDispatchIndirect2KHR {};
+	PFN_vkCmdCopyMemoryKHR vkCmdCopyMemoryKHR {};
+	PFN_vkCmdCopyMemoryToImageKHR vkCmdCopyMemoryToImageKHR {};
+	PFN_vkCmdCopyImageToMemoryKHR vkCmdCopyImageToMemoryKHR {};
+	PFN_vkCmdUpdateMemoryKHR vkCmdUpdateMemoryKHR {};
+	PFN_vkCmdFillMemoryKHR vkCmdFillMemoryKHR {};
+	PFN_vkCmdCopyQueryPoolResultsToMemoryKHR vkCmdCopyQueryPoolResultsToMemoryKHR {};
+	PFN_vkCmdDrawIndirectCount2KHR vkCmdDrawIndirectCount2KHR {};
+	PFN_vkCmdDrawIndexedIndirectCount2KHR vkCmdDrawIndexedIndirectCount2KHR {};
+	PFN_vkCmdBeginConditionalRendering2EXT vkCmdBeginConditionalRendering2EXT {};
+	PFN_vkCmdBindTransformFeedbackBuffers2EXT vkCmdBindTransformFeedbackBuffers2EXT {};
+	PFN_vkCmdBeginTransformFeedback2EXT vkCmdBeginTransformFeedback2EXT {};
+	PFN_vkCmdEndTransformFeedback2EXT vkCmdEndTransformFeedback2EXT {};
+	PFN_vkCmdDrawIndirectByteCount2EXT vkCmdDrawIndirectByteCount2EXT {};
+	PFN_vkCmdDrawMeshTasksIndirect2EXT vkCmdDrawMeshTasksIndirect2EXT {};
+	PFN_vkCmdDrawMeshTasksIndirectCount2EXT vkCmdDrawMeshTasksIndirectCount2EXT {};
+	PFN_vkCmdWriteMarkerToMemoryAMD vkCmdWriteMarkerToMemoryAMD {};
+	PFN_vkCreateAccelerationStructure2KHR vkCreateAccelerationStructure2KHR {};
+	PFN_vkCmdTraceRaysIndirect2KHR vkCmdTraceRaysIndirect2KHR {};
+	PFN_vkWaitForPresent2KHR vkWaitForPresent2KHR {};
+	PFN_vkCreatePipelineBinariesKHR vkCreatePipelineBinariesKHR {};
+	PFN_vkDestroyPipelineBinaryKHR vkDestroyPipelineBinaryKHR {};
+	PFN_vkGetPipelineKeyKHR vkGetPipelineKeyKHR {};
+	PFN_vkGetPipelineBinaryDataKHR vkGetPipelineBinaryDataKHR {};
+	PFN_vkReleaseCapturedPipelineDataKHR vkReleaseCapturedPipelineDataKHR {};
+	PFN_vkReleaseSwapchainImagesKHR vkReleaseSwapchainImagesKHR {};
+	PFN_vkReleaseSwapchainImagesEXT vkReleaseSwapchainImagesEXT {};
+	PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR {};
+	PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR vkGetPhysicalDeviceCalibrateableTimeDomainsKHR {};
+	PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT vkGetPhysicalDeviceCalibrateableTimeDomainsEXT {};
+	PFN_vkGetCalibratedTimestampsKHR vkGetCalibratedTimestampsKHR {};
+	PFN_vkGetCalibratedTimestampsEXT vkGetCalibratedTimestampsEXT {};
+	PFN_vkCmdSetDescriptorBufferOffsets2EXT vkCmdSetDescriptorBufferOffsets2EXT {};
+	PFN_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT vkCmdBindDescriptorBufferEmbeddedSamplers2EXT {};
+	PFN_vkCmdCopyMemoryIndirectKHR vkCmdCopyMemoryIndirectKHR {};
+	PFN_vkCmdCopyMemoryToImageIndirectKHR vkCmdCopyMemoryToImageIndirectKHR {};
+	PFN_vkGetDeviceFaultReportsKHR vkGetDeviceFaultReportsKHR {};
+	PFN_vkGetDeviceFaultDebugInfoKHR vkGetDeviceFaultDebugInfoKHR {};
+	PFN_vkCmdEndRendering2KHR vkCmdEndRendering2KHR {};
+	PFN_vkCmdEndRendering2EXT vkCmdEndRendering2EXT {};
+	PFN_vkCreateDebugReportCallbackEXT vkCreateDebugReportCallbackEXT {};
+	PFN_vkDestroyDebugReportCallbackEXT vkDestroyDebugReportCallbackEXT {};
+	PFN_vkDebugReportMessageEXT vkDebugReportMessageEXT {};
+	PFN_vkDebugMarkerSetObjectTagEXT vkDebugMarkerSetObjectTagEXT {};
+	PFN_vkDebugMarkerSetObjectNameEXT vkDebugMarkerSetObjectNameEXT {};
+	PFN_vkCmdDebugMarkerBeginEXT vkCmdDebugMarkerBeginEXT {};
+	PFN_vkCmdDebugMarkerEndEXT vkCmdDebugMarkerEndEXT {};
+	PFN_vkCmdDebugMarkerInsertEXT vkCmdDebugMarkerInsertEXT {};
+	PFN_vkCmdBindTransformFeedbackBuffersEXT vkCmdBindTransformFeedbackBuffersEXT {};
+	PFN_vkCmdBeginTransformFeedbackEXT vkCmdBeginTransformFeedbackEXT {};
+	PFN_vkCmdEndTransformFeedbackEXT vkCmdEndTransformFeedbackEXT {};
+	PFN_vkCmdBeginQueryIndexedEXT vkCmdBeginQueryIndexedEXT {};
+	PFN_vkCmdEndQueryIndexedEXT vkCmdEndQueryIndexedEXT {};
+	PFN_vkCmdDrawIndirectByteCountEXT vkCmdDrawIndirectByteCountEXT {};
+	PFN_vkCmdBeginConditionalRenderingEXT vkCmdBeginConditionalRenderingEXT {};
+	PFN_vkCmdEndConditionalRenderingEXT vkCmdEndConditionalRenderingEXT {};
+	PFN_vkReleaseDisplayEXT vkReleaseDisplayEXT {};
+	PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT vkGetPhysicalDeviceSurfaceCapabilities2EXT {};
+	PFN_vkDisplayPowerControlEXT vkDisplayPowerControlEXT {};
+	PFN_vkRegisterDeviceEventEXT vkRegisterDeviceEventEXT {};
+	PFN_vkRegisterDisplayEventEXT vkRegisterDisplayEventEXT {};
+	PFN_vkGetSwapchainCounterEXT vkGetSwapchainCounterEXT {};
+	PFN_vkCmdSetDiscardRectangleEXT vkCmdSetDiscardRectangleEXT {};
+	PFN_vkCmdSetDiscardRectangleEnableEXT vkCmdSetDiscardRectangleEnableEXT {};
+	PFN_vkCmdSetDiscardRectangleModeEXT vkCmdSetDiscardRectangleModeEXT {};
+	PFN_vkSetHdrMetadataEXT vkSetHdrMetadataEXT {};
+	PFN_vkSetDebugUtilsObjectNameEXT vkSetDebugUtilsObjectNameEXT {};
+	PFN_vkSetDebugUtilsObjectTagEXT vkSetDebugUtilsObjectTagEXT {};
+	PFN_vkQueueBeginDebugUtilsLabelEXT vkQueueBeginDebugUtilsLabelEXT {};
+	PFN_vkQueueEndDebugUtilsLabelEXT vkQueueEndDebugUtilsLabelEXT {};
+	PFN_vkQueueInsertDebugUtilsLabelEXT vkQueueInsertDebugUtilsLabelEXT {};
+	PFN_vkCmdBeginDebugUtilsLabelEXT vkCmdBeginDebugUtilsLabelEXT {};
+	PFN_vkCmdEndDebugUtilsLabelEXT vkCmdEndDebugUtilsLabelEXT {};
+	PFN_vkCmdInsertDebugUtilsLabelEXT vkCmdInsertDebugUtilsLabelEXT {};
+	PFN_vkCreateDebugUtilsMessengerEXT vkCreateDebugUtilsMessengerEXT {};
+	PFN_vkDestroyDebugUtilsMessengerEXT vkDestroyDebugUtilsMessengerEXT {};
+	PFN_vkSubmitDebugUtilsMessageEXT vkSubmitDebugUtilsMessageEXT {};
+	PFN_vkWriteSamplerDescriptorsEXT vkWriteSamplerDescriptorsEXT {};
+	PFN_vkWriteResourceDescriptorsEXT vkWriteResourceDescriptorsEXT {};
+	PFN_vkCmdBindSamplerHeapEXT vkCmdBindSamplerHeapEXT {};
+	PFN_vkCmdBindResourceHeapEXT vkCmdBindResourceHeapEXT {};
+	PFN_vkCmdPushDataEXT vkCmdPushDataEXT {};
+	PFN_vkGetImageOpaqueCaptureDataEXT vkGetImageOpaqueCaptureDataEXT {};
+	PFN_vkGetPhysicalDeviceDescriptorSizeEXT vkGetPhysicalDeviceDescriptorSizeEXT {};
+	PFN_vkRegisterCustomBorderColorEXT vkRegisterCustomBorderColorEXT {};
+	PFN_vkUnregisterCustomBorderColorEXT vkUnregisterCustomBorderColorEXT {};
+	PFN_vkGetTensorOpaqueCaptureDataARM vkGetTensorOpaqueCaptureDataARM {};
+	PFN_vkCmdSetSampleLocationsEXT vkCmdSetSampleLocationsEXT {};
+	PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT vkGetPhysicalDeviceMultisamplePropertiesEXT {};
 	PFN_vkGetImageDrmFormatModifierPropertiesEXT vkGetImageDrmFormatModifierPropertiesEXT {};
 	PFN_vkCreateValidationCacheEXT vkCreateValidationCacheEXT {};
 	PFN_vkDestroyValidationCacheEXT vkDestroyValidationCacheEXT {};
 	PFN_vkMergeValidationCachesEXT vkMergeValidationCachesEXT {};
 	PFN_vkGetValidationCacheDataEXT vkGetValidationCacheDataEXT {};
+	PFN_vkGetMemoryHostPointerPropertiesEXT vkGetMemoryHostPointerPropertiesEXT {};
+	PFN_vkSetSwapchainPresentTimingQueueSizeEXT vkSetSwapchainPresentTimingQueueSizeEXT {};
+	PFN_vkGetSwapchainTimingPropertiesEXT vkGetSwapchainTimingPropertiesEXT {};
+	PFN_vkGetSwapchainTimeDomainPropertiesEXT vkGetSwapchainTimeDomainPropertiesEXT {};
+	PFN_vkGetPastPresentationTimingEXT vkGetPastPresentationTimingEXT {};
+	PFN_vkCreateHeadlessSurfaceEXT vkCreateHeadlessSurfaceEXT {};
+	PFN_vkCmdSetDepthBias2EXT vkCmdSetDepthBias2EXT {};
+	PFN_vkAcquireDrmDisplayEXT vkAcquireDrmDisplayEXT {};
+	PFN_vkGetDrmDisplayEXT vkGetDrmDisplayEXT {};
+	PFN_vkGetDescriptorSetLayoutSizeEXT vkGetDescriptorSetLayoutSizeEXT {};
+	PFN_vkGetDescriptorSetLayoutBindingOffsetEXT vkGetDescriptorSetLayoutBindingOffsetEXT {};
+	PFN_vkGetDescriptorEXT vkGetDescriptorEXT {};
+	PFN_vkCmdBindDescriptorBuffersEXT vkCmdBindDescriptorBuffersEXT {};
+	PFN_vkCmdSetDescriptorBufferOffsetsEXT vkCmdSetDescriptorBufferOffsetsEXT {};
+	PFN_vkCmdBindDescriptorBufferEmbeddedSamplersEXT vkCmdBindDescriptorBufferEmbeddedSamplersEXT {};
+	PFN_vkGetBufferOpaqueCaptureDescriptorDataEXT vkGetBufferOpaqueCaptureDescriptorDataEXT {};
+	PFN_vkGetImageOpaqueCaptureDescriptorDataEXT vkGetImageOpaqueCaptureDescriptorDataEXT {};
+	PFN_vkGetImageViewOpaqueCaptureDescriptorDataEXT vkGetImageViewOpaqueCaptureDescriptorDataEXT {};
+	PFN_vkGetSamplerOpaqueCaptureDescriptorDataEXT vkGetSamplerOpaqueCaptureDescriptorDataEXT {};
+	PFN_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT {};
+	PFN_vkCmdDrawMeshTasksEXT vkCmdDrawMeshTasksEXT {};
+	PFN_vkCmdDrawMeshTasksIndirectEXT vkCmdDrawMeshTasksIndirectEXT {};
+	PFN_vkCmdDrawMeshTasksIndirectCountEXT vkCmdDrawMeshTasksIndirectCountEXT {};
+	PFN_vkGetDeviceFaultInfoEXT vkGetDeviceFaultInfoEXT {};
+	PFN_vkCmdSetVertexInputEXT vkCmdSetVertexInputEXT {};
+	PFN_vkGetPipelinePropertiesEXT vkGetPipelinePropertiesEXT {};
+	PFN_vkCmdSetPatchControlPointsEXT vkCmdSetPatchControlPointsEXT {};
+	PFN_vkCmdSetLogicOpEXT vkCmdSetLogicOpEXT {};
+	PFN_vkCmdSetColorWriteEnableEXT vkCmdSetColorWriteEnableEXT {};
+	PFN_vkCmdDrawMultiEXT vkCmdDrawMultiEXT {};
+	PFN_vkCmdDrawMultiIndexedEXT vkCmdDrawMultiIndexedEXT {};
+	PFN_vkCreateMicromapEXT vkCreateMicromapEXT {};
+	PFN_vkDestroyMicromapEXT vkDestroyMicromapEXT {};
+	PFN_vkCmdBuildMicromapsEXT vkCmdBuildMicromapsEXT {};
+	PFN_vkBuildMicromapsEXT vkBuildMicromapsEXT {};
+	PFN_vkCopyMicromapEXT vkCopyMicromapEXT {};
+	PFN_vkCopyMicromapToMemoryEXT vkCopyMicromapToMemoryEXT {};
+	PFN_vkCopyMemoryToMicromapEXT vkCopyMemoryToMicromapEXT {};
+	PFN_vkWriteMicromapsPropertiesEXT vkWriteMicromapsPropertiesEXT {};
+	PFN_vkCmdCopyMicromapEXT vkCmdCopyMicromapEXT {};
+	PFN_vkCmdCopyMicromapToMemoryEXT vkCmdCopyMicromapToMemoryEXT {};
+	PFN_vkCmdCopyMemoryToMicromapEXT vkCmdCopyMemoryToMicromapEXT {};
+	PFN_vkCmdWriteMicromapsPropertiesEXT vkCmdWriteMicromapsPropertiesEXT {};
+	PFN_vkGetDeviceMicromapCompatibilityEXT vkGetDeviceMicromapCompatibilityEXT {};
+	PFN_vkGetMicromapBuildSizesEXT vkGetMicromapBuildSizesEXT {};
+	PFN_vkSetDeviceMemoryPriorityEXT vkSetDeviceMemoryPriorityEXT {};
+	PFN_vkCmdSetDepthClampEnableEXT vkCmdSetDepthClampEnableEXT {};
+	PFN_vkCmdSetPolygonModeEXT vkCmdSetPolygonModeEXT {};
+	PFN_vkCmdSetRasterizationSamplesEXT vkCmdSetRasterizationSamplesEXT {};
+	PFN_vkCmdSetSampleMaskEXT vkCmdSetSampleMaskEXT {};
+	PFN_vkCmdSetAlphaToCoverageEnableEXT vkCmdSetAlphaToCoverageEnableEXT {};
+	PFN_vkCmdSetAlphaToOneEnableEXT vkCmdSetAlphaToOneEnableEXT {};
+	PFN_vkCmdSetLogicOpEnableEXT vkCmdSetLogicOpEnableEXT {};
+	PFN_vkCmdSetColorBlendEnableEXT vkCmdSetColorBlendEnableEXT {};
+	PFN_vkCmdSetColorBlendEquationEXT vkCmdSetColorBlendEquationEXT {};
+	PFN_vkCmdSetColorWriteMaskEXT vkCmdSetColorWriteMaskEXT {};
+	PFN_vkCmdSetTessellationDomainOriginEXT vkCmdSetTessellationDomainOriginEXT {};
+	PFN_vkCmdSetRasterizationStreamEXT vkCmdSetRasterizationStreamEXT {};
+	PFN_vkCmdSetConservativeRasterizationModeEXT vkCmdSetConservativeRasterizationModeEXT {};
+	PFN_vkCmdSetExtraPrimitiveOverestimationSizeEXT vkCmdSetExtraPrimitiveOverestimationSizeEXT {};
+	PFN_vkCmdSetDepthClipEnableEXT vkCmdSetDepthClipEnableEXT {};
+	PFN_vkCmdSetSampleLocationsEnableEXT vkCmdSetSampleLocationsEnableEXT {};
+	PFN_vkCmdSetColorBlendAdvancedEXT vkCmdSetColorBlendAdvancedEXT {};
+	PFN_vkCmdSetProvokingVertexModeEXT vkCmdSetProvokingVertexModeEXT {};
+	PFN_vkCmdSetLineRasterizationModeEXT vkCmdSetLineRasterizationModeEXT {};
+	PFN_vkCmdSetLineStippleEnableEXT vkCmdSetLineStippleEnableEXT {};
+	PFN_vkCmdSetDepthClipNegativeOneToOneEXT vkCmdSetDepthClipNegativeOneToOneEXT {};
+	PFN_vkCmdSetViewportWScalingEnableNV vkCmdSetViewportWScalingEnableNV {};
+	PFN_vkCmdSetViewportSwizzleNV vkCmdSetViewportSwizzleNV {};
+	PFN_vkCmdSetCoverageToColorEnableNV vkCmdSetCoverageToColorEnableNV {};
+	PFN_vkCmdSetCoverageToColorLocationNV vkCmdSetCoverageToColorLocationNV {};
+	PFN_vkCmdSetCoverageModulationModeNV vkCmdSetCoverageModulationModeNV {};
+	PFN_vkCmdSetCoverageModulationTableEnableNV vkCmdSetCoverageModulationTableEnableNV {};
+	PFN_vkCmdSetCoverageModulationTableNV vkCmdSetCoverageModulationTableNV {};
+	PFN_vkCmdSetShadingRateImageEnableNV vkCmdSetShadingRateImageEnableNV {};
+	PFN_vkCmdSetRepresentativeFragmentTestEnableNV vkCmdSetRepresentativeFragmentTestEnableNV {};
+	PFN_vkCmdSetCoverageReductionModeNV vkCmdSetCoverageReductionModeNV {};
+	PFN_vkGetShaderModuleIdentifierEXT vkGetShaderModuleIdentifierEXT {};
+	PFN_vkGetShaderModuleCreateInfoIdentifierEXT vkGetShaderModuleCreateInfoIdentifierEXT {};
+	PFN_vkCreateShadersEXT vkCreateShadersEXT {};
+	PFN_vkDestroyShaderEXT vkDestroyShaderEXT {};
+	PFN_vkGetShaderBinaryDataEXT vkGetShaderBinaryDataEXT {};
+	PFN_vkCmdBindShadersEXT vkCmdBindShadersEXT {};
+	PFN_vkCmdSetDepthClampRangeEXT vkCmdSetDepthClampRangeEXT {};
+	PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT vkCmdSetAttachmentFeedbackLoopEnableEXT {};
+	PFN_vkCmdDecompressMemoryEXT vkCmdDecompressMemoryEXT {};
+	PFN_vkCmdDecompressMemoryIndirectCountEXT vkCmdDecompressMemoryIndirectCountEXT {};
+	PFN_vkGetGeneratedCommandsMemoryRequirementsEXT vkGetGeneratedCommandsMemoryRequirementsEXT {};
+	PFN_vkCmdPreprocessGeneratedCommandsEXT vkCmdPreprocessGeneratedCommandsEXT {};
+	PFN_vkCmdExecuteGeneratedCommandsEXT vkCmdExecuteGeneratedCommandsEXT {};
+	PFN_vkCreateIndirectCommandsLayoutEXT vkCreateIndirectCommandsLayoutEXT {};
+	PFN_vkDestroyIndirectCommandsLayoutEXT vkDestroyIndirectCommandsLayoutEXT {};
+	PFN_vkCreateIndirectExecutionSetEXT vkCreateIndirectExecutionSetEXT {};
+	PFN_vkDestroyIndirectExecutionSetEXT vkDestroyIndirectExecutionSetEXT {};
+	PFN_vkUpdateIndirectExecutionSetPipelineEXT vkUpdateIndirectExecutionSetPipelineEXT {};
+	PFN_vkUpdateIndirectExecutionSetShaderEXT vkUpdateIndirectExecutionSetShaderEXT {};
+	PFN_vkCmdBeginCustomResolveEXT vkCmdBeginCustomResolveEXT {};
+	PFN_vkCmdSetPrimitiveRestartIndexEXT vkCmdSetPrimitiveRestartIndexEXT {};
+	PFN_vkGetShaderInfoAMD vkGetShaderInfoAMD {};
+	PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV vkGetPhysicalDeviceExternalImageFormatPropertiesNV {};
+	PFN_vkCmdSetViewportWScalingNV vkCmdSetViewportWScalingNV {};
+	PFN_vkGetRefreshCycleDurationGOOGLE vkGetRefreshCycleDurationGOOGLE {};
+	PFN_vkGetPastPresentationTimingGOOGLE vkGetPastPresentationTimingGOOGLE {};
 	PFN_vkCmdBindShadingRateImageNV vkCmdBindShadingRateImageNV {};
 	PFN_vkCmdSetViewportShadingRatePaletteNV vkCmdSetViewportShadingRatePaletteNV {};
 	PFN_vkCmdSetCoarseSampleOrderNV vkCmdSetCoarseSampleOrderNV {};
@@ -464,16 +683,16 @@ public:
 	PFN_vkGetAccelerationStructureHandleNV vkGetAccelerationStructureHandleNV {};
 	PFN_vkCmdWriteAccelerationStructuresPropertiesNV vkCmdWriteAccelerationStructuresPropertiesNV {};
 	PFN_vkCompileDeferredNV vkCompileDeferredNV {};
-	PFN_vkGetMemoryHostPointerPropertiesEXT vkGetMemoryHostPointerPropertiesEXT {};
 	PFN_vkCmdWriteBufferMarkerAMD vkCmdWriteBufferMarkerAMD {};
-	PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT vkGetPhysicalDeviceCalibrateableTimeDomainsEXT {};
-	PFN_vkGetCalibratedTimestampsEXT vkGetCalibratedTimestampsEXT {};
+	PFN_vkCmdWriteBufferMarker2AMD vkCmdWriteBufferMarker2AMD {};
 	PFN_vkCmdDrawMeshTasksNV vkCmdDrawMeshTasksNV {};
 	PFN_vkCmdDrawMeshTasksIndirectNV vkCmdDrawMeshTasksIndirectNV {};
 	PFN_vkCmdDrawMeshTasksIndirectCountNV vkCmdDrawMeshTasksIndirectCountNV {};
+	PFN_vkCmdSetExclusiveScissorEnableNV vkCmdSetExclusiveScissorEnableNV {};
 	PFN_vkCmdSetExclusiveScissorNV vkCmdSetExclusiveScissorNV {};
 	PFN_vkCmdSetCheckpointNV vkCmdSetCheckpointNV {};
 	PFN_vkGetQueueCheckpointDataNV vkGetQueueCheckpointDataNV {};
+	PFN_vkGetQueueCheckpointData2NV vkGetQueueCheckpointData2NV {};
 	PFN_vkInitializePerformanceApiINTEL vkInitializePerformanceApiINTEL {};
 	PFN_vkUninitializePerformanceApiINTEL vkUninitializePerformanceApiINTEL {};
 	PFN_vkCmdSetPerformanceMarkerINTEL vkCmdSetPerformanceMarkerINTEL {};
@@ -484,42 +703,92 @@ public:
 	PFN_vkQueueSetPerformanceConfigurationINTEL vkQueueSetPerformanceConfigurationINTEL {};
 	PFN_vkGetPerformanceParameterINTEL vkGetPerformanceParameterINTEL {};
 	PFN_vkSetLocalDimmingAMD vkSetLocalDimmingAMD {};
-	PFN_vkGetPhysicalDeviceFragmentShadingRatesKHR vkGetPhysicalDeviceFragmentShadingRatesKHR {};
-	PFN_vkCmdSetFragmentShadingRateKHR vkCmdSetFragmentShadingRateKHR {};
-	PFN_vkWaitForPresentKHR vkWaitForPresentKHR {};
 	PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV vkGetPhysicalDeviceCooperativeMatrixPropertiesNV {};
 	PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV {};
-	PFN_vkCreateHeadlessSurfaceEXT vkCreateHeadlessSurfaceEXT {};
-	PFN_vkCmdSetLineStippleEXT vkCmdSetLineStippleEXT {};
-	PFN_vkCreateDeferredOperationKHR vkCreateDeferredOperationKHR {};
-	PFN_vkDestroyDeferredOperationKHR vkDestroyDeferredOperationKHR {};
-	PFN_vkGetDeferredOperationMaxConcurrencyKHR vkGetDeferredOperationMaxConcurrencyKHR {};
-	PFN_vkGetDeferredOperationResultKHR vkGetDeferredOperationResultKHR {};
-	PFN_vkDeferredOperationJoinKHR vkDeferredOperationJoinKHR {};
-	PFN_vkGetPipelineExecutablePropertiesKHR vkGetPipelineExecutablePropertiesKHR {};
-	PFN_vkGetPipelineExecutableStatisticsKHR vkGetPipelineExecutableStatisticsKHR {};
-	PFN_vkGetPipelineExecutableInternalRepresentationsKHR vkGetPipelineExecutableInternalRepresentationsKHR {};
 	PFN_vkGetGeneratedCommandsMemoryRequirementsNV vkGetGeneratedCommandsMemoryRequirementsNV {};
 	PFN_vkCmdPreprocessGeneratedCommandsNV vkCmdPreprocessGeneratedCommandsNV {};
 	PFN_vkCmdExecuteGeneratedCommandsNV vkCmdExecuteGeneratedCommandsNV {};
 	PFN_vkCmdBindPipelineShaderGroupNV vkCmdBindPipelineShaderGroupNV {};
 	PFN_vkCreateIndirectCommandsLayoutNV vkCreateIndirectCommandsLayoutNV {};
 	PFN_vkDestroyIndirectCommandsLayoutNV vkDestroyIndirectCommandsLayoutNV {};
-	PFN_vkAcquireDrmDisplayEXT vkAcquireDrmDisplayEXT {};
-	PFN_vkGetDrmDisplayEXT vkGetDrmDisplayEXT {};
-	PFN_vkCmdWriteBufferMarker2AMD vkCmdWriteBufferMarker2AMD {};
-	PFN_vkGetQueueCheckpointData2NV vkGetQueueCheckpointData2NV {};
+	PFN_vkQueueSetPerfHintQCOM vkQueueSetPerfHintQCOM {};
+	PFN_vkCmdDispatchTileQCOM vkCmdDispatchTileQCOM {};
+	PFN_vkCmdBeginPerTileExecutionQCOM vkCmdBeginPerTileExecutionQCOM {};
+	PFN_vkCmdEndPerTileExecutionQCOM vkCmdEndPerTileExecutionQCOM {};
 	PFN_vkCmdSetFragmentShadingRateEnumNV vkCmdSetFragmentShadingRateEnumNV {};
-	PFN_vkCmdSetVertexInputEXT vkCmdSetVertexInputEXT {};
 	PFN_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI {};
 	PFN_vkCmdSubpassShadingHUAWEI vkCmdSubpassShadingHUAWEI {};
 	PFN_vkCmdBindInvocationMaskHUAWEI vkCmdBindInvocationMaskHUAWEI {};
-	PFN_vkCmdSetPatchControlPointsEXT vkCmdSetPatchControlPointsEXT {};
-	PFN_vkCmdSetLogicOpEXT vkCmdSetLogicOpEXT {};
-	PFN_vkCmdSetColorWriteEnableEXT vkCmdSetColorWriteEnableEXT {};
-	PFN_vkCmdDrawMultiEXT vkCmdDrawMultiEXT {};
-	PFN_vkCmdDrawMultiIndexedEXT vkCmdDrawMultiIndexedEXT {};
-	PFN_vkSetDeviceMemoryPriorityEXT vkSetDeviceMemoryPriorityEXT {};
+	PFN_vkCmdDrawClusterHUAWEI vkCmdDrawClusterHUAWEI {};
+	PFN_vkCmdDrawClusterIndirectHUAWEI vkCmdDrawClusterIndirectHUAWEI {};
+	PFN_vkCmdSetDispatchParametersARM vkCmdSetDispatchParametersARM {};
+	PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE vkGetDescriptorSetLayoutHostMappingInfoVALVE {};
+	PFN_vkGetDescriptorSetHostMappingVALVE vkGetDescriptorSetHostMappingVALVE {};
+	PFN_vkCmdCopyMemoryIndirectNV vkCmdCopyMemoryIndirectNV {};
+	PFN_vkCmdCopyMemoryToImageIndirectNV vkCmdCopyMemoryToImageIndirectNV {};
+	PFN_vkCmdDecompressMemoryNV vkCmdDecompressMemoryNV {};
+	PFN_vkCmdDecompressMemoryIndirectCountNV vkCmdDecompressMemoryIndirectCountNV {};
+	PFN_vkGetPipelineIndirectMemoryRequirementsNV vkGetPipelineIndirectMemoryRequirementsNV {};
+	PFN_vkCmdUpdatePipelineIndirectBufferNV vkCmdUpdatePipelineIndirectBufferNV {};
+	PFN_vkGetPipelineIndirectDeviceAddressNV vkGetPipelineIndirectDeviceAddressNV {};
+	PFN_vkCreateTensorARM vkCreateTensorARM {};
+	PFN_vkDestroyTensorARM vkDestroyTensorARM {};
+	PFN_vkCreateTensorViewARM vkCreateTensorViewARM {};
+	PFN_vkDestroyTensorViewARM vkDestroyTensorViewARM {};
+	PFN_vkGetTensorMemoryRequirementsARM vkGetTensorMemoryRequirementsARM {};
+	PFN_vkBindTensorMemoryARM vkBindTensorMemoryARM {};
+	PFN_vkGetDeviceTensorMemoryRequirementsARM vkGetDeviceTensorMemoryRequirementsARM {};
+	PFN_vkCmdCopyTensorARM vkCmdCopyTensorARM {};
+	PFN_vkGetPhysicalDeviceExternalTensorPropertiesARM vkGetPhysicalDeviceExternalTensorPropertiesARM {};
+	PFN_vkGetTensorOpaqueCaptureDescriptorDataARM vkGetTensorOpaqueCaptureDescriptorDataARM {};
+	PFN_vkGetTensorViewOpaqueCaptureDescriptorDataARM vkGetTensorViewOpaqueCaptureDescriptorDataARM {};
+	PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV vkGetPhysicalDeviceOpticalFlowImageFormatsNV {};
+	PFN_vkCreateOpticalFlowSessionNV vkCreateOpticalFlowSessionNV {};
+	PFN_vkDestroyOpticalFlowSessionNV vkDestroyOpticalFlowSessionNV {};
+	PFN_vkBindOpticalFlowSessionImageNV vkBindOpticalFlowSessionImageNV {};
+	PFN_vkCmdOpticalFlowExecuteNV vkCmdOpticalFlowExecuteNV {};
+	PFN_vkAntiLagUpdateAMD vkAntiLagUpdateAMD {};
+	PFN_vkGetFramebufferTilePropertiesQCOM vkGetFramebufferTilePropertiesQCOM {};
+	PFN_vkGetDynamicRenderingTilePropertiesQCOM vkGetDynamicRenderingTilePropertiesQCOM {};
+	PFN_vkGetPhysicalDeviceCooperativeVectorPropertiesNV vkGetPhysicalDeviceCooperativeVectorPropertiesNV {};
+	PFN_vkConvertCooperativeVectorMatrixNV vkConvertCooperativeVectorMatrixNV {};
+	PFN_vkCmdConvertCooperativeVectorMatrixNV vkCmdConvertCooperativeVectorMatrixNV {};
+	PFN_vkSetLatencySleepModeNV vkSetLatencySleepModeNV {};
+	PFN_vkLatencySleepNV vkLatencySleepNV {};
+	PFN_vkSetLatencyMarkerNV vkSetLatencyMarkerNV {};
+	PFN_vkGetLatencyTimingsNV vkGetLatencyTimingsNV {};
+	PFN_vkQueueNotifyOutOfBandNV vkQueueNotifyOutOfBandNV {};
+	PFN_vkCreateDataGraphPipelinesARM vkCreateDataGraphPipelinesARM {};
+	PFN_vkCreateDataGraphPipelineSessionARM vkCreateDataGraphPipelineSessionARM {};
+	PFN_vkGetDataGraphPipelineSessionBindPointRequirementsARM vkGetDataGraphPipelineSessionBindPointRequirementsARM {};
+	PFN_vkGetDataGraphPipelineSessionMemoryRequirementsARM vkGetDataGraphPipelineSessionMemoryRequirementsARM {};
+	PFN_vkBindDataGraphPipelineSessionMemoryARM vkBindDataGraphPipelineSessionMemoryARM {};
+	PFN_vkDestroyDataGraphPipelineSessionARM vkDestroyDataGraphPipelineSessionARM {};
+	PFN_vkCmdDispatchDataGraphARM vkCmdDispatchDataGraphARM {};
+	PFN_vkGetDataGraphPipelineAvailablePropertiesARM vkGetDataGraphPipelineAvailablePropertiesARM {};
+	PFN_vkGetDataGraphPipelinePropertiesARM vkGetDataGraphPipelinePropertiesARM {};
+	PFN_vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM {};
+	PFN_vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM {};
+	PFN_vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM {};
+	PFN_vkCmdBindTileMemoryQCOM vkCmdBindTileMemoryQCOM {};
+	PFN_vkCreateExternalComputeQueueNV vkCreateExternalComputeQueueNV {};
+	PFN_vkDestroyExternalComputeQueueNV vkDestroyExternalComputeQueueNV {};
+	PFN_vkGetExternalComputeQueueDataNV vkGetExternalComputeQueueDataNV {};
+	PFN_vkGetClusterAccelerationStructureBuildSizesNV vkGetClusterAccelerationStructureBuildSizesNV {};
+	PFN_vkCmdBuildClusterAccelerationStructureIndirectNV vkCmdBuildClusterAccelerationStructureIndirectNV {};
+	PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV vkGetPartitionedAccelerationStructuresBuildSizesNV {};
+	PFN_vkCmdBuildPartitionedAccelerationStructuresNV vkCmdBuildPartitionedAccelerationStructuresNV {};
+	PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV {};
+	PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM {};
+	PFN_vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM {};
+	PFN_vkCreateShaderInstrumentationARM vkCreateShaderInstrumentationARM {};
+	PFN_vkDestroyShaderInstrumentationARM vkDestroyShaderInstrumentationARM {};
+	PFN_vkCmdBeginShaderInstrumentationARM vkCmdBeginShaderInstrumentationARM {};
+	PFN_vkCmdEndShaderInstrumentationARM vkCmdEndShaderInstrumentationARM {};
+	PFN_vkGetShaderInstrumentationValuesARM vkGetShaderInstrumentationValuesARM {};
+	PFN_vkClearShaderInstrumentationMetricsARM vkClearShaderInstrumentationMetricsARM {};
+	PFN_vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM vkGetPhysicalDeviceQueueFamilyDataGraphOpticalFlowImageFormatsARM {};
+	PFN_vkCmdSetComputeOccupancyPriorityNV vkCmdSetComputeOccupancyPriorityNV {};
 
 
 
@@ -547,6 +816,44 @@ public:
 #endif //VK_USE_PLATFORM_WIN32_KHR
 
 
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+	PFN_vkGetMemoryWin32HandleKHR vkGetMemoryWin32HandleKHR {};
+	PFN_vkGetMemoryWin32HandlePropertiesKHR vkGetMemoryWin32HandlePropertiesKHR {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+	PFN_vkImportSemaphoreWin32HandleKHR vkImportSemaphoreWin32HandleKHR {};
+	PFN_vkGetSemaphoreWin32HandleKHR vkGetSemaphoreWin32HandleKHR {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+	PFN_vkImportFenceWin32HandleKHR vkImportFenceWin32HandleKHR {};
+	PFN_vkGetFenceWin32HandleKHR vkGetFenceWin32HandleKHR {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+
+#ifdef VK_USE_PLATFORM_XLIB_XRANDR_EXT
+	PFN_vkAcquireXlibDisplayEXT vkAcquireXlibDisplayEXT {};
+	PFN_vkGetRandROutputDisplayEXT vkGetRandROutputDisplayEXT {};
+#endif //VK_USE_PLATFORM_XLIB_XRANDR_EXT
+
+
+#ifdef VK_USE_PLATFORM_WIN32_KHR
+	PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT vkGetPhysicalDeviceSurfacePresentModes2EXT {};
+	PFN_vkAcquireFullScreenExclusiveModeEXT vkAcquireFullScreenExclusiveModeEXT {};
+	PFN_vkReleaseFullScreenExclusiveModeEXT vkReleaseFullScreenExclusiveModeEXT {};
+	PFN_vkGetDeviceGroupSurfacePresentModes2EXT vkGetDeviceGroupSurfacePresentModes2EXT {};
+#endif //VK_USE_PLATFORM_WIN32_KHR
+
+
+#ifdef VK_USE_PLATFORM_DIRECTFB_EXT
+	PFN_vkCreateDirectFBSurfaceEXT vkCreateDirectFBSurfaceEXT {};
+	PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT vkGetPhysicalDeviceDirectFBPresentationSupportEXT {};
+#endif //VK_USE_PLATFORM_DIRECTFB_EXT
+
+
 #ifdef VK_USE_PLATFORM_GGP
 	PFN_vkCreateStreamDescriptorSurfaceGGP vkCreateStreamDescriptorSurfaceGGP {};
 #endif //VK_USE_PLATFORM_GGP
@@ -560,30 +867,6 @@ public:
 #ifdef VK_USE_PLATFORM_VI_NN
 	PFN_vkCreateViSurfaceNN vkCreateViSurfaceNN {};
 #endif //VK_USE_PLATFORM_VI_NN
-
-
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-	PFN_vkGetMemoryWin32HandleKHR vkGetMemoryWin32HandleKHR {};
-	PFN_vkGetMemoryWin32HandlePropertiesKHR vkGetMemoryWin32HandlePropertiesKHR {};
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
-
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-	PFN_vkImportSemaphoreWin32HandleKHR vkImportSemaphoreWin32HandleKHR {};
-	PFN_vkGetSemaphoreWin32HandleKHR vkGetSemaphoreWin32HandleKHR {};
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
-
-#ifdef VK_USE_PLATFORM_XLIB_XRANDR_EXT
-	PFN_vkAcquireXlibDisplayEXT vkAcquireXlibDisplayEXT {};
-	PFN_vkGetRandROutputDisplayEXT vkGetRandROutputDisplayEXT {};
-#endif //VK_USE_PLATFORM_XLIB_XRANDR_EXT
-
-
-#ifdef VK_USE_PLATFORM_WIN32_KHR
-	PFN_vkImportFenceWin32HandleKHR vkImportFenceWin32HandleKHR {};
-	PFN_vkGetFenceWin32HandleKHR vkGetFenceWin32HandleKHR {};
-#endif //VK_USE_PLATFORM_WIN32_KHR
 
 
 #ifdef VK_USE_PLATFORM_IOS_MVK
@@ -602,23 +885,9 @@ public:
 
 
 #ifdef VK_USE_PLATFORM_WIN32_KHR
-	PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT vkGetPhysicalDeviceSurfacePresentModes2EXT {};
-	PFN_vkAcquireFullScreenExclusiveModeEXT vkAcquireFullScreenExclusiveModeEXT {};
-	PFN_vkReleaseFullScreenExclusiveModeEXT vkReleaseFullScreenExclusiveModeEXT {};
-	PFN_vkGetDeviceGroupSurfacePresentModes2EXT vkGetDeviceGroupSurfacePresentModes2EXT {};
-#endif //VK_USE_PLATFORM_WIN32_KHR
-
-
-#ifdef VK_USE_PLATFORM_WIN32_KHR
 	PFN_vkAcquireWinrtDisplayNV vkAcquireWinrtDisplayNV {};
 	PFN_vkGetWinrtDisplayNV vkGetWinrtDisplayNV {};
 #endif //VK_USE_PLATFORM_WIN32_KHR
-
-
-#ifdef VK_USE_PLATFORM_DIRECTFB_EXT
-	PFN_vkCreateDirectFBSurfaceEXT vkCreateDirectFBSurfaceEXT {};
-	PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT vkGetPhysicalDeviceDirectFBPresentationSupportEXT {};
-#endif //VK_USE_PLATFORM_DIRECTFB_EXT
 
 
 #ifdef VK_USE_PLATFORM_FUCHSIA
@@ -648,11 +917,34 @@ public:
 #endif //VK_USE_PLATFORM_SCREEN_QNX
 
 
+#ifdef VK_USE_PLATFORM_OHOS
+	PFN_vkGetNativeBufferPropertiesOHOS vkGetNativeBufferPropertiesOHOS {};
+	PFN_vkGetMemoryNativeBufferOHOS vkGetMemoryNativeBufferOHOS {};
+#endif //VK_USE_PLATFORM_OHOS
+
+
+#ifdef VK_USE_PLATFORM_SCREEN_QNX
+	PFN_vkGetScreenBufferPropertiesQNX vkGetScreenBufferPropertiesQNX {};
+#endif //VK_USE_PLATFORM_SCREEN_QNX
+
+
+#ifdef VK_USE_PLATFORM_OHOS
+	PFN_vkCreateSurfaceOHOS vkCreateSurfaceOHOS {};
+#endif //VK_USE_PLATFORM_OHOS
+
+
+#ifdef VK_USE_PLATFORM_UBM_SEC
+	PFN_vkCreateUbmSurfaceSEC vkCreateUbmSurfaceSEC {};
+	PFN_vkGetPhysicalDeviceUbmPresentationSupportSEC vkGetPhysicalDeviceUbmPresentationSupportSEC {};
+#endif //VK_USE_PLATFORM_UBM_SEC
+
+
 };
 
 } // namespace vk
 // The specification (vk.xml) itself is published under the following license:
 
-// Copyright 2015-2022 The Khronos Group Inc.
+// Copyright 2015-2026 The Khronos Group Inc.
+// 
 // SPDX-License-Identifier: Apache-2.0 OR MIT
     

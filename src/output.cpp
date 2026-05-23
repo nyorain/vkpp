@@ -10,10 +10,10 @@
 #include <iostream>
 #include <deque>
 #include <algorithm>
-#include <sstream>
 #include <cstring>
 #include <regex>
 #include <unordered_set>
+#include <cassert>
 
 // utility
 // the outputted copyright for the parsed header
@@ -84,14 +84,13 @@ CCOutputGenerator::CCOutputGenerator(Registry& reg, const CCOutputGeneratorSetti
 		: OutputGenerator(reg) {
 
 	auto& fold = settings.outputFolder;
-	functions_.open(fold + "/functions.hpp", std::ios_base::out | std::ios_base::binary);
 	enums_.open(fold + "/enums.hpp", std::ios_base::out | std::ios_base::binary);
 	fwd_.open(fold + "/fwd.hpp", std::ios_base::out | std::ios_base::binary);
 	structs_.open(fold + "/structs.hpp", std::ios_base::out | std::ios_base::binary);
 	dispatch_.open(fold + "/dispatch.hpp", std::ios_base::out | std::ios_base::binary);
 	dispatchSrc_.open(fold + "/dispatch.cpp", std::ios_base::out | std::ios_base::binary);
 	enumNames_.open(fold + "/names.hpp", std::ios_base::out | std::ios_base::binary);
-	rawf_.open(fold + "/rawf.hpp", std::ios_base::out | std::ios_base::binary);
+	rawf_.open(fold + "/functions.hpp", std::ios_base::out | std::ios_base::binary);
 }
 
 void CCOutputGenerator::generate() {
@@ -100,18 +99,15 @@ void CCOutputGenerator::generate() {
 
 	// headers from header.hpp
 	fwd_ << std::regex_replace(fwdHeader, std::regex("%vp"), version);
-	functions_ << std::regex_replace(functionsHeader, std::regex("%vp"), version);
 	structs_ << std::regex_replace(structsHeader, std::regex("%vp"), version);
 	enums_ << std::regex_replace(enumsHeader, std::regex("%vp"), version);
 	enumNames_ << std::regex_replace(namesHeader, std::regex("%vp"), version);
 	rawf_ << std::regex_replace(rawFunctionsHeader, std::regex("%vp"), version);
 
 	outputAll("namespace vk {\n");
-	rawf_ << "namespace raw {\n";
 	outputAll("\n");
 
 	// fwd dummy enum
-	fwd_ << "using nytl::Span; // span.hpp\n";
 	fwd_ << "using nytl::Flags; // flags.hpp\n\n";
 
 	fwd_ << "enum class DummyEnum : int32_t {};\n\n";
@@ -127,6 +123,7 @@ void CCOutputGenerator::generate() {
 		const char* name;
 		bool forceDispatch;
 	} features[] = {
+		{"VK_VERSION_1_4", true},
 		{"VK_VERSION_1_3", true},
 		{"VK_VERSION_1_2", true},
 		{"VK_VERSION_1_1", true},
@@ -137,28 +134,65 @@ void CCOutputGenerator::generate() {
 		"VK_NV_external_memory_rdma",
 		"VK_EXT_global_priority_query",
 		"VK_EXT_global_priority",
+		"VK_NV_ray_tracing_motion_blur", // TODO: fix bitfields
 	};
 
+	std::unordered_set<std::string_view> seen;
+
 	for(auto f : features) {
-		auto pf = registry().findFeatureByName(f.name);
-		if (!pf) {
-			log("Invalid feature ", f.name);
-			continue;
-		}
+		std::vector<std::string_view> worklist {f.name};
 
-		auto& feature = *pf;
-		auto& reqs = feature.reqs;
+		while(!worklist.empty()) {
+			log("Checking feature ", f.name);
 
-		printReqs(reqs, fulfilled, "", f.forceDispatch);
-		fulfilled.add(reqs);
+			auto next = worklist.back();
+			worklist.pop_back();
 
-		// output extensions
-		for(auto& ext : feature.extensions) {
-			if(avoidExts.count(ext->name)) continue;
+			if (seen.count(next)) {
+				continue;
+			}
 
-			auto guard = ext->platform ? ext->platform->protect : "";
-			printReqs(ext->reqs, fulfilled, guard, true);
-			fulfilled.add(ext->reqs);
+			auto pf = registry().findFeatureByName(std::string(next));
+			if (!pf) {
+				log("Invalid feature ", f.name);
+				continue;
+			}
+
+			auto& feature = *pf;
+			if (!feature.depends.empty()) {
+				worklist.push_back(next);
+
+				auto allDone = true;
+				for (auto& d : feature.depends) {
+					if (!seen.count(d)) {
+						log(">> depends ", f.name);
+						allDone = false;
+						worklist.push_back(d);
+					}
+				}
+
+				if (!allDone) {
+					continue;
+				}
+
+				worklist.pop_back();
+			}
+
+			auto& reqs = feature.reqs;
+
+			printReqs(reqs, fulfilled, "", f.forceDispatch);
+			fulfilled.add(reqs);
+
+			// output extensions
+			for(auto& ext : feature.extensions) {
+				if(avoidExts.count(ext->name)) continue;
+
+				auto guard = ext->platform ? ext->platform->protect : "";
+				printReqs(ext->reqs, fulfilled, guard, true);
+				fulfilled.add(ext->reqs);
+			}
+
+			seen.insert(next);
 		}
 	}
 
@@ -172,15 +206,7 @@ void CCOutputGenerator::generate() {
 		fulfilled.add(reqs);
 	}
 
-	// undef function macros
-	functions_
-		<< "#undef VEC_FUNC\n"
-		<< "#undef VEC_FUNC_VOID\n"
-		<< "#undef VEC_FUNC_RET\n"
-		<< "#undef VEC_FUNC_RET_VOID\n";
-
 	// end the header files
-	rawf_ << "} // namespace raw\n";
 	outputAll("\n} // namespace vk\n\n");
 
 	outputAll("// The specification (vk.xml) itself is published under the following license:\n");
@@ -216,7 +242,6 @@ void CCOutputGenerator::outputAll(const std::string& string) {
 	fwd_ << string;
 	structs_ << string;
 	enums_ << string;
-	functions_ << string;
 	enumNames_ << string;
 	rawf_ << string;
 }
@@ -226,7 +251,6 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 
 	auto fwdGuard = false;
 	auto enumGuard = false;
-	auto funcGuard = false;
 	auto structGuard = false;
 	auto nameGuard = false;
 	auto rawfGuard = false;
@@ -312,9 +336,18 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 		++count;
 		ensureGuard(fwd_, fwdGuard, guard);
 
+		if (!basetype.original) {
+			continue;
+		}
+
 		// fwd
 		auto name = typeName(basetype);
 		auto orig = basetype.original->name;
+
+		// TODO FIXME fix bitfields
+		if (orig == "AccelerationStructureInstanceKHR") {
+			continue;
+		}
 
 		fwd_ << "using " << name << " = " << orig << ";\n";
 	}
@@ -351,16 +384,15 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 		std::unordered_set<std::string> already {};
 		auto sepr = "";
 		for(auto& value : enumeration.values) {
-			bool bit;
-			auto n = enumName(enumeration, value.first, &bit);
+			auto n = enumName(enumeration, value.name);
 			if(!already.insert(n).second) {
 				// doubled
 				continue;
 			}
 
 			enums_ << sepr << "\t" << n << " = ";
-			if(bit) enums_ << "(" << shiftBase << " << " << value.second << ")";
-			else enums_ << value.second;
+			if(value.bit) enums_ << "(" << shiftBase << " << " << value.value << ")";
+			else enums_ << value.value;
 			sepr = ",\n";
 		}
 
@@ -373,11 +405,15 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 		enumNames_ << "inline const char* name(" << name << " val) {\n";
 		enumNames_ << "\tswitch(val) {\n";
 		std::unordered_set<std::int32_t> alreadyVals {};
+		std::unordered_set<std::int32_t> alreadyBits {};
 		for(auto& value : enumeration.values) {
-			bool bit;
-			auto n = enumName(enumeration, value.first, &bit);
-			if(!alreadyVals.insert(value.second).second) {
-				// doubled
+			auto n = enumName(enumeration, value.name);
+
+			// doubled
+			if(!value.bit && !alreadyVals.insert(value.value).second) {
+				continue;
+			}
+			if(value.bit && !alreadyBits.insert(value.value).second) {
 				continue;
 			}
 
@@ -423,11 +459,14 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 
 			enumNames_ << "\tstd::string ret;\n";
 			std::unordered_set<std::int32_t> alreadyVals {};
+			std::unordered_set<std::int32_t> alreadyBits {};
 			for(auto& value : enumeration.values) {
-				bool bit;
-				auto n = this->enumName(enumeration, value.first, &bit);
-				if(!alreadyVals.insert(value.second).second) {
-					// doubled
+				auto n = this->enumName(enumeration, value.name);
+				// doubled
+				if(!value.bit && !alreadyVals.insert(value.value).second) {
+					continue;
+				}
+				if(value.bit && !alreadyBits.insert(value.value).second) {
 					continue;
 				}
 
@@ -480,6 +519,11 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 		auto name = typeName(basetype);
 		auto orig = typeName(*basetype.original);
 
+		// TODO FIXME fix bitfields
+		if (orig == "AccelerationStructureInstanceKHR") {
+			continue;
+		}
+
 		fwd_ << "using " << name << " = " << orig << ";\n";
 	}
 
@@ -498,7 +542,6 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 		}
 
 		++count;
-		ensureGuard(functions_, funcGuard, guard);
 		ensureGuard(rawf_, rawfGuard, guard);
 
 		ensureGuard(dispatchDeclGuarded_, dispatchDeclGuard, guard);
@@ -510,18 +553,13 @@ void CCOutputGenerator::printReqs(Requirements& reqs, const Requirements& fulfil
 		for(auto alias : cmdit->aliases) {
 			printCmd(*cmdit, alias, forceDispatch, !guard.empty());
 		}
-
-		// insert blank line between seperate function (groups)
-		// functions_ << "\n";
 	}
 
 	if(count > 0) {
 		log("\tGenerated ", count, " commands");
-		functions_ << "\n";
 	}
 
 	// end all open requirements guards
-	endGuard(functions_, funcGuard, guard);
 	endGuard(structs_, structGuard, guard);
 	endGuard(fwd_, fwdGuard, guard);
 	endGuard(enums_, enumGuard, guard);
@@ -641,9 +679,9 @@ std::string CCOutputGenerator::enumName(const Enum& e, const std::string& name, 
 			ret[ret.size() - i] = std::toupper(ret[ret.size() - i], std::locale());
 
 	// TODO: custom fix for spec defect
-	if(name == "VK_PIPELINE_CREATE_DISPATCH_BASE") {
-		*bit = true;
-	}
+	// if(name == "VK_PIPELINE_CREATE_DISPATCH_BASE" && bit) {
+	// 	*bit = true;
+	// }
 
 	return ret;
 }
@@ -654,6 +692,9 @@ std::string CCOutputGenerator::typeName(const Type& type) const {
 	auto it = &type;
 	while(it->category == Type::Category::basetype) {
 		auto& bt = static_cast<const BaseType&>(*it);
+		if (!bt.original) {
+			break;
+		}
 		it = bt.original;
 	}
 
@@ -771,6 +812,13 @@ std::string CCOutputGenerator::paramName(const Param& param, const std::string& 
 void CCOutputGenerator::printStruct(const Struct& type)
 {
 	auto name = typeName(type);
+
+	// TODO FIXME fix bitfields!
+	if (name == "AccelerationStructureInstanceKHR" ||
+			name == "AccelerationStructureMotionInstanceDataNV") {
+		return;
+	}
+
 	auto nameFirstLower = name;
 	nameFirstLower[0] = std::tolower(nameFirstLower[0], std::locale());
 
@@ -844,121 +892,6 @@ void CCOutputGenerator::printStruct(const Struct& type)
 	structs_ << "};\n\n";
 }
 
-ParsedCommand CCOutputGenerator::parseCommand(const Command& cmd) const
-{
-	ParsedCommand parsed {};
-	parsed.command = &cmd;
-
-	auto& params = cmd.signature.params;
-	auto& pparams = parsed.parsedParams;
-	pparams.reserve(params.size());
-
-	// iterate through params to find array/count matches
-	for(auto& param : params) {
-		pparams.emplace_back();
-		auto& pparam = pparams.back();
-		pparam.param = &param;
-
-		// check if output param
-		if(param.type.pointer) {
-			auto it = &param.type;
-			pparam.out = true;
-			while(it->pointer) {
-				if(it->constant) {
-					pparam.out = false;
-					break;
-				}
-
-				it = it->pointer;
-			}
-
-			if(it->constant) pparam.out = false;
-		}
-
-		// array attrib, find the matching count param
-		auto attr = param.node.attribute("len");
-		std::string len = attr.value();
-		if(len.empty())
-			continue;
-
-		std::string paramName = len;
-		std::string memName;
-
-		auto memAcc = len.find("->");
-		if(memAcc == std::string::npos) {
-			memAcc = len.find("-&gt;");
-		}
-
-		if(memAcc != std::string::npos) {
-			paramName = len.substr(0, memAcc);
-			memName = len.substr(memAcc + 2);
-		}
-
-		// find the matching data pars
-		for(auto& par : pparams) {
-			if(par.param->name != paramName) continue;
-
-			par.dataPars.push_back(&pparam);
-			pparam.countPar = &par;
-
-			if(!memName.empty()) {
-				auto it2 = &par.param->type;
-				while(!it2->type) {
-					if(it2->array) it2 = it2->array;
-					if(it2->pointer) it2 = it2->pointer;
-				}
-
-				auto& structType = static_cast<const Struct&>(*it2->type);
-				for(auto& member : structType.members) {
-					if(member.name == memName) {
-						pparam.countMember = &member;
-						par.memberAsCount = true;
-						break;
-					}
-				}
-			}
-
-			break;
-		}
-	}
-
-	// reverse iteration for checking which parameters can be optional
-	// first check return pair then optoinal
-	for(auto it = pparams.rbegin(); it < pparams.rend(); ++it) {
-
-		// find param (pair) that should be returned
-		if(it->dataPars.empty() && it->out) {
-			auto it2 = &it->param->type;
-			while(!it2->type) {
-				if(it2->array) it2 = it2->array;
-				if(it2->pointer) it2 = it2->pointer;
-			}
-
-			if(it2->type->category == Type::Category::structure && !it->countPar) {
-				auto& structType = static_cast<const Struct&>(*it2->type);
-				if(!structType.returnedonly) continue;
-			}
-
-			parsed.returnParam = &(*it);
-			break;
-		}
-	}
-
-	auto optional = true;
-	auto optionalWithRet = true;
-	for(auto it = pparams.rbegin(); it < pparams.rend(); ++it) {
-
-		// optional
-		if(&(*it) != parsed.returnParam && !it->param->optional) optional = false;
-		else if(optional) it->optional = true;
-
-		if(!it->param->optional) optionalWithRet = false;
-		else if(optionalWithRet) it->optionalWithRet = true;
-	}
-
-	return parsed;
-}
-
 void CCOutputGenerator::printCmdRaw(const Command& cmd, std::string alias,
 		bool forceDispatch) {
 	if(alias == "") {
@@ -988,6 +921,18 @@ void CCOutputGenerator::printCmdRaw(const Command& cmd, std::string alias,
 		std::string name {};
 		if(param.type.type) {
 			category = param.type.type->category;
+
+			auto* type = param.type.type;
+			while (type && category == Type::Category::basetype) {
+				auto& basetype = static_cast<BaseType&>(*type);
+				if (basetype.alias && basetype.original) {
+					type = basetype.original;
+					category = type->category;
+				} else {
+					type = nullptr;
+				}
+			}
+
 			name = param.type.type->name;
 		} else {
 			auto it = &param.type;
@@ -1076,361 +1021,4 @@ void CCOutputGenerator::printCmd(const Command& cmd, std::string alias,
 			dispatchLoadIni_ += ");\n";
 		}
 	}
-
-	// parseCommand will analyse intput/output/optional/return attributes
-	// of the commands parameters
-	auto parsed = parseCommand(cmd);
-
-	if(parsed.returnParam && !parsed.returnParam->countPar) {
-		auto derefType = parsed.returnParam->param->type.pointer;
-		functions_ << "inline " << typeName(*derefType) << " " << name << "(";
-	} else {
-		functions_ << "inline " << typeName(cmd.signature.returnType) << " " << name << "(";
-	}
-
-	auto printVecVersion = false;
-	auto declSepr = "";
-	auto callSepr = "";
-	std::string args;
-
-	// iterate over parameters and output their declarations
-	// append thei call usage to args
-	for(auto& pparam : parsed.parsedParams) {
-		if(pparam.countPar && (!pparam.countMember || pparam.out)) {
-			printVecVersion = true;
-		}
-
-		auto decl = paramDecl(pparam, false, declSepr, parsed.returnParam);
-		if(!decl.empty()) {
-			functions_ << decl;
-			declSepr = ", ";
-		}
-
-		args += paramCall(pparam, false, callSepr, parsed.returnParam);
-		callSepr = ", ";
-	}
-
-	functions_ << declSepr << "DynamicDispatch* dispatcher = {}";
-
-	std::string before = "";
-	std::string after = "";
-	auto& retType = cmd.signature.returnType;
-
-	before = forceDispatch ? "VKPP_DISPATCH_GLOBAL(" : "VKPP_DISPATCH(";
-	after = ");";
-	if(retType.type->name == "VkResult") {
-		before = "VKPP_CHECK(" + before;
-		after = ")" + after;
-	}
-
-	if(parsed.returnParam && !parsed.returnParam->countPar) {
-		auto derefType = parsed.returnParam->param->type.pointer;
-		before = typeName(*derefType) + " ret = {}; " + before;
-		after = after + " return ret;";
-	} else if(retType.type->name != "void" || retType.pointer) {
-		before = "return static_cast<" + typeName(cmd.signature.returnType) + ">(" + before;
-		after = ")" + after;
-	} else {
-		before = "return " + before;
-	}
-
-	functions_ << "){ ";
-	functions_ << before << "dispatcher, " << cmd.name << ", " << args;
-	functions_ << after << " }\n";
-
-	// if possible/needed, output the std::vector version of the function
-	if(printVecVersion) {
-		printVecCmd(parsed, name, forceDispatch);
-	}
-}
-
-void CCOutputGenerator::printVecCmd(const ParsedCommand& pcmd,
-		const std::string& name, bool forceDispatch) {
-	auto& cmd = *pcmd.command;
-
-	std::pair<const ParsedParam*, const ParsedParam*> vecRetStackVar {};
-	std::pair<const ParsedParam*, const ParsedParam*>* vecRet = nullptr;
-
-	if(pcmd.returnParam && pcmd.returnParam->countPar) {
-		vecRet = &vecRetStackVar;
-		vecRet->first = pcmd.returnParam;
-		vecRet->second = pcmd.returnParam->countPar;
-	}
-
-	std::string retType = typeName(cmd.signature.returnType);
-	if(vecRet) {
-		auto typeCpy = *vecRet->first->param->type.pointer;
-		typeCpy.constant = false;
-		if(typeCpy.type->name != "void") retType = "std::vector<" + typeName(typeCpy) + ">";
-		else retType = "std::vector<std::byte>";
-	} else if(pcmd.returnParam) {
-		auto derefType = pcmd.returnParam->param->type.pointer;
-		retType = typeName(*derefType);
-	}
-
-	functions_ << "inline " << retType << " " << name << "(";
-
-	auto declSepr = "";
-	auto callSepr = "";
-	std::string args;
-	for(auto& pparam : pcmd.parsedParams) {
-		auto decl = paramDecl(pparam, true, declSepr, pcmd.returnParam);
-		if(!decl.empty()) {
-			functions_ << decl;
-			declSepr = ", ";
-		}
-
-		args += paramCall(pparam, true, callSepr, pcmd.returnParam);
-		callSepr = ", ";
-	}
-
-	functions_ << declSepr << "DynamicDispatch* dispatcher = {}";
-	functions_ << "){ ";
-
-	if(vecRet) {
-		std::string code;
-		auto& countPar = *pcmd.returnParam->countPar;
-		if(vecRet->second->memberAsCount || !vecRet->second->out) {
-			if(cmd.signature.returnType.type->name != "VkResult") {
-				code = forceDispatch ?
-					vecFuncTemplateRetGivenVoidDispatch :
-					vecFuncTemplateRetGivenVoid;
-			} else {
-				code = forceDispatch ?
-					vecFuncTemplateRetGivenDispatch :
-					vecFuncTemplateRetGiven;
-			}
-
-			// TODO: check for pointer
-			std::string count;
-			if(vecRet->first->countMember) {
-				count = vecRet->second->param->name + "." + vecRet->first->countMember->name;
-			} else if(countPar.dataPars[0] != pcmd.returnParam) {
-				count = countPar.dataPars[0]->param->name + ".size()";
-			} else {
-				count = countPar.param->name;
-			}
-
-			code = std::regex_replace(code, std::regex("%c"), count);
-		} else {
-			if(cmd.signature.returnType.type->name != "VkResult") {
-				code = forceDispatch ?
-					vecFuncTemplateVoidDispatch :
-					vecFuncTemplateVoid;
-			} else {
-				code = forceDispatch ?
-					vecFuncTemplateDispatch :
-					vecFuncTemplate;
-			}
-		}
-
-		auto typeCpy = *vecRet->first->param->type.pointer;
-		typeCpy.constant = false;
-
-		if(typeCpy.type->name != "void") {
-			code = std::regex_replace(code, std::regex("%t"), typeName(typeCpy));
-		} else {
-			code = std::regex_replace(code, std::regex("%t"), "std::byte");
-		}
-
-		code = std::regex_replace(code, std::regex("%a"), args);
-		code = std::regex_replace(code, std::regex("%f"), cmd.name);
-
-		auto it2 = &countPar.param->type;
-		while(!it2->type) {
-			if(it2->array) it2 = it2->array;
-			if(it2->pointer) it2 = it2->pointer;
-		}
-
-		auto& countType = *it2->type;
-		code = std::regex_replace(code, std::regex("%ct"), countType.name);
-
-		functions_ << code;
-		functions_ << " }\n";
-	} else {
-		std::string before = "";
-		std::string after = "";
-		auto& retType = cmd.signature.returnType;
-
-		before = forceDispatch ? "VKPP_DISPATCH_GLOBAL(" : "VKPP_DISPATCH(";
-		after = ");";
-		if(retType.type->name == "VkResult") {
-			before = "VKPP_CHECK(" + before;
-			after = ")" + after;
-		}
-
-		if(pcmd.returnParam && !pcmd.returnParam->countPar) {
-			auto derefType = pcmd.returnParam->param->type.pointer;
-			before = typeName(*derefType) + " ret = {}; " + before;
-			after = after + " return ret;";
-		} else if(retType.type->name != "void" || retType.pointer) {
-			before = "return static_cast<" + typeName(cmd.signature.returnType) + ">(" + before;
-			after = ")" + after;
-		} else {
-			before = "return " + before;
-		}
-
-		functions_ << before << "dispatcher, " << cmd.name << ", " << args;
-		functions_ << after << " }\n";
-	}
-}
-
-std::string CCOutputGenerator::paramDecl(const ParsedParam& param, bool rangeify, const char* sepr,
-	const ParsedParam* retParam) const
-{
-	if(retParam && &param == retParam && !retParam->countPar) {
-		return ""; //returnParam data part
-	}
-
-	std::string ret = sepr;
-	if(rangeify) {
-		if(retParam && &param == retParam) {
-			return "";
-		}
-
-		if(!param.dataPars.empty() && !param.memberAsCount) {
-			if(param.out || !retParam || (retParam && retParam != param.dataPars[0])) {
-				return "";
-			}
-		}
-
-		if(param.countPar && !param.countMember) {
-			auto type = &param.param->type;
-			QualifiedType localqt;
-			Type localt;
-			if(type->pointer) type = type->pointer;
-			if(type->type && type->type->name == "void") {
-				localqt = *type;
-				localqt.type = &localt;
-				localt = *type->type;
-				localt.name = "std::byte";
-				type = &localqt;
-			}
-
-			ret += "Span<" + typeName(*type) + "> " + param.param->name;
-			return ret;
-		}
-	}
-
-	bool optional = ((rangeify || (!retParam || !retParam->countPar)) && param.optional);
-	optional |= (!rangeify && retParam && retParam->countPar && param.optionalWithRet);
-
-	//reference for non optional pointer parameters
-	auto namedParam = *param.param;
-
-	if(namedParam.type.pointer && !param.param->optional) {
-		auto it = namedParam.type.pointer;
-		while(!it->type) {
-			if(it->pointer) it = it->pointer;
-			if(it->array) it = it->array;
-		}
-
-		if(it->type->name != "void" && it->type->name != "char") {
-			namedParam.type = *it;
-			namedParam.type.reference = true;
-		}
-	}
-
-	ret += paramName(namedParam);
-	if(optional) ret += " = {}";
-
-	return ret;
-}
-
-std::string CCOutputGenerator::paramCall(const ParsedParam& param, bool rangeify, const char* sepr,
-	const ParsedParam* retParam) const
-{
-	std::string ret = sepr;
-
-	// check if return param (count or data part)
-	if(retParam && &param == retParam && !param.countPar) {
-		ret += "(" + typeName(param.param->type, false) + ")(&ret)";
-		return ret;
-	} else if(!param.memberAsCount && rangeify && retParam && &param == retParam->countPar) {
-		if(param.out) {
-			ret += "&count";
-			return ret;
-		} else if(param.dataPars[0] != retParam) {
-			ret += param.dataPars[0]->param->name + ".size()";
-			return ret;
-		} else {
-			ret += param.param->name;
-			return ret;
-		}
-	}
-
-	if(rangeify) {
-		if(retParam && &param == retParam) {
-			ret += "(" + typeName(param.param->type, false) + ")(ret.data())";
-			return ret;
-		} else if(!param.dataPars.empty()) {
-			//is count part of normal range
-			if(!param.memberAsCount) {
-				ret += param.dataPars[0]->param->name;
-				ret += ".size()";
-				return ret;
-			}
-		} else if(param.countPar)  {
-			//is data part of normal (nonRet) range
-			ret += "(" + typeName(param.param->type, false) + ")(";
-			ret += param.param->name;
-			ret += ".data())";
-			return ret;
-		}
-	}
-
-	// normal params here that will not be returned and are not (directly) part of a range
-	Type::Category category {};
-	std::string name {};
-	if(param.param->type.type) {
-		category = param.param->type.type->category;
-		name = param.param->type.type->name;
-	} else {
-		auto it = &param.param->type;
-		while(!it->type) {
-			if(it->pointer) it = it->pointer;
-			if(it->array) it = it->array;
-		}
-
-		category = it->type->category;
-		name = it->type->name;
-	}
-
-	if(param.param->type.pointer || category == Type::Category::handle) {
-		bool optional = ((rangeify || (!retParam || !retParam->countPar)) && param.optional);
-		optional |= (!rangeify && retParam && retParam->countPar && param.optionalWithRet);
-
-		const char* ref = "";
-		if(!param.param->optional && param.param->type.pointer &&
-			name != "void" && name != "char") ref = "&";
-
-		ret += "(";
-		ret += typeName(param.param->type, false);
-		ret += ")(";
-		ret += ref;
-		ret += param.param->name;
-		ret += ")";
-	} else if(category == Type::Category::enumeration || category == Type::Category::bitmask) {
-		if(param.param->type.array) {
-			ret += "(";
-			ret += typeName(param.param->type, false);
-			ret += "*";
-			ret += ")(";
-			ret += param.param->name;
-			ret += ".data()";
-			ret += ")";
-		} else {
-			ret += "static_cast<";
-			ret += typeName(param.param->type, false);
-			ret += ">(";
-			ret += param.param->name;
-			ret += ")";
-		}
-	} else if(param.param->type.array) {
-		ret += param.param->name + ".data()";
-	} else {
-		ret += param.param->name;
-	}
-
-	return ret;
 }

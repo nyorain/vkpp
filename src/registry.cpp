@@ -8,7 +8,6 @@
 #include <algorithm>
 #include <string>
 #include <cstring>
-#include <locale>
 
 constexpr auto logEnabled = false;
 
@@ -22,6 +21,27 @@ void log(Args... args) {
 	}
 }
 
+std::vector<std::string_view> splitView(std::string_view str, std::string_view delim = " ") {
+    std::vector<std::string_view> result;
+    for (std::size_t pos; (pos = str.find(delim)) != std::string::npos;) {
+        result.emplace_back(str.substr(0, pos));
+        str = str.substr(pos + delim.size());
+    }
+    result.emplace_back(str);
+    return result;
+}
+
+std::vector<std::string> split(std::string_view str, std::string_view delim = " ") {
+    std::vector<std::string> result;
+    for (std::size_t pos; (pos = str.find(delim)) != std::string::npos;) {
+        result.emplace_back(str.substr(0, pos));
+        str = str.substr(pos + delim.size());
+    }
+    result.emplace_back(str);
+    return result;
+}
+
+/////////////
 RegistryLoader::RegistryLoader(const std::string& xmlPath) {
 	// we first check whether the file exists
 	std::ifstream test(xmlPath);
@@ -109,6 +129,15 @@ Registry& RegistryLoader::parse() {
 	for(auto extension : regNode.child("extensions").children("extension")) {
 		loadExtension(extension);
 	}
+
+	auto cmp = [&](const Extension& a, const Extension& b) {
+		const auto na = a.name.find("VK_KHR") == 0 ? 0 :
+			a.name.find("VK_EXT") == 0 ? 1 : 2;
+		const auto nb = b.name.find("VK_KHR") == 0 ? 0 :
+			b.name.find("VK_EXT") == 0 ? 1 : 2;
+		return na < nb;
+	};
+	std::stable_sort(registry_.extensions.begin(), registry_.extensions.end(), cmp);
 
 	return registry_;
 }
@@ -232,7 +261,6 @@ void RegistryLoader::loadTypes(const pugi::xml_node& node) {
 			if(alias) {
 				BaseType t(name, typeit);
 				t.alias = true;
-				t.original = registry_.findType(alias.as_string());
 				registry_.baseTypes.push_back(t);
 				continue;
 			}
@@ -264,105 +292,19 @@ void RegistryLoader::loadTypes(const pugi::xml_node& node) {
 
 			FuncPtr ptr(name, typeit);
 
-			// - parse return type -
-			// get rid of "typedef " prefix and " (VKAPI_PTR *" suffix
-			auto retString = std::string(typeit.text().as_string()).substr(8, std::string::npos);
-			retString = retString.substr(0, retString.size() - 13);
+			auto p = parseParam(typeit.child("proto"));
+			ptr.signature.returnType = p.type;
+			ptr.name = p.name;
 
-			auto constPos = retString.find("const");
-			if(constPos != std::string::npos) {
-				ptr.signature.returnType.constant = true;
-				retString = retString.substr(constPos + 6, std::string::npos);
-			}
-
-			auto firstPtr = retString.find("*");
-			bool hasPtr = (firstPtr != std::string::npos);
-
-			auto beforeConst = retString.find("const ");
-			auto retTypeName = retString.substr(0, firstPtr);
-
-			// const type
-			if(beforeConst != std::string::npos && (!hasPtr || beforeConst < firstPtr)) {
-				retTypeName = retTypeName.substr(beforeConst + 6);
-				ptr.signature.returnType.constant = true;
-			}
-
-			// type const
-			auto afterConst = retString.find(" const");
-			if(afterConst != std::string::npos && (!hasPtr || afterConst < firstPtr)) {
-				retTypeName = retTypeName.substr(0, afterConst);
-				ptr.signature.returnType.constant = true;
-			}
-
-			auto type = registry_.findType(retTypeName);
-			if(!type) {
-				std::cout << "### fptr:1: Couldnt find type " << retString << "\n";
-				continue;
-			}
-
-			ptr.signature.returnType.type = type;
-
-			// parse return pointers
-			auto prevPtr = firstPtr;
-			while(prevPtr != std::string::npos) {
-				auto nextPtr = retString.find("*", prevPtr + 1);
-				bool hasNext = nextPtr != std::string::npos;
-
-				registry_.qualifieds.push_back(ptr.signature.returnType);
-				ptr.signature.returnType = {};
-				ptr.signature.returnType.pointer = &registry_.qualifieds.back();
-
-				auto nextConst = retString.find("const", prevPtr);
-				if(nextConst != std::string::npos && (!hasNext || nextConst < nextPtr))
-					ptr.signature.returnType.constant = true;
-
-				prevPtr = nextPtr;
-			}
-
-			// - parse parameters -
-			for(auto paramNode : typeit.children("type")) {
-				Param param;
-				auto type = registry_.findType(paramNode.text().get());
-				if(!type) {
-					std::cout << "### fptr:2: Couldnt find type " << paramNode.text().get() << "\n";
-					continue;
+			for(auto param : typeit.children("param")) {
+				if (auto api = param.attribute("api"); api) {
+					auto apis = splitView(api.as_string(), ",");
+					if (std::find(apis.begin(), apis.end(), "vulkan") == apis.end()) {
+						continue;
+					}
 				}
 
-				param.type.type = type;
-				std::string prev = paramNode.previous_sibling().value();
-				std::string next = paramNode.next_sibling().value();
-
-				if(prev.find("const") != std::string::npos) param.type.constant = true;
-
-				// TODO: also parse arrays here
-				// parse pointers
-				auto prevPtr = next.find("*");
-				while(prevPtr != std::string::npos) {
-					auto nextPtr = next.find("*", prevPtr + 1);
-					bool hasNext = nextPtr != std::string::npos;
-
-					registry_.qualifieds.push_back(param.type);
-					param.type = {};
-					param.type.pointer = &registry_.qualifieds.back();
-
-					auto nextConst = next.find("const", prevPtr);
-					if(nextConst != std::string::npos && (!hasNext || nextConst < nextPtr))
-						param.type.constant = true;
-
-					prevPtr = nextPtr;
-				}
-
-				next.erase(std::remove(next.begin(), next.end(), '*'), next.end());
-				next.erase(std::remove(next.begin(), next.end(), ' '), next.end());
-				next.erase(std::remove(next.begin(), next.end(), '\t'), next.end());
-				next.erase(std::remove(next.begin(), next.end(), '\n'), next.end());
-
-				auto pos = next.find(',');
-				if(pos == std::string::npos) pos = next.find(')');
-				next = next.substr(0, pos);
-
-				param.name = next;
-				ptr.signature.params.push_back(param);
+				ptr.signature.params.emplace_back(parseParam(param));
 			}
 
 			registry_.funcPtrs.push_back(ptr);
@@ -374,19 +316,39 @@ void RegistryLoader::loadTypes(const pugi::xml_node& node) {
 		std::string category = typeit.attribute("category").as_string();
 		if(category == "struct" || category == "union") {
 			auto alias = typeit.attribute("alias");
+			auto name = typeit.attribute("name").as_string();
 			if(alias) {
+				auto s = registry_.findBaseType(name);
+				if(!s) {
+					std::cout << "### Couldnt find struct basetype " << name << "\n";
+					continue;
+				}
+
+				s->original = registry_.findType(alias.as_string());
+				if(!s->original) {
+					std::cout << "### Couldnt find struct alias " << alias << "\n";
+					continue;
+				}
+
 				continue;
 			}
 
-			auto name = typeit.attribute("name").as_string();
 			auto s = registry_.findStruct(name);
 			if(!s) {
 				std::cout << "### Couldnt find struct " << name << "\n";
 				continue;
 			}
 
-			for(auto& member : typeit.children("member"))
+			for(auto& member : typeit.children("member")) {
+				if (auto api = member.attribute("api"); api) {
+					auto apis = splitView(api.as_string(), ",");
+					if (std::find(apis.begin(), apis.end(), "vulkan") == apis.end()) {
+						continue;
+					}
+				}
+
 				s->members.emplace_back(parseParam(member));
+			}
 		}
 	}
 }
@@ -414,29 +376,34 @@ void RegistryLoader::loadEnums(const pugi::xml_node& node)
 		}
 
 		for(auto enumit : node.children("enum")) {
-			std::pair<std::string, std::int64_t> value;
+			EnumValue value;
 
-			value.first = enumit.attribute("name").as_string();
+			value.name = enumit.attribute("name").as_string();
+			value.bit = false;
 			auto alias = enumit.attribute("alias");
 			if(alias) {
 				auto an = alias.as_string();
 				for(auto& r : ret.values) {
-					if(r.first == an) {
-						value.second = r.second;
+					if(r.name == an) {
+						value.value = r.value;
+						value.bit = r.bit;
 						break;
 					}
 				}
 			} else {
 				auto attrib = enumit.attribute("value");
-				if(!attrib) attrib = enumit.attribute("bitpos");
+				if(!attrib) {
+					attrib = enumit.attribute("bitpos");
+					value.bit = true;
+				}
 				if(!attrib) {
 					std::cout << "### Invalid enum value, no value or bitpos\n";
 					return;
 				}
 
 				auto str = std::string(attrib.as_string());
-				if(str.size() > 1 && str.substr(0, 2) == "0x") value.second = std::stoul(str, nullptr, 16);
-				else value.second = attrib.as_llong();
+				if(str.size() > 1 && str.substr(0, 2) == "0x") value.value = std::stoul(str, nullptr, 16);
+				else value.value = attrib.as_llong();
 			}
 
 			ret.values.push_back(value);
@@ -495,8 +462,16 @@ void RegistryLoader::loadCommands(const pugi::xml_node& node)
 		command.signature.returnType = p.type;
 		command.name = p.name;
 
-		for(auto param : cmd.children("param"))
+		for(auto param : cmd.children("param")) {
+			if (auto api = param.attribute("api"); api) {
+				auto apis = splitView(api.as_string(), ",");
+				if (std::find(apis.begin(), apis.end(), "vulkan") == apis.end()) {
+					continue;
+				}
+			}
+
 			command.signature.params.emplace_back(parseParam(param));
+		}
 
 		registry_.commands.push_back(command);
 		log("\t\t", p.name);
@@ -594,6 +569,9 @@ void RegistryLoader::loadFeature(const pugi::xml_node& node) {
 	feature.name = node.attribute("name").as_string();
 	feature.api = node.attribute("api").as_string();
 	feature.number = node.attribute("number").as_string();
+	if (auto dep = node.attribute("depends")) {
+		feature.depends = split(dep.as_string(), ",");
+	}
 	registry_.features.push_back(feature);
 
 	log("\t\tfeature", feature.name, ": ", feature.api);
@@ -629,16 +607,21 @@ void RegistryLoader::loadExtension(const pugi::xml_node& node) {
 		std::cout << "### couldnt find platform '" << platform << "'\n";
 	}
 
-	if(extension.supported.find("vulkan") != std::string::npos) {
-		extension.reqs = parseRequirements(node, true);
-		registry_.extensions.push_back(extension);
-
-		auto feature = registry_.findFeatureByApi(extension.supported);
-		if(feature) {
-			feature->extensions.push_back(&registry_.extensions.back());
-		} else {
-			std::cout << "### couldnt find feature " << extension.supported << "\n";
+	if (!extension.supported.empty()) {
+		auto sups = splitView(extension.supported, ",");
+		if (std::find(sups.begin(), sups.end(), "vulkan") == sups.end()) {
+			return;
 		}
+	}
+
+	extension.reqs = parseRequirements(node, true);
+	registry_.extensions.push_back(extension);
+
+	auto feature = registry_.findFeatureByApi(extension.supported);
+	if(feature) {
+		feature->extensions.push_back(&registry_.extensions.back());
+	} else {
+		std::cout << "### couldnt find feature " << extension.supported << "\n";
 	}
 
 	log("\t\textension ", extension.name);
@@ -652,6 +635,12 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 	if(numberAttrib) number = numberAttrib.as_int() - 1;
 
 	for(auto& require : node.children("require")) {
+		if (auto api = require.attribute("api"); api) {
+			auto apis = splitView(api.as_string(), ",");
+			if (std::find(apis.begin(), apis.end(), "vulkan") == apis.end()) {
+				continue;
+			}
+		}
 
 		// types
 		for(auto& req : require.children("type")) {
@@ -742,10 +731,12 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 				if(aliasAttrib) {
 					bool found = false;
 					for(auto val : extEnum->values) {
-						if(val.first == aliasAttrib.as_string()) {
+						if(val.name == aliasAttrib.as_string()) {
 							found = true;
-							auto v = std::make_pair(req.attribute("name").as_string(),
-								val.second);
+							EnumValue v;
+							v.name = req.attribute("name").as_string();
+							v.value = val.value;
+							v.bit = val.bit;
 							extEnum->values.push_back(v);
 							break;
 						}
@@ -757,11 +748,11 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 					}
 				} else if(bitposAttrib) {
 					auto pos = bitposAttrib.as_llong();
-					auto v = std::make_pair(req.attribute("name").as_string(), pos);
+					EnumValue v {req.attribute("name").as_string(), true, pos};
 					extEnum->values.push_back(v);
 				} else if(valueAttrib) {
 					auto pos = valueAttrib.as_llong();
-					auto v = std::make_pair(req.attribute("name").as_string(), pos);
+					EnumValue v {req.attribute("name").as_string(), false, pos};
 					extEnum->values.push_back(v);
 				} else {
 					std::string dir = "+";
@@ -791,7 +782,7 @@ Requirements RegistryLoader::parseRequirements(const pugi::xml_node& node, bool 
 						std::cerr << "### invalid enum ext dir: '" << dir << "', " << enumName << "\n";
 					}
 
-					auto v = std::make_pair(name, value);
+					auto v = EnumValue{name, false, value};
 					extEnum->values.push_back(v);
 				}
 			}
