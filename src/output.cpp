@@ -983,7 +983,7 @@ void CCOutputGenerator::printCmdRaw(const Command& cmd, std::string alias,
 	after = "));";
 
 	rawf_ << "){ ";
-	rawf_ << before << "dispatcher, " << cmd.name << sepr << args;
+	rawf_ << before << "dispatcher, " << alias << sepr << args;
 	rawf_ << after << " }\n";
 }
 
