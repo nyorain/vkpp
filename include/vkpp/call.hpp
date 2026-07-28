@@ -30,7 +30,7 @@ namespace error {
 /// Returns "<unknown>" if the error is not recognized.
 /// Might handle for extension result codes that are newer than
 /// the last vkpp version.
-inline const char* name(Result result) {
+inline const char* resultName(Result result) {
 	switch(result) {
 		case Result::success: return "success";
 		case Result::notReady: return "notReady";
@@ -72,7 +72,7 @@ inline vk::Result checkResultThrow(vk::Result result, const char* function) {
 		return result;
 	}
 
-	auto msg = name(result);
+	auto msg = resultName(result);
 	auto str = std::to_string(static_cast<std::int64_t>(result));
 	auto err = "Vulkan Error Code " + str + ": " + msg + "\n"
 		"\tin function: " + function;
